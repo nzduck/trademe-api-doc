@@ -1,0 +1,125 @@
+{
+  "endpoint": "RemoveAMemberFromYourBlacklist",
+  "title": "Remove a member from your blacklist",
+  "description": "Removes a member from the authenticated user's blacklist.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-member-from-your-blacklist",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/Blacklist/{memberId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<BlacklistResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member added to the blacklist."
+      },
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the blacklist request.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The member was blacklisted."
+          },
+          {
+            "name": "Ok",
+            "value": "0",
+            "description": "The member was blacklisted."
+          },
+          {
+            "name": "MemberNotFound",
+            "value": "1",
+            "description": "Member was not found."
+          },
+          {
+            "name": "NotAuthenticated",
+            "value": "2",
+            "description": "The member asking is not authenticated."
+          },
+          {
+            "name": "NotSelf",
+            "value": "3",
+            "description": "Cannot blacklist self."
+          },
+          {
+            "name": "AlreadyBlacklisted",
+            "value": "4",
+            "description": "The member is already blacklisted."
+          },
+          {
+            "name": "OtherError",
+            "value": "5",
+            "description": "Something else went wrong."
+          },
+          {
+            "name": "NotOnBlacklist",
+            "value": "100",
+            "description": "The member is not in the blacklist."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "MemberId": 123,
+      "Status": 0
+    }
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "endpoint": "RetrieveListOfCharities",
+  "title": "Retrieve list of charities",
+  "description": "Retrieves a collection of charities available to donate to when listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-list-of-charities",
+  "url": "https://api.trademe.co.nz/v1/Charities.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Charity> Charities collection.",
+    "fields": [
+      {
+        "name": "CharityType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The unique identifier of the charity.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The default charity identifier. Used if the user chose not to donate to a charity at all."
+          },
+          {
+            "name": "ForestAndBird",
+            "value": "1",
+            "description": "Donate to Forest and Bird's kiwis for kiwis program."
+          },
+          {
+            "name": "Plunket",
+            "value": "2",
+            "description": "Donate to Plunket."
+          },
+          {
+            "name": "StJohn",
+            "value": "3",
+            "description": "Donate to St John."
+          },
+          {
+            "name": "OurPeopleOurCityFund",
+            "value": "4",
+            "description": "Donate to Our People, Our City Fund."
+          },
+          {
+            "name": "WomensRefuge",
+            "value": "5",
+            "description": "Donate to Women's Refuge"
+          },
+          {
+            "name": "KidsCan",
+            "value": "6",
+            "description": "Donate to KidsCan"
+          }
+        ]
+      },
+      {
+        "name": "ImageSource",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for this charity's brand image (designed for a light background)."
+      },
+      {
+        "name": "DarkModeImageSource",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for this charity's brand image (designed for a dark background)."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the charity e.g. \"Plunket\", \"Kiwis for kiwi\"."
+      },
+      {
+        "name": "Tagline",
+        "type": "String or null",
+        "required": false,
+        "description": "A short description of what the charity does."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "CharityType": 0,
+        "ImageSource": "ABC",
+        "DarkModeImageSource": "ABC",
+        "Description": "ABC",
+        "Tagline": "ABC"
+      },
+      {
+        "CharityType": 0,
+        "ImageSource": "ABC",
+        "DarkModeImageSource": "ABC",
+        "Description": "ABC",
+        "Tagline": "ABC"
+      }
+    ]
+  }
+}

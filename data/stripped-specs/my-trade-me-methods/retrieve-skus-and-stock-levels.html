@@ -1,0 +1,103 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-skus-and-stock-levels -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve SKUs and stock levels</h1>
+<!-- Page content -->
+<p>Retrieves a list of product codes and stock levels associated with the authenticated user's active listings. The results will return data from feeds and My Products.</p>
+<p style="color: red">
+                Feeds and My Products are no longer supported via the Trade Me API; please use the <a href="https://api.tradevine.com/help/index.html">Tradevine API</a> instead. The list returned by this API will now always be empty.
+            </p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/productmappings.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;ProductMappings&gt; </p>
+<p>A list of product mappings for all the listings created in the last 24 hours</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;ProductMapping&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+</table>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p>Returns all listings with SKU and stock level: <br/><a href="https://api.trademe.co.nz/v1/mytrademe/productmappings.xml">https://api.trademe.co.nz/v1/mytrademe/productmappings.xml</a><br/><br/> Returns all listings with the SKU 1234: <br/><a href="https://api.trademe.co.nz/v1/mytrademe/productmappings.xml?sku=1234">https://api.trademe.co.nz/v1/mytrademe/productmappings.xml?sku=1234</a><br/><br/> Returns the SKU of listings 294105146: <br/><a href="https://api.trademe.co.nz/v1/mytrademe/productmappings.xml?listing_id=294105146">https://api.trademe.co.nz/v1/mytrademe/productmappings.xml?listing_id=294105146</a><br/></p>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+    },
+    {
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,263 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/selling-methods/retrieve-fees-for-relisting-an-item -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve fees for relisting an item</h1>
+<!-- Page content -->
+<p>Returns a breakdown of the fees that will be charged for relisting a listing, without actually relisting anything.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Selling/RelistFees.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;RelistListingRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing that is being withdrawn, relisted or extended.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReturnListingDetails </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether full listing details should be returned in the Listing field.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FeeResponse&gt; </p>
+<p>A list of fees.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalCost </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The total price for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InsufficientBalance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates the member has insufficient funds to pay the total price for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeeItems </th>
+<td style="width: 22%"> &lt;MemberLedger&gt; or null </td>
+<td>
+<p>A collection of member ledger items.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;MemberLedgerItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Date </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The transaction date.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Other", "value": "0", "description": "An unknown ledger item."}, {"name": "ListingFee", "value": "1", "description": "The fee for a listing an item (applies to classifieds and auctions in certain categories)."}, {"name": "HighVolumeFee", "value": "2", "description": "The fee for exceeding the free listing allowance."}, {"name": "SuccessFeeBid", "value": "3", "description": "The fee for a successful auction (won via a bid)."}, {"name": "SuccessFeeOffer", "value": "4", "description": "The fee for a successful auction (won via a fixed price offer)."}, {"name": "SuccessFeeBuyNow", "value": "5", "description": "The fee for a successful auction (won via Buy Now)."}, {"name": "GalleryPromotion", "value": "100", "description": "The fee for listing an item with the gallery promotion."}, {"name": "GalleryPlusPromotion", "value": "101", "description": "The fee for listing an item with the gallery plus promotion."}, {"name": "BoldPromotion", "value": "102", "description": "The fee for listing an item with the bold title promotion."}, {"name": "SubtitlePromotion", "value": "103", "description": "The fee for listing an item with a subtitle."}, {"name": "HighlightPromotion", "value": "104", "description": "The fee for listing an item with a highlight."}, {"name": "FeaturePromotion", "value": "105", "description": "The fee for listing an item with the feature promotion."}, {"name": "FeatureComboPromotion", "value": "106", "description": "The fee for listing an item with the feature combo promotion."}, {"name": "HomepageFeaturePromotion", "value": "107", "description": "The fee for listing an item with the homepage feature promotion."}, {"name": "SuperFeaturePromotion", "value": "108", "description": "The fee for listing an item with the super feature promotion."}, {"name": "SuperFeatureComboPromotion", "value": "109", "description": "The fee for listing an item with the super feature combo promotion."}, {"name": "TenDayAuctionFee", "value": "110", "description": "The fee for listing an item with a duration of ten days."}, {"name": "MultiPhotoFee", "value": "111", "description": "The fee for listing an item with additional photos."}, {"name": "ScheduledEndDateFee", "value": "112", "description": "The fee for listing an item with a scheduled end date/time."}, {"name": "ReserveFee", "value": "113", "description": "The fee for listing an item with a reserve price."}, {"name": "SecondaryCategoryPromotion", "value": "114", "description": "The fee for listing an item with a reserve price."}, {"name": "JobPack5", "value": "200", "description": "The purchase of a five listing job pack."}, {"name": "JobPack10", "value": "201", "description": "The purchase of a ten listing job pack."}, {"name": "JobPack20", "value": "202", "description": "The purchase of a twenty listing job pack."}, {"name": "JobPack30", "value": "204", "description": "The purchase of a thirty listing job pack."}, {"name": "JobPack50", "value": "203", "description": "The purchase of a fifty listing job pack."}, {"name": "JobPack100", "value": "205", "description": "The purchase of a hundred listing job pack."}, {"name": "WithdrawalFee", "value": "300", "description": "The fee for withdrawing an auction over an hour after it started."}, {"name": "QuotableValueReportFee", "value": "301", "description": "The fee for purchasing a QV report."}, {"name": "MonthlyStoreFee", "value": "302", "description": "The monthly fee for having a Trade Me store."}, {"name": "CreditViaCreditCard", "value": "400", "description": "The member credited their account with a credit card."}, {"name": "CreditViaBankTransfer", "value": "401", "description": "The member credited their account using internet banking."}, {"name": "CreditViaCheque", "value": "402", "description": "The member credited their account with a cheque."}, {"name": "CreditViaPing", "value": "403", "description": "This member credited their account with Ping."}, {"name": "RebateForListingFee", "value": "500", "description": "The rebate for listing an item."}, {"name": "RebateForHighVolumeFee", "value": "501", "description": "The rebate for exceeding the free listing allowance."}, {"name": "RebateForSuccessFeeBid", "value": "502", "description": "The rebate for a successful auction (won via a bid)."}, {"name": "RebateForSuccessFeeOffer", "value": "503", "description": "The rebate for a successful auction (won via a fixed price offer)."}, {"name": "RebateForSuccessFeeBuyNow", "value": "504", "description": "The rebate for a successful auction (won via Buy Now)."}, {"name": "RebateForGalleryPromotion", "value": "505", "description": "The rebate for listing an item with the gallery promotion."}, {"name": "RebateForGalleryPlusPromotion", "value": "506", "description": "The rebate for listing an item with the gallery plus promotion."}, {"name": "RebateForBoldPromotion", "value": "507", "description": "The rebate for listing an item with the bold title promotion."}, {"name": "RebateForSubtitlePromotion", "value": "508", "description": "The rebate for listing an item with a subtitle."}, {"name": "RebateForHighlightPromotion", "value": "509", "description": "The rebate for listing an item with a highlight."}, {"name": "RebateForFeaturePromotion", "value": "510", "description": "The rebate for listing an item with the feature promotion."}, {"name": "RebateForFeatureComboPromotion", "value": "511", "description": "The rebate for listing an item with the feature combo promotion."}, {"name": "RebateForHomepageFeaturePromotion", "value": "512", "description": "The rebate for listing an item with the homepage feature promotion."}, {"name": "RebateForSuperFeaturePromotion", "value": "513", "description": "The rebate for listing an item with the super feature promotion."}, {"name": "RebateForSuperFeatureComboPromotion", "value": "514", "description": "The rebate for listing an item with the super feature combo promotion."}, {"name": "RebateForTenDayAuctionFee", "value": "515", "description": "The rebate for listing an item with a duration of ten days."}, {"name": "RebateForMultiPhotoFee", "value": "516", "description": "The rebate for listing an item with additional photos."}, {"name": "RebateForScheduledEndDateFee", "value": "517", "description": "The rebate for listing an item with a scheduled end date/time."}, {"name": "RebateForReserveFee", "value": "518", "description": "The rebate for listing an item with a reserve price."}, {"name": "RebateForSecondaryCategoryPromotion", "value": "519", "description": "The rebate for listing an item with a secondary category."}, {"name": "RefundOfListingFee", "value": "600", "description": "A refund for listing an item."}, {"name": "RefundOfSuccessFee", "value": "601", "description": "Refund of auction success fees."}, {"name": "RefundOfGalleryPromotion", "value": "602", "description": "The refund for listing an item with the gallery promotion."}, {"name": "RefundOfGalleryPlusPromotion", "value": "603", "description": "The refund for listing an item with the gallery plus promotion."}, {"name": "RefundOfBoldPromotion", "value": "604", "description": "The refund for listing an item with the bold title promotion."}, {"name": "RefundOfSubtitlePromotion", "value": "605", "description": "The refund for listing an item with a subtitle."}, {"name": "RefundOfHighlightPromotion", "value": "606", "description": "The refund for listing an item with a highlight."}, {"name": "RefundOfFeaturePromotion", "value": "607", "description": "The refund for listing an item with the feature promotion."}, {"name": "RefundOfFeatureComboPromotion", "value": "608", "description": "The refund for listing an item with the feature combo promotion."}, {"name": "RefundOfHomepageFeaturePromotion", "value": "609", "description": "The refund for listing an item with the homepage feature promotion."}, {"name": "RefundOfSuperFeaturePromotion", "value": "610", "description": "The refund for listing an item with the super feature promotion."}, {"name": "RefundOfSuperFeatureComboPromotion", "value": "611", "description": "The refund for listing an item with the super feature combo promotion."}, {"name": "RefundOfTenDayAuctionFee", "value": "612", "description": "The refund for listing an item with a duration of ten days."}, {"name": "RefundOfMultiPhotoFee", "value": "613", "description": "The refund for listing an item with additional photos."}, {"name": "RefundOfScheduledEndDateFee", "value": "614", "description": "The refund for listing an item with a scheduled end date/time."}, {"name": "RefundOfReserveFee", "value": "615", "description": "The refund for listing an item with a reserve price."}, {"name": "RefundOfSecondaryCategoryPromotion", "value": "616", "description": "The refund for listing an item with a secondary category."}, {"name": "DiscountOfListingFee", "value": "617", "description": "Discount of listing fee"}, {"name": "DiscountOfSuperfeature", "value": "618", "description": "Discount of superfeature fee"}, {"name": "DiscountOfHighlight", "value": "619", "description": "Discount of highlight fee"}, {"name": "DiscountOfFeature", "value": "620", "description": "Discount of feature fee"}, {"name": "DiscountOfBoldTitle", "value": "621", "description": "Discount of boldTitle fee"}, {"name": "DiscountOfFeatureCombo", "value": "622", "description": "Discount of feature combo fee"}, {"name": "DiscountOfSubtitle", "value": "623", "description": "Discount of subtitle fee"}, {"name": "RebateForGoldTradeSuccessFee", "value": "624", "description": "The rebate for providing timely shipping information."}, {"name": "MotorsFeatureBundleUpgrade", "value": "625", "description": "For upgrading Motors Feature Bundle"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The transaction type.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the transaction.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Credit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount to credit to the member's account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Debit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount to debit from the member's account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WillBeInvoiced </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this ledger item will be invoiced, rather than deducted from the member's trade me balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InvoicedValue </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount that will be invoiced to the member</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ValidationErrors </th>
+<td style="width: 22%"> Collection of &lt;ValidationError&gt; or null </td>
+<td>
+<p>A collection of errors if there are any</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Message </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing validation error message.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "ReturnListingDetails": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "TotalCost": 123.0,
+  "InsufficientBalance": false,
+  "FeeItems": {
+    "TotalCount": 123,
+    "Page": 123,
+    "PageSize": 123,
+    "List": [
+      {
+        "Date": "\/Date(1514764800)\/",
+        "Type": 0,
+        "Description": "ABC",
+        "Credit": 123.0,
+        "Debit": 123.0,
+        "WillBeInvoiced": false,
+        "InvoicedValue": 123.0
+      },
+      {
+        "Date": "\/Date(1514764800)\/",
+        "Type": 0,
+        "Description": "ABC",
+        "Credit": 123.0,
+        "Debit": 123.0,
+        "WillBeInvoiced": false,
+        "InvoicedValue": 123.0
+      }
+    ]
+  },
+  "ValidationErrors": [
+    {
+      "Message": "ABC"
+    },
+    {
+      "Message": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,158 @@
+{
+  "endpoint": "GetsTheCountsForListingStatisticsFromHomes",
+  "title": "Gets the counts for listing statistics from homes",
+  "description": "Retrieves the counts for listing statistics from homes",
+  "source": "https://developer.trademe.co.nz/api-reference/property-agency-methods/gets-the-counts-for-listing-statistics-from-homes",
+  "url": "https://api.trademe.co.nz/v1/Property/Office/{officeMemberId}/HomesListingStatistics/{listingId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "officeMemberId",
+        "type": "String (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "listingId",
+        "type": "String (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "from_date",
+        "type": "String (optional)",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "to_date",
+        "type": "String (optional)",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<HomesListingStats> A response containing Homes listing ID and list of counts per day.",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "TM Listing ID"
+      },
+      {
+        "name": "HomesListingId",
+        "type": "String or null",
+        "required": false,
+        "description": "Homes Listing ID"
+      },
+      {
+        "name": "TotalEmailEnquiryCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Total email enquiry count"
+      },
+      {
+        "name": "TotalClickToCallCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Total click to call count"
+      },
+      {
+        "name": "TotalViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Total view count"
+      },
+      {
+        "name": "EmailEnquiryCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Email enquiry count within date range"
+      },
+      {
+        "name": "ClickToCallCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Click to call count within date range"
+      },
+      {
+        "name": "ViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "View count within date range"
+      },
+      {
+        "name": "DailyActivity",
+        "type": "Collection of <DailyListingActivity> or null",
+        "required": false,
+        "description": "List of view counts per date",
+        "nested_fields": [
+          {
+            "field_name": "Day",
+            "field_type": "DateTime",
+            "description": "The date of the day when these statistics occurred"
+          },
+          {
+            "field_name": "NewViewCount",
+            "field_type": "Integer",
+            "description": "The number of times the listing was viewed on this day."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "ListingId": 123,
+      "HomesListingId": "ABC",
+      "TotalEmailEnquiryCount": 123,
+      "TotalClickToCallCount": 123,
+      "TotalViewCount": 123,
+      "EmailEnquiryCount": 123,
+      "ClickToCallCount": 123,
+      "ViewCount": 123,
+      "DailyActivity": [
+        {
+          "Day": "/Date(1514764800)/",
+          "NewViewCount": 123
+        },
+        {
+          "Day": "/Date(1514764800)/",
+          "NewViewCount": 123
+        }
+      ]
+    }
+  }
+}

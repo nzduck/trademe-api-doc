@@ -1,0 +1,90 @@
+{
+  "endpoint": "PromoteAListingWithATemporalExtra",
+  "title": "Promote a listing with a temporal extra",
+  "description": "Promote a listing with a Temporal (time based) Extra",
+  "source": "https://developer.trademe.co.nz/api-reference/selling-methods/promote-a-listing-with-a-temporal-extra",
+  "url": "https://api.trademe.co.nz/v1/Selling/ListingTemporalExtraPromotion.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ListingTemporalExtraPromotionRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The id of the listing to promote"
+      },
+      {
+        "name": "Extra",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The extra to promote the listing with"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ListingTemporalExtraPromotionResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "Extra": 0
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "ListingId": 123
+    }
+  }
+}

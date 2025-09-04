@@ -1,0 +1,146 @@
+{
+  "endpoint": "AddADeliveryAddress",
+  "title": "Add a delivery address",
+  "description": "Adds a delivery address to the authenticated user's profile. The phone number, if present, is ignored.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-delivery-address",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/DeliveryAddresses.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<DeliveryAddress>",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "The name of the person whom the item is being delivered to."
+      },
+      {
+        "name": "Address1",
+        "type": "String (required)",
+        "required": true,
+        "description": "The first line of the address."
+      },
+      {
+        "name": "Address2",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The second line of the address (optional)."
+      },
+      {
+        "name": "Suburb",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The suburb (optional)."
+      },
+      {
+        "name": "City",
+        "type": "String (required)",
+        "required": true,
+        "description": "The city."
+      },
+      {
+        "name": "Postcode",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The postcode (optional)."
+      },
+      {
+        "name": "Country",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The country (currently restricted to \"New Zealand\" or \"Australia\")."
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The contact phone number (optional)."
+      },
+      {
+        "name": "IsMembershipAddress",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address."
+      },
+      {
+        "name": "Id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the delivery address. The membership address always has an ID of zero. This field is ignored when adding a delivery address."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<DeliveryAddressResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "DeliveryAddressId",
+        "type": "Integer",
+        "required": false,
+        "description": "The delivery address ID."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Name": "ABC",
+      "Address1": "ABC",
+      "Address2": "ABC",
+      "Suburb": "ABC",
+      "City": "ABC",
+      "Postcode": "ABC",
+      "Country": "ABC",
+      "PhoneNumber": "ABC",
+      "IsMembershipAddress": false,
+      "Id": 123
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "DeliveryAddressId": 123
+    }
+  }
+}

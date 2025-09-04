@@ -1,0 +1,160 @@
+{
+  "endpoint": "RetrieveYourCvsCoverLettersAndDocuments",
+  "title": "Retrieve your CVs, cover letters and documents",
+  "description": "Retrieves a list of your saved CVs, cover letters and/or other documents. The actual document data is not returned, only the metadata.",
+  "source": "https://developer.trademe.co.nz/api-reference/document-service-methods/retrieve-your-cvs-cover-letters-and-documents",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/SavedDocuments.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "document_type",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The type of document to return. Defaults to returning all types of documents."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SavedDocumentCollection> A collection of documents.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SavedDocument> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "SavedDocumentId",
+            "field_type": "Integer",
+            "description": "The unique identifier of the document. Not required when uploading a document."
+          },
+          {
+            "field_name": "FileName",
+            "field_type": "String or null",
+            "description": "The file name of the document. When uploading a new document, this can be the full path or just the file name, with or without a file extension."
+          },
+          {
+            "field_name": "DocumentType",
+            "field_type": "Enumeration",
+            "description": "The type of document.",
+            "enum_values": [
+              {
+                "name": "Cv",
+                "value": "0",
+                "description": "A CV document"
+              },
+              {
+                "name": "CoverLetter",
+                "value": "1",
+                "description": "A cover letter"
+              },
+              {
+                "name": "Other",
+                "value": "2",
+                "description": "Other documents"
+              },
+              {
+                "name": "All",
+                "value": "4",
+                "description": "All saved documents"
+              }
+            ]
+          },
+          {
+            "field_name": "SavedDocumentData",
+            "field_type": "String or null",
+            "description": "The actual document data (base64 encoded)."
+          },
+          {
+            "field_name": "UploadDate",
+            "field_type": "DateTime",
+            "description": "The date the document was uploaded"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "SavedDocumentId": 123,
+          "FileName": "ABC",
+          "DocumentType": 0,
+          "SavedDocumentData": "ABC",
+          "UploadDate": "/Date(1514764800)/"
+        },
+        {
+          "SavedDocumentId": 123,
+          "FileName": "ABC",
+          "DocumentType": 0,
+          "SavedDocumentData": "ABC",
+          "UploadDate": "/Date(1514764800)/"
+        }
+      ]
+    }
+  }
+}

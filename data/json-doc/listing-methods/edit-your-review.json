@@ -1,0 +1,80 @@
+{
+  "endpoint": "EditYourReview",
+  "title": "Edit your review",
+  "description": "Edits one your reviews. Currently only applicable to services listings.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/edit-your-review",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/editreview.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing that has the review to edit."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<EditReviewRequest>",
+    "fields": [
+      {
+        "name": "ReviewText",
+        "type": "String (required)",
+        "required": true,
+        "description": "The review text (maximum of 500 characters)."
+      },
+      {
+        "name": "Positive",
+        "type": "Boolean (required)",
+        "required": true,
+        "description": "Indicates whether the review is a positive review (i.e. thumbs up)."
+      },
+      {
+        "name": "ReviewId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the review to edit."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ReviewResponse> Information on whether the operation was successful.",
+    "fields": []
+  },
+  "examples": {
+    "request_json": {
+      "ReviewText": "ABC",
+      "Positive": false,
+      "ReviewId": 123
+    },
+    "response_json": {}
+  }
+}

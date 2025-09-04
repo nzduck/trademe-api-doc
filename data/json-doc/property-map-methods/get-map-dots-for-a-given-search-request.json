@@ -1,0 +1,729 @@
+{
+  "endpoint": "GetMapDotsForAGivenSearchRequest",
+  "title": "Get map dots for a given search request",
+  "description": "Get map dots for a given search request",
+  "source": "https://developer.trademe.co.nz/api-reference/property-map-methods/get-map-dots-for-a-given-search-request",
+  "url": "https://api.trademe.co.nz/v1/Property/Map/Dots.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<MapDotsRequest>",
+    "fields": [
+      {
+        "name": "Polylines",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "Map items"
+      },
+      {
+        "name": "Limit",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Limit"
+      },
+      {
+        "name": "Page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Page"
+      },
+      {
+        "name": "Sort",
+        "type": "<Sort> (optional)",
+        "required": false,
+        "description": "Sort"
+      },
+      {
+        "name": "Order",
+        "type": "Order \n String (optional) \n\nOrder\n\n\n\n Direction \n String (optional) \n\nDirection",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Order",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Order"
+      },
+      {
+        "name": "Direction",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Direction"
+      },
+      {
+        "name": "DisplayRentals",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Display Rentals"
+      },
+      {
+        "name": "ForSale",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "For Sale"
+      },
+      {
+        "name": "ForRent",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "For Rent"
+      },
+      {
+        "name": "JustSold",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Just Sold"
+      },
+      {
+        "name": "OffMarket",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Off Market"
+      },
+      {
+        "name": "SalePriceMin",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Sale Price Min"
+      },
+      {
+        "name": "SalePriceMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Sale Price Max"
+      },
+      {
+        "name": "RentRateMin",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Rent Rate Min"
+      },
+      {
+        "name": "RentRateMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Rent Rate Max"
+      },
+      {
+        "name": "OffMarketMin",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Min"
+      },
+      {
+        "name": "OffMarketMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Max"
+      },
+      {
+        "name": "ForSaleBathrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Sale Bathrooms"
+      },
+      {
+        "name": "ForSaleBedrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Sale Bedrooms"
+      },
+      {
+        "name": "ForRentBathrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Rent Bathrooms"
+      },
+      {
+        "name": "ForRentBedrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Rent Bedrooms"
+      },
+      {
+        "name": "OffMarketBathrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Bathrooms"
+      },
+      {
+        "name": "OffMarketBedrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Bedrooms"
+      },
+      {
+        "name": "ForSaleBathroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Sale Bathrooms Max"
+      },
+      {
+        "name": "ForRentBathroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Rent Bathrooms Max"
+      },
+      {
+        "name": "ForRentBedroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Rent Bedrooms Max"
+      },
+      {
+        "name": "OffMarketBathroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Bathrooms Max"
+      },
+      {
+        "name": "OffMarketBedroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Off Market Bedrooms Max"
+      },
+      {
+        "name": "DateMin",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Date Min"
+      },
+      {
+        "name": "DateMax",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Date Max"
+      },
+      {
+        "name": "SuburbId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Suburb Id"
+      },
+      {
+        "name": "FilterOutTbc",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Filter Out TBC"
+      },
+      {
+        "name": "UnitIdentifier",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Unit Identifier"
+      },
+      {
+        "name": "StreetNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Street Number"
+      },
+      {
+        "name": "StreetName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Street Name"
+      },
+      {
+        "name": "StreetType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Street Type"
+      },
+      {
+        "name": "StreetDirection",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Street Direction"
+      },
+      {
+        "name": "StreetAlpha",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Street Alpha"
+      },
+      {
+        "name": "MinLatitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Minimum latitude when maxLatitude is provided"
+      },
+      {
+        "name": "MinLongitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Center longitude of the search area Or minimum longitude when maxLongitude is provided"
+      },
+      {
+        "name": "MaxLatitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "MaxLatitude to be used in conjunction with Latitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates."
+      },
+      {
+        "name": "MaxLongitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "MaxLongitude to be used in conjunction with Longitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<MapDotsResponse> A list of properties on a map",
+    "fields": [
+      {
+        "name": "MapItems",
+        "type": "Collection of <MapItem> or null",
+        "required": false,
+        "description": "Map items"
+      },
+      {
+        "name": "ItemId",
+        "type": "ItemId \n String or null \n\nItem Id\n\n\n\n Id \n String or null \n\nId\n\n\n\n State \n Integer \n\nState\n\n\n\n Price \n Number or null \n\nPrice\n\n\n\n Point \n <Point> or null \n\nPoint\n\n\n\n\n\n\n Lat \n Number \n\nLat\n\n\n\n Long \n Number \n\nLong\n\n\n\n\n\n\n Url \n String or null \n\nUrl\n\n\n\n FeaturedAt \n DateTime or null \n\nFeatured At\n\n\n\n FeaturedPlan \n Integer or null \n\nFeatured Plan\n\n\n\n DisplayPriceShort \n String or null \n\nDisplay Price Short\n\n\n\n DisplayStreetNumber \n String or null \n\nDisplay Street Number",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ItemId",
+        "type": "String or null",
+        "required": false,
+        "description": "Item Id"
+      },
+      {
+        "name": "Id",
+        "type": "String or null",
+        "required": false,
+        "description": "Id"
+      },
+      {
+        "name": "State",
+        "type": "Integer",
+        "required": false,
+        "description": "State"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "Price"
+      },
+      {
+        "name": "Point",
+        "type": "<Point> or null",
+        "required": false,
+        "description": "Point"
+      },
+      {
+        "name": "Lat",
+        "type": "Lat \n Number \n\nLat\n\n\n\n Long \n Number \n\nLong",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "Lat",
+        "type": "Number",
+        "required": false,
+        "description": "Lat"
+      },
+      {
+        "name": "Long",
+        "type": "Number",
+        "required": false,
+        "description": "Long"
+      },
+      {
+        "name": "Url",
+        "type": "String or null",
+        "required": false,
+        "description": "Url"
+      },
+      {
+        "name": "FeaturedAt",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Featured At"
+      },
+      {
+        "name": "FeaturedPlan",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Featured Plan"
+      },
+      {
+        "name": "DisplayPriceShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Price Short"
+      },
+      {
+        "name": "DisplayStreetNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Street Number"
+      },
+      {
+        "name": "Clusters",
+        "type": "Collection of <Cluster> or null",
+        "required": false,
+        "description": "Clusters"
+      },
+      {
+        "name": "Properties",
+        "type": "Properties \n Collection of <Property> or null \n\nProperties\n\n\n\n\n\n\n ItemId \n String or null \n\nItem Id\n\n\n\n Id \n String or null \n\nId\n\n\n\n State \n Integer \n\nState\n\n\n\n Price \n Number or null \n\nPrice\n\n\n\n Date \n DateTime or null \n\nDate\n\n\n\n DisplayPrice \n String or null \n\nDisplay Price\n\n\n\n PropertyDetails \n <PropertyDetails> or null \n\nProperty Details\n\n\n\n\n\n\n Address \n String or null \n\nAddress\n\n\n\n CoverImageUrl \n String or null \n\nCover Image Url\n\n\n\n GoogleStreetViewUrl \n String or null \n\nGoogle Street View Url\n\n\n\n\n\n\n Point \n <Point> or null \n\nPoint\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Url \n String or null \n\nUrl\n\n\n\n FeaturedAt \n DateTime or null \n\nFeatured At\n\n\n\n FeaturedPlan \n Integer or null \n\nFeatured Plan\n\n\n\n DisplayPriceShort \n String or null \n\nDisplay Price Short\n\n\n\n\n\n\n State \n Integer \n\nState\n\n\n\n Point \n <Point> or null \n\nPoint\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n FeaturedAt \n DateTime or null \n\nFeatured At\n\n\n\n FeaturedPlan \n Integer or null \n\nFeatured Plan",
+        "required": false,
+        "description": "Collection of <Property> or null"
+      },
+      {
+        "name": "Properties",
+        "type": "Collection of <Property> or null",
+        "required": false,
+        "description": "Properties"
+      },
+      {
+        "name": "ItemId",
+        "type": "ItemId \n String or null \n\nItem Id\n\n\n\n Id \n String or null \n\nId\n\n\n\n State \n Integer \n\nState\n\n\n\n Price \n Number or null \n\nPrice\n\n\n\n Date \n DateTime or null \n\nDate\n\n\n\n DisplayPrice \n String or null \n\nDisplay Price\n\n\n\n PropertyDetails \n <PropertyDetails> or null \n\nProperty Details\n\n\n\n\n\n\n Address \n String or null \n\nAddress\n\n\n\n CoverImageUrl \n String or null \n\nCover Image Url\n\n\n\n GoogleStreetViewUrl \n String or null \n\nGoogle Street View Url\n\n\n\n\n\n\n Point \n <Point> or null \n\nPoint\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Url \n String or null \n\nUrl\n\n\n\n FeaturedAt \n DateTime or null \n\nFeatured At\n\n\n\n FeaturedPlan \n Integer or null \n\nFeatured Plan\n\n\n\n DisplayPriceShort \n String or null \n\nDisplay Price Short",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ItemId",
+        "type": "String or null",
+        "required": false,
+        "description": "Item Id"
+      },
+      {
+        "name": "Id",
+        "type": "String or null",
+        "required": false,
+        "description": "Id"
+      },
+      {
+        "name": "State",
+        "type": "Integer",
+        "required": false,
+        "description": "State"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "Price"
+      },
+      {
+        "name": "Date",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Date"
+      },
+      {
+        "name": "DisplayPrice",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Price"
+      },
+      {
+        "name": "PropertyDetails",
+        "type": "<PropertyDetails> or null",
+        "required": false,
+        "description": "Property Details"
+      },
+      {
+        "name": "Address",
+        "type": "Address \n String or null \n\nAddress\n\n\n\n CoverImageUrl \n String or null \n\nCover Image Url\n\n\n\n GoogleStreetViewUrl \n String or null \n\nGoogle Street View Url",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Address",
+        "type": "String or null",
+        "required": false,
+        "description": "Address"
+      },
+      {
+        "name": "CoverImageUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Cover Image Url"
+      },
+      {
+        "name": "GoogleStreetViewUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Google Street View Url"
+      },
+      {
+        "name": "Point",
+        "type": "<Point> or null",
+        "required": false,
+        "description": "Point"
+      },
+      {
+        "name": "Url",
+        "type": "String or null",
+        "required": false,
+        "description": "Url"
+      },
+      {
+        "name": "FeaturedAt",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Featured At"
+      },
+      {
+        "name": "FeaturedPlan",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Featured Plan"
+      },
+      {
+        "name": "DisplayPriceShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Price Short"
+      },
+      {
+        "name": "State",
+        "type": "Integer",
+        "required": false,
+        "description": "State"
+      },
+      {
+        "name": "Point",
+        "type": "<Point> or null",
+        "required": false,
+        "description": "Point"
+      },
+      {
+        "name": "FeaturedAt",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Featured At"
+      },
+      {
+        "name": "FeaturedPlan",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Featured Plan"
+      },
+      {
+        "name": "Hits",
+        "type": "Integer",
+        "required": false,
+        "description": "Hits"
+      },
+      {
+        "name": "Error",
+        "type": "String or null",
+        "required": false,
+        "description": "Error"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Polylines": [
+        "ABC",
+        "ABC"
+      ],
+      "Limit": 123,
+      "Page": 123,
+      "Sort": {
+        "Order": "ABC",
+        "Direction": "ABC"
+      },
+      "DisplayRentals": false,
+      "ForSale": false,
+      "ForRent": false,
+      "JustSold": false,
+      "OffMarket": false,
+      "SalePriceMin": 123,
+      "SalePriceMax": 123,
+      "RentRateMin": 123,
+      "RentRateMax": 123,
+      "OffMarketMin": 123,
+      "OffMarketMax": 123,
+      "ForSaleBathrooms": 123,
+      "ForSaleBedrooms": 123,
+      "ForRentBathrooms": 123,
+      "ForRentBedrooms": 123,
+      "OffMarketBathrooms": 123,
+      "OffMarketBedrooms": 123,
+      "ForSaleBathroomsMax": 123,
+      "ForRentBathroomsMax": 123,
+      "ForRentBedroomsMax": 123,
+      "OffMarketBathroomsMax": 123,
+      "OffMarketBedroomsMax": 123,
+      "DateMin": "/Date(1514764800)/",
+      "DateMax": "/Date(1514764800)/",
+      "SuburbId": 123,
+      "FilterOutTbc": 123,
+      "UnitIdentifier": "ABC",
+      "StreetNumber": "ABC",
+      "StreetName": "ABC",
+      "StreetType": "ABC",
+      "StreetDirection": "ABC",
+      "StreetAlpha": "ABC",
+      "MinLatitude": 123.0,
+      "MinLongitude": 123.0,
+      "MaxLatitude": 123.0,
+      "MaxLongitude": 123.0
+    },
+    "response_json": {
+      "MapItems": [
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Point": {
+            "Lat": 123.0,
+            "Long": 123.0
+          },
+          "Url": "ABC",
+          "FeaturedAt": "/Date(1514764800)/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC",
+          "DisplayStreetNumber": "ABC"
+        },
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Point": {
+            "Lat": 123.0,
+            "Long": 123.0
+          },
+          "Url": "ABC",
+          "FeaturedAt": "/Date(1514764800)/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC",
+          "DisplayStreetNumber": "ABC"
+        }
+      ],
+      "Clusters": [
+        {
+          "Properties": [
+            {
+              "ItemId": "ABC",
+              "Id": "ABC",
+              "State": 123,
+              "Price": 123.0,
+              "Date": "/Date(1514764800)/",
+              "DisplayPrice": "ABC",
+              "PropertyDetails": {
+                "Address": "ABC",
+                "CoverImageUrl": "ABC",
+                "GoogleStreetViewUrl": "ABC"
+              },
+              "Point": {},
+              "Url": "ABC",
+              "FeaturedAt": "/Date(1514764800)/",
+              "FeaturedPlan": 123,
+              "DisplayPriceShort": "ABC"
+            },
+            {
+              "ItemId": "ABC",
+              "Id": "ABC",
+              "State": 123,
+              "Price": 123.0,
+              "Date": "/Date(1514764800)/",
+              "DisplayPrice": "ABC",
+              "PropertyDetails": {
+                "Address": "ABC",
+                "CoverImageUrl": "ABC",
+                "GoogleStreetViewUrl": "ABC"
+              },
+              "Point": {},
+              "Url": "ABC",
+              "FeaturedAt": "/Date(1514764800)/",
+              "FeaturedPlan": 123,
+              "DisplayPriceShort": "ABC"
+            }
+          ],
+          "State": 123,
+          "Point": {},
+          "FeaturedAt": "/Date(1514764800)/",
+          "FeaturedPlan": 123
+        },
+        {
+          "Properties": [
+            {
+              "ItemId": "ABC",
+              "Id": "ABC",
+              "State": 123,
+              "Price": 123.0,
+              "Date": "/Date(1514764800)/",
+              "DisplayPrice": "ABC",
+              "PropertyDetails": {
+                "Address": "ABC",
+                "CoverImageUrl": "ABC",
+                "GoogleStreetViewUrl": "ABC"
+              },
+              "Point": {},
+              "Url": "ABC",
+              "FeaturedAt": "/Date(1514764800)/",
+              "FeaturedPlan": 123,
+              "DisplayPriceShort": "ABC"
+            },
+            {
+              "ItemId": "ABC",
+              "Id": "ABC",
+              "State": 123,
+              "Price": 123.0,
+              "Date": "/Date(1514764800)/",
+              "DisplayPrice": "ABC",
+              "PropertyDetails": {
+                "Address": "ABC",
+                "CoverImageUrl": "ABC",
+                "GoogleStreetViewUrl": "ABC"
+              },
+              "Point": {},
+              "Url": "ABC",
+              "FeaturedAt": "/Date(1514764800)/",
+              "FeaturedPlan": 123,
+              "DisplayPriceShort": "ABC"
+            }
+          ],
+          "State": 123,
+          "Point": {},
+          "FeaturedAt": "/Date(1514764800)/",
+          "FeaturedPlan": 123
+        }
+      ],
+      "Hits": 123,
+      "Error": "ABC"
+    }
+  }
+}

@@ -1,0 +1,1735 @@
+{
+  "endpoint": "RelistOrListSimilarJobPosition",
+  "title": "Relist or list similar job Position",
+  "description": "Relists or lists a similar position as a child of the specified position",
+  "source": "https://developer.trademe.co.nz/api-reference/job-position-methods/relist-or-list-similar-job-position",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Positions/{positionId}/Children.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "positionId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The id of the position to update"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "dry_run",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether to do a dry run of the create operation. When doing a dry run, no data is updated or saved."
+      }
+    ]
+  },
+  "request_body": {
+    "type": "<PositionChildSaveRequest>",
+    "fields": [
+      {
+        "name": "DescendantType",
+        "type": "String (required)",
+        "required": true,
+        "description": "Whether relisting or listing a similar position"
+      },
+      {
+        "name": "Position",
+        "type": "<PositionSaveRequest> (required)",
+        "required": true,
+        "description": "Details of the position to save"
+      },
+      {
+        "name": "Title",
+        "type": "Title \n String (required) \n\nThe title of the position\n\n\n\n PositionListings \n Collection of <PositionListingSaveRequest> (optional) \n\nThe position listings for the position. When the state is external these will be created as public Trade Me listings. At present you can only have one live position listing per position, and you must provide a position listing to create an external position.\n\n\n\n\n\n\n PositionListingId \n Integer (optional) \n\nThe id of the position listing, if it already exists. Omit from request if creating a new position listing.\n\n\n\n ShortDescription \n String (optional) \n\nA short description used to differentiate the listing\n\n\n\n ReferenceId \n String (optional) \n\nA reference id to help track the listing\n\n\n\n PayAndBenefits \n String (optional) \n\nA description of the pay and benefits of the position\n\n\n\n ContactDetails \n <PositionListingContactDetailsSave> (optional) \n\nDetails for who to contact regarding the listing\n\n\n\n\n\n\n ContactName \n String (optional) \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String (optional) \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String (optional) \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String (optional) \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> (optional) \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String (optional) \n\nThe prefix of the phone number\n\n\n\n Number \n String (optional) \n\nThe rest of the phone number\n\n\n\n\n\n\n\n\n\n Descriptions \n Collection of <PositionListingDescription> (optional) \n\nThe descriptions of the position listing\n\n\n\n\n\n\n Type \n String (optional) \n\nThe type of the description\n\n\n\n Text \n String (optional) \n\nThe text of the description\n\n\n\n\n\n\n Promotions \n <PositionListingPromotionSave> (optional) \n\nThe promotions for the position listing\n\n\n\n\n\n\n BundleType \n Enumeration (optional) \n\nThe type of promotion bundle\n\n\n\n\n\n\n\nNone\n0\n\nNone\n\n\n\nBronze\n1\n\nBronze\n\n\n\nSilver\n2\n\nSilver\n\n\n\nGold\n3\n\nGold\n\n\n\nPlatinum\n4\n\nPlatinum\n\n\n\nFifth\n5\n\nFifth\n\n\n\nSixth\n6\n\nSixth\n\n\n\n\n\n\n PromotionData \n <PromotionDataSave> (optional) \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PositionBrandingItemSave> (optional) \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer (required) \n\nThe id of the branding item\n\n\n\n BrandingType \n String (required) \n\nThe type of the branding item: Logo or Banner\n\n\n\n\n\n\n BulletPoints \n Collection of String (optional) \n\nThe bullet points for the featured position listing\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration (optional) \n\nThe promotions that apply to the position listing\n\n\n\n\n\n\n\nFeatured\n1\n\nPosition listing is featured\n\n\n\nBranded\n2\n\nPosition listing is branded\n\n\n\nSevenDayListing\n3\n\nPosition listing is a seven day listing\n\n\n\nBulletPoints\n4\n\nPosition listing can have bullet points\n\n\n\nCandidateDatabaseAccess\n5\n\nCandidate database access granted\n\n\n\nPhotos\n6\n\nPosition listing can have photos\n\n\n\nVideo\n7\n\nPosition listing can have videos\n\n\n\nPromotedListing\n8\n\nPosition listing can have promoted listing\n\n\n\n\n\n\n\n\n\n PhotoIds \n Collection of Integer (optional) \n\nThe list of photo IDs to be displayed with the position\n\n\n\n VideoKey \n String (optional) \n\nThe id of the video to be displayed with the position. Only YouTube video ids are supported.\n\n\n\n SalaryOptIn \n Boolean (optional) \n\nIndicates if the advertiser has opted in to display salary data in LDP/SRP.\n\n\n\n\n\n\n PositionCompanyName \n String (optional) \n\nThe name of the company where the position is vacant\n\n\n\n CategoryIds \n Collection of Integer (optional) \n\nThe IDs of the categories for the position. Currently only one category ID is supported.\n\n\n\n PayType \n String (optional) \n\nIndicates the type of pay for the position. e.g. Hourly or salary\n\n\n\n PayMin \n Number (optional) \n\nThe minimum pay for the position.\n\n\n\n PayMax \n Number (optional) \n\nThe maximum pay for the position.\n\n\n\n EmploymentDurationType \n String (optional) \n\nIndicates the type of duration for the position\n\n\n\n EmploymentType \n String (optional) \n\nIndicates the type of employment for the position\n\n\n\n Locations \n Collection of <PositionLocation> (optional) \n\nThe locations of the position\n\n\n\n\n\n\n DistrictId \n Integer (optional) \n\nThe district id of the location\n\n\n\n\n\n\n PublishedState \n String (required) \n\nThe published state for the position: Draft or External\n\n\n\n IsEntryLevel \n Boolean (optional) \n\nIndicates whether this is an entry level position\n\n\n\n IsWorkFromHome \n Boolean (optional) \n\nIndicates whether working from home is available for this position\n\n\n\n DraftId \n String (optional) \n\nThe draft id (guid) from job smart (if present)",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Title",
+        "type": "String (required)",
+        "required": true,
+        "description": "The title of the position"
+      },
+      {
+        "name": "PositionListings",
+        "type": "Collection of <PositionListingSaveRequest> (optional)",
+        "required": false,
+        "description": "The position listings for the position. When the state is external these will be created as public Trade Me listings. At present you can only have one live position listing per position, and you must provide a position listing to create an external position."
+      },
+      {
+        "name": "PositionListingId",
+        "type": "PositionListingId \n Integer (optional) \n\nThe id of the position listing, if it already exists. Omit from request if creating a new position listing.\n\n\n\n ShortDescription \n String (optional) \n\nA short description used to differentiate the listing\n\n\n\n ReferenceId \n String (optional) \n\nA reference id to help track the listing\n\n\n\n PayAndBenefits \n String (optional) \n\nA description of the pay and benefits of the position\n\n\n\n ContactDetails \n <PositionListingContactDetailsSave> (optional) \n\nDetails for who to contact regarding the listing\n\n\n\n\n\n\n ContactName \n String (optional) \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String (optional) \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String (optional) \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String (optional) \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> (optional) \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String (optional) \n\nThe prefix of the phone number\n\n\n\n Number \n String (optional) \n\nThe rest of the phone number\n\n\n\n\n\n\n\n\n\n Descriptions \n Collection of <PositionListingDescription> (optional) \n\nThe descriptions of the position listing\n\n\n\n\n\n\n Type \n String (optional) \n\nThe type of the description\n\n\n\n Text \n String (optional) \n\nThe text of the description\n\n\n\n\n\n\n Promotions \n <PositionListingPromotionSave> (optional) \n\nThe promotions for the position listing\n\n\n\n\n\n\n BundleType \n Enumeration (optional) \n\nThe type of promotion bundle\n\n\n\n\n\n\n\nNone\n0\n\nNone\n\n\n\nBronze\n1\n\nBronze\n\n\n\nSilver\n2\n\nSilver\n\n\n\nGold\n3\n\nGold\n\n\n\nPlatinum\n4\n\nPlatinum\n\n\n\nFifth\n5\n\nFifth\n\n\n\nSixth\n6\n\nSixth\n\n\n\n\n\n\n PromotionData \n <PromotionDataSave> (optional) \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PositionBrandingItemSave> (optional) \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer (required) \n\nThe id of the branding item\n\n\n\n BrandingType \n String (required) \n\nThe type of the branding item: Logo or Banner\n\n\n\n\n\n\n BulletPoints \n Collection of String (optional) \n\nThe bullet points for the featured position listing\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration (optional) \n\nThe promotions that apply to the position listing\n\n\n\n\n\n\n\nFeatured\n1\n\nPosition listing is featured\n\n\n\nBranded\n2\n\nPosition listing is branded\n\n\n\nSevenDayListing\n3\n\nPosition listing is a seven day listing\n\n\n\nBulletPoints\n4\n\nPosition listing can have bullet points\n\n\n\nCandidateDatabaseAccess\n5\n\nCandidate database access granted\n\n\n\nPhotos\n6\n\nPosition listing can have photos\n\n\n\nVideo\n7\n\nPosition listing can have videos\n\n\n\nPromotedListing\n8\n\nPosition listing can have promoted listing\n\n\n\n\n\n\n\n\n\n PhotoIds \n Collection of Integer (optional) \n\nThe list of photo IDs to be displayed with the position\n\n\n\n VideoKey \n String (optional) \n\nThe id of the video to be displayed with the position. Only YouTube video ids are supported.\n\n\n\n SalaryOptIn \n Boolean (optional) \n\nIndicates if the advertiser has opted in to display salary data in LDP/SRP.",
+        "required": true,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "PositionListingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The id of the position listing, if it already exists. Omit from request if creating a new position listing."
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A short description used to differentiate the listing"
+      },
+      {
+        "name": "ReferenceId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A reference id to help track the listing"
+      },
+      {
+        "name": "PayAndBenefits",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A description of the pay and benefits of the position"
+      },
+      {
+        "name": "ContactDetails",
+        "type": "<PositionListingContactDetailsSave> (optional)",
+        "required": false,
+        "description": "Details for who to contact regarding the listing"
+      },
+      {
+        "name": "ContactName",
+        "type": "ContactName \n String (optional) \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String (optional) \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String (optional) \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String (optional) \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> (optional) \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String (optional) \n\nThe prefix of the phone number\n\n\n\n Number \n String (optional) \n\nThe rest of the phone number",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "ContactName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the person to contact regarding the listing"
+      },
+      {
+        "name": "PreferredApplicationMethod",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The preferred way for applicants to apply"
+      },
+      {
+        "name": "EmailAddress",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The email address of the person to contact regarding the listing"
+      },
+      {
+        "name": "ApplicationUrl",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The url to send applicants to if using an off site application method"
+      },
+      {
+        "name": "PhoneNumbers",
+        "type": "Collection of <PhoneNumberDetails> (optional)",
+        "required": false,
+        "description": "Phone numbers of people to contact regarding the listing"
+      },
+      {
+        "name": "Prefix",
+        "type": "Prefix \n String (optional) \n\nThe prefix of the phone number\n\n\n\n Number \n String (optional) \n\nThe rest of the phone number",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Prefix",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The prefix of the phone number"
+      },
+      {
+        "name": "Number",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The rest of the phone number"
+      },
+      {
+        "name": "Descriptions",
+        "type": "Collection of <PositionListingDescription> (optional)",
+        "required": false,
+        "description": "The descriptions of the position listing"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n String (optional) \n\nThe type of the description\n\n\n\n Text \n String (optional) \n\nThe text of the description",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Type",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The type of the description"
+      },
+      {
+        "name": "Text",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The text of the description"
+      },
+      {
+        "name": "Promotions",
+        "type": "<PositionListingPromotionSave> (optional)",
+        "required": false,
+        "description": "The promotions for the position listing"
+      },
+      {
+        "name": "BundleType",
+        "type": "BundleType \n Enumeration (optional) \n\nThe type of promotion bundle\n\n\n\n\n\n\n\nNone\n0\n\nNone\n\n\n\nBronze\n1\n\nBronze\n\n\n\nSilver\n2\n\nSilver\n\n\n\nGold\n3\n\nGold\n\n\n\nPlatinum\n4\n\nPlatinum\n\n\n\nFifth\n5\n\nFifth\n\n\n\nSixth\n6\n\nSixth\n\n\n\n\n\n\n PromotionData \n <PromotionDataSave> (optional) \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PositionBrandingItemSave> (optional) \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer (required) \n\nThe id of the branding item\n\n\n\n BrandingType \n String (required) \n\nThe type of the branding item: Logo or Banner\n\n\n\n\n\n\n BulletPoints \n Collection of String (optional) \n\nThe bullet points for the featured position listing\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration (optional) \n\nThe promotions that apply to the position listing\n\n\n\n\n\n\n\nFeatured\n1\n\nPosition listing is featured\n\n\n\nBranded\n2\n\nPosition listing is branded\n\n\n\nSevenDayListing\n3\n\nPosition listing is a seven day listing\n\n\n\nBulletPoints\n4\n\nPosition listing can have bullet points\n\n\n\nCandidateDatabaseAccess\n5\n\nCandidate database access granted\n\n\n\nPhotos\n6\n\nPosition listing can have photos\n\n\n\nVideo\n7\n\nPosition listing can have videos\n\n\n\nPromotedListing\n8\n\nPosition listing can have promoted listing",
+        "required": true,
+        "description": "Enumeration (optional)"
+      },
+      {
+        "name": "BundleType",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The type of promotion bundle"
+      },
+      {
+        "name": "PromotionData",
+        "type": "<PromotionDataSave> (optional)",
+        "required": false,
+        "description": "The data required for the promotion bundle"
+      },
+      {
+        "name": "Branding",
+        "type": "Branding \n Collection of <PositionBrandingItemSave> (optional) \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer (required) \n\nThe id of the branding item\n\n\n\n BrandingType \n String (required) \n\nThe type of the branding item: Logo or Banner\n\n\n\n\n\n\n BulletPoints \n Collection of String (optional) \n\nThe bullet points for the featured position listing",
+        "required": true,
+        "description": "Collection of <PositionBrandingItemSave> (optional)"
+      },
+      {
+        "name": "Branding",
+        "type": "Collection of <PositionBrandingItemSave> (optional)",
+        "required": false,
+        "description": "The branding for the position listing"
+      },
+      {
+        "name": "BrandingId",
+        "type": "BrandingId \n Integer (required) \n\nThe id of the branding item\n\n\n\n BrandingType \n String (required) \n\nThe type of the branding item: Logo or Banner",
+        "required": true,
+        "description": "Integer (required)"
+      },
+      {
+        "name": "BrandingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The id of the branding item"
+      },
+      {
+        "name": "BrandingType",
+        "type": "String (required)",
+        "required": true,
+        "description": "The type of the branding item: Logo or Banner"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "The bullet points for the featured position listing"
+      },
+      {
+        "name": "EnabledPromotions",
+        "type": "Collection of Enumeration (optional)",
+        "required": false,
+        "description": "The promotions that apply to the position listing"
+      },
+      {
+        "name": "PhotoIds",
+        "type": "Collection of Integer (optional)",
+        "required": false,
+        "description": "The list of photo IDs to be displayed with the position"
+      },
+      {
+        "name": "VideoKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The id of the video to be displayed with the position. Only YouTube video ids are supported."
+      },
+      {
+        "name": "SalaryOptIn",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates if the advertiser has opted in to display salary data in LDP/SRP."
+      },
+      {
+        "name": "PositionCompanyName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the company where the position is vacant"
+      },
+      {
+        "name": "CategoryIds",
+        "type": "Collection of Integer (optional)",
+        "required": false,
+        "description": "The IDs of the categories for the position. Currently only one category ID is supported."
+      },
+      {
+        "name": "PayType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Indicates the type of pay for the position. e.g. Hourly or salary"
+      },
+      {
+        "name": "PayMin",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The minimum pay for the position."
+      },
+      {
+        "name": "PayMax",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The maximum pay for the position."
+      },
+      {
+        "name": "EmploymentDurationType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Indicates the type of duration for the position"
+      },
+      {
+        "name": "EmploymentType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Indicates the type of employment for the position"
+      },
+      {
+        "name": "Locations",
+        "type": "Collection of <PositionLocation> (optional)",
+        "required": false,
+        "description": "The locations of the position"
+      },
+      {
+        "name": "DistrictId",
+        "type": "DistrictId \n Integer (optional) \n\nThe district id of the location",
+        "required": false,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "DistrictId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The district id of the location"
+      },
+      {
+        "name": "PublishedState",
+        "type": "String (required)",
+        "required": true,
+        "description": "The published state for the position: Draft or External"
+      },
+      {
+        "name": "IsEntryLevel",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether this is an entry level position"
+      },
+      {
+        "name": "IsWorkFromHome",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether working from home is available for this position"
+      },
+      {
+        "name": "DraftId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The draft id (guid) from job smart (if present)"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PositionSaveResponse> Information about the creation of a position",
+    "fields": [
+      {
+        "name": "Position",
+        "type": "<Position> or null",
+        "required": false,
+        "description": "The details of the saved position. Is not present during a dry run as nothing is saved."
+      },
+      {
+        "name": "PositionId",
+        "type": "PositionId \n Integer \n\nThe id of the position\n\n\n\n PublishedState \n String or null \n\nThe published state of the position\n\n\n\n Title \n String or null \n\nThe title of the position\n\n\n\n DateCreated \n DateTime \n\nThe date the position was created\n\n\n\n DateModified \n DateTime \n\nThe date the position was modified\n\n\n\n DateArchived \n DateTime or null \n\nThe date the position was archived\n\n\n\n HasLiveListing \n Boolean \n\nWhether the position has any live listings\n\n\n\n Listings \n Collection of <PositionListingDetails> or null \n\nThe listings for the position\n\n\n\n\n\n\n PositionListingId \n Integer \n\nThe id of the listing\n\n\n\n ListingId \n Integer or null \n\nThe id of the listing\n\n\n\n StartDate \n DateTime or null \n\nThe start date of the listing\n\n\n\n EndDate \n DateTime or null \n\nThe end date of the listing\n\n\n\n IsLive \n Boolean \n\nWhether the listing is live\n\n\n\n IsAccessible \n Boolean \n\nWhether the listing is accessible\n\n\n\n ShortDescription \n String or null \n\nA short description used to differentiate the listing\n\n\n\n ReferenceId \n String or null \n\nA reference id to help track the listing\n\n\n\n PayAndBenefits \n String or null \n\nA description of the pay and benefits of the position\n\n\n\n ContactDetails \n <PositionListingContactDetails> or null \n\nDetails for who to contact regarding the listing\n\n\n\n\n\n\n ContactName \n String or null \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String or null \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String or null \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String or null \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> or null \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String or null \n\nThe prefix of the phone number\n\n\n\n Number \n String or null \n\nThe rest of the phone number\n\n\n\n\n\n\n\n\n\n Descriptions \n Collection of <PositionListingDescription> or null \n\nThe descriptions of the position listing\n\n\n\n\n\n\n Type \n String or null \n\nThe type of the description\n\n\n\n Text \n String or null \n\nThe text of the description\n\n\n\n\n\n\n Promotions \n <PositionListingPromotion> or null \n\nThe promotions of the position listing\n\n\n\n\n\n\n BundleType \n Enumeration \n\nThe type of promotion bundle\n\n\n\n PromotionData \n <PromotionData> or null \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PromotionBrandingItem> or null \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer \n\nThe id of the branding item\n\n\n\n BrandingType \n String or null \n\nThe type of the branding item: Logo or Banner\n\n\n\n BrandingUri \n String or null \n\nThe uri for the branding image\n\n\n\n IsDeleted \n Boolean \n\nWhether the branding is deleted\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for the featured position listing\n\n\n\n CandidateAccessQuota \n Integer or null \n\nThe available quota for profile unlocks in the candidate database\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration or null \n\nThe promotions that apply to the position listing\n\n\n\n\n\n\n PhotoIds \n Collection of Integer or null \n\nThe photo IDs of the position listing\n\n\n\n PhotoDetails \n Collection of <PositionListingPhotoDetail> or null \n\nA collection of photos for the listing. This collection is read-only.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the photo\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nAll the photo urls for different sized versions of the photo.\n\n\n\n\n\n\n Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n\n\n\n TransformData \n <PositionListingPhotoTransformData> or null \n\nThe transform information if the photo was transformed. Null otherwise.\n\n\n\n\n\n\n SourcePhotoDetails \n <PositionListingSourcePhotoDetails> or null \n\nDetails of the original source photo used for the transformation.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the original source photo used for the transformation.\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nThe photo urls for different sized versions of the source photo.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the source photo.\n\n\n\n\n\n\n Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.\n\n\n\n\n\n\n\n\n\n Rotation \n Integer \n\nThe number of degrees the original was rotated clockwise.\n\n\n\n Crop \n <BoundingBox> or null \n\nThe bounding box of where the original photo was cropped.\n\n\n\n\n\n\n Min \n <BoundingPoint> or null \n\nA point representing the top left of the bounding box\n\n\n\n\n\n\n X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis\n\n\n\n\n\n\n Max \n <BoundingPoint> or null \n\nA point representing the bottom left of the bounding box\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n\n\n\n\n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the photo. If the photo has been transformed (eg. cropped or rotated), it will be the transformed photo dimensions.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n\n\n\n Video \n <PositionListingVideoDetails> or null \n\nDetails of the video for the listing.\n\n\n\n\n\n\n VideoKey \n String or null \n\nThe id of the video\n\n\n\n Thumbnails \n Collection of <PositionListingVideoThumbnail> or null \n\nThumbnails for the video.\n\n\n\n\n\n\n Url \n String or null \n\nThe url of the thumbnail\n\n\n\n Size \n String or null \n\nThe size of the thumbnail. Possible values are \"Index\", \"Medium\" and \"High\".\n\n\n\n Width \n Integer or null \n\nThe width of the thumbnail\n\n\n\n Height \n Integer or null \n\nThe height of the thumbnail\n\n\n\n\n\n\n\n\n\n SalaryOptIn \n Boolean \n\nIndicates if the advertiser has opted in to display salary data in LDP/SRP.\n\n\n\n\n\n\n OwnerCompanyId \n Integer \n\nThe id of the company who owns the position\n\n\n\n PositionCompanyName \n String or null \n\nThe name of the company where the position is vacant\n\n\n\n CategoryIds \n Collection of Integer or null \n\nThe IDs of the categories for the position\n\n\n\n PayType \n String or null \n\nIndicates the type of pay for the position. e.g. Hourly or salary\n\n\n\n PayMin \n Number or null \n\nThe minimum pay for the position\n\n\n\n PayMax \n Number or null \n\nThe maximum pay for the position\n\n\n\n EmploymentDurationType \n String or null \n\nIndicates the type of duration for the position\n\n\n\n EmploymentType \n String or null \n\nIndicates the type of employment for the position\n\n\n\n Self \n <Link> or null \n\nA link to retrieve this position resource\n\n\n\n\n\n\n Href \n String or null \n\nAn HREF representing the uri to the resource\n\n\n\n Rel \n String or null \n\nA REL representing the relationship between the sending resource and the linked resource\n\n\n\n Prompt \n String or null \n\nA PROMPT, optional display text to represent the resource to a user\n\n\n\n Method \n String or null \n\nA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.\n\n\n\n\n\n\n Locations \n Collection of <PositionLocation> or null \n\nThe locations of the position\n\n\n\n\n\n\n DistrictId \n Integer or null \n\nThe district id of the location\n\n\n\n\n\n\n IsEntryLevel \n Boolean \n\nIndicates whether this is an entry level position\n\n\n\n IsWorkFromHome \n Boolean \n\nIndicates whether working from home is available for this position",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "PositionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the position"
+      },
+      {
+        "name": "PublishedState",
+        "type": "String or null",
+        "required": false,
+        "description": "The published state of the position"
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The title of the position"
+      },
+      {
+        "name": "DateCreated",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the position was created"
+      },
+      {
+        "name": "DateModified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the position was modified"
+      },
+      {
+        "name": "DateArchived",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date the position was archived"
+      },
+      {
+        "name": "HasLiveListing",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the position has any live listings"
+      },
+      {
+        "name": "Listings",
+        "type": "Collection of <PositionListingDetails> or null",
+        "required": false,
+        "description": "The listings for the position"
+      },
+      {
+        "name": "PositionListingId",
+        "type": "PositionListingId \n Integer \n\nThe id of the listing\n\n\n\n ListingId \n Integer or null \n\nThe id of the listing\n\n\n\n StartDate \n DateTime or null \n\nThe start date of the listing\n\n\n\n EndDate \n DateTime or null \n\nThe end date of the listing\n\n\n\n IsLive \n Boolean \n\nWhether the listing is live\n\n\n\n IsAccessible \n Boolean \n\nWhether the listing is accessible\n\n\n\n ShortDescription \n String or null \n\nA short description used to differentiate the listing\n\n\n\n ReferenceId \n String or null \n\nA reference id to help track the listing\n\n\n\n PayAndBenefits \n String or null \n\nA description of the pay and benefits of the position\n\n\n\n ContactDetails \n <PositionListingContactDetails> or null \n\nDetails for who to contact regarding the listing\n\n\n\n\n\n\n ContactName \n String or null \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String or null \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String or null \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String or null \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> or null \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String or null \n\nThe prefix of the phone number\n\n\n\n Number \n String or null \n\nThe rest of the phone number\n\n\n\n\n\n\n\n\n\n Descriptions \n Collection of <PositionListingDescription> or null \n\nThe descriptions of the position listing\n\n\n\n\n\n\n Type \n String or null \n\nThe type of the description\n\n\n\n Text \n String or null \n\nThe text of the description\n\n\n\n\n\n\n Promotions \n <PositionListingPromotion> or null \n\nThe promotions of the position listing\n\n\n\n\n\n\n BundleType \n Enumeration \n\nThe type of promotion bundle\n\n\n\n PromotionData \n <PromotionData> or null \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PromotionBrandingItem> or null \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer \n\nThe id of the branding item\n\n\n\n BrandingType \n String or null \n\nThe type of the branding item: Logo or Banner\n\n\n\n BrandingUri \n String or null \n\nThe uri for the branding image\n\n\n\n IsDeleted \n Boolean \n\nWhether the branding is deleted\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for the featured position listing\n\n\n\n CandidateAccessQuota \n Integer or null \n\nThe available quota for profile unlocks in the candidate database\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration or null \n\nThe promotions that apply to the position listing\n\n\n\n\n\n\n PhotoIds \n Collection of Integer or null \n\nThe photo IDs of the position listing\n\n\n\n PhotoDetails \n Collection of <PositionListingPhotoDetail> or null \n\nA collection of photos for the listing. This collection is read-only.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the photo\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nAll the photo urls for different sized versions of the photo.\n\n\n\n\n\n\n Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n\n\n\n TransformData \n <PositionListingPhotoTransformData> or null \n\nThe transform information if the photo was transformed. Null otherwise.\n\n\n\n\n\n\n SourcePhotoDetails \n <PositionListingSourcePhotoDetails> or null \n\nDetails of the original source photo used for the transformation.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the original source photo used for the transformation.\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nThe photo urls for different sized versions of the source photo.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the source photo.\n\n\n\n\n\n\n Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.\n\n\n\n\n\n\n\n\n\n Rotation \n Integer \n\nThe number of degrees the original was rotated clockwise.\n\n\n\n Crop \n <BoundingBox> or null \n\nThe bounding box of where the original photo was cropped.\n\n\n\n\n\n\n Min \n <BoundingPoint> or null \n\nA point representing the top left of the bounding box\n\n\n\n\n\n\n X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis\n\n\n\n\n\n\n Max \n <BoundingPoint> or null \n\nA point representing the bottom left of the bounding box\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n\n\n\n\n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the photo. If the photo has been transformed (eg. cropped or rotated), it will be the transformed photo dimensions.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n\n\n\n Video \n <PositionListingVideoDetails> or null \n\nDetails of the video for the listing.\n\n\n\n\n\n\n VideoKey \n String or null \n\nThe id of the video\n\n\n\n Thumbnails \n Collection of <PositionListingVideoThumbnail> or null \n\nThumbnails for the video.\n\n\n\n\n\n\n Url \n String or null \n\nThe url of the thumbnail\n\n\n\n Size \n String or null \n\nThe size of the thumbnail. Possible values are \"Index\", \"Medium\" and \"High\".\n\n\n\n Width \n Integer or null \n\nThe width of the thumbnail\n\n\n\n Height \n Integer or null \n\nThe height of the thumbnail\n\n\n\n\n\n\n\n\n\n SalaryOptIn \n Boolean \n\nIndicates if the advertiser has opted in to display salary data in LDP/SRP.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "PositionListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the listing"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The id of the listing"
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The start date of the listing"
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The end date of the listing"
+      },
+      {
+        "name": "IsLive",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the listing is live"
+      },
+      {
+        "name": "IsAccessible",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the listing is accessible"
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String or null",
+        "required": false,
+        "description": "A short description used to differentiate the listing"
+      },
+      {
+        "name": "ReferenceId",
+        "type": "String or null",
+        "required": false,
+        "description": "A reference id to help track the listing"
+      },
+      {
+        "name": "PayAndBenefits",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the pay and benefits of the position"
+      },
+      {
+        "name": "ContactDetails",
+        "type": "<PositionListingContactDetails> or null",
+        "required": false,
+        "description": "Details for who to contact regarding the listing"
+      },
+      {
+        "name": "ContactName",
+        "type": "ContactName \n String or null \n\nThe name of the person to contact regarding the listing\n\n\n\n PreferredApplicationMethod \n String or null \n\nThe preferred way for applicants to apply\n\n\n\n EmailAddress \n String or null \n\nThe email address of the person to contact regarding the listing\n\n\n\n ApplicationUrl \n String or null \n\nThe url to send applicants to if using an off site application method\n\n\n\n PhoneNumbers \n Collection of <PhoneNumberDetails> or null \n\nPhone numbers of people to contact regarding the listing\n\n\n\n\n\n\n Prefix \n String or null \n\nThe prefix of the phone number\n\n\n\n Number \n String or null \n\nThe rest of the phone number",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ContactName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the person to contact regarding the listing"
+      },
+      {
+        "name": "PreferredApplicationMethod",
+        "type": "String or null",
+        "required": false,
+        "description": "The preferred way for applicants to apply"
+      },
+      {
+        "name": "EmailAddress",
+        "type": "String or null",
+        "required": false,
+        "description": "The email address of the person to contact regarding the listing"
+      },
+      {
+        "name": "ApplicationUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "The url to send applicants to if using an off site application method"
+      },
+      {
+        "name": "PhoneNumbers",
+        "type": "Collection of <PhoneNumberDetails> or null",
+        "required": false,
+        "description": "Phone numbers of people to contact regarding the listing"
+      },
+      {
+        "name": "Prefix",
+        "type": "Prefix \n String or null \n\nThe prefix of the phone number\n\n\n\n Number \n String or null \n\nThe rest of the phone number",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Prefix",
+        "type": "String or null",
+        "required": false,
+        "description": "The prefix of the phone number"
+      },
+      {
+        "name": "Number",
+        "type": "String or null",
+        "required": false,
+        "description": "The rest of the phone number"
+      },
+      {
+        "name": "Descriptions",
+        "type": "Collection of <PositionListingDescription> or null",
+        "required": false,
+        "description": "The descriptions of the position listing"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n String or null \n\nThe type of the description\n\n\n\n Text \n String or null \n\nThe text of the description",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Type",
+        "type": "String or null",
+        "required": false,
+        "description": "The type of the description"
+      },
+      {
+        "name": "Text",
+        "type": "String or null",
+        "required": false,
+        "description": "The text of the description"
+      },
+      {
+        "name": "Promotions",
+        "type": "<PositionListingPromotion> or null",
+        "required": false,
+        "description": "The promotions of the position listing"
+      },
+      {
+        "name": "BundleType",
+        "type": "BundleType \n Enumeration \n\nThe type of promotion bundle\n\n\n\n PromotionData \n <PromotionData> or null \n\nThe data required for the promotion bundle\n\n\n\n\n\n\n Branding \n Collection of <PromotionBrandingItem> or null \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer \n\nThe id of the branding item\n\n\n\n BrandingType \n String or null \n\nThe type of the branding item: Logo or Banner\n\n\n\n BrandingUri \n String or null \n\nThe uri for the branding image\n\n\n\n IsDeleted \n Boolean \n\nWhether the branding is deleted\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for the featured position listing\n\n\n\n CandidateAccessQuota \n Integer or null \n\nThe available quota for profile unlocks in the candidate database\n\n\n\n\n\n\n EnabledPromotions \n Collection of Enumeration or null \n\nThe promotions that apply to the position listing",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "BundleType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of promotion bundle",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "None"
+          },
+          {
+            "name": "Bronze",
+            "value": "1",
+            "description": "Bronze"
+          },
+          {
+            "name": "Silver",
+            "value": "2",
+            "description": "Silver"
+          },
+          {
+            "name": "Gold",
+            "value": "3",
+            "description": "Gold"
+          },
+          {
+            "name": "Platinum",
+            "value": "4",
+            "description": "Platinum"
+          },
+          {
+            "name": "Fifth",
+            "value": "5",
+            "description": "Fifth"
+          },
+          {
+            "name": "Sixth",
+            "value": "6",
+            "description": "Sixth"
+          }
+        ]
+      },
+      {
+        "name": "PromotionData",
+        "type": "<PromotionData> or null",
+        "required": false,
+        "description": "The data required for the promotion bundle"
+      },
+      {
+        "name": "Branding",
+        "type": "Branding \n Collection of <PromotionBrandingItem> or null \n\nThe branding for the position listing\n\n\n\n\n\n\n BrandingId \n Integer \n\nThe id of the branding item\n\n\n\n BrandingType \n String or null \n\nThe type of the branding item: Logo or Banner\n\n\n\n BrandingUri \n String or null \n\nThe uri for the branding image\n\n\n\n IsDeleted \n Boolean \n\nWhether the branding is deleted\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for the featured position listing\n\n\n\n CandidateAccessQuota \n Integer or null \n\nThe available quota for profile unlocks in the candidate database",
+        "required": false,
+        "description": "Collection of <PromotionBrandingItem> or null"
+      },
+      {
+        "name": "Branding",
+        "type": "Collection of <PromotionBrandingItem> or null",
+        "required": false,
+        "description": "The branding for the position listing"
+      },
+      {
+        "name": "BrandingId",
+        "type": "BrandingId \n Integer \n\nThe id of the branding item\n\n\n\n BrandingType \n String or null \n\nThe type of the branding item: Logo or Banner\n\n\n\n BrandingUri \n String or null \n\nThe uri for the branding image\n\n\n\n IsDeleted \n Boolean \n\nWhether the branding is deleted",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "BrandingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the branding item"
+      },
+      {
+        "name": "BrandingType",
+        "type": "String or null",
+        "required": false,
+        "description": "The type of the branding item: Logo or Banner"
+      },
+      {
+        "name": "BrandingUri",
+        "type": "String or null",
+        "required": false,
+        "description": "The uri for the branding image"
+      },
+      {
+        "name": "IsDeleted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the branding is deleted"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "The bullet points for the featured position listing"
+      },
+      {
+        "name": "CandidateAccessQuota",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The available quota for profile unlocks in the candidate database"
+      },
+      {
+        "name": "EnabledPromotions",
+        "type": "Collection of Enumeration or null",
+        "required": false,
+        "description": "The promotions that apply to the position listing",
+        "enum": [
+          {
+            "name": "Featured",
+            "value": "1",
+            "description": "Position listing is featured"
+          },
+          {
+            "name": "Branded",
+            "value": "2",
+            "description": "Position listing is branded"
+          },
+          {
+            "name": "SevenDayListing",
+            "value": "3",
+            "description": "Position listing is a seven day listing"
+          },
+          {
+            "name": "BulletPoints",
+            "value": "4",
+            "description": "Position listing can have bullet points"
+          },
+          {
+            "name": "CandidateDatabaseAccess",
+            "value": "5",
+            "description": "Candidate database access granted"
+          },
+          {
+            "name": "Photos",
+            "value": "6",
+            "description": "Position listing can have photos"
+          },
+          {
+            "name": "Video",
+            "value": "7",
+            "description": "Position listing can have videos"
+          },
+          {
+            "name": "PromotedListing",
+            "value": "8",
+            "description": "Position listing can have promoted listing"
+          }
+        ]
+      },
+      {
+        "name": "PhotoIds",
+        "type": "Collection of Integer or null",
+        "required": false,
+        "description": "The photo IDs of the position listing"
+      },
+      {
+        "name": "PhotoDetails",
+        "type": "Collection of <PositionListingPhotoDetail> or null",
+        "required": false,
+        "description": "A collection of photos for the listing. This collection is read-only."
+      },
+      {
+        "name": "PhotoId",
+        "type": "PhotoId \n Integer \n\nThe id of the photo\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nAll the photo urls for different sized versions of the photo.\n\n\n\n\n\n\n Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n\n\n\n TransformData \n <PositionListingPhotoTransformData> or null \n\nThe transform information if the photo was transformed. Null otherwise.\n\n\n\n\n\n\n SourcePhotoDetails \n <PositionListingSourcePhotoDetails> or null \n\nDetails of the original source photo used for the transformation.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the original source photo used for the transformation.\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nThe photo urls for different sized versions of the source photo.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the source photo.\n\n\n\n\n\n\n Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.\n\n\n\n\n\n\n\n\n\n Rotation \n Integer \n\nThe number of degrees the original was rotated clockwise.\n\n\n\n Crop \n <BoundingBox> or null \n\nThe bounding box of where the original photo was cropped.\n\n\n\n\n\n\n Min \n <BoundingPoint> or null \n\nA point representing the top left of the bounding box\n\n\n\n\n\n\n X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis\n\n\n\n\n\n\n Max \n <BoundingPoint> or null \n\nA point representing the bottom left of the bounding box\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n\n\n\n\n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the photo. If the photo has been transformed (eg. cropped or rotated), it will be the transformed photo dimensions.\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the photo"
+      },
+      {
+        "name": "Urls",
+        "type": "<PositionListingPhotoUrls> or null",
+        "required": false,
+        "description": "All the photo urls for different sized versions of the photo."
+      },
+      {
+        "name": "Thumbnail",
+        "type": "Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Thumbnail",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."
+      },
+      {
+        "name": "List",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the list view sized photo (scaled down to fit 160x120)."
+      },
+      {
+        "name": "Medium",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the medium sized photo (scaled down to fit 175x175)."
+      },
+      {
+        "name": "Gallery",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."
+      },
+      {
+        "name": "Large",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the large sized photo (scaled down to fit 352x264)."
+      },
+      {
+        "name": "FullSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the full sized photo (scaled down to fit 670x502)."
+      },
+      {
+        "name": "PlusSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the plus sized photo (scaled down to fit)."
+      },
+      {
+        "name": "TransformData",
+        "type": "<PositionListingPhotoTransformData> or null",
+        "required": false,
+        "description": "The transform information if the photo was transformed. Null otherwise."
+      },
+      {
+        "name": "SourcePhotoDetails",
+        "type": "SourcePhotoDetails \n <PositionListingSourcePhotoDetails> or null \n\nDetails of the original source photo used for the transformation.\n\n\n\n\n\n\n PhotoId \n Integer \n\nThe id of the original source photo used for the transformation.\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nThe photo urls for different sized versions of the source photo.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the source photo.\n\n\n\n\n\n\n Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.\n\n\n\n\n\n\n\n\n\n Rotation \n Integer \n\nThe number of degrees the original was rotated clockwise.\n\n\n\n Crop \n <BoundingBox> or null \n\nThe bounding box of where the original photo was cropped.\n\n\n\n\n\n\n Min \n <BoundingPoint> or null \n\nA point representing the top left of the bounding box\n\n\n\n\n\n\n X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis\n\n\n\n\n\n\n Max \n <BoundingPoint> or null \n\nA point representing the bottom left of the bounding box\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "<PositionListingSourcePhotoDetails> or null"
+      },
+      {
+        "name": "SourcePhotoDetails",
+        "type": "<PositionListingSourcePhotoDetails> or null",
+        "required": false,
+        "description": "Details of the original source photo used for the transformation."
+      },
+      {
+        "name": "PhotoId",
+        "type": "PhotoId \n Integer \n\nThe id of the original source photo used for the transformation.\n\n\n\n Urls \n <PositionListingPhotoUrls> or null \n\nThe photo urls for different sized versions of the source photo.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Dimensions \n <PositionListingPhotoDimensions> or null \n\nThe dimensions of the source photo.\n\n\n\n\n\n\n Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the original source photo used for the transformation."
+      },
+      {
+        "name": "Urls",
+        "type": "<PositionListingPhotoUrls> or null",
+        "required": false,
+        "description": "The photo urls for different sized versions of the source photo."
+      },
+      {
+        "name": "Dimensions",
+        "type": "<PositionListingPhotoDimensions> or null",
+        "required": false,
+        "description": "The dimensions of the source photo."
+      },
+      {
+        "name": "Width",
+        "type": "Width \n Integer \n\nThe width of the photo in pixels.\n\n\n\n Height \n Integer \n\nThe height of the photo in pixels.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Width",
+        "type": "Integer",
+        "required": false,
+        "description": "The width of the photo in pixels."
+      },
+      {
+        "name": "Height",
+        "type": "Integer",
+        "required": false,
+        "description": "The height of the photo in pixels."
+      },
+      {
+        "name": "Rotation",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of degrees the original was rotated clockwise."
+      },
+      {
+        "name": "Crop",
+        "type": "<BoundingBox> or null",
+        "required": false,
+        "description": "The bounding box of where the original photo was cropped."
+      },
+      {
+        "name": "Min",
+        "type": "Min \n <BoundingPoint> or null \n\nA point representing the top left of the bounding box\n\n\n\n\n\n\n X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis\n\n\n\n\n\n\n Max \n <BoundingPoint> or null \n\nA point representing the bottom left of the bounding box\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "<BoundingPoint> or null"
+      },
+      {
+        "name": "Min",
+        "type": "<BoundingPoint> or null",
+        "required": false,
+        "description": "A point representing the top left of the bounding box"
+      },
+      {
+        "name": "X",
+        "type": "X \n Integer \n\nThe point on the X axis\n\n\n\n Y \n Integer \n\nThe point on the Y axis",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "X",
+        "type": "Integer",
+        "required": false,
+        "description": "The point on the X axis"
+      },
+      {
+        "name": "Y",
+        "type": "Integer",
+        "required": false,
+        "description": "The point on the Y axis"
+      },
+      {
+        "name": "Max",
+        "type": "<BoundingPoint> or null",
+        "required": false,
+        "description": "A point representing the bottom left of the bounding box"
+      },
+      {
+        "name": "Dimensions",
+        "type": "<PositionListingPhotoDimensions> or null",
+        "required": false,
+        "description": "The dimensions of the photo. If the photo has been transformed (eg. cropped or rotated), it will be the transformed photo dimensions."
+      },
+      {
+        "name": "Video",
+        "type": "<PositionListingVideoDetails> or null",
+        "required": false,
+        "description": "Details of the video for the listing."
+      },
+      {
+        "name": "VideoKey",
+        "type": "VideoKey \n String or null \n\nThe id of the video\n\n\n\n Thumbnails \n Collection of <PositionListingVideoThumbnail> or null \n\nThumbnails for the video.\n\n\n\n\n\n\n Url \n String or null \n\nThe url of the thumbnail\n\n\n\n Size \n String or null \n\nThe size of the thumbnail. Possible values are \"Index\", \"Medium\" and \"High\".\n\n\n\n Width \n Integer or null \n\nThe width of the thumbnail\n\n\n\n Height \n Integer or null \n\nThe height of the thumbnail",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "VideoKey",
+        "type": "String or null",
+        "required": false,
+        "description": "The id of the video"
+      },
+      {
+        "name": "Thumbnails",
+        "type": "Collection of <PositionListingVideoThumbnail> or null",
+        "required": false,
+        "description": "Thumbnails for the video."
+      },
+      {
+        "name": "Url",
+        "type": "Url \n String or null \n\nThe url of the thumbnail\n\n\n\n Size \n String or null \n\nThe size of the thumbnail. Possible values are \"Index\", \"Medium\" and \"High\".\n\n\n\n Width \n Integer or null \n\nThe width of the thumbnail\n\n\n\n Height \n Integer or null \n\nThe height of the thumbnail",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Url",
+        "type": "String or null",
+        "required": false,
+        "description": "The url of the thumbnail"
+      },
+      {
+        "name": "Size",
+        "type": "String or null",
+        "required": false,
+        "description": "The size of the thumbnail. Possible values are \"Index\", \"Medium\" and \"High\"."
+      },
+      {
+        "name": "Width",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The width of the thumbnail"
+      },
+      {
+        "name": "Height",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The height of the thumbnail"
+      },
+      {
+        "name": "SalaryOptIn",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates if the advertiser has opted in to display salary data in LDP/SRP."
+      },
+      {
+        "name": "OwnerCompanyId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the company who owns the position"
+      },
+      {
+        "name": "PositionCompanyName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the company where the position is vacant"
+      },
+      {
+        "name": "CategoryIds",
+        "type": "Collection of Integer or null",
+        "required": false,
+        "description": "The IDs of the categories for the position"
+      },
+      {
+        "name": "PayType",
+        "type": "String or null",
+        "required": false,
+        "description": "Indicates the type of pay for the position. e.g. Hourly or salary"
+      },
+      {
+        "name": "PayMin",
+        "type": "Number or null",
+        "required": false,
+        "description": "The minimum pay for the position"
+      },
+      {
+        "name": "PayMax",
+        "type": "Number or null",
+        "required": false,
+        "description": "The maximum pay for the position"
+      },
+      {
+        "name": "EmploymentDurationType",
+        "type": "String or null",
+        "required": false,
+        "description": "Indicates the type of duration for the position"
+      },
+      {
+        "name": "EmploymentType",
+        "type": "String or null",
+        "required": false,
+        "description": "Indicates the type of employment for the position"
+      },
+      {
+        "name": "Self",
+        "type": "<Link> or null",
+        "required": false,
+        "description": "A link to retrieve this position resource"
+      },
+      {
+        "name": "Href",
+        "type": "Href \n String or null \n\nAn HREF representing the uri to the resource\n\n\n\n Rel \n String or null \n\nA REL representing the relationship between the sending resource and the linked resource\n\n\n\n Prompt \n String or null \n\nA PROMPT, optional display text to represent the resource to a user\n\n\n\n Method \n String or null \n\nA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Href",
+        "type": "String or null",
+        "required": false,
+        "description": "An HREF representing the uri to the resource"
+      },
+      {
+        "name": "Rel",
+        "type": "String or null",
+        "required": false,
+        "description": "A REL representing the relationship between the sending resource and the linked resource"
+      },
+      {
+        "name": "Prompt",
+        "type": "String or null",
+        "required": false,
+        "description": "A PROMPT, optional display text to represent the resource to a user"
+      },
+      {
+        "name": "Method",
+        "type": "String or null",
+        "required": false,
+        "description": "A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET."
+      },
+      {
+        "name": "Locations",
+        "type": "Collection of <PositionLocation> or null",
+        "required": false,
+        "description": "The locations of the position"
+      },
+      {
+        "name": "DistrictId",
+        "type": "DistrictId \n Integer or null \n\nThe district id of the location",
+        "required": false,
+        "description": "Integer or null"
+      },
+      {
+        "name": "DistrictId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The district id of the location"
+      },
+      {
+        "name": "IsEntryLevel",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this is an entry level position"
+      },
+      {
+        "name": "IsWorkFromHome",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether working from home is available for this position"
+      },
+      {
+        "name": "FeeSummary",
+        "type": "<FeeSummary> or null",
+        "required": false,
+        "description": "The details of the fees to create a position and listing"
+      },
+      {
+        "name": "TotalCost",
+        "type": "TotalCost \n Number \n\nThe total price for the position.\n\n\n\n TotalCostGstExcluded \n Number \n\nThe total price for the position excluding GST.\n\n\n\n InsufficientBalance \n Boolean \n\nIndicates the member has insufficient funds to pay the total price for the position.\n\n\n\n MinimumRequiredTopUpAmount \n Number or null \n\nThe minimum top up amount required in order to pay for this position\n\n\n\n FeeItems \n Collection of <FeeItem> or null \n\nA collection of fee items.\n\n\n\n\n\n\n Type \n String or null \n\nThe transaction type.\n\n\n\n Amount \n Number \n\nThe amount that will be charged\n\n\n\n AmountGstExcluded \n Number \n\nThe amount excluding GST\n\n\n\n WillBeInvoiced \n Boolean \n\nIndicates whether this fee item will be invoiced, rather than deducted from the member's trade me balance.\n\n\n\n ProvidingSource \n <FeeItemProvidingSource> or null \n\nThe providing source for this item when the member doesn't have to pay for it\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the providing source.\n\n\n\n Remaining \n Integer \n\nThe number of items remaining in this source, or 0 if the source is unlimited.\n\n\n\n IsUnlimited \n Boolean \n\nTrue if it is possible to create unlimited listings at the provided rate",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "TotalCost",
+        "type": "Number",
+        "required": false,
+        "description": "The total price for the position."
+      },
+      {
+        "name": "TotalCostGstExcluded",
+        "type": "Number",
+        "required": false,
+        "description": "The total price for the position excluding GST."
+      },
+      {
+        "name": "InsufficientBalance",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates the member has insufficient funds to pay the total price for the position."
+      },
+      {
+        "name": "MinimumRequiredTopUpAmount",
+        "type": "Number or null",
+        "required": false,
+        "description": "The minimum top up amount required in order to pay for this position"
+      },
+      {
+        "name": "FeeItems",
+        "type": "Collection of <FeeItem> or null",
+        "required": false,
+        "description": "A collection of fee items."
+      },
+      {
+        "name": "Type",
+        "type": "Type \n String or null \n\nThe transaction type.\n\n\n\n Amount \n Number \n\nThe amount that will be charged\n\n\n\n AmountGstExcluded \n Number \n\nThe amount excluding GST\n\n\n\n WillBeInvoiced \n Boolean \n\nIndicates whether this fee item will be invoiced, rather than deducted from the member's trade me balance.\n\n\n\n ProvidingSource \n <FeeItemProvidingSource> or null \n\nThe providing source for this item when the member doesn't have to pay for it\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the providing source.\n\n\n\n Remaining \n Integer \n\nThe number of items remaining in this source, or 0 if the source is unlimited.\n\n\n\n IsUnlimited \n Boolean \n\nTrue if it is possible to create unlimited listings at the provided rate",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Type",
+        "type": "String or null",
+        "required": false,
+        "description": "The transaction type."
+      },
+      {
+        "name": "Amount",
+        "type": "Number",
+        "required": false,
+        "description": "The amount that will be charged"
+      },
+      {
+        "name": "AmountGstExcluded",
+        "type": "Number",
+        "required": false,
+        "description": "The amount excluding GST"
+      },
+      {
+        "name": "WillBeInvoiced",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this fee item will be invoiced, rather than deducted from the member's trade me balance."
+      },
+      {
+        "name": "ProvidingSource",
+        "type": "<FeeItemProvidingSource> or null",
+        "required": false,
+        "description": "The providing source for this item when the member doesn't have to pay for it"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the providing source.\n\n\n\n Remaining \n Integer \n\nThe number of items remaining in this source, or 0 if the source is unlimited.\n\n\n\n IsUnlimited \n Boolean \n\nTrue if it is possible to create unlimited listings at the provided rate",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the providing source."
+      },
+      {
+        "name": "Remaining",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items remaining in this source, or 0 if the source is unlimited."
+      },
+      {
+        "name": "IsUnlimited",
+        "type": "Boolean",
+        "required": false,
+        "description": "True if it is possible to create unlimited listings at the provided rate"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "DescendantType": "ABC",
+      "Position": {
+        "Title": "ABC",
+        "PositionListings": [
+          {
+            "PositionListingId": 123,
+            "ShortDescription": "ABC",
+            "ReferenceId": "ABC",
+            "PayAndBenefits": "ABC",
+            "ContactDetails": {
+              "ContactName": "ABC",
+              "PreferredApplicationMethod": "ABC",
+              "EmailAddress": "ABC",
+              "ApplicationUrl": "ABC",
+              "PhoneNumbers": [
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                },
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                }
+              ]
+            },
+            "Descriptions": [
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              },
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              }
+            ],
+            "Promotions": {
+              "BundleType": 0,
+              "PromotionData": {
+                "Branding": [
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC"
+                  },
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC"
+                  }
+                ],
+                "BulletPoints": [
+                  "ABC",
+                  "ABC"
+                ]
+              },
+              "EnabledPromotions": [
+                1,
+                1
+              ]
+            },
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "VideoKey": "ABC",
+            "SalaryOptIn": false
+          },
+          {
+            "PositionListingId": 123,
+            "ShortDescription": "ABC",
+            "ReferenceId": "ABC",
+            "PayAndBenefits": "ABC",
+            "ContactDetails": {
+              "ContactName": "ABC",
+              "PreferredApplicationMethod": "ABC",
+              "EmailAddress": "ABC",
+              "ApplicationUrl": "ABC",
+              "PhoneNumbers": [
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                },
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                }
+              ]
+            },
+            "Descriptions": [
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              },
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              }
+            ],
+            "Promotions": {
+              "BundleType": 0,
+              "PromotionData": {
+                "Branding": [
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC"
+                  },
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC"
+                  }
+                ],
+                "BulletPoints": [
+                  "ABC",
+                  "ABC"
+                ]
+              },
+              "EnabledPromotions": [
+                1,
+                1
+              ]
+            },
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "VideoKey": "ABC",
+            "SalaryOptIn": false
+          }
+        ],
+        "PositionCompanyName": "ABC",
+        "CategoryIds": [
+          123,
+          123
+        ],
+        "PayType": "ABC",
+        "PayMin": 123.0,
+        "PayMax": 123.0,
+        "EmploymentDurationType": "ABC",
+        "EmploymentType": "ABC",
+        "Locations": [
+          {
+            "DistrictId": 123
+          },
+          {
+            "DistrictId": 123
+          }
+        ],
+        "PublishedState": "ABC",
+        "IsEntryLevel": false,
+        "IsWorkFromHome": false,
+        "DraftId": "ABC"
+      }
+    },
+    "response_json": {
+      "Position": {
+        "PositionId": 123,
+        "PublishedState": "ABC",
+        "Title": "ABC",
+        "DateCreated": "/Date(1514764800)/",
+        "DateModified": "/Date(1514764800)/",
+        "DateArchived": "/Date(1514764800)/",
+        "HasLiveListing": false,
+        "Listings": [
+          {
+            "PositionListingId": 123,
+            "ListingId": 123,
+            "StartDate": "/Date(1514764800)/",
+            "EndDate": "/Date(1514764800)/",
+            "IsLive": false,
+            "IsAccessible": false,
+            "ShortDescription": "ABC",
+            "ReferenceId": "ABC",
+            "PayAndBenefits": "ABC",
+            "ContactDetails": {
+              "ContactName": "ABC",
+              "PreferredApplicationMethod": "ABC",
+              "EmailAddress": "ABC",
+              "ApplicationUrl": "ABC",
+              "PhoneNumbers": [
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                },
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                }
+              ]
+            },
+            "Descriptions": [
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              },
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              }
+            ],
+            "Promotions": {
+              "BundleType": 0,
+              "PromotionData": {
+                "Branding": [
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC",
+                    "BrandingUri": "ABC",
+                    "IsDeleted": false
+                  },
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC",
+                    "BrandingUri": "ABC",
+                    "IsDeleted": false
+                  }
+                ],
+                "BulletPoints": [
+                  "ABC",
+                  "ABC"
+                ],
+                "CandidateAccessQuota": 123
+              },
+              "EnabledPromotions": [
+                1,
+                1
+              ]
+            },
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "PhotoDetails": [
+              {
+                "PhotoId": 123,
+                "Urls": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC"
+                },
+                "TransformData": {
+                  "SourcePhotoDetails": {
+                    "PhotoId": 123,
+                    "Urls": {},
+                    "Dimensions": {
+                      "Width": 123,
+                      "Height": 123
+                    }
+                  },
+                  "Rotation": 123,
+                  "Crop": {
+                    "Min": {
+                      "X": 123,
+                      "Y": 123
+                    },
+                    "Max": {}
+                  }
+                },
+                "Dimensions": {}
+              },
+              {
+                "PhotoId": 123,
+                "Urls": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC"
+                },
+                "TransformData": {
+                  "SourcePhotoDetails": {
+                    "PhotoId": 123,
+                    "Urls": {},
+                    "Dimensions": {
+                      "Width": 123,
+                      "Height": 123
+                    }
+                  },
+                  "Rotation": 123,
+                  "Crop": {
+                    "Min": {
+                      "X": 123,
+                      "Y": 123
+                    },
+                    "Max": {}
+                  }
+                },
+                "Dimensions": {}
+              }
+            ],
+            "Video": {
+              "VideoKey": "ABC",
+              "Thumbnails": [
+                {
+                  "Url": "ABC",
+                  "Size": "ABC",
+                  "Width": 123,
+                  "Height": 123
+                },
+                {
+                  "Url": "ABC",
+                  "Size": "ABC",
+                  "Width": 123,
+                  "Height": 123
+                }
+              ]
+            },
+            "SalaryOptIn": false
+          },
+          {
+            "PositionListingId": 123,
+            "ListingId": 123,
+            "StartDate": "/Date(1514764800)/",
+            "EndDate": "/Date(1514764800)/",
+            "IsLive": false,
+            "IsAccessible": false,
+            "ShortDescription": "ABC",
+            "ReferenceId": "ABC",
+            "PayAndBenefits": "ABC",
+            "ContactDetails": {
+              "ContactName": "ABC",
+              "PreferredApplicationMethod": "ABC",
+              "EmailAddress": "ABC",
+              "ApplicationUrl": "ABC",
+              "PhoneNumbers": [
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                },
+                {
+                  "Prefix": "ABC",
+                  "Number": "ABC"
+                }
+              ]
+            },
+            "Descriptions": [
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              },
+              {
+                "Type": "ABC",
+                "Text": "ABC"
+              }
+            ],
+            "Promotions": {
+              "BundleType": 0,
+              "PromotionData": {
+                "Branding": [
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC",
+                    "BrandingUri": "ABC",
+                    "IsDeleted": false
+                  },
+                  {
+                    "BrandingId": 123,
+                    "BrandingType": "ABC",
+                    "BrandingUri": "ABC",
+                    "IsDeleted": false
+                  }
+                ],
+                "BulletPoints": [
+                  "ABC",
+                  "ABC"
+                ],
+                "CandidateAccessQuota": 123
+              },
+              "EnabledPromotions": [
+                1,
+                1
+              ]
+            },
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "PhotoDetails": [
+              {
+                "PhotoId": 123,
+                "Urls": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC"
+                },
+                "TransformData": {
+                  "SourcePhotoDetails": {
+                    "PhotoId": 123,
+                    "Urls": {},
+                    "Dimensions": {
+                      "Width": 123,
+                      "Height": 123
+                    }
+                  },
+                  "Rotation": 123,
+                  "Crop": {
+                    "Min": {
+                      "X": 123,
+                      "Y": 123
+                    },
+                    "Max": {}
+                  }
+                },
+                "Dimensions": {}
+              },
+              {
+                "PhotoId": 123,
+                "Urls": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC"
+                },
+                "TransformData": {
+                  "SourcePhotoDetails": {
+                    "PhotoId": 123,
+                    "Urls": {},
+                    "Dimensions": {
+                      "Width": 123,
+                      "Height": 123
+                    }
+                  },
+                  "Rotation": 123,
+                  "Crop": {
+                    "Min": {
+                      "X": 123,
+                      "Y": 123
+                    },
+                    "Max": {}
+                  }
+                },
+                "Dimensions": {}
+              }
+            ],
+            "Video": {
+              "VideoKey": "ABC",
+              "Thumbnails": [
+                {
+                  "Url": "ABC",
+                  "Size": "ABC",
+                  "Width": 123,
+                  "Height": 123
+                },
+                {
+                  "Url": "ABC",
+                  "Size": "ABC",
+                  "Width": 123,
+                  "Height": 123
+                }
+              ]
+            },
+            "SalaryOptIn": false
+          }
+        ],
+        "OwnerCompanyId": 123,
+        "PositionCompanyName": "ABC",
+        "CategoryIds": [
+          123,
+          123
+        ],
+        "PayType": "ABC",
+        "PayMin": 123.0,
+        "PayMax": 123.0,
+        "EmploymentDurationType": "ABC",
+        "EmploymentType": "ABC",
+        "Self": {
+          "Href": "ABC",
+          "Rel": "ABC",
+          "Prompt": "ABC",
+          "Method": "ABC"
+        },
+        "Locations": [
+          {
+            "DistrictId": 123
+          },
+          {
+            "DistrictId": 123
+          }
+        ],
+        "IsEntryLevel": false,
+        "IsWorkFromHome": false
+      },
+      "FeeSummary": {
+        "TotalCost": 123.0,
+        "TotalCostGstExcluded": 123.0,
+        "InsufficientBalance": false,
+        "MinimumRequiredTopUpAmount": 123.0,
+        "FeeItems": [
+          {
+            "Type": "ABC",
+            "Amount": 123.0,
+            "AmountGstExcluded": 123.0,
+            "WillBeInvoiced": false,
+            "ProvidingSource": {
+              "Name": "ABC",
+              "Remaining": 123,
+              "IsUnlimited": false
+            }
+          },
+          {
+            "Type": "ABC",
+            "Amount": 123.0,
+            "AmountGstExcluded": 123.0,
+            "WillBeInvoiced": false,
+            "ProvidingSource": {
+              "Name": "ABC",
+              "Remaining": 123,
+              "IsUnlimited": false
+            }
+          }
+        ]
+      }
+    }
+  }
+}

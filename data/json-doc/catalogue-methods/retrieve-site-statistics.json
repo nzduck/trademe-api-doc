@@ -1,0 +1,105 @@
+{
+  "endpoint": "RetrieveSiteStatistics",
+  "title": "Retrieve site statistics",
+  "description": "Retrieves statistics about the Trade Me website, including the number of active members and the number of active listings.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-site-statistics",
+  "url": "https://api.trademe.co.nz/v1/SiteStats.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SiteStats> General statistics, including the number of active members and the number of active listings.",
+    "fields": [
+      {
+        "name": "MembersOnline",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of people online right now (live)."
+      },
+      {
+        "name": "ActiveMembers",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of active members (live)."
+      },
+      {
+        "name": "ActiveListings",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of active listings (live)."
+      },
+      {
+        "name": "AverageTimeSpent",
+        "type": "String or null",
+        "required": false,
+        "description": "The average time spent on the site e.g. \"10 minutes\".\n\n                                This field is deprecated and will return a default value of the empty string"
+      },
+      {
+        "name": "AverageVisitorsPerDay",
+        "type": "Integer",
+        "required": false,
+        "description": "The average number of people who visit each day (unique browsers).\n\n                                This field is deprecated and will return a default value of 0"
+      },
+      {
+        "name": "BusiestDayOfWeek",
+        "type": "String or null",
+        "required": false,
+        "description": "The busiest day of the week e.g. \"Monday\".\n\n                                This field is deprecated and will return a default value of the empty string"
+      },
+      {
+        "name": "ReportMonthAndYear",
+        "type": "String or null",
+        "required": false,
+        "description": "The month and year when the statistics for AverageTimeSpent, VistorsPerMonth and AverageVisitorsPerDay were gathered e.g. \"May 2013\".\n\n                                This field is deprecated and will return a default value of the empty string"
+      },
+      {
+        "name": "ReportSource",
+        "type": "String or null",
+        "required": false,
+        "description": "The source of the AverageTimeSpent, VistorsPerMonth and AverageVisitorsPerDay information e.g. \"Nielsen Online\".\n\n                                This field is deprecated and will return a default value of the empty string"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "MembersOnline": 123,
+      "ActiveMembers": 123,
+      "ActiveListings": 123,
+      "AverageTimeSpent": "ABC",
+      "AverageVisitorsPerDay": 123,
+      "BusiestDayOfWeek": "ABC",
+      "ReportMonthAndYear": "ABC",
+      "ReportSource": "ABC"
+    }
+  }
+}

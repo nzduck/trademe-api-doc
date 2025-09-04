@@ -1,0 +1,140 @@
+{
+  "endpoint": "PriceGroupsToMakeAHistogram",
+  "title": "Price groups to make a histogram",
+  "description": "Retrieve price grouping data representing the price distribution of listings retrieved from a given search query. Intended to be rendered as a histogram.",
+  "source": "https://developer.trademe.co.nz/api-reference/search-methods/price-groups-to-make-a-histogram",
+  "url": "https://api.trademe.co.nz/v1/Search/PriceHistogram.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PriceHistogramBucketResponse> Price buckets making up a histogram",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "BucketCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Number of price buckets"
+      },
+      {
+        "name": "PriceInterval",
+        "type": "Number or null",
+        "required": false,
+        "description": "Interval / length of each price bucket"
+      },
+      {
+        "name": "PriceOutlierBoundary",
+        "type": "Number or null",
+        "required": false,
+        "description": "Prices over this value are considered to be outliers"
+      },
+      {
+        "name": "PriceMin",
+        "type": "Number or null",
+        "required": false,
+        "description": "The lowest price included in the histogram"
+      },
+      {
+        "name": "PriceMax",
+        "type": "Number or null",
+        "required": false,
+        "description": "The highest price included in the histogram"
+      },
+      {
+        "name": "ListingCountClippedLimitSuggestion",
+        "type": "Number or null",
+        "required": false,
+        "description": "In order to render the histogram data effectively, clients may want to clip the listing counts of buckets to this amount. This is effective when one bucket is much larger than others."
+      },
+      {
+        "name": "PriceGroupBuckets",
+        "type": "Collection of <PriceRangeGroupBucket>",
+        "required": false,
+        "description": "The price buckets which make up the histogram",
+        "nested_fields": [
+          {
+            "field_name": "PriceFrom",
+            "field_type": "Number",
+            "description": "PriceFrom"
+          },
+          {
+            "field_name": "PriceTo",
+            "field_type": "Number or null",
+            "description": "PriceTo"
+          },
+          {
+            "field_name": "ListingCount",
+            "field_type": "Integer",
+            "description": "ListingCount"
+          },
+          {
+            "field_name": "IsExtendedRange",
+            "field_type": "Boolean or null",
+            "description": "IsExtendedRange"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "BucketCount": 123,
+      "PriceInterval": 123.0,
+      "PriceOutlierBoundary": 123.0,
+      "PriceMin": 123.0,
+      "PriceMax": 123.0,
+      "ListingCountClippedLimitSuggestion": 123.0,
+      "PriceGroupBuckets": [
+        {
+          "PriceFrom": 123.0,
+          "PriceTo": 123.0,
+          "ListingCount": 123,
+          "IsExtendedRange": false
+        },
+        {
+          "PriceFrom": 123.0,
+          "PriceTo": 123.0,
+          "ListingCount": 123,
+          "IsExtendedRange": false
+        }
+      ]
+    }
+  }
+}

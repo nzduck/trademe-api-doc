@@ -1,0 +1,116 @@
+{
+  "endpoint": "UpdatesABrandingImageAndSetsItAsDefault",
+  "title": "Updates a branding image and sets it as default",
+  "description": "Update the priority of a specific branding image given the branding id in the url.",
+  "source": "https://developer.trademe.co.nz/api-reference/branding-methods/updates-a-branding-image-and-sets-it-as-default",
+  "url": "https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages/{brandingId}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Member id of the branding image owner"
+      },
+      {
+        "name": "brandingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Branding image Id to set as default"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<BrandingImageDetails>",
+    "fields": [
+      {
+        "name": "BrandingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Branding image Id. Use this Id to add branding to your listings. This property is read-only."
+      },
+      {
+        "name": "FileName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Branding image file name. This property is read-only. The file name may be different from the value provided during uploading the image."
+      },
+      {
+        "name": "FileSize",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Branding image file size in bytes. This property is read-only."
+      },
+      {
+        "name": "ImageUrl",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The location of the image. This property is read-only."
+      },
+      {
+        "name": "Priority",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The prorioty of this branding image relative to other uploaded images. This property is only applicable to agent branding and is ignored for listing specific branding. Default value is 0."
+      },
+      {
+        "name": "BrandingImageType",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Branding image type"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<UpdateBrandingResponse> Status of operation",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "BrandingId": 123,
+      "FileName": "ABC",
+      "FileSize": 123,
+      "ImageUrl": "ABC",
+      "Priority": 123,
+      "BrandingImageType": 0
+    },
+    "response_json": {
+      "Success": false
+    }
+  }
+}

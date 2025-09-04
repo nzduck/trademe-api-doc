@@ -1,0 +1,187 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/post-feedback-on-a-listing -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Post feedback on a listing</h1>
+<!-- Page content -->
+<p>Places feedback on the buyer or seller of an auction.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/feedback.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;FeedbackRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> FeedbackType </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The type of feedback given.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Negative</td>
+<td>0</td>
+<td>
+<p>Negative feedback.</p>
+</td>
+</tr>
+<tr>
+<td>Positive</td>
+<td>1</td>
+<td>
+<p>Positive feedback.</p>
+</td>
+</tr>
+<tr>
+<td>Neutral</td>
+<td>2</td>
+<td>
+<p>Neutral feedback.</p>
+</td>
+</tr>
+<tr>
+<td>TradeMe</td>
+<td>3</td>
+<td>
+<p>Feedback from the Trade Me customer service team.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The text of the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the listing this feedback is for.</p>
+<p style="color: red">
+                                This field is retained for backwards compatibility; please use PurchaseId instead.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsForFpo </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether the feedback is for a fixed price offer recipient.</p>
+<p style="color: red">
+                                This field is retained for backwards compatibility; please use PurchaseId instead.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PurchaseId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the purchase this feedback is for. This field is a replacement for both ListingId and IsForFpo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> KoruTradeItemId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Koru Trade Item ID for the trade that the feedback is for. It should be used instead of PurchaseId for Koru trades.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FeedbackResponse&gt; </p>
+<p>Details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Ok", "value": "0", "description": "Success."}, {"name": "AlreadyPlaced", "value": "1", "description": "Feedback already posted."}, {"name": "AlreadyEdited", "value": "2", "description": "Feedback already edited."}, {"name": "ErrorDeleting", "value": "3", "description": "Error deleting."}, {"name": "MemberNotFound", "value": "4", "description": "The member could not be found."}, {"name": "NotSelf", "value": "5", "description": "Cannot give feedback on self."}, {"name": "IncorrectMember", "value": "6", "description": "The feedback is not for this member."}, {"name": "NotWinner", "value": "7", "description": "The member did not win the auction."}, {"name": "NotWinnerOffer", "value": "8", "description": "The member did not win the offer."}, {"name": "DatabaseError", "value": "10", "description": "There was another database error."}, {"name": "NotSupported", "value": "11", "description": "The feedback type is not supported."}, {"name": "NoFixedPriceOffer", "value": "12", "description": "There is not a fixed price offer."}, {"name": "InvalidFeedback", "value": "13", "description": "The feedback text submitted is not valid."}]'>
+<th style="width: 22%"> StatusCode </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status code indicating what went wrong if the operation failed.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FeedbackId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>If the operation succeeded, the ID of the new feedback.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "FeedbackType": 0,
+  "Text": "ABC",
+  "ListingId": 123,
+  "IsForFpo": false,
+  "PurchaseId": 123,
+  "KoruTradeItemId": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "StatusCode": 0,
+  "FeedbackId": 123
+}</code></pre>
+</div>

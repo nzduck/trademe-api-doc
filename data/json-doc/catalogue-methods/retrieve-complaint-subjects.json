@@ -1,0 +1,69 @@
+{
+  "endpoint": "RetrieveComplaintSubjects",
+  "title": "Retrieve complaint subjects",
+  "description": "Retrieves a list of possible complaint subjects. This is used in conjunction with the  send a complaint API.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-complaint-subjects",
+  "url": "https://api.trademe.co.nz/v1/ComplaintSubjects.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <ComplaintSubject> A list of subjects that can be used when making a complaint.",
+    "fields": [
+      {
+        "name": "SubjectId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the complaint subject."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the complaint subject, suitable for displaying to a user."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "SubjectId": 123,
+        "Description": "ABC"
+      },
+      {
+        "SubjectId": 123,
+        "Description": "ABC"
+      }
+    ]
+  }
+}

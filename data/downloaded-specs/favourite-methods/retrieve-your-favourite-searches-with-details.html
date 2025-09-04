@@ -1,0 +1,690 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve your favourite searches with details - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a> &gt; </li>
+<li class="current">Retrieve your favourite searches with details</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve your favourite searches with details</h1>
+<!-- Page content -->
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/favourites/searches-detail/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;VersionedSavedSearchListViewModel&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of items available across all pages.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The current page number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items per page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Version </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The version of the view model.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "favouriteId", "field_type": "Integer", "description": "The ID of the favourite."}, {"field_name": "searchApi", "field_type": "Enumeration", "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.", "enum_values": [{"name": "General", "value": "0", "description": "General search."}, {"name": "UsedMotors", "value": "1", "description": "Used cars."}, {"name": "MotorBoat", "value": "2", "description": "Motor boats."}, {"name": "MotorBike", "value": "3", "description": "Motor bikes."}, {"name": "Residential", "value": "4", "description": "Residential property for sale."}, {"name": "Rental", "value": "5", "description": "Residential property to rent."}, {"name": "CommercialSale", "value": "6", "description": "Commercial property for sale."}, {"name": "CommercialLease", "value": "7", "description": "Commercial property leases."}, {"name": "Rural", "value": "8", "description": "Rural property."}, {"name": "Lifestyle", "value": "9", "description": "Lifestyle blocks."}, {"name": "Flatmate", "value": "10", "description": "Flatmates."}, {"name": "OpenHomes", "value": "11", "description": "Open homes."}, {"name": "Retirement", "value": "12", "description": "Retirement villages."}, {"name": "Job", "value": "13", "description": "Jobs."}, {"name": "NewHomes", "value": "14", "description": "New Homes property."}, {"name": "Caravan", "value": "15", "description": "Motors caravan property"}, {"name": "Motorhome", "value": "16", "description": "Motors motorhomes property"}]}, {"field_name": "searchString", "field_type": "String or null", "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."}, {"field_name": "emailOptions", "field_type": "Enumeration", "description": "Indicates how often the email updates should be sent for this favourite.", "enum_values": [{"name": "None", "value": "0", "description": "No emails are sent."}, {"name": "Daily", "value": "1", "description": "An email is sent every day."}, {"name": "Every3Days", "value": "3", "description": "An email is sent each third day."}, {"name": "Weekly", "value": "7", "description": "An email is sent every week."}]}, {"field_name": "option", "field_type": "Enumeration", "description": "The favourite type. Only used when updating and deleting.", "enum_values": [{"name": "None", "value": "0", "description": "Nothing"}, {"name": "Category", "value": "1", "description": "Category"}, {"name": "Search", "value": "3", "description": "General search"}, {"name": "AttributeSearch", "value": "4", "description": "Attributed search"}, {"name": "Seller", "value": "6", "description": "Seller"}]}, {"field_name": "favouritePushFrequency", "field_type": "Enumeration", "description": "The push notification of the favourite, which theFavouriteIdproperty refers to.", "enum_values": [{"name": "None", "value": "0", "description": "Push not enabled for this favourite."}, {"name": "Instant", "value": "1", "description": "Push is enabled for this favourite."}]}, {"field_name": "lastAccessed", "field_type": "DateTime or null", "description": "The date the favourite was last accessed in UTC format."}, {"field_name": "searchName", "field_type": "String or null", "description": "The custom name the user has given to the saved search."}, {"field_name": "title", "field_type": "String or null", "description": "The primary title to display for the saved search card."}, {"field_name": "subTitle", "field_type": "String or null", "description": "The secondary text or subtitle to display for the saved search card."}, {"field_name": "imageUrls", "field_type": "Collection of String", "description": "A URL for a representative images to display on the card. This could be a single image or a static map image."}, {"field_name": "hasNewSearches", "field_type": "Boolean", "description": "A flag indicating if there are new results for this search since it was last viewed."}, {"field_name": "newSearchText", "field_type": "String or null", "description": "The display text for the new results label (e.g., \"15 new\")."}, {"field_name": "newSearchesSearchString", "field_type": "String or null", "description": "An optional search string to view only the new items. Null if there are no new items."}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedSearchCard&gt; or null </td>
+<td>
+<p>The list of saved search cards for the current page.</p>
+</td>
+</tr>
+
+</table>
+<h3>This type is not used directly, refer to usage of the following sub-types.</h3>
+<table class="dense">
+<tr>
+<th>SavedSearchListViewModel</th>
+<td>&lt;SavedSearchListViewModel&gt;</td>
+<td></td>
+</tr>
+<tr>
+<th>Usage</th>
+<td colspan="2">
+                                Format for JSON { "__type"="SavedSearchListViewModel:http://api.trademe.co.nz/v1" } <br/>
+                                Format for XML &lt; i:type="SavedSearchListViewModel"&gt;
+                            </td>
+</tr>
+<tr>
+<td colspan="3">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of items available across all pages.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The current page number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items per page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Version </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The version of the view model.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedSearchCard&gt; or null </td>
+<td>
+<p>The list of saved search cards for the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> favouriteId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchApi </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include "General", "Motors/Used", etc.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>General</td>
+<td>0</td>
+<td>
+<p>General search.</p>
+</td>
+</tr>
+<tr>
+<td>UsedMotors</td>
+<td>1</td>
+<td>
+<p>Used cars.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBoat</td>
+<td>2</td>
+<td>
+<p>Motor boats.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBike</td>
+<td>3</td>
+<td>
+<p>Motor bikes.</p>
+</td>
+</tr>
+<tr>
+<td>Residential</td>
+<td>4</td>
+<td>
+<p>Residential property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>Rental</td>
+<td>5</td>
+<td>
+<p>Residential property to rent.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialSale</td>
+<td>6</td>
+<td>
+<p>Commercial property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialLease</td>
+<td>7</td>
+<td>
+<p>Commercial property leases.</p>
+</td>
+</tr>
+<tr>
+<td>Rural</td>
+<td>8</td>
+<td>
+<p>Rural property.</p>
+</td>
+</tr>
+<tr>
+<td>Lifestyle</td>
+<td>9</td>
+<td>
+<p>Lifestyle blocks.</p>
+</td>
+</tr>
+<tr>
+<td>Flatmate</td>
+<td>10</td>
+<td>
+<p>Flatmates.</p>
+</td>
+</tr>
+<tr>
+<td>OpenHomes</td>
+<td>11</td>
+<td>
+<p>Open homes.</p>
+</td>
+</tr>
+<tr>
+<td>Retirement</td>
+<td>12</td>
+<td>
+<p>Retirement villages.</p>
+</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>13</td>
+<td>
+<p>Jobs.</p>
+</td>
+</tr>
+<tr>
+<td>NewHomes</td>
+<td>14</td>
+<td>
+<p>New Homes property.</p>
+</td>
+</tr>
+<tr>
+<td>Caravan</td>
+<td>15</td>
+<td>
+<p>Motors caravan property</p>
+</td>
+</tr>
+<tr>
+<td>Motorhome</td>
+<td>16</td>
+<td>
+<p>Motors motorhomes property</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> emailOptions </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates how often the email updates should be sent for this favourite.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No emails are sent.</p>
+</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>1</td>
+<td>
+<p>An email is sent every day.</p>
+</td>
+</tr>
+<tr>
+<td>Every3Days</td>
+<td>3</td>
+<td>
+<p>An email is sent each third day.</p>
+</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td>7</td>
+<td>
+<p>An email is sent every week.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> option </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The favourite type. Only used when updating and deleting.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Nothing</p>
+</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>1</td>
+<td>
+<p>Category</p>
+</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>3</td>
+<td>
+<p>General search</p>
+</td>
+</tr>
+<tr>
+<td>AttributeSearch</td>
+<td>4</td>
+<td>
+<p>Attributed search</p>
+</td>
+</tr>
+<tr>
+<td>Seller</td>
+<td>6</td>
+<td>
+<p>Seller</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> favouritePushFrequency </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The push notification of the favourite, which the <b>FavouriteId</b> property refers to.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Push not enabled for this favourite.</p>
+</td>
+</tr>
+<tr>
+<td>Instant</td>
+<td>1</td>
+<td>
+<p>Push is enabled for this favourite.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> lastAccessed </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date the favourite was last accessed in UTC format.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The custom name the user has given to the saved search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The primary title to display for the saved search card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> subTitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The secondary text or subtitle to display for the saved search card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> imageUrls </th>
+<td style="width: 22%"> Collection of String </td>
+<td>
+<p>A URL for a representative images to display on the card. This could be a single image or a static map image.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> hasNewSearches </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>A flag indicating if there are new results for this search since it was last viewed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> newSearchText </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display text for the new results label (e.g., "15 new").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> newSearchesSearchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>An optional search string to view only the new items. Null if there are no new items.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;VersionedSavedSearchListViewModel xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+  &lt;Page&gt;123&lt;/Page&gt;
+  &lt;PageSize&gt;123&lt;/PageSize&gt;
+  &lt;Version&gt;ABC&lt;/Version&gt;
+  &lt;List&gt;
+    &lt;SavedSearchCard&gt;
+      &lt;favouriteId&gt;123&lt;/favouriteId&gt;
+      &lt;searchApi&gt;General&lt;/searchApi&gt;
+      &lt;searchString&gt;ABC&lt;/searchString&gt;
+      &lt;emailOptions&gt;None&lt;/emailOptions&gt;
+      &lt;option&gt;None&lt;/option&gt;
+      &lt;favouritePushFrequency&gt;None&lt;/favouritePushFrequency&gt;
+      &lt;lastAccessed&gt;2018-01-01T00:00:00Z&lt;/lastAccessed&gt;
+      &lt;searchName&gt;ABC&lt;/searchName&gt;
+      &lt;title&gt;ABC&lt;/title&gt;
+      &lt;subTitle&gt;ABC&lt;/subTitle&gt;
+      &lt;imageUrls&gt;
+        &lt;string&gt;ABC&lt;/string&gt;
+        &lt;string&gt;ABC&lt;/string&gt;
+      &lt;/imageUrls&gt;
+      &lt;hasNewSearches&gt;false&lt;/hasNewSearches&gt;
+      &lt;newSearchText&gt;ABC&lt;/newSearchText&gt;
+      &lt;newSearchesSearchString&gt;ABC&lt;/newSearchesSearchString&gt;
+    &lt;/SavedSearchCard&gt;
+    &lt;SavedSearchCard&gt;
+      &lt;favouriteId&gt;123&lt;/favouriteId&gt;
+      &lt;searchApi&gt;General&lt;/searchApi&gt;
+      &lt;searchString&gt;ABC&lt;/searchString&gt;
+      &lt;emailOptions&gt;None&lt;/emailOptions&gt;
+      &lt;option&gt;None&lt;/option&gt;
+      &lt;favouritePushFrequency&gt;None&lt;/favouritePushFrequency&gt;
+      &lt;lastAccessed&gt;2018-01-01T00:00:00Z&lt;/lastAccessed&gt;
+      &lt;searchName&gt;ABC&lt;/searchName&gt;
+      &lt;title&gt;ABC&lt;/title&gt;
+      &lt;subTitle&gt;ABC&lt;/subTitle&gt;
+      &lt;imageUrls&gt;
+        &lt;string&gt;ABC&lt;/string&gt;
+        &lt;string&gt;ABC&lt;/string&gt;
+      &lt;/imageUrls&gt;
+      &lt;hasNewSearches&gt;false&lt;/hasNewSearches&gt;
+      &lt;newSearchText&gt;ABC&lt;/newSearchText&gt;
+      &lt;newSearchesSearchString&gt;ABC&lt;/newSearchesSearchString&gt;
+    &lt;/SavedSearchCard&gt;
+  &lt;/List&gt;
+&lt;/VersionedSavedSearchListViewModel&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "Version": "ABC",
+  "List": [
+    {
+      "favouriteId": 123,
+      "searchApi": 0,
+      "searchString": "ABC",
+      "emailOptions": 0,
+      "option": 0,
+      "favouritePushFrequency": 0,
+      "lastAccessed": "\/Date(1514764800)\/",
+      "searchName": "ABC",
+      "title": "ABC",
+      "subTitle": "ABC",
+      "imageUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "hasNewSearches": false,
+      "newSearchText": "ABC",
+      "newSearchesSearchString": "ABC"
+    },
+    {
+      "favouriteId": 123,
+      "searchApi": 0,
+      "searchString": "ABC",
+      "emailOptions": 0,
+      "option": 0,
+      "favouritePushFrequency": 0,
+      "lastAccessed": "\/Date(1514764800)\/",
+      "searchName": "ABC",
+      "title": "ABC",
+      "subTitle": "ABC",
+      "imageUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "hasNewSearches": false,
+      "newSearchText": "ABC",
+      "newSearchesSearchString": "ABC"
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

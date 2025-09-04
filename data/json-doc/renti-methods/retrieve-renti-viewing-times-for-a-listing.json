@@ -1,0 +1,53 @@
+{
+  "endpoint": "RetrieveRentiViewingTimesForAListing",
+  "title": "Retrieve Renti viewing times for a listing",
+  "description": "Retrieve renti viewing times for a listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/renti-methods/retrieve-renti-viewing-times-for-a-listing",
+  "url": "https://api.trademe.co.nz/v1/Property/Renti/ViewingTimes/{listingId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<RentiViewingsResponse> Response object with available listing times.",
+    "fields": []
+  },
+  "examples": {
+    "response_json": {}
+  }
+}

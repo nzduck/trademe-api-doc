@@ -1,0 +1,1935 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/job-position-methods/create-a-job-position -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Create a job Position</h1>
+<!-- Page content -->
+<p>Creates a job Position</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Positions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> dry_run </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Whether to do a dry run of the create operation. When doing a dry run, no data is updated or saved.</p>
+</td>
+</tr>
+</table>
+<h2> POST Data </h2>
+<p> &lt;PositionSaveRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The title of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositionListings </th>
+<td style="width: 22%"> Collection of &lt;PositionListingSaveRequest&gt; (optional) </td>
+<td>
+<p>The position listings for the position. When the state is external these will be created as public Trade Me listings. At present you can only have one live position listing per position, and you must provide a position listing to create an external position.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PositionListingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The id of the position listing, if it already exists. Omit from request if creating a new position listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShortDescription </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A short description used to differentiate the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferenceId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A reference id to help track the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayAndBenefits </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A description of the pay and benefits of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ContactDetails </th>
+<td style="width: 22%"> &lt;PositionListingContactDetailsSave&gt; (optional) </td>
+<td>
+<p>Details for who to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ContactName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the person to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PreferredApplicationMethod </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The preferred way for applicants to apply</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailAddress </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The email address of the person to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ApplicationUrl </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The url to send applicants to if using an off site application method</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhoneNumbers </th>
+<td style="width: 22%"> Collection of &lt;PhoneNumberDetails&gt; (optional) </td>
+<td>
+<p>Phone numbers of people to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Prefix </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The prefix of the phone number</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Number </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The rest of the phone number</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Descriptions </th>
+<td style="width: 22%"> Collection of &lt;PositionListingDescription&gt; (optional) </td>
+<td>
+<p>The descriptions of the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The type of the description</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The text of the description</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Promotions </th>
+<td style="width: 22%"> &lt;PositionListingPromotionSave&gt; (optional) </td>
+<td>
+<p>The promotions for the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BundleType </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The type of promotion bundle</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>None</p>
+</td>
+</tr>
+<tr>
+<td>Bronze</td>
+<td>1</td>
+<td>
+<p>Bronze</p>
+</td>
+</tr>
+<tr>
+<td>Silver</td>
+<td>2</td>
+<td>
+<p>Silver</p>
+</td>
+</tr>
+<tr>
+<td>Gold</td>
+<td>3</td>
+<td>
+<p>Gold</p>
+</td>
+</tr>
+<tr>
+<td>Platinum</td>
+<td>4</td>
+<td>
+<p>Platinum</p>
+</td>
+</tr>
+<tr>
+<td>Fifth</td>
+<td>5</td>
+<td>
+<p>Fifth</p>
+</td>
+</tr>
+<tr>
+<td>Sixth</td>
+<td>6</td>
+<td>
+<p>Sixth</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PromotionData </th>
+<td style="width: 22%"> &lt;PromotionDataSave&gt; (optional) </td>
+<td>
+<p>The data required for the promotion bundle</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> Collection of &lt;PositionBrandingItemSave&gt; (optional) </td>
+<td>
+<p>The branding for the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BrandingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The id of the branding item</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingType </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The type of the branding item: Logo or Banner</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BulletPoints </th>
+<td style="width: 22%"> Collection of String (optional) </td>
+<td>
+<p>The bullet points for the featured position listing</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EnabledPromotions </th>
+<td style="width: 22%"> Collection of Enumeration (optional) </td>
+<td>
+<p>The promotions that apply to the position listing</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Featured</td>
+<td>1</td>
+<td>
+<p>Position listing is featured</p>
+</td>
+</tr>
+<tr>
+<td>Branded</td>
+<td>2</td>
+<td>
+<p>Position listing is branded</p>
+</td>
+</tr>
+<tr>
+<td>SevenDayListing</td>
+<td>3</td>
+<td>
+<p>Position listing is a seven day listing</p>
+</td>
+</tr>
+<tr>
+<td>BulletPoints</td>
+<td>4</td>
+<td>
+<p>Position listing can have bullet points</p>
+</td>
+</tr>
+<tr>
+<td>CandidateDatabaseAccess</td>
+<td>5</td>
+<td>
+<p>Candidate database access granted</p>
+</td>
+</tr>
+<tr>
+<td>Photos</td>
+<td>6</td>
+<td>
+<p>Position listing can have photos</p>
+</td>
+</tr>
+<tr>
+<td>Video</td>
+<td>7</td>
+<td>
+<p>Position listing can have videos</p>
+</td>
+</tr>
+<tr>
+<td>PromotedListing</td>
+<td>8</td>
+<td>
+<p>Position listing can have promoted listing</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoIds </th>
+<td style="width: 22%"> Collection of Integer (optional) </td>
+<td>
+<p>The list of photo IDs to be displayed with the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VideoKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The id of the video to be displayed with the position. Only YouTube video ids are supported.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalaryOptIn </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates if the advertiser has opted in to display salary data in LDP/SRP.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositionCompanyName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the company where the position is vacant</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryIds </th>
+<td style="width: 22%"> Collection of Integer (optional) </td>
+<td>
+<p>The IDs of the categories for the position. Currently only one category ID is supported.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayType </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Indicates the type of pay for the position. e.g. Hourly or salary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayMin </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The minimum pay for the position.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayMax </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The maximum pay for the position.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmploymentDurationType </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Indicates the type of duration for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmploymentType </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Indicates the type of employment for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Locations </th>
+<td style="width: 22%"> Collection of &lt;PositionLocation&gt; (optional) </td>
+<td>
+<p>The locations of the position</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DistrictId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The district id of the location</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PublishedState </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The published state for the position: Draft or External</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsEntryLevel </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether this is an entry level position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsWorkFromHome </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether working from home is available for this position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DraftId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The draft id (guid) from job smart (if present)</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PositionSaveResponse&gt; </p>
+<p>Information about the creation of a position</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Position </th>
+<td style="width: 22%"> &lt;Position&gt; or null </td>
+<td>
+<p>The details of the saved position. Is not present during a dry run as nothing is saved.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PositionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PublishedState </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The published state of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The title of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateCreated </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the position was created</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateModified </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the position was modified</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateArchived </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date the position was archived</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasLiveListing </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the position has any live listings</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Listings </th>
+<td style="width: 22%"> Collection of &lt;PositionListingDetails&gt; or null </td>
+<td>
+<p>The listings for the position</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PositionListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The id of the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The start date of the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The end date of the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsLive </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the listing is live</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAccessible </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the listing is accessible</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShortDescription </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A short description used to differentiate the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferenceId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A reference id to help track the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayAndBenefits </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the pay and benefits of the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ContactDetails </th>
+<td style="width: 22%"> &lt;PositionListingContactDetails&gt; or null </td>
+<td>
+<p>Details for who to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ContactName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the person to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PreferredApplicationMethod </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The preferred way for applicants to apply</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailAddress </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The email address of the person to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ApplicationUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The url to send applicants to if using an off site application method</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhoneNumbers </th>
+<td style="width: 22%"> Collection of &lt;PhoneNumberDetails&gt; or null </td>
+<td>
+<p>Phone numbers of people to contact regarding the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Prefix </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The prefix of the phone number</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Number </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The rest of the phone number</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Descriptions </th>
+<td style="width: 22%"> Collection of &lt;PositionListingDescription&gt; or null </td>
+<td>
+<p>The descriptions of the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The type of the description</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The text of the description</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Promotions </th>
+<td style="width: 22%"> &lt;PositionListingPromotion&gt; or null </td>
+<td>
+<p>The promotions of the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "None"}, {"name": "Bronze", "value": "1", "description": "Bronze"}, {"name": "Silver", "value": "2", "description": "Silver"}, {"name": "Gold", "value": "3", "description": "Gold"}, {"name": "Platinum", "value": "4", "description": "Platinum"}, {"name": "Fifth", "value": "5", "description": "Fifth"}, {"name": "Sixth", "value": "6", "description": "Sixth"}]'>
+<th style="width: 22%"> BundleType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of promotion bundle</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> PromotionData </th>
+<td style="width: 22%"> &lt;PromotionData&gt; or null </td>
+<td>
+<p>The data required for the promotion bundle</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> Collection of &lt;PromotionBrandingItem&gt; or null </td>
+<td>
+<p>The branding for the position listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BrandingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the branding item</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The type of the branding item: Logo or Banner</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingUri </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The uri for the branding image</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsDeleted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the branding is deleted</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BulletPoints </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>The bullet points for the featured position listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CandidateAccessQuota </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The available quota for profile unlocks in the candidate database</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Featured", "value": "1", "description": "Position listing is featured"}, {"name": "Branded", "value": "2", "description": "Position listing is branded"}, {"name": "SevenDayListing", "value": "3", "description": "Position listing is a seven day listing"}, {"name": "BulletPoints", "value": "4", "description": "Position listing can have bullet points"}, {"name": "CandidateDatabaseAccess", "value": "5", "description": "Candidate database access granted"}, {"name": "Photos", "value": "6", "description": "Position listing can have photos"}, {"name": "Video", "value": "7", "description": "Position listing can have videos"}, {"name": "PromotedListing", "value": "8", "description": "Position listing can have promoted listing"}]'>
+<th style="width: 22%"> EnabledPromotions </th>
+<td style="width: 22%"> Collection of Enumeration or null </td>
+<td>
+<p>The promotions that apply to the position listing</p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoIds </th>
+<td style="width: 22%"> Collection of Integer or null </td>
+<td>
+<p>The photo IDs of the position listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoDetails </th>
+<td style="width: 22%"> Collection of &lt;PositionListingPhotoDetail&gt; or null </td>
+<td>
+<p>A collection of photos for the listing. This collection is read-only.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the photo</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Urls </th>
+<td style="width: 22%"> &lt;PositionListingPhotoUrls&gt; or null </td>
+<td>
+<p>All the photo urls for different sized versions of the photo.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Thumbnail </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Medium </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Gallery </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Large </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FullSize </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PlusSize </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the plus sized photo (scaled down to fit).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TransformData </th>
+<td style="width: 22%"> &lt;PositionListingPhotoTransformData&gt; or null </td>
+<td>
+<p>The transform information if the photo was transformed. Null otherwise.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> SourcePhotoDetails </th>
+<td style="width: 22%"> &lt;PositionListingSourcePhotoDetails&gt; or null </td>
+<td>
+<p>Details of the original source photo used for the transformation.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the original source photo used for the transformation.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Urls </th>
+<td style="width: 22%"> &lt;PositionListingPhotoUrls&gt; or null </td>
+<td>
+<p>The photo urls for different sized versions of the source photo.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Dimensions </th>
+<td style="width: 22%"> &lt;PositionListingPhotoDimensions&gt; or null </td>
+<td>
+<p>The dimensions of the source photo.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Width </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The width of the photo in pixels.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Height </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The height of the photo in pixels.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Rotation </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of degrees the original was rotated clockwise.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Crop </th>
+<td style="width: 22%"> &lt;BoundingBox&gt; or null </td>
+<td>
+<p>The bounding box of where the original photo was cropped.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Min </th>
+<td style="width: 22%"> &lt;BoundingPoint&gt; or null </td>
+<td>
+<p>A point representing the top left of the bounding box</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> X </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The point on the X axis</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Y </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The point on the Y axis</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Max </th>
+<td style="width: 22%"> &lt;BoundingPoint&gt; or null </td>
+<td>
+<p>A point representing the bottom left of the bounding box</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Dimensions </th>
+<td style="width: 22%"> &lt;PositionListingPhotoDimensions&gt; or null </td>
+<td>
+<p>The dimensions of the photo. If the photo has been transformed (eg. cropped or rotated), it will be the transformed photo dimensions.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Video </th>
+<td style="width: 22%"> &lt;PositionListingVideoDetails&gt; or null </td>
+<td>
+<p>Details of the video for the listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> VideoKey </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The id of the video</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Thumbnails </th>
+<td style="width: 22%"> Collection of &lt;PositionListingVideoThumbnail&gt; or null </td>
+<td>
+<p>Thumbnails for the video.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The url of the thumbnail</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Size </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The size of the thumbnail. Possible values are "Index", "Medium" and "High".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Width </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The width of the thumbnail</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Height </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The height of the thumbnail</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalaryOptIn </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the advertiser has opted in to display salary data in LDP/SRP.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OwnerCompanyId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the company who owns the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositionCompanyName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the company where the position is vacant</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryIds </th>
+<td style="width: 22%"> Collection of Integer or null </td>
+<td>
+<p>The IDs of the categories for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Indicates the type of pay for the position. e.g. Hourly or salary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayMin </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The minimum pay for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayMax </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The maximum pay for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmploymentDurationType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Indicates the type of duration for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmploymentType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Indicates the type of employment for the position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Self </th>
+<td style="width: 22%"> &lt;Link&gt; or null </td>
+<td>
+<p>A link to retrieve this position resource</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Href </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>An HREF representing the uri to the resource</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Rel </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A REL representing the relationship between the sending resource and the linked resource</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Prompt </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A PROMPT, optional display text to represent the resource to a user</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Method </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Locations </th>
+<td style="width: 22%"> Collection of &lt;PositionLocation&gt; or null </td>
+<td>
+<p>The locations of the position</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DistrictId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The district id of the location</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsEntryLevel </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this is an entry level position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsWorkFromHome </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether working from home is available for this position</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeeSummary </th>
+<td style="width: 22%"> &lt;FeeSummary&gt; or null </td>
+<td>
+<p>The details of the fees to create a position and listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCost </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The total price for the position.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalCostGstExcluded </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The total price for the position excluding GST.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InsufficientBalance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates the member has insufficient funds to pay the total price for the position.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinimumRequiredTopUpAmount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The minimum top up amount required in order to pay for this position</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeeItems </th>
+<td style="width: 22%"> Collection of &lt;FeeItem&gt; or null </td>
+<td>
+<p>A collection of fee items.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The transaction type.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount that will be charged</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AmountGstExcluded </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount excluding GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WillBeInvoiced </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this fee item will be invoiced, rather than deducted from the member's trade me balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ProvidingSource </th>
+<td style="width: 22%"> &lt;FeeItemProvidingSource&gt; or null </td>
+<td>
+<p>The providing source for this item when the member doesn't have to pay for it</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the providing source.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Remaining </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items remaining in this source, or 0 if the source is unlimited.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsUnlimited </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>True if it is possible to create unlimited listings at the provided rate</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Title": "ABC",
+  "PositionListings": [
+    {
+      "PositionListingId": 123,
+      "ShortDescription": "ABC",
+      "ReferenceId": "ABC",
+      "PayAndBenefits": "ABC",
+      "ContactDetails": {
+        "ContactName": "ABC",
+        "PreferredApplicationMethod": "ABC",
+        "EmailAddress": "ABC",
+        "ApplicationUrl": "ABC",
+        "PhoneNumbers": [
+          {
+            "Prefix": "ABC",
+            "Number": "ABC"
+          },
+          {
+            "Prefix": "ABC",
+            "Number": "ABC"
+          }
+        ]
+      },
+      "Descriptions": [
+        {
+          "Type": "ABC",
+          "Text": "ABC"
+        },
+        {
+          "Type": "ABC",
+          "Text": "ABC"
+        }
+      ],
+      "Promotions": {
+        "BundleType": 0,
+        "PromotionData": {
+          "Branding": [
+            {
+              "BrandingId": 123,
+              "BrandingType": "ABC"
+            },
+            {
+              "BrandingId": 123,
+              "BrandingType": "ABC"
+            }
+          ],
+          "BulletPoints": [
+            "ABC",
+            "ABC"
+          ]
+        },
+        "EnabledPromotions": [
+          1,
+          1
+        ]
+      },
+      "PhotoIds": [
+        123,
+        123
+      ],
+      "VideoKey": "ABC",
+      "SalaryOptIn": false
+    },
+    {
+      "PositionListingId": 123,
+      "ShortDescription": "ABC",
+      "ReferenceId": "ABC",
+      "PayAndBenefits": "ABC",
+      "ContactDetails": {
+        "ContactName": "ABC",
+        "PreferredApplicationMethod": "ABC",
+        "EmailAddress": "ABC",
+        "ApplicationUrl": "ABC",
+        "PhoneNumbers": [
+          {
+            "Prefix": "ABC",
+            "Number": "ABC"
+          },
+          {
+            "Prefix": "ABC",
+            "Number": "ABC"
+          }
+        ]
+      },
+      "Descriptions": [
+        {
+          "Type": "ABC",
+          "Text": "ABC"
+        },
+        {
+          "Type": "ABC",
+          "Text": "ABC"
+        }
+      ],
+      "Promotions": {
+        "BundleType": 0,
+        "PromotionData": {
+          "Branding": [
+            {
+              "BrandingId": 123,
+              "BrandingType": "ABC"
+            },
+            {
+              "BrandingId": 123,
+              "BrandingType": "ABC"
+            }
+          ],
+          "BulletPoints": [
+            "ABC",
+            "ABC"
+          ]
+        },
+        "EnabledPromotions": [
+          1,
+          1
+        ]
+      },
+      "PhotoIds": [
+        123,
+        123
+      ],
+      "VideoKey": "ABC",
+      "SalaryOptIn": false
+    }
+  ],
+  "PositionCompanyName": "ABC",
+  "CategoryIds": [
+    123,
+    123
+  ],
+  "PayType": "ABC",
+  "PayMin": 123.0,
+  "PayMax": 123.0,
+  "EmploymentDurationType": "ABC",
+  "EmploymentType": "ABC",
+  "Locations": [
+    {
+      "DistrictId": 123
+    },
+    {
+      "DistrictId": 123
+    }
+  ],
+  "PublishedState": "ABC",
+  "IsEntryLevel": false,
+  "IsWorkFromHome": false,
+  "DraftId": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Position": {
+    "PositionId": 123,
+    "PublishedState": "ABC",
+    "Title": "ABC",
+    "DateCreated": "\/Date(1514764800)\/",
+    "DateModified": "\/Date(1514764800)\/",
+    "DateArchived": "\/Date(1514764800)\/",
+    "HasLiveListing": false,
+    "Listings": [
+      {
+        "PositionListingId": 123,
+        "ListingId": 123,
+        "StartDate": "\/Date(1514764800)\/",
+        "EndDate": "\/Date(1514764800)\/",
+        "IsLive": false,
+        "IsAccessible": false,
+        "ShortDescription": "ABC",
+        "ReferenceId": "ABC",
+        "PayAndBenefits": "ABC",
+        "ContactDetails": {
+          "ContactName": "ABC",
+          "PreferredApplicationMethod": "ABC",
+          "EmailAddress": "ABC",
+          "ApplicationUrl": "ABC",
+          "PhoneNumbers": [
+            {
+              "Prefix": "ABC",
+              "Number": "ABC"
+            },
+            {
+              "Prefix": "ABC",
+              "Number": "ABC"
+            }
+          ]
+        },
+        "Descriptions": [
+          {
+            "Type": "ABC",
+            "Text": "ABC"
+          },
+          {
+            "Type": "ABC",
+            "Text": "ABC"
+          }
+        ],
+        "Promotions": {
+          "BundleType": 0,
+          "PromotionData": {
+            "Branding": [
+              {
+                "BrandingId": 123,
+                "BrandingType": "ABC",
+                "BrandingUri": "ABC",
+                "IsDeleted": false
+              },
+              {
+                "BrandingId": 123,
+                "BrandingType": "ABC",
+                "BrandingUri": "ABC",
+                "IsDeleted": false
+              }
+            ],
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "CandidateAccessQuota": 123
+          },
+          "EnabledPromotions": [
+            1,
+            1
+          ]
+        },
+        "PhotoIds": [
+          123,
+          123
+        ],
+        "PhotoDetails": [
+          {
+            "PhotoId": 123,
+            "Urls": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC"
+            },
+            "TransformData": {
+              "SourcePhotoDetails": {
+                "PhotoId": 123,
+                "Urls": {
+                },
+                "Dimensions": {
+                  "Width": 123,
+                  "Height": 123
+                }
+              },
+              "Rotation": 123,
+              "Crop": {
+                "Min": {
+                  "X": 123,
+                  "Y": 123
+                },
+                "Max": {
+                }
+              }
+            },
+            "Dimensions": {
+            }
+          },
+          {
+            "PhotoId": 123,
+            "Urls": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC"
+            },
+            "TransformData": {
+              "SourcePhotoDetails": {
+                "PhotoId": 123,
+                "Urls": {
+                },
+                "Dimensions": {
+                  "Width": 123,
+                  "Height": 123
+                }
+              },
+              "Rotation": 123,
+              "Crop": {
+                "Min": {
+                  "X": 123,
+                  "Y": 123
+                },
+                "Max": {
+                }
+              }
+            },
+            "Dimensions": {
+            }
+          }
+        ],
+        "Video": {
+          "VideoKey": "ABC",
+          "Thumbnails": [
+            {
+              "Url": "ABC",
+              "Size": "ABC",
+              "Width": 123,
+              "Height": 123
+            },
+            {
+              "Url": "ABC",
+              "Size": "ABC",
+              "Width": 123,
+              "Height": 123
+            }
+          ]
+        },
+        "SalaryOptIn": false
+      },
+      {
+        "PositionListingId": 123,
+        "ListingId": 123,
+        "StartDate": "\/Date(1514764800)\/",
+        "EndDate": "\/Date(1514764800)\/",
+        "IsLive": false,
+        "IsAccessible": false,
+        "ShortDescription": "ABC",
+        "ReferenceId": "ABC",
+        "PayAndBenefits": "ABC",
+        "ContactDetails": {
+          "ContactName": "ABC",
+          "PreferredApplicationMethod": "ABC",
+          "EmailAddress": "ABC",
+          "ApplicationUrl": "ABC",
+          "PhoneNumbers": [
+            {
+              "Prefix": "ABC",
+              "Number": "ABC"
+            },
+            {
+              "Prefix": "ABC",
+              "Number": "ABC"
+            }
+          ]
+        },
+        "Descriptions": [
+          {
+            "Type": "ABC",
+            "Text": "ABC"
+          },
+          {
+            "Type": "ABC",
+            "Text": "ABC"
+          }
+        ],
+        "Promotions": {
+          "BundleType": 0,
+          "PromotionData": {
+            "Branding": [
+              {
+                "BrandingId": 123,
+                "BrandingType": "ABC",
+                "BrandingUri": "ABC",
+                "IsDeleted": false
+              },
+              {
+                "BrandingId": 123,
+                "BrandingType": "ABC",
+                "BrandingUri": "ABC",
+                "IsDeleted": false
+              }
+            ],
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "CandidateAccessQuota": 123
+          },
+          "EnabledPromotions": [
+            1,
+            1
+          ]
+        },
+        "PhotoIds": [
+          123,
+          123
+        ],
+        "PhotoDetails": [
+          {
+            "PhotoId": 123,
+            "Urls": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC"
+            },
+            "TransformData": {
+              "SourcePhotoDetails": {
+                "PhotoId": 123,
+                "Urls": {
+                },
+                "Dimensions": {
+                  "Width": 123,
+                  "Height": 123
+                }
+              },
+              "Rotation": 123,
+              "Crop": {
+                "Min": {
+                  "X": 123,
+                  "Y": 123
+                },
+                "Max": {
+                }
+              }
+            },
+            "Dimensions": {
+            }
+          },
+          {
+            "PhotoId": 123,
+            "Urls": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC"
+            },
+            "TransformData": {
+              "SourcePhotoDetails": {
+                "PhotoId": 123,
+                "Urls": {
+                },
+                "Dimensions": {
+                  "Width": 123,
+                  "Height": 123
+                }
+              },
+              "Rotation": 123,
+              "Crop": {
+                "Min": {
+                  "X": 123,
+                  "Y": 123
+                },
+                "Max": {
+                }
+              }
+            },
+            "Dimensions": {
+            }
+          }
+        ],
+        "Video": {
+          "VideoKey": "ABC",
+          "Thumbnails": [
+            {
+              "Url": "ABC",
+              "Size": "ABC",
+              "Width": 123,
+              "Height": 123
+            },
+            {
+              "Url": "ABC",
+              "Size": "ABC",
+              "Width": 123,
+              "Height": 123
+            }
+          ]
+        },
+        "SalaryOptIn": false
+      }
+    ],
+    "OwnerCompanyId": 123,
+    "PositionCompanyName": "ABC",
+    "CategoryIds": [
+      123,
+      123
+    ],
+    "PayType": "ABC",
+    "PayMin": 123.0,
+    "PayMax": 123.0,
+    "EmploymentDurationType": "ABC",
+    "EmploymentType": "ABC",
+    "Self": {
+      "Href": "ABC",
+      "Rel": "ABC",
+      "Prompt": "ABC",
+      "Method": "ABC"
+    },
+    "Locations": [
+      {
+        "DistrictId": 123
+      },
+      {
+        "DistrictId": 123
+      }
+    ],
+    "IsEntryLevel": false,
+    "IsWorkFromHome": false
+  },
+  "FeeSummary": {
+    "TotalCost": 123.0,
+    "TotalCostGstExcluded": 123.0,
+    "InsufficientBalance": false,
+    "MinimumRequiredTopUpAmount": 123.0,
+    "FeeItems": [
+      {
+        "Type": "ABC",
+        "Amount": 123.0,
+        "AmountGstExcluded": 123.0,
+        "WillBeInvoiced": false,
+        "ProvidingSource": {
+          "Name": "ABC",
+          "Remaining": 123,
+          "IsUnlimited": false
+        }
+      },
+      {
+        "Type": "ABC",
+        "Amount": 123.0,
+        "AmountGstExcluded": 123.0,
+        "WillBeInvoiced": false,
+        "ProvidingSource": {
+          "Name": "ABC",
+          "Remaining": 123,
+          "IsUnlimited": false
+        }
+      }
+    ]
+  }
+}</code></pre>
+</div>

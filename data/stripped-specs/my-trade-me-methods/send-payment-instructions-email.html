@@ -1,0 +1,112 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/send-payment-instructions-email -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Send payment instructions email</h1>
+<!-- Page content -->
+<p>Sends payment instructions to the winner of an auction. This will send an email to the buyer and will make the payment instructions available on the Trade Me website, mobile apps and third-party tools. Payment instructions can only be sent once, and cannot be sent at all if the buyer has already paid via Pay Now. You can check if payment instructions have been sent using the InvoiceId field (in the sold items API) or the PaymentInstructions field (in the listing details API). You can check if the buyer has paid using Pay Now using the IsPayNowPurchase field (in the sold items API) or the HasPaidByCreditCard field (in the listing details API).</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/SendPaymentInstructions/{purchaseId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> purchaseId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The purchase ID that identifies the buyer and the auction that was purchased.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;SendPaymentInstructionsRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Subject </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The subject line to use when sending the email. For example "Payment instructions (P12345678) - Bipedal droid".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Body </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The customizable part of the email. It is intended that this be sourced from the member's payment instructions template, but it can be completely different.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CopySeller </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If <b>true</b>, sends you a copy of the email. Defaults to <b>false</b>.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PaymentInstructionsResponse&gt; </p>
+<p>A <b>PaymentInstructionsResponse</b> containing details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Subject": "ABC",
+  "Body": "ABC",
+  "CopySeller": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC"
+}</code></pre>
+</div>

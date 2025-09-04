@@ -1,0 +1,118 @@
+{
+  "endpoint": "RetrieveDetailsAboutAJobPack",
+  "title": "Retrieve details about a job pack",
+  "description": "Retrieves fee information about a specific Job Pack",
+  "source": "https://developer.trademe.co.nz/api-reference/jobs-payment-methods/retrieve-details-about-a-job-pack",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Payments/JobPacks/{jobPackId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "jobPackId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The id of the Job Pack"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<JobPack> A JobPack containing details the Job Pack",
+    "fields": [
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the product"
+      },
+      {
+        "name": "Size",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listings provided by the product"
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "The cost of the product excluding GST"
+      },
+      {
+        "name": "Duration",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the duration of the product"
+      },
+      {
+        "name": "AddOns",
+        "type": "Collection of <AddOn> or null",
+        "required": false,
+        "description": "A collection of add-ons available for this product",
+        "nested_fields": [
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the add-on"
+          },
+          {
+            "field_name": "Price",
+            "field_type": "Number or null",
+            "description": "The price of an add-on"
+          }
+        ]
+      },
+      {
+        "name": "RequiresExtendedStatus",
+        "type": "Boolean",
+        "required": false,
+        "description": "Requires the purchaser to be a agent with extended job pack status enabled"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Id": 123,
+      "Size": 123,
+      "Price": 123.0,
+      "Duration": "ABC",
+      "AddOns": [
+        {
+          "Name": "ABC",
+          "Price": 123.0
+        },
+        {
+          "Name": "ABC",
+          "Price": 123.0
+        }
+      ],
+      "RequiresExtendedStatus": false
+    }
+  }
+}

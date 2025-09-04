@@ -1,0 +1,424 @@
+{
+  "endpoint": "RetrieveMemberProfile",
+  "title": "Retrieve member profile",
+  "description": "Retrieve the public profile for any member.",
+  "source": "https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-member-profile",
+  "url": "https://api.trademe.co.nz/v1/member/{memberId}/profile.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the member to retrieve profile information for."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MemberProfile>",
+    "fields": [
+      {
+        "name": "FirstName",
+        "type": "String or null",
+        "required": false,
+        "description": "The first name of the member."
+      },
+      {
+        "name": "Occupation",
+        "type": "String or null",
+        "required": false,
+        "description": "The occupation of the member."
+      },
+      {
+        "name": "Biography",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's bio."
+      },
+      {
+        "name": "Quote",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's favourite quote."
+      },
+      {
+        "name": "Photo",
+        "type": "String or null",
+        "required": false,
+        "description": "A URL representing the member's photo."
+      },
+      {
+        "name": "IsEnabled",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member account is enabled."
+      },
+      {
+        "name": "DateRemoved",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member profile was disabled (assuming it has been disabled)."
+      },
+      {
+        "name": "Member",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "Basic information about the member."
+      },
+      {
+        "name": "MemberId",
+        "type": "MemberId \n Integer \n\nThe ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n DateAddressVerified \n DateTime \n\nThe date the member was address verified.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n UniqueNegative \n Integer \n\nThe number of distinct members who have placed negative feedback against this member.\n\n\n\n UniquePositive \n Integer \n\nThe number of distinct members who have placed positive feedback against this member.\n\n\n\n FeedbackCount \n Integer \n\nThe member's total feedback (UniquePositive minus UniqueNegative).\n\n\n\n IsAddressVerified \n Boolean \n\nIndicates whether the member has been address verified.\n\n\n\n Suburb \n String or null \n\nThe name of the member's suburb.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the member is a car dealer.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member is authenticated.\n\n\n\n IsInTrade \n Boolean \n\nIndicates whether the member is a professional trader.\n\n\n\n ImportChargesMayApply \n Boolean \n\nIndicates that the trader is an international seller, and therefore customs import charges may apply.\n\n\n\n Profile \n <SimpleMemberProfile> or null \n\nMember profile details\n\n\n\n\n\n\n Occupation \n String or null \n\nThe occupation of the member.\n\n\n\n Biography \n String or null \n\nThe member's bio.\n\n\n\n Quote \n String or null \n\nThe member's favourite quote.\n\n\n\n Photo \n String or null \n\nA URL representing the member's photo.\n\n\n\n\n\n\n IsTopSeller \n Boolean \n\nIndicates whether the member is currently a Top Seller\n\n\n\n IsRentiUser \n Boolean \n\nIndicates whether the member is a renti user.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "DateAddressVerified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member was address verified."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed negative feedback against this member."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed positive feedback against this member."
+      },
+      {
+        "name": "FeedbackCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+      },
+      {
+        "name": "IsAddressVerified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been address verified."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the member's suburb."
+      },
+      {
+        "name": "IsDealer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a car dealer."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is authenticated."
+      },
+      {
+        "name": "IsInTrade",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a professional trader."
+      },
+      {
+        "name": "ImportChargesMayApply",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates that the trader is an international seller, and therefore customs import charges may apply."
+      },
+      {
+        "name": "Profile",
+        "type": "<SimpleMemberProfile> or null",
+        "required": false,
+        "description": "Member profile details"
+      },
+      {
+        "name": "Occupation",
+        "type": "Occupation \n String or null \n\nThe occupation of the member.\n\n\n\n Biography \n String or null \n\nThe member's bio.\n\n\n\n Quote \n String or null \n\nThe member's favourite quote.\n\n\n\n Photo \n String or null \n\nA URL representing the member's photo.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Occupation",
+        "type": "String or null",
+        "required": false,
+        "description": "The occupation of the member."
+      },
+      {
+        "name": "Biography",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's bio."
+      },
+      {
+        "name": "Quote",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's favourite quote."
+      },
+      {
+        "name": "Photo",
+        "type": "String or null",
+        "required": false,
+        "description": "A URL representing the member's photo."
+      },
+      {
+        "name": "IsTopSeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is currently a Top Seller"
+      },
+      {
+        "name": "IsRentiUser",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a renti user."
+      },
+      {
+        "name": "FavouriteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of a favourite seller, if the call is authenticated and this member is a favourite seller for the authenticated caller."
+      },
+      {
+        "name": "Store",
+        "type": "<Store> or null",
+        "required": false,
+        "description": "Store details, if the seller has been set up as a Trade Me store."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the store.\n\n\n\n LogoImageUri \n String or null \n\nThe URL of a small logo image (180x52).\n\n\n\n BannerImageUri \n String or null \n\nThe URL of a banner image. Stores extra banner images are 960x120. Store banner images are 633x75. When requesting listing details, only stores extra listings have a banner image.\n\n\n\n Promotions \n Collection of <StorePromotion> or null \n\nA collection of promotional images. Only applies to stores extra.\n\n\n\n\n\n\n ImageUri \n String or null \n\nThe URL of the promotional image 760x240.\n\n\n\n\n\n\n ShortDescription \n String or null \n\nA short description of what the store sells. Only returned when browsing the stores list.\n\n\n\n LargeBannerImage \n <LargeBannerImage> or null \n\nThe URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image.\n\n\n\n\n\n\n Small \n String or null \n\nThe URL of the promotional image in small size 320x180\n\n\n\n Medium \n String or null \n\nThe URL of the promotional image in medium size 768x432.\n\n\n\n Large \n String or null \n\nThe URL of the promotional image in large size 1024x576.\n\n\n\n XLarge \n String or null \n\nThe URL of the promotional image in extra large size 1440x810.\n\n\n\n\n\n\n StorePath \n String or null \n\nA url friendly path for the store, that is unique.\n\n\n\n Location \n String or null \n\nThe location for this store\n\n\n\n PhoneNumber \n String or null \n\nThe phone number for this store\n\n\n\n Website \n String or null \n\nThe website for this store\n\n\n\n Member \n <Member> or null \n\nThe member details associated with this store\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the store."
+      },
+      {
+        "name": "LogoImageUri",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of a small logo image (180x52)."
+      },
+      {
+        "name": "BannerImageUri",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of a banner image. Stores extra banner images are 960x120. Store banner images are 633x75. When requesting listing details, only stores extra listings have a banner image."
+      },
+      {
+        "name": "Promotions",
+        "type": "Collection of <StorePromotion> or null",
+        "required": false,
+        "description": "A collection of promotional images. Only applies to stores extra."
+      },
+      {
+        "name": "ImageUri",
+        "type": "ImageUri \n String or null \n\nThe URL of the promotional image 760x240.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ImageUri",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the promotional image 760x240."
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String or null",
+        "required": false,
+        "description": "A short description of what the store sells. Only returned when browsing the stores list."
+      },
+      {
+        "name": "LargeBannerImage",
+        "type": "<LargeBannerImage> or null",
+        "required": false,
+        "description": "The URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image."
+      },
+      {
+        "name": "Small",
+        "type": "Small \n String or null \n\nThe URL of the promotional image in small size 320x180\n\n\n\n Medium \n String or null \n\nThe URL of the promotional image in medium size 768x432.\n\n\n\n Large \n String or null \n\nThe URL of the promotional image in large size 1024x576.\n\n\n\n XLarge \n String or null \n\nThe URL of the promotional image in extra large size 1440x810.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Small",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the promotional image in small size 320x180"
+      },
+      {
+        "name": "Medium",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the promotional image in medium size 768x432."
+      },
+      {
+        "name": "Large",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the promotional image in large size 1024x576."
+      },
+      {
+        "name": "XLarge",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the promotional image in extra large size 1440x810."
+      },
+      {
+        "name": "StorePath",
+        "type": "String or null",
+        "required": false,
+        "description": "A url friendly path for the store, that is unique."
+      },
+      {
+        "name": "Location",
+        "type": "String or null",
+        "required": false,
+        "description": "The location for this store"
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The phone number for this store"
+      },
+      {
+        "name": "Website",
+        "type": "String or null",
+        "required": false,
+        "description": "The website for this store"
+      },
+      {
+        "name": "Member",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "The member details associated with this store"
+      },
+      {
+        "name": "IsPropertyAgent",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is registered as a property agent."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "FirstName": "ABC",
+      "Occupation": "ABC",
+      "Biography": "ABC",
+      "Quote": "ABC",
+      "Photo": "ABC",
+      "IsEnabled": false,
+      "DateRemoved": "/Date(1514764800)/",
+      "Member": {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "/Date(1514764800)/",
+        "DateJoined": "/Date(1514764800)/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "Suburb": "ABC",
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "IsInTrade": false,
+        "ImportChargesMayApply": false,
+        "Profile": {
+          "Occupation": "ABC",
+          "Biography": "ABC",
+          "Quote": "ABC",
+          "Photo": "ABC"
+        },
+        "IsTopSeller": false,
+        "IsRentiUser": false
+      },
+      "FavouriteId": 123,
+      "Store": {
+        "Name": "ABC",
+        "LogoImageUri": "ABC",
+        "BannerImageUri": "ABC",
+        "Promotions": [
+          {
+            "ImageUri": "ABC"
+          },
+          {
+            "ImageUri": "ABC"
+          }
+        ],
+        "ShortDescription": "ABC",
+        "LargeBannerImage": {
+          "Small": "ABC",
+          "Medium": "ABC",
+          "Large": "ABC",
+          "XLarge": "ABC"
+        },
+        "StorePath": "ABC",
+        "Location": "ABC",
+        "PhoneNumber": "ABC",
+        "Website": "ABC",
+        "Member": {}
+      },
+      "IsPropertyAgent": false
+    }
+  }
+}

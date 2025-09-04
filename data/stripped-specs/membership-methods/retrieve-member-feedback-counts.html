@@ -1,0 +1,162 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-member-feedback-counts -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve member feedback counts</h1>
+<!-- Page content -->
+<p>Returns feedback summary information for a member.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/member/{memberId}/FeedbackCount.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> memberId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the member to retrieve feedback summary information for.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> since </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>Ignores any feedback from before this date.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FeedbackCount&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total of the feedback taking unique postive and negative counts into account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPositive </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of positive feedback given.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniquePositive </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of individuals who have left feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalNeutral </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of neutral feedback given.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalNegative </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of negative feedback given.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniqueNegative </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of negative feedback given.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastLoggedIn </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The time the member last logged in.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateJoined </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member joined.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TwoMonthListingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of listing in the past 2 months by this member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAuthenticated </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has been authenticated.</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><a href="https://api.trademe.co.nz/v1/Member/5690/FeedbackCount.xml">https://api.trademe.co.nz/v1/Member/5690/FeedbackCount.xml</a></p>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "TotalPositive": 123,
+  "UniquePositive": 123,
+  "TotalNeutral": 123,
+  "TotalNegative": 123,
+  "UniqueNegative": 123,
+  "Nickname": "ABC",
+  "LastLoggedIn": "\/Date(1514764800)\/",
+  "DateJoined": "\/Date(1514764800)\/",
+  "TwoMonthListingCount": 123,
+  "IsAuthenticated": false
+}</code></pre>
+</div>

@@ -1,0 +1,192 @@
+{
+  "endpoint": "PostFeedbackOnAListing",
+  "title": "Post feedback on a listing",
+  "description": "Places feedback on the buyer or seller of an auction.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/post-feedback-on-a-listing",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/feedback.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<FeedbackRequest>",
+    "fields": [
+      {
+        "name": "FeedbackType",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The type of feedback given."
+      },
+      {
+        "name": "Text",
+        "type": "String (required)",
+        "required": true,
+        "description": "The text of the feedback."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the listing this feedback is for.\n\n                                This field is retained for backwards compatibility; please use PurchaseId instead."
+      },
+      {
+        "name": "IsForFpo",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether the feedback is for a fixed price offer recipient.\n\n                                This field is retained for backwards compatibility; please use PurchaseId instead."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the purchase this feedback is for. This field is a replacement for both ListingId and IsForFpo."
+      },
+      {
+        "name": "KoruTradeItemId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Koru Trade Item ID for the trade that the feedback is for. It should be used instead of PurchaseId for Koru trades."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<FeedbackResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "StatusCode",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status code indicating what went wrong if the operation failed.",
+        "enum": [
+          {
+            "name": "Ok",
+            "value": "0",
+            "description": "Success."
+          },
+          {
+            "name": "AlreadyPlaced",
+            "value": "1",
+            "description": "Feedback already posted."
+          },
+          {
+            "name": "AlreadyEdited",
+            "value": "2",
+            "description": "Feedback already edited."
+          },
+          {
+            "name": "ErrorDeleting",
+            "value": "3",
+            "description": "Error deleting."
+          },
+          {
+            "name": "MemberNotFound",
+            "value": "4",
+            "description": "The member could not be found."
+          },
+          {
+            "name": "NotSelf",
+            "value": "5",
+            "description": "Cannot give feedback on self."
+          },
+          {
+            "name": "IncorrectMember",
+            "value": "6",
+            "description": "The feedback is not for this member."
+          },
+          {
+            "name": "NotWinner",
+            "value": "7",
+            "description": "The member did not win the auction."
+          },
+          {
+            "name": "NotWinnerOffer",
+            "value": "8",
+            "description": "The member did not win the offer."
+          },
+          {
+            "name": "DatabaseError",
+            "value": "10",
+            "description": "There was another database error."
+          },
+          {
+            "name": "NotSupported",
+            "value": "11",
+            "description": "The feedback type is not supported."
+          },
+          {
+            "name": "NoFixedPriceOffer",
+            "value": "12",
+            "description": "There is not a fixed price offer."
+          },
+          {
+            "name": "InvalidFeedback",
+            "value": "13",
+            "description": "The feedback text submitted is not valid."
+          }
+        ]
+      },
+      {
+        "name": "FeedbackId",
+        "type": "Integer",
+        "required": false,
+        "description": "If the operation succeeded, the ID of the new feedback."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "FeedbackType": 0,
+      "Text": "ABC",
+      "ListingId": 123,
+      "IsForFpo": false,
+      "PurchaseId": 123,
+      "KoruTradeItemId": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "StatusCode": 0,
+      "FeedbackId": 123
+    }
+  }
+}

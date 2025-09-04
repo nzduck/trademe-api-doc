@@ -1,0 +1,108 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/withdraw-a-fixed-price-offer -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Withdraw a fixed price offer</h1>
+<!-- Page content -->
+<p>Withdraws an offer that is current and not expired, accepted or rejected by all users.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/FixedPriceOffers/WithdrawOffer.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;FixedPriceOfferWithdrawalRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing that is being withdrawn, relisted or extended.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReturnListingDetails </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether full listing details should be returned in the Listing field.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FixedPriceOfferResponse&gt; </p>
+<p>Details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Code </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The result code of the offer response.</p>
+<p style="color: red">
+                                This field is always zero.  Do not use.
+                            </p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "ReturnListingDetails": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "Code": 123
+}</code></pre>
+</div>

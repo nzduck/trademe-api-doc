@@ -1,0 +1,192 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-the-fixed-price-offers-you-have-made-to-others -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve the fixed price offers you have made to others</h1>
+<!-- Page content -->
+<p>Retrieves a list of the active fixed price offers that have been made by the currently authenticated user.</p><p>Only active offers are returned. A fixed price offer is active if it has not expired, has not been accepted and has not been rejected by all participants.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/FixedPriceOffers/Offered.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> listing_id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Filters the results to the offers for a single listing. Currently a listing can only have a single offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> photo_size </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The size of the images to return in the results. Defaults to Thumbnail.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Thumbnail</td>
+<td>
+<p>The thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<td>List</td>
+<td>
+<p>The list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>
+<p>The medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td>
+<p>The gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>
+<p>The large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<td>FullSize</td>
+<td>
+<p>The full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<td>JobSearchCard</td>
+<td>
+<p>The SearchCard photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FixedPriceOffers&gt; </p>
+<p>A list of active fixed price offers.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "OfferPrice", "field_type": "Number", "description": "The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included."}, {"field_name": "OfferExpiryDate", "field_type": "DateTime", "description": "The date and time the fixed price offer expires."}, {"field_name": "Quantity", "field_type": "Integer", "description": "The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends."}, {"field_name": "ListingId", "field_type": "Integer", "description": "The listing ID of the item on offer."}, {"field_name": "Title", "field_type": "String or null", "description": "The title of the item on offer."}, {"field_name": "StartDate", "field_type": "DateTime", "description": "The date and time the auction started."}, {"field_name": "EndDate", "field_type": "DateTime", "description": "The date and time the auction ended."}, {"field_name": "BidCount", "field_type": "Integer", "description": "The number of bids placed on the auction."}, {"field_name": "Mcat", "field_type": "String or null", "description": "The identifier of the category the item is listing in."}, {"field_name": "PictureHref", "field_type": "String or null", "description": "The URL of the thumbnail photo."}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;FixedPriceOffer&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "OfferPrice": 123.0,
+      "OfferExpiryDate": "\/Date(1514764800)\/",
+      "Quantity": 123,
+      "ListingId": 123,
+      "Title": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "BidCount": 123,
+      "Mcat": "ABC",
+      "PictureHref": "ABC"
+    },
+    {
+      "OfferPrice": 123.0,
+      "OfferExpiryDate": "\/Date(1514764800)\/",
+      "Quantity": 123,
+      "ListingId": 123,
+      "Title": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "BidCount": 123,
+      "Mcat": "ABC",
+      "PictureHref": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

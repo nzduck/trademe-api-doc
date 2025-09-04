@@ -1,0 +1,170 @@
+{
+  "endpoint": "SearchByImage",
+  "title": "Search by image",
+  "description": "Converts a photo into a search that can be executed to find listings that are similar to the given photo.",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/search-by-image",
+  "url": "https://api.trademe.co.nz/v1/Photos/ImageSearch.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ImageSearchRequest>",
+    "fields": [
+      {
+        "name": "PhotoData",
+        "type": "String (required)",
+        "required": true,
+        "description": "The actual image data which is base64 encoded."
+      },
+      {
+        "name": "PreviousVersion",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to use the previous version of image search (for comparative purposes). If this is specified, it overrides the server's preference."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ImageSearchResponse>",
+    "fields": [
+      {
+        "name": "SearchApi",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL.",
+        "enum": [
+          {
+            "name": "General",
+            "value": "0",
+            "description": "General search."
+          },
+          {
+            "name": "UsedMotors",
+            "value": "1",
+            "description": "Used cars."
+          },
+          {
+            "name": "MotorBoat",
+            "value": "2",
+            "description": "Motor boats."
+          },
+          {
+            "name": "MotorBike",
+            "value": "3",
+            "description": "Motor bikes."
+          },
+          {
+            "name": "Residential",
+            "value": "4",
+            "description": "Residential property for sale."
+          },
+          {
+            "name": "Rental",
+            "value": "5",
+            "description": "Residential property to rent."
+          },
+          {
+            "name": "CommercialSale",
+            "value": "6",
+            "description": "Commercial property for sale."
+          },
+          {
+            "name": "CommercialLease",
+            "value": "7",
+            "description": "Commercial property leases."
+          },
+          {
+            "name": "Rural",
+            "value": "8",
+            "description": "Rural property."
+          },
+          {
+            "name": "Lifestyle",
+            "value": "9",
+            "description": "Lifestyle blocks."
+          },
+          {
+            "name": "Flatmate",
+            "value": "10",
+            "description": "Flatmates."
+          },
+          {
+            "name": "OpenHomes",
+            "value": "11",
+            "description": "Open homes."
+          },
+          {
+            "name": "Retirement",
+            "value": "12",
+            "description": "Retirement villages."
+          },
+          {
+            "name": "Job",
+            "value": "13",
+            "description": "Jobs."
+          },
+          {
+            "name": "NewHomes",
+            "value": "14",
+            "description": "New Homes property."
+          },
+          {
+            "name": "Caravan",
+            "value": "15",
+            "description": "Motors caravan property"
+          },
+          {
+            "name": "Motorhome",
+            "value": "16",
+            "description": "Motors motorhomes property"
+          }
+        ]
+      },
+      {
+        "name": "SearchString",
+        "type": "String or null",
+        "required": false,
+        "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "PhotoData": "ABC",
+      "PreviousVersion": false
+    },
+    "response_json": {
+      "SearchApi": 0,
+      "SearchString": "ABC"
+    }
+  }
+}

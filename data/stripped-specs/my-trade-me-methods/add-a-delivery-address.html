@@ -1,0 +1,171 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-delivery-address -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Add a delivery address</h1>
+<!-- Page content -->
+<p>Adds a delivery address to the authenticated user's profile. The phone number, if present, is ignored.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/DeliveryAddresses.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;DeliveryAddress&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The name of the person whom the item is being delivered to.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address1 </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The first line of the address.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address2 </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The second line of the address (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The suburb (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> City </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The city.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Postcode </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The postcode (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The country (currently restricted to "New Zealand" or "Australia").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The contact phone number (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsMembershipAddress </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the delivery address. The membership address always has an ID of zero. This field is ignored when adding a delivery address.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;DeliveryAddressResponse&gt; </p>
+<p>Details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DeliveryAddressId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The delivery address ID.</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><pre class="syntaxhighlighter">&lt;<span class="keyword">DeliveryAddress</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Name</span>&gt;John Doe&lt;/<span class="keyword">Name</span>&gt;<br/>  &lt;<span class="keyword">Address1</span>&gt;Parliament Buildings&lt;/<span class="keyword">Address1</span>&gt;<br/>  &lt;<span class="keyword">Address2</span>&gt;Molesworth Street&lt;/<span class="keyword">Address2</span>&gt;<br/>  &lt;<span class="keyword">Suburb</span>&gt;Wellington Central&lt;/<span class="keyword">Suburb</span>&gt;<br/>  &lt;<span class="keyword">City</span>&gt;Wellington&lt;/<span class="keyword">City</span>&gt;<br/>  &lt;<span class="keyword">Postcode</span>&gt;6160&lt;/<span class="keyword">Postcode</span>&gt;<br/>  &lt;<span class="keyword">Country</span>&gt;New Zealand&lt;/<span class="keyword">Country</span>&gt;<br/>&lt;/<span class="keyword">DeliveryAddress</span>&gt;</pre></p>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Name": "ABC",
+  "Address1": "ABC",
+  "Address2": "ABC",
+  "Suburb": "ABC",
+  "City": "ABC",
+  "Postcode": "ABC",
+  "Country": "ABC",
+  "PhoneNumber": "ABC",
+  "IsMembershipAddress": false,
+  "Id": 123
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "DeliveryAddressId": 123
+}</code></pre>
+</div>

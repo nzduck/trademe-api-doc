@@ -1,0 +1,601 @@
+{
+  "endpoint": "RetrieveYourItemsCurrentlyForSale",
+  "title": "Retrieve your items currently for sale",
+  "description": "Retrieves the authenticated user's active listings. Listings that are in the closing state are included in the list.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-items-currently-for-sale",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/sellingitems/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "A filter on the results. AllReturns all currently active listings.ClosingTodayReturn only listings that are due to close in 24 hours.ListingsWithBidsReturns listings with bids.ReserveMetReturns listings where the reserve price is met.ReserveNotMetReturns listings where the reserve price is not met.UnansweredQuestionsReturns listings with unanswered questions."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "photo_size",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The size of the images to return in the results. Defaults to Thumbnail."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      },
+      {
+        "name": "sort_order",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The order the results will be sorted. Defaults to ExpiryAsc."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<Items> A list of items currently being sold.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <Item> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "ListingId",
+        "type": "ListingId \n Integer \n\nThe ID of the listing.\n\n\n\n Title \n String or null \n\nThe listing title.\n\n\n\n Category \n String or null \n\nThe listing category.\n\n\n\n StartPrice \n Number \n\nThe start price.\n\n\n\n BuyNowPrice \n Number \n\nThe Buy Now price.\n\n\n\n StartDate \n DateTime \n\nThe date the listing was created.\n\n\n\n EndDate \n DateTime \n\nThe date the listing will end.\n\n\n\n ListingLength \n String or null \n\nThe listing length.\n\n\n\n Restrictions \n String or null \n\nThe restictions associated with the listing.\n\n\n\n IsFeatured \n Boolean \n\nIs this a featured listing?\n\n\n\n HasGallery \n Boolean \n\nIs this a gallery listing?\n\n\n\n IsBold \n Boolean \n\nIs this a bold listing?\n\n\n\n IsHighlighted \n Boolean \n\nIs this a highlighted listing?\n\n\n\n HasHomePageFeature \n Boolean \n\nIs this a homepage feature listing?\n\n\n\n HasExtraPhotos \n Boolean \n\nIs this a listing with extra photos?\n\n\n\n HasScheduledEndDate \n Boolean \n\nIs this a listing with a scheduled end date?\n\n\n\n BidderAndWatchers \n Integer \n\nThe number of bidders and watcher for this listing.\n\n\n\n MaxBidAmount \n Number \n\nThe current leading bid amount.\n\n\n\n AsAt \n DateTime \n\nThe date and time the response was generated on the server.\n\n\n\n CategoryPath \n String or null \n\nThe category path.\n\n\n\n PictureHref \n String or null \n\nThe URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.\n\n\n\n PhotoId \n Integer \n\nThe ID of the primary photo for the listing (if the listing has a photo).\n\n\n\n BidCount \n Integer \n\nThe number of bids on the item.\n\n\n\n ViewCount \n Integer \n\nThe number of times the listing has been viewed.\n\n\n\n IsReserveMet \n Boolean \n\nIndicates whether the item's reserve has been met.\n\n\n\n HasReserve \n Boolean \n\nIndicates whether the item has a reserve.\n\n\n\n HasBuyNow \n Boolean \n\nIndicates whether the item has Buy Now.\n\n\n\n NoteDate \n DateTime \n\nThe date of the note on an item.\n\n\n\n CategoryName \n String or null \n\nThe display name of the category.\n\n\n\n ReserveState \n Enumeration \n\nThe flag to display on an item.\n\n\n\n Attributes \n Collection of <Attribute> or null \n\nThe attributes for the item that are intended to be displayed on the UI.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n\n\n\n IsClassified \n Boolean \n\nIndicates whether the item is a classified.\n\n\n\n Subtitle \n String or null \n\nThe subtitle, if present.\n\n\n\n ReservePrice \n Number \n\nThe reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.\n\n\n\n IsBuyNowOnly \n Boolean \n\nIndicates whether or not this is a Buy Now Only listing.\n\n\n\n Quantity \n Integer \n\nThe total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller.\n\n\n\n RemainingGalleryPlusRelists \n Integer or null \n\nThe number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).\n\n\n\n PriceDisplay \n String or null \n\nThe price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\".\n\n\n\n ExternalReferenceId \n String or null \n\nThe external reference ID, if one exists. Only available to the seller of a listing.\n\n\n\n SKU \n String or null \n\nSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.\n\n\n\n IsClearance \n Boolean \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number or null \n\nThe usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.\n\n\n\n PercentageOff \n Integer or null \n\nThe percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.\n\n\n\n Branding \n <Branding> or null \n\nA list of branding images associated with this listing.\n\n\n\n\n\n\n LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo\n\n\n\n\n\n\n Options \n Collection of <Option> or null \n\nThe combination of variant options that this variant represents.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ListingGroupId \n Integer or null \n\nThe identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant\n\n\n\n UnansweredQuestionCount \n Integer or null \n\nThe number of unanswered questions",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing title."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing category."
+      },
+      {
+        "name": "StartPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The start price."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The Buy Now price."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing was created."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing will end."
+      },
+      {
+        "name": "ListingLength",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing length."
+      },
+      {
+        "name": "Restrictions",
+        "type": "String or null",
+        "required": false,
+        "description": "The restictions associated with the listing."
+      },
+      {
+        "name": "IsFeatured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a featured listing?"
+      },
+      {
+        "name": "HasGallery",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a gallery listing?"
+      },
+      {
+        "name": "IsBold",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a bold listing?"
+      },
+      {
+        "name": "IsHighlighted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a highlighted listing?"
+      },
+      {
+        "name": "HasHomePageFeature",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a homepage feature listing?"
+      },
+      {
+        "name": "HasExtraPhotos",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a listing with extra photos?"
+      },
+      {
+        "name": "HasScheduledEndDate",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a listing with a scheduled end date?"
+      },
+      {
+        "name": "BidderAndWatchers",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bidders and watcher for this listing."
+      },
+      {
+        "name": "MaxBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The current leading bid amount."
+      },
+      {
+        "name": "AsAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the response was generated on the server."
+      },
+      {
+        "name": "CategoryPath",
+        "type": "String or null",
+        "required": false,
+        "description": "The category path."
+      },
+      {
+        "name": "PictureHref",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the primary photo for the listing (if the listing has a photo)."
+      },
+      {
+        "name": "BidCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bids on the item."
+      },
+      {
+        "name": "ViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of times the listing has been viewed."
+      },
+      {
+        "name": "IsReserveMet",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item's reserve has been met."
+      },
+      {
+        "name": "HasReserve",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has a reserve."
+      },
+      {
+        "name": "HasBuyNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Buy Now."
+      },
+      {
+        "name": "NoteDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the note on an item."
+      },
+      {
+        "name": "CategoryName",
+        "type": "String or null",
+        "required": false,
+        "description": "The display name of the category."
+      },
+      {
+        "name": "ReserveState",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The flag to display on an item.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."
+          },
+          {
+            "name": "Met",
+            "value": "1",
+            "description": "The value of the highest bid has exceeded the reserve price."
+          },
+          {
+            "name": "NotMet",
+            "value": "2",
+            "description": "The value of the highest bid has not reached the reserve price."
+          },
+          {
+            "name": "NotApplicable",
+            "value": "3",
+            "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."
+          }
+        ]
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> or null",
+        "required": false,
+        "description": "The attributes for the item that are intended to be displayed on the UI."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "IsClassified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is a classified."
+      },
+      {
+        "name": "Subtitle",
+        "type": "String or null",
+        "required": false,
+        "description": "The subtitle, if present."
+      },
+      {
+        "name": "ReservePrice",
+        "type": "Number",
+        "required": false,
+        "description": "The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API."
+      },
+      {
+        "name": "IsBuyNowOnly",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether or not this is a Buy Now Only listing."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer",
+        "required": false,
+        "description": "The total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller."
+      },
+      {
+        "name": "RemainingGalleryPlusRelists",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect)."
+      },
+      {
+        "name": "PriceDisplay",
+        "type": "String or null",
+        "required": false,
+        "description": "The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\"."
+      },
+      {
+        "name": "ExternalReferenceId",
+        "type": "String or null",
+        "required": false,
+        "description": "The external reference ID, if one exists. Only available to the seller of a listing."
+      },
+      {
+        "name": "SKU",
+        "type": "String or null",
+        "required": false,
+        "description": "SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line."
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean",
+        "required": false,
+        "description": "This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "PercentageOff",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "Branding",
+        "type": "<Branding> or null",
+        "required": false,
+        "description": "A list of branding images associated with this listing."
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large square branding image with dimensions of 480x480."
+      },
+      {
+        "name": "LargeWideLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large rectangular branding image with dimensions of 480x200."
+      },
+      {
+        "name": "LargeBannerURL",
+        "type": "String or null",
+        "required": false,
+        "description": "The url of a larger version of the logo"
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <Option> or null",
+        "required": false,
+        "description": "The combination of variant options that this variant represents."
+      },
+      {
+        "name": "ListingGroupId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant"
+      },
+      {
+        "name": "UnansweredQuestionCount",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of unanswered questions"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ListingLength": "ABC",
+          "Restrictions": "ABC",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "HasExtraPhotos": false,
+          "HasScheduledEndDate": false,
+          "BidderAndWatchers": 123,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "BidCount": 123,
+          "ViewCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "Subtitle": "ABC",
+          "ReservePrice": 123.0,
+          "IsBuyNowOnly": false,
+          "Quantity": 123,
+          "RemainingGalleryPlusRelists": 123,
+          "PriceDisplay": "ABC",
+          "ExternalReferenceId": "ABC",
+          "SKU": "ABC",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "UnansweredQuestionCount": 123
+        },
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ListingLength": "ABC",
+          "Restrictions": "ABC",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "HasExtraPhotos": false,
+          "HasScheduledEndDate": false,
+          "BidderAndWatchers": 123,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "BidCount": 123,
+          "ViewCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "Subtitle": "ABC",
+          "ReservePrice": 123.0,
+          "IsBuyNowOnly": false,
+          "Quantity": 123,
+          "RemainingGalleryPlusRelists": 123,
+          "PriceDisplay": "ABC",
+          "ExternalReferenceId": "ABC",
+          "SKU": "ABC",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "UnansweredQuestionCount": 123
+        }
+      ]
+    }
+  }
+}

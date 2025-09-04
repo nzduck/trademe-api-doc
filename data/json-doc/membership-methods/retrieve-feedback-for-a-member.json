@@ -1,0 +1,456 @@
+{
+  "endpoint": "RetrieveFeedbackForAMember",
+  "title": "Retrieve feedback for a member",
+  "description": "Retrieves feedback information for a member. Can be filtered.",
+  "source": "https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-feedback-for-a-member",
+  "url": "https://api.trademe.co.nz/v1/member/{memberId}/Feedback/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the member to retrieve feedback information for."
+      },
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "\"Selling\", \"Buying\" or \"All\"."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      },
+      {
+        "name": "since",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Ignores any feedback from before this date."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<Feedback>",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <FeedbackItem> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "IsSeller",
+        "type": "IsSeller \n Boolean \n\nIndicates whether the feedback is from the seller.\n\n\n\n DateEntered \n DateTime \n\nThe date and time the feedback was entered.\n\n\n\n Text \n String or null \n\nThe text of the feedback.\n\n\n\n ListingId \n Integer \n\nThe ID of the listing the feedback was about.\n\n\n\n BuyNowPrice \n Number \n\nThe Buy Now price.\n\n\n\n IsAnOffer \n Boolean \n\nDetermines if the sale was an offer.\n\n\n\n MaximumBidAmount \n Number \n\nThe final bid amount.\n\n\n\n OfferPrice \n Number \n\nThe offer price (if it was a fixed price offer).\n\n\n\n DateResponded \n DateTime \n\nThe date and time the response was given to the feedback.\n\n\n\n Response \n String or null \n\nThe response to the feedback.\n\n\n\n HasReturnedFeedback \n Boolean \n\nIndicates whether a response has been given to the feedback.\n\n\n\n IsEdited \n Boolean \n\nIndicates whether the feedback has been edited.\n\n\n\n SellerId \n Integer \n\nThe member ID of the seller.\n\n\n\n FeedbackType \n Enumeration \n\nThe type of feedback given (positive, negative, etc).\n\n\n\n FeedbackFrom \n <Member> or null \n\nThe member who gave the feedback.\n\n\n\n\n\n\n MemberId \n Integer \n\nThe ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n DateAddressVerified \n DateTime \n\nThe date the member was address verified.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n UniqueNegative \n Integer \n\nThe number of distinct members who have placed negative feedback against this member.\n\n\n\n UniquePositive \n Integer \n\nThe number of distinct members who have placed positive feedback against this member.\n\n\n\n FeedbackCount \n Integer \n\nThe member's total feedback (UniquePositive minus UniqueNegative).\n\n\n\n IsAddressVerified \n Boolean \n\nIndicates whether the member has been address verified.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the member is a car dealer.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member is authenticated.\n\n\n\n\n\n\n FeedbackId \n Integer \n\nThe ID of the the feedback.\n\n\n\n PurchaseId \n Integer \n\nThe purchase-specific ID (or auction sold id). Can only be provided for feedback against listings less than 45 days old, or eCommerce listings. Feedback cannot be placed against purchases older than 45 days regardless.",
+        "required": false,
+        "description": "Boolean"
+      },
+      {
+        "name": "IsSeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the feedback is from the seller."
+      },
+      {
+        "name": "DateEntered",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the feedback was entered."
+      },
+      {
+        "name": "Text",
+        "type": "String or null",
+        "required": false,
+        "description": "The text of the feedback."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing the feedback was about."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The Buy Now price."
+      },
+      {
+        "name": "IsAnOffer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Determines if the sale was an offer."
+      },
+      {
+        "name": "MaximumBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The final bid amount."
+      },
+      {
+        "name": "OfferPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The offer price (if it was a fixed price offer)."
+      },
+      {
+        "name": "DateResponded",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the response was given to the feedback."
+      },
+      {
+        "name": "Response",
+        "type": "String or null",
+        "required": false,
+        "description": "The response to the feedback."
+      },
+      {
+        "name": "HasReturnedFeedback",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether a response has been given to the feedback."
+      },
+      {
+        "name": "IsEdited",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the feedback has been edited."
+      },
+      {
+        "name": "SellerId",
+        "type": "Integer",
+        "required": false,
+        "description": "The member ID of the seller."
+      },
+      {
+        "name": "FeedbackType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of feedback given (positive, negative, etc).",
+        "enum": [
+          {
+            "name": "Negative",
+            "value": "0",
+            "description": "Negative feedback."
+          },
+          {
+            "name": "Positive",
+            "value": "1",
+            "description": "Positive feedback."
+          },
+          {
+            "name": "Neutral",
+            "value": "2",
+            "description": "Neutral feedback."
+          },
+          {
+            "name": "TradeMe",
+            "value": "3",
+            "description": "Feedback from the Trade Me customer service team."
+          }
+        ]
+      },
+      {
+        "name": "FeedbackFrom",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "The member who gave the feedback."
+      },
+      {
+        "name": "MemberId",
+        "type": "MemberId \n Integer \n\nThe ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n DateAddressVerified \n DateTime \n\nThe date the member was address verified.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n UniqueNegative \n Integer \n\nThe number of distinct members who have placed negative feedback against this member.\n\n\n\n UniquePositive \n Integer \n\nThe number of distinct members who have placed positive feedback against this member.\n\n\n\n FeedbackCount \n Integer \n\nThe member's total feedback (UniquePositive minus UniqueNegative).\n\n\n\n IsAddressVerified \n Boolean \n\nIndicates whether the member has been address verified.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the member is a car dealer.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member is authenticated.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "DateAddressVerified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member was address verified."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed negative feedback against this member."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed positive feedback against this member."
+      },
+      {
+        "name": "FeedbackCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+      },
+      {
+        "name": "IsAddressVerified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been address verified."
+      },
+      {
+        "name": "IsDealer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a car dealer."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is authenticated."
+      },
+      {
+        "name": "FeedbackId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the the feedback."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer",
+        "required": false,
+        "description": "The purchase-specific ID (or auction sold id). Can only be provided for feedback against listings less than 45 days old, or eCommerce listings. Feedback cannot be placed against purchases older than 45 days regardless."
+      },
+      {
+        "name": "FeedbackCount",
+        "type": "<FeedbackCount> or null",
+        "required": false,
+        "description": "Feedback statistics."
+      },
+      {
+        "name": "TotalCount",
+        "type": "TotalCount \n Integer \n\nThe total of the feedback taking unique postive and negative counts into account.\n\n\n\n TotalPositive \n Integer \n\nThe number of positive feedback given.\n\n\n\n UniquePositive \n Integer \n\nThe number of individuals who have left feedback.\n\n\n\n TotalNeutral \n Integer \n\nThe number of neutral feedback given.\n\n\n\n TotalNegative \n Integer \n\nThe number of negative feedback given.\n\n\n\n UniqueNegative \n Integer \n\nThe number of negative feedback given.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n LastLoggedIn \n DateTime \n\nThe time the member last logged in.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n TwoMonthListingCount \n Integer \n\nThe number of listing in the past 2 months by this member.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member has been authenticated.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total of the feedback taking unique postive and negative counts into account."
+      },
+      {
+        "name": "TotalPositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of positive feedback given."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of individuals who have left feedback."
+      },
+      {
+        "name": "TotalNeutral",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of neutral feedback given."
+      },
+      {
+        "name": "TotalNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of negative feedback given."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of negative feedback given."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "LastLoggedIn",
+        "type": "DateTime",
+        "required": false,
+        "description": "The time the member last logged in."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "TwoMonthListingCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listing in the past 2 months by this member."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been authenticated."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "IsSeller": false,
+          "DateEntered": "/Date(1514764800)/",
+          "Text": "ABC",
+          "ListingId": 123,
+          "BuyNowPrice": 123.0,
+          "IsAnOffer": false,
+          "MaximumBidAmount": 123.0,
+          "OfferPrice": 123.0,
+          "DateResponded": "/Date(1514764800)/",
+          "Response": "ABC",
+          "HasReturnedFeedback": false,
+          "IsEdited": false,
+          "SellerId": 123,
+          "FeedbackType": 0,
+          "FeedbackFrom": {
+            "MemberId": 123,
+            "Nickname": "ABC",
+            "DateAddressVerified": "/Date(1514764800)/",
+            "DateJoined": "/Date(1514764800)/",
+            "UniqueNegative": 123,
+            "UniquePositive": 123,
+            "FeedbackCount": 123,
+            "IsAddressVerified": false,
+            "IsDealer": false,
+            "IsAuthenticated": false
+          },
+          "FeedbackId": 123,
+          "PurchaseId": 123
+        },
+        {
+          "IsSeller": false,
+          "DateEntered": "/Date(1514764800)/",
+          "Text": "ABC",
+          "ListingId": 123,
+          "BuyNowPrice": 123.0,
+          "IsAnOffer": false,
+          "MaximumBidAmount": 123.0,
+          "OfferPrice": 123.0,
+          "DateResponded": "/Date(1514764800)/",
+          "Response": "ABC",
+          "HasReturnedFeedback": false,
+          "IsEdited": false,
+          "SellerId": 123,
+          "FeedbackType": 0,
+          "FeedbackFrom": {
+            "MemberId": 123,
+            "Nickname": "ABC",
+            "DateAddressVerified": "/Date(1514764800)/",
+            "DateJoined": "/Date(1514764800)/",
+            "UniqueNegative": 123,
+            "UniquePositive": 123,
+            "FeedbackCount": 123,
+            "IsAddressVerified": false,
+            "IsDealer": false,
+            "IsAuthenticated": false
+          },
+          "FeedbackId": 123,
+          "PurchaseId": 123
+        }
+      ],
+      "FeedbackCount": {
+        "TotalCount": 123,
+        "TotalPositive": 123,
+        "UniquePositive": 123,
+        "TotalNeutral": 123,
+        "TotalNegative": 123,
+        "UniqueNegative": 123,
+        "Nickname": "ABC",
+        "LastLoggedIn": "/Date(1514764800)/",
+        "DateJoined": "/Date(1514764800)/",
+        "TwoMonthListingCount": 123,
+        "IsAuthenticated": false
+      }
+    }
+  }
+}

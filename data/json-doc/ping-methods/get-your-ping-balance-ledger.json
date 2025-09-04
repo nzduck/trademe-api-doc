@@ -1,0 +1,1015 @@
+{
+  "endpoint": "GetYourPingBalanceLedger",
+  "title": "Get your ping balance ledger",
+  "description": "Gets the ping balance ledger for the logged in member",
+  "source": "https://developer.trademe.co.nz/api-reference/ping-methods/get-your-ping-balance-ledger",
+  "url": "https://api.trademe.co.nz/v1/Ping/Transactions.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "date_from",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Exclude transactions before this date. Specify dates in the UTC time zone."
+      },
+      {
+        "name": "date_to",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Exclude transactions after this date. Specify dates in the UTC time zone."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50 and supports a maximum of 50"
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<BalanceLedgerResponse>",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <Transaction> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "TransactionId",
+        "type": "TransactionId \n Integer or null \n\nPing transaction ID.\n\n\n\n TransactionType \n Enumeration \n\nPing transaction type.\n\n\n\n TransactionDate \n DateTime \n\nDate transaction was made in UTC time zone\n\n\n\n TransactionParts \n Collection of <TransactionPart> or null \n\nThe transaction parts.\n\n\n\n\n\n\n TransactionPartType \n Enumeration \n\nType of the Transaction part.\n\n\n\n Title \n String or null \n\nTitle of the Transaction part.\n\n\n\n Amount \n Number \n\nAmount of the Transaction part.\n\n\n\n GstCollected \n Number or null \n\nGST Collected from this transaction part.\n\n\n\n ReferenceNumber \n String or null \n\nThe transaction part's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with \"P\", Withdrawals begin with \"W\", Top-ups begin \"TU\", Refunds begin with \"R\", Peer to Peer and Donations with \"Q\"\n\n\n\n Sku \n String or null \n\nSku of the Transaction part if its a purchase.\n\n\n\n\n\n\n FundSources \n <FundSources> or null \n\nSources of fund used in a transaction.\n\n                                Deprecated - use PaymentFrom instead of FundSources\n                            \n\n\n\n\n\n\n AvailableBalance \n Number or null \n\nThe current available ping balance for use in funding a purchase.\n\n\n\n FundSources \n Collection of <FundSource> or null \n\nThe collection of credit/debit card or bank account funding sources\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of fund source. If the type is unrecognised, the API client should ignore this fund source and move on to the next one.\n\n\n\n FundSourceId \n Integer \n\nA unique ID that can be passed to the purchase API to identify the fund source to use.\n\n\n\n MaskedAccountNumber \n String or null \n\nA string containing the card or bank account number, with most of the digits blacked out for privacy reasons (e.g. \"**** **** **** 1234\" for a CC or \"12 3456 ****789 00\" for a bank account).\n\n\n\n Label \n String or null \n\nThe user-provided label, if the user entered one for this fund source, or a generic label like \"Visa credit card\" otherwise.\n\n\n\n Logo \n String or null \n\nThe URL to the card or bank logo. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n DarkModeLogo \n String or null \n\nThe URL to the card or bank logo for dark mode. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n VerificationStatus \n Enumeration or null \n\nThe verification status of a bank account. Not applicable for credit/debit card fund sources.\n\n\n\n Amount \n Number or null \n\nAmount taken from the fund source.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).\n\n\n\n\n\n\n\n\n\n PaymentFrom \n Collection of <FundSource> or null \n\nFund sources the payment was made from\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n FundDestinations \n <FundDestinations> or null \n\nDestination of fund going out of the Ping account.\n\n                                Deprecated - use PaymentTo instead of FundDestinations\n                            \n\n\n\n\n\n\n Amount \n Number or null \n\nThe current available ping balance for use in funding a purchase.\n\n\n\n FundDestinations \n Collection of <FundDestination> or null \n\nThe collection of credit/debit card or bank account fund destinations.\n\n\n\n\n\n\n BankAccountId \n Integer \n\nId used to identify the bank account\n\n\n\n MaskedAccountNumber \n String or null \n\nMasked account number eg. \"12 3456 ****789 00\"\n\n\n\n Status \n Enumeration \n\nThe bank account status\n\n\n\n Label \n String or null \n\nPersonal label to identify the account\n\n\n\n Logo \n String or null \n\nFund destination logo\n\n\n\n DarkModeLogo \n String or null \n\nFund destination logo for dark mode\n\n\n\n SortOrder \n Integer or null \n\nthe order of the account, 0 being the preferential account\n\n\n\n Amount \n Number or null \n\nAmount added to the fund destination.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).\n\n\n\n\n\n\n\n\n\n PaymentTo \n Collection of <FundSource> or null \n\nFund sources the payment was made to\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Amount \n Number or null \n\nMoney either credited/deducted from the Ping account.\n\n\n\n Balance \n Number \n\nAvailable balance for the Ping account at the end of the transaction.\n\n\n\n Fees \n Number or null \n\nTotal of all Fee amounts in the transaction parts.\n\n\n\n Gst \n Number or null \n\nTotal of all Fee amounts in the transaction parts.\n\n\n\n Title \n String or null \n\nThe action causing a balance change or the listing title for purchases and sales. Refer to transaction parts for multi item purchase or topups\n\n\n\n ListingId \n String or null \n\nThe listing id. Refer transaction parts ListingId cart and purchase + topups\n\n\n\n ReferenceNumber \n String or null \n\nThe transaction's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with \"P\", Cart purchases begin with \"C\", Withdrawals begin with \"W\", Top-ups begin \"TU\", Refunds begin with \"R\", Peer to Peer and Donations with \"Q\"\n\n\n\n Sku \n String or null \n\nStock Keeping Unit (SKU) of the listing\n\n\n\n Subtitle \n String or null \n\nAdditional information regarding the transaction's action\n\n\n\n IsCart \n Boolean \n\nDetermines whether or not this transaction was used to complete a cart purchase.",
+        "required": false,
+        "description": "Integer or null"
+      },
+      {
+        "name": "TransactionId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Ping transaction ID."
+      },
+      {
+        "name": "TransactionType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Ping transaction type.",
+        "enum": [
+          {
+            "name": "Purchase",
+            "value": "0",
+            "description": "Purchase made as a buyer"
+          },
+          {
+            "name": "PurchaseReverse",
+            "value": "1",
+            "description": "Purchase made as a buyer - reversed by Trust and Safety"
+          },
+          {
+            "name": "Sale",
+            "value": "2",
+            "description": "Sale made as a seller"
+          },
+          {
+            "name": "SaleReverse",
+            "value": "3",
+            "description": "Sale made as a seller - reversed by Trust and Safety"
+          },
+          {
+            "name": "RefundToAccount",
+            "value": "4",
+            "description": "Refund given as a seller"
+          },
+          {
+            "name": "RefundFromAccount",
+            "value": "5",
+            "description": "Refund received as a buyer"
+          },
+          {
+            "name": "Withdrawal",
+            "value": "6",
+            "description": "Ping balance transfer out"
+          },
+          {
+            "name": "WithdrawalReverse",
+            "value": "7",
+            "description": "Ping balance transfer out - reversed by Trust and Safety"
+          },
+          {
+            "name": "PurchaseRelease",
+            "value": "8",
+            "description": "Purchase release"
+          },
+          {
+            "name": "SaleRelease",
+            "value": "9",
+            "description": "Sale release"
+          },
+          {
+            "name": "CartPurchase",
+            "value": "10",
+            "description": "Cart purchase made as a buyer"
+          },
+          {
+            "name": "CartSale",
+            "value": "11",
+            "description": "Cart Sale transaction"
+          },
+          {
+            "name": "Peer",
+            "value": "12",
+            "description": "Peer to Peer transaction, Donations will appear as Peer to Peer"
+          },
+          {
+            "name": "CartPurchaseReverse",
+            "value": "13",
+            "description": "Cart purchase made as a buyer - reversed by Trust and Safety"
+          },
+          {
+            "name": "RefundToAccountReverse",
+            "value": "14",
+            "description": "Refund given as a seller - reversed by Trust and Safety"
+          },
+          {
+            "name": "RefundFromAccountReverse",
+            "value": "15",
+            "description": "Refund received as a buyer - reversed by Trust and Safety"
+          },
+          {
+            "name": "AdminCredit",
+            "value": "16",
+            "description": "Ping credit added to account"
+          },
+          {
+            "name": "TopUp",
+            "value": "18",
+            "description": "Top up Ping account"
+          },
+          {
+            "name": "PurchaseAndTopup",
+            "value": "19",
+            "description": "Purchase and top up"
+          },
+          {
+            "name": "RefundFromAccountRelease",
+            "value": "20",
+            "description": "Refund received as a buyer - transferred to balance by admin"
+          },
+          {
+            "name": "WithdrawalRelease",
+            "value": "21",
+            "description": "Ping balance transfer out released"
+          },
+          {
+            "name": "PurchaseReverseRelease",
+            "value": "22",
+            "description": "Purchase made as a buyer reversed and released"
+          },
+          {
+            "name": "SettlementReverse",
+            "value": "23",
+            "description": "Settlement reversed"
+          },
+          {
+            "name": "Dishonour",
+            "value": "24",
+            "description": "Dishonour"
+          },
+          {
+            "name": "PurchaseCancelledUnclaimed",
+            "value": "25",
+            "description": "Purchase cancelled and unclaimed"
+          },
+          {
+            "name": "RefundRetry",
+            "value": "26",
+            "description": "Refund retry"
+          },
+          {
+            "name": "RefundUnclaimed",
+            "value": "27",
+            "description": "Refund unclaimed"
+          },
+          {
+            "name": "PurchaseCancelledRetry",
+            "value": "28",
+            "description": "Purchase cancelled and retry"
+          },
+          {
+            "name": "TopUpRelease",
+            "value": "29",
+            "description": "Top up release"
+          },
+          {
+            "name": "PurchaseAndTopupRelease",
+            "value": "30",
+            "description": "Purchase and top up release"
+          },
+          {
+            "name": "TopUpReverse",
+            "value": "31",
+            "description": "Top up Ping account reversed by Trust and Safety"
+          },
+          {
+            "name": "PurchaseAndTopupReverse",
+            "value": "32",
+            "description": "Purchase and top up reversed by Trust and Safety"
+          },
+          {
+            "name": "TopUpCancelledRetry",
+            "value": "33",
+            "description": "Top up cancelled retry"
+          },
+          {
+            "name": "PurchaseAndTopUpCancelledRetry",
+            "value": "34",
+            "description": "Purchase and top up cancelled retry"
+          },
+          {
+            "name": "TopUpReverseRelease",
+            "value": "35",
+            "description": "Top up Ping account reversed and released by Trust and Safety"
+          },
+          {
+            "name": "PurchaseAndTopupReverseRelease",
+            "value": "36",
+            "description": "Purchase and top up reversed and released by Trust and Safety"
+          },
+          {
+            "name": "TopUpReverseUnclaimed",
+            "value": "37",
+            "description": "Top up Ping account reversed and moved to unclaimed by Trust and Safety"
+          },
+          {
+            "name": "PurchaseAndTopupReverseUnclaimed",
+            "value": "38",
+            "description": "Purchase and top up reversed and moved to unclaimed by Trust and Safety"
+          },
+          {
+            "name": "CartSaleRelease",
+            "value": "39",
+            "description": "Cart sale release"
+          },
+          {
+            "name": "Chargeback",
+            "value": "40",
+            "description": "Chargeback"
+          },
+          {
+            "name": "PurchaseHold",
+            "value": "41",
+            "description": "Purchase on hold"
+          },
+          {
+            "name": "TopUpHold",
+            "value": "42",
+            "description": "Top up on holds"
+          },
+          {
+            "name": "PurchaseAndTopUpHold",
+            "value": "43",
+            "description": "Purchase and top up on hold"
+          },
+          {
+            "name": "TradeMeAccountTopUp",
+            "value": "44",
+            "description": "Trade Me account top up"
+          },
+          {
+            "name": "FeeRefund",
+            "value": "45",
+            "description": "Fee refund"
+          },
+          {
+            "name": "BuyerProtectionRefund",
+            "value": "49",
+            "description": "Buyer Protection refund"
+          },
+          {
+            "name": "CartPurchaseAndTopUp",
+            "value": "50",
+            "description": "Cart purchase and top up"
+          },
+          {
+            "name": "CartPurchaseReverseRelease",
+            "value": "51",
+            "description": "Cart purchase reversed and then released"
+          },
+          {
+            "name": "CartPurchaseAndTopUpReverse",
+            "value": "52",
+            "description": "Cart purchase and top up reversed"
+          },
+          {
+            "name": "CartPurchaseAndTopUpReverseRelease",
+            "value": "53",
+            "description": "Cart purchase and top up reversed and then released"
+          },
+          {
+            "name": "AdminDebit",
+            "value": "17",
+            "description": "Admin debit"
+          }
+        ]
+      },
+      {
+        "name": "TransactionDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "Date transaction was made in UTC time zone"
+      },
+      {
+        "name": "TransactionParts",
+        "type": "Collection of <TransactionPart> or null",
+        "required": false,
+        "description": "The transaction parts."
+      },
+      {
+        "name": "TransactionPartType",
+        "type": "TransactionPartType \n Enumeration \n\nType of the Transaction part.\n\n\n\n Title \n String or null \n\nTitle of the Transaction part.\n\n\n\n Amount \n Number \n\nAmount of the Transaction part.\n\n\n\n GstCollected \n Number or null \n\nGST Collected from this transaction part.\n\n\n\n ReferenceNumber \n String or null \n\nThe transaction part's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with \"P\", Withdrawals begin with \"W\", Top-ups begin \"TU\", Refunds begin with \"R\", Peer to Peer and Donations with \"Q\"\n\n\n\n Sku \n String or null \n\nSku of the Transaction part if its a purchase.",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "TransactionPartType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Type of the Transaction part.",
+        "enum": [
+          {
+            "name": "RefundToBalance",
+            "value": "0",
+            "description": "Refund to Ping balance"
+          },
+          {
+            "name": "RefundToCard",
+            "value": "1",
+            "description": "Refund to credit/debit card"
+          },
+          {
+            "name": "RefundToBankAccount",
+            "value": "2",
+            "description": "Refund to bank account"
+          },
+          {
+            "name": "PingBalanceTopUp",
+            "value": "3",
+            "description": "Ping balance top up"
+          },
+          {
+            "name": "PaymentFromBalance",
+            "value": "4",
+            "description": "Payment from Ping balance"
+          },
+          {
+            "name": "PaymentFromCard",
+            "value": "5",
+            "description": "Payment from credit/debit card"
+          },
+          {
+            "name": "PaymentFromBankAccount",
+            "value": "6",
+            "description": "Payment from bank account"
+          },
+          {
+            "name": "Purchase",
+            "value": "7",
+            "description": "A purchased or sold item"
+          },
+          {
+            "name": "LoyaltySubscriptionPurchase",
+            "value": "8",
+            "description": "A loyalty subscription purchase"
+          },
+          {
+            "name": "PaymentFromLoyalty",
+            "value": "9",
+            "description": "Payment from loyalty"
+          },
+          {
+            "name": "RefundToLoyalty",
+            "value": "10",
+            "description": "Refund to loyalty"
+          },
+          {
+            "name": "PaymentFromOpenBank",
+            "value": "11",
+            "description": "Payment from open bank"
+          }
+        ]
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "Title of the Transaction part."
+      },
+      {
+        "name": "Amount",
+        "type": "Number",
+        "required": false,
+        "description": "Amount of the Transaction part."
+      },
+      {
+        "name": "GstCollected",
+        "type": "Number or null",
+        "required": false,
+        "description": "GST Collected from this transaction part."
+      },
+      {
+        "name": "ReferenceNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The transaction part's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with \"P\", Withdrawals begin with \"W\", Top-ups begin \"TU\", Refunds begin with \"R\", Peer to Peer and Donations with \"Q\""
+      },
+      {
+        "name": "Sku",
+        "type": "String or null",
+        "required": false,
+        "description": "Sku of the Transaction part if its a purchase."
+      },
+      {
+        "name": "FundSources",
+        "type": "<FundSources> or null",
+        "required": false,
+        "description": "Sources of fund used in a transaction.\n\n                                Deprecated - use PaymentFrom instead of FundSources"
+      },
+      {
+        "name": "AvailableBalance",
+        "type": "AvailableBalance \n Number or null \n\nThe current available ping balance for use in funding a purchase.\n\n\n\n FundSources \n Collection of <FundSource> or null \n\nThe collection of credit/debit card or bank account funding sources\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of fund source. If the type is unrecognised, the API client should ignore this fund source and move on to the next one.\n\n\n\n FundSourceId \n Integer \n\nA unique ID that can be passed to the purchase API to identify the fund source to use.\n\n\n\n MaskedAccountNumber \n String or null \n\nA string containing the card or bank account number, with most of the digits blacked out for privacy reasons (e.g. \"**** **** **** 1234\" for a CC or \"12 3456 ****789 00\" for a bank account).\n\n\n\n Label \n String or null \n\nThe user-provided label, if the user entered one for this fund source, or a generic label like \"Visa credit card\" otherwise.\n\n\n\n Logo \n String or null \n\nThe URL to the card or bank logo. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n DarkModeLogo \n String or null \n\nThe URL to the card or bank logo for dark mode. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n VerificationStatus \n Enumeration or null \n\nThe verification status of a bank account. Not applicable for credit/debit card fund sources.\n\n\n\n Amount \n Number or null \n\nAmount taken from the fund source.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).",
+        "required": false,
+        "description": "Number or null"
+      },
+      {
+        "name": "AvailableBalance",
+        "type": "Number or null",
+        "required": false,
+        "description": "The current available ping balance for use in funding a purchase."
+      },
+      {
+        "name": "FundSources",
+        "type": "Collection of <FundSource> or null",
+        "required": false,
+        "description": "The collection of credit/debit card or bank account funding sources"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of fund source. If the type is unrecognised, the API client should ignore this fund source and move on to the next one.\n\n\n\n FundSourceId \n Integer \n\nA unique ID that can be passed to the purchase API to identify the fund source to use.\n\n\n\n MaskedAccountNumber \n String or null \n\nA string containing the card or bank account number, with most of the digits blacked out for privacy reasons (e.g. \"**** **** **** 1234\" for a CC or \"12 3456 ****789 00\" for a bank account).\n\n\n\n Label \n String or null \n\nThe user-provided label, if the user entered one for this fund source, or a generic label like \"Visa credit card\" otherwise.\n\n\n\n Logo \n String or null \n\nThe URL to the card or bank logo. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n DarkModeLogo \n String or null \n\nThe URL to the card or bank logo for dark mode. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.\n\n\n\n VerificationStatus \n Enumeration or null \n\nThe verification status of a bank account. Not applicable for credit/debit card fund sources.\n\n\n\n Amount \n Number or null \n\nAmount taken from the fund source.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of fund source. If the type is unrecognised, the API client should ignore this fund source and move on to the next one.",
+        "enum": [
+          {
+            "name": "CreditCard",
+            "value": "1",
+            "description": "The fund source is a credit/debit card."
+          },
+          {
+            "name": "BankAccount",
+            "value": "2",
+            "description": "The fund source is a bank account."
+          },
+          {
+            "name": "PingBalance",
+            "value": "3",
+            "description": "The fund source is the Ping balance. Cannot be used in a purchase or top up. In a purchase use UseBalance = true instead."
+          },
+          {
+            "name": "TmLoyalty",
+            "value": "4",
+            "description": "The fund source is the Loyalty Subscription."
+          },
+          {
+            "name": "OpenBank",
+            "value": "5",
+            "description": "The fund source is Open Banking."
+          }
+        ]
+      },
+      {
+        "name": "FundSourceId",
+        "type": "Integer",
+        "required": false,
+        "description": "A unique ID that can be passed to the purchase API to identify the fund source to use."
+      },
+      {
+        "name": "MaskedAccountNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "A string containing the card or bank account number, with most of the digits blacked out for privacy reasons (e.g. \"**** **** **** 1234\" for a CC or \"12 3456 ****789 00\" for a bank account)."
+      },
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "The user-provided label, if the user entered one for this fund source, or a generic label like \"Visa credit card\" otherwise."
+      },
+      {
+        "name": "Logo",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL to the card or bank logo. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall."
+      },
+      {
+        "name": "DarkModeLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL to the card or bank logo for dark mode. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall."
+      },
+      {
+        "name": "VerificationStatus",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The verification status of a bank account. Not applicable for credit/debit card fund sources.",
+        "enum": [
+          {
+            "name": "Active",
+            "value": "0",
+            "description": "Represents an active bank account"
+          },
+          {
+            "name": "Disabled",
+            "value": "1",
+            "description": "Represents a disabled bank account"
+          },
+          {
+            "name": "Enabled",
+            "value": "2",
+            "description": "Represents a bank account that had not been verified and does not need to be verified. If you are checking if enabled, please also check for verified, as they are both statuses that allows a bank account to be used."
+          },
+          {
+            "name": "Verified",
+            "value": "3",
+            "description": "Represents a verified bank account. This is the same as enabled, but with a past verification taking place. If you are checking if verified, please also check for enabled, as they are both statuses that allows a bank account to be used."
+          },
+          {
+            "name": "Historical",
+            "value": "4",
+            "description": "Represents an historical bank account"
+          },
+          {
+            "name": "VerificationRequired",
+            "value": "5",
+            "description": "Represents a bank account that needs verification."
+          }
+        ]
+      },
+      {
+        "name": "Amount",
+        "type": "Number or null",
+        "required": false,
+        "description": "Amount taken from the fund source."
+      },
+      {
+        "name": "VerificationCodeCreationDate",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day)."
+      },
+      {
+        "name": "PaymentFrom",
+        "type": "Collection of <FundSource> or null",
+        "required": false,
+        "description": "Fund sources the payment was made from"
+      },
+      {
+        "name": "FundDestinations",
+        "type": "<FundDestinations> or null",
+        "required": false,
+        "description": "Destination of fund going out of the Ping account.\n\n                                Deprecated - use PaymentTo instead of FundDestinations"
+      },
+      {
+        "name": "Amount",
+        "type": "Amount \n Number or null \n\nThe current available ping balance for use in funding a purchase.\n\n\n\n FundDestinations \n Collection of <FundDestination> or null \n\nThe collection of credit/debit card or bank account fund destinations.\n\n\n\n\n\n\n BankAccountId \n Integer \n\nId used to identify the bank account\n\n\n\n MaskedAccountNumber \n String or null \n\nMasked account number eg. \"12 3456 ****789 00\"\n\n\n\n Status \n Enumeration \n\nThe bank account status\n\n\n\n Label \n String or null \n\nPersonal label to identify the account\n\n\n\n Logo \n String or null \n\nFund destination logo\n\n\n\n DarkModeLogo \n String or null \n\nFund destination logo for dark mode\n\n\n\n SortOrder \n Integer or null \n\nthe order of the account, 0 being the preferential account\n\n\n\n Amount \n Number or null \n\nAmount added to the fund destination.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).",
+        "required": false,
+        "description": "Number or null"
+      },
+      {
+        "name": "Amount",
+        "type": "Number or null",
+        "required": false,
+        "description": "The current available ping balance for use in funding a purchase."
+      },
+      {
+        "name": "FundDestinations",
+        "type": "Collection of <FundDestination> or null",
+        "required": false,
+        "description": "The collection of credit/debit card or bank account fund destinations."
+      },
+      {
+        "name": "BankAccountId",
+        "type": "BankAccountId \n Integer \n\nId used to identify the bank account\n\n\n\n MaskedAccountNumber \n String or null \n\nMasked account number eg. \"12 3456 ****789 00\"\n\n\n\n Status \n Enumeration \n\nThe bank account status\n\n\n\n Label \n String or null \n\nPersonal label to identify the account\n\n\n\n Logo \n String or null \n\nFund destination logo\n\n\n\n DarkModeLogo \n String or null \n\nFund destination logo for dark mode\n\n\n\n SortOrder \n Integer or null \n\nthe order of the account, 0 being the preferential account\n\n\n\n Amount \n Number or null \n\nAmount added to the fund destination.\n\n\n\n VerificationCodeCreationDate \n DateTime or null \n\nThe date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "BankAccountId",
+        "type": "Integer",
+        "required": false,
+        "description": "Id used to identify the bank account"
+      },
+      {
+        "name": "MaskedAccountNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "Masked account number eg. \"12 3456 ****789 00\""
+      },
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The bank account status",
+        "enum": [
+          {
+            "name": "Active",
+            "value": "0",
+            "description": "Represents an active bank account"
+          },
+          {
+            "name": "Disabled",
+            "value": "1",
+            "description": "Represents a disabled bank account"
+          },
+          {
+            "name": "Enabled",
+            "value": "2",
+            "description": "Represents a bank account that had not been verified and does not need to be verified. If you are checking if enabled, please also check for verified, as they are both statuses that allows a bank account to be used."
+          },
+          {
+            "name": "Verified",
+            "value": "3",
+            "description": "Represents a verified bank account. This is the same as enabled, but with a past verification taking place. If you are checking if verified, please also check for enabled, as they are both statuses that allows a bank account to be used."
+          },
+          {
+            "name": "Historical",
+            "value": "4",
+            "description": "Represents an historical bank account"
+          },
+          {
+            "name": "VerificationRequired",
+            "value": "5",
+            "description": "Represents a bank account that needs verification."
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "Personal label to identify the account"
+      },
+      {
+        "name": "Logo",
+        "type": "String or null",
+        "required": false,
+        "description": "Fund destination logo"
+      },
+      {
+        "name": "DarkModeLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "Fund destination logo for dark mode"
+      },
+      {
+        "name": "SortOrder",
+        "type": "Integer or null",
+        "required": false,
+        "description": "the order of the account, 0 being the preferential account"
+      },
+      {
+        "name": "Amount",
+        "type": "Number or null",
+        "required": false,
+        "description": "Amount added to the fund destination."
+      },
+      {
+        "name": "VerificationCodeCreationDate",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day)."
+      },
+      {
+        "name": "PaymentTo",
+        "type": "Collection of <FundSource> or null",
+        "required": false,
+        "description": "Fund sources the payment was made to"
+      },
+      {
+        "name": "Amount",
+        "type": "Number or null",
+        "required": false,
+        "description": "Money either credited/deducted from the Ping account."
+      },
+      {
+        "name": "Balance",
+        "type": "Number",
+        "required": false,
+        "description": "Available balance for the Ping account at the end of the transaction."
+      },
+      {
+        "name": "Fees",
+        "type": "Number or null",
+        "required": false,
+        "description": "Total of all Fee amounts in the transaction parts."
+      },
+      {
+        "name": "Gst",
+        "type": "Number or null",
+        "required": false,
+        "description": "Total of all Fee amounts in the transaction parts."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The action causing a balance change or the listing title for purchases and sales. Refer to transaction parts for multi item purchase or topups"
+      },
+      {
+        "name": "ListingId",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing id. Refer transaction parts ListingId cart and purchase + topups"
+      },
+      {
+        "name": "ReferenceNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The transaction's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with \"P\", Cart purchases begin with \"C\", Withdrawals begin with \"W\", Top-ups begin \"TU\", Refunds begin with \"R\", Peer to Peer and Donations with \"Q\""
+      },
+      {
+        "name": "Sku",
+        "type": "String or null",
+        "required": false,
+        "description": "Stock Keeping Unit (SKU) of the listing"
+      },
+      {
+        "name": "Subtitle",
+        "type": "String or null",
+        "required": false,
+        "description": "Additional information regarding the transaction's action"
+      },
+      {
+        "name": "IsCart",
+        "type": "Boolean",
+        "required": false,
+        "description": "Determines whether or not this transaction was used to complete a cart purchase."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "TransactionId": 123,
+          "TransactionType": 0,
+          "TransactionDate": "/Date(1514764800)/",
+          "TransactionParts": [
+            {
+              "TransactionPartType": 0,
+              "Title": "ABC",
+              "Amount": 123.0,
+              "GstCollected": 123.0,
+              "ReferenceNumber": "ABC",
+              "Sku": "ABC"
+            },
+            {
+              "TransactionPartType": 0,
+              "Title": "ABC",
+              "Amount": 123.0,
+              "GstCollected": 123.0,
+              "ReferenceNumber": "ABC",
+              "Sku": "ABC"
+            }
+          ],
+          "FundSources": {
+            "AvailableBalance": 123.0,
+            "FundSources": [
+              {
+                "Type": 1,
+                "FundSourceId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "VerificationStatus": 0,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              },
+              {
+                "Type": 1,
+                "FundSourceId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "VerificationStatus": 0,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              }
+            ]
+          },
+          "PaymentFrom": [
+            {},
+            {}
+          ],
+          "FundDestinations": {
+            "Amount": 123.0,
+            "FundDestinations": [
+              {
+                "BankAccountId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Status": 0,
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "SortOrder": 123,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              },
+              {
+                "BankAccountId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Status": 0,
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "SortOrder": 123,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              }
+            ]
+          },
+          "PaymentTo": [
+            {},
+            {}
+          ],
+          "Amount": 123.0,
+          "Balance": 123.0,
+          "Fees": 123.0,
+          "Gst": 123.0,
+          "Title": "ABC",
+          "ListingId": "ABC",
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC",
+          "Subtitle": "ABC",
+          "IsCart": false
+        },
+        {
+          "TransactionId": 123,
+          "TransactionType": 0,
+          "TransactionDate": "/Date(1514764800)/",
+          "TransactionParts": [
+            {
+              "TransactionPartType": 0,
+              "Title": "ABC",
+              "Amount": 123.0,
+              "GstCollected": 123.0,
+              "ReferenceNumber": "ABC",
+              "Sku": "ABC"
+            },
+            {
+              "TransactionPartType": 0,
+              "Title": "ABC",
+              "Amount": 123.0,
+              "GstCollected": 123.0,
+              "ReferenceNumber": "ABC",
+              "Sku": "ABC"
+            }
+          ],
+          "FundSources": {
+            "AvailableBalance": 123.0,
+            "FundSources": [
+              {
+                "Type": 1,
+                "FundSourceId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "VerificationStatus": 0,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              },
+              {
+                "Type": 1,
+                "FundSourceId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "VerificationStatus": 0,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              }
+            ]
+          },
+          "PaymentFrom": [
+            {},
+            {}
+          ],
+          "FundDestinations": {
+            "Amount": 123.0,
+            "FundDestinations": [
+              {
+                "BankAccountId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Status": 0,
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "SortOrder": 123,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              },
+              {
+                "BankAccountId": 123,
+                "MaskedAccountNumber": "ABC",
+                "Status": 0,
+                "Label": "ABC",
+                "Logo": "ABC",
+                "DarkModeLogo": "ABC",
+                "SortOrder": 123,
+                "Amount": 123.0,
+                "VerificationCodeCreationDate": "/Date(1514764800)/"
+              }
+            ]
+          },
+          "PaymentTo": [
+            {},
+            {}
+          ],
+          "Amount": 123.0,
+          "Balance": 123.0,
+          "Fees": 123.0,
+          "Gst": 123.0,
+          "Title": "ABC",
+          "ListingId": "ABC",
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC",
+          "Subtitle": "ABC",
+          "IsCart": false
+        }
+      ]
+    }
+  }
+}

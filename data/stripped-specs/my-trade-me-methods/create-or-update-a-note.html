@@ -1,0 +1,145 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/create-or-update-a-note -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Create or update a note</h1>
+<!-- Page content -->
+<p>Creates or updates the note on a listing.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/MyTradeMe/Notes.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;SaveNoteRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The text to display in the note. Cannot be empty.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing to associate the note with.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NoteId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the note. Can be omitted when creating a note.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfferId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the fixed price offer to associate the note with. Can be omitted if the note is not associated with a fixed price offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PurchaseId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the Purchase to associate the note with (such as a won or sold item). Can be omitted if the note is not associated with a Purchase.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;NoteResponse&gt; </p>
+<p>Whether the operation was successful and the note details.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NoteId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the note.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The note text.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfferId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the fixed price offer, or 0 if the note is not associated with a fixed price offer.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Text": "ABC",
+  "ListingId": 123,
+  "NoteId": 123,
+  "OfferId": 123,
+  "PurchaseId": 123
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "NoteId": 123,
+  "Text": "ABC",
+  "OfferId": 123
+}</code></pre>
+</div>

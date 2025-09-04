@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Set your email preferences - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a> &gt; </li>
+<li class="current">Set your email preferences</li>
+</ul>
+<!-- Page heading -->
+<h1>Set your email preferences</h1>
+<!-- Page content -->
+<p>Sets the authenticated user's email preferences.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/emailoptions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;EmailOptions&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsAppliedToExisting </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether watchlist options are applied to existing items.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WatchlistReminder </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of when they should get watchlist emails.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No emails for watchlist items.</p>
+</td>
+</tr>
+<tr>
+<td>OneHourBefore</td>
+<td>1</td>
+<td>
+<p>One hour before the listing closes.</p>
+</td>
+</tr>
+<tr>
+<td>TwelveHoursBefore</td>
+<td>2</td>
+<td>
+<p>Twelve hours before the listing closes.</p>
+</td>
+</tr>
+<tr>
+<td>TwentyFourHoursBefore</td>
+<td>4</td>
+<td>
+<p>Twenty hours before the listing closes.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Newsletter </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which newsletters they want to receive.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No newsletters.</p>
+</td>
+</tr>
+<tr>
+<td>Monthly</td>
+<td>1</td>
+<td>
+<p>Monthly general newsletter.</p>
+</td>
+</tr>
+<tr>
+<td>Motors</td>
+<td>2</td>
+<td>
+<p>Motors newsletter.</p>
+</td>
+</tr>
+<tr>
+<td>Property</td>
+<td>4</td>
+<td>
+<p>Property newsletter.</p>
+</td>
+</tr>
+<tr>
+<td>Jobs</td>
+<td>8</td>
+<td>
+<p>Jobs newsletter.</p>
+</td>
+</tr>
+<tr>
+<td>DailyDeals</td>
+<td>16</td>
+<td>
+<p>Daily Deals newsletter. DEPRECATED.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailFormat </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The format that emails are sent in.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Html</td>
+<td>1</td>
+<td>
+<p>Html, with pictures etc.</p>
+</td>
+</tr>
+<tr>
+<td>Plain</td>
+<td>2</td>
+<td>
+<p>Just text.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailMemberWhen </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference indicating which events should trigger an email.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No emails wanted.</p>
+</td>
+</tr>
+<tr>
+<td>FpoDeclined</td>
+<td>1</td>
+<td>
+<p>Fixed price offer declined by trader.</p>
+</td>
+</tr>
+<tr>
+<td>FpoExpired</td>
+<td>2</td>
+<td>
+<p>Fixed price offer expired.</p>
+</td>
+</tr>
+<tr>
+<td>NewFeedback</td>
+<td>4</td>
+<td>
+<p>New feedback posted about member.</p>
+</td>
+</tr>
+<tr>
+<td>DailyListingSummary</td>
+<td>8</td>
+<td>
+<p>Summary of listing listed.</p>
+</td>
+</tr>
+<tr>
+<td>ListingUnsold</td>
+<td>16</td>
+<td>
+<p>Listing closed below reserve.</p>
+</td>
+</tr>
+<tr>
+<td>ListingSold</td>
+<td>32</td>
+<td>
+<p>Listing sold.</p>
+</td>
+</tr>
+<tr>
+<td>Outbid</td>
+<td>64</td>
+<td>
+<p>Member outbid.</p>
+</td>
+</tr>
+<tr>
+<td>BuyNowAdded</td>
+<td>128</td>
+<td>
+<p>BuyNow added to item on watchlist.</p>
+</td>
+</tr>
+<tr>
+<td>ClassifiedExpired</td>
+<td>256</td>
+<td>
+<p>Classified listed by member has expired.</p>
+</td>
+</tr>
+<tr>
+<td>ServiceReviewed</td>
+<td>512</td>
+<td>
+<p>Service reviewed by another member.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FixedPriceOffer </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of when they should get fixed price offer notifications.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Don't send notifications.</p>
+</td>
+</tr>
+<tr>
+<td>Bid</td>
+<td>1</td>
+<td>
+<p>When a bid is placed.</p>
+</td>
+</tr>
+<tr>
+<td>Watchlist</td>
+<td>2</td>
+<td>
+<p>If an item added to watchlist.</p>
+</td>
+</tr>
+<tr>
+<td>BidAndWatchlist</td>
+<td>3</td>
+<td>
+<p>If an item has a bid or added to watchlist.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Relist </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of when they should get relist notifications.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Don't send notifications.</p>
+</td>
+</tr>
+<tr>
+<td>Bid</td>
+<td>1</td>
+<td>
+<p>When a bid is placed.</p>
+</td>
+</tr>
+<tr>
+<td>Watchlist</td>
+<td>2</td>
+<td>
+<p>If an item added to watchlist.</p>
+</td>
+</tr>
+<tr>
+<td>BidAndWatchlist</td>
+<td>3</td>
+<td>
+<p>If an item has a bid or added to watchlist.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Agent </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference for when agent emails should be sent.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Agent reports are not sent.</p>
+</td>
+</tr>
+<tr>
+<td>Current</td>
+<td>1</td>
+<td>
+<p>Send agent reports for all current listings.</p>
+</td>
+</tr>
+<tr>
+<td>SevenDays</td>
+<td>2</td>
+<td>
+<p>Send agent reports for listings closed in the last seven days.</p>
+</td>
+</tr>
+<tr>
+<td>FortyfiveDays</td>
+<td>4</td>
+<td>
+<p>Send agent reports for listings closed in the last 45 days.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AgentReportFormat </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The format that agent emails are in.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Not given.</p>
+</td>
+</tr>
+<tr>
+<td>Csv</td>
+<td>1</td>
+<td>
+<p>Agent reports should use the CSV format.</p>
+</td>
+</tr>
+<tr>
+<td>Pdf</td>
+<td>2</td>
+<td>
+<p>Agent reports should use the PDF format.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Promotional </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which occasional promotional emails they want to receive about the Trade Me family of sites.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No promotional emails.</p>
+</td>
+</tr>
+<tr>
+<td>TradeMeProperty</td>
+<td>2</td>
+<td>
+<p>Promos, contest, etc. from Trade Me Property. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>TradeMeJobs</td>
+<td>4</td>
+<td>
+<p>Promos, contest, etc. from Trade Me Jobs. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>TradeMeMotors</td>
+<td>8</td>
+<td>
+<p>Promos, contest, etc. from Trade Me Motors. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>FindSomeone</td>
+<td>16</td>
+<td>
+<p>Promos, contests, etc. from Findsomeone.</p>
+</td>
+</tr>
+<tr>
+<td>Travelbug</td>
+<td>32</td>
+<td>
+<p>Promos, contests, etc. from TravelBug.</p>
+</td>
+</tr>
+<tr>
+<td>HolidayHouses</td>
+<td>64</td>
+<td>
+<p>Promos, contests, etc. from Holiday Houses.</p>
+</td>
+</tr>
+<tr>
+<td>LifeDirect</td>
+<td>128</td>
+<td>
+<p>Promos, contests, etc. from LifeDirect.</p>
+</td>
+</tr>
+<tr>
+<td>Harmoney</td>
+<td>256</td>
+<td>
+<p>Promos, contests, etc. from Harmoney.</p>
+</td>
+</tr>
+<tr>
+<td>TradeMeInsurance</td>
+<td>512</td>
+<td>
+<p>Promos, contests, etc. from Trade Me Insurance.</p>
+</td>
+</tr>
+<tr>
+<td>Sharesies</td>
+<td>1024</td>
+<td>
+<p>Promos, contests, etc. from Sharesies.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Marketing </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which occasional marketing emails they want to receive regarding specials, promotions, and tips on site usage.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No promotional emails.</p>
+</td>
+</tr>
+<tr>
+<td>Tips</td>
+<td>1</td>
+<td>
+<p>Trade Me Tips email. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>Promos</td>
+<td>2</td>
+<td>
+<p>Trade Me Promos email. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>SellerSpecials</td>
+<td>4</td>
+<td>
+<p>Trade Me Seller Specials email. DEPRECATED.</p>
+</td>
+</tr>
+<tr>
+<td>Specials</td>
+<td>8</td>
+<td>
+<p>Trade Me Specials email. DEPRECATED.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeUpdates </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which Trade Me update emails they want to receive.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No Trade Me emails.</p>
+</td>
+</tr>
+<tr>
+<td>CompsAndPromos</td>
+<td>1</td>
+<td>
+<p>Competitions &amp; promotions.</p>
+</td>
+</tr>
+<tr>
+<td>DealsAndOffers</td>
+<td>2</td>
+<td>
+<p>Deals &amp; offers.</p>
+</td>
+</tr>
+<tr>
+<td>PersonalisedRecommendations</td>
+<td>4</td>
+<td>
+<p>Personalised recommendations.</p>
+</td>
+</tr>
+<tr>
+<td>Surveys</td>
+<td>8</td>
+<td>
+<p>Surveys.</p>
+</td>
+</tr>
+<tr>
+<td>TipsAndUpdates</td>
+<td>16</td>
+<td>
+<p>Tips &amp; updates.</p>
+</td>
+</tr>
+<tr>
+<td>Services</td>
+<td>32</td>
+<td>
+<p>Services from TradeMe.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMePropertyUpdates </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which Trade Me Property update emails they want to receive.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No Trade Me Property emails.</p>
+</td>
+</tr>
+<tr>
+<td>CompsAndPromos</td>
+<td>1</td>
+<td>
+<p>Competitions &amp; promotions.</p>
+</td>
+</tr>
+<tr>
+<td>DealsAndOffers</td>
+<td>2</td>
+<td>
+<p>Deals &amp; offers.</p>
+</td>
+</tr>
+<tr>
+<td>PersonalisedRecommendations</td>
+<td>4</td>
+<td>
+<p>Personalised recommendations.</p>
+</td>
+</tr>
+<tr>
+<td>Surveys</td>
+<td>8</td>
+<td>
+<p>Surveys.</p>
+</td>
+</tr>
+<tr>
+<td>TipsAndUpdates</td>
+<td>16</td>
+<td>
+<p>Tips &amp; updates.</p>
+</td>
+</tr>
+<tr>
+<td>PropertyAgentUpdates</td>
+<td>32</td>
+<td>
+<p>Receive agent updates from Properties you are watchlisting.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeJobsUpdates </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which Trade Me Jobs update emails they want to receive.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No Trade Me Jobs emails.</p>
+</td>
+</tr>
+<tr>
+<td>CompsAndPromos</td>
+<td>1</td>
+<td>
+<p>Competitions &amp; promotions.</p>
+</td>
+</tr>
+<tr>
+<td>DealsAndOffers</td>
+<td>2</td>
+<td>
+<p>Deals &amp; offers.</p>
+</td>
+</tr>
+<tr>
+<td>PersonalisedRecommendations</td>
+<td>4</td>
+<td>
+<p>Personalised recommendations.</p>
+</td>
+</tr>
+<tr>
+<td>Surveys</td>
+<td>8</td>
+<td>
+<p>Surveys.</p>
+</td>
+</tr>
+<tr>
+<td>TipsAndUpdates</td>
+<td>16</td>
+<td>
+<p>Tips &amp; updates.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeMotorsUpdates </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The user's preference of which Trade Me Motors updates emails they want to receive.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No Trade Me Motors emails.</p>
+</td>
+</tr>
+<tr>
+<td>CompsAndPromos</td>
+<td>1</td>
+<td>
+<p>Competitions &amp; promotions.</p>
+</td>
+</tr>
+<tr>
+<td>DealsAndOffers</td>
+<td>2</td>
+<td>
+<p>Deals &amp; offers.</p>
+</td>
+</tr>
+<tr>
+<td>PersonalisedRecommendations</td>
+<td>4</td>
+<td>
+<p>Personalised recommendations.</p>
+</td>
+</tr>
+<tr>
+<td>Surveys</td>
+<td>8</td>
+<td>
+<p>Surveys.</p>
+</td>
+</tr>
+<tr>
+<td>TipsAndUpdates</td>
+<td>16</td>
+<td>
+<p>Tips &amp; updates.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;EmailOptions&gt; </p>
+<p> <p>The authenticated user's email preferences, after the changes were applied.</p> </p>
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails for watchlist items."}, {"name": "OneHourBefore", "value": "1", "description": "One hour before the listing closes."}, {"name": "TwelveHoursBefore", "value": "2", "description": "Twelve hours before the listing closes."}, {"name": "TwentyFourHoursBefore", "value": "4", "description": "Twenty hours before the listing closes."}]'>
+<th style="width: 22%"> WatchlistReminder </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get watchlist emails.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No newsletters."}, {"name": "Monthly", "value": "1", "description": "Monthly general newsletter."}, {"name": "Motors", "value": "2", "description": "Motors newsletter."}, {"name": "Property", "value": "4", "description": "Property newsletter."}, {"name": "Jobs", "value": "8", "description": "Jobs newsletter."}, {"name": "DailyDeals", "value": "16", "description": "Daily Deals newsletter. DEPRECATED."}]'>
+<th style="width: 22%"> Newsletter </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of which newsletters they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "Html", "value": "1", "description": "Html, with pictures etc."}, {"name": "Plain", "value": "2", "description": "Just text."}]'>
+<th style="width: 22%"> EmailFormat </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The format that emails are sent in.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails wanted."}, {"name": "FpoDeclined", "value": "1", "description": "Fixed price offer declined by trader."}, {"name": "FpoExpired", "value": "2", "description": "Fixed price offer expired."}, {"name": "NewFeedback", "value": "4", "description": "New feedback posted about member."}, {"name": "DailyListingSummary", "value": "8", "description": "Summary of listing listed."}, {"name": "ListingUnsold", "value": "16", "description": "Listing closed below reserve."}, {"name": "ListingSold", "value": "32", "description": "Listing sold."}, {"name": "Outbid", "value": "64", "description": "Member outbid."}, {"name": "BuyNowAdded", "value": "128", "description": "BuyNow added to item on watchlist."}, {"name": "ClassifiedExpired", "value": "256", "description": "Classified listed by member has expired."}, {"name": "ServiceReviewed", "value": "512", "description": "Service reviewed by another member."}]'>
+<th style="width: 22%"> EmailMemberWhen </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference indicating which events should trigger an email.</p>
+</td>
+</tr>
+
+<tr data-enum-values="[{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Don't send notifications.&quot;}, {&quot;name&quot;: &quot;Bid&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;When a bid is placed.&quot;}, {&quot;name&quot;: &quot;Watchlist&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;If an item added to watchlist.&quot;}, {&quot;name&quot;: &quot;BidAndWatchlist&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;If an item has a bid or added to watchlist.&quot;}]">
+<th style="width: 22%"> FixedPriceOffer </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get fixed price offer notifications.</p>
+</td>
+</tr>
+
+<tr data-enum-values="[{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Don't send notifications.&quot;}, {&quot;name&quot;: &quot;Bid&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;When a bid is placed.&quot;}, {&quot;name&quot;: &quot;Watchlist&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;If an item added to watchlist.&quot;}, {&quot;name&quot;: &quot;BidAndWatchlist&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;If an item has a bid or added to watchlist.&quot;}]">
+<th style="width: 22%"> Relist </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get relist notifications.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Agent reports are not sent."}, {"name": "Current", "value": "1", "description": "Send agent reports for all current listings."}, {"name": "SevenDays", "value": "2", "description": "Send agent reports for listings closed in the last seven days."}, {"name": "FortyfiveDays", "value": "4", "description": "Send agent reports for listings closed in the last 45 days."}]'>
+<th style="width: 22%"> Agent </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference for when agent emails should be sent.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Not given."}, {"name": "Csv", "value": "1", "description": "Agent reports should use the CSV format."}, {"name": "Pdf", "value": "2", "description": "Agent reports should use the PDF format."}]'>
+<th style="width: 22%"> AgentReportFormat </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The format that agent emails are in.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No promotional emails."}, {"name": "TradeMeProperty", "value": "2", "description": "Promos, contest, etc. from Trade Me Property. DEPRECATED."}, {"name": "TradeMeJobs", "value": "4", "description": "Promos, contest, etc. from Trade Me Jobs. DEPRECATED."}, {"name": "TradeMeMotors", "value": "8", "description": "Promos, contest, etc. from Trade Me Motors. DEPRECATED."}, {"name": "FindSomeone", "value": "16", "description": "Promos, contests, etc. from Findsomeone."}, {"name": "Travelbug", "value": "32", "description": "Promos, contests, etc. from TravelBug."}, {"name": "HolidayHouses", "value": "64", "description": "Promos, contests, etc. from Holiday Houses."}, {"name": "LifeDirect", "value": "128", "description": "Promos, contests, etc. from LifeDirect."}, {"name": "Harmoney", "value": "256", "description": "Promos, contests, etc. from Harmoney."}, {"name": "TradeMeInsurance", "value": "512", "description": "Promos, contests, etc. from Trade Me Insurance."}, {"name": "Sharesies", "value": "1024", "description": "Promos, contests, etc. from Sharesies."}]'>
+<th style="width: 22%"> Promotional </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which occasional promotional emails they want to receive about the Trade Me family of sites.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No promotional emails."}, {"name": "Tips", "value": "1", "description": "Trade Me Tips email. DEPRECATED."}, {"name": "Promos", "value": "2", "description": "Trade Me Promos email. DEPRECATED."}, {"name": "SellerSpecials", "value": "4", "description": "Trade Me Seller Specials email. DEPRECATED."}, {"name": "Specials", "value": "8", "description": "Trade Me Specials email. DEPRECATED."}]'>
+<th style="width: 22%"> Marketing </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which occasional marketing emails they want to receive regarding specials, promotions, and tips on site usage.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}, {"name": "Services", "value": "32", "description": "Services from TradeMe."}]'>
+<th style="width: 22%"> TradeMeUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Property emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}, {"name": "PropertyAgentUpdates", "value": "32", "description": "Receive agent updates from Properties you are watchlisting."}]'>
+<th style="width: 22%"> TradeMePropertyUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Property update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Jobs emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}]'>
+<th style="width: 22%"> TradeMeJobsUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Jobs update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Motors emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}]'>
+<th style="width: 22%"> TradeMeMotorsUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Motors updates emails they want to receive.</p>
+</td>
+</tr>
+
+</table>
+<div class="xml-message">
+<h2> Example XML Request <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;EmailOptions xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;IsAppliedToExisting&gt;false&lt;/IsAppliedToExisting&gt;
+  &lt;WatchlistReminder&gt;None&lt;/WatchlistReminder&gt;
+  &lt;Newsletter&gt;None&lt;/Newsletter&gt;
+  &lt;EmailFormat&gt;Html&lt;/EmailFormat&gt;
+  &lt;EmailMemberWhen&gt;None&lt;/EmailMemberWhen&gt;
+  &lt;FixedPriceOffer&gt;None&lt;/FixedPriceOffer&gt;
+  &lt;Relist&gt;None&lt;/Relist&gt;
+  &lt;Agent&gt;None&lt;/Agent&gt;
+  &lt;AgentReportFormat&gt;None&lt;/AgentReportFormat&gt;
+  &lt;Promotional&gt;None&lt;/Promotional&gt;
+  &lt;Marketing&gt;None&lt;/Marketing&gt;
+  &lt;TradeMeUpdates&gt;None&lt;/TradeMeUpdates&gt;
+  &lt;TradeMePropertyUpdates&gt;None&lt;/TradeMePropertyUpdates&gt;
+  &lt;TradeMeJobsUpdates&gt;None&lt;/TradeMeJobsUpdates&gt;
+  &lt;TradeMeMotorsUpdates&gt;None&lt;/TradeMeMotorsUpdates&gt;
+&lt;/EmailOptions&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Request <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "IsAppliedToExisting": false,
+  "WatchlistReminder": 0,
+  "Newsletter": 0,
+  "EmailFormat": 1,
+  "EmailMemberWhen": 0,
+  "FixedPriceOffer": 0,
+  "Relist": 0,
+  "Agent": 0,
+  "AgentReportFormat": 0,
+  "Promotional": 0,
+  "Marketing": 0,
+  "TradeMeUpdates": 0,
+  "TradeMePropertyUpdates": 0,
+  "TradeMeJobsUpdates": 0,
+  "TradeMeMotorsUpdates": 0
+}</code></pre>
+</div>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;EmailOptions xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;WatchlistReminder&gt;None&lt;/WatchlistReminder&gt;
+  &lt;Newsletter&gt;None&lt;/Newsletter&gt;
+  &lt;EmailFormat&gt;Html&lt;/EmailFormat&gt;
+  &lt;EmailMemberWhen&gt;None&lt;/EmailMemberWhen&gt;
+  &lt;FixedPriceOffer&gt;None&lt;/FixedPriceOffer&gt;
+  &lt;Relist&gt;None&lt;/Relist&gt;
+  &lt;Agent&gt;None&lt;/Agent&gt;
+  &lt;AgentReportFormat&gt;None&lt;/AgentReportFormat&gt;
+  &lt;Promotional&gt;None&lt;/Promotional&gt;
+  &lt;Marketing&gt;None&lt;/Marketing&gt;
+  &lt;TradeMeUpdates&gt;None&lt;/TradeMeUpdates&gt;
+  &lt;TradeMePropertyUpdates&gt;None&lt;/TradeMePropertyUpdates&gt;
+  &lt;TradeMeJobsUpdates&gt;None&lt;/TradeMeJobsUpdates&gt;
+  &lt;TradeMeMotorsUpdates&gt;None&lt;/TradeMeMotorsUpdates&gt;
+&lt;/EmailOptions&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "WatchlistReminder": 0,
+  "Newsletter": 0,
+  "EmailFormat": 1,
+  "EmailMemberWhen": 0,
+  "FixedPriceOffer": 0,
+  "Relist": 0,
+  "Agent": 0,
+  "AgentReportFormat": 0,
+  "Promotional": 0,
+  "Marketing": 0,
+  "TradeMeUpdates": 0,
+  "TradeMePropertyUpdates": 0,
+  "TradeMeJobsUpdates": 0,
+  "TradeMeMotorsUpdates": 0
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

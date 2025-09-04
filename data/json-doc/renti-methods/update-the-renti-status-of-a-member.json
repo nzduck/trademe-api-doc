@@ -1,0 +1,76 @@
+{
+  "endpoint": "UpdateTheRentiStatusOfAMember",
+  "title": "Update the Renti status of a member",
+  "description": "Update renti status of the member. Member will be inferred from context.",
+  "source": "https://developer.trademe.co.nz/api-reference/renti-methods/update-the-renti-status-of-a-member",
+  "url": "https://api.trademe.co.nz/v1/Property/Renti/MemberStatus.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<RentiStatusUpdateRequest>",
+    "fields": [
+      {
+        "name": "Enabled",
+        "type": "Boolean (required)",
+        "required": true,
+        "description": "New status"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<RentiStatusUpdateResponse> Response object containing success/failure and a message",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Enabled": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

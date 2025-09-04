@@ -1,0 +1,112 @@
+{
+  "endpoint": "GetAllSuburbsDetails",
+  "title": "Get all suburbs details.",
+  "description": "Get suburb details for all suburbs.",
+  "source": "https://developer.trademe.co.nz/api-reference/suburb-search-methods/get-all-suburbs-details",
+  "url": "https://api.trademe.co.nz/v1/Property/Sold/Suburbs.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SoldSuburbsResponse> Details of all suburbs.",
+    "fields": [
+      {
+        "name": "Suburbs",
+        "type": "Collection of <BaseSuburbDetails> or null",
+        "required": false,
+        "description": "Wrapper to store nearby suburb details",
+        "nested_fields": [
+          {
+            "field_name": "SuburbId",
+            "field_type": "Integer",
+            "description": "Suburb Id"
+          },
+          {
+            "field_name": "SuburbName",
+            "field_type": "String or null",
+            "description": "Suburb Name"
+          },
+          {
+            "field_name": "ParentId",
+            "field_type": "Integer",
+            "description": "Parent Id"
+          },
+          {
+            "field_name": "CityId",
+            "field_type": "Integer",
+            "description": "City Id"
+          },
+          {
+            "field_name": "CityName",
+            "field_type": "String or null",
+            "description": "City Name"
+          },
+          {
+            "field_name": "SuburbUrlSlug",
+            "field_type": "String or null",
+            "description": "Suburb Url Slug"
+          }
+        ]
+      },
+      {
+        "name": "Error",
+        "type": "String or null",
+        "required": false,
+        "description": "Error message"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Suburbs": [
+        {
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "ParentId": 123,
+          "CityId": 123,
+          "CityName": "ABC",
+          "SuburbUrlSlug": "ABC"
+        },
+        {
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "ParentId": 123,
+          "CityId": 123,
+          "CityName": "ABC",
+          "SuburbUrlSlug": "ABC"
+        }
+      ],
+      "Error": "ABC"
+    }
+  }
+}

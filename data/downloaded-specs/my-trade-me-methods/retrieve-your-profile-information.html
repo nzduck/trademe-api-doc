@@ -1,0 +1,1481 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve your profile information - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a> &gt; </li>
+<li class="current">Retrieve your profile information</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve your profile information</h1>
+<!-- Page content -->
+<p>Retrieves full statistics and profile information for the authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/summary.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> return_member_profile </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true, also returns the member's public profile information (occupation, bio, photo, etc).</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;MemberSummary&gt; </p>
+<p> <p>The user's name, email address, bought, sold and feedback stats.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> WatchListCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items on the watchlist.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WonCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items won.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LostCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items lost.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SellingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items being sold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SoldCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items sold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnsoldCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items unsold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositiveFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total positive feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NegativeFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total negative feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total feedback (positive - negative).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's nickname.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateJoined </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member registered for an account on Trade Me.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateAddressVerified </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the member became address verified, if they are address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAddressVerified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is address verified. This means the member entered a code that was delivered via the postal system to the member's street address. Note that currently, members retain their address verified status if they move, so having this status doesn't necessarily mean that the member's current address is valid.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Balance </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The member's Trade Me account balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayNowBalance </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The member's Pay Now account balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirstName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's first name.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's last name.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FixedPriceOffers </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of fixed price offers for the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Email </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The email address for the member.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Unspecified", "value": "0", "description": "The gender is not specified."}, {"name": "Male", "value": "1", "description": "The member is male."}, {"name": "Female", "value": "2", "description": "The member is female."}, {"name": "DiverseGender", "value": "3", "description": "The member is gender diverse."}]'>
+<th style="width: 22%"> Gender </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The gender of the member.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> MembershipAddress </th>
+<td style="width: 22%"> &lt;DeliveryAddress&gt; or null </td>
+<td>
+<p>The member's primary address.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the person whom the item is being delivered to.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address1 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The first line of the address.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address2 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The second line of the address (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The suburb (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> City </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The city.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Postcode </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The postcode (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country (currently restricted to "New Zealand" or "Australia").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsMembershipAddress </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBusiness </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has registered as a business.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BusinessName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's business name (business memberships only).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BillingAddress </th>
+<td style="width: 22%"> &lt;DeliveryAddress&gt; or null </td>
+<td>
+<p>The member's billing address (business memberships only). This is optional even for business memberships. If it doesn't exist, assume the billing address is the same as the delivery address.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestLocality </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the closest locality to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestDistrict </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the closest district to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestDistrictId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the closest district to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAuthenticated </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is authenticated.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsPayNowAccepted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can accept Pay Now payments.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteSearchCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved searches in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteCategoryCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved categories in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteSellerCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved sellers in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoBillingEnabled </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has set up auto-billing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanListClearanceItems </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can list clearance items using the IsClearance flag. This is currently only for certain elite sellers.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTopSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is currently a registered top seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRegisteredWineSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is currently a registered wine seller. This will be <b>false</b> if the member has not registered, or if the registration has been disabled, or if the off-license has expired, or if the member cannot accept Pay Now payments.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsPropertyAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a property agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRentalAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a rental agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsJobAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a job agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If the user has a saved credit card that they can use, contains the card type ("Visa", "MasterCard", etc). Will be omitted if the user does not have a saved card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardLastFourDigits </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If the user has a saved credit card, contains the last four digits of the card number (e.g. "1234"). Will be omitted if the user does not have a saved card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardExpiryMonth </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>If the user has a saved credit card, contains the month when it expires (1 = January, 12 = December).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardExpiryYear </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>If the user has a saved credit card, contains the year when it expires.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RecentSearchesEnabled </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether recent searches are recorded against the user's profile.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighVolumeListingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of active listings the member has which contribute towards the high volume threshold. Generally speaking, auctions contribute towards the high volume threshold while classifieds do not. Some categories are exempt; listings within those categories do not count towards the threshold either.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighVolumeThreshold </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The user's high volume listing allowance. This is the number of active listings you can have without incurring a high volume listing fee (this fee is charged for each new listing). All classifieds and auctions in some categories are exempt from high volume listing fees.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanRemoveBids </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can remove bids using the remove bid API.</p>
+<p style="color: red">
+                                This field will always return true.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShoppingCartCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items in the members cart.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsInTrade </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a professional trader. If they are a professional trader then their listings are protected by the Consumer Guarantees Act.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberProfile </th>
+<td style="width: 22%"> &lt;SimpleMemberProfile&gt; or null </td>
+<td>
+<p>This member's public profile information.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Occupation </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The occupation of the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Biography </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's bio.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quote </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's favourite quote.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Photo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A URL representing the member's photo.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalTrackingToken </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>An external tracking token used to uniquely identify a member without exposing member information.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LandlinePhoneNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's landline phone number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MobilePhoneNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's mobile phone number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberToken </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The members token</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotRegistered", "value": "0", "description": "Not registered with a Tradevine account"}, {"name": "TradevineLite", "value": "1", "description": "Tradevine Lite account"}, {"name": "Tradevine", "value": "2", "description": "Full Tradevine account"}, {"name": "NewGoodsFeed", "value": "3", "description": "NGF account"}, {"name": "TradeRunner", "value": "4", "description": "TradeRunner account"}]'>
+<th style="width: 22%"> TradevineAccountType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The member's Tradevine account type (Tradevine, MyProducts or neither)</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> DraftSummary </th>
+<td style="width: 22%"> &lt;DraftSummary&gt; or null </td>
+<td>
+<p>The number of items lost.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DraftCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>current number of drafts</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DraftLimit </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>the maximum limit of drafts allowed for each member</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> JobProfiles </th>
+<td style="width: 22%"> Collection of &lt;JobProfileSummary&gt; or null </td>
+<td>
+<p>The member's job profiles</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ProfileId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the profile</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Key </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A key to identify the profile</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AvailableExternalPaymentProviders </th>
+<td style="width: 22%"> Collection of Enumeration or null </td>
+<td>
+<p>List of deferred payments the member can use</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberTokens </th>
+<td style="width: 22%"> Collection of &lt;MemberToken&gt; or null </td>
+<td>
+<p>The collection of member tokens a member has for external services</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Do not use."}, {"name": "Sentry", "value": "1", "description": "The token is for use with the sentry.io service."}, {"name": "GoogleAnalytics", "value": "2", "description": "The token is for use with GA (Google Analytics)"}, {"name": "ExternalSearch", "value": "3", "description": "The token is for use with external search"}, {"name": "ListingCollections", "value": "4", "description": "The token is for use with the listing collections service"}, {"name": "InternalServices", "value": "6", "description": "The token is for use with Trade Me internal services."}]'>
+<th style="width: 22%"> Service </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The service the token is for.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Token </th>
+<td style="width: 22%"> Guid </td>
+<td>
+<p>The token used for the service to uniquely identify the member.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LoyaltySubscriptionDetails </th>
+<td style="width: 22%"> &lt;MemberLoyaltySubscriptionDetails&gt; or null </td>
+<td>
+<p>The member's loyalty subscription details.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsMemberEligibleForNewSubscription </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is eligible for a new loyalty subscription</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subscription </th>
+<td style="width: 22%"> &lt;LoyaltySubscriptionDetail&gt; or null </td>
+<td>
+<p>Return the current member subscription</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Subscription Id</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotSubscribed", "value": "0", "description": "Member not subscribed"}, {"name": "Active", "value": "1", "description": "Subscription is active"}, {"name": "Expired", "value": "2", "description": "Subscription is expired"}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Status of the subscription</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SubscribedAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>When the subscription was purchased</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExpiresAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>When the subscription expires</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Product </th>
+<td style="width: 22%"> &lt;LoyaltyProductDetail&gt; or null </td>
+<td>
+<p>Product details for the current subscription</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Product ID</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Product price per PaymentInterval unit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentInterval </th>
+<td style="width: 22%"> &lt;LoyaltyPaymentIntervalDetail&gt; or null </td>
+<td>
+<p>String representation of the subscription period</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Description of the payment interval in a friendly format</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Once", "value": "0", "description": "One time only"}, {"name": "Week", "value": "1", "description": "Weekly"}, {"name": "Month", "value": "2", "description": "Monthly"}]'>
+<th style="width: 22%"> IntervalType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of payment interval</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IntervalsPerPayment </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of payment intervals between payments</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Benefits </th>
+<td style="width: 22%"> Collection of &lt;LoyaltyBenefitDetail&gt; or null </td>
+<td>
+<p>Benefits provided by this product.</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "Unknown", "value": "0", "description": "Unknown"}, {"name": "FreeShipping", "value": "1", "description": "Free shipping on eligible items"}, {"name": "FreeSuccessFee", "value": "2", "description": "Free success fee"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Type of benefit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SubsidyLimit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The maximum shipping subsidy given by this benefit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsUnlimited </th>
+<td style="width: 22%"> Boolean or null </td>
+<td>
+<p>Indicates whether the free success fee benefit is unlimited</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quota </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The total number of free success fee sales benefits available</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QuotaRemaining </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The remaining number of free success fee sales benefits available</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxLiabilities </th>
+<td style="width: 22%"> Collection of &lt;TaxRate&gt; or null </td>
+<td>
+<p>The taxes that Trade Me will collect automatically on behalf of this member when they sell on Trade Me</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "NZ_GST_Overseas_Supplies", "value": "1", "description": "New Zealand GST on overseas supplies"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of tax that is included</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country that is levying the tax e.g. NZ</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the tax e.g. GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FlatRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The rate at which the tax is charged (as a decimal e.g 0.15)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string that can be used as a caption where necessary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellRestrictionsEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTaxEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Location </th>
+<td style="width: 22%"> &lt;MapPoint&gt; or null </td>
+<td>
+<p>Longitude and Latitude of member's location. For now it's based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Latitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Latitude of the map point</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Longitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Longitude of the map point</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Unknown", "value": "0", "description": "Status Unknown"}, {"name": "NotRegistered", "value": "1", "description": "Not Registered"}, {"name": "PendingFirstActivation", "value": "2", "description": "Pending First Activation"}, {"name": "ActivePendingReplacementActivation", "value": "3", "description": "Active Pending Replacement Activation"}, {"name": "Active", "value": "4", "description": "Active"}, {"name": "Suspended", "value": "5", "description": "Suspended"}, {"name": "Bounced", "value": "6", "description": "Bounced"}, {"name": "BouncedPendingReplacementActivation", "value": "7", "description": "Bounced Pending Replacement Activation"}]'>
+<th style="width: 22%"> PayNowStatus </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the member's pay now account.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SegmentUserId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's Segment user ID.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBasic </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates the member has only registered with a small portion of information</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CddCaseSummary </th>
+<td style="width: 22%"> &lt;CddCaseSummary&gt; or null </td>
+<td>
+<p>Member's AML - CDD case summary details</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DisplayStatus </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Status of the CDD case</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Verification URL for a member</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastUpdated </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>CDD status last updated</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;MemberSummary xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;WatchListCount&gt;123&lt;/WatchListCount&gt;
+  &lt;WonCount&gt;123&lt;/WonCount&gt;
+  &lt;LostCount&gt;123&lt;/LostCount&gt;
+  &lt;SellingCount&gt;123&lt;/SellingCount&gt;
+  &lt;SoldCount&gt;123&lt;/SoldCount&gt;
+  &lt;UnsoldCount&gt;123&lt;/UnsoldCount&gt;
+  &lt;PositiveFeedback&gt;123&lt;/PositiveFeedback&gt;
+  &lt;NegativeFeedback&gt;123&lt;/NegativeFeedback&gt;
+  &lt;TotalFeedback&gt;123&lt;/TotalFeedback&gt;
+  &lt;MemberId&gt;123&lt;/MemberId&gt;
+  &lt;Nickname&gt;ABC&lt;/Nickname&gt;
+  &lt;DateJoined&gt;2018-01-01T00:00:00Z&lt;/DateJoined&gt;
+  &lt;DateAddressVerified&gt;2018-01-01T00:00:00Z&lt;/DateAddressVerified&gt;
+  &lt;IsAddressVerified&gt;false&lt;/IsAddressVerified&gt;
+  &lt;Balance&gt;123.0&lt;/Balance&gt;
+  &lt;PayNowBalance&gt;123.0&lt;/PayNowBalance&gt;
+  &lt;FirstName&gt;ABC&lt;/FirstName&gt;
+  &lt;LastName&gt;ABC&lt;/LastName&gt;
+  &lt;FixedPriceOffers&gt;123&lt;/FixedPriceOffers&gt;
+  &lt;Email&gt;ABC&lt;/Email&gt;
+  &lt;Gender&gt;Unspecified&lt;/Gender&gt;
+  &lt;MembershipAddress&gt;
+    &lt;Name&gt;ABC&lt;/Name&gt;
+    &lt;Address1&gt;ABC&lt;/Address1&gt;
+    &lt;Address2&gt;ABC&lt;/Address2&gt;
+    &lt;Suburb&gt;ABC&lt;/Suburb&gt;
+    &lt;City&gt;ABC&lt;/City&gt;
+    &lt;Postcode&gt;ABC&lt;/Postcode&gt;
+    &lt;Country&gt;ABC&lt;/Country&gt;
+    &lt;IsMembershipAddress&gt;false&lt;/IsMembershipAddress&gt;
+  &lt;/MembershipAddress&gt;
+  &lt;IsBusiness&gt;false&lt;/IsBusiness&gt;
+  &lt;BusinessName&gt;ABC&lt;/BusinessName&gt;
+  &lt;BillingAddress&gt;
+    &lt;Name&gt;ABC&lt;/Name&gt;
+    &lt;Address1&gt;ABC&lt;/Address1&gt;
+    &lt;Address2&gt;ABC&lt;/Address2&gt;
+    &lt;Suburb&gt;ABC&lt;/Suburb&gt;
+    &lt;City&gt;ABC&lt;/City&gt;
+    &lt;Postcode&gt;ABC&lt;/Postcode&gt;
+    &lt;Country&gt;ABC&lt;/Country&gt;
+  &lt;/BillingAddress&gt;
+  &lt;ClosestLocality&gt;ABC&lt;/ClosestLocality&gt;
+  &lt;ClosestDistrict&gt;ABC&lt;/ClosestDistrict&gt;
+  &lt;ClosestDistrictId&gt;123&lt;/ClosestDistrictId&gt;
+  &lt;IsAuthenticated&gt;false&lt;/IsAuthenticated&gt;
+  &lt;IsPayNowAccepted&gt;false&lt;/IsPayNowAccepted&gt;
+  &lt;FavouriteSearchCount&gt;123&lt;/FavouriteSearchCount&gt;
+  &lt;FavouriteCategoryCount&gt;123&lt;/FavouriteCategoryCount&gt;
+  &lt;FavouriteSellerCount&gt;123&lt;/FavouriteSellerCount&gt;
+  &lt;AutoBillingEnabled&gt;false&lt;/AutoBillingEnabled&gt;
+  &lt;CanListClearanceItems&gt;false&lt;/CanListClearanceItems&gt;
+  &lt;IsTopSeller&gt;false&lt;/IsTopSeller&gt;
+  &lt;IsRegisteredWineSeller&gt;false&lt;/IsRegisteredWineSeller&gt;
+  &lt;IsPropertyAgent&gt;false&lt;/IsPropertyAgent&gt;
+  &lt;IsRentalAgent&gt;false&lt;/IsRentalAgent&gt;
+  &lt;IsJobAgent&gt;false&lt;/IsJobAgent&gt;
+  &lt;CreditCardType&gt;ABC&lt;/CreditCardType&gt;
+  &lt;CreditCardLastFourDigits&gt;ABC&lt;/CreditCardLastFourDigits&gt;
+  &lt;CreditCardExpiryMonth&gt;123&lt;/CreditCardExpiryMonth&gt;
+  &lt;CreditCardExpiryYear&gt;123&lt;/CreditCardExpiryYear&gt;
+  &lt;RecentSearchesEnabled&gt;false&lt;/RecentSearchesEnabled&gt;
+  &lt;HighVolumeListingCount&gt;123&lt;/HighVolumeListingCount&gt;
+  &lt;HighVolumeThreshold&gt;123&lt;/HighVolumeThreshold&gt;
+  &lt;CanRemoveBids&gt;false&lt;/CanRemoveBids&gt;
+  &lt;ShoppingCartCount&gt;123&lt;/ShoppingCartCount&gt;
+  &lt;IsInTrade&gt;false&lt;/IsInTrade&gt;
+  &lt;MemberProfile&gt;
+    &lt;Occupation&gt;ABC&lt;/Occupation&gt;
+    &lt;Biography&gt;ABC&lt;/Biography&gt;
+    &lt;Quote&gt;ABC&lt;/Quote&gt;
+    &lt;Photo&gt;ABC&lt;/Photo&gt;
+  &lt;/MemberProfile&gt;
+  &lt;ExternalTrackingToken&gt;ABC&lt;/ExternalTrackingToken&gt;
+  &lt;LandlinePhoneNumber&gt;ABC&lt;/LandlinePhoneNumber&gt;
+  &lt;MobilePhoneNumber&gt;ABC&lt;/MobilePhoneNumber&gt;
+  &lt;MemberToken&gt;ABC&lt;/MemberToken&gt;
+  &lt;TradevineAccountType&gt;NotRegistered&lt;/TradevineAccountType&gt;
+  &lt;DraftSummary&gt;
+    &lt;DraftCount&gt;123&lt;/DraftCount&gt;
+    &lt;DraftLimit&gt;123&lt;/DraftLimit&gt;
+  &lt;/DraftSummary&gt;
+  &lt;JobProfiles&gt;
+    &lt;JobProfileSummary&gt;
+      &lt;ProfileId&gt;123&lt;/ProfileId&gt;
+      &lt;Key&gt;ABC&lt;/Key&gt;
+    &lt;/JobProfileSummary&gt;
+    &lt;JobProfileSummary&gt;
+      &lt;ProfileId&gt;123&lt;/ProfileId&gt;
+      &lt;Key&gt;ABC&lt;/Key&gt;
+    &lt;/JobProfileSummary&gt;
+  &lt;/JobProfiles&gt;
+  &lt;AvailableExternalPaymentProviders&gt;
+    &lt;ExternalPaymentProvider&gt;Afterpay&lt;/ExternalPaymentProvider&gt;
+    &lt;ExternalPaymentProvider&gt;Afterpay&lt;/ExternalPaymentProvider&gt;
+  &lt;/AvailableExternalPaymentProviders&gt;
+  &lt;MemberTokens&gt;
+    &lt;MemberToken&gt;
+      &lt;Service&gt;None&lt;/Service&gt;
+      &lt;Token&gt;ABCDEF12-0123-4567-ABBA-01234567ABCD&lt;/Token&gt;
+    &lt;/MemberToken&gt;
+    &lt;MemberToken&gt;
+      &lt;Service&gt;None&lt;/Service&gt;
+      &lt;Token&gt;ABCDEF12-0123-4567-ABBA-01234567ABCD&lt;/Token&gt;
+    &lt;/MemberToken&gt;
+  &lt;/MemberTokens&gt;
+  &lt;LoyaltySubscriptionDetails&gt;
+    &lt;IsMemberEligibleForNewSubscription&gt;false&lt;/IsMemberEligibleForNewSubscription&gt;
+    &lt;Subscription&gt;
+      &lt;Id&gt;123&lt;/Id&gt;
+      &lt;Status&gt;NotSubscribed&lt;/Status&gt;
+      &lt;SubscribedAt&gt;2018-01-01T00:00:00Z&lt;/SubscribedAt&gt;
+      &lt;ExpiresAt&gt;2018-01-01T00:00:00Z&lt;/ExpiresAt&gt;
+      &lt;Product&gt;
+        &lt;Id&gt;123&lt;/Id&gt;
+        &lt;Price&gt;123.0&lt;/Price&gt;
+        &lt;PaymentInterval&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IntervalType&gt;Once&lt;/IntervalType&gt;
+          &lt;IntervalsPerPayment&gt;123&lt;/IntervalsPerPayment&gt;
+        &lt;/PaymentInterval&gt;
+        &lt;Benefits&gt;
+          &lt;LoyaltyBenefitDetail&gt;
+            &lt;Type&gt;Unknown&lt;/Type&gt;
+            &lt;SubsidyLimit&gt;123.0&lt;/SubsidyLimit&gt;
+            &lt;IsUnlimited&gt;false&lt;/IsUnlimited&gt;
+            &lt;Quota&gt;123&lt;/Quota&gt;
+            &lt;QuotaRemaining&gt;123&lt;/QuotaRemaining&gt;
+          &lt;/LoyaltyBenefitDetail&gt;
+          &lt;LoyaltyBenefitDetail&gt;
+            &lt;Type&gt;Unknown&lt;/Type&gt;
+            &lt;SubsidyLimit&gt;123.0&lt;/SubsidyLimit&gt;
+            &lt;IsUnlimited&gt;false&lt;/IsUnlimited&gt;
+            &lt;Quota&gt;123&lt;/Quota&gt;
+            &lt;QuotaRemaining&gt;123&lt;/QuotaRemaining&gt;
+          &lt;/LoyaltyBenefitDetail&gt;
+        &lt;/Benefits&gt;
+      &lt;/Product&gt;
+    &lt;/Subscription&gt;
+  &lt;/LoyaltySubscriptionDetails&gt;
+  &lt;TaxLiabilities&gt;
+    &lt;TaxRate&gt;
+      &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+      &lt;Country&gt;ABC&lt;/Country&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+      &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+    &lt;/TaxRate&gt;
+    &lt;TaxRate&gt;
+      &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+      &lt;Country&gt;ABC&lt;/Country&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+      &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+    &lt;/TaxRate&gt;
+  &lt;/TaxLiabilities&gt;
+  &lt;Location&gt;
+    &lt;Latitude&gt;123.0&lt;/Latitude&gt;
+    &lt;Longitude&gt;123.0&lt;/Longitude&gt;
+  &lt;/Location&gt;
+  &lt;PayNowStatus&gt;Unknown&lt;/PayNowStatus&gt;
+  &lt;SegmentUserId&gt;ABC&lt;/SegmentUserId&gt;
+  &lt;IsBasic&gt;false&lt;/IsBasic&gt;
+  &lt;CddCaseSummary&gt;
+    &lt;DisplayStatus&gt;ABC&lt;/DisplayStatus&gt;
+    &lt;Url&gt;ABC&lt;/Url&gt;
+    &lt;LastUpdated&gt;2018-01-01T00:00:00Z&lt;/LastUpdated&gt;
+  &lt;/CddCaseSummary&gt;
+&lt;/MemberSummary&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "WatchListCount": 123,
+  "WonCount": 123,
+  "LostCount": 123,
+  "SellingCount": 123,
+  "SoldCount": 123,
+  "UnsoldCount": 123,
+  "PositiveFeedback": 123,
+  "NegativeFeedback": 123,
+  "TotalFeedback": 123,
+  "MemberId": 123,
+  "Nickname": "ABC",
+  "DateJoined": "\/Date(1514764800)\/",
+  "DateAddressVerified": "\/Date(1514764800)\/",
+  "IsAddressVerified": false,
+  "Balance": 123.0,
+  "PayNowBalance": 123.0,
+  "FirstName": "ABC",
+  "LastName": "ABC",
+  "FixedPriceOffers": 123,
+  "Email": "ABC",
+  "Gender": 0,
+  "MembershipAddress": {
+    "Name": "ABC",
+    "Address1": "ABC",
+    "Address2": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "Postcode": "ABC",
+    "Country": "ABC",
+    "IsMembershipAddress": false
+  },
+  "IsBusiness": false,
+  "BusinessName": "ABC",
+  "BillingAddress": {
+    "Name": "ABC",
+    "Address1": "ABC",
+    "Address2": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "Postcode": "ABC",
+    "Country": "ABC"
+  },
+  "ClosestLocality": "ABC",
+  "ClosestDistrict": "ABC",
+  "ClosestDistrictId": 123,
+  "IsAuthenticated": false,
+  "IsPayNowAccepted": false,
+  "FavouriteSearchCount": 123,
+  "FavouriteCategoryCount": 123,
+  "FavouriteSellerCount": 123,
+  "AutoBillingEnabled": false,
+  "CanListClearanceItems": false,
+  "IsTopSeller": false,
+  "IsRegisteredWineSeller": false,
+  "IsPropertyAgent": false,
+  "IsRentalAgent": false,
+  "IsJobAgent": false,
+  "CreditCardType": "ABC",
+  "CreditCardLastFourDigits": "ABC",
+  "CreditCardExpiryMonth": 123,
+  "CreditCardExpiryYear": 123,
+  "RecentSearchesEnabled": false,
+  "HighVolumeListingCount": 123,
+  "HighVolumeThreshold": 123,
+  "CanRemoveBids": false,
+  "ShoppingCartCount": 123,
+  "IsInTrade": false,
+  "MemberProfile": {
+    "Occupation": "ABC",
+    "Biography": "ABC",
+    "Quote": "ABC",
+    "Photo": "ABC"
+  },
+  "ExternalTrackingToken": "ABC",
+  "LandlinePhoneNumber": "ABC",
+  "MobilePhoneNumber": "ABC",
+  "MemberToken": "ABC",
+  "TradevineAccountType": 0,
+  "DraftSummary": {
+    "DraftCount": 123,
+    "DraftLimit": 123
+  },
+  "JobProfiles": [
+    {
+      "ProfileId": 123,
+      "Key": "ABC"
+    },
+    {
+      "ProfileId": 123,
+      "Key": "ABC"
+    }
+  ],
+  "AvailableExternalPaymentProviders": [
+    1,
+    1
+  ],
+  "MemberTokens": [
+    {
+      "Service": 0,
+      "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+    },
+    {
+      "Service": 0,
+      "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+    }
+  ],
+  "LoyaltySubscriptionDetails": {
+    "IsMemberEligibleForNewSubscription": false,
+    "Subscription": {
+      "Id": 123,
+      "Status": 0,
+      "SubscribedAt": "\/Date(1514764800)\/",
+      "ExpiresAt": "\/Date(1514764800)\/",
+      "Product": {
+        "Id": 123,
+        "Price": 123.0,
+        "PaymentInterval": {
+          "Description": "ABC",
+          "IntervalType": 0,
+          "IntervalsPerPayment": 123
+        },
+        "Benefits": [
+          {
+            "Type": 0,
+            "SubsidyLimit": 123.0,
+            "IsUnlimited": false,
+            "Quota": 123,
+            "QuotaRemaining": 123
+          },
+          {
+            "Type": 0,
+            "SubsidyLimit": 123.0,
+            "IsUnlimited": false,
+            "Quota": 123,
+            "QuotaRemaining": 123
+          }
+        ]
+      }
+    }
+  },
+  "TaxLiabilities": [
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    },
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    }
+  ],
+  "Location": {
+    "Latitude": 123.0,
+    "Longitude": 123.0
+  },
+  "PayNowStatus": 0,
+  "SegmentUserId": "ABC",
+  "IsBasic": false,
+  "CddCaseSummary": {
+    "DisplayStatus": "ABC",
+    "Url": "ABC",
+    "LastUpdated": "\/Date(1514764800)\/"
+  }
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

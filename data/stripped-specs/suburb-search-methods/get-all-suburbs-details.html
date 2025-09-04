@@ -1,0 +1,88 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/suburb-search-methods/get-all-suburbs-details -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get all suburbs details.</h1>
+<!-- Page content -->
+<p>Get suburb details for all suburbs.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/Sold/Suburbs.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;SoldSuburbsResponse&gt; </p>
+<p>Details of all suburbs.</p>
+<table class="dense" id="returns">
+<tr data-nested-fields='[{"field_name": "SuburbId", "field_type": "Integer", "description": "Suburb Id"}, {"field_name": "SuburbName", "field_type": "String or null", "description": "Suburb Name"}, {"field_name": "ParentId", "field_type": "Integer", "description": "Parent Id"}, {"field_name": "CityId", "field_type": "Integer", "description": "City Id"}, {"field_name": "CityName", "field_type": "String or null", "description": "City Name"}, {"field_name": "SuburbUrlSlug", "field_type": "String or null", "description": "Suburb Url Slug"}]'>
+<th style="width: 22%"> Suburbs </th>
+<td style="width: 22%"> Collection of &lt;BaseSuburbDetails&gt; or null </td>
+<td>
+<p>Wrapper to store nearby suburb details</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Error </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Error message</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Suburbs": [
+    {
+      "SuburbId": 123,
+      "SuburbName": "ABC",
+      "ParentId": 123,
+      "CityId": 123,
+      "CityName": "ABC",
+      "SuburbUrlSlug": "ABC"
+    },
+    {
+      "SuburbId": 123,
+      "SuburbName": "ABC",
+      "ParentId": 123,
+      "CityId": 123,
+      "CityName": "ABC",
+      "SuburbUrlSlug": "ABC"
+    }
+  ],
+  "Error": "ABC"
+}</code></pre>
+</div>

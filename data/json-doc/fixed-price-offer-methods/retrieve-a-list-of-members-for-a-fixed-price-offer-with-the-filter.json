@@ -1,0 +1,198 @@
+{
+  "endpoint": "RetrieveAListOfMembersForAFixedPriceOfferWithTheFilter",
+  "title": "Retrieve a list of members for a fixed price offer with the filter",
+  "description": "Returns a list of members you can make a fixed price offer to for a particular auction.",
+  "source": "https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-a-list-of-members-for-a-fixed-price-offer-with-the-filter",
+  "url": "https://api.trademe.co.nz/v1/FixedPriceOffers/{listingId}/Members/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The listing ID of the auction you wish to make a fixed price offer for. The listing must be closed."
+      },
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "Filters the returned list to a subset of possible members (\"All\", \"Bidders\" - only return bidders, \"Watchers\" - only return watchers)."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<FixedPriceOfferMembersResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "Watchers",
+        "type": "Collection of <Member> or null",
+        "required": false,
+        "description": "The watchers on the listing",
+        "nested_fields": [
+          {
+            "field_name": "MemberId",
+            "field_type": "Integer",
+            "description": "The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "Nickname",
+            "field_type": "String or null",
+            "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "DateAddressVerified",
+            "field_type": "DateTime",
+            "description": "The date the member was address verified."
+          },
+          {
+            "field_name": "DateJoined",
+            "field_type": "DateTime",
+            "description": "The date the member joined."
+          },
+          {
+            "field_name": "UniqueNegative",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed negative feedback against this member."
+          },
+          {
+            "field_name": "UniquePositive",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed positive feedback against this member."
+          },
+          {
+            "field_name": "FeedbackCount",
+            "field_type": "Integer",
+            "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+          },
+          {
+            "field_name": "IsAddressVerified",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member has been address verified."
+          },
+          {
+            "field_name": "IsDealer",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is a car dealer."
+          },
+          {
+            "field_name": "IsAuthenticated",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is authenticated."
+          },
+          {
+            "field_name": "IsBlackListed",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member has been blacklisted."
+          }
+        ]
+      },
+      {
+        "name": "Bidders",
+        "type": "Collection of <Member> or null",
+        "required": false,
+        "description": "The bidders on the listing"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "Watchers": [
+        {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false,
+          "IsBlackListed": false
+        },
+        {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false,
+          "IsBlackListed": false
+        }
+      ],
+      "Bidders": [
+        {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false
+        },
+        {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false
+        }
+      ]
+    }
+  }
+}

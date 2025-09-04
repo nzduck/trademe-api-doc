@@ -1,0 +1,161 @@
+{
+  "endpoint": "GetAListOfShippingCarrierProducts",
+  "title": "Get a list of Shipping Carrier Products",
+  "description": "Retrieves a list of Carrier Products from the provided Carrier id.",
+  "source": "https://developer.trademe.co.nz/api-reference/shipping-methods/get-a-list-of-shipping-carrier-products",
+  "url": "https://api.trademe.co.nz/v1/Shipping/Carriers/{carrierId}/Products.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "carrierId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <CarrierProduct>",
+    "fields": [
+      {
+        "name": "CarrierProductId",
+        "type": "Integer",
+        "required": false,
+        "description": "Unique identifier of the Carrier Product"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the Carrier Product"
+      },
+      {
+        "name": "MinimumDeliveryTime",
+        "type": "TimeSpan",
+        "required": false,
+        "description": "Minimum delivery time of the Carrier Product"
+      },
+      {
+        "name": "MaximumDeliveryTime",
+        "type": "TimeSpan",
+        "required": false,
+        "description": "Maximum delivery time of the Carrier Product"
+      },
+      {
+        "name": "IsRural",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the product is rural"
+      },
+      {
+        "name": "IsCombined",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the product is combined shipping"
+      },
+      {
+        "name": "Addons",
+        "type": "Collection of <CarrierAddon> or null",
+        "required": false,
+        "description": "List of Addons available to the product",
+        "nested_fields": [
+          {
+            "field_name": "CarrierAddonId",
+            "field_type": "Integer",
+            "description": "Unique identifier of the Carrier Addon"
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "Name of the addon"
+          },
+          {
+            "field_name": "Type",
+            "field_type": "Enumeration",
+            "description": "Type of the addon",
+            "enum_values": [
+              {
+                "name": "Signature",
+                "value": "0",
+                "description": "Addon is Signature"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "CarrierProductId": 123,
+        "Name": "ABC",
+        "MinimumDeliveryTime": "PT4H5M",
+        "MaximumDeliveryTime": "PT4H5M",
+        "IsRural": false,
+        "IsCombined": false,
+        "Addons": [
+          {
+            "CarrierAddonId": 123,
+            "Name": "ABC",
+            "Type": 0
+          },
+          {
+            "CarrierAddonId": 123,
+            "Name": "ABC",
+            "Type": 0
+          }
+        ]
+      },
+      {
+        "CarrierProductId": 123,
+        "Name": "ABC",
+        "MinimumDeliveryTime": "PT4H5M",
+        "MaximumDeliveryTime": "PT4H5M",
+        "IsRural": false,
+        "IsCombined": false,
+        "Addons": [
+          {
+            "CarrierAddonId": 123,
+            "Name": "ABC",
+            "Type": 0
+          },
+          {
+            "CarrierAddonId": 123,
+            "Name": "ABC",
+            "Type": 0
+          }
+        ]
+      }
+    ]
+  }
+}

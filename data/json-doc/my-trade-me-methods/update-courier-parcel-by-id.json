@@ -1,0 +1,179 @@
+{
+  "endpoint": "UpdateCourierParcelById",
+  "title": "Update Courier Parcel by Id",
+  "description": "Update an existing Courier Parcel by Id",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/update-courier-parcel-by-id",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/CourierParcels/{courierParcelId}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "courierParcelId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Id of the existing parcel"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<CourierParcelTrackingRequest>",
+    "fields": [
+      {
+        "name": "Parcel",
+        "type": "<CourierParcel> (required)",
+        "required": true,
+        "description": "Parcel to be tracked"
+      },
+      {
+        "name": "CourierCompany",
+        "type": "CourierCompany \n String (required) \n\nThe courier company. Commonly used values include: CourierPost, Fastway, New Zealand Couriers, Post Haste, GoSweetSpot, Castle Parcels\n\n\n\n AccountNumber \n String (optional) \n\nOptional account number specific to the courier\n\n\n\n TrackingReference \n String (required) \n\nThe tracking reference specific to the courier company\n\n\n\n AuctionSoldIds \n Collection of Integer (required) \n\nThe list of purchase IDs (auction sold IDs) that where shipped with this parcel",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "CourierCompany",
+        "type": "String (required)",
+        "required": true,
+        "description": "The courier company. Commonly used values include: CourierPost, Fastway, New Zealand Couriers, Post Haste, GoSweetSpot, Castle Parcels"
+      },
+      {
+        "name": "AccountNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Optional account number specific to the courier"
+      },
+      {
+        "name": "TrackingReference",
+        "type": "String (required)",
+        "required": true,
+        "description": "The tracking reference specific to the courier company"
+      },
+      {
+        "name": "AuctionSoldIds",
+        "type": "Collection of Integer (required)",
+        "required": true,
+        "description": "The list of purchase IDs (auction sold IDs) that where shipped with this parcel"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<UpdateParcelResponse> Details of whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "Code",
+        "type": "Enumeration",
+        "required": false,
+        "description": "More information as to the result of the operation",
+        "enum": [
+          {
+            "name": "OK",
+            "value": "0",
+            "description": "Parcel was successfully updated in our system"
+          },
+          {
+            "name": "ParcelNotFound",
+            "value": "1",
+            "description": "The specified parcel does not exist"
+          },
+          {
+            "name": "TrackingReferenceEmpty",
+            "value": "2",
+            "description": "Tracking reference is empty"
+          },
+          {
+            "name": "TrackingReferenceTooLong",
+            "value": "3",
+            "description": "Tracking reference is too long"
+          },
+          {
+            "name": "AccountNumberTooLong",
+            "value": "4",
+            "description": "Account number is too long"
+          },
+          {
+            "name": "MemberIsNotSeller",
+            "value": "5",
+            "description": "This member did not create one or more of the supplied listing ids"
+          },
+          {
+            "name": "InvalidAuctionSoldIds",
+            "value": "6",
+            "description": "One or more of the sold listing ids do not exist"
+          },
+          {
+            "name": "AuctionSoldIdsEmpty",
+            "value": "7",
+            "description": "Need to specify at least one auction sold id"
+          },
+          {
+            "name": "AuctionSoldIdsArentForTheSameBuyer",
+            "value": "8",
+            "description": "All auctions must be for the same buyer"
+          },
+          {
+            "name": "CourierCompanyNotSpecified",
+            "value": "9",
+            "description": "Courier company is not specified"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Parcel": {
+        "CourierCompany": "ABC",
+        "AccountNumber": "ABC",
+        "TrackingReference": "ABC",
+        "AuctionSoldIds": [
+          123,
+          123
+        ]
+      }
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "Code": 0
+    }
+  }
+}

@@ -1,0 +1,76 @@
+{
+  "endpoint": "AskTheSellerToCreateAnFpo",
+  "title": "Ask the seller to create an FPO",
+  "description": "Sends an email to the seller of a listing asking that they make a fixed price offer.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/ask-the-seller-to-create-an-fpo",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/RequestOffer.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<RequestOfferRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing that should be offered."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<RequestOfferResponse> A response that indicates whether the operation succeeded.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

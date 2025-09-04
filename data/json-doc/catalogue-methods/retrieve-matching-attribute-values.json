@@ -1,0 +1,81 @@
+{
+  "endpoint": "RetrieveMatchingAttributeValues",
+  "title": "Retrieve matching attribute values",
+  "description": "Returns a list of attribute values that match the string provided",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-matching-attribute-values",
+  "url": "https://api.trademe.co.nz/v1/attributesuggestions/{id}/{input}.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "id",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the attribute to match against"
+      },
+      {
+        "name": "input",
+        "type": "String (required)",
+        "required": true,
+        "description": "The string that matches the start of the values to be returned"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <AttributeOption> A list of attribute values",
+    "fields": [
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The value of the item as a string."
+      },
+      {
+        "name": "Display",
+        "type": "String or null",
+        "required": false,
+        "description": "What should be displayed for this value (often the same)."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Value": "ABC",
+        "Display": "ABC"
+      },
+      {
+        "Value": "ABC",
+        "Display": "ABC"
+      }
+    ]
+  }
+}

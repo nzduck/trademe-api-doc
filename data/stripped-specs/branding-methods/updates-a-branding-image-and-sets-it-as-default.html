@@ -1,0 +1,184 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/branding-methods/updates-a-branding-image-and-sets-it-as-default -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Updates a branding image and sets it as default</h1>
+<!-- Page content -->
+<p>Update the priority of a specific branding image given the branding id in the url.</p><p>It sets the branding image specified in the url to the default for its branding image type. For example, if the member has two branding logos, the branding logo they specify in the url will become the default. Success will always be returned regardless of whether or not the image was previously the default.</p><p>NOTE: This operation ignores all elements in the request.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages/{brandingId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> memberId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>Member id of the branding image owner</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> brandingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>Branding image Id to set as default</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;BrandingImageDetails&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> BrandingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Branding image Id. Use this Id to add branding to your listings. This property is read-only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Branding image file name. This property is read-only. The file name may be different from the value provided during uploading the image.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileSize </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Branding image file size in bytes. This property is read-only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImageUrl </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The location of the image. This property is read-only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Priority </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The prorioty of this branding image relative to other uploaded images. This property is only applicable to agent branding and is ignored for listing specific branding. Default value is 0.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingImageType </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Branding image type</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>Default value; It should not be used</p>
+</td>
+</tr>
+<tr>
+<td>Logo</td>
+<td>1</td>
+<td>
+<p>Branding logo (Width= 480px, Height= 200px)</p>
+</td>
+</tr>
+<tr>
+<td>Banner</td>
+<td>2</td>
+<td>
+<p>Branding banner (Width= 758px, Height= 75px)</p>
+</td>
+</tr>
+<tr>
+<td>Square</td>
+<td>3</td>
+<td>
+<p>Branding square (Width= 480px, Height= 480px)</p>
+</td>
+</tr>
+<tr>
+<td>FullScreenBanner</td>
+<td>4</td>
+<td>
+<p>Branding full screen banner (Width= 1440px, Height= 250px)</p>
+</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>5</td>
+<td>
+<p>Branding photo (Width= 712px, Height= 330px)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;UpdateBrandingResponse&gt; </p>
+<p>Status of operation</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "BrandingId": 123,
+  "FileName": "ABC",
+  "FileSize": 123,
+  "ImageUrl": "ABC",
+  "Priority": 123,
+  "BrandingImageType": 0
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false
+}</code></pre>
+</div>

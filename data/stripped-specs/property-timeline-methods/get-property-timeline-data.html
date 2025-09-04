@@ -1,0 +1,307 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/property-timeline-methods/get-property-timeline-data -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get property timeline data</h1>
+<!-- Page content -->
+<p>Get property timeline by homes property id</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/Timeline/{homesPropertyId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> homesPropertyId </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;PropertyTimelineResponse&gt; </p>
+<p>Property timeline</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Events </th>
+<td style="width: 22%"> Collection of &lt;PropertyTimelineDetail&gt; or null </td>
+<td>
+<p>The events of the property timeline detail</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The price of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplaySalePrice </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display price of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SaleType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The sale type of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SaleTypeDescription </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the sale type</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceOn </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The price on of the property (in NZST)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CapitalValue </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The capital value of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImprovementValue </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The improvement value of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LandValue </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The land value of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DecadeBuilt </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The decade when the property was built</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The value of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the property</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SaleAgents </th>
+<td style="width: 22%"> Collection of &lt;Agent&gt; or null </td>
+<td>
+<p>The sale agents of the property</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ProfileImageUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The profile image URL of the sale agent</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the sale agent</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UrlSlug </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The url slug of the sale agent</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SaleBranches </th>
+<td style="width: 22%"> Collection of &lt;Branch&gt; or null </td>
+<td>
+<p>The sale branches of the property</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> OfficeMemberId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The office member id of branch</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BranchName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the branch.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LogoUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the branch's logo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingBackgroundColor </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Branding background color</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Events": [
+    {
+      "Price": 123,
+      "DisplaySalePrice": "ABC",
+      "SaleType": "ABC",
+      "SaleTypeDescription": "ABC",
+      "PriceOn": "\/Date(1514764800)\/",
+      "CapitalValue": 123,
+      "ImprovementValue": 123,
+      "LandValue": 123,
+      "DecadeBuilt": "ABC",
+      "Value": "ABC",
+      "Description": "ABC",
+      "SaleAgents": [
+        {
+          "ProfileImageUrl": "ABC",
+          "Name": "ABC",
+          "UrlSlug": "ABC"
+        },
+        {
+          "ProfileImageUrl": "ABC",
+          "Name": "ABC",
+          "UrlSlug": "ABC"
+        }
+      ],
+      "SaleBranches": [
+        {
+          "OfficeMemberId": 123,
+          "BranchName": "ABC",
+          "LogoUrl": "ABC",
+          "BrandingBackgroundColor": "ABC"
+        },
+        {
+          "OfficeMemberId": 123,
+          "BranchName": "ABC",
+          "LogoUrl": "ABC",
+          "BrandingBackgroundColor": "ABC"
+        }
+      ]
+    },
+    {
+      "Price": 123,
+      "DisplaySalePrice": "ABC",
+      "SaleType": "ABC",
+      "SaleTypeDescription": "ABC",
+      "PriceOn": "\/Date(1514764800)\/",
+      "CapitalValue": 123,
+      "ImprovementValue": 123,
+      "LandValue": 123,
+      "DecadeBuilt": "ABC",
+      "Value": "ABC",
+      "Description": "ABC",
+      "SaleAgents": [
+        {
+          "ProfileImageUrl": "ABC",
+          "Name": "ABC",
+          "UrlSlug": "ABC"
+        },
+        {
+          "ProfileImageUrl": "ABC",
+          "Name": "ABC",
+          "UrlSlug": "ABC"
+        }
+      ],
+      "SaleBranches": [
+        {
+          "OfficeMemberId": 123,
+          "BranchName": "ABC",
+          "LogoUrl": "ABC",
+          "BrandingBackgroundColor": "ABC"
+        },
+        {
+          "OfficeMemberId": 123,
+          "BranchName": "ABC",
+          "LogoUrl": "ABC",
+          "BrandingBackgroundColor": "ABC"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,3597 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve fees for editing an item - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a> &gt; </li>
+<li class="current">Retrieve fees for editing an item</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve fees for editing an item</h1>
+<!-- Page content -->
+<p>Returns a breakdown of the fees that will be charged for editing a listing, without actually editing anything.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Selling/EditFees.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;EditListingRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The ID of the category to list the item in. For example, specify "6853" to list an oil heater. This field also accepts the MCAT category format (e.g. "0004-0370-0560-6853-"). Ignored when listing from the DVD/Blu-ray catalogue.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The title of the listing. Maximum of 80 characters for Marketplace categories, 50 for the other businesses. Mandatory for most categories. In some categories (e.g. used cars, motorbikes, flatmates wanted) the title is based on one or more attributes. In these categories the title is optional, and is ignored if it is supplied. Not required when listing from the DVD/Blu-ray catalogue.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The subtitle of the listing. Optional. Maximum of 50 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> Collection of String (optional) </td>
+<td>
+<p>A plain text description of the listing. Use CRLF to insert a new line. Mandatory for all auction types except DVD and Blu-ray catalogue listings. Maximum length of 5100 characters for job listings, 5200 characters for property listings and 2048 characters for all others.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartPrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The start price of the listing. Mandatory for auctions. Must be a minimum of 50c and must be less than or equal to the ReservePrice. For most classifieds this value is optional: if specified it is the value that is displayed as the ‘Asking price’. A notable exception to this rule are business for sale classifieds. Not used for property listings (subcategories of category 350); use the PropertyPricePrice attribute instead.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReservePrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The reserve price of the listing. Optional. If supplied, it must be a minimum of 50c and it must be greater than or equal to the StartPrice. Only applicable to auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BuyNowPrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The Buy Now price of the listing. Optional. Must be a minimum of 50c, must be greater than or equal to the StartPrice. For Buy Now Only auctions quantity and shipping information must be specified. See <b>Quantity</b> and <b>IsFlatShippingCharge</b>. Only applicable to auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Duration </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The duration of the listing. Mandatory. Must be one of the durations available as per the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a>. Can be a fixed duration or a specified end time.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>EndDate</td>
+<td>0</td>
+<td>
+<p>An end date will be used to set the duration.</p>
+</td>
+</tr>
+<tr>
+<td>Two</td>
+<td>2</td>
+<td>
+<p>Two days.</p>
+</td>
+</tr>
+<tr>
+<td>Three</td>
+<td>3</td>
+<td>
+<p>Three days.</p>
+</td>
+</tr>
+<tr>
+<td>Four</td>
+<td>4</td>
+<td>
+<p>Four days.</p>
+</td>
+</tr>
+<tr>
+<td>Five</td>
+<td>5</td>
+<td>
+<p>Five days.</p>
+</td>
+</tr>
+<tr>
+<td>Six</td>
+<td>6</td>
+<td>
+<p>Six days.</p>
+</td>
+</tr>
+<tr>
+<td>Seven</td>
+<td>7</td>
+<td>
+<p>A week.</p>
+</td>
+</tr>
+<tr>
+<td>Ten</td>
+<td>10</td>
+<td>
+<p>Ten days.</p>
+</td>
+</tr>
+<tr>
+<td>Fourteen</td>
+<td>14</td>
+<td>
+<p>14 days.</p>
+</td>
+</tr>
+<tr>
+<td>TwentyOne</td>
+<td>21</td>
+<td>
+<p>21 days.</p>
+</td>
+</tr>
+<tr>
+<td>TwentyEight</td>
+<td>28</td>
+<td>
+<p>28 days.</p>
+</td>
+</tr>
+<tr>
+<td>Thirty</td>
+<td>30</td>
+<td>
+<p>30 days.</p>
+</td>
+</tr>
+<tr>
+<td>FortyTwo</td>
+<td>42</td>
+<td>
+<p>42 days.</p>
+</td>
+</tr>
+<tr>
+<td>FiftySix</td>
+<td>56</td>
+<td>
+<p>56 days.</p>
+</td>
+</tr>
+<tr>
+<td>EightyFour</td>
+<td>84</td>
+<td>
+<p>84 days (Commercial for Sale, Commercial for Lease, New Homes only).</p>
+</td>
+</tr>
+<tr>
+<td>Ninety</td>
+<td>90</td>
+<td>
+<p>90 days (Retirement Villages only).</p>
+</td>
+</tr>
+<tr>
+<td>HundredSixtyEight</td>
+<td>168</td>
+<td>
+<p>168 days (Commercial for Sale, Commercial for Lease only).</p>
+</td>
+</tr>
+<tr>
+<td>UntilWithdrawn</td>
+<td>-1</td>
+<td>
+<p>until withdrawn (only available for agents outside of the services category)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDateTime </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The date and time the listing should close. Ignored unless Duration is set to EndDate.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Pickup </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Indicates whether the buyer can (or is required to) pick-up the item. For auctions any value other than <b>Demand</b> implies that at least one shipping option must be provided. For classifieds this value is ignored.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>The listing allows pick up, but does not require it.</p>
+</td>
+</tr>
+<tr>
+<td>Allow</td>
+<td>1</td>
+<td>
+<p>The buyer can pickup if they so choose.</p>
+</td>
+</tr>
+<tr>
+<td>Demand</td>
+<td>2</td>
+<td>
+<p>The buyer must pickup the item.</p>
+</td>
+</tr>
+<tr>
+<td>Forbid</td>
+<td>3</td>
+<td>
+<p>The buyer cannot pickup the item (delivery only).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PickupSuburbId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>If the buyer can (or is required to) pick-up the item then this field can be used to specify the pick-up suburb id. It uses the three-tier region/district/suburb system. Optional. Only applicable to auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBrandNew </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether the listing is for a brand new item. Optional, defaults to <b>false</b>. Only applicable to auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AuthenticatedMembersOnly </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Determines if only authenticated members can bid on the listing. Only applicable to auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClassified </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Determines if this listing is a classified or an auction. Optional, defaults to <b>false</b>. Some categories support auctions, some support classifieds and some accept both types. Use the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a> to check which types a category supports.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OpenHomes </th>
+<td style="width: 22%"> Collection of &lt;OpenHome&gt; (optional) </td>
+<td>
+<p>A list of upcoming open home times. Currently only applies to residential for sale (category 3399) and lifestyle (category 9120) listings.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Start </th>
+<td style="width: 22%"> DateTime (required) </td>
+<td>
+<p>The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> End </th>
+<td style="width: 22%"> DateTime (required) </td>
+<td>
+<p>The date and time the open home is no longer open for viewing. Must be the same day as <b>Start</b>.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SendPaymentInstructions </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Determines if only the payment instructions are sent at the end of the listing Specifies if automatic payment instructions email will be sent to the winner of the auction. Optional, defaults to <b>false</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OtherPaymentMethod </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>If the list of payment methods includes <b>Other</b> then this field can be used to specify the name of the payment method. Optional. Only applicable to auctions that have the <b>Other</b> payment method.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsOrNearOffer </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Specifies if ‘ONO’ should be displayed with price on listing. Optional. Applicable only to classified listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsPriceOnApplication </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Specifies that the price should be displayed as "Price on Application". Optional. Applicable only to businesses for sale listings (subcategories of category 36).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBold </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the bold promotion onto the listing. Only permitted in categories that support bold. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFeatured </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the feature promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHomepageFeatured </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>*deprecated*</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGallery </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the gallery promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGalleryPlus </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the gallery plus promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. This promotion cannot be applied to a listing that already has the gallery promotion. Note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Buy Now Only auctions this is the quantity of items that are available for sale. Optional. Can be between 1 and 1000. Setting the quantity (even to 1) will prevent bidding and make a listing only purchasable via Buy Now. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFlatShippingCharge </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>For Buy Now Only auctions this specifies if the shipping is one rate for multiple quantities. If <b>false</b> is specified the winning bidder will be charged the shipping rate multiplied by the quantity of items purchased. If <b>true</b> is specified one flat shipping rate is charged. Only applicable for auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasAgreedWithLegalNotice </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Specifies if the user has read and agreed with the legal notice relevant to the category the listing is being created in. The <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a> can be used to retrieve the legal notice for a specific category (only applies to certain categories, such as the category 6327 - Carbon Credits).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoRelistLimit </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+
+<p style="color: red">
+                                This field is deprecated and should not be used.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HomePhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Home phone number to be displayed on listing. Optional. Only applicable in categories where the user has paid a listing fee. Must be 9 digits long and use a valid area code. Can be specified but will only be displayed when category permits.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MobilePhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Mobile phone number to be displayed on listing. Optional. Only applicable in categories where the user has paid a listing fee. Must be 8 or 9 digits long. Can be specified but will only be displayed when category permits.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHighlighted </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the “highlight” promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasSuperFeature </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Applies the “super feature” promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that when creating a new listing with the super feature promotion, the feature, bold, highlight and gallery promotions will automatically be applied. Also note that promotions cannot be removed from a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoIds </th>
+<td style="width: 22%"> Collection of Integer (optional) </td>
+<td>
+<p>Photo IDs for images that have already been uploaded that you want to display on the listing. For all general items categories all photos are free (up to 20 max). Check the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/"> category details API</a> for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our <a href="https://developer.trademe.co.nz/api-reference/photo-methods/upload-a-photo/"> photo retention policy</a> for more information.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingOptions </th>
+<td style="width: 22%"> Collection of &lt;ShippingOption&gt; (optional) </td>
+<td>
+<p>The shipping options to be displayed on the listing. Can contain up to ten shipping options. Mandatory for auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The type of delivery.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>The type of the "None of the options apply to me" shipping option. Do not use when listing an item.</p>
+</td>
+</tr>
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>Obsolete. Do not use.</p>
+</td>
+</tr>
+<tr>
+<td>Undecided</td>
+<td>1</td>
+<td>
+<p>Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options.</p>
+</td>
+</tr>
+<tr>
+<td>Pickup</td>
+<td>2</td>
+<td>
+<p>Indicates the item can be picked up. Do not use when listing an item (use the <b>Pickup</b> field instead).</p>
+</td>
+</tr>
+<tr>
+<td>Free</td>
+<td>3</td>
+<td>
+<p>Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options.</p>
+</td>
+</tr>
+<tr>
+<td>Custom</td>
+<td>4</td>
+<td>
+<p>Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten).</p>
+</td>
+</tr>
+<tr>
+<td>TradeMe</td>
+<td>5</td>
+<td>
+<p>Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Method </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the delivery method (e.g. "NZ Courier", "Rural Delivery"). Only applicable if ShippingType is Custom.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxesIncluded </th>
+<td style="width: 22%"> Collection of &lt;TaxRateOnPrice&gt; (optional) </td>
+<td>
+<p>Indicates if taxes (and what type) are included in the Shipping Price</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The type of tax that is included</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>NZ_GST_Overseas_Supplies</td>
+<td>1</td>
+<td>
+<p>New Zealand GST on overseas supplies</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The country that is levying the tax e.g. NZ</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the tax e.g. GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FlatRate </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The rate at which the tax is charged (as a decimal e.g 0.15)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A string that can be used as a caption where necessary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellRestrictionsEffective </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTaxEffective </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsApplied </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Whether the price has had the tax applied (i.e. are inclusive prices)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxAmount </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The amount of tax that was added to the price if applied</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPriceTaxAmount </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The amount of tax that was added to the was/now price if applied</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentMethods </th>
+<td style="width: 22%"> Collection of Enumeration (optional) </td>
+<td>
+<p>The acceptable payment methods to be displayed on the listing. Mandatory for auctions, ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No payment methods provided.</p>
+</td>
+</tr>
+<tr>
+<td>BankDeposit</td>
+<td>1</td>
+<td>
+<p>NZ bank deposit.</p>
+</td>
+</tr>
+<tr>
+<td>CreditCard</td>
+<td>2</td>
+<td>
+<p>Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)</p>
+</td>
+</tr>
+<tr>
+<td>Cash</td>
+<td>4</td>
+<td>
+<p>Cash.</p>
+</td>
+</tr>
+<tr>
+<td>SafeTrader</td>
+<td>8</td>
+<td>
+<p>Safe Trader (Now obsolete).</p>
+</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>16</td>
+<td>
+<p>Other (needs to be specified).</p>
+</td>
+</tr>
+<tr>
+<td>Ping</td>
+<td>32</td>
+<td>
+<p>Ping.</p>
+</td>
+</tr>
+<tr>
+<td>Afterpay</td>
+<td>64</td>
+<td>
+<p>Afterpay.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; (optional) </td>
+<td>
+<p>The attribute values for a listing. The attributes for a category can be found using the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/"> category details API</a>. Additionally, some API clients may supply any number of dynamic attributes i.e. name-value pairs as defined by the client Some well-known attribute names will also help users find your listings: <strong>Google Shopping Feed</strong> We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are on the <b>ProductSpecification</b> section so include this data if you have it.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A name which uniquely identifies the attribute. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The type of the attribute, which determines the range of acceptable values. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Not used.</p>
+</td>
+</tr>
+<tr>
+<td>Boolean</td>
+<td>1</td>
+<td>
+<p>The attribute value is a boolean (true/false).</p>
+</td>
+</tr>
+<tr>
+<td>Integer</td>
+<td>2</td>
+<td>
+<p>The attribute value is an integer.</p>
+</td>
+</tr>
+<tr>
+<td>Decimal</td>
+<td>3</td>
+<td>
+<p>The attribute value is a floating point number.</p>
+</td>
+</tr>
+<tr>
+<td>String</td>
+<td>4</td>
+<td>
+<p>The attribute value can be arbitrary text.</p>
+</td>
+</tr>
+<tr>
+<td>DateTime</td>
+<td>5</td>
+<td>
+<p>The attribute value is a date &amp; time (in UTC).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Range </th>
+<td style="width: 22%"> &lt;AttributeRange&gt; (optional) </td>
+<td>
+<p>The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Lower </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The lowest allowed value of the attribute.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Upper </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The highest allowed value of the attribute.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxStringLength </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum allowed length of the attribute value, in characters. Only applies to string attributes. Some string attributes do not have a maximum length because they are restricted to a fixed list of options, or because any length is acceptable. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Options </th>
+<td style="width: 22%"> Collection of &lt;AttributeOption&gt; (optional) </td>
+<td>
+<p>A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The value of the item as a string.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Display </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>What should be displayed for this value (often the same).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Count </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>How many child elements are available.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Units </th>
+<td style="width: 22%"> Collection of &lt;AttributeUnit&gt; (optional) </td>
+<td>
+<p>A list of units that apply (MHz, hectares, etc). Only applies to numeric attributes. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Display </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The unit name, in a format suitable for displaying to a user (e.g. "MHz").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Multiplier </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The multiplier to apply to the value the user entered to get a value suitable for passing to the sell API.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Unit </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The selected unit. Only applicable to attributes that have at least one associated unit. This field is optional, but if supplied, will be saved along with the value. The list of valid units can be retrieved from the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRequiredForSell </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether the attribute must be present when selling an item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GroupName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Suggests the category name for the attribute grouping on the UI level.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayValue </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The value of the attribute as it needs to be displayed to the end users</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClearance </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates that the listing is a clearance item. Only applicable on auctions for members who have a <a href="https://www.trademe.co.nz/stores">Trade Me store</a>. Ignored for classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalReferenceId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Allows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Contacts </th>
+<td style="width: 22%"> Collection of &lt;Contact&gt; (optional) </td>
+<td>
+<p>A list of contact details. Optional. Currently only applicable for property categories and property agents that have billing methods covering the type of category. For example to add contact details in the residential for rent category the agent must have residential for rent billing enabled.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> FullName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The full name of the contact person or agent. Mandatory.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The phone number of the contact. Can be either a mobile or landline number. Optional.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AlternatePhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The phone number of the contact. Can be either a mobile or landline number. This is the primary contact number on the Trade Me Apps. Optional.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EMail </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The email address of the contact to be used for email enquiries. Optional.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingImageId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the branding image to display an agent photo on this listing. See the <a href="https://developer.trademe.co.nz/api-reference/photo-methods/upload-an-agent-branding-image/"> upload branding image API</a>. Optional.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AgentId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The REAA number of the agent, used to connect this listing to an agent</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AgencyName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The agency name for the contact</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShouldContact </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>This shows whether the agent detail comes from I am an agent or contact my agent section</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+                                    None
+                                </td>
+</tr>
+<tr>
+<td>Me</td>
+<td>1</td>
+<td>
+                                    Me
+                                </td>
+</tr>
+<tr>
+<td>MyAgent</td>
+<td>2</td>
+<td>
+                                    MyAgent
+                                </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReturnListingDetails </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether full listing details should be returned in the Listing field. Not supported by the fee APIs.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DonationRecipient </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Indicates the user would like to round up their success fees to the nearest dollar and donate the difference to the selected charity.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>The default charity identifier. Used if the user chose not to donate to a charity at all.</p>
+</td>
+</tr>
+<tr>
+<td>ForestAndBird</td>
+<td>1</td>
+<td>
+<p>Donate to Forest and Bird's kiwis for kiwis program.</p>
+</td>
+</tr>
+<tr>
+<td>Plunket</td>
+<td>2</td>
+<td>
+<p>Donate to Plunket.</p>
+</td>
+</tr>
+<tr>
+<td>StJohn</td>
+<td>3</td>
+<td>
+<p>Donate to St John.</p>
+</td>
+</tr>
+<tr>
+<td>OurPeopleOurCityFund</td>
+<td>4</td>
+<td>
+<p>Donate to Our People, Our City Fund.</p>
+</td>
+</tr>
+<tr>
+<td>WomensRefuge</td>
+<td>5</td>
+<td>
+<p>Donate to Women's Refuge</p>
+</td>
+</tr>
+<tr>
+<td>KidsCan</td>
+<td>6</td>
+<td>
+<p>Donate to KidsCan</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CatalogueId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Used for listing catalogue items and is the catalogue ID of the DVD or Blu-ray that is being listed. There is a separate API for finding the catalogue ID using the name of the movie. Catalogue items (category 9232 or category 365) can change their catalogue id but cannot be changed from a catalogue listing to a non-catalogue listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RemainingGalleryPlusRelists </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of times the item can be relisted and get the gallery promotion for free. Ignored when creating or editing a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PromotionId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Indicates the promotion to apply to this listing. This ID can be retrieved using the category details API. When editing, promotions can only be upgraded, they cannot be downgraded.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExcludeFromShippingPromotion </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Exclude this listing from participating in the sellers shipping promotions.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SKU </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AvailablePromotions </th>
+<td style="width: 22%"> Collection of &lt;Promotion&gt; (optional) </td>
+<td>
+<p>The list of available promotional options for this listing. Only one promotional option can be selected. These are only available in categories where Super Grid has been enabled.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The unique identifier of the promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A short description of the promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LongDescription </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A long description of the promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The current price of the promotion. This price should include any discounts currently applied.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OriginalPrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The price of the promotion before any discounts have been applied.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Recommended </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Whether this promotion is currently being recommended.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinimumPhotoCount </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The minimum number of photos required for the promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountDescription </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>A short description of any discount applied to this promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountStartDate </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The start date of any discount applied to this promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountEndDate </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The end date of any discount applied to this promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountDisclaimer </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The legal disclaimer of any discount applied to this promotion.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GoodFor2RelistsFee </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The value of the GoodFor2Relists fee if eligible for this promotion.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImmutableFields </th>
+<td style="width: 22%"> Collection of String (optional) </td>
+<td>
+<p>A collection of the names of various fields and attributes which cannot be changed under various conditions e.g. a bid has been placed on an Auction, or 7 days has passed after a classified was created.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GeographicLocation </th>
+<td style="width: 22%"> &lt;SimpleGeographicLocation&gt; (optional) </td>
+<td>
+<p>A custom geographic location</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Latitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The latitude of the location, in degrees (WGS84).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Longitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The longitude of the location, in degrees (WGS84).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Accuracy </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The accuracy of the geographic location (address, street or suburb).</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>The accuracy of the geographic location is not known.</p>
+</td>
+</tr>
+<tr>
+<td>Address</td>
+<td>1</td>
+<td>
+<p>The geographic location is accurate to the address level.</p>
+</td>
+</tr>
+<tr>
+<td>Street</td>
+<td>3</td>
+<td>
+<p>The geographic location is accurate to the street level.</p>
+</td>
+</tr>
+<tr>
+<td>Suburb</td>
+<td>2</td>
+<td>
+<p>The geographic location is accurate to the suburb level.</p>
+</td>
+</tr>
+<tr>
+<td>AdminPinpoint</td>
+<td>4</td>
+<td>
+<p>The geographic location is accurate to the AdminPinPoint level.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmbeddedContent </th>
+<td style="width: 22%"> &lt;EmbeddedContent&gt; (optional) </td>
+<td>
+<p>The content keys that are embedded in the listing page (e.g. YouTube Video Key).Use the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a> to check which content types a category supports.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> YouTubeVideoKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The YouTube video key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MatterportKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Matterport video key for the listing's InsideView content.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IStagingKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The IStaging video key for the listing's InsideView content.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VimeoVideoKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Vimeo video key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiakritFurnishKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Diakrit Furnish key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiakritStylerKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Diakrit Styler key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiakritPanoramaKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Diakrit Panorama key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VirtualToursCreatorKey </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Virtual Tours Creator key for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Approved3DTourUrl </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The Approved 3d tour url for the listing.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBranded </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>A flag indicating the listing should be branded. Only applicable to the Jobs category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShortDescription </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Summary of the listing. Mandatory for Job listings Maximum of 150 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingCalculatorInputs </th>
+<td style="width: 22%"> &lt;TmShippingCalculatorInputs&gt; (optional) </td>
+<td>
+<p>The criteria used within the Trade Me Shipping calculator to determine rates.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsBoxType </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicator if package type is bag or box</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Width </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>Width value for box package type</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Height </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>Height value for box package type</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Depth </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>Depth value for box package type</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSignatureRequired </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Inidicator if shipping requires signature</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PickupLocalityId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Pickup location id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRural </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicator on if pickup location is rural area</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackagingOption </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Packaging type indicating bag sizes or box</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Box</td>
+<td>1</td>
+<td>
+<p>Box</p>
+</td>
+</tr>
+<tr>
+<td>DLE</td>
+<td>2</td>
+<td>
+<p>Satchel:DLE</p>
+</td>
+</tr>
+<tr>
+<td>A4</td>
+<td>3</td>
+<td>
+<p>Satchel:A4</p>
+</td>
+</tr>
+<tr>
+<td>A3</td>
+<td>4</td>
+<td>
+<p>Satchel:A3</p>
+</td>
+</tr>
+<tr>
+<td>A5</td>
+<td>5</td>
+<td>
+<p>Satchel:A5</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WeightOption </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Weight range option for calculation</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Kg0To3</td>
+<td>1</td>
+<td>
+<p>0 - 3kg</p>
+</td>
+</tr>
+<tr>
+<td>Kg3To5</td>
+<td>2</td>
+<td>
+<p>3 - 5kg</p>
+</td>
+</tr>
+<tr>
+<td>Kg5To10</td>
+<td>3</td>
+<td>
+<p>5 - 10kg</p>
+</td>
+</tr>
+<tr>
+<td>Kg10To15</td>
+<td>4</td>
+<td>
+<p>10 - 15kg</p>
+</td>
+</tr>
+<tr>
+<td>Kg15To20</td>
+<td>5</td>
+<td>
+<p>15 - 20kg</p>
+</td>
+</tr>
+<tr>
+<td>Kg20To25</td>
+<td>6</td>
+<td>
+<p>20 - 25kg</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FilterOption </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>Courier filter for calculation</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>BestPrice</td>
+<td>0</td>
+<td>
+<p>Best price</p>
+</td>
+</tr>
+<tr>
+<td>NZPost</td>
+<td>1</td>
+<td>
+<p>NZ Post</p>
+</td>
+</tr>
+<tr>
+<td>Fastway</td>
+<td>2</td>
+<td>
+<p>Aramex</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AdditionalData </th>
+<td style="width: 22%"> &lt;AdditionalData&gt; (optional) </td>
+<td>
+<p>Structured information for Listing Additional Data. Currently only used by featured Job listings.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BulletPoints </th>
+<td style="width: 22%"> Collection of String (optional) </td>
+<td>
+<p>The bullet points for display in the search results</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Tags </th>
+<td style="width: 22%"> Collection of &lt;Tag&gt; (optional) </td>
+<td>
+<p>The tags for display in the search results</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the tag</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VariantDefinition </th>
+<td style="width: 22%"> &lt;VariantDefinition&gt; (optional) </td>
+<td>
+<p>When specified, turns the listing request into a multi-variant listing that creates several child listings. The variants definition is used to describe the variant options that are available and the combinations of variants that make up the multi-variant listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> OptionSets </th>
+<td style="width: 22%"> Collection of &lt;OptionSet&gt; (required) </td>
+<td>
+<p>A collection of variant options.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The name used to identify the group of option values, e.g. "size" or "colour".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Values </th>
+<td style="width: 22%"> Collection of String (required) </td>
+<td>
+<p>The choices available for this option set, e.g. "red", "blue". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Variants </th>
+<td style="width: 22%"> Collection of &lt;Variant&gt; (required) </td>
+<td>
+<p>A collection of variants.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> SKU </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number (required) </td>
+<td>
+<p>The Buy Now price of the variant. Must be a minimum of 50c.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClearance </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The Was price of the variant. Must be a minimum of 50c.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>This is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoIds </th>
+<td style="width: 22%"> Collection of Integer (optional) </td>
+<td>
+<p>Photo IDs for images that have already been uploaded that you want to display on the listing variant. For all general items categories all photos are free (up to 20 max). Check the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/"> category details API</a> for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our <a href="https://developer.trademe.co.nz/api-reference/photo-methods/upload-a-photo/"> photo retention policy</a> for more information.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Photos </th>
+<td style="width: 22%"> Collection of &lt;Photo&gt; (optional) </td>
+<td>
+<p>A collection of photo URLs for the listing. Ignored when creating or editing a listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Key </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; (optional) </td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Thumbnail </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Medium </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Gallery </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Large </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FullSize </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PlusSize </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The URL for the plus sized photo (scaled down to fit).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OriginalWidth </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The original width of the photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OriginalHeight </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The original height of the photo.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Options </th>
+<td style="width: 22%"> Collection of &lt;Option&gt; (optional) </td>
+<td>
+<p>The combination of variant options that this variant represents.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; (optional) </td>
+<td>
+<p>A collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings: <strong>Google Shopping Feed</strong> We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are <strong>Brand</strong>, <strong>GTIN</strong> and <strong>Manufacturer Code</strong> so include this data if you have it.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The identifier of the listing that this variant represents.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalReferenceId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Allows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ProductSpecification </th>
+<td style="width: 22%"> &lt;ProductSpecification&gt; (optional) </td>
+<td>
+<p>The specifications of the product if the variant relates to a product</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> GTIN </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The GTIN of the product e.g. 027242896505 <b></b></p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Brand </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The brand name of the product e.g. Sony <b></b></p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ManufacturerCode </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The product code used by the manufacturer e.g. KDL32W600D</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondCategory </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The ID of the second category to list the item in. For example, specify "6853" to list an oil heater. This field also accepts the MCAT category format (e.g. "0004-0370-0560-6853-"). Not all categories can be used as a second category and not all primary categories can be paired with a second category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PremiumPackageCode </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The code of the premium package to apply to the listing. This will be null if a package is not applied to the listing or a package was previously applied but has since completed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ProductSpecification </th>
+<td style="width: 22%"> &lt;ProductSpecification&gt; (optional) </td>
+<td>
+<p>The specifications of the product if the listing relates to a product. If this is a multi-variant product, specify these in the Variants section.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingExtras </th>
+<td style="width: 22%"> Collection of &lt;ListingExtras&gt; (optional) </td>
+<td>
+<p>A collection of extras to apply to the listing. This is an input field. We require Name, &amp; Variant for each ListingExtra.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the extra; informational only. This is assigned when an extra is applied to a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The name of the extra.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Variant </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The start date and time of the extra. If not provided then the extra will be queued up to start after the last stacked extra of the same type. If no extra of this type currently exists then the extra will start immediately.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The end date and time of the extra.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The description of the extra; informational only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Duration </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of days the extra will be active; informational only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Delay </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of days before the extra will become active after purchase; informational only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DaysRemaining </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of days before it expires.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingExtrasLedger </th>
+<td style="width: 22%"> Collection of &lt;ListingExtras&gt; (optional) </td>
+<td>
+<p>A collection of extras that have been applied to the listing. This is an output field. We will provide Id, Name, Variant, StartDate, &amp; EndDate. Any changes to this collection is ignored when creating or editing a listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGoodFor2Relists </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates if Good For 2 Relists is included with the premium package.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCounterOffersAllowed </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates if Make an Offer is enabled or not. true is enabled, false is disabled and null means it hasn't set yet.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaximumOffers </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of Buyer offers the listing accepts if the listing has Counter Offers enabled.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingTemplateId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The identifier of the shipping template containing the shipping options.<br/> For the shipping template to be successfully applied to the listing, there are some requirements to be met with the api request:<br/><br/> The listing <b>must be a Buy Now Only listing</b>:<br/><br/> Must have:<br/> - A quantity &gt; 0<br/> - A buy now price<br/> - Shipping field = 0 (or the field not supplied)<br/><br/> Must not have:<br/> - A reserve price<br/> - A starting price<br/> - Any custom shipping options supplied<br/> - Pickup only<br/><br/> The primary and/or secondary category supplied must be <b>Marketplace categories</b>.<br/><br/> When the above requirements are not met when specifying a ShippingTemplateId, then the listing request will fail.<br/><br/><u>Identifying marketplace categories</u><br/><br/> You can identify these categories by using the following endpoint:<br/><a href="https://api.trademe.co.nz/v1/Categories/{categoryId}/Details.json">Category Details</a><br/> When <b>AreaOfBusiness = 1</b> (marketplace category)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Photos </th>
+<td style="width: 22%"> Collection of &lt;Photo&gt; (optional) </td>
+<td>
+<p>A collection of photo URLs for the listing. Ignored when creating or editing a listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Key </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; (optional) </td>
+<td>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Files </th>
+<td style="width: 22%"> Collection of &lt;ListingFile&gt; (optional) </td>
+<td>
+<p>A list of files on the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Url of the file</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Name of the file</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing to edit.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RequiredMinimumReserve </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The required minimum value for the Reserve field. This property will be returned when a listing has bids on it but has not yet met reserve. This field should not be set by consumers.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasBeenExtended </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Specifically exposed to be used by motor sell app, not public api</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The start date of the listing to edit. This field should not be set by consumers. Ignored on POST requests.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FeeResponse&gt; </p>
+<p> <p>A list of fees.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalCost </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The total price for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InsufficientBalance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates the member has insufficient funds to pay the total price for the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeeItems </th>
+<td style="width: 22%"> &lt;MemberLedger&gt; or null </td>
+<td>
+<p>A collection of member ledger items.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;MemberLedgerItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Date </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The transaction date.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Other", "value": "0", "description": "An unknown ledger item."}, {"name": "ListingFee", "value": "1", "description": "The fee for a listing an item (applies to classifieds and auctions in certain categories)."}, {"name": "HighVolumeFee", "value": "2", "description": "The fee for exceeding the free listing allowance."}, {"name": "SuccessFeeBid", "value": "3", "description": "The fee for a successful auction (won via a bid)."}, {"name": "SuccessFeeOffer", "value": "4", "description": "The fee for a successful auction (won via a fixed price offer)."}, {"name": "SuccessFeeBuyNow", "value": "5", "description": "The fee for a successful auction (won via Buy Now)."}, {"name": "GalleryPromotion", "value": "100", "description": "The fee for listing an item with the gallery promotion."}, {"name": "GalleryPlusPromotion", "value": "101", "description": "The fee for listing an item with the gallery plus promotion."}, {"name": "BoldPromotion", "value": "102", "description": "The fee for listing an item with the bold title promotion."}, {"name": "SubtitlePromotion", "value": "103", "description": "The fee for listing an item with a subtitle."}, {"name": "HighlightPromotion", "value": "104", "description": "The fee for listing an item with a highlight."}, {"name": "FeaturePromotion", "value": "105", "description": "The fee for listing an item with the feature promotion."}, {"name": "FeatureComboPromotion", "value": "106", "description": "The fee for listing an item with the feature combo promotion."}, {"name": "HomepageFeaturePromotion", "value": "107", "description": "The fee for listing an item with the homepage feature promotion."}, {"name": "SuperFeaturePromotion", "value": "108", "description": "The fee for listing an item with the super feature promotion."}, {"name": "SuperFeatureComboPromotion", "value": "109", "description": "The fee for listing an item with the super feature combo promotion."}, {"name": "TenDayAuctionFee", "value": "110", "description": "The fee for listing an item with a duration of ten days."}, {"name": "MultiPhotoFee", "value": "111", "description": "The fee for listing an item with additional photos."}, {"name": "ScheduledEndDateFee", "value": "112", "description": "The fee for listing an item with a scheduled end date/time."}, {"name": "ReserveFee", "value": "113", "description": "The fee for listing an item with a reserve price."}, {"name": "SecondaryCategoryPromotion", "value": "114", "description": "The fee for listing an item with a reserve price."}, {"name": "JobPack5", "value": "200", "description": "The purchase of a five listing job pack."}, {"name": "JobPack10", "value": "201", "description": "The purchase of a ten listing job pack."}, {"name": "JobPack20", "value": "202", "description": "The purchase of a twenty listing job pack."}, {"name": "JobPack30", "value": "204", "description": "The purchase of a thirty listing job pack."}, {"name": "JobPack50", "value": "203", "description": "The purchase of a fifty listing job pack."}, {"name": "JobPack100", "value": "205", "description": "The purchase of a hundred listing job pack."}, {"name": "WithdrawalFee", "value": "300", "description": "The fee for withdrawing an auction over an hour after it started."}, {"name": "QuotableValueReportFee", "value": "301", "description": "The fee for purchasing a QV report."}, {"name": "MonthlyStoreFee", "value": "302", "description": "The monthly fee for having a Trade Me store."}, {"name": "CreditViaCreditCard", "value": "400", "description": "The member credited their account with a credit card."}, {"name": "CreditViaBankTransfer", "value": "401", "description": "The member credited their account using internet banking."}, {"name": "CreditViaCheque", "value": "402", "description": "The member credited their account with a cheque."}, {"name": "CreditViaPing", "value": "403", "description": "This member credited their account with Ping."}, {"name": "RebateForListingFee", "value": "500", "description": "The rebate for listing an item."}, {"name": "RebateForHighVolumeFee", "value": "501", "description": "The rebate for exceeding the free listing allowance."}, {"name": "RebateForSuccessFeeBid", "value": "502", "description": "The rebate for a successful auction (won via a bid)."}, {"name": "RebateForSuccessFeeOffer", "value": "503", "description": "The rebate for a successful auction (won via a fixed price offer)."}, {"name": "RebateForSuccessFeeBuyNow", "value": "504", "description": "The rebate for a successful auction (won via Buy Now)."}, {"name": "RebateForGalleryPromotion", "value": "505", "description": "The rebate for listing an item with the gallery promotion."}, {"name": "RebateForGalleryPlusPromotion", "value": "506", "description": "The rebate for listing an item with the gallery plus promotion."}, {"name": "RebateForBoldPromotion", "value": "507", "description": "The rebate for listing an item with the bold title promotion."}, {"name": "RebateForSubtitlePromotion", "value": "508", "description": "The rebate for listing an item with a subtitle."}, {"name": "RebateForHighlightPromotion", "value": "509", "description": "The rebate for listing an item with a highlight."}, {"name": "RebateForFeaturePromotion", "value": "510", "description": "The rebate for listing an item with the feature promotion."}, {"name": "RebateForFeatureComboPromotion", "value": "511", "description": "The rebate for listing an item with the feature combo promotion."}, {"name": "RebateForHomepageFeaturePromotion", "value": "512", "description": "The rebate for listing an item with the homepage feature promotion."}, {"name": "RebateForSuperFeaturePromotion", "value": "513", "description": "The rebate for listing an item with the super feature promotion."}, {"name": "RebateForSuperFeatureComboPromotion", "value": "514", "description": "The rebate for listing an item with the super feature combo promotion."}, {"name": "RebateForTenDayAuctionFee", "value": "515", "description": "The rebate for listing an item with a duration of ten days."}, {"name": "RebateForMultiPhotoFee", "value": "516", "description": "The rebate for listing an item with additional photos."}, {"name": "RebateForScheduledEndDateFee", "value": "517", "description": "The rebate for listing an item with a scheduled end date/time."}, {"name": "RebateForReserveFee", "value": "518", "description": "The rebate for listing an item with a reserve price."}, {"name": "RebateForSecondaryCategoryPromotion", "value": "519", "description": "The rebate for listing an item with a secondary category."}, {"name": "RefundOfListingFee", "value": "600", "description": "A refund for listing an item."}, {"name": "RefundOfSuccessFee", "value": "601", "description": "Refund of auction success fees."}, {"name": "RefundOfGalleryPromotion", "value": "602", "description": "The refund for listing an item with the gallery promotion."}, {"name": "RefundOfGalleryPlusPromotion", "value": "603", "description": "The refund for listing an item with the gallery plus promotion."}, {"name": "RefundOfBoldPromotion", "value": "604", "description": "The refund for listing an item with the bold title promotion."}, {"name": "RefundOfSubtitlePromotion", "value": "605", "description": "The refund for listing an item with a subtitle."}, {"name": "RefundOfHighlightPromotion", "value": "606", "description": "The refund for listing an item with a highlight."}, {"name": "RefundOfFeaturePromotion", "value": "607", "description": "The refund for listing an item with the feature promotion."}, {"name": "RefundOfFeatureComboPromotion", "value": "608", "description": "The refund for listing an item with the feature combo promotion."}, {"name": "RefundOfHomepageFeaturePromotion", "value": "609", "description": "The refund for listing an item with the homepage feature promotion."}, {"name": "RefundOfSuperFeaturePromotion", "value": "610", "description": "The refund for listing an item with the super feature promotion."}, {"name": "RefundOfSuperFeatureComboPromotion", "value": "611", "description": "The refund for listing an item with the super feature combo promotion."}, {"name": "RefundOfTenDayAuctionFee", "value": "612", "description": "The refund for listing an item with a duration of ten days."}, {"name": "RefundOfMultiPhotoFee", "value": "613", "description": "The refund for listing an item with additional photos."}, {"name": "RefundOfScheduledEndDateFee", "value": "614", "description": "The refund for listing an item with a scheduled end date/time."}, {"name": "RefundOfReserveFee", "value": "615", "description": "The refund for listing an item with a reserve price."}, {"name": "RefundOfSecondaryCategoryPromotion", "value": "616", "description": "The refund for listing an item with a secondary category."}, {"name": "DiscountOfListingFee", "value": "617", "description": "Discount of listing fee"}, {"name": "DiscountOfSuperfeature", "value": "618", "description": "Discount of superfeature fee"}, {"name": "DiscountOfHighlight", "value": "619", "description": "Discount of highlight fee"}, {"name": "DiscountOfFeature", "value": "620", "description": "Discount of feature fee"}, {"name": "DiscountOfBoldTitle", "value": "621", "description": "Discount of boldTitle fee"}, {"name": "DiscountOfFeatureCombo", "value": "622", "description": "Discount of feature combo fee"}, {"name": "DiscountOfSubtitle", "value": "623", "description": "Discount of subtitle fee"}, {"name": "RebateForGoldTradeSuccessFee", "value": "624", "description": "The rebate for providing timely shipping information."}, {"name": "MotorsFeatureBundleUpgrade", "value": "625", "description": "For upgrading Motors Feature Bundle"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The transaction type.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the transaction.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Credit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount to credit to the member's account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Debit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount to debit from the member's account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WillBeInvoiced </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this ledger item will be invoiced, rather than deducted from the member's trade me balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InvoicedValue </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The amount that will be invoiced to the member</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ValidationErrors </th>
+<td style="width: 22%"> Collection of &lt;ValidationError&gt; or null </td>
+<td>
+<p>A collection of errors if there are any</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Message </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing validation error message.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Request <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;EditListingRequest xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;Category&gt;ABC&lt;/Category&gt;
+  &lt;Title&gt;ABC&lt;/Title&gt;
+  &lt;Subtitle&gt;ABC&lt;/Subtitle&gt;
+  &lt;Description&gt;
+    &lt;Paragraph&gt;ABC&lt;/Paragraph&gt;
+    &lt;Paragraph&gt;ABC&lt;/Paragraph&gt;
+  &lt;/Description&gt;
+  &lt;StartPrice&gt;123.0&lt;/StartPrice&gt;
+  &lt;ReservePrice&gt;123.0&lt;/ReservePrice&gt;
+  &lt;BuyNowPrice&gt;123.0&lt;/BuyNowPrice&gt;
+  &lt;Duration&gt;EndDate&lt;/Duration&gt;
+  &lt;EndDateTime&gt;2018-01-01T00:00:00Z&lt;/EndDateTime&gt;
+  &lt;Pickup&gt;None&lt;/Pickup&gt;
+  &lt;PickupSuburbId&gt;123&lt;/PickupSuburbId&gt;
+  &lt;IsBrandNew&gt;false&lt;/IsBrandNew&gt;
+  &lt;AuthenticatedMembersOnly&gt;false&lt;/AuthenticatedMembersOnly&gt;
+  &lt;IsClassified&gt;false&lt;/IsClassified&gt;
+  &lt;OpenHomes&gt;
+    &lt;OpenHome&gt;
+      &lt;Start&gt;2018-01-01T00:00:00Z&lt;/Start&gt;
+      &lt;End&gt;2018-01-01T00:00:00Z&lt;/End&gt;
+    &lt;/OpenHome&gt;
+    &lt;OpenHome&gt;
+      &lt;Start&gt;2018-01-01T00:00:00Z&lt;/Start&gt;
+      &lt;End&gt;2018-01-01T00:00:00Z&lt;/End&gt;
+    &lt;/OpenHome&gt;
+  &lt;/OpenHomes&gt;
+  &lt;SendPaymentInstructions&gt;false&lt;/SendPaymentInstructions&gt;
+  &lt;OtherPaymentMethod&gt;ABC&lt;/OtherPaymentMethod&gt;
+  &lt;IsOrNearOffer&gt;false&lt;/IsOrNearOffer&gt;
+  &lt;IsPriceOnApplication&gt;false&lt;/IsPriceOnApplication&gt;
+  &lt;IsBold&gt;false&lt;/IsBold&gt;
+  &lt;IsFeatured&gt;false&lt;/IsFeatured&gt;
+  &lt;IsHomepageFeatured&gt;false&lt;/IsHomepageFeatured&gt;
+  &lt;HasGallery&gt;false&lt;/HasGallery&gt;
+  &lt;HasGalleryPlus&gt;false&lt;/HasGalleryPlus&gt;
+  &lt;Quantity&gt;123&lt;/Quantity&gt;
+  &lt;IsFlatShippingCharge&gt;false&lt;/IsFlatShippingCharge&gt;
+  &lt;HasAgreedWithLegalNotice&gt;false&lt;/HasAgreedWithLegalNotice&gt;
+  &lt;AutoRelistLimit&gt;123&lt;/AutoRelistLimit&gt;
+  &lt;HomePhoneNumber&gt;ABC&lt;/HomePhoneNumber&gt;
+  &lt;MobilePhoneNumber&gt;ABC&lt;/MobilePhoneNumber&gt;
+  &lt;IsHighlighted&gt;false&lt;/IsHighlighted&gt;
+  &lt;HasSuperFeature&gt;false&lt;/HasSuperFeature&gt;
+  &lt;PhotoIds&gt;
+    &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+    &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+  &lt;/PhotoIds&gt;
+  &lt;ShippingOptions&gt;
+    &lt;ShippingOption&gt;
+      &lt;Type&gt;None&lt;/Type&gt;
+      &lt;Price&gt;123.0&lt;/Price&gt;
+      &lt;Method&gt;ABC&lt;/Method&gt;
+      &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+      &lt;TaxesIncluded&gt;
+        &lt;TaxRateOnPrice&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+          &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+          &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+          &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+        &lt;/TaxRateOnPrice&gt;
+        &lt;TaxRateOnPrice&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+          &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+          &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+          &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+        &lt;/TaxRateOnPrice&gt;
+      &lt;/TaxesIncluded&gt;
+    &lt;/ShippingOption&gt;
+    &lt;ShippingOption&gt;
+      &lt;Type&gt;None&lt;/Type&gt;
+      &lt;Price&gt;123.0&lt;/Price&gt;
+      &lt;Method&gt;ABC&lt;/Method&gt;
+      &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+      &lt;TaxesIncluded&gt;
+        &lt;TaxRateOnPrice&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+          &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+          &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+          &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+        &lt;/TaxRateOnPrice&gt;
+        &lt;TaxRateOnPrice&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+          &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+          &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+          &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+        &lt;/TaxRateOnPrice&gt;
+      &lt;/TaxesIncluded&gt;
+    &lt;/ShippingOption&gt;
+  &lt;/ShippingOptions&gt;
+  &lt;PaymentMethods&gt;
+    &lt;PaymentMethod&gt;None&lt;/PaymentMethod&gt;
+    &lt;PaymentMethod&gt;None&lt;/PaymentMethod&gt;
+  &lt;/PaymentMethods&gt;
+  &lt;Attributes&gt;
+    &lt;Attribute&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+      &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;Type&gt;None&lt;/Type&gt;
+      &lt;Range&gt;
+        &lt;Lower&gt;ABC&lt;/Lower&gt;
+        &lt;Upper&gt;ABC&lt;/Upper&gt;
+      &lt;/Range&gt;
+      &lt;MaxStringLength&gt;123&lt;/MaxStringLength&gt;
+      &lt;Options&gt;
+        &lt;AttributeOption&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Count&gt;123&lt;/Count&gt;
+        &lt;/AttributeOption&gt;
+        &lt;AttributeOption&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Count&gt;123&lt;/Count&gt;
+        &lt;/AttributeOption&gt;
+      &lt;/Options&gt;
+      &lt;Units&gt;
+        &lt;AttributeUnit&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Multiplier&gt;123.0&lt;/Multiplier&gt;
+        &lt;/AttributeUnit&gt;
+        &lt;AttributeUnit&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Multiplier&gt;123.0&lt;/Multiplier&gt;
+        &lt;/AttributeUnit&gt;
+      &lt;/Units&gt;
+      &lt;Unit&gt;ABC&lt;/Unit&gt;
+      &lt;IsRequiredForSell&gt;false&lt;/IsRequiredForSell&gt;
+      &lt;GroupName&gt;ABC&lt;/GroupName&gt;
+      &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+    &lt;/Attribute&gt;
+    &lt;Attribute&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+      &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;Type&gt;None&lt;/Type&gt;
+      &lt;Range&gt;
+        &lt;Lower&gt;ABC&lt;/Lower&gt;
+        &lt;Upper&gt;ABC&lt;/Upper&gt;
+      &lt;/Range&gt;
+      &lt;MaxStringLength&gt;123&lt;/MaxStringLength&gt;
+      &lt;Options&gt;
+        &lt;AttributeOption&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Count&gt;123&lt;/Count&gt;
+        &lt;/AttributeOption&gt;
+        &lt;AttributeOption&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Count&gt;123&lt;/Count&gt;
+        &lt;/AttributeOption&gt;
+      &lt;/Options&gt;
+      &lt;Units&gt;
+        &lt;AttributeUnit&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Multiplier&gt;123.0&lt;/Multiplier&gt;
+        &lt;/AttributeUnit&gt;
+        &lt;AttributeUnit&gt;
+          &lt;Display&gt;ABC&lt;/Display&gt;
+          &lt;Multiplier&gt;123.0&lt;/Multiplier&gt;
+        &lt;/AttributeUnit&gt;
+      &lt;/Units&gt;
+      &lt;Unit&gt;ABC&lt;/Unit&gt;
+      &lt;IsRequiredForSell&gt;false&lt;/IsRequiredForSell&gt;
+      &lt;GroupName&gt;ABC&lt;/GroupName&gt;
+      &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+    &lt;/Attribute&gt;
+  &lt;/Attributes&gt;
+  &lt;IsClearance&gt;false&lt;/IsClearance&gt;
+  &lt;ExternalReferenceId&gt;ABC&lt;/ExternalReferenceId&gt;
+  &lt;Contacts&gt;
+    &lt;Contact&gt;
+      &lt;FullName&gt;ABC&lt;/FullName&gt;
+      &lt;PhoneNumber&gt;ABC&lt;/PhoneNumber&gt;
+      &lt;AlternatePhoneNumber&gt;ABC&lt;/AlternatePhoneNumber&gt;
+      &lt;EMail&gt;ABC&lt;/EMail&gt;
+      &lt;BrandingImageId&gt;123&lt;/BrandingImageId&gt;
+      &lt;AgentId&gt;ABC&lt;/AgentId&gt;
+      &lt;AgencyName&gt;ABC&lt;/AgencyName&gt;
+      &lt;ShouldContact&gt;None&lt;/ShouldContact&gt;
+    &lt;/Contact&gt;
+    &lt;Contact&gt;
+      &lt;FullName&gt;ABC&lt;/FullName&gt;
+      &lt;PhoneNumber&gt;ABC&lt;/PhoneNumber&gt;
+      &lt;AlternatePhoneNumber&gt;ABC&lt;/AlternatePhoneNumber&gt;
+      &lt;EMail&gt;ABC&lt;/EMail&gt;
+      &lt;BrandingImageId&gt;123&lt;/BrandingImageId&gt;
+      &lt;AgentId&gt;ABC&lt;/AgentId&gt;
+      &lt;AgencyName&gt;ABC&lt;/AgencyName&gt;
+      &lt;ShouldContact&gt;None&lt;/ShouldContact&gt;
+    &lt;/Contact&gt;
+  &lt;/Contacts&gt;
+  &lt;ReturnListingDetails&gt;false&lt;/ReturnListingDetails&gt;
+  &lt;DonationRecipient&gt;None&lt;/DonationRecipient&gt;
+  &lt;CatalogueId&gt;ABC&lt;/CatalogueId&gt;
+  &lt;RemainingGalleryPlusRelists&gt;123&lt;/RemainingGalleryPlusRelists&gt;
+  &lt;PromotionId&gt;123&lt;/PromotionId&gt;
+  &lt;ExcludeFromShippingPromotion&gt;false&lt;/ExcludeFromShippingPromotion&gt;
+  &lt;SKU&gt;ABC&lt;/SKU&gt;
+  &lt;AvailablePromotions&gt;
+    &lt;Promotion&gt;
+      &lt;Id&gt;123&lt;/Id&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;LongDescription&gt;ABC&lt;/LongDescription&gt;
+      &lt;Price&gt;123.0&lt;/Price&gt;
+      &lt;OriginalPrice&gt;123.0&lt;/OriginalPrice&gt;
+      &lt;Recommended&gt;false&lt;/Recommended&gt;
+      &lt;MinimumPhotoCount&gt;123&lt;/MinimumPhotoCount&gt;
+      &lt;DiscountDescription&gt;ABC&lt;/DiscountDescription&gt;
+      &lt;DiscountStartDate&gt;ABC&lt;/DiscountStartDate&gt;
+      &lt;DiscountEndDate&gt;ABC&lt;/DiscountEndDate&gt;
+      &lt;DiscountDisclaimer&gt;ABC&lt;/DiscountDisclaimer&gt;
+      &lt;GoodFor2RelistsFee&gt;123.0&lt;/GoodFor2RelistsFee&gt;
+    &lt;/Promotion&gt;
+    &lt;Promotion&gt;
+      &lt;Id&gt;123&lt;/Id&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;LongDescription&gt;ABC&lt;/LongDescription&gt;
+      &lt;Price&gt;123.0&lt;/Price&gt;
+      &lt;OriginalPrice&gt;123.0&lt;/OriginalPrice&gt;
+      &lt;Recommended&gt;false&lt;/Recommended&gt;
+      &lt;MinimumPhotoCount&gt;123&lt;/MinimumPhotoCount&gt;
+      &lt;DiscountDescription&gt;ABC&lt;/DiscountDescription&gt;
+      &lt;DiscountStartDate&gt;ABC&lt;/DiscountStartDate&gt;
+      &lt;DiscountEndDate&gt;ABC&lt;/DiscountEndDate&gt;
+      &lt;DiscountDisclaimer&gt;ABC&lt;/DiscountDisclaimer&gt;
+      &lt;GoodFor2RelistsFee&gt;123.0&lt;/GoodFor2RelistsFee&gt;
+    &lt;/Promotion&gt;
+  &lt;/AvailablePromotions&gt;
+  &lt;ImmutableFields&gt;
+    &lt;ImmutableField&gt;ABC&lt;/ImmutableField&gt;
+    &lt;ImmutableField&gt;ABC&lt;/ImmutableField&gt;
+  &lt;/ImmutableFields&gt;
+  &lt;GeographicLocation&gt;
+    &lt;Latitude&gt;123.0&lt;/Latitude&gt;
+    &lt;Longitude&gt;123.0&lt;/Longitude&gt;
+    &lt;Accuracy&gt;None&lt;/Accuracy&gt;
+  &lt;/GeographicLocation&gt;
+  &lt;WasPrice&gt;123.0&lt;/WasPrice&gt;
+  &lt;EmbeddedContent&gt;
+    &lt;YouTubeVideoKey&gt;ABC&lt;/YouTubeVideoKey&gt;
+    &lt;MatterportKey&gt;ABC&lt;/MatterportKey&gt;
+    &lt;IStagingKey&gt;ABC&lt;/IStagingKey&gt;
+    &lt;VimeoVideoKey&gt;ABC&lt;/VimeoVideoKey&gt;
+    &lt;DiakritFurnishKey&gt;ABC&lt;/DiakritFurnishKey&gt;
+    &lt;DiakritStylerKey&gt;ABC&lt;/DiakritStylerKey&gt;
+    &lt;DiakritPanoramaKey&gt;ABC&lt;/DiakritPanoramaKey&gt;
+    &lt;VirtualToursCreatorKey&gt;ABC&lt;/VirtualToursCreatorKey&gt;
+    &lt;Approved3DTourUrl&gt;ABC&lt;/Approved3DTourUrl&gt;
+  &lt;/EmbeddedContent&gt;
+  &lt;IsBranded&gt;false&lt;/IsBranded&gt;
+  &lt;ShortDescription&gt;ABC&lt;/ShortDescription&gt;
+  &lt;ShippingCalculatorInputs&gt;
+    &lt;IsBoxType&gt;false&lt;/IsBoxType&gt;
+    &lt;Width&gt;123.0&lt;/Width&gt;
+    &lt;Height&gt;123.0&lt;/Height&gt;
+    &lt;Depth&gt;123.0&lt;/Depth&gt;
+    &lt;IsSignatureRequired&gt;false&lt;/IsSignatureRequired&gt;
+    &lt;PickupLocalityId&gt;123&lt;/PickupLocalityId&gt;
+    &lt;IsRural&gt;false&lt;/IsRural&gt;
+    &lt;PackagingOption&gt;Box&lt;/PackagingOption&gt;
+    &lt;WeightOption&gt;Kg0To3&lt;/WeightOption&gt;
+    &lt;FilterOption&gt;BestPrice&lt;/FilterOption&gt;
+  &lt;/ShippingCalculatorInputs&gt;
+  &lt;AdditionalData&gt;
+    &lt;BulletPoints&gt;
+      &lt;BulletPoint&gt;ABC&lt;/BulletPoint&gt;
+      &lt;BulletPoint&gt;ABC&lt;/BulletPoint&gt;
+    &lt;/BulletPoints&gt;
+    &lt;Tags&gt;
+      &lt;Tag&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;/Tag&gt;
+      &lt;Tag&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;/Tag&gt;
+    &lt;/Tags&gt;
+  &lt;/AdditionalData&gt;
+  &lt;VariantDefinition&gt;
+    &lt;OptionSets&gt;
+      &lt;OptionSet&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Values&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Values&gt;
+      &lt;/OptionSet&gt;
+      &lt;OptionSet&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Values&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Values&gt;
+      &lt;/OptionSet&gt;
+    &lt;/OptionSets&gt;
+    &lt;Variants&gt;
+      &lt;Variant&gt;
+        &lt;SKU&gt;ABC&lt;/SKU&gt;
+        &lt;Price&gt;123.0&lt;/Price&gt;
+        &lt;IsClearance&gt;false&lt;/IsClearance&gt;
+        &lt;WasPrice&gt;123.0&lt;/WasPrice&gt;
+        &lt;Quantity&gt;123&lt;/Quantity&gt;
+        &lt;PhotoIds&gt;
+          &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+          &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+        &lt;/PhotoIds&gt;
+        &lt;Photos&gt;
+          &lt;Photo&gt;
+            &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+            &lt;Value&gt;
+              &lt;Thumbnail&gt;ABC&lt;/Thumbnail&gt;
+              &lt;List&gt;ABC&lt;/List&gt;
+              &lt;Medium&gt;ABC&lt;/Medium&gt;
+              &lt;Gallery&gt;ABC&lt;/Gallery&gt;
+              &lt;Large&gt;ABC&lt;/Large&gt;
+              &lt;FullSize&gt;ABC&lt;/FullSize&gt;
+              &lt;PlusSize&gt;ABC&lt;/PlusSize&gt;
+              &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+              &lt;OriginalWidth&gt;123&lt;/OriginalWidth&gt;
+              &lt;OriginalHeight&gt;123&lt;/OriginalHeight&gt;
+            &lt;/Value&gt;
+          &lt;/Photo&gt;
+          &lt;Photo&gt;
+            &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+            &lt;Value&gt;
+              &lt;Thumbnail&gt;ABC&lt;/Thumbnail&gt;
+              &lt;List&gt;ABC&lt;/List&gt;
+              &lt;Medium&gt;ABC&lt;/Medium&gt;
+              &lt;Gallery&gt;ABC&lt;/Gallery&gt;
+              &lt;Large&gt;ABC&lt;/Large&gt;
+              &lt;FullSize&gt;ABC&lt;/FullSize&gt;
+              &lt;PlusSize&gt;ABC&lt;/PlusSize&gt;
+              &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+              &lt;OriginalWidth&gt;123&lt;/OriginalWidth&gt;
+              &lt;OriginalHeight&gt;123&lt;/OriginalHeight&gt;
+            &lt;/Value&gt;
+          &lt;/Photo&gt;
+        &lt;/Photos&gt;
+        &lt;Options&gt;
+          &lt;Option&gt;
+            &lt;Name&gt;ABC&lt;/Name&gt;
+            &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;/Option&gt;
+          &lt;Option&gt;
+            &lt;Name&gt;ABC&lt;/Name&gt;
+            &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;/Option&gt;
+        &lt;/Options&gt;
+        &lt;Attributes&gt;
+          &lt;Attribute /&gt;
+          &lt;Attribute /&gt;
+        &lt;/Attributes&gt;
+        &lt;ListingId&gt;123&lt;/ListingId&gt;
+        &lt;ExternalReferenceId&gt;ABC&lt;/ExternalReferenceId&gt;
+        &lt;ProductSpecification&gt;
+          &lt;GTIN&gt;ABC&lt;/GTIN&gt;
+          &lt;Brand&gt;ABC&lt;/Brand&gt;
+          &lt;ManufacturerCode&gt;ABC&lt;/ManufacturerCode&gt;
+        &lt;/ProductSpecification&gt;
+      &lt;/Variant&gt;
+      &lt;Variant&gt;
+        &lt;SKU&gt;ABC&lt;/SKU&gt;
+        &lt;Price&gt;123.0&lt;/Price&gt;
+        &lt;IsClearance&gt;false&lt;/IsClearance&gt;
+        &lt;WasPrice&gt;123.0&lt;/WasPrice&gt;
+        &lt;Quantity&gt;123&lt;/Quantity&gt;
+        &lt;PhotoIds&gt;
+          &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+          &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+        &lt;/PhotoIds&gt;
+        &lt;Photos&gt;
+          &lt;Photo&gt;
+            &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+            &lt;Value&gt;
+              &lt;Thumbnail&gt;ABC&lt;/Thumbnail&gt;
+              &lt;List&gt;ABC&lt;/List&gt;
+              &lt;Medium&gt;ABC&lt;/Medium&gt;
+              &lt;Gallery&gt;ABC&lt;/Gallery&gt;
+              &lt;Large&gt;ABC&lt;/Large&gt;
+              &lt;FullSize&gt;ABC&lt;/FullSize&gt;
+              &lt;PlusSize&gt;ABC&lt;/PlusSize&gt;
+              &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+              &lt;OriginalWidth&gt;123&lt;/OriginalWidth&gt;
+              &lt;OriginalHeight&gt;123&lt;/OriginalHeight&gt;
+            &lt;/Value&gt;
+          &lt;/Photo&gt;
+          &lt;Photo&gt;
+            &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+            &lt;Value&gt;
+              &lt;Thumbnail&gt;ABC&lt;/Thumbnail&gt;
+              &lt;List&gt;ABC&lt;/List&gt;
+              &lt;Medium&gt;ABC&lt;/Medium&gt;
+              &lt;Gallery&gt;ABC&lt;/Gallery&gt;
+              &lt;Large&gt;ABC&lt;/Large&gt;
+              &lt;FullSize&gt;ABC&lt;/FullSize&gt;
+              &lt;PlusSize&gt;ABC&lt;/PlusSize&gt;
+              &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+              &lt;OriginalWidth&gt;123&lt;/OriginalWidth&gt;
+              &lt;OriginalHeight&gt;123&lt;/OriginalHeight&gt;
+            &lt;/Value&gt;
+          &lt;/Photo&gt;
+        &lt;/Photos&gt;
+        &lt;Options&gt;
+          &lt;Option&gt;
+            &lt;Name&gt;ABC&lt;/Name&gt;
+            &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;/Option&gt;
+          &lt;Option&gt;
+            &lt;Name&gt;ABC&lt;/Name&gt;
+            &lt;Value&gt;ABC&lt;/Value&gt;
+          &lt;/Option&gt;
+        &lt;/Options&gt;
+        &lt;Attributes&gt;
+          &lt;Attribute /&gt;
+          &lt;Attribute /&gt;
+        &lt;/Attributes&gt;
+        &lt;ListingId&gt;123&lt;/ListingId&gt;
+        &lt;ExternalReferenceId&gt;ABC&lt;/ExternalReferenceId&gt;
+        &lt;ProductSpecification&gt;
+          &lt;GTIN&gt;ABC&lt;/GTIN&gt;
+          &lt;Brand&gt;ABC&lt;/Brand&gt;
+          &lt;ManufacturerCode&gt;ABC&lt;/ManufacturerCode&gt;
+        &lt;/ProductSpecification&gt;
+      &lt;/Variant&gt;
+    &lt;/Variants&gt;
+  &lt;/VariantDefinition&gt;
+  &lt;SecondCategory&gt;ABC&lt;/SecondCategory&gt;
+  &lt;PremiumPackageCode&gt;ABC&lt;/PremiumPackageCode&gt;
+  &lt;ProductSpecification /&gt;
+  &lt;ListingExtras&gt;
+    &lt;ListingExtras&gt;
+      &lt;Id&gt;123&lt;/Id&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;Variant&gt;ABC&lt;/Variant&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;Duration&gt;123&lt;/Duration&gt;
+      &lt;Delay&gt;123&lt;/Delay&gt;
+      &lt;DaysRemaining&gt;123&lt;/DaysRemaining&gt;
+    &lt;/ListingExtras&gt;
+    &lt;ListingExtras&gt;
+      &lt;Id&gt;123&lt;/Id&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+      &lt;Variant&gt;ABC&lt;/Variant&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;Duration&gt;123&lt;/Duration&gt;
+      &lt;Delay&gt;123&lt;/Delay&gt;
+      &lt;DaysRemaining&gt;123&lt;/DaysRemaining&gt;
+    &lt;/ListingExtras&gt;
+  &lt;/ListingExtras&gt;
+  &lt;ListingExtrasLedger&gt;
+    &lt;ListingExtras /&gt;
+    &lt;ListingExtras /&gt;
+  &lt;/ListingExtrasLedger&gt;
+  &lt;HasGoodFor2Relists&gt;false&lt;/HasGoodFor2Relists&gt;
+  &lt;IsCounterOffersAllowed&gt;false&lt;/IsCounterOffersAllowed&gt;
+  &lt;MaximumOffers&gt;123&lt;/MaximumOffers&gt;
+  &lt;ShippingTemplateId&gt;123&lt;/ShippingTemplateId&gt;
+  &lt;Photos&gt;
+    &lt;Photo&gt;
+      &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+      &lt;Value /&gt;
+    &lt;/Photo&gt;
+    &lt;Photo&gt;
+      &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+      &lt;Value /&gt;
+    &lt;/Photo&gt;
+  &lt;/Photos&gt;
+  &lt;Files&gt;
+    &lt;ListingFile&gt;
+      &lt;Url&gt;ABC&lt;/Url&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+    &lt;/ListingFile&gt;
+    &lt;ListingFile&gt;
+      &lt;Url&gt;ABC&lt;/Url&gt;
+      &lt;Name&gt;ABC&lt;/Name&gt;
+    &lt;/ListingFile&gt;
+  &lt;/Files&gt;
+  &lt;ListingId&gt;123&lt;/ListingId&gt;
+  &lt;RequiredMinimumReserve&gt;123.0&lt;/RequiredMinimumReserve&gt;
+  &lt;HasBeenExtended&gt;false&lt;/HasBeenExtended&gt;
+  &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+&lt;/EditListingRequest&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Request <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "Category": "ABC",
+  "Title": "ABC",
+  "Subtitle": "ABC",
+  "Description": [
+    "ABC",
+    "ABC"
+  ],
+  "StartPrice": 123.0,
+  "ReservePrice": 123.0,
+  "BuyNowPrice": 123.0,
+  "Duration": 0,
+  "EndDateTime": "\/Date(1514764800)\/",
+  "Pickup": 0,
+  "PickupSuburbId": 123,
+  "IsBrandNew": false,
+  "AuthenticatedMembersOnly": false,
+  "IsClassified": false,
+  "OpenHomes": [
+    {
+      "Start": "\/Date(1514764800)\/",
+      "End": "\/Date(1514764800)\/"
+    },
+    {
+      "Start": "\/Date(1514764800)\/",
+      "End": "\/Date(1514764800)\/"
+    }
+  ],
+  "SendPaymentInstructions": false,
+  "OtherPaymentMethod": "ABC",
+  "IsOrNearOffer": false,
+  "IsPriceOnApplication": false,
+  "IsBold": false,
+  "IsFeatured": false,
+  "IsHomepageFeatured": false,
+  "HasGallery": false,
+  "HasGalleryPlus": false,
+  "Quantity": 123,
+  "IsFlatShippingCharge": false,
+  "HasAgreedWithLegalNotice": false,
+  "AutoRelistLimit": 123,
+  "HomePhoneNumber": "ABC",
+  "MobilePhoneNumber": "ABC",
+  "IsHighlighted": false,
+  "HasSuperFeature": false,
+  "PhotoIds": [
+    123,
+    123
+  ],
+  "ShippingOptions": [
+    {
+      "Type": 0,
+      "Price": 123.0,
+      "Method": "ABC",
+      "ShippingId": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        }
+      ]
+    },
+    {
+      "Type": 0,
+      "Price": 123.0,
+      "Method": "ABC",
+      "ShippingId": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        }
+      ]
+    }
+  ],
+  "PaymentMethods": [
+    0,
+    0
+  ],
+  "Attributes": [
+    {
+      "Name": "ABC",
+      "DisplayName": "ABC",
+      "Value": "ABC",
+      "Type": 0,
+      "Range": {
+        "Lower": "ABC",
+        "Upper": "ABC"
+      },
+      "MaxStringLength": 123,
+      "Options": [
+        {
+          "Value": "ABC",
+          "Display": "ABC",
+          "Count": 123
+        },
+        {
+          "Value": "ABC",
+          "Display": "ABC",
+          "Count": 123
+        }
+      ],
+      "Units": [
+        {
+          "Display": "ABC",
+          "Multiplier": 123.0
+        },
+        {
+          "Display": "ABC",
+          "Multiplier": 123.0
+        }
+      ],
+      "Unit": "ABC",
+      "IsRequiredForSell": false,
+      "GroupName": "ABC",
+      "DisplayValue": "ABC"
+    },
+    {
+      "Name": "ABC",
+      "DisplayName": "ABC",
+      "Value": "ABC",
+      "Type": 0,
+      "Range": {
+        "Lower": "ABC",
+        "Upper": "ABC"
+      },
+      "MaxStringLength": 123,
+      "Options": [
+        {
+          "Value": "ABC",
+          "Display": "ABC",
+          "Count": 123
+        },
+        {
+          "Value": "ABC",
+          "Display": "ABC",
+          "Count": 123
+        }
+      ],
+      "Units": [
+        {
+          "Display": "ABC",
+          "Multiplier": 123.0
+        },
+        {
+          "Display": "ABC",
+          "Multiplier": 123.0
+        }
+      ],
+      "Unit": "ABC",
+      "IsRequiredForSell": false,
+      "GroupName": "ABC",
+      "DisplayValue": "ABC"
+    }
+  ],
+  "IsClearance": false,
+  "ExternalReferenceId": "ABC",
+  "Contacts": [
+    {
+      "FullName": "ABC",
+      "PhoneNumber": "ABC",
+      "AlternatePhoneNumber": "ABC",
+      "EMail": "ABC",
+      "BrandingImageId": 123,
+      "AgentId": "ABC",
+      "AgencyName": "ABC",
+      "ShouldContact": 0
+    },
+    {
+      "FullName": "ABC",
+      "PhoneNumber": "ABC",
+      "AlternatePhoneNumber": "ABC",
+      "EMail": "ABC",
+      "BrandingImageId": 123,
+      "AgentId": "ABC",
+      "AgencyName": "ABC",
+      "ShouldContact": 0
+    }
+  ],
+  "ReturnListingDetails": false,
+  "DonationRecipient": 0,
+  "CatalogueId": "ABC",
+  "RemainingGalleryPlusRelists": 123,
+  "PromotionId": 123,
+  "ExcludeFromShippingPromotion": false,
+  "SKU": "ABC",
+  "AvailablePromotions": [
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "Description": "ABC",
+      "LongDescription": "ABC",
+      "Price": 123.0,
+      "OriginalPrice": 123.0,
+      "Recommended": false,
+      "MinimumPhotoCount": 123,
+      "DiscountDescription": "ABC",
+      "DiscountStartDate": "ABC",
+      "DiscountEndDate": "ABC",
+      "DiscountDisclaimer": "ABC",
+      "GoodFor2RelistsFee": 123.0
+    },
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "Description": "ABC",
+      "LongDescription": "ABC",
+      "Price": 123.0,
+      "OriginalPrice": 123.0,
+      "Recommended": false,
+      "MinimumPhotoCount": 123,
+      "DiscountDescription": "ABC",
+      "DiscountStartDate": "ABC",
+      "DiscountEndDate": "ABC",
+      "DiscountDisclaimer": "ABC",
+      "GoodFor2RelistsFee": 123.0
+    }
+  ],
+  "ImmutableFields": [
+    "ABC",
+    "ABC"
+  ],
+  "GeographicLocation": {
+    "Latitude": 123.0,
+    "Longitude": 123.0,
+    "Accuracy": 0
+  },
+  "WasPrice": 123.0,
+  "EmbeddedContent": {
+    "YouTubeVideoKey": "ABC",
+    "MatterportKey": "ABC",
+    "IStagingKey": "ABC",
+    "VimeoVideoKey": "ABC",
+    "DiakritFurnishKey": "ABC",
+    "DiakritStylerKey": "ABC",
+    "DiakritPanoramaKey": "ABC",
+    "VirtualToursCreatorKey": "ABC",
+    "Approved3DTourUrl": "ABC"
+  },
+  "IsBranded": false,
+  "ShortDescription": "ABC",
+  "ShippingCalculatorInputs": {
+    "IsBoxType": false,
+    "Width": 123.0,
+    "Height": 123.0,
+    "Depth": 123.0,
+    "IsSignatureRequired": false,
+    "PickupLocalityId": 123,
+    "IsRural": false,
+    "PackagingOption": 1,
+    "WeightOption": 1,
+    "FilterOption": 0
+  },
+  "AdditionalData": {
+    "BulletPoints": [
+      "ABC",
+      "ABC"
+    ],
+    "Tags": [
+      {
+        "Name": "ABC"
+      },
+      {
+        "Name": "ABC"
+      }
+    ]
+  },
+  "VariantDefinition": {
+    "OptionSets": [
+      {
+        "Name": "ABC",
+        "Values": [
+          "ABC",
+          "ABC"
+        ]
+      },
+      {
+        "Name": "ABC",
+        "Values": [
+          "ABC",
+          "ABC"
+        ]
+      }
+    ],
+    "Variants": [
+      {
+        "SKU": "ABC",
+        "Price": 123.0,
+        "IsClearance": false,
+        "WasPrice": 123.0,
+        "Quantity": 123,
+        "PhotoIds": [
+          123,
+          123
+        ],
+        "Photos": [
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          },
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          }
+        ],
+        "Options": [
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "Attributes": [
+          {
+          },
+          {
+          }
+        ],
+        "ListingId": 123,
+        "ExternalReferenceId": "ABC",
+        "ProductSpecification": {
+          "GTIN": "ABC",
+          "Brand": "ABC",
+          "ManufacturerCode": "ABC"
+        }
+      },
+      {
+        "SKU": "ABC",
+        "Price": 123.0,
+        "IsClearance": false,
+        "WasPrice": 123.0,
+        "Quantity": 123,
+        "PhotoIds": [
+          123,
+          123
+        ],
+        "Photos": [
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          },
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          }
+        ],
+        "Options": [
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "Attributes": [
+          {
+          },
+          {
+          }
+        ],
+        "ListingId": 123,
+        "ExternalReferenceId": "ABC",
+        "ProductSpecification": {
+          "GTIN": "ABC",
+          "Brand": "ABC",
+          "ManufacturerCode": "ABC"
+        }
+      }
+    ]
+  },
+  "SecondCategory": "ABC",
+  "PremiumPackageCode": "ABC",
+  "ProductSpecification": {
+  },
+  "ListingExtras": [
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "Variant": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Duration": 123,
+      "Delay": 123,
+      "DaysRemaining": 123
+    },
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "Variant": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Duration": 123,
+      "Delay": 123,
+      "DaysRemaining": 123
+    }
+  ],
+  "ListingExtrasLedger": [
+    {
+    },
+    {
+    }
+  ],
+  "HasGoodFor2Relists": false,
+  "IsCounterOffersAllowed": false,
+  "MaximumOffers": 123,
+  "ShippingTemplateId": 123,
+  "Photos": [
+    {
+      "Key": 123,
+      "Value": {
+      }
+    },
+    {
+      "Key": 123,
+      "Value": {
+      }
+    }
+  ],
+  "Files": [
+    {
+      "Url": "ABC",
+      "Name": "ABC"
+    },
+    {
+      "Url": "ABC",
+      "Name": "ABC"
+    }
+  ],
+  "ListingId": 123,
+  "RequiredMinimumReserve": 123.0,
+  "HasBeenExtended": false,
+  "StartDate": "\/Date(1514764800)\/"
+}</code></pre>
+</div>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;FeeResponse xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;Success&gt;false&lt;/Success&gt;
+  &lt;Description&gt;ABC&lt;/Description&gt;
+  &lt;TotalCost&gt;123.0&lt;/TotalCost&gt;
+  &lt;InsufficientBalance&gt;false&lt;/InsufficientBalance&gt;
+  &lt;FeeItems&gt;
+    &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+    &lt;Page&gt;123&lt;/Page&gt;
+    &lt;PageSize&gt;123&lt;/PageSize&gt;
+    &lt;List&gt;
+      &lt;MemberLedgerItem&gt;
+        &lt;Date&gt;2018-01-01T00:00:00Z&lt;/Date&gt;
+        &lt;Type&gt;Other&lt;/Type&gt;
+        &lt;Description&gt;ABC&lt;/Description&gt;
+        &lt;Credit&gt;123.0&lt;/Credit&gt;
+        &lt;Debit&gt;123.0&lt;/Debit&gt;
+        &lt;WillBeInvoiced&gt;false&lt;/WillBeInvoiced&gt;
+        &lt;InvoicedValue&gt;123.0&lt;/InvoicedValue&gt;
+      &lt;/MemberLedgerItem&gt;
+      &lt;MemberLedgerItem&gt;
+        &lt;Date&gt;2018-01-01T00:00:00Z&lt;/Date&gt;
+        &lt;Type&gt;Other&lt;/Type&gt;
+        &lt;Description&gt;ABC&lt;/Description&gt;
+        &lt;Credit&gt;123.0&lt;/Credit&gt;
+        &lt;Debit&gt;123.0&lt;/Debit&gt;
+        &lt;WillBeInvoiced&gt;false&lt;/WillBeInvoiced&gt;
+        &lt;InvoicedValue&gt;123.0&lt;/InvoicedValue&gt;
+      &lt;/MemberLedgerItem&gt;
+    &lt;/List&gt;
+  &lt;/FeeItems&gt;
+  &lt;ValidationErrors&gt;
+    &lt;ValidationError&gt;
+      &lt;Message&gt;ABC&lt;/Message&gt;
+    &lt;/ValidationError&gt;
+    &lt;ValidationError&gt;
+      &lt;Message&gt;ABC&lt;/Message&gt;
+    &lt;/ValidationError&gt;
+  &lt;/ValidationErrors&gt;
+&lt;/FeeResponse&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "TotalCost": 123.0,
+  "InsufficientBalance": false,
+  "FeeItems": {
+    "TotalCount": 123,
+    "Page": 123,
+    "PageSize": 123,
+    "List": [
+      {
+        "Date": "\/Date(1514764800)\/",
+        "Type": 0,
+        "Description": "ABC",
+        "Credit": 123.0,
+        "Debit": 123.0,
+        "WillBeInvoiced": false,
+        "InvoicedValue": 123.0
+      },
+      {
+        "Date": "\/Date(1514764800)\/",
+        "Type": 0,
+        "Description": "ABC",
+        "Credit": 123.0,
+        "Debit": 123.0,
+        "WillBeInvoiced": false,
+        "InvoicedValue": 123.0
+      }
+    ]
+  },
+  "ValidationErrors": [
+    {
+      "Message": "ABC"
+    },
+    {
+      "Message": "ABC"
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

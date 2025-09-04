@@ -1,0 +1,157 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/document-service-methods/retrieve-your-cvs-cover-letters-and-documents -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your CVs, cover letters and documents</h1>
+<!-- Page content -->
+<p>Retrieves a list of your saved CVs, cover letters and/or other documents. The actual document data is not returned, only the metadata.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/SavedDocuments.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> document_type </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The type of document to return. Defaults to returning all types of documents.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Cv</td>
+<td>
+<p>A CV document</p>
+</td>
+</tr>
+<tr>
+<td>CoverLetter</td>
+<td>
+<p>A cover letter</p>
+</td>
+</tr>
+<tr>
+<td>Other</td>
+<td>
+<p>Other documents</p>
+</td>
+</tr>
+<tr>
+<td>All</td>
+<td>
+<p>All saved documents</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;SavedDocumentCollection&gt; </p>
+<p>A collection of documents.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "SavedDocumentId", "field_type": "Integer", "description": "The unique identifier of the document. Not required when uploading a document."}, {"field_name": "FileName", "field_type": "String or null", "description": "The file name of the document. When uploading a new document, this can be the full path or just the file name, with or without a file extension."}, {"field_name": "DocumentType", "field_type": "Enumeration", "description": "The type of document.", "enum_values": [{"name": "Cv", "value": "0", "description": "A CV document"}, {"name": "CoverLetter", "value": "1", "description": "A cover letter"}, {"name": "Other", "value": "2", "description": "Other documents"}, {"name": "All", "value": "4", "description": "All saved documents"}]}, {"field_name": "SavedDocumentData", "field_type": "String or null", "description": "The actual document data (base64 encoded)."}, {"field_name": "UploadDate", "field_type": "DateTime", "description": "The date the document was uploaded"}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedDocument&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "SavedDocumentId": 123,
+      "FileName": "ABC",
+      "DocumentType": 0,
+      "SavedDocumentData": "ABC",
+      "UploadDate": "\/Date(1514764800)\/"
+    },
+    {
+      "SavedDocumentId": 123,
+      "FileName": "ABC",
+      "DocumentType": 0,
+      "SavedDocumentData": "ABC",
+      "UploadDate": "\/Date(1514764800)\/"
+    }
+  ]
+}</code></pre>
+</div>

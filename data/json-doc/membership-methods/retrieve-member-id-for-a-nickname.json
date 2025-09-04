@@ -1,0 +1,76 @@
+{
+  "endpoint": "RetrieveMemberIdForANickname",
+  "title": "Retrieve member ID for a nickname",
+  "description": "Retrieves the member ID for the member, given their nickname.",
+  "source": "https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-member-id-for-a-nickname",
+  "url": "https://api.trademe.co.nz/v1/member/{memberName}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberName",
+        "type": "String (required)",
+        "required": true,
+        "description": "The member nickname."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "suggestion",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to include a suggested alternative nickname if the provided nickname is in use. Defaults to false."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MemberIdFromNickname> The member ID for the user with the given nickname.",
+    "fields": [
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member with the given nickname"
+      },
+      {
+        "name": "Suggestion",
+        "type": "String or null",
+        "required": false,
+        "description": "An alternative nickname for registration if the given nickname is in use and query string parameter 'suggestion' equals 'true'"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Id": 123,
+      "Suggestion": "ABC"
+    }
+  }
+}

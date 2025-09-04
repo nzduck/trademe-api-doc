@@ -1,0 +1,946 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve your unreviewed fixed price offers - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a> &gt; </li>
+<li class="current">Retrieve your unreviewed fixed price offers</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve your unreviewed fixed price offers</h1>
+<!-- Page content -->
+<p>Retrieves a list of the outstanding fixed price offers that have been offered to the currently authenticated user. This API is identical to <a href="https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-your-unreviewed-fixed-price-offers/"> this one</a>.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/FixedPriceOffers.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> photo_size </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The size of the images to return in the results. Defaults to Thumbnail.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Thumbnail</td>
+<td>
+<p>The thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<td>List</td>
+<td>
+<p>The list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>
+<p>The medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td>
+<p>The gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>
+<p>The large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<td>FullSize</td>
+<td>
+<p>The full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<td>JobSearchCard</td>
+<td>
+<p>The SearchCard photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FixedPriceOffers&gt; </p>
+<p> <p>A list of active fixed price offers.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;FixedPriceOffer&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> OfferPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfferExpiryDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the fixed price offer expires.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxesIncluded </th>
+<td style="width: 22%"> Collection of &lt;TaxRate&gt; or null </td>
+<td>
+<p>The taxes included in the offer price</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "NZ_GST_Overseas_Supplies", "value": "1", "description": "New Zealand GST on overseas supplies"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of tax that is included</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country that is levying the tax e.g. NZ</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the tax e.g. GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FlatRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The rate at which the tax is charged (as a decimal e.g 0.15)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string that can be used as a caption where necessary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellRestrictionsEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTaxEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The listing ID of the item on offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The title of the item on offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the auction started.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the auction ended.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BidCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bids placed on the auction.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Mcat </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The identifier of the category the item is listing in.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingOptions </th>
+<td style="width: 22%"> Collection of &lt;ShippingOption&gt; or null </td>
+<td>
+<p>A list of shipping options for this fixed price offer.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "The type of the \"None of the options apply to me\" shipping option. Do not use when listing an item."}, {"name": "Unknown", "value": "0", "description": "Obsolete. Do not use."}, {"name": "Undecided", "value": "1", "description": "Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options."}, {"name": "Pickup", "value": "2", "description": "Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead)."}, {"name": "Free", "value": "3", "description": "Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options."}, {"name": "Custom", "value": "4", "description": "Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten)."}, {"name": "TradeMe", "value": "5", "description": "Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options."}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of delivery.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Method </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the delivery method (e.g. "NZ Courier", "Rural Delivery"). Only applicable if ShippingType is Custom.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxesIncluded </th>
+<td style="width: 22%"> Collection of &lt;TaxRateOnPrice&gt; or null </td>
+<td>
+<p>Indicates if taxes (and what type) are included in the Shipping Price</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "NZ_GST_Overseas_Supplies", "value": "1", "description": "New Zealand GST on overseas supplies"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of tax that is included</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country that is levying the tax e.g. NZ</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the tax e.g. GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FlatRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The rate at which the tax is charged (as a decimal e.g 0.15)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string that can be used as a caption where necessary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellRestrictionsEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTaxEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsApplied </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the price has had the tax applied (i.e. are inclusive prices)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxAmount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The amount of tax that was added to the price if applied</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPriceTaxAmount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The amount of tax that was added to the was/now price if applied</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PictureHref </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the thumbnail photo.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;FixedPriceOffers xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+  &lt;Page&gt;123&lt;/Page&gt;
+  &lt;PageSize&gt;123&lt;/PageSize&gt;
+  &lt;List&gt;
+    &lt;FixedPriceOffer&gt;
+      &lt;OfferPrice&gt;123.0&lt;/OfferPrice&gt;
+      &lt;OfferExpiryDate&gt;2018-01-01T00:00:00Z&lt;/OfferExpiryDate&gt;
+      &lt;Quantity&gt;123&lt;/Quantity&gt;
+      &lt;TaxesIncluded&gt;
+        &lt;TaxRate&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+        &lt;/TaxRate&gt;
+        &lt;TaxRate&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+        &lt;/TaxRate&gt;
+      &lt;/TaxesIncluded&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;BidCount&gt;123&lt;/BidCount&gt;
+      &lt;Mcat&gt;ABC&lt;/Mcat&gt;
+      &lt;ShippingOptions&gt;
+        &lt;ShippingOption&gt;
+          &lt;Type&gt;None&lt;/Type&gt;
+          &lt;Price&gt;123.0&lt;/Price&gt;
+          &lt;Method&gt;ABC&lt;/Method&gt;
+          &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+          &lt;TaxesIncluded&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+          &lt;/TaxesIncluded&gt;
+        &lt;/ShippingOption&gt;
+        &lt;ShippingOption&gt;
+          &lt;Type&gt;None&lt;/Type&gt;
+          &lt;Price&gt;123.0&lt;/Price&gt;
+          &lt;Method&gt;ABC&lt;/Method&gt;
+          &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+          &lt;TaxesIncluded&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+          &lt;/TaxesIncluded&gt;
+        &lt;/ShippingOption&gt;
+      &lt;/ShippingOptions&gt;
+      &lt;PictureHref&gt;ABC&lt;/PictureHref&gt;
+    &lt;/FixedPriceOffer&gt;
+    &lt;FixedPriceOffer&gt;
+      &lt;OfferPrice&gt;123.0&lt;/OfferPrice&gt;
+      &lt;OfferExpiryDate&gt;2018-01-01T00:00:00Z&lt;/OfferExpiryDate&gt;
+      &lt;Quantity&gt;123&lt;/Quantity&gt;
+      &lt;TaxesIncluded&gt;
+        &lt;TaxRate&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+        &lt;/TaxRate&gt;
+        &lt;TaxRate&gt;
+          &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+          &lt;Country&gt;ABC&lt;/Country&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+          &lt;Description&gt;ABC&lt;/Description&gt;
+          &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+          &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+        &lt;/TaxRate&gt;
+      &lt;/TaxesIncluded&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;BidCount&gt;123&lt;/BidCount&gt;
+      &lt;Mcat&gt;ABC&lt;/Mcat&gt;
+      &lt;ShippingOptions&gt;
+        &lt;ShippingOption&gt;
+          &lt;Type&gt;None&lt;/Type&gt;
+          &lt;Price&gt;123.0&lt;/Price&gt;
+          &lt;Method&gt;ABC&lt;/Method&gt;
+          &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+          &lt;TaxesIncluded&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+          &lt;/TaxesIncluded&gt;
+        &lt;/ShippingOption&gt;
+        &lt;ShippingOption&gt;
+          &lt;Type&gt;None&lt;/Type&gt;
+          &lt;Price&gt;123.0&lt;/Price&gt;
+          &lt;Method&gt;ABC&lt;/Method&gt;
+          &lt;ShippingId&gt;123&lt;/ShippingId&gt;
+          &lt;TaxesIncluded&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+            &lt;TaxRateOnPrice&gt;
+              &lt;Type&gt;NZ_GST_Overseas_Supplies&lt;/Type&gt;
+              &lt;Country&gt;ABC&lt;/Country&gt;
+              &lt;Name&gt;ABC&lt;/Name&gt;
+              &lt;FlatRate&gt;123.0&lt;/FlatRate&gt;
+              &lt;Description&gt;ABC&lt;/Description&gt;
+              &lt;IsSellRestrictionsEffective&gt;false&lt;/IsSellRestrictionsEffective&gt;
+              &lt;IsTaxEffective&gt;false&lt;/IsTaxEffective&gt;
+              &lt;IsApplied&gt;false&lt;/IsApplied&gt;
+              &lt;TaxAmount&gt;123.0&lt;/TaxAmount&gt;
+              &lt;WasPriceTaxAmount&gt;123.0&lt;/WasPriceTaxAmount&gt;
+            &lt;/TaxRateOnPrice&gt;
+          &lt;/TaxesIncluded&gt;
+        &lt;/ShippingOption&gt;
+      &lt;/ShippingOptions&gt;
+      &lt;PictureHref&gt;ABC&lt;/PictureHref&gt;
+    &lt;/FixedPriceOffer&gt;
+  &lt;/List&gt;
+&lt;/FixedPriceOffers&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "OfferPrice": 123.0,
+      "OfferExpiryDate": "\/Date(1514764800)\/",
+      "Quantity": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        }
+      ],
+      "ListingId": 123,
+      "Title": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "BidCount": 123,
+      "Mcat": "ABC",
+      "ShippingOptions": [
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        },
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        }
+      ],
+      "PictureHref": "ABC"
+    },
+    {
+      "OfferPrice": 123.0,
+      "OfferExpiryDate": "\/Date(1514764800)\/",
+      "Quantity": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        }
+      ],
+      "ListingId": 123,
+      "Title": "ABC",
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "BidCount": 123,
+      "Mcat": "ABC",
+      "ShippingOptions": [
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        },
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        }
+      ],
+      "PictureHref": "ABC"
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

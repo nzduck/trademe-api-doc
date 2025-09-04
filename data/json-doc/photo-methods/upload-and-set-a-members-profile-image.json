@@ -1,0 +1,110 @@
+{
+  "endpoint": "UploadAndSetAMemberSProfileImage",
+  "title": "Upload and set a member's profile image",
+  "description": "Uploads and sets the member's profile image.",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/upload-and-set-a-members-profile-image",
+  "url": "https://api.trademe.co.nz/v1/photos/memberprofile.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<PhotoUploadRequest>",
+    "fields": [
+      {
+        "name": "PhotoData",
+        "type": "String (required)",
+        "required": true,
+        "description": "The actual image data which is base64 encoded."
+      },
+      {
+        "name": "FileName",
+        "type": "String (required)",
+        "required": true,
+        "description": "A textual label for the image, which is intended to make it easier for the user to find the photo when creating a listing. If the file name looks like a path (with forward slash or backslash characters) all characters up to the last slash will be removed. The following characters are not allowed: \" < > |"
+      },
+      {
+        "name": "FileType",
+        "type": "String (required)",
+        "required": true,
+        "description": "The file type of the image (\"BMP\", \"GIF\", \"JPG\", \"JPEG\" or \"PNG\"). Case is ignored."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PhotoResponse> Success if the image was added to the member's account. Failure otherwise.",
+    "fields": [
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the photo operation.",
+        "enum": [
+          {
+            "name": "Failure",
+            "value": "0",
+            "description": "The photo action was a failure."
+          },
+          {
+            "name": "Success",
+            "value": "1",
+            "description": "The photo action was a success."
+          },
+          {
+            "name": "NotMemberPhoto",
+            "value": "2",
+            "description": "The photo is not owned by the member."
+          },
+          {
+            "name": "NotMemberAuction",
+            "value": "3",
+            "description": "The auction is not owned by the member."
+          },
+          {
+            "name": "NotFound",
+            "value": "4",
+            "description": "The auction was not found."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "PhotoData": "ABC",
+      "FileName": "ABC",
+      "FileType": "ABC"
+    },
+    "response_json": {
+      "Status": 0
+    }
+  }
+}

@@ -1,0 +1,279 @@
+{
+  "endpoint": "GetPropertyTimelineData",
+  "title": "Get property timeline data",
+  "description": "Get property timeline by homes property id",
+  "source": "https://developer.trademe.co.nz/api-reference/property-timeline-methods/get-property-timeline-data",
+  "url": "https://api.trademe.co.nz/v1/Property/Timeline/{homesPropertyId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "homesPropertyId",
+        "type": "String (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PropertyTimelineResponse> Property timeline",
+    "fields": [
+      {
+        "name": "Events",
+        "type": "Collection of <PropertyTimelineDetail> or null",
+        "required": false,
+        "description": "The events of the property timeline detail"
+      },
+      {
+        "name": "Price",
+        "type": "Price \n Integer or null \n\nThe price of the property\n\n\n\n DisplaySalePrice \n String or null \n\nThe display price of the property\n\n\n\n SaleType \n String or null \n\nThe sale type of the property\n\n\n\n SaleTypeDescription \n String or null \n\nThe description of the sale type\n\n\n\n PriceOn \n DateTime or null \n\nThe price on of the property (in NZST)\n\n\n\n CapitalValue \n Integer or null \n\nThe capital value of the property\n\n\n\n ImprovementValue \n Integer or null \n\nThe improvement value of the property\n\n\n\n LandValue \n Integer or null \n\nThe land value of the property\n\n\n\n DecadeBuilt \n String or null \n\nThe decade when the property was built\n\n\n\n Value \n String or null \n\nThe value of the property\n\n\n\n Description \n String or null \n\nThe description of the property\n\n\n\n SaleAgents \n Collection of <Agent> or null \n\nThe sale agents of the property\n\n\n\n\n\n\n ProfileImageUrl \n String or null \n\nThe profile image URL of the sale agent\n\n\n\n Name \n String or null \n\nThe name of the sale agent\n\n\n\n UrlSlug \n String or null \n\nThe url slug of the sale agent\n\n\n\n\n\n\n SaleBranches \n Collection of <Branch> or null \n\nThe sale branches of the property\n\n\n\n\n\n\n OfficeMemberId \n Integer or null \n\nThe office member id of branch\n\n\n\n BranchName \n String or null \n\nThe name of the branch.\n\n\n\n LogoUrl \n String or null \n\nThe URL of the branch's logo.\n\n\n\n BrandingBackgroundColor \n String or null \n\nBranding background color",
+        "required": false,
+        "description": "Integer or null"
+      },
+      {
+        "name": "Price",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The price of the property"
+      },
+      {
+        "name": "DisplaySalePrice",
+        "type": "String or null",
+        "required": false,
+        "description": "The display price of the property"
+      },
+      {
+        "name": "SaleType",
+        "type": "String or null",
+        "required": false,
+        "description": "The sale type of the property"
+      },
+      {
+        "name": "SaleTypeDescription",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the sale type"
+      },
+      {
+        "name": "PriceOn",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The price on of the property (in NZST)"
+      },
+      {
+        "name": "CapitalValue",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The capital value of the property"
+      },
+      {
+        "name": "ImprovementValue",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The improvement value of the property"
+      },
+      {
+        "name": "LandValue",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The land value of the property"
+      },
+      {
+        "name": "DecadeBuilt",
+        "type": "String or null",
+        "required": false,
+        "description": "The decade when the property was built"
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The value of the property"
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the property"
+      },
+      {
+        "name": "SaleAgents",
+        "type": "Collection of <Agent> or null",
+        "required": false,
+        "description": "The sale agents of the property"
+      },
+      {
+        "name": "ProfileImageUrl",
+        "type": "ProfileImageUrl \n String or null \n\nThe profile image URL of the sale agent\n\n\n\n Name \n String or null \n\nThe name of the sale agent\n\n\n\n UrlSlug \n String or null \n\nThe url slug of the sale agent",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ProfileImageUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "The profile image URL of the sale agent"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the sale agent"
+      },
+      {
+        "name": "UrlSlug",
+        "type": "String or null",
+        "required": false,
+        "description": "The url slug of the sale agent"
+      },
+      {
+        "name": "SaleBranches",
+        "type": "Collection of <Branch> or null",
+        "required": false,
+        "description": "The sale branches of the property"
+      },
+      {
+        "name": "OfficeMemberId",
+        "type": "OfficeMemberId \n Integer or null \n\nThe office member id of branch\n\n\n\n BranchName \n String or null \n\nThe name of the branch.\n\n\n\n LogoUrl \n String or null \n\nThe URL of the branch's logo.\n\n\n\n BrandingBackgroundColor \n String or null \n\nBranding background color",
+        "required": false,
+        "description": "Integer or null"
+      },
+      {
+        "name": "OfficeMemberId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The office member id of branch"
+      },
+      {
+        "name": "BranchName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the branch."
+      },
+      {
+        "name": "LogoUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the branch's logo."
+      },
+      {
+        "name": "BrandingBackgroundColor",
+        "type": "String or null",
+        "required": false,
+        "description": "Branding background color"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Events": [
+        {
+          "Price": 123,
+          "DisplaySalePrice": "ABC",
+          "SaleType": "ABC",
+          "SaleTypeDescription": "ABC",
+          "PriceOn": "/Date(1514764800)/",
+          "CapitalValue": 123,
+          "ImprovementValue": 123,
+          "LandValue": 123,
+          "DecadeBuilt": "ABC",
+          "Value": "ABC",
+          "Description": "ABC",
+          "SaleAgents": [
+            {
+              "ProfileImageUrl": "ABC",
+              "Name": "ABC",
+              "UrlSlug": "ABC"
+            },
+            {
+              "ProfileImageUrl": "ABC",
+              "Name": "ABC",
+              "UrlSlug": "ABC"
+            }
+          ],
+          "SaleBranches": [
+            {
+              "OfficeMemberId": 123,
+              "BranchName": "ABC",
+              "LogoUrl": "ABC",
+              "BrandingBackgroundColor": "ABC"
+            },
+            {
+              "OfficeMemberId": 123,
+              "BranchName": "ABC",
+              "LogoUrl": "ABC",
+              "BrandingBackgroundColor": "ABC"
+            }
+          ]
+        },
+        {
+          "Price": 123,
+          "DisplaySalePrice": "ABC",
+          "SaleType": "ABC",
+          "SaleTypeDescription": "ABC",
+          "PriceOn": "/Date(1514764800)/",
+          "CapitalValue": 123,
+          "ImprovementValue": 123,
+          "LandValue": 123,
+          "DecadeBuilt": "ABC",
+          "Value": "ABC",
+          "Description": "ABC",
+          "SaleAgents": [
+            {
+              "ProfileImageUrl": "ABC",
+              "Name": "ABC",
+              "UrlSlug": "ABC"
+            },
+            {
+              "ProfileImageUrl": "ABC",
+              "Name": "ABC",
+              "UrlSlug": "ABC"
+            }
+          ],
+          "SaleBranches": [
+            {
+              "OfficeMemberId": 123,
+              "BranchName": "ABC",
+              "LogoUrl": "ABC",
+              "BrandingBackgroundColor": "ABC"
+            },
+            {
+              "OfficeMemberId": 123,
+              "BranchName": "ABC",
+              "LogoUrl": "ABC",
+              "BrandingBackgroundColor": "ABC"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

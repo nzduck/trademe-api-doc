@@ -1,0 +1,98 @@
+{
+  "endpoint": "SellSimilarFromAnExistingAuctionOrClassified",
+  "title": "Sell similar from an existing auction or classified",
+  "description": "Sell similar from an existing or expired auction or classified. Creates a new listing without modifying editable fields.",
+  "source": "https://developer.trademe.co.nz/api-reference/selling-methods/sell-similar-from-an-existing-auction-or-classified",
+  "url": "https://api.trademe.co.nz/v1/Selling/Similar.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SellSimilarListingRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing that is being withdrawn, relisted or extended."
+      },
+      {
+        "name": "ReturnListingDetails",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether full listing details should be returned in the Listing field."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ListingResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "Listing",
+        "type": "<ListedItemDetail> or null",
+        "required": false,
+        "description": "The state of the listing, after the listing operation has successfully completed. This field is only present if the ReturnListingDetails parameter is true and the operation was successful. This field will also be missing if there was an error retrieving the listing details. For more information on this field, see the documentation for the listing details API."
+      },
+      {
+        "name": "ListingGroupId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "ReturnListingDetails": false
+    },
+    "response_json": "{\n  \"Success\": false,\n  \"Description\": \"ABC\",\n  \"ListingId\": 123,\n  \"Listing\": { ... },\n  \"ListingGroupId\": 123\n}"
+  }
+}

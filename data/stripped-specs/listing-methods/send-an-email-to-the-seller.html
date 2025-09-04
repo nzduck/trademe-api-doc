@@ -1,0 +1,236 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/listing-methods/send-an-email-to-the-seller -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Send an email to the seller</h1>
+<!-- Page content -->
+<p>Sends a message to the seller of a classified via email. If possible, the listing will be added to the authenticated member's watchlist.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/listings/{listingId}/emailSeller.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> listingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing the question is about.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;EmailRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Message </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+                        Message
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> CopyToSelf </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+                        CopyToSelf
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> PhoneNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+                        PhoneNumber
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailAddress </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+                        EmailAddress
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> FirstName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+                        FirstName
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> LastName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+                        LastName
+                                            </td>
+</tr>
+<tr>
+<th style="width: 22%"> EnquiryType </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+                        EnquiryType
+                                            </td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>Default option when the EnquiryType is not known</p>
+</td>
+</tr>
+<tr>
+<td>General</td>
+<td>1</td>
+<td>
+<p>General question</p>
+</td>
+</tr>
+<tr>
+<td>Finance</td>
+<td>2</td>
+<td>
+<p>Finance options for the listing</p>
+</td>
+</tr>
+<tr>
+<td>TradeIn</td>
+<td>3</td>
+<td>
+<p>Questions about Trade-In of a vehicle</p>
+</td>
+</tr>
+<tr>
+<td>TestDrive</td>
+<td>4</td>
+<td>
+<p>Questions about a Test Drive</p>
+</td>
+</tr>
+<tr>
+<td>SpecialOffer</td>
+<td>5</td>
+<td>
+<p>Questions about a special offer</p>
+</td>
+</tr>
+<tr>
+<td>InTransit</td>
+<td>6</td>
+<td>
+<p>Questions about a listing that is in transit from the factory</p>
+</td>
+</tr>
+<tr>
+<td>Warranty</td>
+<td>7</td>
+<td>
+<p>Questions about the Warranty</p>
+</td>
+</tr>
+<tr>
+<td>Insurance</td>
+<td>8</td>
+<td>
+<p>Questions about Insurance</p>
+</td>
+</tr>
+<tr>
+<td>AvailableToOrder</td>
+<td>9</td>
+<td>
+<p>Questions about a listing this is available to order</p>
+</td>
+</tr>
+<tr>
+<td>CertifiedPreOwned</td>
+<td>10</td>
+<td>
+<p>Questions about a certified pre owned listin</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferringSearchId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+                        ReferringSearchId
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;EmailResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Message": "ABC",
+  "CopyToSelf": false,
+  "PhoneNumber": "ABC",
+  "EmailAddress": "ABC",
+  "FirstName": "ABC",
+  "LastName": "ABC",
+  "EnquiryType": 0,
+  "ReferringSearchId": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC"
+}</code></pre>
+</div>

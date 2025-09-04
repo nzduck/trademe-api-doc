@@ -1,0 +1,83 @@
+{
+  "endpoint": "UpdateYourPaymentInstructionsTemplate",
+  "title": "Update your payment instructions template",
+  "description": "Updates your payment instructions template. If you don't have a payment instructions template, it will be created. The payment instructions template affects the behaviour of listings with the SendPaymentInstructions flag set. Specifically if a listing with that flag sells, the buyer will be sent a payment instructions email that contains the text of your payment instructions template and the buyer can view the payment instructions from the Trade Me website, mobile apps or third-party tools. Note that buyers see the payment instructions as they were at the time of the sale; if you update the template it will only affect new sales.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/update-your-payment-instructions-template",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/PaymentInstructions.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<PaymentInstructionsTemplate>",
+    "fields": [
+      {
+        "name": "Template",
+        "type": "String (required)",
+        "required": true,
+        "description": "The payment instructions template. This should not include a salutation (\"Hi John\"). If payment instructions haven't been set up then this will be null."
+      },
+      {
+        "name": "CopySeller",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether the seller's preference is to CC payment instructions emails. The default is false."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PaymentInstructionsResponse> Details on whether the payment instructions template was successfully updated.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Template": "ABC",
+      "CopySeller": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

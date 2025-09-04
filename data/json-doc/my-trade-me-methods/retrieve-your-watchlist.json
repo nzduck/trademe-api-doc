@@ -1,0 +1,922 @@
+{
+  "endpoint": "RetrieveYourWatchlist",
+  "title": "Retrieve your watchlist",
+  "description": "Retrieves a list of items on the authenticated user's watchlist.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-watchlist",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/watchlist/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "A filter on the results. AllReturns all items from the watchlist.ClosingTodayReturns listings that are closing today.LeadingBidsReturns listings where the authenticated user leads the bidding.ReserveMetReturns listings where highest bid is above the reserve price or the reserve price equals the start price (= no reserve).ReserveNotMetReturns only listings where the reserve has not been met.OpenHomesReturns only listings that have an open home. Listings that have multiple open homes will be returned multiple times. Results are ordered chronologically by open home start time."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "category",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The ID of a category to use as a filter. Only the items that reside within the given category will be returned."
+      },
+      {
+        "name": "category_ids",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Comma separated list of category Ids. Only the items that reside within the given categories and their sub-categories will be returned. Note: 1. This parameter overrides the category query parameter. 2. When this parameter is used, the FoundCategories property in the response will be empty."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "photo_size",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The size of the images to return in the results. Defaults to Thumbnail."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<Watchlist> The Watchlist for the authenticated user.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <WatchlistItem> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "ListingId",
+        "type": "ListingId \n Integer \n\nThe ID of the listing.\n\n\n\n Title \n String or null \n\nThe listing title.\n\n\n\n Category \n String or null \n\nThe listing category.\n\n\n\n StartPrice \n Number \n\nThe start price.\n\n\n\n BuyNowPrice \n Number \n\nThe Buy Now price.\n\n\n\n StartDate \n DateTime \n\nThe date the listing was created.\n\n\n\n EndDate \n DateTime \n\nThe date the listing will end.\n\n\n\n MaxBidAmount \n Number \n\nThe current leading bid amount.\n\n\n\n AsAt \n DateTime \n\nThe date and time the response was generated on the server.\n\n\n\n CategoryPath \n String or null \n\nThe category path.\n\n\n\n PictureHref \n String or null \n\nThe URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.\n\n\n\n PhotoId \n Integer \n\nThe ID of the primary photo for the listing (if the listing has a photo).\n\n\n\n HasPayNow \n Boolean \n\nIndicates whether the item has Pay Now.\n\n\n\n IsNew \n Boolean \n\nIndicates whether the item is marked as new.\n\n\n\n RegionId \n Integer \n\nThe ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.\n\n                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.\n                            \n\n\n\n Region \n String or null \n\nThe name of the region where this item is located.\n\n\n\n Suburb \n String or null \n\nThe name of the suburb where this item is located.\n\n\n\n BidCount \n Integer \n\nThe number of bids on the item.\n\n\n\n IsReserveMet \n Boolean \n\nIndicates whether the item's reserve has been met.\n\n\n\n HasReserve \n Boolean \n\nIndicates whether the item has a reserve.\n\n\n\n HasBuyNow \n Boolean \n\nIndicates whether the item has Buy Now.\n\n\n\n Note \n String or null \n\nThe note on an item.\n\n\n\n NoteId \n Integer \n\nThe note id on an item.\n\n\n\n NoteDate \n DateTime \n\nThe date of the note on an item.\n\n\n\n CategoryName \n String or null \n\nThe display name of the category.\n\n\n\n ReserveState \n Enumeration \n\nThe flag to display on an item.\n\n\n\n Attributes \n Collection of <Attribute> or null \n\nThe attributes for the item that are intended to be displayed on the UI.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n\n\n\n IsClassified \n Boolean \n\nIndicates whether the item is a classified.\n\n\n\n OpenHomes \n Collection of <OpenHome> or null \n\nA collection of open home times for this listing. Only applies to open home listings.\n\n\n\n\n\n\n Start \n DateTime \n\nThe date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.\n\n\n\n End \n DateTime \n\nThe date and time the open home is no longer open for viewing. Must be the same day as Start.\n\n\n\n\n\n\n Subtitle \n String or null \n\nThe subtitle, if present.\n\n\n\n IsBuyNowOnly \n Boolean \n\nIndicates whether or not this is a Buy Now Only listing.\n\n\n\n RemainingGalleryPlusRelists \n Integer or null \n\nThe number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).\n\n\n\n MinimumNextBidAmount \n Number \n\nThe smallest amount that will be accepted for the next bid. Only applicable to auctions which allow bidding (i.e. not classifieds and not Buy Now Only auctions). You must still check for the \"bid too small\" error when using this value, as someone may make a bid after you have checked this value but before you have finished placing your bid.\n\n\n\n IsOnWatchList \n Boolean \n\nIndicates whether the item is on the authenticated member's watchlist.\n\n\n\n GeographicLocation \n <GeographicLocation> or null \n\nThe geographic location (latitude and longitude) of a property.\n\n\n\n\n\n\n Latitude \n Number \n\nThe latitude of the location, in degrees (WGS84).\n\n\n\n Longitude \n Number \n\nThe longitude of the location, in degrees (WGS84).\n\n\n\n Northing \n Integer \n\nThe northing of the location, in metres (NZTM).\n\n\n\n Easting \n Integer \n\nThe easting of the location, in metres (NZTM).\n\n\n\n Accuracy \n Enumeration \n\nThe accuracy of the geographic location (address, street or suburb).\n\n\n\n\n\n\n PriceDisplay \n String or null \n\nThe price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\".\n\n\n\n HasAppliedForJob \n Boolean \n\nIndicates whether the authenticated member has applied for the job. Only applies for job listings.\n\n\n\n JobApplicationDate \n DateTime or null \n\nThe date and time of the member's most recent job application, if any. This field will only be populated if HasAppliedForJob is true.\n\n\n\n IsClearance \n Boolean \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number or null \n\nThe usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.\n\n\n\n PercentageOff \n Integer or null \n\nThe percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.\n\n\n\n Branding \n <Branding> or null \n\nA list of branding images associated with this listing.\n\n\n\n\n\n\n LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo\n\n\n\n\n\n\n ShortDescription \n String or null \n\nShort description of a listing. This is Jobs and Services specfic.\n\n\n\n Options \n Collection of <Option> or null \n\nThe combination of variant options that this variant represents.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ListingGroupId \n Integer or null \n\nThe identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant\n\n\n\n AdditionalData \n <AdditionalData> or null \n\nStructured information for Listing Additional Data\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for display in the search results\n\n\n\n Tags \n Collection of <Tag> or null \n\nThe tags for display in the search results\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the tag\n\n\n\n\n\n\n\n\n\n PriceType \n Enumeration or null \n\nIndicates the price type of boat and farming machinery listings\n\n\n\n ListingPlatform \n Enumeration \n\nThe backend platform that controls the listing.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the auction was listed by a dealer.\n\n\n\n IsLeading \n Boolean \n\nIndicates whether the authenticated user is leading the bidding.\n\n\n\n IsOutbid \n Boolean \n\nIndicates whether the authenticated user has been outbid. This will be false if the authenticated user has not made any bids.\n\n\n\n IsInCart \n Boolean \n\nIndicates if the item is also in the members cart.\n\n\n\n MemberBidShippingOption \n Integer \n\nIf member has placed a bid, the watcher's selected shipping option for the listing",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing title."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing category."
+      },
+      {
+        "name": "StartPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The start price."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The Buy Now price."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing was created."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing will end."
+      },
+      {
+        "name": "MaxBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The current leading bid amount."
+      },
+      {
+        "name": "AsAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the response was generated on the server."
+      },
+      {
+        "name": "CategoryPath",
+        "type": "String or null",
+        "required": false,
+        "description": "The category path."
+      },
+      {
+        "name": "PictureHref",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the primary photo for the listing (if the listing has a photo)."
+      },
+      {
+        "name": "HasPayNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Pay Now."
+      },
+      {
+        "name": "IsNew",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is marked as new."
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.\n\n                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used."
+      },
+      {
+        "name": "Region",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the region where this item is located."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the suburb where this item is located."
+      },
+      {
+        "name": "BidCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bids on the item."
+      },
+      {
+        "name": "IsReserveMet",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item's reserve has been met."
+      },
+      {
+        "name": "HasReserve",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has a reserve."
+      },
+      {
+        "name": "HasBuyNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Buy Now."
+      },
+      {
+        "name": "Note",
+        "type": "String or null",
+        "required": false,
+        "description": "The note on an item."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The note id on an item."
+      },
+      {
+        "name": "NoteDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the note on an item."
+      },
+      {
+        "name": "CategoryName",
+        "type": "String or null",
+        "required": false,
+        "description": "The display name of the category."
+      },
+      {
+        "name": "ReserveState",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The flag to display on an item.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."
+          },
+          {
+            "name": "Met",
+            "value": "1",
+            "description": "The value of the highest bid has exceeded the reserve price."
+          },
+          {
+            "name": "NotMet",
+            "value": "2",
+            "description": "The value of the highest bid has not reached the reserve price."
+          },
+          {
+            "name": "NotApplicable",
+            "value": "3",
+            "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."
+          }
+        ]
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> or null",
+        "required": false,
+        "description": "The attributes for the item that are intended to be displayed on the UI."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "IsClassified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is a classified."
+      },
+      {
+        "name": "OpenHomes",
+        "type": "Collection of <OpenHome> or null",
+        "required": false,
+        "description": "A collection of open home times for this listing. Only applies to open home listings."
+      },
+      {
+        "name": "Start",
+        "type": "Start \n DateTime \n\nThe date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.\n\n\n\n End \n DateTime \n\nThe date and time the open home is no longer open for viewing. Must be the same day as Start.",
+        "required": false,
+        "description": "DateTime"
+      },
+      {
+        "name": "Start",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone."
+      },
+      {
+        "name": "End",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the open home is no longer open for viewing. Must be the same day as Start."
+      },
+      {
+        "name": "Subtitle",
+        "type": "String or null",
+        "required": false,
+        "description": "The subtitle, if present."
+      },
+      {
+        "name": "IsBuyNowOnly",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether or not this is a Buy Now Only listing."
+      },
+      {
+        "name": "RemainingGalleryPlusRelists",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect)."
+      },
+      {
+        "name": "MinimumNextBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The smallest amount that will be accepted for the next bid. Only applicable to auctions which allow bidding (i.e. not classifieds and not Buy Now Only auctions). You must still check for the \"bid too small\" error when using this value, as someone may make a bid after you have checked this value but before you have finished placing your bid."
+      },
+      {
+        "name": "IsOnWatchList",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is on the authenticated member's watchlist."
+      },
+      {
+        "name": "GeographicLocation",
+        "type": "<GeographicLocation> or null",
+        "required": false,
+        "description": "The geographic location (latitude and longitude) of a property."
+      },
+      {
+        "name": "Latitude",
+        "type": "Latitude \n Number \n\nThe latitude of the location, in degrees (WGS84).\n\n\n\n Longitude \n Number \n\nThe longitude of the location, in degrees (WGS84).\n\n\n\n Northing \n Integer \n\nThe northing of the location, in metres (NZTM).\n\n\n\n Easting \n Integer \n\nThe easting of the location, in metres (NZTM).\n\n\n\n Accuracy \n Enumeration \n\nThe accuracy of the geographic location (address, street or suburb).",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "Latitude",
+        "type": "Number",
+        "required": false,
+        "description": "The latitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Longitude",
+        "type": "Number",
+        "required": false,
+        "description": "The longitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Northing",
+        "type": "Integer",
+        "required": false,
+        "description": "The northing of the location, in metres (NZTM)."
+      },
+      {
+        "name": "Easting",
+        "type": "Integer",
+        "required": false,
+        "description": "The easting of the location, in metres (NZTM)."
+      },
+      {
+        "name": "Accuracy",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The accuracy of the geographic location (address, street or suburb).",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The accuracy of the geographic location is not known."
+          },
+          {
+            "name": "Address",
+            "value": "1",
+            "description": "The geographic location is accurate to the address level."
+          },
+          {
+            "name": "Street",
+            "value": "3",
+            "description": "The geographic location is accurate to the street level."
+          },
+          {
+            "name": "Suburb",
+            "value": "2",
+            "description": "The geographic location is accurate to the suburb level."
+          },
+          {
+            "name": "AdminPinpoint",
+            "value": "4",
+            "description": "The geographic location is accurate to the AdminPinPoint level."
+          }
+        ]
+      },
+      {
+        "name": "PriceDisplay",
+        "type": "String or null",
+        "required": false,
+        "description": "The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\"."
+      },
+      {
+        "name": "HasAppliedForJob",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the authenticated member has applied for the job. Only applies for job listings."
+      },
+      {
+        "name": "JobApplicationDate",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date and time of the member's most recent job application, if any. This field will only be populated if HasAppliedForJob is true."
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean",
+        "required": false,
+        "description": "This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "PercentageOff",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "Branding",
+        "type": "<Branding> or null",
+        "required": false,
+        "description": "A list of branding images associated with this listing."
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large square branding image with dimensions of 480x480."
+      },
+      {
+        "name": "LargeWideLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large rectangular branding image with dimensions of 480x200."
+      },
+      {
+        "name": "LargeBannerURL",
+        "type": "String or null",
+        "required": false,
+        "description": "The url of a larger version of the logo"
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String or null",
+        "required": false,
+        "description": "Short description of a listing. This is Jobs and Services specfic."
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <Option> or null",
+        "required": false,
+        "description": "The combination of variant options that this variant represents."
+      },
+      {
+        "name": "ListingGroupId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant"
+      },
+      {
+        "name": "AdditionalData",
+        "type": "<AdditionalData> or null",
+        "required": false,
+        "description": "Structured information for Listing Additional Data"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "BulletPoints \n Collection of String or null \n\nThe bullet points for display in the search results\n\n\n\n Tags \n Collection of <Tag> or null \n\nThe tags for display in the search results\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the tag",
+        "required": false,
+        "description": "Collection of String or null"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "The bullet points for display in the search results"
+      },
+      {
+        "name": "Tags",
+        "type": "Collection of <Tag> or null",
+        "required": false,
+        "description": "The tags for display in the search results"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the tag",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tag"
+      },
+      {
+        "name": "PriceType",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "Indicates the price type of boat and farming machinery listings",
+        "enum": [
+          {
+            "name": "AskingPrice",
+            "value": "0",
+            "description": "Asking Price."
+          },
+          {
+            "name": "PriceOnApplication",
+            "value": "1",
+            "description": "Price On Application."
+          },
+          {
+            "name": "ExcludingGST",
+            "value": "2",
+            "description": "Excluding GST."
+          }
+        ]
+      },
+      {
+        "name": "ListingPlatform",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The backend platform that controls the listing.",
+        "enum": [
+          {
+            "name": "Unset",
+            "value": "0",
+            "description": "The platform has not been set."
+          },
+          {
+            "name": "TradeMe",
+            "value": "1",
+            "description": "The listing is controlled by Trade Me."
+          },
+          {
+            "name": "Koru",
+            "value": "2",
+            "description": "The listing is controlled by Koru."
+          }
+        ]
+      },
+      {
+        "name": "IsDealer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the auction was listed by a dealer."
+      },
+      {
+        "name": "IsLeading",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the authenticated user is leading the bidding."
+      },
+      {
+        "name": "IsOutbid",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the authenticated user has been outbid. This will be false if the authenticated user has not made any bids."
+      },
+      {
+        "name": "IsInCart",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates if the item is also in the members cart."
+      },
+      {
+        "name": "MemberBidShippingOption",
+        "type": "Integer",
+        "required": false,
+        "description": "If member has placed a bid, the watcher's selected shipping option for the listing"
+      },
+      {
+        "name": "FoundCategories",
+        "type": "Collection of <FoundCategory> or null",
+        "required": false,
+        "description": "A collection of suggested categories and the number of search results in each category."
+      },
+      {
+        "name": "Count",
+        "type": "Count \n Integer \n\nThe number of results that were found in this category.\n\n\n\n Category \n String or null \n\nThe category identifier string in the form nnnn- (e.g. \"0344-3357-6420-\").\n\n\n\n Name \n String or null \n\nThe name of the category (e.g. \"Blackberry\").\n\n\n\n IsRestricted \n Boolean \n\nTrue if the category is restricted. All R18 categories are restricted by default.\n\n\n\n CategoryId \n Integer \n\nThe category id (e.g. 6420).\n\n\n\n IsLeaf \n Boolean \n\nTrue if the category is a leaf category",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Count",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results that were found in this category."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The category identifier string in the form nnnn- (e.g. \"0344-3357-6420-\")."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the category (e.g. \"Blackberry\")."
+      },
+      {
+        "name": "IsRestricted",
+        "type": "Boolean",
+        "required": false,
+        "description": "True if the category is restricted. All R18 categories are restricted by default."
+      },
+      {
+        "name": "CategoryId",
+        "type": "Integer",
+        "required": false,
+        "description": "The category id (e.g. 6420)."
+      },
+      {
+        "name": "IsLeaf",
+        "type": "Boolean",
+        "required": false,
+        "description": "True if the category is a leaf category"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "HasPayNow": false,
+          "IsNew": false,
+          "RegionId": 123,
+          "Region": "ABC",
+          "Suburb": "ABC",
+          "BidCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "Note": "ABC",
+          "NoteId": 123,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "OpenHomes": [
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            },
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            }
+          ],
+          "Subtitle": "ABC",
+          "IsBuyNowOnly": false,
+          "RemainingGalleryPlusRelists": 123,
+          "MinimumNextBidAmount": 123.0,
+          "IsOnWatchList": false,
+          "GeographicLocation": {
+            "Latitude": 123.0,
+            "Longitude": 123.0,
+            "Northing": 123,
+            "Easting": 123,
+            "Accuracy": 0
+          },
+          "PriceDisplay": "ABC",
+          "HasAppliedForJob": false,
+          "JobApplicationDate": "/Date(1514764800)/",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "ShortDescription": "ABC",
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "AdditionalData": {
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "Tags": [
+              {
+                "Name": "ABC"
+              },
+              {
+                "Name": "ABC"
+              }
+            ]
+          },
+          "PriceType": 0,
+          "ListingPlatform": 0,
+          "IsDealer": false,
+          "IsLeading": false,
+          "IsOutbid": false,
+          "IsInCart": false,
+          "MemberBidShippingOption": 123
+        },
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "HasPayNow": false,
+          "IsNew": false,
+          "RegionId": 123,
+          "Region": "ABC",
+          "Suburb": "ABC",
+          "BidCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "Note": "ABC",
+          "NoteId": 123,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "OpenHomes": [
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            },
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            }
+          ],
+          "Subtitle": "ABC",
+          "IsBuyNowOnly": false,
+          "RemainingGalleryPlusRelists": 123,
+          "MinimumNextBidAmount": 123.0,
+          "IsOnWatchList": false,
+          "GeographicLocation": {
+            "Latitude": 123.0,
+            "Longitude": 123.0,
+            "Northing": 123,
+            "Easting": 123,
+            "Accuracy": 0
+          },
+          "PriceDisplay": "ABC",
+          "HasAppliedForJob": false,
+          "JobApplicationDate": "/Date(1514764800)/",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "ShortDescription": "ABC",
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "AdditionalData": {
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "Tags": [
+              {
+                "Name": "ABC"
+              },
+              {
+                "Name": "ABC"
+              }
+            ]
+          },
+          "PriceType": 0,
+          "ListingPlatform": 0,
+          "IsDealer": false,
+          "IsLeading": false,
+          "IsOutbid": false,
+          "IsInCart": false,
+          "MemberBidShippingOption": 123
+        }
+      ],
+      "FoundCategories": [
+        {
+          "Count": 123,
+          "Category": "ABC",
+          "Name": "ABC",
+          "IsRestricted": false,
+          "CategoryId": 123,
+          "IsLeaf": false
+        },
+        {
+          "Count": 123,
+          "Category": "ABC",
+          "Name": "ABC",
+          "IsRestricted": false,
+          "CategoryId": 123,
+          "IsLeaf": false
+        }
+      ]
+    }
+  }
+}

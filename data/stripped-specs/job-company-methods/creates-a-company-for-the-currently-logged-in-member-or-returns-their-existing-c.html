@@ -1,0 +1,113 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/job-company-methods/creates-a-company-for-the-currently-logged-in-member-or-returns-their-existing-c -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Creates a company for the currently logged in member, or returns their existing company if they already have one</h1>
+<!-- Page content -->
+<p>Creates a company for the currently logged in member, or returns their existing company if they already have one</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Companies.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;JobCompany&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> CompanyId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The id of the company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CompanyName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The name of the company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCompanyOwner </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>The flag indicates whether the current member is the owner of the company</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;JobCompany&gt; </p>
+<p>The created company</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> CompanyId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CompanyName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCompanyOwner </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>The flag indicates whether the current member is the owner of the company</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "CompanyId": 123,
+  "CompanyName": "ABC",
+  "IsCompanyOwner": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "CompanyId": 123,
+  "CompanyName": "ABC",
+  "IsCompanyOwner": false
+}</code></pre>
+</div>

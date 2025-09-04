@@ -1,0 +1,124 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/photo-methods/upload-a-photo -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Upload a photo</h1>
+<!-- Page content -->
+<p>Adds the photo to the authenticated user's list of photos. These photos can be used when selling.</p><p>Our photo retention policy is as follows: <ul><li>Photos that were uploaded less than 10 days ago are not eligible for deletion.</li><li>Photos that are used in an active listing are not eligible for deletion.</li><li>Photos that were used in an auction that closed less than 45 days ago are not eligible for deletion.</li></ul> All other photos may be deleted at our discretion.</p><p>It is recommended that a new photo be uploaded whenever you create a new listing. If you are relisting then uploading a new photo is not required, since you cannot relist a listing that closed more than 45 days ago.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/photos/Add.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> POST Data </h2>
+<p> &lt;PhotoUploadRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> PhotoData </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The actual image data which is base64 encoded.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A textual label for the image, which is intended to make it easier for the user to find the photo when creating a listing. If the file name looks like a path (with forward slash or backslash characters) all characters up to the last slash will be removed. The following characters are not allowed: " &lt; &gt; |</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileType </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The file type of the image ("BMP", "GIF", "JPG", "JPEG" or "PNG"). Case is ignored.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PhotoResponse&gt; </p>
+<p>The ID of the added photo.</p>
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "Failure", "value": "0", "description": "The photo action was a failure."}, {"name": "Success", "value": "1", "description": "The photo action was a success."}, {"name": "NotMemberPhoto", "value": "2", "description": "The photo is not owned by the member."}, {"name": "NotMemberAuction", "value": "3", "description": "The auction is not owned by the member."}, {"name": "NotFound", "value": "4", "description": "The auction was not found."}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the photo operation.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Thumbnail", "field_type": "String or null", "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."}, {"field_name": "List", "field_type": "String or null", "description": "The URL for the list view sized photo (scaled down to fit 160x120)."}, {"field_name": "Medium", "field_type": "String or null", "description": "The URL for the medium sized photo (scaled down to fit 175x175)."}, {"field_name": "Gallery", "field_type": "String or null", "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."}, {"field_name": "Large", "field_type": "String or null", "description": "The URL for the large sized photo (scaled down to fit 352x264)."}, {"field_name": "FullSize", "field_type": "String or null", "description": "The URL for the full sized photo (scaled down to fit 670x502)."}, {"field_name": "PlusSize", "field_type": "String or null", "description": "The URL for the plus sized photo (scaled down to fit)."}, {"field_name": "PhotoId", "field_type": "Integer", "description": "The ID of the photo."}]'>
+<th style="width: 22%"> PhotoUrls </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; or null </td>
+<td>
+<p>When uploading a new photo, contains a collection of URLs for this photo, one for each size.</p>
+</td>
+</tr>
+
+</table>
+<h2> Examples </h2>
+<p><p>Upload a tiny skull picture (under the name 'skull.png'):</p><pre class="syntaxhighlighter">&lt;<span class="keyword">PhotoUploadRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">PhotoData</span>&gt;iVBORw0KGgoAAAANSUhEUgAAABkAAAAUCAMAAABPqWaPAAAABGdBTUEAALGPC/xhBQAAAapQTFRFJls2TLtsNnpJR7JnO7piEycYLKlVP6lfPJdXULdtDy0YRaZiNb1hOsNmCyMTChYNAgcDCykUQsRsN8JkRJJZRKpiChgPNoxPSKBhTqpoV7ZwSq5oDBwRR7VoAwYERbtpSK1lOMNlJIREQKxiETkeL5pSQsVrIXk+BRAJFTUeQbdlRL9qJ2A3Pp9bMJtTO6RcNYhOJolGKo9LK3JBM39KJGg5J3hBKXxDMbRdSMlxDSoWR8lvK51RGlUtK3RBHFkvOr9kRcluOalcH2A0N7dfKHdBTMpzE0YlQMVtDCkVH10zCBsOAQIBHUoqBRAIOJ9YN6ZaO7NhGUcnFVssLHhDCxsQGVMrHlkxTsp2U8x6PcRpU8x5ETseM8FhOqdcP7BiDSMTP79oCyETBhULBQ0HTcBzH1EwP7llETEaNqtbP8VrXM+BAQMCCxsRRsdwVMx8Xs+CDSsXLphPOLxiIlc0RMVvAwoFEzceUK5vMptUVcx7Ws6AIU0vETUcIFw0NIdPOoxVK2c/Cx8SEysbPbFhQqZgQbFjPsRqPMRoCRoPUst6Tsp1HWg2AAAASRMimgAAAMxJREFUKM9j6MUFGIiQaW5sqK9rwiJTU1Fd1V1aWYshU5KfXdCVl9VRXI4mk5vaFRndHRWbmF5UhiqTFuFmae3o4BIYn1mIKhPu0d6upq3V5hQQl4Eq427Ro8QiL9tq6uyfgCpjpd7by8cuLtbb6+qHKqOhKijAxcgtI6dp5oMqo9LBwybEwMQpIarnjSpjpCjM28LPKiWtbxOMKuNp2NPSxiEiaWDfk4weOp3KzAqtunZYws3LWMfE3DYkBVOmM9Q3KCwmKYek+CFeBgAPC+wcLxZW8wAAAABJRU5ErkJggg==&lt;/<span class="keyword">PhotoData</span>&gt;<br/>  &lt;<span class="keyword">FileName</span>&gt;kev.jpeg&lt;/<span class="keyword">FileName</span>&gt;<br/>  &lt;<span class="keyword">FileType</span>&gt;JPEG&lt;/<span class="keyword">FileType</span>&gt;<br/>&lt;/<span class="keyword">PhotoUploadRequest</span>&gt;</pre></p>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "PhotoData": "ABC",
+  "FileName": "ABC",
+  "FileType": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Status": 0,
+  "PhotoId": 123,
+  "PhotoUrls": {
+    "Thumbnail": "ABC",
+    "List": "ABC",
+    "Medium": "ABC",
+    "Gallery": "ABC",
+    "Large": "ABC",
+    "FullSize": "ABC",
+    "PlusSize": "ABC",
+    "PhotoId": 123
+  }
+}</code></pre>
+</div>

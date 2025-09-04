@@ -1,0 +1,119 @@
+{
+  "endpoint": "SearchTheDvdCatalogue",
+  "title": "Search the DVD catalogue",
+  "description": "Searches the Trade Me DVD catalogue for movie titles.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/search-the-dvd-catalogue",
+  "url": "https://api.trademe.co.nz/v1/dvd/find.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "search",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The partial title to search for."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MovieTitles> A list containing movies which match the title parameter.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <MovieTitle> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the movie title."
+          },
+          {
+            "field_name": "Id",
+            "field_type": "Integer",
+            "description": "The catalogue ID for this title."
+          },
+          {
+            "field_name": "MovieYear",
+            "field_type": "Integer",
+            "description": "The year the movie was released."
+          },
+          {
+            "field_name": "ReleaseDate",
+            "field_type": "DateTime",
+            "description": "The release date of the film."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "Name": "ABC",
+          "Id": 123,
+          "MovieYear": 123,
+          "ReleaseDate": "/Date(1514764800)/"
+        },
+        {
+          "Name": "ABC",
+          "Id": 123,
+          "MovieYear": 123,
+          "ReleaseDate": "/Date(1514764800)/"
+        }
+      ]
+    }
+  }
+}

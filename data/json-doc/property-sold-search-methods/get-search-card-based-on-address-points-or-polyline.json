@@ -1,0 +1,804 @@
+{
+  "endpoint": "GetSearchCardBasedOnAddressPointsOrPolyline",
+  "title": "Get search card based on address, points, or polyline",
+  "description": "Get search card based on address, points, or polyline",
+  "source": "https://developer.trademe.co.nz/api-reference/property-sold-search-methods/get-search-card-based-on-address-points-or-polyline",
+  "url": "https://api.trademe.co.nz/v1/Property/Sold/Search.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SoldSearchRequest>",
+    "fields": [
+      {
+        "name": "Address",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Address to search for, either by input from Users or from the respond from AddressContract. Can be partial address, or fully formed address. Act as the center point of the Polyline"
+      },
+      {
+        "name": "Filter",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Required when making a request to /address/search. Refer to AddressContract's type_filter param."
+      },
+      {
+        "name": "Latitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Center latitude of the search area Or minimum latitude when maxLatitude is provided"
+      },
+      {
+        "name": "Longitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Center longitude of the search area Or minimum longitude when maxLongitude is provided"
+      },
+      {
+        "name": "Radius",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Radius of the polyline when only center latitude and longitude is provided"
+      },
+      {
+        "name": "Polylines",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "The boundary which defines which Properties should be included in the search result. Returned by linz/boundary/point in base64 encoded format, so should be decoded before it can be used."
+      },
+      {
+        "name": "Limit",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Control the number of search result returned at a time"
+      },
+      {
+        "name": "Page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Controls the page number when querying to /map/cards"
+      },
+      {
+        "name": "Sort",
+        "type": "<Sort> (optional)",
+        "required": false,
+        "description": "The 'sort by' object that defines how the search result is sorted on. To be used when querying /map/cards. Examples: Not specified = Featured First order: date, direction: asc = Latest order: price, direction: asc = Highest price order: price, direction: desc = Lowest price"
+      },
+      {
+        "name": "Order",
+        "type": "Order \n String (optional) \n\nOrder\n\n\n\n Direction \n String (optional) \n\nDirection",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Order",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Order"
+      },
+      {
+        "name": "Direction",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Direction"
+      },
+      {
+        "name": "JustSold",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "An additional filter to only show Properties that are recently sold To be used as just_sold parameter when querying /map/cards."
+      },
+      {
+        "name": "OffMarket",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "An additional filter to include Properties that are not currently for sale. Default to true. To be used as off_market parameter when querying /map/cards."
+      },
+      {
+        "name": "DateMin",
+        "type": "String (optional)",
+        "required": false,
+        "description": "An additional filter to include Properties with date value at least from this value"
+      },
+      {
+        "name": "DateMax",
+        "type": "String (optional)",
+        "required": false,
+        "description": "An additional filter to include Properties with date value at most from this value"
+      },
+      {
+        "name": "ForSale",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "An additional filter to include Properties that are currently for sale. To be used as for_sale parameter when querying /map/cards."
+      },
+      {
+        "name": "ForRent",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "An additional filter to include Properties that not currently for rent. To be used as for_rent parameter when querying /map/cards."
+      },
+      {
+        "name": "MaxLatitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "MaxLatitude to be used in conjunction with Latitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates."
+      },
+      {
+        "name": "MaxLongitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "MaxLongitude to be used in conjunction with Longitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates."
+      },
+      {
+        "name": "RequestPolyline",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "When this variable is set to true, the respond will return the polyline used to make the Search"
+      },
+      {
+        "name": "OffMarketMin",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Min price for off market properties. It applies to either JustSold or OffMarket."
+      },
+      {
+        "name": "OffMarketMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Max price for off market properties. It applies to either JustSold or OffMarket."
+      },
+      {
+        "name": "OffMarketBathrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Min bathrooms for off market properties. It applies to either JustSold or OffMarket."
+      },
+      {
+        "name": "OffMarketBathroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Max bathrooms for off market properties. It applies to either JustSold or OffMarket."
+      },
+      {
+        "name": "OffMarketBedrooms",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Min bedrooms for off market properties. It applies to either JustSold or OffMarket."
+      },
+      {
+        "name": "OffMarketBedroomsMax",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Max bedrooms for off market properties. It applies to either JustSold or OffMarket."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<SoldSearchResponse> A list of search cards from an area",
+    "fields": [
+      {
+        "name": "Cards",
+        "type": "Collection of <PropertyCard> or null",
+        "required": false,
+        "description": "Cards"
+      },
+      {
+        "name": "Date",
+        "type": "Date \n String or null \n\nDate\n\n\n\n DisplayPrice \n String or null \n\nDisplay Price\n\n\n\n DistanceToPoint \n Number or null \n\nDistance To Point\n\n\n\n FeaturedAt \n String or null \n\nFeatured At\n\n\n\n FeaturedPlan \n Integer or null \n\nFeatured Plan\n\n\n\n ListingId \n String or null \n\nListing Id\n\n\n\n Point \n <GeoPoint> or null \n\nPoint\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n Price \n Number or null \n\nPrice\n\n\n\n PropertyDetails \n <PropertyCardPropertyDetails> or null \n\nProperty Details\n\n\n\n\n\n\n Address \n String or null \n\nAddress\n\n\n\n DisplayAddress \n String or null \n\nDisplay Address\n\n\n\n CoverImageUrl \n String or null \n\nCover Image Url\n\n\n\n CoverImageUrlSource \n String or null \n\nCover Image Url Source\n\n\n\n NumBathrooms \n Integer or null \n\nNum Bathrooms\n\n\n\n LatestBedrooms \n String or null \n\nLatest Bedrooms\n\n\n\n NumCarSpaces \n Integer or null \n\nNum Car Spaces\n\n\n\n LatestCarSpaces \n String or null \n\nLatest Car Spaces\n\n\n\n LatestSource \n String or null \n\nLatest Source\n\n\n\n Headline \n String or null \n\nHeadline\n\n\n\n EstimatedValueRevisionDate \n String or null \n\nEstimated Value Revision Date\n\n\n\n DisplayEstimatedLowerValueShort \n String or null \n\nDisplay Estimated Lower Value Short\n\n\n\n DisplayEstimatedUpperValueShort \n String or null \n\nDisplay Estimated Upper Value Short\n\n\n\n DisplayEstimatedValueShort \n String or null \n\nDisplay Estimated Value Short\n\n\n\n EstimatedRentalRevisionDate \n String or null \n\nEstimated Rental Revision Date\n\n\n\n DisplayEstimatedRentalLowerValueShort \n String or null \n\nDisplay Estimated Rental Lower Value Short\n\n\n\n DisplayEstimatedRentalUpperValueShort \n String or null \n\nDisplay Estimated Rental Upper Value Short\n\n\n\n EstimatedRentalYield \n String or null \n\nEstimated Rental Yield\n\n\n\n CapitalValue \n Number or null \n\nCapital Value\n\n\n\n ImprovementValue \n Number or null \n\nImprovement Value\n\n\n\n LandValue \n Number or null \n\nLand Value\n\n\n\n DisplayCapitalValueShort \n String or null \n\nDisplay Capital Value Short\n\n\n\n DisplayImprovementValueShort \n String or null \n\nDisplay Improvement Value Short\n\n\n\n DisplayLandValueShort \n String or null \n\nDisplay Land Value Short\n\n\n\n CurrentRevisionDate \n String or null \n\nCurrent Revision Date\n\n\n\n PreviousCapitalValue \n Number or null \n\nPrevious Capital Value\n\n\n\n PreviousRevisionDate \n String or null \n\nPrevious Revision Date\n\n\n\n SuburbId \n Integer or null \n\nSuburb Id\n\n\n\n CityId \n Integer or null \n\nCity Id\n\n\n\n UnitIdentifier \n String or null \n\nUnit Identifier\n\n\n\n StreetNumber \n String or null \n\nStreet Number\n\n\n\n StreetAlpha \n String or null \n\nStreet Alpha\n\n\n\n Street \n String or null \n\nStreet\n\n\n\n Suburb \n String or null \n\nSuburb\n\n\n\n City \n String or null \n\nCity\n\n\n\n Ta \n String or null \n\nTa\n\n\n\n NumBedrooms \n Integer or null \n\nNum Bedrooms\n\n\n\n LatestBathrooms \n Number or null \n\nLatest Bathrooms\n\n\n\n TradeMeSuburbId \n Integer or null \n\nTrademe suburb id\n\n\n\n TradeMeRegionId \n Integer or null \n\nTrademe region id\n\n\n\n TradeMeDistrictId \n Integer or null \n\nTrademe district id\n\n\n\n TradeMeCoverImageUrl \n String or null \n\nTrademe cover image url\n\n\n\n\n\n\n PropertyId \n String or null \n\nProperty Id\n\n\n\n SalesCount \n Integer or null \n\nSales Count\n\n\n\n State \n Integer or null \n\nState\n\n\n\n Url \n String or null \n\nUrl\n\n\n\n DisplayShortPrice \n String or null \n\nDisplay Short Price\n\n\n\n TMListingId \n String or null \n\nLast TM Listing Id\n\n\n\n SuburbUrl \n String or null \n\nUrl\n\n\n\n IsHomeTracked \n Boolean \n\nIndicates whether the currently authenticated user is tracking the property.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Date",
+        "type": "String or null",
+        "required": false,
+        "description": "Date"
+      },
+      {
+        "name": "DisplayPrice",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Price"
+      },
+      {
+        "name": "DistanceToPoint",
+        "type": "Number or null",
+        "required": false,
+        "description": "Distance To Point"
+      },
+      {
+        "name": "FeaturedAt",
+        "type": "String or null",
+        "required": false,
+        "description": "Featured At"
+      },
+      {
+        "name": "FeaturedPlan",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Featured Plan"
+      },
+      {
+        "name": "ListingId",
+        "type": "String or null",
+        "required": false,
+        "description": "Listing Id"
+      },
+      {
+        "name": "Point",
+        "type": "<GeoPoint> or null",
+        "required": false,
+        "description": "Point"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "Price"
+      },
+      {
+        "name": "PropertyDetails",
+        "type": "<PropertyCardPropertyDetails> or null",
+        "required": false,
+        "description": "Property Details"
+      },
+      {
+        "name": "Address",
+        "type": "Address \n String or null \n\nAddress\n\n\n\n DisplayAddress \n String or null \n\nDisplay Address\n\n\n\n CoverImageUrl \n String or null \n\nCover Image Url\n\n\n\n CoverImageUrlSource \n String or null \n\nCover Image Url Source\n\n\n\n NumBathrooms \n Integer or null \n\nNum Bathrooms\n\n\n\n LatestBedrooms \n String or null \n\nLatest Bedrooms\n\n\n\n NumCarSpaces \n Integer or null \n\nNum Car Spaces\n\n\n\n LatestCarSpaces \n String or null \n\nLatest Car Spaces\n\n\n\n LatestSource \n String or null \n\nLatest Source\n\n\n\n Headline \n String or null \n\nHeadline\n\n\n\n EstimatedValueRevisionDate \n String or null \n\nEstimated Value Revision Date\n\n\n\n DisplayEstimatedLowerValueShort \n String or null \n\nDisplay Estimated Lower Value Short\n\n\n\n DisplayEstimatedUpperValueShort \n String or null \n\nDisplay Estimated Upper Value Short\n\n\n\n DisplayEstimatedValueShort \n String or null \n\nDisplay Estimated Value Short\n\n\n\n EstimatedRentalRevisionDate \n String or null \n\nEstimated Rental Revision Date\n\n\n\n DisplayEstimatedRentalLowerValueShort \n String or null \n\nDisplay Estimated Rental Lower Value Short\n\n\n\n DisplayEstimatedRentalUpperValueShort \n String or null \n\nDisplay Estimated Rental Upper Value Short\n\n\n\n EstimatedRentalYield \n String or null \n\nEstimated Rental Yield\n\n\n\n CapitalValue \n Number or null \n\nCapital Value\n\n\n\n ImprovementValue \n Number or null \n\nImprovement Value\n\n\n\n LandValue \n Number or null \n\nLand Value\n\n\n\n DisplayCapitalValueShort \n String or null \n\nDisplay Capital Value Short\n\n\n\n DisplayImprovementValueShort \n String or null \n\nDisplay Improvement Value Short\n\n\n\n DisplayLandValueShort \n String or null \n\nDisplay Land Value Short\n\n\n\n CurrentRevisionDate \n String or null \n\nCurrent Revision Date\n\n\n\n PreviousCapitalValue \n Number or null \n\nPrevious Capital Value\n\n\n\n PreviousRevisionDate \n String or null \n\nPrevious Revision Date\n\n\n\n SuburbId \n Integer or null \n\nSuburb Id\n\n\n\n CityId \n Integer or null \n\nCity Id\n\n\n\n UnitIdentifier \n String or null \n\nUnit Identifier\n\n\n\n StreetNumber \n String or null \n\nStreet Number\n\n\n\n StreetAlpha \n String or null \n\nStreet Alpha\n\n\n\n Street \n String or null \n\nStreet\n\n\n\n Suburb \n String or null \n\nSuburb\n\n\n\n City \n String or null \n\nCity\n\n\n\n Ta \n String or null \n\nTa\n\n\n\n NumBedrooms \n Integer or null \n\nNum Bedrooms\n\n\n\n LatestBathrooms \n Number or null \n\nLatest Bathrooms\n\n\n\n TradeMeSuburbId \n Integer or null \n\nTrademe suburb id\n\n\n\n TradeMeRegionId \n Integer or null \n\nTrademe region id\n\n\n\n TradeMeDistrictId \n Integer or null \n\nTrademe district id\n\n\n\n TradeMeCoverImageUrl \n String or null \n\nTrademe cover image url",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Address",
+        "type": "String or null",
+        "required": false,
+        "description": "Address"
+      },
+      {
+        "name": "DisplayAddress",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Address"
+      },
+      {
+        "name": "CoverImageUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Cover Image Url"
+      },
+      {
+        "name": "CoverImageUrlSource",
+        "type": "String or null",
+        "required": false,
+        "description": "Cover Image Url Source"
+      },
+      {
+        "name": "NumBathrooms",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Num Bathrooms"
+      },
+      {
+        "name": "LatestBedrooms",
+        "type": "String or null",
+        "required": false,
+        "description": "Latest Bedrooms"
+      },
+      {
+        "name": "NumCarSpaces",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Num Car Spaces"
+      },
+      {
+        "name": "LatestCarSpaces",
+        "type": "String or null",
+        "required": false,
+        "description": "Latest Car Spaces"
+      },
+      {
+        "name": "LatestSource",
+        "type": "String or null",
+        "required": false,
+        "description": "Latest Source"
+      },
+      {
+        "name": "Headline",
+        "type": "String or null",
+        "required": false,
+        "description": "Headline"
+      },
+      {
+        "name": "EstimatedValueRevisionDate",
+        "type": "String or null",
+        "required": false,
+        "description": "Estimated Value Revision Date"
+      },
+      {
+        "name": "DisplayEstimatedLowerValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Estimated Lower Value Short"
+      },
+      {
+        "name": "DisplayEstimatedUpperValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Estimated Upper Value Short"
+      },
+      {
+        "name": "DisplayEstimatedValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Estimated Value Short"
+      },
+      {
+        "name": "EstimatedRentalRevisionDate",
+        "type": "String or null",
+        "required": false,
+        "description": "Estimated Rental Revision Date"
+      },
+      {
+        "name": "DisplayEstimatedRentalLowerValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Estimated Rental Lower Value Short"
+      },
+      {
+        "name": "DisplayEstimatedRentalUpperValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Estimated Rental Upper Value Short"
+      },
+      {
+        "name": "EstimatedRentalYield",
+        "type": "String or null",
+        "required": false,
+        "description": "Estimated Rental Yield"
+      },
+      {
+        "name": "CapitalValue",
+        "type": "Number or null",
+        "required": false,
+        "description": "Capital Value"
+      },
+      {
+        "name": "ImprovementValue",
+        "type": "Number or null",
+        "required": false,
+        "description": "Improvement Value"
+      },
+      {
+        "name": "LandValue",
+        "type": "Number or null",
+        "required": false,
+        "description": "Land Value"
+      },
+      {
+        "name": "DisplayCapitalValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Capital Value Short"
+      },
+      {
+        "name": "DisplayImprovementValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Improvement Value Short"
+      },
+      {
+        "name": "DisplayLandValueShort",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Land Value Short"
+      },
+      {
+        "name": "CurrentRevisionDate",
+        "type": "String or null",
+        "required": false,
+        "description": "Current Revision Date"
+      },
+      {
+        "name": "PreviousCapitalValue",
+        "type": "Number or null",
+        "required": false,
+        "description": "Previous Capital Value"
+      },
+      {
+        "name": "PreviousRevisionDate",
+        "type": "String or null",
+        "required": false,
+        "description": "Previous Revision Date"
+      },
+      {
+        "name": "SuburbId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Suburb Id"
+      },
+      {
+        "name": "CityId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "City Id"
+      },
+      {
+        "name": "UnitIdentifier",
+        "type": "String or null",
+        "required": false,
+        "description": "Unit Identifier"
+      },
+      {
+        "name": "StreetNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "Street Number"
+      },
+      {
+        "name": "StreetAlpha",
+        "type": "String or null",
+        "required": false,
+        "description": "Street Alpha"
+      },
+      {
+        "name": "Street",
+        "type": "String or null",
+        "required": false,
+        "description": "Street"
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "Suburb"
+      },
+      {
+        "name": "City",
+        "type": "String or null",
+        "required": false,
+        "description": "City"
+      },
+      {
+        "name": "Ta",
+        "type": "String or null",
+        "required": false,
+        "description": "Ta"
+      },
+      {
+        "name": "NumBedrooms",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Num Bedrooms"
+      },
+      {
+        "name": "LatestBathrooms",
+        "type": "Number or null",
+        "required": false,
+        "description": "Latest Bathrooms"
+      },
+      {
+        "name": "TradeMeSuburbId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Trademe suburb id"
+      },
+      {
+        "name": "TradeMeRegionId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Trademe region id"
+      },
+      {
+        "name": "TradeMeDistrictId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Trademe district id"
+      },
+      {
+        "name": "TradeMeCoverImageUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Trademe cover image url"
+      },
+      {
+        "name": "PropertyId",
+        "type": "String or null",
+        "required": false,
+        "description": "Property Id"
+      },
+      {
+        "name": "SalesCount",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Sales Count"
+      },
+      {
+        "name": "State",
+        "type": "Integer or null",
+        "required": false,
+        "description": "State"
+      },
+      {
+        "name": "Url",
+        "type": "String or null",
+        "required": false,
+        "description": "Url"
+      },
+      {
+        "name": "DisplayShortPrice",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Short Price"
+      },
+      {
+        "name": "TMListingId",
+        "type": "String or null",
+        "required": false,
+        "description": "Last TM Listing Id"
+      },
+      {
+        "name": "SuburbUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Url"
+      },
+      {
+        "name": "IsHomeTracked",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the currently authenticated user is tracking the property."
+      },
+      {
+        "name": "Hits",
+        "type": "Integer",
+        "required": false,
+        "description": "Hits"
+      },
+      {
+        "name": "Error",
+        "type": "String or null",
+        "required": false,
+        "description": "Error"
+      },
+      {
+        "name": "SuburbEstimate",
+        "type": "String or null",
+        "required": false,
+        "description": "Formatted price of the suburb’s estimate; E.g 960K, 1.01M"
+      },
+      {
+        "name": "SuburbEstimateDate",
+        "type": "String or null",
+        "required": false,
+        "description": "Last updated date for SuburbEstimate; E.g 2023-11-02T00:00:00Z"
+      },
+      {
+        "name": "CapitalGrowth",
+        "type": "String or null",
+        "required": false,
+        "description": "Calculated value that indicates the capital growth of the suburb, in percentage unit. The formula to calculate the value will be the same used in Homes. E.g 5.1%"
+      },
+      {
+        "name": "SuburbName",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the suburb"
+      },
+      {
+        "name": "SuburbUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Url to the suburb page"
+      },
+      {
+        "name": "Polylines",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "Specified the polylines that was used when searching."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Address": "ABC",
+      "Filter": "ABC",
+      "Latitude": 123.0,
+      "Longitude": 123.0,
+      "Radius": 123.0,
+      "Polylines": [
+        "ABC",
+        "ABC"
+      ],
+      "Limit": 123,
+      "Page": 123,
+      "Sort": {
+        "Order": "ABC",
+        "Direction": "ABC"
+      },
+      "JustSold": false,
+      "OffMarket": false,
+      "DateMin": "ABC",
+      "DateMax": "ABC",
+      "ForSale": false,
+      "ForRent": false,
+      "MaxLatitude": 123.0,
+      "MaxLongitude": 123.0,
+      "RequestPolyline": false,
+      "OffMarketMin": 123,
+      "OffMarketMax": 123,
+      "OffMarketBathrooms": 123,
+      "OffMarketBathroomsMax": 123,
+      "OffMarketBedrooms": 123,
+      "OffMarketBedroomsMax": 123
+    },
+    "response_json": {
+      "Cards": [
+        {
+          "Date": "ABC",
+          "DisplayPrice": "ABC",
+          "DistanceToPoint": 123.0,
+          "FeaturedAt": "ABC",
+          "FeaturedPlan": 123,
+          "ListingId": "ABC",
+          "Point": {},
+          "Price": 123.0,
+          "PropertyDetails": {
+            "Address": "ABC",
+            "DisplayAddress": "ABC",
+            "CoverImageUrl": "ABC",
+            "CoverImageUrlSource": "ABC",
+            "NumBathrooms": 123,
+            "LatestBedrooms": "ABC",
+            "NumCarSpaces": 123,
+            "LatestCarSpaces": "ABC",
+            "LatestSource": "ABC",
+            "Headline": "ABC",
+            "EstimatedValueRevisionDate": "ABC",
+            "DisplayEstimatedLowerValueShort": "ABC",
+            "DisplayEstimatedUpperValueShort": "ABC",
+            "DisplayEstimatedValueShort": "ABC",
+            "EstimatedRentalRevisionDate": "ABC",
+            "DisplayEstimatedRentalLowerValueShort": "ABC",
+            "DisplayEstimatedRentalUpperValueShort": "ABC",
+            "EstimatedRentalYield": "ABC",
+            "CapitalValue": 123.0,
+            "ImprovementValue": 123.0,
+            "LandValue": 123.0,
+            "DisplayCapitalValueShort": "ABC",
+            "DisplayImprovementValueShort": "ABC",
+            "DisplayLandValueShort": "ABC",
+            "CurrentRevisionDate": "ABC",
+            "PreviousCapitalValue": 123.0,
+            "PreviousRevisionDate": "ABC",
+            "SuburbId": 123,
+            "CityId": 123,
+            "UnitIdentifier": "ABC",
+            "StreetNumber": "ABC",
+            "StreetAlpha": "ABC",
+            "Street": "ABC",
+            "Suburb": "ABC",
+            "City": "ABC",
+            "Ta": "ABC",
+            "NumBedrooms": 123,
+            "LatestBathrooms": 123.0,
+            "TradeMeSuburbId": 123,
+            "TradeMeRegionId": 123,
+            "TradeMeDistrictId": 123,
+            "TradeMeCoverImageUrl": "ABC"
+          },
+          "PropertyId": "ABC",
+          "SalesCount": 123,
+          "State": 123,
+          "Url": "ABC",
+          "DisplayShortPrice": "ABC",
+          "TMListingId": "ABC",
+          "SuburbUrl": "ABC",
+          "IsHomeTracked": false
+        },
+        {
+          "Date": "ABC",
+          "DisplayPrice": "ABC",
+          "DistanceToPoint": 123.0,
+          "FeaturedAt": "ABC",
+          "FeaturedPlan": 123,
+          "ListingId": "ABC",
+          "Point": {},
+          "Price": 123.0,
+          "PropertyDetails": {
+            "Address": "ABC",
+            "DisplayAddress": "ABC",
+            "CoverImageUrl": "ABC",
+            "CoverImageUrlSource": "ABC",
+            "NumBathrooms": 123,
+            "LatestBedrooms": "ABC",
+            "NumCarSpaces": 123,
+            "LatestCarSpaces": "ABC",
+            "LatestSource": "ABC",
+            "Headline": "ABC",
+            "EstimatedValueRevisionDate": "ABC",
+            "DisplayEstimatedLowerValueShort": "ABC",
+            "DisplayEstimatedUpperValueShort": "ABC",
+            "DisplayEstimatedValueShort": "ABC",
+            "EstimatedRentalRevisionDate": "ABC",
+            "DisplayEstimatedRentalLowerValueShort": "ABC",
+            "DisplayEstimatedRentalUpperValueShort": "ABC",
+            "EstimatedRentalYield": "ABC",
+            "CapitalValue": 123.0,
+            "ImprovementValue": 123.0,
+            "LandValue": 123.0,
+            "DisplayCapitalValueShort": "ABC",
+            "DisplayImprovementValueShort": "ABC",
+            "DisplayLandValueShort": "ABC",
+            "CurrentRevisionDate": "ABC",
+            "PreviousCapitalValue": 123.0,
+            "PreviousRevisionDate": "ABC",
+            "SuburbId": 123,
+            "CityId": 123,
+            "UnitIdentifier": "ABC",
+            "StreetNumber": "ABC",
+            "StreetAlpha": "ABC",
+            "Street": "ABC",
+            "Suburb": "ABC",
+            "City": "ABC",
+            "Ta": "ABC",
+            "NumBedrooms": 123,
+            "LatestBathrooms": 123.0,
+            "TradeMeSuburbId": 123,
+            "TradeMeRegionId": 123,
+            "TradeMeDistrictId": 123,
+            "TradeMeCoverImageUrl": "ABC"
+          },
+          "PropertyId": "ABC",
+          "SalesCount": 123,
+          "State": 123,
+          "Url": "ABC",
+          "DisplayShortPrice": "ABC",
+          "TMListingId": "ABC",
+          "SuburbUrl": "ABC",
+          "IsHomeTracked": false
+        }
+      ],
+      "Hits": 123,
+      "Error": "ABC",
+      "SuburbEstimate": "ABC",
+      "SuburbEstimateDate": "ABC",
+      "CapitalGrowth": "ABC",
+      "SuburbName": "ABC",
+      "SuburbUrl": "ABC",
+      "Polylines": [
+        "ABC",
+        "ABC"
+      ]
+    }
+  }
+}

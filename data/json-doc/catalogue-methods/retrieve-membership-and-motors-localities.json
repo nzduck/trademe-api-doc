@@ -1,0 +1,107 @@
+{
+  "endpoint": "RetrieveMembershipAndMotorsLocalities",
+  "title": "Retrieve membership and Motors localities",
+  "description": "Returns a list of towns used in member registration. This information is displayed on member profile as the “suburb” and also on listings where the approximate location of goods is important, such as in Trade Me Motors.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-membership-and-motors-localities",
+  "url": "https://api.trademe.co.nz/v1/tmareas.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Locality> A list of all localities.",
+    "fields": [
+      {
+        "name": "LocalityId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the region."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the region."
+      },
+      {
+        "name": "Districts",
+        "type": "Collection of <District> or null",
+        "required": false,
+        "description": "The list of districts that belong to this region.",
+        "nested_fields": [
+          {
+            "field_name": "DistrictId",
+            "field_type": "Integer",
+            "description": "The ID of the district."
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the district."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "LocalityId": 123,
+        "Name": "ABC",
+        "Districts": [
+          {
+            "DistrictId": 123,
+            "Name": "ABC"
+          },
+          {
+            "DistrictId": 123,
+            "Name": "ABC"
+          }
+        ]
+      },
+      {
+        "LocalityId": 123,
+        "Name": "ABC",
+        "Districts": [
+          {
+            "DistrictId": 123,
+            "Name": "ABC"
+          },
+          {
+            "DistrictId": 123,
+            "Name": "ABC"
+          }
+        ]
+      }
+    ]
+  }
+}

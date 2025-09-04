@@ -1,0 +1,79 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/photo-methods/remove-a-photo -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Remove a photo</h1>
+<!-- Page content -->
+<p>Removes a photo from the authenticated user's list of photos.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/photos/{photoId}/Remove.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> DELETE </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> photoId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the photo to remove.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;PhotoResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "Failure", "value": "0", "description": "The photo action was a failure."}, {"name": "Success", "value": "1", "description": "The photo action was a success."}, {"name": "NotMemberPhoto", "value": "2", "description": "The photo is not owned by the member."}, {"name": "NotMemberAuction", "value": "3", "description": "The auction is not owned by the member."}, {"name": "NotFound", "value": "4", "description": "The auction was not found."}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the photo operation.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Status": 0,
+  "PhotoId": 123
+}</code></pre>
+</div>

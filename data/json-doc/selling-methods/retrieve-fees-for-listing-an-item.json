@@ -1,0 +1,2443 @@
+{
+  "endpoint": "RetrieveFeesForListingAnItem",
+  "title": "Retrieve fees for listing an item",
+  "description": "Returns a breakdown of the fees that will be charged for a listing, without actually creating the listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/selling-methods/retrieve-fees-for-listing-an-item",
+  "url": "https://api.trademe.co.nz/v1/Selling/Fees.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ListingRequest>",
+    "fields": [
+      {
+        "name": "Category",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The ID of the category to list the item in. For example, specify \"6853\" to list an oil heater. This field also accepts the MCAT category format (e.g. \"0004-0370-0560-6853-\"). Ignored when listing from the DVD/Blu-ray catalogue."
+      },
+      {
+        "name": "Title",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The title of the listing. Maximum of 80 characters for Marketplace categories, 50 for the other businesses. Mandatory for most categories. In some categories (e.g. used cars, motorbikes, flatmates wanted) the title is based on one or more attributes. In these categories the title is optional, and is ignored if it is supplied. Not required when listing from the DVD/Blu-ray catalogue."
+      },
+      {
+        "name": "Subtitle",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The subtitle of the listing. Optional. Maximum of 50 characters."
+      },
+      {
+        "name": "Description",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "A plain text description of the listing. Use CRLF to insert a new line. Mandatory for all auction types except DVD and Blu-ray catalogue listings. Maximum length of 5100 characters for job listings, 5200 characters for property listings and 2048 characters for all others."
+      },
+      {
+        "name": "StartPrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The start price of the listing. Mandatory for auctions. Must be a minimum of 50c and must be less than or equal to the ReservePrice. For most classifieds this value is optional: if specified it is the value that is displayed as the ‘Asking price’. A notable exception to this rule are business for sale classifieds. Not used for property listings (subcategories of category 350); use the PropertyPricePrice attribute instead."
+      },
+      {
+        "name": "ReservePrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The reserve price of the listing. Optional. If supplied, it must be a minimum of 50c and it must be greater than or equal to the StartPrice. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The Buy Now price of the listing. Optional. Must be a minimum of 50c, must be greater than or equal to the StartPrice. For Buy Now Only auctions quantity and shipping information must be specified. See Quantity and IsFlatShippingCharge. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "Duration",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The duration of the listing. Mandatory. Must be one of the durations available as per the category details API. Can be a fixed duration or a specified end time."
+      },
+      {
+        "name": "EndDateTime",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The date and time the listing should close. Ignored unless Duration is set to EndDate."
+      },
+      {
+        "name": "Pickup",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Indicates whether the buyer can (or is required to) pick-up the item. For auctions any value other than Demand implies that at least one shipping option must be provided. For classifieds this value is ignored."
+      },
+      {
+        "name": "PickupSuburbId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "If the buyer can (or is required to) pick-up the item then this field can be used to specify the pick-up suburb id. It uses the three-tier region/district/suburb system. Optional. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "IsBrandNew",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether the listing is for a brand new item. Optional, defaults to false. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "AuthenticatedMembersOnly",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Determines if only authenticated members can bid on the listing. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "IsClassified",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Determines if this listing is a classified or an auction. Optional, defaults to false. Some categories support auctions, some support classifieds and some accept both types. Use the category details API to check which types a category supports."
+      },
+      {
+        "name": "OpenHomes",
+        "type": "Collection of <OpenHome> (optional)",
+        "required": false,
+        "description": "A list of upcoming open home times. Currently only applies to residential for sale (category 3399) and lifestyle (category 9120) listings."
+      },
+      {
+        "name": "Start",
+        "type": "Start \n DateTime (required) \n\nThe date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.\n\n\n\n End \n DateTime (required) \n\nThe date and time the open home is no longer open for viewing. Must be the same day as Start.",
+        "required": true,
+        "description": "DateTime (required)"
+      },
+      {
+        "name": "Start",
+        "type": "DateTime (required)",
+        "required": true,
+        "description": "The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone."
+      },
+      {
+        "name": "End",
+        "type": "DateTime (required)",
+        "required": true,
+        "description": "The date and time the open home is no longer open for viewing. Must be the same day as Start."
+      },
+      {
+        "name": "SendPaymentInstructions",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Determines if only the payment instructions are sent at the end of the listing Specifies if automatic payment instructions email will be sent to the winner of the auction. Optional, defaults to false."
+      },
+      {
+        "name": "OtherPaymentMethod",
+        "type": "String (optional)",
+        "required": false,
+        "description": "If the list of payment methods includes Other then this field can be used to specify the name of the payment method. Optional. Only applicable to auctions that have the Other payment method."
+      },
+      {
+        "name": "IsOrNearOffer",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Specifies if ‘ONO’ should be displayed with price on listing. Optional. Applicable only to classified listings."
+      },
+      {
+        "name": "IsPriceOnApplication",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Specifies that the price should be displayed as \"Price on Application\". Optional. Applicable only to businesses for sale listings (subcategories of category 36)."
+      },
+      {
+        "name": "IsBold",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the bold promotion onto the listing. Only permitted in categories that support bold. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "IsFeatured",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the feature promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "IsHomepageFeatured",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "*deprecated*"
+      },
+      {
+        "name": "HasGallery",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the gallery promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "HasGalleryPlus",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the gallery plus promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. This promotion cannot be applied to a listing that already has the gallery promotion. Note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "For Buy Now Only auctions this is the quantity of items that are available for sale. Optional. Can be between 1 and 1000. Setting the quantity (even to 1) will prevent bidding and make a listing only purchasable via Buy Now. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response."
+      },
+      {
+        "name": "IsFlatShippingCharge",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "For Buy Now Only auctions this specifies if the shipping is one rate for multiple quantities. If false is specified the winning bidder will be charged the shipping rate multiplied by the quantity of items purchased. If true is specified one flat shipping rate is charged. Only applicable for auctions, ignored for classifieds."
+      },
+      {
+        "name": "HasAgreedWithLegalNotice",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Specifies if the user has read and agreed with the legal notice relevant to the category the listing is being created in. The category details API can be used to retrieve the legal notice for a specific category (only applies to certain categories, such as the category 6327 - Carbon Credits)."
+      },
+      {
+        "name": "AutoRelistLimit",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "This field is deprecated and should not be used."
+      },
+      {
+        "name": "HomePhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Home phone number to be displayed on listing. Optional. Only applicable in categories where the user has paid a listing fee. Must be 9 digits long and use a valid area code. Can be specified but will only be displayed when category permits."
+      },
+      {
+        "name": "MobilePhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Mobile phone number to be displayed on listing. Optional. Only applicable in categories where the user has paid a listing fee. Must be 8 or 9 digits long. Can be specified but will only be displayed when category permits."
+      },
+      {
+        "name": "IsHighlighted",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the “highlight” promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that a discount may be applicable if all the feature combo promotions are specified (feature, bold, highlight and gallery). Also note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "HasSuperFeature",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Applies the “super feature” promotion onto the listing. Only permitted in categories that support this promotion. Whether or not it’s available in a category can be confirmed using the Fees API endpoint. Note that when creating a new listing with the super feature promotion, the feature, bold, highlight and gallery promotions will automatically be applied. Also note that promotions cannot be removed from a listing."
+      },
+      {
+        "name": "PhotoIds",
+        "type": "Collection of Integer (optional)",
+        "required": false,
+        "description": "Photo IDs for images that have already been uploaded that you want to display on the listing. For all general items categories all photos are free (up to 20 max). Check the  category details API for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our  photo retention policy for more information."
+      },
+      {
+        "name": "ShippingOptions",
+        "type": "Collection of <ShippingOption> (optional)",
+        "required": false,
+        "description": "The shipping options to be displayed on the listing. Can contain up to ten shipping options. Mandatory for auctions, ignored for classifieds."
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration (optional) \n\nThe type of delivery.\n\n\n\n\n\n\n\nNone\n0\n\nThe type of the \"None of the options apply to me\" shipping option. Do not use when listing an item.\n\n\n\nUnknown\n0\n\nObsolete. Do not use.\n\n\n\nUndecided\n1\n\nIndicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options.\n\n\n\nPickup\n2\n\nIndicates the item can be picked up. Do not use when listing an item (use the Pickup field instead).\n\n\n\nFree\n3\n\nIndicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options.\n\n\n\nCustom\n4\n\nCustom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten).\n\n\n\nTradeMe\n5\n\nTrademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options.\n\n\n\n\n\n\n Price \n Number (optional) \n\nThe price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.\n\n\n\n Method \n String (optional) \n\nThe name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom.\n\n\n\n ShippingId \n Integer (optional) \n\nThe ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.\n\n\n\n TaxesIncluded \n Collection of <TaxRateOnPrice> (optional) \n\nIndicates if taxes (and what type) are included in the Shipping Price\n\n\n\n\n\n\n Type \n Enumeration (optional) \n\nThe type of tax that is included\n\n\n\n\n\n\n\nNZ_GST_Overseas_Supplies\n1\n\nNew Zealand GST on overseas supplies\n\n\n\n\n\n\n Country \n String (optional) \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String (optional) \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number (optional) \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String (optional) \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean (optional) \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean (optional) \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n IsApplied \n Boolean (optional) \n\nWhether the price has had the tax applied (i.e. are inclusive prices)\n\n\n\n TaxAmount \n Number (optional) \n\nThe amount of tax that was added to the price if applied\n\n\n\n WasPriceTaxAmount \n Number (optional) \n\nThe amount of tax that was added to the was/now price if applied",
+        "required": false,
+        "description": "Enumeration (optional)"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The type of delivery."
+      },
+      {
+        "name": "Price",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places."
+      },
+      {
+        "name": "Method",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom."
+      },
+      {
+        "name": "ShippingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item."
+      },
+      {
+        "name": "TaxesIncluded",
+        "type": "Collection of <TaxRateOnPrice> (optional)",
+        "required": false,
+        "description": "Indicates if taxes (and what type) are included in the Shipping Price"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration (optional) \n\nThe type of tax that is included\n\n\n\n\n\n\n\nNZ_GST_Overseas_Supplies\n1\n\nNew Zealand GST on overseas supplies\n\n\n\n\n\n\n Country \n String (optional) \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String (optional) \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number (optional) \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String (optional) \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean (optional) \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean (optional) \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n IsApplied \n Boolean (optional) \n\nWhether the price has had the tax applied (i.e. are inclusive prices)\n\n\n\n TaxAmount \n Number (optional) \n\nThe amount of tax that was added to the price if applied\n\n\n\n WasPriceTaxAmount \n Number (optional) \n\nThe amount of tax that was added to the was/now price if applied",
+        "required": false,
+        "description": "Enumeration (optional)"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The type of tax that is included"
+      },
+      {
+        "name": "Country",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The country that is levying the tax e.g. NZ"
+      },
+      {
+        "name": "Name",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the tax e.g. GST"
+      },
+      {
+        "name": "FlatRate",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The rate at which the tax is charged (as a decimal e.g 0.15)"
+      },
+      {
+        "name": "Description",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A string that can be used as a caption where necessary"
+      },
+      {
+        "name": "IsSellRestrictionsEffective",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted"
+      },
+      {
+        "name": "IsTaxEffective",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST"
+      },
+      {
+        "name": "IsApplied",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether the price has had the tax applied (i.e. are inclusive prices)"
+      },
+      {
+        "name": "TaxAmount",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The amount of tax that was added to the price if applied"
+      },
+      {
+        "name": "WasPriceTaxAmount",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The amount of tax that was added to the was/now price if applied"
+      },
+      {
+        "name": "PaymentMethods",
+        "type": "Collection of Enumeration (optional)",
+        "required": false,
+        "description": "The acceptable payment methods to be displayed on the listing. Mandatory for auctions, ignored for classifieds."
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> (optional)",
+        "required": false,
+        "description": "The attribute values for a listing. The attributes for a category can be found using the  category details API. Additionally, some API clients may supply any number of dynamic attributes i.e. name-value pairs as defined by the client Some well-known attribute names will also help users find your listings: Google Shopping Feed We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are on the ProductSpecification section so include this data if you have it."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String (required) \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String (optional) \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String (required) \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n Type \n Enumeration (optional) \n\nThe type of the attribute, which determines the range of acceptable values. Not required when selling or editing.\n\n\n\n\n\n\n\nNone\n0\n\nNot used.\n\n\n\nBoolean\n1\n\nThe attribute value is a boolean (true/false).\n\n\n\nInteger\n2\n\nThe attribute value is an integer.\n\n\n\nDecimal\n3\n\nThe attribute value is a floating point number.\n\n\n\nString\n4\n\nThe attribute value can be arbitrary text.\n\n\n\nDateTime\n5\n\nThe attribute value is a date & time (in UTC).\n\n\n\n\n\n\n Range \n <AttributeRange> (optional) \n\nThe allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing.\n\n\n\n\n\n\n Lower \n String (required) \n\nThe lowest allowed value of the attribute.\n\n\n\n Upper \n String (required) \n\nThe highest allowed value of the attribute.\n\n\n\n\n\n\n MaxStringLength \n Integer (optional) \n\nThe maximum allowed length of the attribute value, in characters. Only applies to string attributes. Some string attributes do not have a maximum length because they are restricted to a fixed list of options, or because any length is acceptable. Not required when selling or editing.\n\n\n\n Options \n Collection of <AttributeOption> (optional) \n\nA list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing.\n\n\n\n\n\n\n Value \n String (required) \n\nThe value of the item as a string.\n\n\n\n Display \n String (optional) \n\nWhat should be displayed for this value (often the same).\n\n\n\n Count \n Integer (optional) \n\nHow many child elements are available.\n\n\n\n\n\n\n Units \n Collection of <AttributeUnit> (optional) \n\nA list of units that apply (MHz, hectares, etc). Only applies to numeric attributes. Not required when selling or editing.\n\n\n\n\n\n\n Display \n String (optional) \n\nThe unit name, in a format suitable for displaying to a user (e.g. \"MHz\").\n\n\n\n Multiplier \n Number (optional) \n\nThe multiplier to apply to the value the user entered to get a value suitable for passing to the sell API.\n\n\n\n\n\n\n Unit \n String (optional) \n\nThe selected unit. Only applicable to attributes that have at least one associated unit. This field is optional, but if supplied, will be saved along with the value. The list of valid units can be retrieved from the category details API.\n\n\n\n IsRequiredForSell \n Boolean (optional) \n\nIndicates whether the attribute must be present when selling an item.\n\n\n\n GroupName \n String (optional) \n\nSuggests the category name for the attribute grouping on the UI level.\n\n\n\n DisplayValue \n String (optional) \n\nThe value of the attribute as it needs to be displayed to the end users",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String (required)",
+        "required": true,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The type of the attribute, which determines the range of acceptable values. Not required when selling or editing."
+      },
+      {
+        "name": "Range",
+        "type": "<AttributeRange> (optional)",
+        "required": false,
+        "description": "The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing."
+      },
+      {
+        "name": "Lower",
+        "type": "Lower \n String (required) \n\nThe lowest allowed value of the attribute.\n\n\n\n Upper \n String (required) \n\nThe highest allowed value of the attribute.",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Lower",
+        "type": "String (required)",
+        "required": true,
+        "description": "The lowest allowed value of the attribute."
+      },
+      {
+        "name": "Upper",
+        "type": "String (required)",
+        "required": true,
+        "description": "The highest allowed value of the attribute."
+      },
+      {
+        "name": "MaxStringLength",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum allowed length of the attribute value, in characters. Only applies to string attributes. Some string attributes do not have a maximum length because they are restricted to a fixed list of options, or because any length is acceptable. Not required when selling or editing."
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <AttributeOption> (optional)",
+        "required": false,
+        "description": "A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "Value \n String (required) \n\nThe value of the item as a string.\n\n\n\n Display \n String (optional) \n\nWhat should be displayed for this value (often the same).\n\n\n\n Count \n Integer (optional) \n\nHow many child elements are available.",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Value",
+        "type": "String (required)",
+        "required": true,
+        "description": "The value of the item as a string."
+      },
+      {
+        "name": "Display",
+        "type": "String (optional)",
+        "required": false,
+        "description": "What should be displayed for this value (often the same)."
+      },
+      {
+        "name": "Count",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "How many child elements are available."
+      },
+      {
+        "name": "Units",
+        "type": "Collection of <AttributeUnit> (optional)",
+        "required": false,
+        "description": "A list of units that apply (MHz, hectares, etc). Only applies to numeric attributes. Not required when selling or editing."
+      },
+      {
+        "name": "Display",
+        "type": "Display \n String (optional) \n\nThe unit name, in a format suitable for displaying to a user (e.g. \"MHz\").\n\n\n\n Multiplier \n Number (optional) \n\nThe multiplier to apply to the value the user entered to get a value suitable for passing to the sell API.",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Display",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The unit name, in a format suitable for displaying to a user (e.g. \"MHz\")."
+      },
+      {
+        "name": "Multiplier",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The multiplier to apply to the value the user entered to get a value suitable for passing to the sell API."
+      },
+      {
+        "name": "Unit",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The selected unit. Only applicable to attributes that have at least one associated unit. This field is optional, but if supplied, will be saved along with the value. The list of valid units can be retrieved from the category details API."
+      },
+      {
+        "name": "IsRequiredForSell",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether the attribute must be present when selling an item."
+      },
+      {
+        "name": "GroupName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Suggests the category name for the attribute grouping on the UI level."
+      },
+      {
+        "name": "DisplayValue",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The value of the attribute as it needs to be displayed to the end users"
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates that the listing is a clearance item. Only applicable on auctions for members who have a Trade Me store. Ignored for classifieds."
+      },
+      {
+        "name": "ExternalReferenceId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Allows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters."
+      },
+      {
+        "name": "Contacts",
+        "type": "Collection of <Contact> (optional)",
+        "required": false,
+        "description": "A list of contact details. Optional. Currently only applicable for property categories and property agents that have billing methods covering the type of category. For example to add contact details in the residential for rent category the agent must have residential for rent billing enabled."
+      },
+      {
+        "name": "FullName",
+        "type": "FullName \n String (required) \n\nThe full name of the contact person or agent. Mandatory.\n\n\n\n PhoneNumber \n String (optional) \n\nThe phone number of the contact. Can be either a mobile or landline number. Optional.\n\n\n\n AlternatePhoneNumber \n String (optional) \n\nThe phone number of the contact. Can be either a mobile or landline number. This is the primary contact number on the Trade Me Apps. Optional.\n\n\n\n EMail \n String (optional) \n\nThe email address of the contact to be used for email enquiries. Optional.\n\n\n\n BrandingImageId \n Integer (optional) \n\nThe ID of the branding image to display an agent photo on this listing. See the  upload branding image API. Optional.\n\n\n\n AgentId \n String (optional) \n\nThe REAA number of the agent, used to connect this listing to an agent\n\n\n\n AgencyName \n String (optional) \n\nThe agency name for the contact\n\n\n\n ShouldContact \n Enumeration (optional) \n\nThis shows whether the agent detail comes from I am an agent or contact my agent section\n\n\n\n\n\n\n\nNone\n0\n\n                                    None\n                                \n\n\nMe\n1\n\n                                    Me\n                                \n\n\nMyAgent\n2\n\n                                    MyAgent",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "FullName",
+        "type": "String (required)",
+        "required": true,
+        "description": "The full name of the contact person or agent. Mandatory."
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The phone number of the contact. Can be either a mobile or landline number. Optional."
+      },
+      {
+        "name": "AlternatePhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The phone number of the contact. Can be either a mobile or landline number. This is the primary contact number on the Trade Me Apps. Optional."
+      },
+      {
+        "name": "EMail",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The email address of the contact to be used for email enquiries. Optional."
+      },
+      {
+        "name": "BrandingImageId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the branding image to display an agent photo on this listing. See the  upload branding image API. Optional."
+      },
+      {
+        "name": "AgentId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The REAA number of the agent, used to connect this listing to an agent"
+      },
+      {
+        "name": "AgencyName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The agency name for the contact"
+      },
+      {
+        "name": "ShouldContact",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "This shows whether the agent detail comes from I am an agent or contact my agent section"
+      },
+      {
+        "name": "ReturnListingDetails",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether full listing details should be returned in the Listing field. Not supported by the fee APIs."
+      },
+      {
+        "name": "DonationRecipient",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Indicates the user would like to round up their success fees to the nearest dollar and donate the difference to the selected charity."
+      },
+      {
+        "name": "CatalogueId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Used for listing catalogue items and is the catalogue ID of the DVD or Blu-ray that is being listed. There is a separate API for finding the catalogue ID using the name of the movie. Catalogue items (category 9232 or category 365) can change their catalogue id but cannot be changed from a catalogue listing to a non-catalogue listing."
+      },
+      {
+        "name": "RemainingGalleryPlusRelists",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of times the item can be relisted and get the gallery promotion for free. Ignored when creating or editing a listing."
+      },
+      {
+        "name": "PromotionId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Indicates the promotion to apply to this listing. This ID can be retrieved using the category details API. When editing, promotions can only be upgraded, they cannot be downgraded."
+      },
+      {
+        "name": "ExcludeFromShippingPromotion",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Exclude this listing from participating in the sellers shipping promotions."
+      },
+      {
+        "name": "SKU",
+        "type": "String (optional)",
+        "required": false,
+        "description": "SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters."
+      },
+      {
+        "name": "AvailablePromotions",
+        "type": "Collection of <Promotion> (optional)",
+        "required": false,
+        "description": "The list of available promotional options for this listing. Only one promotional option can be selected. These are only available in categories where Super Grid has been enabled."
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer (optional) \n\nThe unique identifier of the promotion.\n\n\n\n Name \n String (optional) \n\nThe name of the promotion.\n\n\n\n Description \n String (optional) \n\nA short description of the promotion.\n\n\n\n LongDescription \n String (optional) \n\nA long description of the promotion.\n\n\n\n Price \n Number (optional) \n\nThe current price of the promotion. This price should include any discounts currently applied.\n\n\n\n OriginalPrice \n Number (optional) \n\nThe price of the promotion before any discounts have been applied.\n\n\n\n Recommended \n Boolean (optional) \n\nWhether this promotion is currently being recommended.\n\n\n\n MinimumPhotoCount \n Integer (optional) \n\nThe minimum number of photos required for the promotion.\n\n\n\n DiscountDescription \n String (optional) \n\nA short description of any discount applied to this promotion.\n\n\n\n DiscountStartDate \n String (optional) \n\nThe start date of any discount applied to this promotion.\n\n\n\n DiscountEndDate \n String (optional) \n\nThe end date of any discount applied to this promotion.\n\n\n\n DiscountDisclaimer \n String (optional) \n\nThe legal disclaimer of any discount applied to this promotion.\n\n\n\n GoodFor2RelistsFee \n Number (optional) \n\nThe value of the GoodFor2Relists fee if eligible for this promotion.",
+        "required": false,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "Id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The unique identifier of the promotion."
+      },
+      {
+        "name": "Name",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the promotion."
+      },
+      {
+        "name": "Description",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A short description of the promotion."
+      },
+      {
+        "name": "LongDescription",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A long description of the promotion."
+      },
+      {
+        "name": "Price",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The current price of the promotion. This price should include any discounts currently applied."
+      },
+      {
+        "name": "OriginalPrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The price of the promotion before any discounts have been applied."
+      },
+      {
+        "name": "Recommended",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether this promotion is currently being recommended."
+      },
+      {
+        "name": "MinimumPhotoCount",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The minimum number of photos required for the promotion."
+      },
+      {
+        "name": "DiscountDescription",
+        "type": "String (optional)",
+        "required": false,
+        "description": "A short description of any discount applied to this promotion."
+      },
+      {
+        "name": "DiscountStartDate",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The start date of any discount applied to this promotion."
+      },
+      {
+        "name": "DiscountEndDate",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The end date of any discount applied to this promotion."
+      },
+      {
+        "name": "DiscountDisclaimer",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The legal disclaimer of any discount applied to this promotion."
+      },
+      {
+        "name": "GoodFor2RelistsFee",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The value of the GoodFor2Relists fee if eligible for this promotion."
+      },
+      {
+        "name": "ImmutableFields",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "A collection of the names of various fields and attributes which cannot be changed under various conditions e.g. a bid has been placed on an Auction, or 7 days has passed after a classified was created."
+      },
+      {
+        "name": "GeographicLocation",
+        "type": "<SimpleGeographicLocation> (optional)",
+        "required": false,
+        "description": "A custom geographic location"
+      },
+      {
+        "name": "Latitude",
+        "type": "Latitude \n Number (optional) \n\nThe latitude of the location, in degrees (WGS84).\n\n\n\n Longitude \n Number (optional) \n\nThe longitude of the location, in degrees (WGS84).\n\n\n\n Accuracy \n Enumeration (optional) \n\nThe accuracy of the geographic location (address, street or suburb).\n\n\n\n\n\n\n\nNone\n0\n\nThe accuracy of the geographic location is not known.\n\n\n\nAddress\n1\n\nThe geographic location is accurate to the address level.\n\n\n\nStreet\n3\n\nThe geographic location is accurate to the street level.\n\n\n\nSuburb\n2\n\nThe geographic location is accurate to the suburb level.\n\n\n\nAdminPinpoint\n4\n\nThe geographic location is accurate to the AdminPinPoint level.",
+        "required": false,
+        "description": "Number (optional)"
+      },
+      {
+        "name": "Latitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The latitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Longitude",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The longitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Accuracy",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The accuracy of the geographic location (address, street or suburb)."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds."
+      },
+      {
+        "name": "EmbeddedContent",
+        "type": "<EmbeddedContent> (optional)",
+        "required": false,
+        "description": "The content keys that are embedded in the listing page (e.g. YouTube Video Key).Use the category details API to check which content types a category supports."
+      },
+      {
+        "name": "YouTubeVideoKey",
+        "type": "YouTubeVideoKey \n String (optional) \n\nThe YouTube video key for the listing.\n\n\n\n MatterportKey \n String (optional) \n\nThe Matterport video key for the listing's InsideView content.\n\n\n\n IStagingKey \n String (optional) \n\nThe IStaging video key for the listing's InsideView content.\n\n\n\n VimeoVideoKey \n String (optional) \n\nThe Vimeo video key for the listing.\n\n\n\n DiakritFurnishKey \n String (optional) \n\nThe Diakrit Furnish key for the listing.\n\n\n\n DiakritStylerKey \n String (optional) \n\nThe Diakrit Styler key for the listing.\n\n\n\n DiakritPanoramaKey \n String (optional) \n\nThe Diakrit Panorama key for the listing.\n\n\n\n VirtualToursCreatorKey \n String (optional) \n\nThe Virtual Tours Creator key for the listing.\n\n\n\n Approved3DTourUrl \n String (optional) \n\nThe Approved 3d tour url for the listing.",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "YouTubeVideoKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The YouTube video key for the listing."
+      },
+      {
+        "name": "MatterportKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Matterport video key for the listing's InsideView content."
+      },
+      {
+        "name": "IStagingKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The IStaging video key for the listing's InsideView content."
+      },
+      {
+        "name": "VimeoVideoKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Vimeo video key for the listing."
+      },
+      {
+        "name": "DiakritFurnishKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Diakrit Furnish key for the listing."
+      },
+      {
+        "name": "DiakritStylerKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Diakrit Styler key for the listing."
+      },
+      {
+        "name": "DiakritPanoramaKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Diakrit Panorama key for the listing."
+      },
+      {
+        "name": "VirtualToursCreatorKey",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Virtual Tours Creator key for the listing."
+      },
+      {
+        "name": "Approved3DTourUrl",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The Approved 3d tour url for the listing."
+      },
+      {
+        "name": "IsBranded",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "A flag indicating the listing should be branded. Only applicable to the Jobs category."
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Summary of the listing. Mandatory for Job listings Maximum of 150 characters."
+      },
+      {
+        "name": "ShippingCalculatorInputs",
+        "type": "<TmShippingCalculatorInputs> (optional)",
+        "required": false,
+        "description": "The criteria used within the Trade Me Shipping calculator to determine rates."
+      },
+      {
+        "name": "IsBoxType",
+        "type": "IsBoxType \n Boolean (optional) \n\nIndicator if package type is bag or box\n\n\n\n Width \n Number (optional) \n\nWidth value for box package type\n\n\n\n Height \n Number (optional) \n\nHeight value for box package type\n\n\n\n Depth \n Number (optional) \n\nDepth value for box package type\n\n\n\n IsSignatureRequired \n Boolean (optional) \n\nInidicator if shipping requires signature\n\n\n\n PickupLocalityId \n Integer (optional) \n\nPickup location id\n\n\n\n IsRural \n Boolean (optional) \n\nIndicator on if pickup location is rural area\n\n\n\n PackagingOption \n Enumeration (optional) \n\nPackaging type indicating bag sizes or box\n\n\n\n\n\n\n\nBox\n1\n\nBox\n\n\n\nDLE\n2\n\nSatchel:DLE\n\n\n\nA4\n3\n\nSatchel:A4\n\n\n\nA3\n4\n\nSatchel:A3\n\n\n\nA5\n5\n\nSatchel:A5\n\n\n\n\n\n\n WeightOption \n Enumeration (optional) \n\nWeight range option for calculation\n\n\n\n\n\n\n\nKg0To3\n1\n\n0 - 3kg\n\n\n\nKg3To5\n2\n\n3 - 5kg\n\n\n\nKg5To10\n3\n\n5 - 10kg\n\n\n\nKg10To15\n4\n\n10 - 15kg\n\n\n\nKg15To20\n5\n\n15 - 20kg\n\n\n\nKg20To25\n6\n\n20 - 25kg\n\n\n\n\n\n\n FilterOption \n Enumeration (optional) \n\nCourier filter for calculation\n\n\n\n\n\n\n\nBestPrice\n0\n\nBest price\n\n\n\nNZPost\n1\n\nNZ Post\n\n\n\nFastway\n2\n\nAramex",
+        "required": false,
+        "description": "Boolean (optional)"
+      },
+      {
+        "name": "IsBoxType",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicator if package type is bag or box"
+      },
+      {
+        "name": "Width",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Width value for box package type"
+      },
+      {
+        "name": "Height",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Height value for box package type"
+      },
+      {
+        "name": "Depth",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "Depth value for box package type"
+      },
+      {
+        "name": "IsSignatureRequired",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Inidicator if shipping requires signature"
+      },
+      {
+        "name": "PickupLocalityId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Pickup location id"
+      },
+      {
+        "name": "IsRural",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicator on if pickup location is rural area"
+      },
+      {
+        "name": "PackagingOption",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Packaging type indicating bag sizes or box"
+      },
+      {
+        "name": "WeightOption",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Weight range option for calculation"
+      },
+      {
+        "name": "FilterOption",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "Courier filter for calculation"
+      },
+      {
+        "name": "AdditionalData",
+        "type": "<AdditionalData> (optional)",
+        "required": false,
+        "description": "Structured information for Listing Additional Data. Currently only used by featured Job listings."
+      },
+      {
+        "name": "BulletPoints",
+        "type": "BulletPoints \n Collection of String (optional) \n\nThe bullet points for display in the search results\n\n\n\n Tags \n Collection of <Tag> (optional) \n\nThe tags for display in the search results\n\n\n\n\n\n\n Name \n String (optional) \n\nThe name of the tag",
+        "required": false,
+        "description": "Collection of String (optional)"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "Collection of String (optional)",
+        "required": false,
+        "description": "The bullet points for display in the search results"
+      },
+      {
+        "name": "Tags",
+        "type": "Collection of <Tag> (optional)",
+        "required": false,
+        "description": "The tags for display in the search results"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String (optional) \n\nThe name of the tag",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Name",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the tag"
+      },
+      {
+        "name": "VariantDefinition",
+        "type": "<VariantDefinition> (optional)",
+        "required": false,
+        "description": "When specified, turns the listing request into a multi-variant listing that creates several child listings. The variants definition is used to describe the variant options that are available and the combinations of variants that make up the multi-variant listing."
+      },
+      {
+        "name": "OptionSets",
+        "type": "OptionSets \n Collection of <OptionSet> (required) \n\nA collection of variant options.\n\n\n\n\n\n\n Name \n String (required) \n\nThe name used to identify the group of option values, e.g. \"size\" or \"colour\".\n\n\n\n Values \n Collection of String (required) \n\nThe choices available for this option set, e.g. \"red\", \"blue\". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.\n\n\n\n\n\n\n Variants \n Collection of <Variant> (required) \n\nA collection of variants.\n\n\n\n\n\n\n SKU \n String (required) \n\nSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.\n\n\n\n Price \n Number (required) \n\nThe Buy Now price of the variant. Must be a minimum of 50c.\n\n\n\n IsClearance \n Boolean (optional) \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number (optional) \n\nThe Was price of the variant. Must be a minimum of 50c.\n\n\n\n Quantity \n Integer (required) \n\nThis is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.\n\n\n\n PhotoIds \n Collection of Integer (optional) \n\nPhoto IDs for images that have already been uploaded that you want to display on the listing variant. For all general items categories all photos are free (up to 20 max). Check the  category details API for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our  photo retention policy for more information.\n\n\n\n Photos \n Collection of <Photo> (optional) \n\nA collection of photo URLs for the listing. Ignored when creating or editing a listing.\n\n\n\n\n\n\n Key \n Integer (optional) \n\n\n\n\n Value \n <PhotoUrl> (optional) \n\n\n\n\n\n\n\n Thumbnail \n String (optional) \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String (optional) \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String (optional) \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String (optional) \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String (optional) \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String (optional) \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String (optional) \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer (optional) \n\nThe ID of the photo.\n\n\n\n OriginalWidth \n Integer (optional) \n\nThe original width of the photo.\n\n\n\n OriginalHeight \n Integer (optional) \n\nThe original height of the photo.\n\n\n\n\n\n\n\n\n\n Options \n Collection of <Option> (optional) \n\nThe combination of variant options that this variant represents.\n\n\n\n\n\n\n Name \n String (required) \n\nThe name used to identify the group of option values, e.g. \"size\" or \"colour\". This name must match an entry in the option set collection.\n\n\n\n Value \n String (required) \n\nThe choice that this variant has for the option, e.g. \"red\", \"blue\". This name must match an entry in the option set.\n\n\n\n\n\n\n Attributes \n Collection of <Attribute> (optional) \n\nA collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings: Google Shopping Feed We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are Brand, GTIN and Manufacturer Code so include this data if you have it.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ListingId \n Integer (optional) \n\nThe identifier of the listing that this variant represents.\n\n\n\n ExternalReferenceId \n String (optional) \n\nAllows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters.\n\n\n\n ProductSpecification \n <ProductSpecification> (optional) \n\nThe specifications of the product if the variant relates to a product\n\n\n\n\n\n\n GTIN \n String (optional) \n\nThe GTIN of the product e.g. 027242896505 \n\n\n\n Brand \n String (optional) \n\nThe brand name of the product e.g. Sony \n\n\n\n ManufacturerCode \n String (optional) \n\nThe product code used by the manufacturer e.g. KDL32W600D",
+        "required": true,
+        "description": "Collection of <OptionSet> (required)"
+      },
+      {
+        "name": "OptionSets",
+        "type": "Collection of <OptionSet> (required)",
+        "required": true,
+        "description": "A collection of variant options."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String (required) \n\nThe name used to identify the group of option values, e.g. \"size\" or \"colour\".\n\n\n\n Values \n Collection of String (required) \n\nThe choices available for this option set, e.g. \"red\", \"blue\". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "The name used to identify the group of option values, e.g. \"size\" or \"colour\"."
+      },
+      {
+        "name": "Values",
+        "type": "Collection of String (required)",
+        "required": true,
+        "description": "The choices available for this option set, e.g. \"red\", \"blue\". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings."
+      },
+      {
+        "name": "Variants",
+        "type": "Collection of <Variant> (required)",
+        "required": true,
+        "description": "A collection of variants."
+      },
+      {
+        "name": "SKU",
+        "type": "SKU \n String (required) \n\nSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.\n\n\n\n Price \n Number (required) \n\nThe Buy Now price of the variant. Must be a minimum of 50c.\n\n\n\n IsClearance \n Boolean (optional) \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number (optional) \n\nThe Was price of the variant. Must be a minimum of 50c.\n\n\n\n Quantity \n Integer (required) \n\nThis is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.\n\n\n\n PhotoIds \n Collection of Integer (optional) \n\nPhoto IDs for images that have already been uploaded that you want to display on the listing variant. For all general items categories all photos are free (up to 20 max). Check the  category details API for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our  photo retention policy for more information.\n\n\n\n Photos \n Collection of <Photo> (optional) \n\nA collection of photo URLs for the listing. Ignored when creating or editing a listing.\n\n\n\n\n\n\n Key \n Integer (optional) \n\n\n\n\n Value \n <PhotoUrl> (optional) \n\n\n\n\n\n\n\n Thumbnail \n String (optional) \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String (optional) \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String (optional) \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String (optional) \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String (optional) \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String (optional) \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String (optional) \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer (optional) \n\nThe ID of the photo.\n\n\n\n OriginalWidth \n Integer (optional) \n\nThe original width of the photo.\n\n\n\n OriginalHeight \n Integer (optional) \n\nThe original height of the photo.\n\n\n\n\n\n\n\n\n\n Options \n Collection of <Option> (optional) \n\nThe combination of variant options that this variant represents.\n\n\n\n\n\n\n Name \n String (required) \n\nThe name used to identify the group of option values, e.g. \"size\" or \"colour\". This name must match an entry in the option set collection.\n\n\n\n Value \n String (required) \n\nThe choice that this variant has for the option, e.g. \"red\", \"blue\". This name must match an entry in the option set.\n\n\n\n\n\n\n Attributes \n Collection of <Attribute> (optional) \n\nA collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings: Google Shopping Feed We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are Brand, GTIN and Manufacturer Code so include this data if you have it.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ListingId \n Integer (optional) \n\nThe identifier of the listing that this variant represents.\n\n\n\n ExternalReferenceId \n String (optional) \n\nAllows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters.\n\n\n\n ProductSpecification \n <ProductSpecification> (optional) \n\nThe specifications of the product if the variant relates to a product\n\n\n\n\n\n\n GTIN \n String (optional) \n\nThe GTIN of the product e.g. 027242896505 \n\n\n\n Brand \n String (optional) \n\nThe brand name of the product e.g. Sony \n\n\n\n ManufacturerCode \n String (optional) \n\nThe product code used by the manufacturer e.g. KDL32W600D",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "SKU",
+        "type": "String (required)",
+        "required": true,
+        "description": "SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters."
+      },
+      {
+        "name": "Price",
+        "type": "Number (required)",
+        "required": true,
+        "description": "The Buy Now price of the variant. Must be a minimum of 50c."
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The Was price of the variant. Must be a minimum of 50c."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "This is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response."
+      },
+      {
+        "name": "PhotoIds",
+        "type": "Collection of Integer (optional)",
+        "required": false,
+        "description": "Photo IDs for images that have already been uploaded that you want to display on the listing variant. For all general items categories all photos are free (up to 20 max). Check the  category details API for exact details. Note that photos may be deleted if they are unused for too long. It is up to you to ensure that your photo IDs are valid. See our  photo retention policy for more information."
+      },
+      {
+        "name": "Photos",
+        "type": "Collection of <Photo> (optional)",
+        "required": false,
+        "description": "A collection of photo URLs for the listing. Ignored when creating or editing a listing."
+      },
+      {
+        "name": "Key",
+        "type": "Key \n Integer (optional) \n\n\n\n\n Value \n <PhotoUrl> (optional) \n\n\n\n\n\n\n\n Thumbnail \n String (optional) \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String (optional) \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String (optional) \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String (optional) \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String (optional) \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String (optional) \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String (optional) \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer (optional) \n\nThe ID of the photo.\n\n\n\n OriginalWidth \n Integer (optional) \n\nThe original width of the photo.\n\n\n\n OriginalHeight \n Integer (optional) \n\nThe original height of the photo.",
+        "required": false,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "Key",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Value",
+        "type": "<PhotoUrl> (optional)",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Thumbnail",
+        "type": "Thumbnail \n String (optional) \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String (optional) \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String (optional) \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String (optional) \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String (optional) \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String (optional) \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String (optional) \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer (optional) \n\nThe ID of the photo.\n\n\n\n OriginalWidth \n Integer (optional) \n\nThe original width of the photo.\n\n\n\n OriginalHeight \n Integer (optional) \n\nThe original height of the photo.",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Thumbnail",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."
+      },
+      {
+        "name": "List",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the list view sized photo (scaled down to fit 160x120)."
+      },
+      {
+        "name": "Medium",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the medium sized photo (scaled down to fit 175x175)."
+      },
+      {
+        "name": "Gallery",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."
+      },
+      {
+        "name": "Large",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the large sized photo (scaled down to fit 352x264)."
+      },
+      {
+        "name": "FullSize",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the full sized photo (scaled down to fit 670x502)."
+      },
+      {
+        "name": "PlusSize",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The URL for the plus sized photo (scaled down to fit)."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the photo."
+      },
+      {
+        "name": "OriginalWidth",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The original width of the photo."
+      },
+      {
+        "name": "OriginalHeight",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The original height of the photo."
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <Option> (optional)",
+        "required": false,
+        "description": "The combination of variant options that this variant represents."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String (required) \n\nThe name used to identify the group of option values, e.g. \"size\" or \"colour\". This name must match an entry in the option set collection.\n\n\n\n Value \n String (required) \n\nThe choice that this variant has for the option, e.g. \"red\", \"blue\". This name must match an entry in the option set.",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "The name used to identify the group of option values, e.g. \"size\" or \"colour\". This name must match an entry in the option set collection."
+      },
+      {
+        "name": "Value",
+        "type": "String (required)",
+        "required": true,
+        "description": "The choice that this variant has for the option, e.g. \"red\", \"blue\". This name must match an entry in the option set."
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> (optional)",
+        "required": false,
+        "description": "A collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings: Google Shopping Feed We include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These are Brand, GTIN and Manufacturer Code so include this data if you have it."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The identifier of the listing that this variant represents."
+      },
+      {
+        "name": "ExternalReferenceId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Allows the API client to associate an identifier (or any short string) against the listing. This value can be searched on but is otherwise only accessible via the API. Not used by Trade Me. Optional. Max 50 characters."
+      },
+      {
+        "name": "ProductSpecification",
+        "type": "<ProductSpecification> (optional)",
+        "required": false,
+        "description": "The specifications of the product if the variant relates to a product"
+      },
+      {
+        "name": "GTIN",
+        "type": "GTIN \n String (optional) \n\nThe GTIN of the product e.g. 027242896505 \n\n\n\n Brand \n String (optional) \n\nThe brand name of the product e.g. Sony \n\n\n\n ManufacturerCode \n String (optional) \n\nThe product code used by the manufacturer e.g. KDL32W600D",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "GTIN",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The GTIN of the product e.g. 027242896505"
+      },
+      {
+        "name": "Brand",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The brand name of the product e.g. Sony"
+      },
+      {
+        "name": "ManufacturerCode",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The product code used by the manufacturer e.g. KDL32W600D"
+      },
+      {
+        "name": "SecondCategory",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The ID of the second category to list the item in. For example, specify \"6853\" to list an oil heater. This field also accepts the MCAT category format (e.g. \"0004-0370-0560-6853-\"). Not all categories can be used as a second category and not all primary categories can be paired with a second category."
+      },
+      {
+        "name": "PremiumPackageCode",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The code of the premium package to apply to the listing. This will be null if a package is not applied to the listing or a package was previously applied but has since completed."
+      },
+      {
+        "name": "ProductSpecification",
+        "type": "<ProductSpecification> (optional)",
+        "required": false,
+        "description": "The specifications of the product if the listing relates to a product. If this is a multi-variant product, specify these in the Variants section."
+      },
+      {
+        "name": "ListingExtras",
+        "type": "Collection of <ListingExtras> (optional)",
+        "required": false,
+        "description": "A collection of extras to apply to the listing. This is an input field. We require Name, & Variant for each ListingExtra."
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer (optional) \n\nThe ID of the extra; informational only. This is assigned when an extra is applied to a listing.\n\n\n\n Name \n String (required) \n\nThe name of the extra.\n\n\n\n Variant \n String (optional) \n\nThe variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra.\n\n\n\n StartDate \n DateTime (optional) \n\nThe start date and time of the extra. If not provided then the extra will be queued up to start after the last stacked extra of the same type. If no extra of this type currently exists then the extra will start immediately.\n\n\n\n EndDate \n DateTime (optional) \n\nThe end date and time of the extra.\n\n\n\n Description \n String (optional) \n\nThe description of the extra; informational only.\n\n\n\n Duration \n Integer (optional) \n\nThe number of days the extra will be active; informational only.\n\n\n\n Delay \n Integer (optional) \n\nThe number of days before the extra will become active after purchase; informational only.\n\n\n\n DaysRemaining \n Integer (optional) \n\nThe number of days before it expires.",
+        "required": true,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "Id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the extra; informational only. This is assigned when an extra is applied to a listing."
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "The name of the extra."
+      },
+      {
+        "name": "Variant",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The start date and time of the extra. If not provided then the extra will be queued up to start after the last stacked extra of the same type. If no extra of this type currently exists then the extra will start immediately."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The end date and time of the extra."
+      },
+      {
+        "name": "Description",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The description of the extra; informational only."
+      },
+      {
+        "name": "Duration",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of days the extra will be active; informational only."
+      },
+      {
+        "name": "Delay",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of days before the extra will become active after purchase; informational only."
+      },
+      {
+        "name": "DaysRemaining",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of days before it expires."
+      },
+      {
+        "name": "ListingExtrasLedger",
+        "type": "Collection of <ListingExtras> (optional)",
+        "required": false,
+        "description": "A collection of extras that have been applied to the listing. This is an output field. We will provide Id, Name, Variant, StartDate, & EndDate. Any changes to this collection is ignored when creating or editing a listing."
+      },
+      {
+        "name": "HasGoodFor2Relists",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates if Good For 2 Relists is included with the premium package."
+      },
+      {
+        "name": "IsCounterOffersAllowed",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates if Make an Offer is enabled or not. true is enabled, false is disabled and null means it hasn't set yet."
+      },
+      {
+        "name": "MaximumOffers",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum number of Buyer offers the listing accepts if the listing has Counter Offers enabled."
+      },
+      {
+        "name": "ShippingTemplateId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The identifier of the shipping template containing the shipping options. For the shipping template to be successfully applied to the listing, there are some requirements to be met with the api request: The listing must be a Buy Now Only listing: Must have: - A quantity > 0 - A buy now price - Shipping field = 0 (or the field not supplied) Must not have: - A reserve price - A starting price - Any custom shipping options supplied - Pickup only The primary and/or secondary category supplied must be Marketplace categories. When the above requirements are not met when specifying a ShippingTemplateId, then the listing request will fail.Identifying marketplace categories You can identify these categories by using the following endpoint:Category Details When AreaOfBusiness = 1 (marketplace category)"
+      },
+      {
+        "name": "Photos",
+        "type": "Collection of <Photo> (optional)",
+        "required": false,
+        "description": "A collection of photo URLs for the listing. Ignored when creating or editing a listing."
+      },
+      {
+        "name": "Key",
+        "type": "Key \n Integer (optional) \n\n\n\n\n Value \n <PhotoUrl> (optional) \n\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "Key",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Value",
+        "type": "<PhotoUrl> (optional)",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Files",
+        "type": "Collection of <ListingFile> (optional)",
+        "required": false,
+        "description": "A list of files on the listing"
+      },
+      {
+        "name": "Url",
+        "type": "Url \n String (optional) \n\nUrl of the file\n\n\n\n Name \n String (optional) \n\nName of the file",
+        "required": false,
+        "description": "String (optional)"
+      },
+      {
+        "name": "Url",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Url of the file"
+      },
+      {
+        "name": "Name",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Name of the file"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<FeeResponse> A list of fees.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "TotalCost",
+        "type": "Number or null",
+        "required": false,
+        "description": "The total price for the listing."
+      },
+      {
+        "name": "InsufficientBalance",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates the member has insufficient funds to pay the total price for the listing."
+      },
+      {
+        "name": "FeeItems",
+        "type": "<MemberLedger> or null",
+        "required": false,
+        "description": "A collection of member ledger items."
+      },
+      {
+        "name": "TotalCount",
+        "type": "TotalCount \n Integer \n\nThe total number of results in the collection. Can be larger than the number of returned results.\n\n\n\n Page \n Integer \n\nThe index of the current page of results (starts at 1).\n\n\n\n PageSize \n Integer \n\nThe number of results in the current page.\n\n\n\n List \n Collection of <MemberLedgerItem> or null \n\nA list of the results in the current page.\n\n\n\n\n\n\n Date \n DateTime \n\nThe transaction date.\n\n\n\n Type \n Enumeration \n\nThe transaction type.\n\n\n\n Description \n String or null \n\nA description of the transaction.\n\n\n\n Credit \n Number \n\nThe amount to credit to the member's account.\n\n\n\n Debit \n Number \n\nThe amount to debit from the member's account.\n\n\n\n WillBeInvoiced \n Boolean \n\nIndicates whether this ledger item will be invoiced, rather than deducted from the member's trade me balance.\n\n\n\n InvoicedValue \n Number \n\nThe amount that will be invoiced to the member",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <MemberLedgerItem> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "Date",
+        "type": "Date \n DateTime \n\nThe transaction date.\n\n\n\n Type \n Enumeration \n\nThe transaction type.\n\n\n\n Description \n String or null \n\nA description of the transaction.\n\n\n\n Credit \n Number \n\nThe amount to credit to the member's account.\n\n\n\n Debit \n Number \n\nThe amount to debit from the member's account.\n\n\n\n WillBeInvoiced \n Boolean \n\nIndicates whether this ledger item will be invoiced, rather than deducted from the member's trade me balance.\n\n\n\n InvoicedValue \n Number \n\nThe amount that will be invoiced to the member",
+        "required": false,
+        "description": "DateTime"
+      },
+      {
+        "name": "Date",
+        "type": "DateTime",
+        "required": false,
+        "description": "The transaction date."
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The transaction type.",
+        "enum": [
+          {
+            "name": "Other",
+            "value": "0",
+            "description": "An unknown ledger item."
+          },
+          {
+            "name": "ListingFee",
+            "value": "1",
+            "description": "The fee for a listing an item (applies to classifieds and auctions in certain categories)."
+          },
+          {
+            "name": "HighVolumeFee",
+            "value": "2",
+            "description": "The fee for exceeding the free listing allowance."
+          },
+          {
+            "name": "SuccessFeeBid",
+            "value": "3",
+            "description": "The fee for a successful auction (won via a bid)."
+          },
+          {
+            "name": "SuccessFeeOffer",
+            "value": "4",
+            "description": "The fee for a successful auction (won via a fixed price offer)."
+          },
+          {
+            "name": "SuccessFeeBuyNow",
+            "value": "5",
+            "description": "The fee for a successful auction (won via Buy Now)."
+          },
+          {
+            "name": "GalleryPromotion",
+            "value": "100",
+            "description": "The fee for listing an item with the gallery promotion."
+          },
+          {
+            "name": "GalleryPlusPromotion",
+            "value": "101",
+            "description": "The fee for listing an item with the gallery plus promotion."
+          },
+          {
+            "name": "BoldPromotion",
+            "value": "102",
+            "description": "The fee for listing an item with the bold title promotion."
+          },
+          {
+            "name": "SubtitlePromotion",
+            "value": "103",
+            "description": "The fee for listing an item with a subtitle."
+          },
+          {
+            "name": "HighlightPromotion",
+            "value": "104",
+            "description": "The fee for listing an item with a highlight."
+          },
+          {
+            "name": "FeaturePromotion",
+            "value": "105",
+            "description": "The fee for listing an item with the feature promotion."
+          },
+          {
+            "name": "FeatureComboPromotion",
+            "value": "106",
+            "description": "The fee for listing an item with the feature combo promotion."
+          },
+          {
+            "name": "HomepageFeaturePromotion",
+            "value": "107",
+            "description": "The fee for listing an item with the homepage feature promotion."
+          },
+          {
+            "name": "SuperFeaturePromotion",
+            "value": "108",
+            "description": "The fee for listing an item with the super feature promotion."
+          },
+          {
+            "name": "SuperFeatureComboPromotion",
+            "value": "109",
+            "description": "The fee for listing an item with the super feature combo promotion."
+          },
+          {
+            "name": "TenDayAuctionFee",
+            "value": "110",
+            "description": "The fee for listing an item with a duration of ten days."
+          },
+          {
+            "name": "MultiPhotoFee",
+            "value": "111",
+            "description": "The fee for listing an item with additional photos."
+          },
+          {
+            "name": "ScheduledEndDateFee",
+            "value": "112",
+            "description": "The fee for listing an item with a scheduled end date/time."
+          },
+          {
+            "name": "ReserveFee",
+            "value": "113",
+            "description": "The fee for listing an item with a reserve price."
+          },
+          {
+            "name": "SecondaryCategoryPromotion",
+            "value": "114",
+            "description": "The fee for listing an item with a reserve price."
+          },
+          {
+            "name": "JobPack5",
+            "value": "200",
+            "description": "The purchase of a five listing job pack."
+          },
+          {
+            "name": "JobPack10",
+            "value": "201",
+            "description": "The purchase of a ten listing job pack."
+          },
+          {
+            "name": "JobPack20",
+            "value": "202",
+            "description": "The purchase of a twenty listing job pack."
+          },
+          {
+            "name": "JobPack30",
+            "value": "204",
+            "description": "The purchase of a thirty listing job pack."
+          },
+          {
+            "name": "JobPack50",
+            "value": "203",
+            "description": "The purchase of a fifty listing job pack."
+          },
+          {
+            "name": "JobPack100",
+            "value": "205",
+            "description": "The purchase of a hundred listing job pack."
+          },
+          {
+            "name": "WithdrawalFee",
+            "value": "300",
+            "description": "The fee for withdrawing an auction over an hour after it started."
+          },
+          {
+            "name": "QuotableValueReportFee",
+            "value": "301",
+            "description": "The fee for purchasing a QV report."
+          },
+          {
+            "name": "MonthlyStoreFee",
+            "value": "302",
+            "description": "The monthly fee for having a Trade Me store."
+          },
+          {
+            "name": "CreditViaCreditCard",
+            "value": "400",
+            "description": "The member credited their account with a credit card."
+          },
+          {
+            "name": "CreditViaBankTransfer",
+            "value": "401",
+            "description": "The member credited their account using internet banking."
+          },
+          {
+            "name": "CreditViaCheque",
+            "value": "402",
+            "description": "The member credited their account with a cheque."
+          },
+          {
+            "name": "CreditViaPing",
+            "value": "403",
+            "description": "This member credited their account with Ping."
+          },
+          {
+            "name": "RebateForListingFee",
+            "value": "500",
+            "description": "The rebate for listing an item."
+          },
+          {
+            "name": "RebateForHighVolumeFee",
+            "value": "501",
+            "description": "The rebate for exceeding the free listing allowance."
+          },
+          {
+            "name": "RebateForSuccessFeeBid",
+            "value": "502",
+            "description": "The rebate for a successful auction (won via a bid)."
+          },
+          {
+            "name": "RebateForSuccessFeeOffer",
+            "value": "503",
+            "description": "The rebate for a successful auction (won via a fixed price offer)."
+          },
+          {
+            "name": "RebateForSuccessFeeBuyNow",
+            "value": "504",
+            "description": "The rebate for a successful auction (won via Buy Now)."
+          },
+          {
+            "name": "RebateForGalleryPromotion",
+            "value": "505",
+            "description": "The rebate for listing an item with the gallery promotion."
+          },
+          {
+            "name": "RebateForGalleryPlusPromotion",
+            "value": "506",
+            "description": "The rebate for listing an item with the gallery plus promotion."
+          },
+          {
+            "name": "RebateForBoldPromotion",
+            "value": "507",
+            "description": "The rebate for listing an item with the bold title promotion."
+          },
+          {
+            "name": "RebateForSubtitlePromotion",
+            "value": "508",
+            "description": "The rebate for listing an item with a subtitle."
+          },
+          {
+            "name": "RebateForHighlightPromotion",
+            "value": "509",
+            "description": "The rebate for listing an item with a highlight."
+          },
+          {
+            "name": "RebateForFeaturePromotion",
+            "value": "510",
+            "description": "The rebate for listing an item with the feature promotion."
+          },
+          {
+            "name": "RebateForFeatureComboPromotion",
+            "value": "511",
+            "description": "The rebate for listing an item with the feature combo promotion."
+          },
+          {
+            "name": "RebateForHomepageFeaturePromotion",
+            "value": "512",
+            "description": "The rebate for listing an item with the homepage feature promotion."
+          },
+          {
+            "name": "RebateForSuperFeaturePromotion",
+            "value": "513",
+            "description": "The rebate for listing an item with the super feature promotion."
+          },
+          {
+            "name": "RebateForSuperFeatureComboPromotion",
+            "value": "514",
+            "description": "The rebate for listing an item with the super feature combo promotion."
+          },
+          {
+            "name": "RebateForTenDayAuctionFee",
+            "value": "515",
+            "description": "The rebate for listing an item with a duration of ten days."
+          },
+          {
+            "name": "RebateForMultiPhotoFee",
+            "value": "516",
+            "description": "The rebate for listing an item with additional photos."
+          },
+          {
+            "name": "RebateForScheduledEndDateFee",
+            "value": "517",
+            "description": "The rebate for listing an item with a scheduled end date/time."
+          },
+          {
+            "name": "RebateForReserveFee",
+            "value": "518",
+            "description": "The rebate for listing an item with a reserve price."
+          },
+          {
+            "name": "RebateForSecondaryCategoryPromotion",
+            "value": "519",
+            "description": "The rebate for listing an item with a secondary category."
+          },
+          {
+            "name": "RefundOfListingFee",
+            "value": "600",
+            "description": "A refund for listing an item."
+          },
+          {
+            "name": "RefundOfSuccessFee",
+            "value": "601",
+            "description": "Refund of auction success fees."
+          },
+          {
+            "name": "RefundOfGalleryPromotion",
+            "value": "602",
+            "description": "The refund for listing an item with the gallery promotion."
+          },
+          {
+            "name": "RefundOfGalleryPlusPromotion",
+            "value": "603",
+            "description": "The refund for listing an item with the gallery plus promotion."
+          },
+          {
+            "name": "RefundOfBoldPromotion",
+            "value": "604",
+            "description": "The refund for listing an item with the bold title promotion."
+          },
+          {
+            "name": "RefundOfSubtitlePromotion",
+            "value": "605",
+            "description": "The refund for listing an item with a subtitle."
+          },
+          {
+            "name": "RefundOfHighlightPromotion",
+            "value": "606",
+            "description": "The refund for listing an item with a highlight."
+          },
+          {
+            "name": "RefundOfFeaturePromotion",
+            "value": "607",
+            "description": "The refund for listing an item with the feature promotion."
+          },
+          {
+            "name": "RefundOfFeatureComboPromotion",
+            "value": "608",
+            "description": "The refund for listing an item with the feature combo promotion."
+          },
+          {
+            "name": "RefundOfHomepageFeaturePromotion",
+            "value": "609",
+            "description": "The refund for listing an item with the homepage feature promotion."
+          },
+          {
+            "name": "RefundOfSuperFeaturePromotion",
+            "value": "610",
+            "description": "The refund for listing an item with the super feature promotion."
+          },
+          {
+            "name": "RefundOfSuperFeatureComboPromotion",
+            "value": "611",
+            "description": "The refund for listing an item with the super feature combo promotion."
+          },
+          {
+            "name": "RefundOfTenDayAuctionFee",
+            "value": "612",
+            "description": "The refund for listing an item with a duration of ten days."
+          },
+          {
+            "name": "RefundOfMultiPhotoFee",
+            "value": "613",
+            "description": "The refund for listing an item with additional photos."
+          },
+          {
+            "name": "RefundOfScheduledEndDateFee",
+            "value": "614",
+            "description": "The refund for listing an item with a scheduled end date/time."
+          },
+          {
+            "name": "RefundOfReserveFee",
+            "value": "615",
+            "description": "The refund for listing an item with a reserve price."
+          },
+          {
+            "name": "RefundOfSecondaryCategoryPromotion",
+            "value": "616",
+            "description": "The refund for listing an item with a secondary category."
+          },
+          {
+            "name": "DiscountOfListingFee",
+            "value": "617",
+            "description": "Discount of listing fee"
+          },
+          {
+            "name": "DiscountOfSuperfeature",
+            "value": "618",
+            "description": "Discount of superfeature fee"
+          },
+          {
+            "name": "DiscountOfHighlight",
+            "value": "619",
+            "description": "Discount of highlight fee"
+          },
+          {
+            "name": "DiscountOfFeature",
+            "value": "620",
+            "description": "Discount of feature fee"
+          },
+          {
+            "name": "DiscountOfBoldTitle",
+            "value": "621",
+            "description": "Discount of boldTitle fee"
+          },
+          {
+            "name": "DiscountOfFeatureCombo",
+            "value": "622",
+            "description": "Discount of feature combo fee"
+          },
+          {
+            "name": "DiscountOfSubtitle",
+            "value": "623",
+            "description": "Discount of subtitle fee"
+          },
+          {
+            "name": "RebateForGoldTradeSuccessFee",
+            "value": "624",
+            "description": "The rebate for providing timely shipping information."
+          },
+          {
+            "name": "MotorsFeatureBundleUpgrade",
+            "value": "625",
+            "description": "For upgrading Motors Feature Bundle"
+          }
+        ]
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the transaction."
+      },
+      {
+        "name": "Credit",
+        "type": "Number",
+        "required": false,
+        "description": "The amount to credit to the member's account."
+      },
+      {
+        "name": "Debit",
+        "type": "Number",
+        "required": false,
+        "description": "The amount to debit from the member's account."
+      },
+      {
+        "name": "WillBeInvoiced",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this ledger item will be invoiced, rather than deducted from the member's trade me balance."
+      },
+      {
+        "name": "InvoicedValue",
+        "type": "Number",
+        "required": false,
+        "description": "The amount that will be invoiced to the member"
+      },
+      {
+        "name": "ValidationErrors",
+        "type": "Collection of <ValidationError> or null",
+        "required": false,
+        "description": "A collection of errors if there are any"
+      },
+      {
+        "name": "Message",
+        "type": "Message \n String or null \n\nThe listing validation error message.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Message",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing validation error message."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Category": "ABC",
+      "Title": "ABC",
+      "Subtitle": "ABC",
+      "Description": [
+        "ABC",
+        "ABC"
+      ],
+      "StartPrice": 123.0,
+      "ReservePrice": 123.0,
+      "BuyNowPrice": 123.0,
+      "Duration": 0,
+      "EndDateTime": "/Date(1514764800)/",
+      "Pickup": 0,
+      "PickupSuburbId": 123,
+      "IsBrandNew": false,
+      "AuthenticatedMembersOnly": false,
+      "IsClassified": false,
+      "OpenHomes": [
+        {
+          "Start": "/Date(1514764800)/",
+          "End": "/Date(1514764800)/"
+        },
+        {
+          "Start": "/Date(1514764800)/",
+          "End": "/Date(1514764800)/"
+        }
+      ],
+      "SendPaymentInstructions": false,
+      "OtherPaymentMethod": "ABC",
+      "IsOrNearOffer": false,
+      "IsPriceOnApplication": false,
+      "IsBold": false,
+      "IsFeatured": false,
+      "IsHomepageFeatured": false,
+      "HasGallery": false,
+      "HasGalleryPlus": false,
+      "Quantity": 123,
+      "IsFlatShippingCharge": false,
+      "HasAgreedWithLegalNotice": false,
+      "AutoRelistLimit": 123,
+      "HomePhoneNumber": "ABC",
+      "MobilePhoneNumber": "ABC",
+      "IsHighlighted": false,
+      "HasSuperFeature": false,
+      "PhotoIds": [
+        123,
+        123
+      ],
+      "ShippingOptions": [
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        },
+        {
+          "Type": 0,
+          "Price": 123.0,
+          "Method": "ABC",
+          "ShippingId": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false,
+              "IsApplied": false,
+              "TaxAmount": 123.0,
+              "WasPriceTaxAmount": 123.0
+            }
+          ]
+        }
+      ],
+      "PaymentMethods": [
+        0,
+        0
+      ],
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC",
+          "Type": 0,
+          "Range": {
+            "Lower": "ABC",
+            "Upper": "ABC"
+          },
+          "MaxStringLength": 123,
+          "Options": [
+            {
+              "Value": "ABC",
+              "Display": "ABC",
+              "Count": 123
+            },
+            {
+              "Value": "ABC",
+              "Display": "ABC",
+              "Count": 123
+            }
+          ],
+          "Units": [
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            },
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            }
+          ],
+          "Unit": "ABC",
+          "IsRequiredForSell": false,
+          "GroupName": "ABC",
+          "DisplayValue": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC",
+          "Type": 0,
+          "Range": {
+            "Lower": "ABC",
+            "Upper": "ABC"
+          },
+          "MaxStringLength": 123,
+          "Options": [
+            {
+              "Value": "ABC",
+              "Display": "ABC",
+              "Count": 123
+            },
+            {
+              "Value": "ABC",
+              "Display": "ABC",
+              "Count": 123
+            }
+          ],
+          "Units": [
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            },
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            }
+          ],
+          "Unit": "ABC",
+          "IsRequiredForSell": false,
+          "GroupName": "ABC",
+          "DisplayValue": "ABC"
+        }
+      ],
+      "IsClearance": false,
+      "ExternalReferenceId": "ABC",
+      "Contacts": [
+        {
+          "FullName": "ABC",
+          "PhoneNumber": "ABC",
+          "AlternatePhoneNumber": "ABC",
+          "EMail": "ABC",
+          "BrandingImageId": 123,
+          "AgentId": "ABC",
+          "AgencyName": "ABC",
+          "ShouldContact": 0
+        },
+        {
+          "FullName": "ABC",
+          "PhoneNumber": "ABC",
+          "AlternatePhoneNumber": "ABC",
+          "EMail": "ABC",
+          "BrandingImageId": 123,
+          "AgentId": "ABC",
+          "AgencyName": "ABC",
+          "ShouldContact": 0
+        }
+      ],
+      "ReturnListingDetails": false,
+      "DonationRecipient": 0,
+      "CatalogueId": "ABC",
+      "RemainingGalleryPlusRelists": 123,
+      "PromotionId": 123,
+      "ExcludeFromShippingPromotion": false,
+      "SKU": "ABC",
+      "AvailablePromotions": [
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Description": "ABC",
+          "LongDescription": "ABC",
+          "Price": 123.0,
+          "OriginalPrice": 123.0,
+          "Recommended": false,
+          "MinimumPhotoCount": 123,
+          "DiscountDescription": "ABC",
+          "DiscountStartDate": "ABC",
+          "DiscountEndDate": "ABC",
+          "DiscountDisclaimer": "ABC",
+          "GoodFor2RelistsFee": 123.0
+        },
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Description": "ABC",
+          "LongDescription": "ABC",
+          "Price": 123.0,
+          "OriginalPrice": 123.0,
+          "Recommended": false,
+          "MinimumPhotoCount": 123,
+          "DiscountDescription": "ABC",
+          "DiscountStartDate": "ABC",
+          "DiscountEndDate": "ABC",
+          "DiscountDisclaimer": "ABC",
+          "GoodFor2RelistsFee": 123.0
+        }
+      ],
+      "ImmutableFields": [
+        "ABC",
+        "ABC"
+      ],
+      "GeographicLocation": {
+        "Latitude": 123.0,
+        "Longitude": 123.0,
+        "Accuracy": 0
+      },
+      "WasPrice": 123.0,
+      "EmbeddedContent": {
+        "YouTubeVideoKey": "ABC",
+        "MatterportKey": "ABC",
+        "IStagingKey": "ABC",
+        "VimeoVideoKey": "ABC",
+        "DiakritFurnishKey": "ABC",
+        "DiakritStylerKey": "ABC",
+        "DiakritPanoramaKey": "ABC",
+        "VirtualToursCreatorKey": "ABC",
+        "Approved3DTourUrl": "ABC"
+      },
+      "IsBranded": false,
+      "ShortDescription": "ABC",
+      "ShippingCalculatorInputs": {
+        "IsBoxType": false,
+        "Width": 123.0,
+        "Height": 123.0,
+        "Depth": 123.0,
+        "IsSignatureRequired": false,
+        "PickupLocalityId": 123,
+        "IsRural": false,
+        "PackagingOption": 1,
+        "WeightOption": 1,
+        "FilterOption": 0
+      },
+      "AdditionalData": {
+        "BulletPoints": [
+          "ABC",
+          "ABC"
+        ],
+        "Tags": [
+          {
+            "Name": "ABC"
+          },
+          {
+            "Name": "ABC"
+          }
+        ]
+      },
+      "VariantDefinition": {
+        "OptionSets": [
+          {
+            "Name": "ABC",
+            "Values": [
+              "ABC",
+              "ABC"
+            ]
+          },
+          {
+            "Name": "ABC",
+            "Values": [
+              "ABC",
+              "ABC"
+            ]
+          }
+        ],
+        "Variants": [
+          {
+            "SKU": "ABC",
+            "Price": 123.0,
+            "IsClearance": false,
+            "WasPrice": 123.0,
+            "Quantity": 123,
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "Photos": [
+              {
+                "Key": 123,
+                "Value": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC",
+                  "PhotoId": 123,
+                  "OriginalWidth": 123,
+                  "OriginalHeight": 123
+                }
+              },
+              {
+                "Key": 123,
+                "Value": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC",
+                  "PhotoId": 123,
+                  "OriginalWidth": 123,
+                  "OriginalHeight": 123
+                }
+              }
+            ],
+            "Options": [
+              {
+                "Name": "ABC",
+                "Value": "ABC"
+              },
+              {
+                "Name": "ABC",
+                "Value": "ABC"
+              }
+            ],
+            "Attributes": [
+              {},
+              {}
+            ],
+            "ListingId": 123,
+            "ExternalReferenceId": "ABC",
+            "ProductSpecification": {
+              "GTIN": "ABC",
+              "Brand": "ABC",
+              "ManufacturerCode": "ABC"
+            }
+          },
+          {
+            "SKU": "ABC",
+            "Price": 123.0,
+            "IsClearance": false,
+            "WasPrice": 123.0,
+            "Quantity": 123,
+            "PhotoIds": [
+              123,
+              123
+            ],
+            "Photos": [
+              {
+                "Key": 123,
+                "Value": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC",
+                  "PhotoId": 123,
+                  "OriginalWidth": 123,
+                  "OriginalHeight": 123
+                }
+              },
+              {
+                "Key": 123,
+                "Value": {
+                  "Thumbnail": "ABC",
+                  "List": "ABC",
+                  "Medium": "ABC",
+                  "Gallery": "ABC",
+                  "Large": "ABC",
+                  "FullSize": "ABC",
+                  "PlusSize": "ABC",
+                  "PhotoId": 123,
+                  "OriginalWidth": 123,
+                  "OriginalHeight": 123
+                }
+              }
+            ],
+            "Options": [
+              {
+                "Name": "ABC",
+                "Value": "ABC"
+              },
+              {
+                "Name": "ABC",
+                "Value": "ABC"
+              }
+            ],
+            "Attributes": [
+              {},
+              {}
+            ],
+            "ListingId": 123,
+            "ExternalReferenceId": "ABC",
+            "ProductSpecification": {
+              "GTIN": "ABC",
+              "Brand": "ABC",
+              "ManufacturerCode": "ABC"
+            }
+          }
+        ]
+      },
+      "SecondCategory": "ABC",
+      "PremiumPackageCode": "ABC",
+      "ProductSpecification": {},
+      "ListingExtras": [
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Variant": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "Description": "ABC",
+          "Duration": 123,
+          "Delay": 123,
+          "DaysRemaining": 123
+        },
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Variant": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "Description": "ABC",
+          "Duration": 123,
+          "Delay": 123,
+          "DaysRemaining": 123
+        }
+      ],
+      "ListingExtrasLedger": [
+        {},
+        {}
+      ],
+      "HasGoodFor2Relists": false,
+      "IsCounterOffersAllowed": false,
+      "MaximumOffers": 123,
+      "ShippingTemplateId": 123,
+      "Photos": [
+        {
+          "Key": 123,
+          "Value": {}
+        },
+        {
+          "Key": 123,
+          "Value": {}
+        }
+      ],
+      "Files": [
+        {
+          "Url": "ABC",
+          "Name": "ABC"
+        },
+        {
+          "Url": "ABC",
+          "Name": "ABC"
+        }
+      ]
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "TotalCost": 123.0,
+      "InsufficientBalance": false,
+      "FeeItems": {
+        "TotalCount": 123,
+        "Page": 123,
+        "PageSize": 123,
+        "List": [
+          {
+            "Date": "/Date(1514764800)/",
+            "Type": 0,
+            "Description": "ABC",
+            "Credit": 123.0,
+            "Debit": 123.0,
+            "WillBeInvoiced": false,
+            "InvoicedValue": 123.0
+          },
+          {
+            "Date": "/Date(1514764800)/",
+            "Type": 0,
+            "Description": "ABC",
+            "Credit": 123.0,
+            "Debit": 123.0,
+            "WillBeInvoiced": false,
+            "InvoicedValue": 123.0
+          }
+        ]
+      },
+      "ValidationErrors": [
+        {
+          "Message": "ABC"
+        },
+        {
+          "Message": "ABC"
+        }
+      ]
+    }
+  }
+}

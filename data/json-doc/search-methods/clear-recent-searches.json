@@ -1,0 +1,70 @@
+{
+  "endpoint": "ClearRecentSearches",
+  "title": "Clear recent searches",
+  "description": "Clear any or all recent searches recorded against the user's profile.",
+  "source": "https://developer.trademe.co.nz/api-reference/search-methods/clear-recent-searches",
+  "url": "https://api.trademe.co.nz/v1/Search/RecentSearches.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "search_term",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The search term to remove. If this is not supplied, then all search terms are removed from the user's profile."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SearchSuggestionsResponse> Details on whether the operation succeeded.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

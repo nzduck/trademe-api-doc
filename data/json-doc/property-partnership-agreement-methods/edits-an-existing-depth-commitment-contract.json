@@ -1,0 +1,23 @@
+{
+  "endpoint": "EditsAnExistingDepthCommitmentContract",
+  "title": "Edits an existing depth commitment contract",
+  "description": null,
+  "source": "https://developer.trademe.co.nz/api-reference/property-partnership-agreement-methods/edits-an-existing-depth-commitment-contract",
+  "url": null,
+  "method": null,
+  "authentication_required": null,
+  "permission_required": null,
+  "rate_limited": null,
+  "supported_formats": [],
+  "parameters": {
+    "path": [],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": null,
+    "fields": []
+  },
+  "examples": null
+}

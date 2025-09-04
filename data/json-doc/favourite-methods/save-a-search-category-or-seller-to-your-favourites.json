@@ -1,0 +1,152 @@
+{
+  "endpoint": "SaveASearchCategoryOrSellerToYourFavourites",
+  "title": "Save a search, category or seller to your favourites",
+  "description": "Saves a search to the currently authenticated user's list of favourite searches. Can also be used to save a favourite category or seller with the option of specifying basic filters (condition, Buy Now, Pay Now) and sort order.",
+  "source": "https://developer.trademe.co.nz/api-reference/favourite-methods/save-a-search-category-or-seller-to-your-favourites",
+  "url": "https://api.trademe.co.nz/v1/favourites/search.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SaveSearchRequest>",
+    "fields": [
+      {
+        "name": "Email",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The frequency that emails should be sent."
+      },
+      {
+        "name": "Push",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The frequency that push notifications should be sent."
+      },
+      {
+        "name": "Label",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The label of the favourite should be sent."
+      },
+      {
+        "name": "SearchString",
+        "type": "String (required)",
+        "required": true,
+        "description": "A string containing the search parameters. This should be formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by a search API (you can specify which search API using the SearchType field)."
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The type of search to save. The value of this field changes the allowed parameters in SearchString. For example, if this is \"UsedMotors\" then \"make\" and \"model\" parameters become available (see the search API documentation for details on exactly what parameters are allowed). When saving a category or seller, use \"General\"."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<SavedFavouriteResponse> Details of the saved favourite, including the ID.",
+    "fields": [
+      {
+        "name": "SearchId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the saved favourite."
+      },
+      {
+        "name": "Response",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the error, if the operation failed."
+      },
+      {
+        "name": "Saved",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the favourite was saved."
+      },
+      {
+        "name": "FavouriteType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates what type of favourite was saved.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Nothing"
+          },
+          {
+            "name": "Category",
+            "value": "1",
+            "description": "Category"
+          },
+          {
+            "name": "Search",
+            "value": "3",
+            "description": "General search"
+          },
+          {
+            "name": "AttributeSearch",
+            "value": "4",
+            "description": "Attributed search"
+          },
+          {
+            "name": "Seller",
+            "value": "6",
+            "description": "Seller"
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Label of favourite was saved."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Email": 0,
+      "Push": 0,
+      "Label": "ABC",
+      "SearchString": "ABC",
+      "Type": 0
+    },
+    "response_json": {
+      "SearchId": 123,
+      "Response": "ABC",
+      "Saved": false,
+      "FavouriteType": 0,
+      "Label": "ABC"
+    }
+  }
+}

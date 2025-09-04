@@ -1,0 +1,160 @@
+{
+  "endpoint": "RespondToAFixedPriceOffer",
+  "title": "Respond to a fixed price offer",
+  "description": "Accepts or rejects a fixed price offer.",
+  "source": "https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/respond-to-a-fixed-price-offer",
+  "url": "https://api.trademe.co.nz/v1/FixedPriceOffers/Respond.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<FixedPriceOfferRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of a listing which has a current fixed price offer associated with it."
+      },
+      {
+        "name": "Accept",
+        "type": "Boolean (required)",
+        "required": true,
+        "description": "Indicates whether or not to accept or reject the fixed price offer."
+      },
+      {
+        "name": "ShippingOption",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The preferred shipping option which will be used when this request happens to be the winning bid. The value is an numeric ID that is returned from the listing detail request (in the ShippingId field). Required when accepting the offer."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Indicates the number of items to buy. Only applicable to Buy Now only auctions. Defaults to 1."
+      },
+      {
+        "name": "FirearmsLicence",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The user's firearms licence number. This is required for firearms purchases."
+      },
+      {
+        "name": "FirearmsLicenceHolder",
+        "type": "<FirearmsLicenceHolderDetails> (optional)",
+        "required": false,
+        "description": "The user Enters First, Middle, and Last Names associated to the firearms licence."
+      },
+      {
+        "name": "FirstName",
+        "type": "FirstName \n String (required) \n\nFirst name of Licence Holder. Required;\n\n\n\n MiddleNames \n String (optional) \n\nMiddle Names of Licence Holder. Optional;\n\n\n\n LastName \n String (required) \n\nLast name of Licence Holder. Required;",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "FirstName",
+        "type": "String (required)",
+        "required": true,
+        "description": "First name of Licence Holder. Required;"
+      },
+      {
+        "name": "MiddleNames",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Middle Names of Licence Holder. Optional;"
+      },
+      {
+        "name": "LastName",
+        "type": "String (required)",
+        "required": true,
+        "description": "Last name of Licence Holder. Required;"
+      },
+      {
+        "name": "ReturnListingDetails",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether full listing details should be returned in the Listing field."
+      },
+      {
+        "name": "IsBuyerOlderThan18",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "The user agrees they are older than 18. This is required for wine purchases."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<FixedPriceOfferResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the purchase (only available if the offer was accepted)."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "Accept": false,
+      "ShippingOption": 123,
+      "Quantity": 123,
+      "FirearmsLicence": "ABC",
+      "FirearmsLicenceHolder": {
+        "FirstName": "ABC",
+        "MiddleNames": "ABC",
+        "LastName": "ABC"
+      },
+      "ReturnListingDetails": false,
+      "IsBuyerOlderThan18": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "PurchaseId": 123
+    }
+  }
+}

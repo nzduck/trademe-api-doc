@@ -1,0 +1,199 @@
+{
+  "endpoint": "AnswerAQuestionOnAListing",
+  "title": "Answer a question on a listing",
+  "description": "Post a response to a specific question on a listing. Only available to the seller of the listing. The member who asked the question will be notified.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/answer-a-question-on-a-listing",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/questions/{questionId}/answerquestion.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing containing the question."
+      },
+      {
+        "name": "questionId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the question being answered."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ListingAnswerQuestion>",
+    "fields": [
+      {
+        "name": "answer",
+        "type": "String (required)",
+        "required": true,
+        "description": "The answer text (500 characters max)."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<Question> A ListingQuestion that contains the question and the answer.",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing this question belongs to."
+      },
+      {
+        "name": "ListingQuestionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The question ID."
+      },
+      {
+        "name": "Comment",
+        "type": "String or null",
+        "required": false,
+        "description": "The text of the question."
+      },
+      {
+        "name": "CommentDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the question was asked."
+      },
+      {
+        "name": "Answer",
+        "type": "String or null",
+        "required": false,
+        "description": "The answer given to the question by the owner of the listing."
+      },
+      {
+        "name": "AnswerDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the question was answered."
+      },
+      {
+        "name": "IsSellerComment",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this is a comment from the seller rather than a question."
+      },
+      {
+        "name": "AskingMember",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "The member details for the member asking the question.",
+        "nested_fields": [
+          {
+            "field_name": "MemberId",
+            "field_type": "Integer",
+            "description": "The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "Nickname",
+            "field_type": "String or null",
+            "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "DateAddressVerified",
+            "field_type": "DateTime",
+            "description": "The date the member was address verified."
+          },
+          {
+            "field_name": "DateJoined",
+            "field_type": "DateTime",
+            "description": "The date the member joined."
+          },
+          {
+            "field_name": "UniqueNegative",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed negative feedback against this member."
+          },
+          {
+            "field_name": "UniquePositive",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed positive feedback against this member."
+          },
+          {
+            "field_name": "FeedbackCount",
+            "field_type": "Integer",
+            "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+          },
+          {
+            "field_name": "IsAddressVerified",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member has been address verified."
+          },
+          {
+            "field_name": "IsDealer",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is a car dealer."
+          },
+          {
+            "field_name": "IsAuthenticated",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is authenticated."
+          },
+          {
+            "field_name": "Photo",
+            "field_type": "String or null",
+            "description": "The profile photo URL of the member"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "answer": "ABC"
+    },
+    "response_json": {
+      "ListingId": 123,
+      "ListingQuestionId": 123,
+      "Comment": "ABC",
+      "CommentDate": "/Date(1514764800)/",
+      "Answer": "ABC",
+      "AnswerDate": "/Date(1514764800)/",
+      "IsSellerComment": false,
+      "AskingMember": {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "/Date(1514764800)/",
+        "DateJoined": "/Date(1514764800)/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "Photo": "ABC"
+      }
+    }
+  }
+}

@@ -1,0 +1,105 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-list-of-charities -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve list of charities</h1>
+<!-- Page content -->
+<p>Retrieves a collection of charities available to donate to when listing.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Charities.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;Charity&gt; </p>
+<p>Charities collection.</p>
+<table class="dense" id="returns">
+<tr data-enum-values="[{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;The default charity identifier. Used if the user chose not to donate to a charity at all.&quot;}, {&quot;name&quot;: &quot;ForestAndBird&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Donate to Forest and Bird's kiwis for kiwis program.&quot;}, {&quot;name&quot;: &quot;Plunket&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Donate to Plunket.&quot;}, {&quot;name&quot;: &quot;StJohn&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;Donate to St John.&quot;}, {&quot;name&quot;: &quot;OurPeopleOurCityFund&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;Donate to Our People, Our City Fund.&quot;}, {&quot;name&quot;: &quot;WomensRefuge&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;Donate to Women's Refuge&quot;}, {&quot;name&quot;: &quot;KidsCan&quot;, &quot;value&quot;: &quot;6&quot;, &quot;description&quot;: &quot;Donate to KidsCan&quot;}]">
+<th style="width: 22%"> CharityType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The unique identifier of the charity.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> ImageSource </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for this charity's brand image (designed for a light background).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DarkModeImageSource </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for this charity's brand image (designed for a dark background).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the charity e.g. "Plunket", "Kiwis for kiwi".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Tagline </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A short description of what the charity does.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "CharityType": 0,
+    "ImageSource": "ABC",
+    "DarkModeImageSource": "ABC",
+    "Description": "ABC",
+    "Tagline": "ABC"
+  },
+  {
+    "CharityType": 0,
+    "ImageSource": "ABC",
+    "DarkModeImageSource": "ABC",
+    "Description": "ABC",
+    "Tagline": "ABC"
+  }
+]</code></pre>
+</div>

@@ -1,0 +1,163 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/selling-methods/withdraw-an-auction-or-classified -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Withdraw an auction or classified</h1>
+<!-- Page content -->
+<p>Withdraw a listing from Trade Me for either being sold or unsold.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Selling/Withdraw.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;WithdrawRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing that is being withdrawn, relisted or extended.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReturnListingDetails </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether full listing details should be returned in the Listing field.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>Indicates whether this withdrawl request is for a listing that sold or not.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>ListingWasSold</td>
+<td>1</td>
+<td>
+<p>The item was sold.</p>
+</td>
+</tr>
+<tr>
+<td>ListingWasNotSold</td>
+<td>2</td>
+<td>
+<p>The item didn't sell.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Reason </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The reason for withdrawing the listing, if the listing has not sold. Max 255 characters.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalePrice </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The amount the listing sold for, if the listing has sold.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;ListingResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Listing </th>
+<td style="width: 22%"> &lt;ListedItemDetail&gt; or null </td>
+<td>
+<p>The state of the listing, after the listing operation has successfully completed. This field is only present if the ReturnListingDetails parameter is <b>true</b> and the operation was successful. This field will also be missing if there was an error retrieving the listing details. For more information on this field, see the documentation for the listing details API.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type is defined elsewhere)
+                        </td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "ReturnListingDetails": false,
+  "Type": 1,
+  "Reason": "ABC",
+  "SalePrice": 123.0
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "ListingId": 123,
+  "Listing": { ... }
+}</code></pre>
+</div>

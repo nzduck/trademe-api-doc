@@ -1,0 +1,69 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/branding-methods/gets-a-branding-image-details-associated-with-an-authenticated-user -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Gets a branding image details associated with an authenticated user</h1>
+<!-- Page content -->
+<p>Returns a branding image associated with a member. The response includes the Url to the branding image.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages/{brandingId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> memberId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> brandingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;BrandingImageDetails&gt; </p>
+<p>A branding image with it's detail</p>
+<table class="dense" id="returns">
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+}</code></pre>
+</div>

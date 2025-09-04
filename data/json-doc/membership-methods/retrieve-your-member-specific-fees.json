@@ -1,0 +1,327 @@
+{
+  "endpoint": "RetrieveYourMemberSpecificFees",
+  "title": "Retrieve your member-specific fees",
+  "description": "Retrieves a list of fees for a category for the currently authenticated user. These fees can differ from the standard rates if the member is a top seller or is privileged in some other way.",
+  "source": "https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-your-member-specific-fees",
+  "url": "https://api.trademe.co.nz/v1/Member/{category}/Fees.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "category",
+        "type": "String (required)",
+        "required": true,
+        "description": "The category number of the category to retrieve fees for."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<ListingFees>",
+    "fields": [
+      {
+        "name": "Bold",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the bold title promotion. Listings with this promotion have a bold title in search results. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Bundle",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of having the feature, bold and gallery promotions. If the property is not present, then this promotion is not available. Note that some categories do not allow certain promotions - in this case only the supported promotions are included in the price."
+      },
+      {
+        "name": "EndDate",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the scheduled end time promotion. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Feature",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the feature promotion. Listings with this promotion are shown higher in search results. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Gallery",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the gallery promotion. Listings with this promotion show photos in search results. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "GalleryPlus",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the gallery plus promotion. Listings with this promotion get the gallery promotion, plus the next two relists also get the gallery promotion if the item doesn't sell. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Highlight",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the highlight promotion. Listings with this promotion have a bright yellow border. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Homepage",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of featuring the listing on the homepage. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Listing",
+        "type": "Number or null",
+        "required": false,
+        "description": "The base price of listing an item. Applies to classifieds and auctions in some categories. Note that in some categories the fee for listing a classified depends on the asking price (or the rateable value/rent per week for properties) - for these categories this property will contain the price at the lowest tier. If this property is not present, then there is no listing fee for this category. For Motors the field is only applicable to Auctions"
+      },
+      {
+        "name": "MultiPhoto",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price for additional photos. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Reserve",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price for having a reserve. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Subtitle",
+        "type": "Number or null",
+        "required": false,
+        "description": "The cost of the subtitle promotion. Listings with this promotion have a subtitle in search results and listing pages. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "TenDays",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price to extend the listing to a duration of 10 days. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "Withdrawal",
+        "type": "Number or null",
+        "required": false,
+        "description": "The minimum withdrawal fee for a listing. For some categories, including Motors, the withdrawal fee is calculated based on the sale price of the item at the time of the withdrawal. Withdrawing the item in the first hour is fee.  Retrieve fees for withdrawing a listing endpoint is used to calculate the correct value."
+      },
+      {
+        "name": "SuperFeature",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price for the super feature promotion. Listings with the super feature promotion are listed on the landing page for certain verticals, such as Trade Me Motors. This price is irrelevant for general marketplace listings. This is the price for super feature only - it does not include the feature combo extras. It is only available when adding the super feature promotion to a listing which had it already, but where the super feature period has expired. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "SuperFeatureBundle",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price for the super feature promotion. Listings with the super feature promotion are listed on the landing page for categories in general marketplace and verticals, such as Trade Me Motors. This price includes feature, bold, highlight and gallery, where applicable. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "HighVolume",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price for listing more than a set number of listings concurrently. The maximum number of listings you can run without incurring a fee starts at 50, but increases based on the number of items you have sold. See our help page for more information. This fee does not apply to classifieds. This fee is the same for all categories (i.e. it is not category-specific)."
+      },
+      {
+        "name": "ListingFeeTiers",
+        "type": "Collection of <FeeTier> or null",
+        "required": false,
+        "description": "If the listing fee is dependent on the asking price, then this field will contain a list of pricing tiers. Only applies to categories where a tiered listing fee has been applied.",
+        "nested_fields": [
+          {
+            "field_name": "MinimumTierPrice",
+            "field_type": "Number",
+            "description": "The minimum price (may be the sale price, asking price, rateable value or rent per week, depending on the category and the type of fee) for this tier. The maximum price for this tier is defined by the minimum price for the next tier (if this is the last tier, then the maximum price is unlimited)."
+          },
+          {
+            "field_name": "FixedFee",
+            "field_type": "Number",
+            "description": "The fixed fee that applies to listings within this tier. If the PercentageFee property is also present, then this fee applies in addition to that one."
+          },
+          {
+            "field_name": "PercentageFee",
+            "field_type": "Number",
+            "description": "The fee that applies to listings within this tier, as a percentage of the price increase over the minimum tier price. For example, if this fee applies to a sale price of $250, the MinimumTierPrice is $200, and the PercentageFee is 4.9, then this fee is 4.9% of the $50 which amounts to $2.45. If the FixedFee property is present, then this fee applies in addition to that one."
+          }
+        ]
+      },
+      {
+        "name": "MinimumSuccessFee",
+        "type": "Number",
+        "required": false,
+        "description": "The minimum success fee. Success fees only apply to auctions. If the property is not present, then the minimum success fee is zero."
+      },
+      {
+        "name": "MaximumSuccessFee",
+        "type": "Number",
+        "required": false,
+        "description": "The maximum success fee. Success fees only apply to auctions. If the property is not present, then success fees do not apply to this category."
+      },
+      {
+        "name": "SuccessFeeTiers",
+        "type": "Collection of <FeeTier> or null",
+        "required": false,
+        "description": "A list of success fee tiers. Only applies to auctions. If the property is not present, then success fees do not apply to this category."
+      },
+      {
+        "name": "Branding",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the branding promotion. Listings with this promotion can have logo and/or banner. If the property is not present, then this promotion is not available."
+      },
+      {
+        "name": "SecondCategory",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the second category promotion. Listings with this promotion will also appear in the second category selected."
+      },
+      {
+        "name": "Discounts",
+        "type": "Collection of <FeeDiscount> or null",
+        "required": false,
+        "description": "Additional information regarding member specific discounts for this category. The discount values are already applied to the Fees.",
+        "nested_fields": [
+          {
+            "field_name": "Type",
+            "field_type": "Enumeration",
+            "description": "Fee discount type.",
+            "enum_values": [
+              {
+                "name": "NotSpecified",
+                "value": "0",
+                "description": "No fee discount specified."
+              },
+              {
+                "name": "SuccessFee",
+                "value": "1",
+                "description": "The fee for a successful auction."
+              },
+              {
+                "name": "Gallery",
+                "value": "2",
+                "description": "The fee of the gallery promotion."
+              },
+              {
+                "name": "Feature",
+                "value": "3",
+                "description": "The fee of the feature promotion."
+              },
+              {
+                "name": "FeatureCombo",
+                "value": "4",
+                "description": "The fee of the feature combo promotion."
+              },
+              {
+                "name": "SuperFeature",
+                "value": "5",
+                "description": "The fee of the super feature promotion."
+              },
+              {
+                "name": "Subtitle",
+                "value": "6",
+                "description": "The fee of the subtitle promotion."
+              },
+              {
+                "name": "Reserve",
+                "value": "7",
+                "description": "The fee for having a reserve price."
+              },
+              {
+                "name": "TenDays",
+                "value": "8",
+                "description": "The fee for extending the listing to a duration of 10 days."
+              },
+              {
+                "name": "EndDate",
+                "value": "9",
+                "description": "The fee of the scheduled end time promotion."
+              }
+            ]
+          },
+          {
+            "field_name": "Message",
+            "field_type": "String or null",
+            "description": "A short description of the fee discount."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Bold": 123.0,
+      "Bundle": 123.0,
+      "EndDate": 123.0,
+      "Feature": 123.0,
+      "Gallery": 123.0,
+      "GalleryPlus": 123.0,
+      "Highlight": 123.0,
+      "Homepage": 123.0,
+      "Listing": 123.0,
+      "MultiPhoto": 123.0,
+      "Reserve": 123.0,
+      "Subtitle": 123.0,
+      "TenDays": 123.0,
+      "Withdrawal": 123.0,
+      "SuperFeature": 123.0,
+      "SuperFeatureBundle": 123.0,
+      "HighVolume": 123.0,
+      "ListingFeeTiers": [
+        {
+          "MinimumTierPrice": 123.0,
+          "FixedFee": 123.0,
+          "PercentageFee": 123.0
+        },
+        {
+          "MinimumTierPrice": 123.0,
+          "FixedFee": 123.0,
+          "PercentageFee": 123.0
+        }
+      ],
+      "MinimumSuccessFee": 123.0,
+      "MaximumSuccessFee": 123.0,
+      "SuccessFeeTiers": [
+        {},
+        {}
+      ],
+      "Branding": 123.0,
+      "SecondCategory": 123.0,
+      "Discounts": [
+        {
+          "Type": 0,
+          "Message": "ABC"
+        },
+        {
+          "Type": 0,
+          "Message": "ABC"
+        }
+      ]
+    }
+  }
+}

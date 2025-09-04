@@ -1,0 +1,97 @@
+{
+  "endpoint": "AddAListingToYourWatchlistWithOptions",
+  "title": "Add a listing to your watchlist with options",
+  "description": "Adds a listing to the authenticated user's watchlist with the option to control when and if an email is sent to the member warning that the auction is closing soon.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-listing-to-your-watchlist-with-options",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/WatchList/Add.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SaveToWatchlistRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to add to the watchlist."
+      },
+      {
+        "name": "EmailOption",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The amount of time before the auction closes to email the member."
+      },
+      {
+        "name": "SaveEmailOption",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to save the email preference as the member's default choice."
+      },
+      {
+        "name": "ReferringSearchQueryId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The search query ID for the search which referred the user to the listing."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<WatchListResponse> Details on whether the operation succeeded.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "EmailOption": 0,
+      "SaveEmailOption": false,
+      "ReferringSearchQueryId": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

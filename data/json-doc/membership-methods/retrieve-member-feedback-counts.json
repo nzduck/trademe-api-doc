@@ -1,0 +1,139 @@
+{
+  "endpoint": "RetrieveMemberFeedbackCounts",
+  "title": "Retrieve member feedback counts",
+  "description": "Returns feedback summary information for a member.",
+  "source": "https://developer.trademe.co.nz/api-reference/membership-methods/retrieve-member-feedback-counts",
+  "url": "https://api.trademe.co.nz/v1/member/{memberId}/FeedbackCount.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the member to retrieve feedback summary information for."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "since",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "Ignores any feedback from before this date."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<FeedbackCount>",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total of the feedback taking unique postive and negative counts into account."
+      },
+      {
+        "name": "TotalPositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of positive feedback given."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of individuals who have left feedback."
+      },
+      {
+        "name": "TotalNeutral",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of neutral feedback given."
+      },
+      {
+        "name": "TotalNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of negative feedback given."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of negative feedback given."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "LastLoggedIn",
+        "type": "DateTime",
+        "required": false,
+        "description": "The time the member last logged in."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "TwoMonthListingCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listing in the past 2 months by this member."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been authenticated."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "TotalPositive": 123,
+      "UniquePositive": 123,
+      "TotalNeutral": 123,
+      "TotalNegative": 123,
+      "UniqueNegative": 123,
+      "Nickname": "ABC",
+      "LastLoggedIn": "/Date(1514764800)/",
+      "DateJoined": "/Date(1514764800)/",
+      "TwoMonthListingCount": 123,
+      "IsAuthenticated": false
+    }
+  }
+}

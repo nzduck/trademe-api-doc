@@ -1,0 +1,161 @@
+{
+  "endpoint": "RefundAPayNowPayment",
+  "title": "Refund a Pay Now payment",
+  "description": "Refunds a Pay Now payment where the authenticated user is the seller.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/refund-a-pay-now-payment",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/PayNowRefund.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<PayNowRefundRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the listing to refund.\n\n                                This field is retained for backwards compatibility; please use PurchaseId instead."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the fixed price offer. Defaults to zero (i.e. no fixed price offer).\n\n                                This field is retained for backwards compatibility; please use PurchaseId instead."
+      },
+      {
+        "name": "RefundAmount",
+        "type": "Number (optional)",
+        "required": false,
+        "description": "The dollar value to refund, up to the original value of the auction. Defaults to refunding the full value of the original purchase."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the purchase to refund. If this is provided, ListingId and OfferId must not be present."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PayNowRefundResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "StatusCode",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status code indicating what went wrong if the operation failed.",
+        "enum": [
+          {
+            "name": "Success",
+            "value": "0",
+            "description": "OK"
+          },
+          {
+            "name": "Failed",
+            "value": "1",
+            "description": "Generic failure."
+          },
+          {
+            "name": "InvalidAmount",
+            "value": "2",
+            "description": "The refund amount was too large or too small."
+          },
+          {
+            "name": "InvalidAuctionId",
+            "value": "3",
+            "description": "The auction ID is invalid."
+          },
+          {
+            "name": "PaymentIsFrozen",
+            "value": "4",
+            "description": "The payment is being investigated."
+          },
+          {
+            "name": "NotTheSeller",
+            "value": "5",
+            "description": "The caller is not the seller of the auction."
+          },
+          {
+            "name": "NotBoughtUsingPayNow",
+            "value": "6",
+            "description": "The auction did not use PayNow."
+          },
+          {
+            "name": "AlreadyChargedBack",
+            "value": "7",
+            "description": "The payment has already been charged back."
+          },
+          {
+            "name": "AlreadyRefunded",
+            "value": "8",
+            "description": "The payment has already been refunded."
+          },
+          {
+            "name": "RefundDeclined",
+            "value": "9",
+            "description": "The refund was declined by the payment provider."
+          },
+          {
+            "name": "RefundFailed",
+            "value": "10",
+            "description": "There was a failure while processing the refund."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "OfferId": 123,
+      "RefundAmount": 123.0,
+      "PurchaseId": 123
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "StatusCode": 0
+    }
+  }
+}

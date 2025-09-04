@@ -1,0 +1,132 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/jobs-payment-methods/retrieves-job-pack-invoices-for-a-member -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieves Job Pack invoices for a member</h1>
+<!-- Page content -->
+<p>Retrieves a collection of Job Pack invoices associated with an authenticated member</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Payments/Invoices/JobPacks.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Optional time based filter. Valid values are All, LastYear, LastSixMonths, LastThreeMonths, LastMonth. Default to <b>LastYear</b></p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page. The maximum is 50. Defaults to 10.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;JobPackInvoiceSummaryCollection&gt; </p>
+<p>A <b>JobPackInvoiceSummaryCollection</b> containing summary of Job Pack invoices</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "InvoiceId", "field_type": "Integer", "description": "Invoice Id"}, {"field_name": "JobPackTotal", "field_type": "Integer", "description": "Total number of Job Packs purchased"}, {"field_name": "FeatureTotal", "field_type": "Integer", "description": "Total number of features purchased"}, {"field_name": "BrandingTotal", "field_type": "Integer", "description": "Total number of brandings purchased"}, {"field_name": "InvoiceDate", "field_type": "DateTime", "description": "Date of the invoice"}, {"field_name": "TotalExcludingGst", "field_type": "Number", "description": "Total amount of the invoice excluding Gst"}, {"field_name": "TotalIncludingGst", "field_type": "Number", "description": "Total amount of the invoice including Gst"}, {"field_name": "PurchaseOrderNumber", "field_type": "String or null", "description": "Purchase Order number"}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;JobPackInvoiceSummaryItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "InvoiceId": 123,
+      "JobPackTotal": 123,
+      "FeatureTotal": 123,
+      "BrandingTotal": 123,
+      "InvoiceDate": "\/Date(1514764800)\/",
+      "TotalExcludingGst": 123.0,
+      "TotalIncludingGst": 123.0,
+      "PurchaseOrderNumber": "ABC"
+    },
+    {
+      "InvoiceId": 123,
+      "JobPackTotal": 123,
+      "FeatureTotal": 123,
+      "BrandingTotal": 123,
+      "InvoiceDate": "\/Date(1514764800)\/",
+      "TotalExcludingGst": 123.0,
+      "TotalIncludingGst": 123.0,
+      "PurchaseOrderNumber": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

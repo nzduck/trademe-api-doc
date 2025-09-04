@@ -1,0 +1,235 @@
+{
+  "endpoint": "RetrieveYourPhotosWithUsageDetails",
+  "title": "Retrieve your photos, with usage details",
+  "description": "Returns a list of all currently available photos uploaded by authenticated user. Includes information about which auctions are currently using each photo.",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/retrieve-your-photos-with-usage-details",
+  "url": "https://api.trademe.co.nz/v1/photos/details.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MemberPhotos> A collection of MemberPhoto.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <MemberPhoto> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nThe ID of the photo.\n\n\n\n Description \n String or null \n\nThe description accompanying the photo.\n\n\n\n IsUsed \n Boolean \n\nIndicates whether this photo is used.\n\n\n\n Auctions \n Collection of Integer or null \n\nA list of IDs of the auctions this photo is used in.\n\n\n\n PhotoUrls \n <PhotoUrl> or null \n\nA collection of URLs for this photo, one for each size.\n\n\n\n\n\n\n Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer \n\nThe ID of the photo.\n\n\n\n\n\n\n OriginalWidth \n Integer \n\nThe original image width in pixels.\n\n\n\n OriginalHeight \n Integer \n\nThe original image height in pixels.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the photo."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description accompanying the photo."
+      },
+      {
+        "name": "IsUsed",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this photo is used."
+      },
+      {
+        "name": "Auctions",
+        "type": "Collection of Integer or null",
+        "required": false,
+        "description": "A list of IDs of the auctions this photo is used in."
+      },
+      {
+        "name": "PhotoUrls",
+        "type": "<PhotoUrl> or null",
+        "required": false,
+        "description": "A collection of URLs for this photo, one for each size."
+      },
+      {
+        "name": "Thumbnail",
+        "type": "Thumbnail \n String or null \n\nThe URL for the thumbnail sized photo (always 85x64, with white borders).\n\n\n\n List \n String or null \n\nThe URL for the list view sized photo (scaled down to fit 160x120).\n\n\n\n Medium \n String or null \n\nThe URL for the medium sized photo (scaled down to fit 175x175).\n\n\n\n Gallery \n String or null \n\nThe URL for the gallery sized photo (scaled down to fit 233x176).\n\n\n\n Large \n String or null \n\nThe URL for the large sized photo (scaled down to fit 352x264).\n\n\n\n FullSize \n String or null \n\nThe URL for the full sized photo (scaled down to fit 670x502).\n\n\n\n PlusSize \n String or null \n\nThe URL for the plus sized photo (scaled down to fit).\n\n\n\n PhotoId \n Integer \n\nThe ID of the photo.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Thumbnail",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."
+      },
+      {
+        "name": "List",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the list view sized photo (scaled down to fit 160x120)."
+      },
+      {
+        "name": "Medium",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the medium sized photo (scaled down to fit 175x175)."
+      },
+      {
+        "name": "Gallery",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."
+      },
+      {
+        "name": "Large",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the large sized photo (scaled down to fit 352x264)."
+      },
+      {
+        "name": "FullSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the full sized photo (scaled down to fit 670x502)."
+      },
+      {
+        "name": "PlusSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the plus sized photo (scaled down to fit)."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the photo."
+      },
+      {
+        "name": "OriginalWidth",
+        "type": "Integer",
+        "required": false,
+        "description": "The original image width in pixels."
+      },
+      {
+        "name": "OriginalHeight",
+        "type": "Integer",
+        "required": false,
+        "description": "The original image height in pixels."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "Id": 123,
+          "Description": "ABC",
+          "IsUsed": false,
+          "Auctions": [
+            123,
+            123
+          ],
+          "PhotoUrls": {
+            "Thumbnail": "ABC",
+            "List": "ABC",
+            "Medium": "ABC",
+            "Gallery": "ABC",
+            "Large": "ABC",
+            "FullSize": "ABC",
+            "PlusSize": "ABC",
+            "PhotoId": 123
+          },
+          "OriginalWidth": 123,
+          "OriginalHeight": 123
+        },
+        {
+          "Id": 123,
+          "Description": "ABC",
+          "IsUsed": false,
+          "Auctions": [
+            123,
+            123
+          ],
+          "PhotoUrls": {
+            "Thumbnail": "ABC",
+            "List": "ABC",
+            "Medium": "ABC",
+            "Gallery": "ABC",
+            "Large": "ABC",
+            "FullSize": "ABC",
+            "PlusSize": "ABC",
+            "PhotoId": 123
+          },
+          "OriginalWidth": 123,
+          "OriginalHeight": 123
+        }
+      ]
+    }
+  }
+}

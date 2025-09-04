@@ -1,0 +1,485 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve the recent searches for the logged in member - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/search-methods">Search Methods</a> &gt; </li>
+<li class="current">Retrieve the recent searches for the logged in member</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve the recent searches for the logged in member</h1>
+<!-- Page content -->
+<p>Retrieve the recent searches for the logged in member.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Search/RecentSearches.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> category_ids </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Comma separated list of category Ids. Default value is <b>null</b> and all recent searches will be returned.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> return_favourite_id </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p><b>true</b> to populate the FavouriteId field. The default is <b>false</b>.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;RecentSearch&gt; </p>
+<p> <p>A list of recent searches performed by the member.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A unique ID for the search. Used to identify the search when deleting.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "General", "value": "0", "description": "General search."}, {"name": "UsedMotors", "value": "1", "description": "Used cars."}, {"name": "MotorBoat", "value": "2", "description": "Motor boats."}, {"name": "MotorBike", "value": "3", "description": "Motor bikes."}, {"name": "Residential", "value": "4", "description": "Residential property for sale."}, {"name": "Rental", "value": "5", "description": "Residential property to rent."}, {"name": "CommercialSale", "value": "6", "description": "Commercial property for sale."}, {"name": "CommercialLease", "value": "7", "description": "Commercial property leases."}, {"name": "Rural", "value": "8", "description": "Rural property."}, {"name": "Lifestyle", "value": "9", "description": "Lifestyle blocks."}, {"name": "Flatmate", "value": "10", "description": "Flatmates."}, {"name": "OpenHomes", "value": "11", "description": "Open homes."}, {"name": "Retirement", "value": "12", "description": "Retirement villages."}, {"name": "Job", "value": "13", "description": "Jobs."}, {"name": "NewHomes", "value": "14", "description": "New Homes property."}, {"name": "Caravan", "value": "15", "description": "Motors caravan property"}, {"name": "Motorhome", "value": "16", "description": "Motors motorhomes property"}]'>
+<th style="width: 22%"> SearchApi </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates which search API should be used to run the search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The parameters to pass to the search API to reproduce the search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Keywords </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a keyword filter exists, contains the keywords.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MemberId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;Nickname&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;DateAddressVerified&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member was address verified.&quot;}, {&quot;field_name&quot;: &quot;DateJoined&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member joined.&quot;}, {&quot;field_name&quot;: &quot;UniqueNegative&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed negative feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;UniquePositive&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed positive feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;FeedbackCount&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The member's total feedback (UniquePositive minus UniqueNegative).&quot;}, {&quot;field_name&quot;: &quot;IsAddressVerified&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been address verified.&quot;}, {&quot;field_name&quot;: &quot;IsDealer&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a car dealer.&quot;}, {&quot;field_name&quot;: &quot;IsAuthenticated&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is authenticated.&quot;}, {&quot;field_name&quot;: &quot;IsInTrade&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a professional trader.&quot;}, {&quot;field_name&quot;: &quot;IsTopSeller&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is currently a Top Seller&quot;}]">
+<th style="width: 22%"> Seller </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>If a seller filter exists, contains the details of that seller.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> CategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a category filter exists, contains the full name of the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanonicalPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a category filter exists, contains the canonical URL.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "DisplayName", "field_type": "String or null", "description": "Displayable name"}, {"field_name": "CanonicalPath", "field_type": "String or null", "description": "The canonical path up to the current fragment"}, {"field_name": "CanonicalPathFragment", "field_type": "String or null", "description": "The latest encoded fragment of the canonical path"}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the attribute type, used to match the breadcrumb fragment to the corresponding UI elements"}, {"field_name": "Value", "field_type": "String or null", "description": "The underlying value for the breadcrumb fragment, this could be an Attrubute ID, a Category ID or some other value"}]'>
+<th style="width: 22%"> Breadcrumbs </th>
+<td style="width: 22%"> Collection of &lt;Breadcrumb&gt; or null </td>
+<td>
+<p>If a category filter exists, contains the breadcrumbs for the category.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "NotSpecified", "value": "0", "description": "None specified."}, {"name": "All", "value": "0", "description": "All"}, {"name": "Marketplace", "value": "1", "description": "Marketplace"}, {"name": "Property", "value": "2", "description": "Property"}, {"name": "Motors", "value": "3", "description": "Motors"}, {"name": "Jobs", "value": "4", "description": "Jobs"}, {"name": "Services", "value": "5", "description": "Services"}]'>
+<th style="width: 22%"> AreaOfBusiness </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>If a category filter exists, contains the associated business line.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "DisplayName", "field_type": "String or null", "description": "The name of the refinement, in a form suitable for displaying to users. Can benullwhen only the display value is required."}, {"field_name": "DisplayValue", "field_type": "String or null", "description": "The value of the refinement as it needs to be displayed to the end users."}]'>
+<th style="width: 22%"> Refinements </th>
+<td style="width: 22%"> Collection of &lt;RefinementDescriptor&gt; or null </td>
+<td>
+<p>A list of search filters, excluding keywords, category and seller information.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FavouriteId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The ID of a favourite search that corresponds to this recent search, if there is a favourite search that matches.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A generated Title based on the keywords, categories, and location of the search.</p>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;RecentSearchCollection xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;RecentSearch&gt;
+    &lt;Id&gt;ABC&lt;/Id&gt;
+    &lt;SearchApi&gt;General&lt;/SearchApi&gt;
+    &lt;SearchString&gt;ABC&lt;/SearchString&gt;
+    &lt;Keywords&gt;ABC&lt;/Keywords&gt;
+    &lt;Seller&gt;
+      &lt;MemberId&gt;123&lt;/MemberId&gt;
+      &lt;Nickname&gt;ABC&lt;/Nickname&gt;
+      &lt;DateAddressVerified&gt;2018-01-01T00:00:00Z&lt;/DateAddressVerified&gt;
+      &lt;DateJoined&gt;2018-01-01T00:00:00Z&lt;/DateJoined&gt;
+      &lt;UniqueNegative&gt;123&lt;/UniqueNegative&gt;
+      &lt;UniquePositive&gt;123&lt;/UniquePositive&gt;
+      &lt;FeedbackCount&gt;123&lt;/FeedbackCount&gt;
+      &lt;IsAddressVerified&gt;false&lt;/IsAddressVerified&gt;
+      &lt;IsDealer&gt;false&lt;/IsDealer&gt;
+      &lt;IsAuthenticated&gt;false&lt;/IsAuthenticated&gt;
+      &lt;IsInTrade&gt;false&lt;/IsInTrade&gt;
+      &lt;IsTopSeller&gt;false&lt;/IsTopSeller&gt;
+    &lt;/Seller&gt;
+    &lt;CategoryName&gt;ABC&lt;/CategoryName&gt;
+    &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+    &lt;Breadcrumbs&gt;
+      &lt;Breadcrumb&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+        &lt;CanonicalPathFragment&gt;ABC&lt;/CanonicalPathFragment&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;/Breadcrumb&gt;
+      &lt;Breadcrumb&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+        &lt;CanonicalPathFragment&gt;ABC&lt;/CanonicalPathFragment&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;/Breadcrumb&gt;
+    &lt;/Breadcrumbs&gt;
+    &lt;AreaOfBusiness&gt;NotSpecified&lt;/AreaOfBusiness&gt;
+    &lt;Refinements&gt;
+      &lt;RefinementDescriptor&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+      &lt;/RefinementDescriptor&gt;
+      &lt;RefinementDescriptor&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+      &lt;/RefinementDescriptor&gt;
+    &lt;/Refinements&gt;
+    &lt;FavouriteId&gt;123&lt;/FavouriteId&gt;
+    &lt;Title&gt;ABC&lt;/Title&gt;
+  &lt;/RecentSearch&gt;
+  &lt;RecentSearch&gt;
+    &lt;Id&gt;ABC&lt;/Id&gt;
+    &lt;SearchApi&gt;General&lt;/SearchApi&gt;
+    &lt;SearchString&gt;ABC&lt;/SearchString&gt;
+    &lt;Keywords&gt;ABC&lt;/Keywords&gt;
+    &lt;Seller&gt;
+      &lt;MemberId&gt;123&lt;/MemberId&gt;
+      &lt;Nickname&gt;ABC&lt;/Nickname&gt;
+      &lt;DateAddressVerified&gt;2018-01-01T00:00:00Z&lt;/DateAddressVerified&gt;
+      &lt;DateJoined&gt;2018-01-01T00:00:00Z&lt;/DateJoined&gt;
+      &lt;UniqueNegative&gt;123&lt;/UniqueNegative&gt;
+      &lt;UniquePositive&gt;123&lt;/UniquePositive&gt;
+      &lt;FeedbackCount&gt;123&lt;/FeedbackCount&gt;
+      &lt;IsAddressVerified&gt;false&lt;/IsAddressVerified&gt;
+      &lt;IsDealer&gt;false&lt;/IsDealer&gt;
+      &lt;IsAuthenticated&gt;false&lt;/IsAuthenticated&gt;
+      &lt;IsInTrade&gt;false&lt;/IsInTrade&gt;
+      &lt;IsTopSeller&gt;false&lt;/IsTopSeller&gt;
+    &lt;/Seller&gt;
+    &lt;CategoryName&gt;ABC&lt;/CategoryName&gt;
+    &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+    &lt;Breadcrumbs&gt;
+      &lt;Breadcrumb&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+        &lt;CanonicalPathFragment&gt;ABC&lt;/CanonicalPathFragment&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;/Breadcrumb&gt;
+      &lt;Breadcrumb&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;CanonicalPath&gt;ABC&lt;/CanonicalPath&gt;
+        &lt;CanonicalPathFragment&gt;ABC&lt;/CanonicalPathFragment&gt;
+        &lt;Name&gt;ABC&lt;/Name&gt;
+        &lt;Value&gt;ABC&lt;/Value&gt;
+      &lt;/Breadcrumb&gt;
+    &lt;/Breadcrumbs&gt;
+    &lt;AreaOfBusiness&gt;NotSpecified&lt;/AreaOfBusiness&gt;
+    &lt;Refinements&gt;
+      &lt;RefinementDescriptor&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+      &lt;/RefinementDescriptor&gt;
+      &lt;RefinementDescriptor&gt;
+        &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+        &lt;DisplayValue&gt;ABC&lt;/DisplayValue&gt;
+      &lt;/RefinementDescriptor&gt;
+    &lt;/Refinements&gt;
+    &lt;FavouriteId&gt;123&lt;/FavouriteId&gt;
+    &lt;Title&gt;ABC&lt;/Title&gt;
+  &lt;/RecentSearch&gt;
+&lt;/RecentSearchCollection&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">[
+  {
+    "Id": "ABC",
+    "SearchApi": 0,
+    "SearchString": "ABC",
+    "Keywords": "ABC",
+    "Seller": {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsInTrade": false,
+      "IsTopSeller": false
+    },
+    "CategoryName": "ABC",
+    "CanonicalPath": "ABC",
+    "Breadcrumbs": [
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      }
+    ],
+    "AreaOfBusiness": 0,
+    "Refinements": [
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      }
+    ],
+    "FavouriteId": 123,
+    "Title": "ABC"
+  },
+  {
+    "Id": "ABC",
+    "SearchApi": 0,
+    "SearchString": "ABC",
+    "Keywords": "ABC",
+    "Seller": {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsInTrade": false,
+      "IsTopSeller": false
+    },
+    "CategoryName": "ABC",
+    "CanonicalPath": "ABC",
+    "Breadcrumbs": [
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      }
+    ],
+    "AreaOfBusiness": 0,
+    "Refinements": [
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      }
+    ],
+    "FavouriteId": 123,
+    "Title": "ABC"
+  }
+]</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

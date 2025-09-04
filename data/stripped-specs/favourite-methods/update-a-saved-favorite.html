@@ -1,0 +1,109 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/favourite-methods/update-a-saved-favorite -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Update a saved favorite</h1>
+<!-- Page content -->
+<p>Modifies the email frequency for a saved favourite.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/favourites/{favouriteId}/{type}/{frequency}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> favouriteId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> type </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The type of favourite (must be "Category", "Search", "AttributeSearch" or "Seller").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> frequency </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The frequency that emails should be sent (must be "None", "Daily", "Every3Days" or "Weekly").</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;SavedFavouriteResponse&gt; </p>
+<p>Details indicating whether the operation succeeded.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> SearchId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the saved favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Response </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Saved </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the favourite was saved.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Nothing"}, {"name": "Category", "value": "1", "description": "Category"}, {"name": "Search", "value": "3", "description": "General search"}, {"name": "AttributeSearch", "value": "4", "description": "Attributed search"}, {"name": "Seller", "value": "6", "description": "Seller"}]'>
+<th style="width: 22%"> FavouriteType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates what type of favourite was saved.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "SearchId": 123,
+  "Response": "ABC",
+  "Saved": false,
+  "FavouriteType": 0
+}</code></pre>
+</div>

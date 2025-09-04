@@ -1,0 +1,454 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/property-agency-methods/get-office-listing-statistics -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get office listing statistics</h1>
+<!-- Page content -->
+<p>Returns listing statistics for all current listings listed by the office, including a break up by day and suburb.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/Office/ListingStatistics.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> days </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of days of statistical data to retrieve, ending yesterday. Defaults to <b>30</b>. Minimum 1, Maximum 30</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;ListingStatisticsPagedCollection&gt; </p>
+<p>A paged collection of listing statistics</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;ListingStatistics&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WatcherCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number watchers for this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EnquiryCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of enquiries about this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSuperFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a super-featured listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DailyStatistics </th>
+<td style="width: 22%"> Collection of &lt;DailyListingStatistics&gt; or null </td>
+<td>
+<p>The daily statistics for this live listing for the specified number of days</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Day </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date of the day when these statistics occurred</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NewViewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of times the listing was viewed on this day.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NewImpressionsCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of new impressions for this listing on this day</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PerSuburbWatchersStatistics </th>
+<td style="width: 22%"> Collection of &lt;PerSuburbListingStatistics&gt; or null </td>
+<td>
+<p>The current count of watchers for this listing by suburb and region</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> CurrentCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Count of either views or watchers</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Suburb Id of the view or watcher</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Suburb name of the view or watcher</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RegionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Region Id of the view or watcher</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RegionName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Region name of the view or watcher</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GSRegionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>GeoSpatial Region Id of the view or watcher</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PerSuburbViewsStatistics </th>
+<td style="width: 22%"> Collection of &lt;PerSuburbListingStatistics&gt; or null </td>
+<td>
+<p>The current count of views for this listing by suburb and region</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ClickToCallCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The current count of click to calls for this listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberIds </th>
+<td style="width: 22%"> Collection of Integer or null </td>
+<td>
+<p>a listing can be assign to many members</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GlobalPropertyNetworkStatistics </th>
+<td style="width: 22%"> &lt;GlobalPropertyNetwork&gt; or null </td>
+<td>
+<p>global property network statistics</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ReaUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>rea url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RealtorUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>realtor url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HousingUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>housing url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ProptigerUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>proptiger url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MakaanUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>makaan url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ThinkoflivingUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>thinking of living url</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImpressionsCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of impressions for this listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImpressionsInPeriod </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of impressions for this listing in the specified period</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImpressionsCountAvgPerDay </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of impressions count average per day for this listing</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPages </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Total number of pages available</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "ListingId": 123,
+      "WatcherCount": 123,
+      "EnquiryCount": 123,
+      "IsSuperFeatured": false,
+      "DailyStatistics": [
+        {
+          "Day": "\/Date(1514764800)\/",
+          "NewViewCount": 123,
+          "NewImpressionsCount": 123
+        },
+        {
+          "Day": "\/Date(1514764800)\/",
+          "NewViewCount": 123,
+          "NewImpressionsCount": 123
+        }
+      ],
+      "PerSuburbWatchersStatistics": [
+        {
+          "CurrentCount": 123,
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "RegionId": 123,
+          "RegionName": "ABC",
+          "GSRegionId": 123
+        },
+        {
+          "CurrentCount": 123,
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "RegionId": 123,
+          "RegionName": "ABC",
+          "GSRegionId": 123
+        }
+      ],
+      "PerSuburbViewsStatistics": [
+        {
+        },
+        {
+        }
+      ],
+      "ClickToCallCount": 123,
+      "MemberIds": [
+        123,
+        123
+      ],
+      "GlobalPropertyNetworkStatistics": {
+        "ReaUrl": "ABC",
+        "RealtorUrl": "ABC",
+        "HousingUrl": "ABC",
+        "ProptigerUrl": "ABC",
+        "MakaanUrl": "ABC",
+        "ThinkoflivingUrl": "ABC"
+      },
+      "ImpressionsCount": 123,
+      "ImpressionsInPeriod": 123,
+      "ImpressionsCountAvgPerDay": 123
+    },
+    {
+      "ListingId": 123,
+      "WatcherCount": 123,
+      "EnquiryCount": 123,
+      "IsSuperFeatured": false,
+      "DailyStatistics": [
+        {
+          "Day": "\/Date(1514764800)\/",
+          "NewViewCount": 123,
+          "NewImpressionsCount": 123
+        },
+        {
+          "Day": "\/Date(1514764800)\/",
+          "NewViewCount": 123,
+          "NewImpressionsCount": 123
+        }
+      ],
+      "PerSuburbWatchersStatistics": [
+        {
+          "CurrentCount": 123,
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "RegionId": 123,
+          "RegionName": "ABC",
+          "GSRegionId": 123
+        },
+        {
+          "CurrentCount": 123,
+          "SuburbId": 123,
+          "SuburbName": "ABC",
+          "RegionId": 123,
+          "RegionName": "ABC",
+          "GSRegionId": 123
+        }
+      ],
+      "PerSuburbViewsStatistics": [
+        {
+        },
+        {
+        }
+      ],
+      "ClickToCallCount": 123,
+      "MemberIds": [
+        123,
+        123
+      ],
+      "GlobalPropertyNetworkStatistics": {
+        "ReaUrl": "ABC",
+        "RealtorUrl": "ABC",
+        "HousingUrl": "ABC",
+        "ProptigerUrl": "ABC",
+        "MakaanUrl": "ABC",
+        "ThinkoflivingUrl": "ABC"
+      },
+      "ImpressionsCount": 123,
+      "ImpressionsInPeriod": 123,
+      "ImpressionsCountAvgPerDay": 123
+    }
+  ],
+  "TotalPages": 123
+}</code></pre>
+</div>

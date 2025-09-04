@@ -1,0 +1,261 @@
+{
+  "endpoint": "RetrievePositionsForAMember",
+  "title": "Retrieve positions for a member",
+  "description": "Retrieves paginated set of positions for a member or company",
+  "source": "https://developer.trademe.co.nz/api-reference/job-position-methods/retrieve-positions-for-a-member",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Positions.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "archived",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Filter to include or exclude archived positions."
+      },
+      {
+        "name": "company_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Filter to retrieve the positions for a company."
+      },
+      {
+        "name": "current",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Filter to include or exclude current positions."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page of results to return, defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results to return, defaults to 20 with a max of 500."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PositionsCollection> Positions accessible by the member",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <PositionSummary> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "PositionId",
+            "field_type": "Integer",
+            "description": "The id of the position"
+          },
+          {
+            "field_name": "PublishedState",
+            "field_type": "String or null",
+            "description": "The published state of the position"
+          },
+          {
+            "field_name": "Title",
+            "field_type": "String or null",
+            "description": "The title of the position"
+          },
+          {
+            "field_name": "OwnerMemberId",
+            "field_type": "Integer",
+            "description": "The id of the member who owns the position"
+          },
+          {
+            "field_name": "OwnerCompanyId",
+            "field_type": "Integer",
+            "description": "The id of the company who owns the position"
+          },
+          {
+            "field_name": "HasLiveListing",
+            "field_type": "Boolean",
+            "description": "If the position has a live listing"
+          },
+          {
+            "field_name": "LatestListingStart",
+            "field_type": "DateTime or null",
+            "description": "The date time of the start of the latest listing"
+          },
+          {
+            "field_name": "LatestListingEnd",
+            "field_type": "DateTime or null",
+            "description": "The date time of the end of the latest listing"
+          },
+          {
+            "field_name": "IsArchived",
+            "field_type": "Boolean",
+            "description": "If the position has been archived"
+          },
+          {
+            "field_name": "ListingCount",
+            "field_type": "Integer",
+            "description": "Count of the position listings on the position"
+          },
+          {
+            "field_name": "LatestListingId",
+            "field_type": "Integer or null",
+            "description": "The listing id of the latest listing"
+          },
+          {
+            "field_name": "TotalCandidateCount",
+            "field_type": "Integer",
+            "description": "The count of all candidates for the latest listing"
+          },
+          {
+            "field_name": "NewCandidateCount",
+            "field_type": "Integer",
+            "description": "The count of new candidates for the latest listing"
+          },
+          {
+            "field_name": "LatestListingVisitCount",
+            "field_type": "Integer or null",
+            "description": "Count of how many times the latest listing has been visited"
+          },
+          {
+            "field_name": "LatestListingWatchCount",
+            "field_type": "Integer or null",
+            "description": "Count of how many times the latest listing has been added to a watchlist"
+          },
+          {
+            "field_name": "AllowScoutAndViewCandidate",
+            "field_type": "Boolean",
+            "description": "Allow cout and view candidate"
+          }
+        ]
+      },
+      {
+        "name": "Counts",
+        "type": "<PositionCounts> or null",
+        "required": false,
+        "description": "Counts of positions",
+        "nested_fields": [
+          {
+            "field_name": "All",
+            "field_type": "Integer",
+            "description": "The total number of positions"
+          },
+          {
+            "field_name": "Current",
+            "field_type": "Integer",
+            "description": "The total number of un-archived positions with current listings"
+          },
+          {
+            "field_name": "Expired",
+            "field_type": "Integer",
+            "description": "The total number of un-archived positions without current listings"
+          },
+          {
+            "field_name": "Archived",
+            "field_type": "Integer",
+            "description": "The total number of archived positions"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "PositionId": 123,
+          "PublishedState": "ABC",
+          "Title": "ABC",
+          "OwnerMemberId": 123,
+          "OwnerCompanyId": 123,
+          "HasLiveListing": false,
+          "LatestListingStart": "/Date(1514764800)/",
+          "LatestListingEnd": "/Date(1514764800)/",
+          "IsArchived": false,
+          "ListingCount": 123,
+          "LatestListingId": 123,
+          "TotalCandidateCount": 123,
+          "NewCandidateCount": 123,
+          "LatestListingVisitCount": 123,
+          "LatestListingWatchCount": 123,
+          "AllowScoutAndViewCandidate": false
+        },
+        {
+          "PositionId": 123,
+          "PublishedState": "ABC",
+          "Title": "ABC",
+          "OwnerMemberId": 123,
+          "OwnerCompanyId": 123,
+          "HasLiveListing": false,
+          "LatestListingStart": "/Date(1514764800)/",
+          "LatestListingEnd": "/Date(1514764800)/",
+          "IsArchived": false,
+          "ListingCount": 123,
+          "LatestListingId": 123,
+          "TotalCandidateCount": 123,
+          "NewCandidateCount": 123,
+          "LatestListingVisitCount": 123,
+          "LatestListingWatchCount": 123,
+          "AllowScoutAndViewCandidate": false
+        }
+      ],
+      "Counts": {
+        "All": 123,
+        "Current": 123,
+        "Expired": 123,
+        "Archived": 123
+      }
+    }
+  }
+}

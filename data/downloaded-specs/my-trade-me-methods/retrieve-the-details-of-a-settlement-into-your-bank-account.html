@@ -1,0 +1,292 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve the details of a settlement into your bank account - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a> &gt; </li>
+<li class="current">Retrieve the details of a settlement into your bank account</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve the details of a settlement into your bank account</h1>
+<!-- Page content -->
+<p>Returns Pay Now ledger entries for a settlement into the authenticated user's bank account.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/paynowsettlement/{batchId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> batchId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the settlement. This can be retrieved from the Pay Now ledger API.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PayNowLedger&gt; </p>
+<p> <p>Settlement details for the authenticated user.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Type&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The transaction type.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Sale&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;A sale.&quot;}, {&quot;name&quot;: &quot;PaymentToMemberBankAccount&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;A payment to the member's bank account.&quot;}, {&quot;name&quot;: &quot;FailedPaymentToMemberBankAccount&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;A failed payment to the member's bank account.&quot;}, {&quot;name&quot;: &quot;Refund&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;A refund.&quot;}, {&quot;name&quot;: &quot;Transfer&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;Transfer from Trade Me account.&quot;}, {&quot;name&quot;: &quot;Chargeback&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;A bank chargeback.&quot;}, {&quot;name&quot;: &quot;Other&quot;, &quot;value&quot;: &quot;6&quot;, &quot;description&quot;: &quot;An unknown transaction.&quot;}]}, {&quot;field_name&quot;: &quot;Date&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The transaction date and time. May be blank for&quot;}, {&quot;field_name&quot;: &quot;Description&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A description of the transaction.&quot;}, {&quot;field_name&quot;: &quot;Credit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount the member's Pay Now account was credited, in NZD, after fees have been accounted for. For example, the sale of an item generates a credit (but that same transaction will be a debit when it is paid into the member's account). This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;Debit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount the member's Pay Now account was debited, in NZD. For example, a refund is a debit (but that same transaction will be a credit when it is in the settlement breakdown). This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;ListingId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the associated listing, or 0 if there is no associated listing.&quot;}, {&quot;field_name&quot;: &quot;OfferId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the associated fixed price offer. This value is omitted if the payment is not associated with a fixed price offer.&quot;}, {&quot;field_name&quot;: &quot;PurchaseId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The purchase-specific ID (or auction sold id).&quot;}, {&quot;field_name&quot;: &quot;ListingTitle&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The title of the associated listing. This value is omitted if there is no associated listing.&quot;}, {&quot;field_name&quot;: &quot;Fee&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The fee associated with the transaction. This value is omitted if there is no associated fee. This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;SettlementId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;An ID that can be used to get the breakdown of a settlement. Only populated if the payment type is PaymentToMemberBankAccount (or FailedPaymentToMemberBankAccount).&quot;}]">
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;PayNowLedgerItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;PayNowLedger xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+  &lt;Page&gt;123&lt;/Page&gt;
+  &lt;PageSize&gt;123&lt;/PageSize&gt;
+  &lt;List&gt;
+    &lt;PayNowLedgerItem&gt;
+      &lt;Type&gt;Sale&lt;/Type&gt;
+      &lt;Date&gt;2018-01-01T00:00:00Z&lt;/Date&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;Credit&gt;123.0&lt;/Credit&gt;
+      &lt;Debit&gt;123.0&lt;/Debit&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;OfferId&gt;123&lt;/OfferId&gt;
+      &lt;PurchaseId&gt;123&lt;/PurchaseId&gt;
+      &lt;ListingTitle&gt;ABC&lt;/ListingTitle&gt;
+      &lt;Fee&gt;123.0&lt;/Fee&gt;
+      &lt;SettlementId&gt;123&lt;/SettlementId&gt;
+    &lt;/PayNowLedgerItem&gt;
+    &lt;PayNowLedgerItem&gt;
+      &lt;Type&gt;Sale&lt;/Type&gt;
+      &lt;Date&gt;2018-01-01T00:00:00Z&lt;/Date&gt;
+      &lt;Description&gt;ABC&lt;/Description&gt;
+      &lt;Credit&gt;123.0&lt;/Credit&gt;
+      &lt;Debit&gt;123.0&lt;/Debit&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;OfferId&gt;123&lt;/OfferId&gt;
+      &lt;PurchaseId&gt;123&lt;/PurchaseId&gt;
+      &lt;ListingTitle&gt;ABC&lt;/ListingTitle&gt;
+      &lt;Fee&gt;123.0&lt;/Fee&gt;
+      &lt;SettlementId&gt;123&lt;/SettlementId&gt;
+    &lt;/PayNowLedgerItem&gt;
+  &lt;/List&gt;
+&lt;/PayNowLedger&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "Type": 0,
+      "Date": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "ListingId": 123,
+      "OfferId": 123,
+      "PurchaseId": 123,
+      "ListingTitle": "ABC",
+      "Fee": 123.0,
+      "SettlementId": 123
+    },
+    {
+      "Type": 0,
+      "Date": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "ListingId": 123,
+      "OfferId": 123,
+      "PurchaseId": 123,
+      "ListingTitle": "ABC",
+      "Fee": 123.0,
+      "SettlementId": 123
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

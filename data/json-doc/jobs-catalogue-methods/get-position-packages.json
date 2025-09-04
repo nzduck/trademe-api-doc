@@ -1,0 +1,294 @@
+{
+  "endpoint": "GetPositionPackages",
+  "title": "Get position packages",
+  "description": "Returns a set of position package tiers",
+  "source": "https://developer.trademe.co.nz/api-reference/jobs-catalogue-methods/get-position-packages",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Catalogue/PositionPackages.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "category_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Used to determine pricing based on category if applicable"
+      },
+      {
+        "name": "position_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Used when editing a position to ensure you get the version of package data included when the position was created"
+      },
+      {
+        "name": "return_metadata",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Should be provided if we want to return metadata about the PackageSetVersion"
+      },
+      {
+        "name": "skip_current_agent",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Used when want to get all packages tiers as an anonymous member"
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PositionPackageResponse>",
+    "fields": [
+      {
+        "name": "PackageSetVersionMetadata",
+        "type": "<PackageSetVersionMetadata> or null",
+        "required": false,
+        "description": "Metadata about the package set, only returned if requested"
+      },
+      {
+        "name": "PackageSetVersionId",
+        "type": "PackageSetVersionId \n Integer \n\nThe package set version ID",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "PackageSetVersionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The package set version ID"
+      },
+      {
+        "name": "PackageData",
+        "type": "Collection of <PackageData> or null",
+        "required": false,
+        "description": "List of position packages"
+      },
+      {
+        "name": "Tier",
+        "type": "Tier \n Enumeration \n\nThe type of package tier\n\n\n\n DisplayName \n String or null \n\nThe display name for the package tier\n\n\n\n PriceGstExcluded \n Number \n\nThe price of the package tier excluding GST\n\n\n\n PriceGstIncluded \n Number \n\nThe price of the package tier including GST\n\n\n\n HighlightFlagValue \n String or null \n\nThe highlight flag for the package tier\n\n\n\n Featured \n Boolean \n\nWhether the package tier is featured\n\n\n\n AllowsBranding \n Boolean \n\nWhether the package tier allows branding\n\n\n\n AllowsPhotos \n Boolean \n\nWhether the package tier allows photos\n\n\n\n AllowsVideo \n Boolean \n\nWhether the package tier allows video\n\n\n\n AllowsPromotedListing \n Boolean \n\nWhether the package tier allows promoted listing\n\n\n\n DurationDays \n Integer \n\nDuration of listings for the package tier\n\n\n\n CandidateSearchQuotaAdded \n Integer \n\nCandidate search quota for listings in the package tier\n\n\n\n ProvidingSource \n <FeeItemProvidingSource> or null \n\nListing fee providing source for the package tier\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the providing source.\n\n\n\n Remaining \n Integer \n\nThe number of items remaining in this source, or 0 if the source is unlimited.\n\n\n\n IsUnlimited \n Boolean \n\nTrue if it is possible to create unlimited listings at the provided rate\n\n\n\n\n\n\n GroupName \n String or null \n\nThe group name for the package tier",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Tier",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of package tier",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "None"
+          },
+          {
+            "name": "Bronze",
+            "value": "1",
+            "description": "Bronze"
+          },
+          {
+            "name": "Silver",
+            "value": "2",
+            "description": "Silver"
+          },
+          {
+            "name": "Gold",
+            "value": "3",
+            "description": "Gold"
+          },
+          {
+            "name": "Platinum",
+            "value": "4",
+            "description": "Platinum"
+          },
+          {
+            "name": "Fifth",
+            "value": "5",
+            "description": "Fifth"
+          },
+          {
+            "name": "Sixth",
+            "value": "6",
+            "description": "Sixth"
+          }
+        ]
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The display name for the package tier"
+      },
+      {
+        "name": "PriceGstExcluded",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the package tier excluding GST"
+      },
+      {
+        "name": "PriceGstIncluded",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the package tier including GST"
+      },
+      {
+        "name": "HighlightFlagValue",
+        "type": "String or null",
+        "required": false,
+        "description": "The highlight flag for the package tier"
+      },
+      {
+        "name": "Featured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the package tier is featured"
+      },
+      {
+        "name": "AllowsBranding",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the package tier allows branding"
+      },
+      {
+        "name": "AllowsPhotos",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the package tier allows photos"
+      },
+      {
+        "name": "AllowsVideo",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the package tier allows video"
+      },
+      {
+        "name": "AllowsPromotedListing",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the package tier allows promoted listing"
+      },
+      {
+        "name": "DurationDays",
+        "type": "Integer",
+        "required": false,
+        "description": "Duration of listings for the package tier"
+      },
+      {
+        "name": "CandidateSearchQuotaAdded",
+        "type": "Integer",
+        "required": false,
+        "description": "Candidate search quota for listings in the package tier"
+      },
+      {
+        "name": "ProvidingSource",
+        "type": "<FeeItemProvidingSource> or null",
+        "required": false,
+        "description": "Listing fee providing source for the package tier"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the providing source.\n\n\n\n Remaining \n Integer \n\nThe number of items remaining in this source, or 0 if the source is unlimited.\n\n\n\n IsUnlimited \n Boolean \n\nTrue if it is possible to create unlimited listings at the provided rate",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the providing source."
+      },
+      {
+        "name": "Remaining",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items remaining in this source, or 0 if the source is unlimited."
+      },
+      {
+        "name": "IsUnlimited",
+        "type": "Boolean",
+        "required": false,
+        "description": "True if it is possible to create unlimited listings at the provided rate"
+      },
+      {
+        "name": "GroupName",
+        "type": "String or null",
+        "required": false,
+        "description": "The group name for the package tier"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "PackageSetVersionMetadata": {
+        "PackageSetVersionId": 123
+      },
+      "PackageData": [
+        {
+          "Tier": 0,
+          "DisplayName": "ABC",
+          "PriceGstExcluded": 123.0,
+          "PriceGstIncluded": 123.0,
+          "HighlightFlagValue": "ABC",
+          "Featured": false,
+          "AllowsBranding": false,
+          "AllowsPhotos": false,
+          "AllowsVideo": false,
+          "AllowsPromotedListing": false,
+          "DurationDays": 123,
+          "CandidateSearchQuotaAdded": 123,
+          "ProvidingSource": {
+            "Name": "ABC",
+            "Remaining": 123,
+            "IsUnlimited": false
+          },
+          "GroupName": "ABC"
+        },
+        {
+          "Tier": 0,
+          "DisplayName": "ABC",
+          "PriceGstExcluded": 123.0,
+          "PriceGstIncluded": 123.0,
+          "HighlightFlagValue": "ABC",
+          "Featured": false,
+          "AllowsBranding": false,
+          "AllowsPhotos": false,
+          "AllowsVideo": false,
+          "AllowsPromotedListing": false,
+          "DurationDays": 123,
+          "CandidateSearchQuotaAdded": 123,
+          "ProvidingSource": {
+            "Name": "ABC",
+            "Remaining": 123,
+            "IsUnlimited": false
+          },
+          "GroupName": "ABC"
+        }
+      ]
+    }
+  }
+}

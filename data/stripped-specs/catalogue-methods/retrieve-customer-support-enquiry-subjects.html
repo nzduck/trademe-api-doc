@@ -1,0 +1,80 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-customer-support-enquiry-subjects -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve customer support enquiry subjects</h1>
+<!-- Page content -->
+<p>Retrieves a list of possible customer support enquiry subjects. This is used in conjunction with the <a href="https://developer.trademe.co.nz/api-reference/my-trade-me-methods/submit-a-new-enquiry-message-to-trade-me-customer-support/"> submit a customer support enquiry</a> API.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/CustomerSupportEnquirySubjects.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;CustomerSupportEnquirySubject&gt; </p>
+<p>A list of subjects that can be used when making a customer support enquiry.</p>
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "AppFeedback", "value": "0", "description": "General feedback about the app"}, {"name": "AccountInfo", "value": "1", "description": "Account info"}, {"name": "PaymentsAndRefunds", "value": "2", "description": "Payments and refunds"}, {"name": "TradeDisputes", "value": "3", "description": "Trade disputes"}, {"name": "Buying", "value": "4", "description": "Buying"}, {"name": "Selling", "value": "5", "description": "Selling"}, {"name": "Policies", "value": "6", "description": "Policies"}, {"name": "MessageBoard", "value": "7", "description": "Message board"}, {"name": "FinancialDisputes", "value": "8", "description": "Financial disputes"}, {"name": "InappropriateBehaviour", "value": "9", "description": "Inappropriate behaviour"}, {"name": "SuspiciousBehaviour", "value": "10", "description": "Suspicious behaviour"}, {"name": "CorporateEnquiries", "value": "11", "description": "Corporate enquiries"}]'>
+<th style="width: 22%"> Topic </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The customer support enquiry subject.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the customer support enquiry subject, suitable for displaying to a user.</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><a href="https://api.trademe.co.nz/v1/CustomerSupportEnquirySubjects.xml">https://api.trademe.co.nz/v1/CustomerSupportEnquirySubjects.xml</a></p>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "Topic": 0,
+    "Description": "ABC"
+  },
+  {
+    "Topic": 0,
+    "Description": "ABC"
+  }
+]</code></pre>
+</div>

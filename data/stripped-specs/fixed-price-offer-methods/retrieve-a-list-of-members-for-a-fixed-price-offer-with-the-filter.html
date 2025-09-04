@@ -1,0 +1,158 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-a-list-of-members-for-a-fixed-price-offer-with-the-filter -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve a list of members for a fixed price offer with the filter</h1>
+<!-- Page content -->
+<p>Returns a list of members you can make a fixed price offer to for a particular auction.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/FixedPriceOffers/{listingId}/Members/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> listingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The listing ID of the auction you wish to make a fixed price offer for. The listing must be closed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>Filters the returned list to a subset of possible members ("All", "Bidders" - only return bidders, "Watchers" - only return watchers).</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;FixedPriceOfferMembersResponse&gt; </p>
+<p>Details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MemberId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;Nickname&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;DateAddressVerified&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member was address verified.&quot;}, {&quot;field_name&quot;: &quot;DateJoined&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member joined.&quot;}, {&quot;field_name&quot;: &quot;UniqueNegative&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed negative feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;UniquePositive&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed positive feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;FeedbackCount&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The member's total feedback (UniquePositive minus UniqueNegative).&quot;}, {&quot;field_name&quot;: &quot;IsAddressVerified&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been address verified.&quot;}, {&quot;field_name&quot;: &quot;IsDealer&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a car dealer.&quot;}, {&quot;field_name&quot;: &quot;IsAuthenticated&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is authenticated.&quot;}, {&quot;field_name&quot;: &quot;IsBlackListed&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been blacklisted.&quot;}]">
+<th style="width: 22%"> Watchers </th>
+<td style="width: 22%"> Collection of &lt;Member&gt; or null </td>
+<td>
+<p>The watchers on the listing</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Bidders </th>
+<td style="width: 22%"> Collection of &lt;Member&gt; or null </td>
+<td>
+<p>The bidders on the listing</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "Watchers": [
+    {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsBlackListed": false
+    },
+    {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsBlackListed": false
+    }
+  ],
+  "Bidders": [
+    {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false
+    },
+    {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,2330 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/listing-methods/retrieve-the-details-of-a-single-listing -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve the details of a single listing</h1>
+<!-- Page content -->
+<p>Retrieves the details of a single listing.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/listings/{listingId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> listingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing to retrieve.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> increment_view_count </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether to increment the view count on the listing. Defaults to <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> question_limit </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of questions and answers to return. Defaults to unlimited.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> return_member_profile </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true also returns the member's public profile information. Defaults to <b>false</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> return_variants </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true, returns full details of all variants in the VariantDefinition field. Only applies to MVL listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rsqid </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The referring search query ID; used to link requests to searches for analytics purposes. Optional.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;ListedItemDetail&gt; </p>
+<p>The details of the listing.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing title.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The start price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BuyNowPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The Buy Now price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing was created.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing will end.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a featured listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGallery </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a gallery listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBold </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a bold listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHighlighted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a highlighted listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasHomePageFeature </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a homepage feature listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BidderAndWatchers </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bidders and watcher for this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxBidAmount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The current leading bid amount.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AsAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the response was generated on the server.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The category path.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the primary photo for the listing (if the listing has a photo).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasPayNow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has Pay Now.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsNew </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is marked as new.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RegionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.</p>
+<p style="color: red">
+                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Region </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the region where this item is located.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the suburb where this item is located.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Suburb", "field_type": "String or null", "description": "The pickup suburb."}, {"field_name": "District", "field_type": "String or null", "description": "The pickup district."}, {"field_name": "Region", "field_type": "String or null", "description": "The pickup region."}]'>
+<th style="width: 22%"> PickupLocality </th>
+<td style="width: 22%"> &lt;PickupLocality&gt; or null </td>
+<td>
+<p>The pick-up location details if pick-up is allowed and has been specified.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> BidCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bids on the item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ViewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of times the listing has been viewed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsReserveMet </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item's reserve has been met.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasReserve </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has a reserve.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasBuyNow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has Buy Now.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NoteDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date of the note on an item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display name of the category.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."}, {"name": "Met", "value": "1", "description": "The value of the highest bid has exceeded the reserve price."}, {"name": "NotMet", "value": "2", "description": "The value of the highest bid has not reached the reserve price."}, {"name": "NotApplicable", "value": "3", "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."}]'>
+<th style="width: 22%"> ReserveState </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The flag to display on an item.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Name", "field_type": "String or null", "description": "A name which uniquely identifies the attribute. Required when selling or editing."}, {"field_name": "DisplayName", "field_type": "String or null", "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."}, {"field_name": "Value", "field_type": "String or null", "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."}, {"field_name": "Type", "field_type": "Enumeration", "description": "The type of the attribute, which determines the range of acceptable values. Not required when selling or editing.", "enum_values": [{"name": "None", "value": "0", "description": "Not used."}, {"name": "Boolean", "value": "1", "description": "The attribute value is a boolean (true/false)."}, {"name": "Integer", "value": "2", "description": "The attribute value is an integer."}, {"name": "Decimal", "value": "3", "description": "The attribute value is a floating point number."}, {"name": "String", "value": "4", "description": "The attribute value can be arbitrary text."}, {"name": "DateTime", "value": "5", "description": "The attribute value is a date &amp; time (in UTC)."}]}, {"field_name": "Range", "field_type": "&lt;AttributeRange&gt; or null", "description": "The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing."}, {"field_name": "Options", "field_type": "Collection of &lt;AttributeOption&gt; or null", "description": "A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing."}, {"field_name": "IsRequiredForSell", "field_type": "Boolean", "description": "Indicates whether the attribute must be present when selling an item."}, {"field_name": "DisplayValue", "field_type": "String or null", "description": "The value of the attribute as it needs to be displayed to the end users"}]'>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; or null </td>
+<td>
+<p>The attributes for the item that are intended to be displayed on the UI.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> HiddenAttributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; or null </td>
+<td>
+<p>The attributes for the item that are not intended to be displayed on the UI.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClassified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is a classified.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Start", "field_type": "DateTime", "description": "The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone."}, {"field_name": "End", "field_type": "DateTime", "description": "The date and time the open home is no longer open for viewing. Must be the same day asStart."}]'>
+<th style="width: 22%"> OpenHomes </th>
+<td style="width: 22%"> Collection of &lt;OpenHome&gt; or null </td>
+<td>
+<p>A collection of open home times for this listing. Only applies to open home listings.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> RelistedItemId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the new listing if this listing was relisted.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The subtitle, if present.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReservePrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBuyNowOnly </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether or not this is a Buy Now Only listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasMultiple </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether there is more than one item available. Only applicable for Buy Now Only listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFlatShippingCharge </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether one flat shipping fee will be charged if more than one of this item is purchased. Only applicable for Buy Now Only listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RemainingGalleryPlusRelists </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinimumNextBidAmount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The smallest amount that will be accepted for the next bid. Only applicable to auctions which allow bidding (i.e. not classifieds and not Buy Now Only auctions). You must still check for the "bid too small" error when using this value, as someone may make a bid after you have checked this value but before you have finished placing your bid.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsOnWatchList </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is on the authenticated member's watchlist.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails for watchlist items."}, {"name": "OneHourBefore", "value": "1", "description": "One hour before the listing closes."}, {"name": "TwelveHoursBefore", "value": "2", "description": "Twelve hours before the listing closes."}, {"name": "TwentyFourHoursBefore", "value": "4", "description": "Twenty hours before the listing closes."}]'>
+<th style="width: 22%"> WatchlistReminder </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>If the item is on the watchlist, it indicates the user's preference of when they should get watchlist emails for the item.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Latitude", "field_type": "Number", "description": "The latitude of the location, in degrees (WGS84)."}, {"field_name": "Longitude", "field_type": "Number", "description": "The longitude of the location, in degrees (WGS84)."}, {"field_name": "Northing", "field_type": "Integer", "description": "The northing of the location, in metres (NZTM)."}, {"field_name": "Easting", "field_type": "Integer", "description": "The easting of the location, in metres (NZTM)."}, {"field_name": "Accuracy", "field_type": "Enumeration", "description": "The accuracy of the geographic location (address, street or suburb).", "enum_values": [{"name": "None", "value": "0", "description": "The accuracy of the geographic location is not known."}, {"name": "Address", "value": "1", "description": "The geographic location is accurate to the address level."}, {"name": "Street", "value": "3", "description": "The geographic location is accurate to the street level."}, {"name": "Suburb", "value": "2", "description": "The geographic location is accurate to the suburb level."}, {"name": "AdminPinpoint", "value": "4", "description": "The geographic location is accurate to the AdminPinPoint level."}]}]'>
+<th style="width: 22%"> GeographicLocation </th>
+<td style="width: 22%"> &lt;GeographicLocation&gt; or null </td>
+<td>
+<p>The geographic location (latitude and longitude) of a property.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> PriceDisplay </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have "Price by negotiation".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalReviewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of user-submitted reviews. Currently only applies to services listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositiveReviewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SendPaymentInstructions </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether payment instructions are automatically sent to buyers. This value is only present if you are the seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanUsePayNowInstant </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the PayNowInstant is available for this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalReferenceId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The external reference ID, if one exists. Only available to the seller of a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasAppliedForJob </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the authenticated member has applied for the job. Only applies for job listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> JobApplicationDate </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date and time of the member's most recent job application, if any. This field will only be populated if <b>HasAppliedForJob</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SKU </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClearance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PercentageOff </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "LargeSquareLogo", "field_type": "String or null", "description": "A large square branding image with dimensions of 480x480."}, {"field_name": "LargeWideLogo", "field_type": "String or null", "description": "A large rectangular branding image with dimensions of 480x200."}, {"field_name": "BackgroundColor", "field_type": "String or null", "description": "Banner outline/stroke colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "TextColor", "field_type": "String or null", "description": "Banner background colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "StrokeColor", "field_type": "String or null", "description": "Banner text colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "DisableBanner", "field_type": "Boolean", "description": "Disable the agent branding regardless of Super Feature status"}, {"field_name": "OfficeLocation", "field_type": "String or null", "description": "The name of the office location"}, {"field_name": "LargeBannerURL", "field_type": "String or null", "description": "The url of a larger version of the logo"}]'>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> &lt;Branding&gt; or null </td>
+<td>
+<p>A list of branding images associated with this listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> AvailableToBuy </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The amount of listings available for purchase. If greater than 10, 10+ will be displayed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSuperFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a super featured listing?</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;OptionSets&quot;, &quot;field_type&quot;: &quot;Collection of &lt;OptionSet&gt; or null&quot;, &quot;description&quot;: &quot;A collection of variant options.&quot;}, {&quot;field_name&quot;: &quot;NameString or nullThe name used to identify the group of option values, e.g. \&quot;size\&quot; or \&quot;colour\&quot;.ValuesCollection of String or nullThe choices available for this option set, e.g. \&quot;red\&quot;, \&quot;blue\&quot;. The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.&quot;, &quot;field_type&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Name&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name used to identify the group of option values, e.g. \&quot;size\&quot; or \&quot;colour\&quot;.&quot;}, {&quot;field_name&quot;: &quot;Values&quot;, &quot;field_type&quot;: &quot;Collection of String or null&quot;, &quot;description&quot;: &quot;The choices available for this option set, e.g. \&quot;red\&quot;, \&quot;blue\&quot;. The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.&quot;}, {&quot;field_name&quot;: &quot;Variants&quot;, &quot;field_type&quot;: &quot;Collection of &lt;Variant&gt; or null&quot;, &quot;description&quot;: &quot;A collection of variants.&quot;}, {&quot;field_name&quot;: &quot;SKUString or nullSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.PriceNumberThe Buy Now price of the variant. Must be a minimum of 50c.IsClearanceBooleanThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.WasPriceNumber or nullThe Was price of the variant. Must be a minimum of 50c.QuantityIntegerThis is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.PhotosCollection of &lt;Photo&gt; or nullA collection of photo URLs for the listing. Ignored when creating or editing a listing.KeyIntegerValue&lt;PhotoUrl&gt; or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.OptionsCollection of &lt;Option&gt; or nullThe combination of variant options that this variant represents.NameString or nullThe name used to identify the group of option values, e.g. \&quot;size\&quot; or \&quot;colour\&quot;. This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. \&quot;red\&quot;, \&quot;blue\&quot;. This name must match an entry in the option set.AttributesCollection of &lt;Attribute&gt; or nullA collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.(This type has already been defined)ListingIdInteger or nullThe identifier of the listing that this variant represents.ProductSpecification&lt;ProductSpecification&gt; or nullThe specifications of the product if the variant relates to a productGTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D&quot;, &quot;field_type&quot;: &quot;SKU&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;SKU&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.&quot;}, {&quot;field_name&quot;: &quot;Price&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The Buy Now price of the variant. Must be a minimum of 50c.&quot;}, {&quot;field_name&quot;: &quot;IsClearance&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.&quot;}, {&quot;field_name&quot;: &quot;WasPrice&quot;, &quot;field_type&quot;: &quot;Number or null&quot;, &quot;description&quot;: &quot;The Was price of the variant. Must be a minimum of 50c.&quot;}, {&quot;field_name&quot;: &quot;Quantity&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;This is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.&quot;}, {&quot;field_name&quot;: &quot;Photos&quot;, &quot;field_type&quot;: &quot;Collection of &lt;Photo&gt; or null&quot;, &quot;description&quot;: &quot;A collection of photo URLs for the listing. Ignored when creating or editing a listing.&quot;}, {&quot;field_name&quot;: &quot;KeyIntegerValue&lt;PhotoUrl&gt; or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.&quot;, &quot;field_type&quot;: &quot;Key&quot;, &quot;description&quot;: &quot;Integer&quot;}, {&quot;field_name&quot;: &quot;Key&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;&quot;}, {&quot;field_name&quot;: &quot;Value&quot;, &quot;field_type&quot;: &quot;&lt;PhotoUrl&gt; or null&quot;, &quot;description&quot;: &quot;&quot;}, {&quot;field_name&quot;: &quot;ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.&quot;, &quot;field_type&quot;: &quot;Thumbnail&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Thumbnail&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the thumbnail sized photo (always 85x64, with white borders).&quot;}, {&quot;field_name&quot;: &quot;List&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the list view sized photo (scaled down to fit 160x120).&quot;}, {&quot;field_name&quot;: &quot;Medium&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the medium sized photo (scaled down to fit 175x175).&quot;}, {&quot;field_name&quot;: &quot;Gallery&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the gallery sized photo (scaled down to fit 233x176).&quot;}, {&quot;field_name&quot;: &quot;Large&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the large sized photo (scaled down to fit 352x264).&quot;}, {&quot;field_name&quot;: &quot;FullSize&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the full sized photo (scaled down to fit 670x502).&quot;}, {&quot;field_name&quot;: &quot;PlusSize&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for the plus sized photo (scaled down to fit).&quot;}, {&quot;field_name&quot;: &quot;PhotoId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the photo.&quot;}, {&quot;field_name&quot;: &quot;OriginalWidth&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The original width of the photo.&quot;}, {&quot;field_name&quot;: &quot;OriginalHeight&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The original height of the photo.&quot;}, {&quot;field_name&quot;: &quot;Options&quot;, &quot;field_type&quot;: &quot;Collection of &lt;Option&gt; or null&quot;, &quot;description&quot;: &quot;The combination of variant options that this variant represents.&quot;}, {&quot;field_name&quot;: &quot;NameString or nullThe name used to identify the group of option values, e.g. \&quot;size\&quot; or \&quot;colour\&quot;. This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. \&quot;red\&quot;, \&quot;blue\&quot;. This name must match an entry in the option set.&quot;, &quot;field_type&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Name&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name used to identify the group of option values, e.g. \&quot;size\&quot; or \&quot;colour\&quot;. This name must match an entry in the option set collection.&quot;}, {&quot;field_name&quot;: &quot;Value&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The choice that this variant has for the option, e.g. \&quot;red\&quot;, \&quot;blue\&quot;. This name must match an entry in the option set.&quot;}, {&quot;field_name&quot;: &quot;Attributes&quot;, &quot;field_type&quot;: &quot;Collection of &lt;Attribute&gt; or null&quot;, &quot;description&quot;: &quot;A collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.&quot;}, {&quot;field_name&quot;: &quot;ListingId&quot;, &quot;field_type&quot;: &quot;Integer or null&quot;, &quot;description&quot;: &quot;The identifier of the listing that this variant represents.&quot;}, {&quot;field_name&quot;: &quot;ProductSpecification&quot;, &quot;field_type&quot;: &quot;&lt;ProductSpecification&gt; or null&quot;, &quot;description&quot;: &quot;The specifications of the product if the variant relates to a product&quot;}, {&quot;field_name&quot;: &quot;GTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D&quot;, &quot;field_type&quot;: &quot;GTIN&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;GTIN&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The GTIN of the product e.g. 027242896505&quot;}, {&quot;field_name&quot;: &quot;Brand&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The brand name of the product e.g. Sony&quot;}, {&quot;field_name&quot;: &quot;ManufacturerCode&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The product code used by the manufacturer e.g. KDL32W600D&quot;}]">
+<th style="width: 22%"> VariantDefinition </th>
+<td style="width: 22%"> &lt;VariantDefinition&gt; or null </td>
+<td>
+<p>The variants.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> ListingGroupId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "BulletPoints", "field_type": "Collection of String or null", "description": "The bullet points for display in the search results"}, {"field_name": "Tags", "field_type": "Collection of &lt;Tag&gt; or null", "description": "The tags for display in the search results"}, {"field_name": "NameString or nullThe name of the tag", "field_type": "Name", "description": "String or null"}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the tag"}]'>
+<th style="width: 22%"> AdditionalData </th>
+<td style="width: 22%"> &lt;AdditionalData&gt; or null </td>
+<td>
+<p>Structured information for Listing Additional Data</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> ListingExtras </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>A collection of extras that are currently applied to the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsLoyaltyEligible </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is eligible to loyalty program.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasPing </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether Ping is a supported payment option.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnansweredQuestionCount </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of unanswered questions</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LatestRelistedItemId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the current open listing if this listing has been continuously relisted.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCounterOffersAllowed </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is enabled for Make an Offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaximumOffers </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The maximum number of Buyer offers the listing accepts if the listing has Counter Offers enabled.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;ShippingTemplateId&quot;, &quot;field_type&quot;: &quot;Integer or null&quot;, &quot;description&quot;: &quot;Represents the template used to create the shipping options on this listing&quot;}, {&quot;field_name&quot;: &quot;SuggestedShipping&quot;, &quot;field_type&quot;: &quot;&lt;SuggestedShipping&gt; or null&quot;, &quot;description&quot;: &quot;Suggested shipping details, based on member preferences.&quot;}, {&quot;field_name&quot;: &quot;PriceNumber or nullThe price of the delivery option; 0 if it's free shippingDestinationString or nullName of the shipping destination, if structured shipping information exists.DeliveryTime&lt;ShippingDeliveryTime&gt; or nullDelivery time details for the current listing, if structured shipping information exists.MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.IsRuralBoolean or nullIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.&quot;, &quot;field_type&quot;: &quot;Price&quot;, &quot;description&quot;: &quot;Number or null&quot;}, {&quot;field_name&quot;: &quot;Price&quot;, &quot;field_type&quot;: &quot;Number or null&quot;, &quot;description&quot;: &quot;The price of the delivery option; 0 if it's free shipping&quot;}, {&quot;field_name&quot;: &quot;Destination&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;Name of the shipping destination, if structured shipping information exists.&quot;}, {&quot;field_name&quot;: &quot;DeliveryTime&quot;, &quot;field_type&quot;: &quot;&lt;ShippingDeliveryTime&gt; or null&quot;, &quot;description&quot;: &quot;Delivery time details for the current listing, if structured shipping information exists.&quot;}, {&quot;field_name&quot;: &quot;MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.&quot;, &quot;field_type&quot;: &quot;MinValue&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;MinValue&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The earliest expected delivery time returned in ISO 8601 duration format.&quot;}, {&quot;field_name&quot;: &quot;MaxValue&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The latest expected delivery time returned in ISO 8601 duration format.&quot;}, {&quot;field_name&quot;: &quot;IsRural&quot;, &quot;field_type&quot;: &quot;Boolean or null&quot;, &quot;description&quot;: &quot;Indicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.&quot;}]">
+<th style="width: 22%"> ShippingDetails </th>
+<td style="width: 22%"> &lt;ShippingDetails&gt; or null </td>
+<td>
+<p>Shipping details for the current listing. Null if no shipping details available.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsMessagingAllowed </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is enabled for messaging via messaging service.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "AskingPrice", "value": "0", "description": "Asking Price."}, {"name": "PriceOnApplication", "value": "1", "description": "Price On Application."}, {"name": "ExcludingGST", "value": "2", "description": "Excluding GST."}]'>
+<th style="width: 22%"> PriceType </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>Indicates the price type of boat and farming machinery listings</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Availability&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;Enum value denoting the availability of the car, can be : 'inTransit' , 'availableToOrder'&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;InTransit&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;New car is in transit: on its way to the dealer&quot;}, {&quot;name&quot;: &quot;AvailableToOrder&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;New car is available to order&quot;}]}, {&quot;field_name&quot;: &quot;Condition&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;Enum value denoting the condition of the car, can be : 'brandNew', 'exDemo', 'certifiedPreOwned'&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;BrandNew&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Indicates that this car is brand new&quot;}, {&quot;name&quot;: &quot;ExDemo&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Indicates that this car is an ex-demo&quot;}, {&quot;name&quot;: &quot;CertifiedPreOwned&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;New car is certified pre owned&quot;}]}, {&quot;field_name&quot;: &quot;CertifiedPreOwned&quot;, &quot;field_type&quot;: &quot;&lt;CertifiedPreOwnedProgramme&gt; or null&quot;, &quot;description&quot;: &quot;The car's certified pre-owned programme.&quot;}, {&quot;field_name&quot;: &quot;LogoUrlString or nullUrl of the certified preowned programme's logo (designed for a light background).DarkModeLogoUrlString or nullUrl of the certified preowned programme's logo (designed for a dark background).&quot;, &quot;field_type&quot;: &quot;LogoUrl&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;LogoUrl&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;Url of the certified preowned programme's logo (designed for a light background).&quot;}, {&quot;field_name&quot;: &quot;DarkModeLogoUrl&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;Url of the certified preowned programme's logo (designed for a dark background).&quot;}]">
+<th style="width: 22%"> NewCarInformation </th>
+<td style="width: 22%"> &lt;NewCarInformation&gt; or null </td>
+<td>
+<p>Information specific to new cars if the current listing is a new car listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "TopSortProductId", "field_type": "String or null", "description": "The ID for the Tradevine (and thus TopSort) Product that the listing is related to."}, {"field_name": "TopSortVendorId", "field_type": "String or null", "description": "TopSort Vendor ID that is sent to TopSort for each purchase event"}]'>
+<th style="width: 22%"> Sponsored </th>
+<td style="width: 22%"> &lt;SponsoredListingsDetails&gt; or null </td>
+<td>
+<p>listing’s required metadata relating to Sponsored Listings.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "Unset", "value": "0", "description": "The platform has not been set."}, {"name": "TradeMe", "value": "1", "description": "The listing is controlled by Trade Me."}, {"name": "Koru", "value": "2", "description": "The listing is controlled by Koru."}]'>
+<th style="width: 22%"> ListingPlatform </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The backend platform that controls the listing.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "The listing allows pick up, but does not require it."}, {"name": "Allow", "value": "1", "description": "The buyer can pickup if they so choose."}, {"name": "Demand", "value": "2", "description": "The buyer must pickup the item."}, {"name": "Forbid", "value": "3", "description": "The buyer cannot pickup the item (delivery only)."}]'>
+<th style="width: 22%"> AllowsPickups </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The pickup option for the listing.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MemberId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;Nickname&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;DateAddressVerified&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member was address verified.&quot;}, {&quot;field_name&quot;: &quot;DateJoined&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member joined.&quot;}, {&quot;field_name&quot;: &quot;Email&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The member's email address.&quot;}, {&quot;field_name&quot;: &quot;UniqueNegative&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed negative feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;UniquePositive&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed positive feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;FeedbackCount&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The member's total feedback (UniquePositive minus UniqueNegative).&quot;}, {&quot;field_name&quot;: &quot;IsAddressVerified&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been address verified.&quot;}, {&quot;field_name&quot;: &quot;Suburb&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the member's suburb.&quot;}, {&quot;field_name&quot;: &quot;Region&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the member's region.&quot;}, {&quot;field_name&quot;: &quot;IsDealer&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a car dealer.&quot;}, {&quot;field_name&quot;: &quot;IsAuthenticated&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is authenticated.&quot;}, {&quot;field_name&quot;: &quot;IsInTrade&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a professional trader.&quot;}, {&quot;field_name&quot;: &quot;ImportChargesMayApply&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates that the trader is an international seller, and therefore customs import charges may apply.&quot;}, {&quot;field_name&quot;: &quot;Photo&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The profile photo URL of the member&quot;}, {&quot;field_name&quot;: &quot;Profile&quot;, &quot;field_type&quot;: &quot;&lt;SimpleMemberProfile&gt; or null&quot;, &quot;description&quot;: &quot;Member profile details&quot;}, {&quot;field_name&quot;: &quot;OccupationString or nullThe occupation of the member.BiographyString or nullThe member's bio.QuoteString or nullThe member's favourite quote.PhotoString or nullA URL representing the member's photo.&quot;, &quot;field_type&quot;: &quot;Occupation&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Occupation&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The occupation of the member.&quot;}, {&quot;field_name&quot;: &quot;Biography&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The member's bio.&quot;}, {&quot;field_name&quot;: &quot;Quote&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The member's favourite quote.&quot;}, {&quot;field_name&quot;: &quot;Photo&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A URL representing the member's photo.&quot;}, {&quot;field_name&quot;: &quot;IsTopSeller&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is currently a Top Seller&quot;}, {&quot;field_name&quot;: &quot;IsRentiUser&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a renti user.&quot;}]">
+<th style="width: 22%"> Member </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>The seller of the listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Body </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The text used as the body of the item.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "TotalCount", "field_type": "Integer", "description": "The total number of results in the collection. Can be larger than the number of returned results."}, {"field_name": "Page", "field_type": "Integer", "description": "The index of the current page of results (starts at 1)."}, {"field_name": "PageSize", "field_type": "Integer", "description": "The number of results in the current page."}, {"field_name": "List", "field_type": "Collection of &lt;Bid&gt; or null", "description": "A list of the results in the current page."}, {"field_name": "AccountString or nullThe account the bid came from.BidAmountNumberThe amount of money the bid represents, in NZD.IsByMobileBooleanIndicates whether the bid came from a mobile phone.IsByProxyBooleanIndicates whether the bid was by proxy.BidDateDateTimeThe date and time the bid was placed.IsBuyNowBooleanIndicates whether the bid was a Buy Now bid.Bidder&lt;Member&gt; or nullThe member who placed the bid.(This type has already been defined)SelectedShippingOptionInteger or nullThe selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to.", "field_type": "Account", "description": "String or null"}, {"field_name": "Account", "field_type": "String or null", "description": "The account the bid came from."}, {"field_name": "BidAmount", "field_type": "Number", "description": "The amount of money the bid represents, in NZD."}, {"field_name": "IsByMobile", "field_type": "Boolean", "description": "Indicates whether the bid came from a mobile phone."}, {"field_name": "IsByProxy", "field_type": "Boolean", "description": "Indicates whether the bid was by proxy."}, {"field_name": "BidDate", "field_type": "DateTime", "description": "The date and time the bid was placed."}, {"field_name": "IsBuyNow", "field_type": "Boolean", "description": "Indicates whether the bid was a Buy Now bid."}, {"field_name": "Bidder", "field_type": "&lt;Member&gt; or null", "description": "The member who placed the bid."}, {"field_name": "SelectedShippingOption", "field_type": "Integer or null", "description": "The selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to."}]'>
+<th style="width: 22%"> Bids </th>
+<td style="width: 22%"> &lt;BidCollection&gt; or null </td>
+<td>
+<p>A list of the last 10 bids for the listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "TotalCount", "field_type": "Integer", "description": "The total number of results in the collection. Can be larger than the number of returned results."}, {"field_name": "Page", "field_type": "Integer", "description": "The index of the current page of results (starts at 1)."}, {"field_name": "PageSize", "field_type": "Integer", "description": "The number of results in the current page."}, {"field_name": "List", "field_type": "Collection of &lt;Question&gt; or null", "description": "A list of the results in the current page."}, {"field_name": "ListingIdIntegerThe ID of the listing this question belongs to.ListingQuestionIdIntegerThe question ID.CommentString or nullThe text of the question.CommentDateDateTimeThe date and time the question was asked.AnswerString or nullThe answer given to the question by the owner of the listing.AnswerDateDateTimeThe date the question was answered.IsSellerCommentBooleanIndicates whether this is a comment from the seller rather than a question.AskingMember&lt;Member&gt; or nullThe member details for the member asking the question.(This type has already been defined)", "field_type": "ListingId", "description": "Integer"}, {"field_name": "ListingId", "field_type": "Integer", "description": "The ID of the listing this question belongs to."}, {"field_name": "ListingQuestionId", "field_type": "Integer", "description": "The question ID."}, {"field_name": "Comment", "field_type": "String or null", "description": "The text of the question."}, {"field_name": "CommentDate", "field_type": "DateTime", "description": "The date and time the question was asked."}, {"field_name": "Answer", "field_type": "String or null", "description": "The answer given to the question by the owner of the listing."}, {"field_name": "AnswerDate", "field_type": "DateTime", "description": "The date the question was answered."}, {"field_name": "IsSellerComment", "field_type": "Boolean", "description": "Indicates whether this is a comment from the seller rather than a question."}, {"field_name": "AskingMember", "field_type": "&lt;Member&gt; or null", "description": "The member details for the member asking the question."}]'>
+<th style="width: 22%"> Questions </th>
+<td style="width: 22%"> &lt;Questions&gt; or null </td>
+<td>
+<p>A list of questions and answers for the listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "Key", "field_type": "Integer", "description": ""}, {"field_name": "Value", "field_type": "&lt;PhotoUrl&gt; or null", "description": ""}, {"field_name": "ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.", "field_type": "Thumbnail", "description": "String or null"}, {"field_name": "Thumbnail", "field_type": "String or null", "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."}, {"field_name": "List", "field_type": "String or null", "description": "The URL for the list view sized photo (scaled down to fit 160x120)."}, {"field_name": "Medium", "field_type": "String or null", "description": "The URL for the medium sized photo (scaled down to fit 175x175)."}, {"field_name": "Gallery", "field_type": "String or null", "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."}, {"field_name": "Large", "field_type": "String or null", "description": "The URL for the large sized photo (scaled down to fit 352x264)."}, {"field_name": "FullSize", "field_type": "String or null", "description": "The URL for the full sized photo (scaled down to fit 670x502)."}, {"field_name": "PlusSize", "field_type": "String or null", "description": "The URL for the plus sized photo (scaled down to fit)."}, {"field_name": "PhotoId", "field_type": "Integer", "description": "The ID of the photo."}, {"field_name": "OriginalWidth", "field_type": "Integer", "description": "The original width of the photo."}, {"field_name": "OriginalHeight", "field_type": "Integer", "description": "The original height of the photo."}]'>
+<th style="width: 22%"> Photos </th>
+<td style="width: 22%"> Collection of &lt;Photo&gt; or null </td>
+<td>
+<p>A collection of photos for the listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> PickupLocation </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The pick-up location details if pick-up is allowed.</p>
+<p style="color: red">
+                                This property is deprecated and will be removed. Use the ListedItem PickupLocality property instead.
+                            </p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Type", "field_type": "Enumeration", "description": "The type of delivery.", "enum_values": [{"name": "None", "value": "0", "description": "The type of the \"None of the options apply to me\" shipping option. Do not use when listing an item."}, {"name": "Unknown", "value": "0", "description": "Obsolete. Do not use."}, {"name": "Undecided", "value": "1", "description": "Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options."}, {"name": "Pickup", "value": "2", "description": "Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead)."}, {"name": "Free", "value": "3", "description": "Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options."}, {"name": "Custom", "value": "4", "description": "Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten)."}, {"name": "TradeMe", "value": "5", "description": "Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options."}]}, {"field_name": "Price", "field_type": "Number", "description": "The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places."}, {"field_name": "Method", "field_type": "String or null", "description": "The name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom."}, {"field_name": "ShippingId", "field_type": "Integer", "description": "The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item."}, {"field_name": "TaxesIncluded", "field_type": "Collection of &lt;TaxRateOnPrice&gt; or null", "description": "Indicates if taxes (and what type) are included in the Shipping Price"}, {"field_name": "TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTFlatRateNumberThe rate at which the tax is charged (as a decimal e.g 0.15)DescriptionString or nullA string that can be used as a caption where necessaryIsSellRestrictionsEffectiveBooleanWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restrictedIsTaxEffectiveBooleanWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GSTIsAppliedBooleanWhether the price has had the tax applied (i.e. are inclusive prices)TaxAmountNumber or nullThe amount of tax that was added to the price if appliedWasPriceTaxAmountNumber or nullThe amount of tax that was added to the was/now price if applied", "field_type": "Type", "description": "Enumeration"}, {"field_name": "Type", "field_type": "Enumeration", "description": "The type of tax that is included", "enum_values": [{"name": "NZ_GST_Overseas_Supplies", "value": "1", "description": "New Zealand GST on overseas supplies"}]}, {"field_name": "Country", "field_type": "String or null", "description": "The country that is levying the tax e.g. NZ"}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the tax e.g. GST"}, {"field_name": "FlatRate", "field_type": "Number", "description": "The rate at which the tax is charged (as a decimal e.g 0.15)"}, {"field_name": "Description", "field_type": "String or null", "description": "A string that can be used as a caption where necessary"}, {"field_name": "IsSellRestrictionsEffective", "field_type": "Boolean", "description": "Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted"}, {"field_name": "IsTaxEffective", "field_type": "Boolean", "description": "Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST"}, {"field_name": "IsApplied", "field_type": "Boolean", "description": "Whether the price has had the tax applied (i.e. are inclusive prices)"}, {"field_name": "TaxAmount", "field_type": "Number or null", "description": "The amount of tax that was added to the price if applied"}, {"field_name": "WasPriceTaxAmount", "field_type": "Number or null", "description": "The amount of tax that was added to the was/now price if applied"}]'>
+<th style="width: 22%"> ShippingOptions </th>
+<td style="width: 22%"> Collection of &lt;ShippingOption&gt; or null </td>
+<td>
+<p>A list of shipping options.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> PaymentOptions </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A comma-separated list of the available payment options e.g. "NZ Bank Deposit, Cash, Pay Now".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CurrentAutoBid </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>If you are the bidder then the highest AutoBid value is returned</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Id", "field_type": "Integer", "description": "The ID of the company."}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the company."}, {"field_name": "Address", "field_type": "String or null", "description": "The address of the company HQ."}, {"field_name": "Suburb", "field_type": "String or null", "description": "The suburb where the company HQ is located."}, {"field_name": "City", "field_type": "String or null", "description": "The city where the company HQ is located."}, {"field_name": "PhoneNumber", "field_type": "String or null", "description": "A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead"}, {"field_name": "FaxNumber", "field_type": "String or null", "description": "A fax number for the company."}, {"field_name": "EMail", "field_type": "String or null", "description": "A contact email address for the company."}, {"field_name": "Website", "field_type": "String or null", "description": "The URL of the company website."}, {"field_name": "Logo", "field_type": "String or null", "description": "A URL for the company logo."}, {"field_name": "Branding", "field_type": "&lt;Branding&gt; or null", "description": "The branding object for the company."}, {"field_name": "LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo", "field_type": "LargeSquareLogo", "description": "String or null"}, {"field_name": "LargeSquareLogo", "field_type": "String or null", "description": "A large square branding image with dimensions of 480x480."}, {"field_name": "LargeWideLogo", "field_type": "String or null", "description": "A large rectangular branding image with dimensions of 480x200."}, {"field_name": "BackgroundColor", "field_type": "String or null", "description": "Banner outline/stroke colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "TextColor", "field_type": "String or null", "description": "Banner background colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "StrokeColor", "field_type": "String or null", "description": "Banner text colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "DisableBanner", "field_type": "Boolean", "description": "Disable the agent branding regardless of Super Feature status"}, {"field_name": "OfficeLocation", "field_type": "String or null", "description": "The name of the office location"}, {"field_name": "LargeBannerURL", "field_type": "String or null", "description": "The url of a larger version of the logo"}, {"field_name": "Logo2", "field_type": "String or null", "description": "A URL for the second company logo."}, {"field_name": "PhoneNumbers", "field_type": "Collection of String or null", "description": "Array of up to two phone numbers which can be used to reach the dealership"}, {"field_name": "Dealers", "field_type": "Collection of &lt;Dealer&gt; or null", "description": "Gets the contact details of contacts within the dealership"}, {"field_name": "FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contact", "field_type": "FullName", "description": "String or null"}, {"field_name": "FullName", "field_type": "String or null", "description": "Get the name of a contact"}, {"field_name": "Position", "field_type": "String or null", "description": "Get the position of a contact"}, {"field_name": "MobilePhoneNumber", "field_type": "String or null", "description": "Get the mobile phone number of a contact"}, {"field_name": "OfficePhoneNumber", "field_type": "String or null", "description": "Get the office phone number of a contact"}, {"field_name": "EMail", "field_type": "String or null", "description": "Gets the email of the dealer"}, {"field_name": "FaxNumber", "field_type": "String or null", "description": "Get the fax number of a contact"}, {"field_name": "HomePhoneNumber", "field_type": "String or null", "description": "Get the home phone number of a contact"}, {"field_name": "Showroom", "field_type": "&lt;DealerShowroom&gt; or null", "description": "The show room of theDealership"}, {"field_name": "IdIntegerID of the ShowroomUrlString or nullUrl of the ShowroomLogoString or nullLogo of the ShowroomBannerString or nullBanner of the ShowroomBackgroundColourString or nullBackground colour of the Showroom banner / logo", "field_type": "Id", "description": "Integer"}, {"field_name": "Id", "field_type": "Integer", "description": "ID of the Showroom"}, {"field_name": "Url", "field_type": "String or null", "description": "Url of the Showroom"}, {"field_name": "Logo", "field_type": "String or null", "description": "Logo of the Showroom"}, {"field_name": "Banner", "field_type": "String or null", "description": "Banner of the Showroom"}, {"field_name": "BackgroundColour", "field_type": "String or null", "description": "Background colour of the Showroom banner / logo"}, {"field_name": "AboutUs", "field_type": "String or null", "description": "Description of theDealership"}, {"field_name": "ListingCounts", "field_type": "&lt;DealershipListingCounts&gt; or null", "description": "Count of listings of dealership"}, {"field_name": "TotalIntegerTotal of listingsCarsIntegerCount of car listingsBoatsIntegerCount of motorboat listingsBikesIntegerCount of motorbike listings", "field_type": "Total", "description": "Integer"}, {"field_name": "Total", "field_type": "Integer", "description": "Total of listings"}, {"field_name": "Cars", "field_type": "Integer", "description": "Count of car listings"}, {"field_name": "Boats", "field_type": "Integer", "description": "Count of motorboat listings"}, {"field_name": "Bikes", "field_type": "Integer", "description": "Count of motorbike listings"}, {"field_name": "Product", "field_type": "String or null", "description": "The product the dealership has purchased"}, {"field_name": "StaticMapsImage", "field_type": "String or null", "description": "The Google static map URL of the dealer location"}, {"field_name": "HasSearchCardBranding", "field_type": "Boolean or null", "description": "Bool of whether dealer has search card branding"}, {"field_name": "Video", "field_type": "&lt;DealershipVideo&gt; or null", "description": "Returns a content key if the dealer has embedded content"}, {"field_name": "VideoKeyString or nullThe key of the videoVideoTypeEnumerationThe type of the video, eg: YouTube", "field_type": "VideoKey", "description": "String or null"}, {"field_name": "VideoKey", "field_type": "String or null", "description": "The key of the video"}, {"field_name": "VideoType", "field_type": "Enumeration", "description": "The type of the video, eg: YouTube", "enum_values": [{"name": "Unknown", "value": "0", "description": "Unknown"}, {"name": "Other", "value": "1", "description": "Other"}, {"name": "Youtube", "value": "2", "description": "Youtube"}, {"name": "Vimeo", "value": "3", "description": "Vimeo"}, {"name": "DiakritPanorama", "value": "4", "description": "DiakritPanorama"}, {"name": "DiakritStyler", "value": "5", "description": "DiakritStyler"}, {"name": "DiakritFurnish", "value": "6", "description": "DiakritFurnish"}, {"name": "MP4URL", "value": "7", "description": "MP4URL"}, {"name": "VirtualToursCreator", "value": "8", "description": "VirtualToursCreator"}, {"name": "IStaging", "value": "9", "description": "IStaging"}, {"name": "Matterport", "value": "10", "description": "Matterport"}, {"name": "SlideShare", "value": "11", "description": "SlideShare"}, {"name": "Approved3DTourUrl", "value": "12", "description": "Approved 3D tour content provider."}]}, {"field_name": "BannerImages", "field_type": "&lt;DealerBannerImageUrl&gt; or null", "description": "Returns a content key if the dealer has embedded content"}, {"field_name": "OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image", "field_type": "Original", "description": "String or null"}, {"field_name": "Original", "field_type": "String or null", "description": "The URL of the original image"}, {"field_name": "Small", "field_type": "String or null", "description": "The URL of the small image"}, {"field_name": "Subheading", "field_type": "String or null", "description": "The h2 tag for the dealership"}, {"field_name": "UrlSlug", "field_type": "String or null", "description": "Returns the url slug of the dealer"}, {"field_name": "PackageId", "field_type": "Enumeration or null", "description": "Returns the package ID which the dealer is on", "enum_values": [{"name": "P00001", "value": "1", "description": "Starter Package"}, {"name": "P00002", "value": "2", "description": "Bronze Package"}, {"name": "P00003", "value": "3", "description": "Silver Package"}, {"name": "P00004", "value": "4", "description": "Gold Package"}, {"name": "P00005", "value": "5", "description": "Platinum Package"}, {"name": "P00040", "value": "6", "description": "Entry Listing Package"}, {"name": "P00041", "value": "7", "description": "Lite Package"}, {"name": "P00042", "value": "8", "description": "Standard Package"}, {"name": "P00043", "value": "9", "description": "Enhanced Package"}, {"name": "P00044", "value": "10", "description": "Premium Package"}, {"name": "P00045", "value": "11", "description": "Ultimate Package"}]}, {"field_name": "Company", "field_type": "&lt;DealerCompany&gt; or null", "description": "An object containing the ID and Name of the parent company"}, {"field_name": "IdIntegerThe ID of the dealer companyCompanyNameString or nullThe name of the dealer company", "field_type": "Id", "description": "Integer"}, {"field_name": "Id", "field_type": "Integer", "description": "The ID of the dealer company"}, {"field_name": "CompanyName", "field_type": "String or null", "description": "The name of the dealer company"}, {"field_name": "ShippingOptionsEnabled", "field_type": "Boolean or null", "description": "Bool of whether dealer has shipping options product"}, {"field_name": "Settings", "field_type": "Collection of &lt;Setting&gt; or null", "description": "A collection of settings that apply to this dealer."}, {"field_name": "CodeString or nullA code to identify which setting this value applies toValueString or nullThe value for this setting", "field_type": "Code", "description": "String or null"}, {"field_name": "Code", "field_type": "String or null", "description": "A code to identify which setting this value applies to"}, {"field_name": "Value", "field_type": "String or null", "description": "The value for this setting"}, {"field_name": "RenderOptions", "field_type": "Collection of Enumeration or null", "description": "A list of render options that apply to this dealer.", "enum_values": [{"name": "CanRenderFinanceEnquiry", "value": "1", "description": "CanRenderFinanceEnquiry"}]}]'>
+<th style="width: 22%"> Dealership </th>
+<td style="width: 22%"> &lt;Dealership&gt; or null </td>
+<td>
+<p>The dealership details if this is a car dealer listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "Id", "field_type": "Integer", "description": "The ID of the company."}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the company."}, {"field_name": "Address", "field_type": "String or null", "description": "The address of the company HQ."}, {"field_name": "Suburb", "field_type": "String or null", "description": "The suburb where the company HQ is located."}, {"field_name": "City", "field_type": "String or null", "description": "The city where the company HQ is located."}, {"field_name": "PhoneNumber", "field_type": "String or null", "description": "A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead"}, {"field_name": "FaxNumber", "field_type": "String or null", "description": "A fax number for the company."}, {"field_name": "EMail", "field_type": "String or null", "description": "A contact email address for the company."}, {"field_name": "Website", "field_type": "String or null", "description": "The URL of the company website."}, {"field_name": "Logo", "field_type": "String or null", "description": "A URL for the company logo."}, {"field_name": "Branding", "field_type": "&lt;Branding&gt; or null", "description": "The branding object for the company."}, {"field_name": "LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo", "field_type": "LargeSquareLogo", "description": "String or null"}, {"field_name": "LargeSquareLogo", "field_type": "String or null", "description": "A large square branding image with dimensions of 480x480."}, {"field_name": "LargeWideLogo", "field_type": "String or null", "description": "A large rectangular branding image with dimensions of 480x200."}, {"field_name": "BackgroundColor", "field_type": "String or null", "description": "Banner outline/stroke colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "TextColor", "field_type": "String or null", "description": "Banner background colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "StrokeColor", "field_type": "String or null", "description": "Banner text colour, tick the checkbox before saving to apply the new colour"}, {"field_name": "DisableBanner", "field_type": "Boolean", "description": "Disable the agent branding regardless of Super Feature status"}, {"field_name": "OfficeLocation", "field_type": "String or null", "description": "The name of the office location"}, {"field_name": "LargeBannerURL", "field_type": "String or null", "description": "The url of a larger version of the logo"}, {"field_name": "Logo2", "field_type": "String or null", "description": "A URL for the second company logo."}, {"field_name": "Agents", "field_type": "Collection of &lt;Agent&gt; or null", "description": "The contact details of contacts within the agency."}, {"field_name": "FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contactPhotoString or nullThe Url to agents profile photoUrlSlugString or nullThe property agent profile url identifier used to know which agent profile to displayTestimonialsCountIntegerThe property agent profile testimonials countReviewsCountIntegerThe property agent profile reviews count", "field_type": "FullName", "description": "String or null"}, {"field_name": "FullName", "field_type": "String or null", "description": "Get the name of a contact"}, {"field_name": "Position", "field_type": "String or null", "description": "Get the position of a contact"}, {"field_name": "MobilePhoneNumber", "field_type": "String or null", "description": "Get the mobile phone number of a contact"}, {"field_name": "OfficePhoneNumber", "field_type": "String or null", "description": "Get the office phone number of a contact"}, {"field_name": "EMail", "field_type": "String or null", "description": "Gets the email of the dealer"}, {"field_name": "FaxNumber", "field_type": "String or null", "description": "Get the fax number of a contact"}, {"field_name": "HomePhoneNumber", "field_type": "String or null", "description": "Get the home phone number of a contact"}, {"field_name": "Photo", "field_type": "String or null", "description": "The Url to agents profile photo"}, {"field_name": "UrlSlug", "field_type": "String or null", "description": "The property agent profile url identifier used to know which agent profile to display"}, {"field_name": "TestimonialsCount", "field_type": "Integer", "description": "The property agent profile testimonials count"}, {"field_name": "ReviewsCount", "field_type": "Integer", "description": "The property agent profile reviews count"}, {"field_name": "IsRealEstateAgency", "field_type": "Boolean", "description": "Indicates whether the agency does real estate."}, {"field_name": "IsJobAgency", "field_type": "Boolean", "description": "Indicates whether the agency does job listings."}, {"field_name": "IsLicensedPropertyAgency", "field_type": "Boolean", "description": "Indicates whether the agency is an REAA licensed property agency"}, {"field_name": "JobAgent", "field_type": "&lt;JobAgent&gt; or null", "description": "Return job agent details when agent is job agent"}, {"field_name": "TradingNameString or nullThe trading name of the job agentAgentTypeEnumerationThe type of the job agentLinksCollection of &lt;Link&gt; or nullLinks to related operationsHrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.MemberLevelString or nullThe id of the member who owns the profileDescriptionString or nullcompany descriptionAgentBranding&lt;JobAgentBranding&gt; or nullagent brandingFullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of &lt;Photo&gt; or nullcompany photo urlsKeyIntegerValue&lt;PhotoUrl&gt; or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel urlCanonicalNameString or nullMember Canonical NameSEOCompanyNameString or nullSEO Company NamePageTitleString or nullPage TitleDisplayTitleString or nullDisplay TitleAgentIdIntegerAgentId", "field_type": "TradingName", "description": "String or null"}, {"field_name": "TradingName", "field_type": "String or null", "description": "The trading name of the job agent"}, {"field_name": "AgentType", "field_type": "Enumeration", "description": "The type of the job agent", "enum_values": [{"name": "Employer", "value": "0", "description": "An agent who is an employer or business on a plan"}, {"name": "Reseller", "value": "1", "description": "A casual account for a reseller"}, {"name": "RecruitmentAgency", "value": "2", "description": "A recruitment agency that is on a plan"}, {"name": "Prepaid", "value": "3", "description": "An account for an agent that is prepaid"}]}, {"field_name": "Links", "field_type": "Collection of &lt;Link&gt; or null", "description": "Links to related operations"}, {"field_name": "HrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.", "field_type": "Href", "description": "String or null"}, {"field_name": "Href", "field_type": "String or null", "description": "An HREF representing the uri to the resource"}, {"field_name": "Rel", "field_type": "String or null", "description": "A REL representing the relationship between the sending resource and the linked resource"}, {"field_name": "Prompt", "field_type": "String or null", "description": "A PROMPT, optional display text to represent the resource to a user"}, {"field_name": "Method", "field_type": "String or null", "description": "A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET."}, {"field_name": "MemberLevel", "field_type": "String or null", "description": "The id of the member who owns the profile"}, {"field_name": "Description", "field_type": "String or null", "description": "company description"}, {"field_name": "AgentBranding", "field_type": "&lt;JobAgentBranding&gt; or null", "description": "agent branding"}, {"field_name": "FullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of &lt;Photo&gt; or nullcompany photo urlsKeyIntegerValue&lt;PhotoUrl&gt; or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel url", "field_type": "FullscreenBannerUrl", "description": "String or null"}, {"field_name": "FullscreenBannerUrl", "field_type": "String or null", "description": "company full screen banner url"}, {"field_name": "SmallBannerUrl", "field_type": "String or null", "description": "company small banner url"}, {"field_name": "LogoUrl", "field_type": "String or null", "description": "company logo url"}, {"field_name": "PhotoUrls", "field_type": "Collection of &lt;Photo&gt; or null", "description": "company photo urls"}, {"field_name": "KeyIntegerValue&lt;PhotoUrl&gt; or null(This type has already been defined)", "field_type": "Key", "description": "Integer"}, {"field_name": "Key", "field_type": "Integer", "description": ""}, {"field_name": "Value", "field_type": "&lt;PhotoUrl&gt; or null", "description": ""}, {"field_name": "YoutubeUrl", "field_type": "String or null", "description": "company youtube channel url"}, {"field_name": "CanonicalName", "field_type": "String or null", "description": "Member Canonical Name"}, {"field_name": "SEOCompanyName", "field_type": "String or null", "description": "SEO Company Name"}, {"field_name": "PageTitle", "field_type": "String or null", "description": "Page Title"}, {"field_name": "DisplayTitle", "field_type": "String or null", "description": "Display Title"}, {"field_name": "AgentId", "field_type": "Integer", "description": "AgentId"}]'>
+<th style="width: 22%"> Agency </th>
+<td style="width: 22%"> &lt;Agency&gt; or null </td>
+<td>
+<p>The agency details if this is a job or property listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Name&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the store.&quot;}, {&quot;field_name&quot;: &quot;LogoImageUri&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of a small logo image (180x52).&quot;}, {&quot;field_name&quot;: &quot;BannerImageUri&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of a banner image. Stores extra banner images are 960x120. Store banner images are 633x75. When requesting listing details, only stores extra listings have a banner image.&quot;}, {&quot;field_name&quot;: &quot;Promotions&quot;, &quot;field_type&quot;: &quot;Collection of &lt;StorePromotion&gt; or null&quot;, &quot;description&quot;: &quot;A collection of promotional images. Only applies to stores extra.&quot;}, {&quot;field_name&quot;: &quot;ImageUriString or nullThe URL of the promotional image 760x240.&quot;, &quot;field_type&quot;: &quot;ImageUri&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;ImageUri&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the promotional image 760x240.&quot;}, {&quot;field_name&quot;: &quot;ShortDescription&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A short description of what the store sells. Only returned when browsing the stores list.&quot;}, {&quot;field_name&quot;: &quot;LargeBannerImage&quot;, &quot;field_type&quot;: &quot;&lt;LargeBannerImage&gt; or null&quot;, &quot;description&quot;: &quot;The URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image.&quot;}, {&quot;field_name&quot;: &quot;SmallString or nullThe URL of the promotional image in small size 320x180MediumString or nullThe URL of the promotional image in medium size 768x432.LargeString or nullThe URL of the promotional image in large size 1024x576.XLargeString or nullThe URL of the promotional image in extra large size 1440x810.&quot;, &quot;field_type&quot;: &quot;Small&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Small&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the promotional image in small size 320x180&quot;}, {&quot;field_name&quot;: &quot;Medium&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the promotional image in medium size 768x432.&quot;}, {&quot;field_name&quot;: &quot;Large&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the promotional image in large size 1024x576.&quot;}, {&quot;field_name&quot;: &quot;XLarge&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the promotional image in extra large size 1440x810.&quot;}, {&quot;field_name&quot;: &quot;StorePath&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A url friendly path for the store, that is unique.&quot;}, {&quot;field_name&quot;: &quot;Location&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The location for this store&quot;}, {&quot;field_name&quot;: &quot;PhoneNumber&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The phone number for this store&quot;}, {&quot;field_name&quot;: &quot;Website&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The website for this store&quot;}, {&quot;field_name&quot;: &quot;Member&quot;, &quot;field_type&quot;: &quot;&lt;Member&gt; or null&quot;, &quot;description&quot;: &quot;The member details associated with this store&quot;}]">
+<th style="width: 22%"> Store </th>
+<td style="width: 22%"> &lt;Store&gt; or null </td>
+<td>
+<p>The store details, if the seller has a Trade Me store.</p>
+</td>
+</tr>
+
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;ContactName&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the service provider.&quot;}, {&quot;field_name&quot;: &quot;PhoneNumber&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The seller's contact phone number (landline).&quot;}, {&quot;field_name&quot;: &quot;MobilePhoneNumber&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The seller's mobile phone number.&quot;}, {&quot;field_name&quot;: &quot;BestContactTime&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The best time to contact the seller.&quot;}, {&quot;field_name&quot;: &quot;Website&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The service provider's website.&quot;}]">
+<th style="width: 22%"> ContactDetails </th>
+<td style="width: 22%"> &lt;ContactDetails&gt; or null </td>
+<td>
+<p>The contact details for a personal listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsOrNearOffer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether a near offer is accepted.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AuthenticatedMembersOnly </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether bidding on this auction is restricted to authenticated members. Note that there are many restrictions on non-authenticated users. For more information, see the help article on <a href="https://www.trademe.co.nz/help/170/becoming-authenticated">becoming authenticated</a>.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;PurchaseId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;A unique identifier for the sale.&quot;}, {&quot;field_name&quot;: &quot;ReferenceNumber&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The reference number that should be used when making a deposit into the seller's bank account.&quot;}, {&quot;field_name&quot;: &quot;SoldDate&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date and time the item was sold.&quot;}, {&quot;field_name&quot;: &quot;Method&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The method by which the sale was made.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Auction&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;The auction was sold via a bid.&quot;}, {&quot;name&quot;: &quot;BuyNow&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;The auction was sold via Buy Now.&quot;}, {&quot;name&quot;: &quot;Offer&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;The auction was sold via a fixed price offer.&quot;}]}, {&quot;field_name&quot;: &quot;SelectedShipping&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A description of the selected shipping method (e.g. \&quot;Nationwide courier\&quot;).&quot;}, {&quot;field_name&quot;: &quot;ShippingPrice&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The price of shipping.&quot;}, {&quot;field_name&quot;: &quot;ShippingType&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The type of shipping that was selected.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;The type of the \&quot;None of the options apply to me\&quot; shipping option. Do not use when listing an item.&quot;}, {&quot;name&quot;: &quot;Unknown&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Obsolete. Do not use.&quot;}, {&quot;name&quot;: &quot;Undecided&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options.&quot;}, {&quot;name&quot;: &quot;Pickup&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead).&quot;}, {&quot;name&quot;: &quot;Free&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options.&quot;}, {&quot;name&quot;: &quot;Custom&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten).&quot;}, {&quot;name&quot;: &quot;TradeMe&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options.&quot;}]}, {&quot;field_name&quot;: &quot;Buyer&quot;, &quot;field_type&quot;: &quot;&lt;Member&gt; or null&quot;, &quot;description&quot;: &quot;The member who bought the item. Not available if you are the buyer.&quot;}, {&quot;field_name&quot;: &quot;QuantitySold&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The quantity sold.&quot;}, {&quot;field_name&quot;: &quot;Price&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The price the item was sold for, excluding shipping. If the purchase was for multiple items, this is the price of a single item.&quot;}, {&quot;field_name&quot;: &quot;SubtotalPrice&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The price for all items, excluding shipping (i.e. equal to SalePrice * QuantitySold).&quot;}, {&quot;field_name&quot;: &quot;TotalShippingPrice&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The total price for shipping. If flat shipping is not enabled, equal to ShippingPrice * QuantitySold.&quot;}, {&quot;field_name&quot;: &quot;TotalSalePrice&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The total price for the entire sale, including shipping and buyer service fee if applicable. If the purchase was for multiple items, all items are included in this price.&quot;}, {&quot;field_name&quot;: &quot;HasSellerPlacedFeedback&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the seller has placed feedback on the buyer for this sale.&quot;}, {&quot;field_name&quot;: &quot;HasBuyerPlacedFeedback&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the buyer has placed feedback on the seller for this sale.&quot;}, {&quot;field_name&quot;: &quot;DeliveryDetailsSent&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether delivery details (i.e. the delivery address, phone number and message) have been sent to the seller. Because all three elements are optional, this can betrueeven if the DeliveryAddress and MessageFromBuyer fields are missing.&quot;}, {&quot;field_name&quot;: &quot;DeliveryAddress&quot;, &quot;field_type&quot;: &quot;&lt;Address&gt; or null&quot;, &quot;description&quot;: &quot;The delivery address as indicated by the buyer.&quot;}, {&quot;field_name&quot;: &quot;NameString or nullThe name of the person whom the item is being delivered to.Address1String or nullThe first line of the address.Address2String or nullThe second line of the address (optional).SuburbString or nullThe suburb (optional).CityString or nullThe city.PostcodeString or nullThe postcode (optional).CountryString or nullThe country (currently restricted to \&quot;New Zealand\&quot; or \&quot;Australia\&quot;).PhoneNumberString or nullThe contact phone number (optional).&quot;, &quot;field_type&quot;: &quot;Name&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Name&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the person whom the item is being delivered to.&quot;}, {&quot;field_name&quot;: &quot;Address1&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The first line of the address.&quot;}, {&quot;field_name&quot;: &quot;Address2&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The second line of the address (optional).&quot;}, {&quot;field_name&quot;: &quot;Suburb&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The suburb (optional).&quot;}, {&quot;field_name&quot;: &quot;City&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The city.&quot;}, {&quot;field_name&quot;: &quot;Postcode&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The postcode (optional).&quot;}, {&quot;field_name&quot;: &quot;Country&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The country (currently restricted to \&quot;New Zealand\&quot; or \&quot;Australia\&quot;).&quot;}, {&quot;field_name&quot;: &quot;PhoneNumber&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The contact phone number (optional).&quot;}, {&quot;field_name&quot;: &quot;MessageFromBuyer&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The message from the buyer to the seller, if any.&quot;}, {&quot;field_name&quot;: &quot;PaymentInstructions&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The payment instructions that the seller has sent to the buyer, containing information on how to pay. Will be absent if the seller has not enabled payment instructions, or if the seller has not yet sent them to the buyer.&quot;}, {&quot;field_name&quot;: &quot;HasPaidByCreditCard&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the buyer has purchased the item using Pay Now. For high risk payments, the value will befalseuntil the payment has been manually approved by the Trade Me customer service team.&quot;}, {&quot;field_name&quot;: &quot;IsPaymentPending&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether a Pay Now payment is currently under review by the Trade Me customer service team. If this flag is set, you should not send payment reminder notices to the buyer. Note: the Trade Me website uses the label \&quot;Payment Held\&quot; for payments in this state.&quot;}, {&quot;field_name&quot;: &quot;CreditCardPaymentDate&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date and time a payment was made with a credit card using Pay Now. Only valid if HasPaidByCreditCard istrue.&quot;}, {&quot;field_name&quot;: &quot;CreditCardType&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The type of credit card that was used to pay for the item (\&quot;Visa\&quot;, \&quot;MasterCard\&quot;, etc). Only available if Pay Now was used to make the purchase and you are logged in as the buyer.&quot;}, {&quot;field_name&quot;: &quot;CreditCardLastFourDigits&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The last four digits of the credit card used to pay for the item. Only available if Pay Now was used to make the purchase and you are logged in as the buyer.&quot;}, {&quot;field_name&quot;: &quot;OrderId&quot;, &quot;field_type&quot;: &quot;Integer or null&quot;, &quot;description&quot;: &quot;If the item was purchased via the shopping cart, then this is an ID that uniquely identifies the shopping cart transaction. All of the items that were ordered in the same cart transaction will have the same ID.&quot;}, {&quot;field_name&quot;: &quot;Status&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The status of the sale. This can be set by the seller to track the status of an order; it is never set by Trade Me. Only available if you are the seller of the listing.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;EmailSent&quot;, &quot;value&quot;: &quot;10&quot;, &quot;description&quot;: &quot;An email has been sent to the buyer.&quot;}, {&quot;name&quot;: &quot;PaymentReceived&quot;, &quot;value&quot;: &quot;20&quot;, &quot;description&quot;: &quot;Payment has been received from the buyer.&quot;}, {&quot;name&quot;: &quot;GoodsShipped&quot;, &quot;value&quot;: &quot;30&quot;, &quot;description&quot;: &quot;The goods have been shipped to the buyer.&quot;}, {&quot;name&quot;: &quot;SaleCompleted&quot;, &quot;value&quot;: &quot;40&quot;, &quot;description&quot;: &quot;The sale is completed.&quot;}]}, {&quot;field_name&quot;: &quot;StatusDate&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the status was last changed. Only available to the seller.&quot;}, {&quot;field_name&quot;: &quot;TaxSubTotals&quot;, &quot;field_type&quot;: &quot;Collection of &lt;TaxSubTotal&gt; or null&quot;, &quot;description&quot;: &quot;Sum of all taxes included in this sale&quot;}, {&quot;field_name&quot;: &quot;TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTSubTotalNumberThe total amount of tax that has been chargedFlatRateNumberThe rate of the tax&quot;, &quot;field_type&quot;: &quot;Type&quot;, &quot;description&quot;: &quot;Enumeration&quot;}, {&quot;field_name&quot;: &quot;Type&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The type of tax that is included&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;NZ_GST_Overseas_Supplies&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;New Zealand GST on overseas supplies&quot;}]}, {&quot;field_name&quot;: &quot;Country&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The country that is levying the tax e.g. NZ&quot;}, {&quot;field_name&quot;: &quot;Name&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the tax e.g. GST&quot;}, {&quot;field_name&quot;: &quot;SubTotal&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The total amount of tax that has been charged&quot;}, {&quot;field_name&quot;: &quot;FlatRate&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The rate of the tax&quot;}]">
+<th style="width: 22%"> Sales </th>
+<td style="width: 22%"> Collection of &lt;Sale&gt; or null </td>
+<td>
+<p>Contains sales information for the listing. A "sale" in this context can via Buy Now, a fixed price offer or a winning bid. If you are the seller of this listing, this field contains information on all sales. If you are the buyer, then it contains information about your purchases only.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "A fixed price offer has not been created for this listing, or you are not the seller or a recipient and so no information is available."}, {"name": "Active", "value": "1", "description": "A fixed price offer is currently active. The PendingOffer field will contain details of the offer. If PendingOffer is unavailable, seeFixed Price Offer Methodsfor more information."}, {"name": "Withdrawn", "value": "2", "description": "A fixed price offer was created, but then was withdrawn by the seller. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information."}, {"name": "Expired", "value": "3", "description": "A fixed price offer was created, but time ran out before all the recipients could respond. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information."}, {"name": "Declined", "value": "4", "description": "The fixed price offer was declined by all the recipients. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information."}, {"name": "Accepted", "value": "5", "description": "The fixed price offer was accepted. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information."}]'>
+<th style="width: 22%"> OfferStatus </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the fixed price offer for this listing (if there is one). Only available if you are the seller or a recipient of the offer.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "OfferPrice", "field_type": "Number", "description": "The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included."}, {"field_name": "OfferExpiryDate", "field_type": "DateTime", "description": "The date and time the fixed price offer expires."}, {"field_name": "Quantity", "field_type": "Integer", "description": "The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends."}, {"field_name": "TaxesIncluded", "field_type": "Collection of &lt;TaxRate&gt; or null", "description": "The taxes included in the offer price"}, {"field_name": "Recipients", "field_type": "Collection of &lt;FixedPriceOfferRecipient&gt; or null", "description": "A list of recipients for the offer. Only available if you are the seller."}, {"field_name": "Member&lt;Member&gt; or nullMember details for the recipient of the offer.(This type has already been defined)DecisionEnumerationThe response of the member to the offer.", "field_type": "Member", "description": "&lt;Member&gt; or null"}, {"field_name": "Member", "field_type": "&lt;Member&gt; or null", "description": "Member details for the recipient of the offer."}, {"field_name": "Decision", "field_type": "Enumeration", "description": "The response of the member to the offer.", "enum_values": [{"name": "NoDecision", "value": "0", "description": "The offer recipient has not responded yet."}, {"name": "Declined", "value": "1", "description": "The offer recipient declined the offer."}, {"name": "Accepted", "value": "2", "description": "The offer recipient accepted the offer."}]}]'>
+<th style="width: 22%"> PendingOffer </th>
+<td style="width: 22%"> &lt;FixedPriceOfferDetails&gt; or null </td>
+<td>
+<p>Contains details of a fixed price offer that is pending for this auction. Only available if you are the seller or a recipient of the offer.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> ClosedOffer </th>
+<td style="width: 22%"> &lt;FixedPriceOfferDetails&gt; or null </td>
+<td>
+<p>Contains details of a fixed price offer that was made, but is no longer available, either because it was accepted, it expired or all recipients declined the offer. Only available if you are the seller or a recipient of the offer.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> FirearmsLicenseRequiredToBuy </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether a buyer is required to enter their firearms license number. Applies to firearms listings (e.g. Sports &gt; Hunting &amp; shooting &gt; Rifles).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Over18DeclarationRequiredToBuy </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether a buyer is required to confirm that they are over 18. Applies to wine listings (e.g. Home &amp; living &gt; Wine &gt; Red &gt; Pinot noir).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanOffer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether a fixed price offer can be created for the listing. You can use this flag to hide the FPO button in your UI or to avoid a useless FPO API call. Note that if this flag is true it does not guarantee that a subsequent FPO operation will succeed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanRelist </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing can be relisted using the relist or relist with edits API. You can use this flag to hide the relist button in your UI or to avoid a useless relist API call. Note that if this flag is true it does not guarantee that a subsequent relist operation will succeed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WithdrawnBySeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing was withdrawn by the seller.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;CharityType&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The unique identifier of the charity.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;The default charity identifier. Used if the user chose not to donate to a charity at all.&quot;}, {&quot;name&quot;: &quot;ForestAndBird&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Donate to Forest and Bird's kiwis for kiwis program.&quot;}, {&quot;name&quot;: &quot;Plunket&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Donate to Plunket.&quot;}, {&quot;name&quot;: &quot;StJohn&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;Donate to St John.&quot;}, {&quot;name&quot;: &quot;OurPeopleOurCityFund&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;Donate to Our People, Our City Fund.&quot;}, {&quot;name&quot;: &quot;WomensRefuge&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;Donate to Women's Refuge&quot;}, {&quot;name&quot;: &quot;KidsCan&quot;, &quot;value&quot;: &quot;6&quot;, &quot;description&quot;: &quot;Donate to KidsCan&quot;}]}, {&quot;field_name&quot;: &quot;ImageSource&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for this charity's brand image (designed for a light background).&quot;}, {&quot;field_name&quot;: &quot;DarkModeImageSource&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL for this charity's brand image (designed for a dark background).&quot;}, {&quot;field_name&quot;: &quot;Description&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The name of the charity e.g. \&quot;Plunket\&quot;, \&quot;Kiwis for kiwi\&quot;.&quot;}, {&quot;field_name&quot;: &quot;Tagline&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A short description of what the charity does.&quot;}]">
+<th style="width: 22%"> DonationRecipient </th>
+<td style="width: 22%"> &lt;Charity&gt; or null </td>
+<td>
+<p>Indicates the seller will round up their success fees to the nearest dollar and donate the difference to the selected charity.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsInTradeProtected </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is protected by the Consumer Guarantees Act</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsInCart </th>
+<td style="width: 22%"> Boolean or null </td>
+<td>
+<p>Indicates if the item is also in the members cart.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Threshold", "field_type": "Integer", "description": "The threshold a buyer needs to reach to qualify for this promotional shipping offer."}, {"field_name": "ThresholdType", "field_type": "Enumeration", "description": "The type of threshold.", "enum_values": [{"name": "Price", "value": "1", "description": "The buyer qualifies for the offer when the total value of items in their cart meets or exceeds the threshold."}, {"name": "Item", "value": "2", "description": "The buyer qualifies for the offer when the number of items in their cart (including selected quantities of multiple quantity listings) meets or exceeds the threshold."}]}]'>
+<th style="width: 22%"> CurrentShippingPromotion </th>
+<td style="width: 22%"> &lt;CurrentShippingPromotion&gt; or null </td>
+<td>
+<p>A list of shipping promotions that are currently active for this listing</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsLeading </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the authenticated user is leading the bidding.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsOutbid </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the authenticated user has been outbid. This will be <b>false</b> if the authenticated user has not made any bids.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanAddToCart </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the item can be added to members cart.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CartItemId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>the cartItemId if the item is already in the members cart.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberProfile </th>
+<td style="width: 22%"> &lt;SimpleMemberProfile&gt; or null </td>
+<td>
+<p>This listing member's public profile information.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;YouTubeVideoKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The YouTube video key for the listing.&quot;}, {&quot;field_name&quot;: &quot;MatterportKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Matterport video key for the listing's InsideView content.&quot;}, {&quot;field_name&quot;: &quot;IStagingKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The IStaging video key for the listing's InsideView content.&quot;}, {&quot;field_name&quot;: &quot;VimeoVideoKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Vimeo video key for the listing.&quot;}, {&quot;field_name&quot;: &quot;DiakritFurnishKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Diakrit Furnish key for the listing.&quot;}, {&quot;field_name&quot;: &quot;DiakritStylerKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Diakrit Styler key for the listing.&quot;}, {&quot;field_name&quot;: &quot;DiakritPanoramaKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Diakrit Panorama key for the listing.&quot;}, {&quot;field_name&quot;: &quot;VirtualToursCreatorKey&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Virtual Tours Creator key for the listing.&quot;}, {&quot;field_name&quot;: &quot;Approved3DTourUrl&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Approved 3d tour url for the listing.&quot;}]">
+<th style="width: 22%"> EmbeddedContent </th>
+<td style="width: 22%"> &lt;EmbeddedContent&gt; or null </td>
+<td>
+<p>The content keys that are embedded in the listing page (e.g. YouTube Video Key).</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "Type", "field_type": "Enumeration", "description": "The type of sponsor link, business partner/checklist", "enum_values": [{"name": "None", "value": "0", "description": "the default value"}, {"name": "BusinessPartner", "value": "1", "description": "represents a checklist link that gets shown in our apps"}, {"name": "Checklist", "value": "2", "description": "represents a checklist link that gets shown in our apps"}]}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the sponsor, westpac, GE, TMI etc"}, {"field_name": "Link", "field_type": "String or null", "description": "The url to link to"}]'>
+<th style="width: 22%"> SponsorLinks </th>
+<td style="width: 22%"> Collection of &lt;SponsorLink&gt; or null </td>
+<td>
+<p>A collection of sponsored links for the listing.</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "Damaged", "field_type": "String or null", "description": "Returns \"YES\" if the car was reported to be damaged during the import. Returns \"NO\" if the car was not reported to be damaged during the import. Returns \"N/A\" if value cannot be reliably read from the database."}, {"field_name": "ReportedStolen", "field_type": "String or null", "description": "Returns \"YES\" if the car was reported to be stolen. Returns \"NO\" if the car was not reported to be stolen. Returns \"N/A\" if value cannot be reliably read from the database."}, {"field_name": "MoneyOwing", "field_type": "String or null", "description": "Returns \"YES\" if a person or company has registered a security against the vehicle indicating they have a financial interest in the vehicle Returns \"NO\" if a person or company has not registered a security against the vehicle indicating they have a financial interest in the vehicle. Returns \"N/A\" if value cannot be reliably read from the database."}, {"field_name": "ReRegistered", "field_type": "String or null", "description": "Returns \"YES\" Returns \"NO\" Returns \"N/A\" if value cannot be reliably read from the database."}, {"field_name": "GeneratedAt", "field_type": "DateTime", "description": "Returns the time stamp of the date and time when report has been generated."}, {"field_name": "RegoOrVin", "field_type": "String or null", "description": "Returns the registration or VIN number which has been used to purchase the Motor Web Basic Report."}, {"field_name": "Title", "field_type": "String or null", "description": "Returns the vehicle title"}, {"field_name": "PartialReportUrl", "field_type": "String or null", "description": "Returns the URL to the partial MotorWebReport"}]'>
+<th style="width: 22%"> MotorWebBasicReport </th>
+<td style="width: 22%"> &lt;MotorWebBasicReport&gt; or null </td>
+<td>
+<p>MotorWeb basic report for car listings if purchased by the seller.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> ContactCount </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of contacts received for this listing, either emails, applications, or clicks-to-apply. Only available if you are the seller.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Name", "field_type": "String or null", "description": "The technology name."}, {"field_name": "Availability", "field_type": "String or null", "description": "The availability of the broadband technology."}]'>
+<th style="width: 22%"> BroadbandTechnologies </th>
+<td style="width: 22%"> Collection of &lt;BroadbandTechnology&gt; or null </td>
+<td>
+<p>A list of broadband technology availability for property listings.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FormattedStartDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Listing start date, displayed as a string. Currently applies to Motors Classified listings only.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuperFeatureEndDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>End date of a super feature for a listing.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "RequestRelistStatus", "field_type": "Enumeration", "description": "Indicates whether the member can request a relist and the status of any request.", "enum_values": [{"name": "MemberCanRequest", "value": "0", "description": "Member can request"}, {"name": "SoldAlready", "value": "1", "description": "Sold already"}, {"name": "MemberIsBlacklisted", "value": "2", "description": "Member is blacklisted"}, {"name": "RequestAlreadyMade", "value": "3", "description": "Member has made request already"}, {"name": "OfferAlreadyMade", "value": "4", "description": "An offer has already been made"}, {"name": "RelistedAlready", "value": "5", "description": "Already relisted"}, {"name": "MemberIsNotAValidOfferee", "value": "6", "description": "Member is not a valid offeree"}]}, {"field_name": "RequestOfferStatus", "field_type": "Enumeration", "description": "Indicates whether the member can request an offer and the status of any request.", "enum_values": [{"name": "MemberCanRequest", "value": "0", "description": "Member can request"}, {"name": "SoldAlready", "value": "1", "description": "Sold already"}, {"name": "MemberIsBlacklisted", "value": "2", "description": "Member is blacklisted"}, {"name": "RequestAlreadyMade", "value": "3", "description": "Member has made request already"}, {"name": "OfferAlreadyMade", "value": "4", "description": "An offer has already been made"}, {"name": "RelistedAlready", "value": "5", "description": "Already relisted"}, {"name": "MemberIsNotAValidOfferee", "value": "6", "description": "Member is not a valid offeree"}]}]'>
+<th style="width: 22%"> MemberRequestInformation </th>
+<td style="width: 22%"> &lt;MemberRequestInformation&gt; or null </td>
+<td>
+<p>Provides information relating to the member regarding their ability to request a relist or offer and the status of any request.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsEligibleForBuyerProtection </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is eligible for buyer protection</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SupportsQuestionsAndAnswers </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if questions and answers can be shown on the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasContactDetails </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing has contact details</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuppressRelatedListings </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether related listings should NOT be shown alongside this listing. This field will normally be <b>false</b> but may be <b>true</b> if related listings are simply not available, or because Trade Me has an agreement with the seller to not show competitor's listings next to theirs.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuppressComplementaryListings </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether complementary listings should NOT be shown alongside this listing. If this flag is <b>true</b> it means that we have foreknowledge that complementary listings are definitely not available, or there is a policy that means complementary listings should not be shown. Note that if the flag is <b>false</b>, it is still possible for the complementary listings endpoint to return zero results.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Id", "field_type": "Enumeration", "description": "The unique identifier for the payment method.", "enum_values": [{"name": "None", "value": "0", "description": "No payment methods provided."}, {"name": "BankDeposit", "value": "1", "description": "NZ bank deposit."}, {"name": "CreditCard", "value": "2", "description": "Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)"}, {"name": "Cash", "value": "4", "description": "Cash."}, {"name": "SafeTrader", "value": "8", "description": "Safe Trader (Now obsolete)."}, {"name": "Other", "value": "16", "description": "Other (needs to be specified)."}, {"name": "Ping", "value": "32", "description": "Ping."}, {"name": "Afterpay", "value": "64", "description": "Afterpay."}]}, {"field_name": "Name", "field_type": "String or null", "description": "The text to display to the user."}, {"field_name": "LogoUrl", "field_type": "String or null", "description": "A url for the payment methods logo."}]'>
+<th style="width: 22%"> PaymentMethods </th>
+<td style="width: 22%"> Collection of &lt;PaymentMethodDetail&gt; or null </td>
+<td>
+<p>A list of the supported payment methods.</p>
+</td>
+</tr>
+
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;WeeklyPayment&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The weekly payment required under the current conditions&quot;}, {&quot;field_name&quot;: &quot;DepositPercent&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The deposit percent required to qualify for this offer&quot;}, {&quot;field_name&quot;: &quot;TermInMonths&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The duration of the finance offer&quot;}, {&quot;field_name&quot;: &quot;InterestRate&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The indicative interest rate used to calculate the offer&quot;}, {&quot;field_name&quot;: &quot;InterestType&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The type of interest for a finance offerThis field will always return the Fixed interest type&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Fixed&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Fixed interest rate.&quot;}, {&quot;name&quot;: &quot;Capped&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Floating interest rate capped at a certain value.&quot;}, {&quot;name&quot;: &quot;Floating&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Floating interest rate.&quot;}]}, {&quot;field_name&quot;: &quot;EstablishmentFee&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The establishment fee required for this offer&quot;}, {&quot;field_name&quot;: &quot;MonthlyFee&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The monthly maintenance fee required for this offer&quot;}, {&quot;field_name&quot;: &quot;TotalPayment&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The total payment for the loan&quot;}, {&quot;field_name&quot;: &quot;OfferDescription&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The full description of the offer.This field is no longer in use.&quot;}, {&quot;field_name&quot;: &quot;OfferDisclaimer&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The disclaimer explaining the finance offers further.This field is no longer in use.&quot;}, {&quot;field_name&quot;: &quot;FinancePayment&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;Includes the finance portion of the total payment&quot;}, {&quot;field_name&quot;: &quot;DepositPayment&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;Includes the deposit value of the total payment&quot;}, {&quot;field_name&quot;: &quot;IsPersonalised&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Specifies whether the return values are based on member's finance preferences.&quot;}]">
+<th style="width: 22%"> FinanceOffer </th>
+<td style="width: 22%"> &lt;FinanceOffer&gt; or null </td>
+<td>
+<p>A finance offer for the current listing</p>
+<p style="color: red">
+                                The property below is deprecated and will be removed. Use the Finance Estimate endpoint instead.
+                            </p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "GTIN", "field_type": "String or null", "description": "The GTIN of the product e.g. 027242896505"}, {"field_name": "Brand", "field_type": "String or null", "description": "The brand name of the product e.g. Sony"}, {"field_name": "ManufacturerCode", "field_type": "String or null", "description": "The product code used by the manufacturer e.g. KDL32W600D"}]'>
+<th style="width: 22%"> ProductSpecification </th>
+<td style="width: 22%"> &lt;ProductSpecification&gt; or null </td>
+<td>
+<p>The specifications of the product if the listing relates to a product</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> BoundaryImage </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; or null </td>
+<td>
+<p>The boundary image that is availability for only property listings</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr data-nested-fields='[{"field_name": "WhyPayLabel", "field_type": "String or null", "description": "Get the WhyPay label"}, {"field_name": "WhyPayDescription", "field_type": "String or null", "description": "Get the WhyPay description"}, {"field_name": "WhyPayPrice", "field_type": "Number", "description": "Get the WhyPay price"}, {"field_name": "DeliveryEstimate", "field_type": "String or null", "description": "Get the delivery estimate"}]'>
+<th style="width: 22%"> DealInfo </th>
+<td style="width: 22%"> &lt;ListingDealInfo&gt; or null </td>
+<td>
+<p>WhyPay deal information</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> TaxesIncluded </th>
+<td style="width: 22%"> Collection of &lt;TaxRateOnPrice&gt; or null </td>
+<td>
+<p>Indicates if taxes (and what type) are included in the BuyNowPrice</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr data-enum-values="[{&quot;name&quot;: &quot;CanRenderUrls&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Can Render Urls on the client&quot;}, {&quot;name&quot;: &quot;CanDisplayContactDetails&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Display Buyer's Contact Details&quot;}, {&quot;name&quot;: &quot;CanDisplayMemberImageInBuyerOptions&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Can the seller's member image be shown in the listing detail buyer options section.&quot;}]">
+<th style="width: 22%"> RenderOptions </th>
+<td style="width: 22%"> Collection of Enumeration or null </td>
+<td>
+<p>Holds a collection with all the available options to render additional content on the client</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotSpecified", "value": "0", "description": "None specified."}, {"name": "All", "value": "0", "description": "All"}, {"name": "Marketplace", "value": "1", "description": "Marketplace"}, {"name": "Property", "value": "2", "description": "Property"}, {"name": "Motors", "value": "3", "description": "Motors"}, {"name": "Jobs", "value": "4", "description": "Jobs"}, {"name": "Services", "value": "5", "description": "Services"}]'>
+<th style="width: 22%"> AreaOfBusiness </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The area of business in which the listing's category resides.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondCategory </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The secondary category the listing is in if this promotion is applicable to the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondCategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display name of the secondary category the listing is in if this promotion is applicable to the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondCategoryPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The full path of the secondary category the listing is in if this promotion is applicable to the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuppressAdvertisersOtherListings </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether advertisers other listings should NOT be shown alongside this listing. This field will normally be <b>false</b> but may be <b>true</b> if the listing has been listed by a reseller job agent.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MembershipType&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The type of membership the office has.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Basic&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Basic - no partnership agreement&quot;}, {&quot;name&quot;: &quot;Gold&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;Gold OR Platinum&quot;}, {&quot;name&quot;: &quot;Silver&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;Silver&quot;}, {&quot;name&quot;: &quot;ExtraVariant&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;ExtraVariant&quot;}]}, {&quot;field_name&quot;: &quot;HeroImages&quot;, &quot;field_type&quot;: &quot;&lt;OfficeProfileHeroImageUrl&gt; or null&quot;, &quot;description&quot;: &quot;The office's hero images.&quot;}, {&quot;field_name&quot;: &quot;OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image&quot;, &quot;field_type&quot;: &quot;Original&quot;, &quot;description&quot;: &quot;String or null&quot;}, {&quot;field_name&quot;: &quot;Original&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the original image&quot;}, {&quot;field_name&quot;: &quot;Small&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The URL of the small image&quot;}, {&quot;field_name&quot;: &quot;IsPartnerAccreditationEnabled&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Is the office's partner accreditation benefits turned on?&quot;}]">
+<th style="width: 22%"> Office </th>
+<td style="width: 22%"> &lt;Office&gt; or null </td>
+<td>
+<p>The Office details if this is a property listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsExtendable </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is extendable.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "HasMetAnimalWelfareCompliance", "field_type": "Boolean or null", "description": "Whether the seller has indicated if the listing has met our code of animal welfare. If attribute is not applicable, field is not returned."}]'>
+<th style="width: 22%"> HasListingMetCompliance </th>
+<td style="width: 22%"> &lt;ListingCompliance&gt; or null </td>
+<td>
+<p>Indicates whether the listing has met any relevant compliance requirements</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IncludeGstStartPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Indicates the start price and gst tax amount of boat and farming machinery listings</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchVisualProminence </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Indicates the listing type</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Title&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The title for a special offer&quot;}, {&quot;field_name&quot;: &quot;Subtitle&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The subtitle for a special offer&quot;}, {&quot;field_name&quot;: &quot;Description&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The description for a special offer&quot;}, {&quot;field_name&quot;: &quot;OfferUrl&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The external offer url provided by the dealer for a special offer&quot;}, {&quot;field_name&quot;: &quot;ImageUrl&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The image url for a special offer's image&quot;}, {&quot;field_name&quot;: &quot;IsFinance&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;boolean indicating whether a special offer is a finance special offer or not&quot;}, {&quot;field_name&quot;: &quot;TermsAndConditions&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;the terms and conditions assosciated with a finance special offer&quot;}]">
+<th style="width: 22%"> SpecialOffer </th>
+<td style="width: 22%"> &lt;SpecialOffer&gt; or null </td>
+<td>
+<p>Information about the special offer that a dealer has applied to a classified motors or farming listing</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> JobAdvertiserPageUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The company page url for jobs</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> JobAdvertiserOtherListingsUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The other listings url jobs</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "HasOptedIn", "field_type": "Boolean", "description": "Shows if the user has opted in to display salary data"}, {"field_name": "ApproximatePayRangeDisplay", "field_type": "String or null", "description": "Shows the salary data range"}]'>
+<th style="width: 22%"> JobsSalaryTransparency </th>
+<td style="width: 22%"> &lt;JobsSalaryTransparency&gt; or null </td>
+<td>
+<p>approximate pay range display information</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IsAutoExtended </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the listing is flagged as Auto Extended</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Instavid360SpinnerId", "field_type": "String or null", "description": "ID for displaying the Instavid 360 spinner."}, {"field_name": "Instavid360SpinnerThumbnailUrl", "field_type": "String or null", "description": "Thumbnail placeholder for the Instavid 360 spinner."}, {"field_name": "VideoUrl", "field_type": "String or null", "description": "URL for displaying the listing video."}, {"field_name": "VideoThumbnailUrl", "field_type": "String or null", "description": "Thumbnail placeholder for the listing video."}]'>
+<th style="width: 22%"> MotorsExternalMedia </th>
+<td style="width: 22%"> &lt;MotorsExternalMedia&gt; or null </td>
+<td>
+<p>Motors information for listings that have external media content</p>
+</td>
+</tr>
+
+<tr data-nested-fields='[{"field_name": "PropertySaleType", "field_type": "Enumeration", "description": "Sales type (auction, deadline etc)", "enum_values": [{"name": "None", "value": "0", "description": "None"}, {"name": "AskingPrice", "value": "1", "description": "AskingPrice"}, {"name": "EnquiriesOver", "value": "2", "description": "EnquiriesOver"}, {"name": "Auction", "value": "3", "description": "Auction"}, {"name": "Tender", "value": "4", "description": "Tender"}, {"name": "PriceByNegotiation", "value": "5", "description": "PriceByNegotiation"}, {"name": "PriceOnApplication", "value": "6", "description": "PriceOnApplication"}, {"name": "DeadlinePrivateTreaty", "value": "7", "description": "DeadlinePrivateTreaty"}, {"name": "AskingPricePlusGst", "value": "8", "description": "AskingPricePlusGst"}]}, {"field_name": "PropertyDateOfSale", "field_type": "DateTime", "description": "Date of the auction/deadline/etc"}]'>
+<th style="width: 22%"> PropertySaleInformation </th>
+<td style="width: 22%"> &lt;PropertySaleInformation&gt; or null </td>
+<td>
+<p>Property Sale Information</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "SubjectToMoneyOwingAndStolen", "value": "1", "description": "This offer is subject to recheck of money owing and stolen status upon acceptance"}, {"name": "InEligible", "value": "99", "description": "This offer is not subject to recheck any background check items"}]'>
+<th style="width: 22%"> BackgroundRecheckEligibility </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>What background check elements will be rechecked (if any) upon acceptance Applies to motors listings.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Name", "field_type": "String or null", "description": "The identifier name. e.g., \"floor_area\""}, {"field_name": "Value", "field_type": "String or null", "description": "The formatted value. e.g., \"175m\u00b2\""}, {"field_name": "Source", "field_type": "String or null", "description": "The source of the data. e.g., \"trademe\", \"council_data\""}, {"field_name": "DisplayName", "field_type": "String or null", "description": "The user-friendly name to be displayed for this attribute. e.g., \"Floor Area\""}, {"field_name": "DisplayGroup", "field_type": "String or null", "description": "The user-friendly group name under which this attribute should be displayed. e.g., \"Address\""}, {"field_name": "DisplayGroupOrder", "field_type": "Integer", "description": "The display order priority for the group."}, {"field_name": "DisplayOrder", "field_type": "Integer", "description": "The display order priority for the attribute within its group."}, {"field_name": "Description", "field_type": "String or null", "description": "User friendly description of the field"}]'>
+<th style="width: 22%"> PropertyAttributes </th>
+<td style="width: 22%"> Collection of &lt;PropertyAttribute&gt; or null </td>
+<td>
+<p>List of property attributes and council data points.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "Title": "ABC",
+  "Category": "ABC",
+  "StartPrice": 123.0,
+  "BuyNowPrice": 123.0,
+  "StartDate": "\/Date(1514764800)\/",
+  "EndDate": "\/Date(1514764800)\/",
+  "IsFeatured": false,
+  "HasGallery": false,
+  "IsBold": false,
+  "IsHighlighted": false,
+  "HasHomePageFeature": false,
+  "BidderAndWatchers": 123,
+  "MaxBidAmount": 123.0,
+  "AsAt": "\/Date(1514764800)\/",
+  "CategoryPath": "ABC",
+  "PhotoId": 123,
+  "HasPayNow": false,
+  "IsNew": false,
+  "RegionId": 123,
+  "Region": "ABC",
+  "SuburbId": 123,
+  "Suburb": "ABC",
+  "PickupLocality": {
+    "Suburb": "ABC",
+    "District": "ABC",
+    "Region": "ABC"
+  },
+  "BidCount": 123,
+  "ViewCount": 123,
+  "IsReserveMet": false,
+  "HasReserve": false,
+  "HasBuyNow": false,
+  "NoteDate": "\/Date(1514764800)\/",
+  "CategoryName": "ABC",
+  "ReserveState": 0,
+  "Attributes": [
+    {
+      "Name": "ABC",
+      "DisplayName": "ABC",
+      "Value": "ABC",
+      "Type": 0,
+      "Range": {
+      },
+      "Options": [
+        {
+        },
+        {
+        }
+      ],
+      "IsRequiredForSell": false,
+      "DisplayValue": "ABC"
+    },
+    {
+      "Name": "ABC",
+      "DisplayName": "ABC",
+      "Value": "ABC",
+      "Type": 0,
+      "Range": {
+      },
+      "Options": [
+        {
+        },
+        {
+        }
+      ],
+      "IsRequiredForSell": false,
+      "DisplayValue": "ABC"
+    }
+  ],
+  "HiddenAttributes": [
+    {
+    },
+    {
+    }
+  ],
+  "IsClassified": false,
+  "OpenHomes": [
+    {
+      "Start": "\/Date(1514764800)\/",
+      "End": "\/Date(1514764800)\/"
+    },
+    {
+      "Start": "\/Date(1514764800)\/",
+      "End": "\/Date(1514764800)\/"
+    }
+  ],
+  "RelistedItemId": 123,
+  "Subtitle": "ABC",
+  "ReservePrice": 123.0,
+  "IsBuyNowOnly": false,
+  "HasMultiple": false,
+  "Quantity": 123,
+  "IsFlatShippingCharge": false,
+  "RemainingGalleryPlusRelists": 123,
+  "MinimumNextBidAmount": 123.0,
+  "IsOnWatchList": false,
+  "WatchlistReminder": 0,
+  "GeographicLocation": {
+    "Latitude": 123.0,
+    "Longitude": 123.0,
+    "Northing": 123,
+    "Easting": 123,
+    "Accuracy": 0
+  },
+  "PriceDisplay": "ABC",
+  "TotalReviewCount": 123,
+  "PositiveReviewCount": 123,
+  "SendPaymentInstructions": false,
+  "CanUsePayNowInstant": false,
+  "ExternalReferenceId": "ABC",
+  "HasAppliedForJob": false,
+  "JobApplicationDate": "\/Date(1514764800)\/",
+  "SKU": "ABC",
+  "IsClearance": false,
+  "WasPrice": 123.0,
+  "PercentageOff": 123,
+  "Branding": {
+    "LargeSquareLogo": "ABC",
+    "LargeWideLogo": "ABC",
+    "BackgroundColor": "ABC",
+    "TextColor": "ABC",
+    "StrokeColor": "ABC",
+    "DisableBanner": false,
+    "OfficeLocation": "ABC",
+    "LargeBannerURL": "ABC"
+  },
+  "AvailableToBuy": "ABC",
+  "IsSuperFeatured": false,
+  "VariantDefinition": {
+    "OptionSets": [
+      {
+        "Name": "ABC",
+        "Values": [
+          "ABC",
+          "ABC"
+        ]
+      },
+      {
+        "Name": "ABC",
+        "Values": [
+          "ABC",
+          "ABC"
+        ]
+      }
+    ],
+    "Variants": [
+      {
+        "SKU": "ABC",
+        "Price": 123.0,
+        "IsClearance": false,
+        "WasPrice": 123.0,
+        "Quantity": 123,
+        "Photos": [
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          },
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          }
+        ],
+        "Options": [
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "Attributes": [
+          {
+          },
+          {
+          }
+        ],
+        "ListingId": 123,
+        "ProductSpecification": {
+          "GTIN": "ABC",
+          "Brand": "ABC",
+          "ManufacturerCode": "ABC"
+        }
+      },
+      {
+        "SKU": "ABC",
+        "Price": 123.0,
+        "IsClearance": false,
+        "WasPrice": 123.0,
+        "Quantity": 123,
+        "Photos": [
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          },
+          {
+            "Key": 123,
+            "Value": {
+              "Thumbnail": "ABC",
+              "List": "ABC",
+              "Medium": "ABC",
+              "Gallery": "ABC",
+              "Large": "ABC",
+              "FullSize": "ABC",
+              "PlusSize": "ABC",
+              "PhotoId": 123,
+              "OriginalWidth": 123,
+              "OriginalHeight": 123
+            }
+          }
+        ],
+        "Options": [
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "Attributes": [
+          {
+          },
+          {
+          }
+        ],
+        "ListingId": 123,
+        "ProductSpecification": {
+          "GTIN": "ABC",
+          "Brand": "ABC",
+          "ManufacturerCode": "ABC"
+        }
+      }
+    ]
+  },
+  "ListingGroupId": 123,
+  "AdditionalData": {
+    "BulletPoints": [
+      "ABC",
+      "ABC"
+    ],
+    "Tags": [
+      {
+        "Name": "ABC"
+      },
+      {
+        "Name": "ABC"
+      }
+    ]
+  },
+  "ListingExtras": [
+    "ABC",
+    "ABC"
+  ],
+  "IsLoyaltyEligible": false,
+  "HasPing": false,
+  "UnansweredQuestionCount": 123,
+  "LatestRelistedItemId": 123,
+  "IsCounterOffersAllowed": false,
+  "MaximumOffers": 123,
+  "ShippingDetails": {
+    "ShippingTemplateId": 123,
+    "SuggestedShipping": {
+      "Price": 123.0,
+      "Destination": "ABC",
+      "DeliveryTime": {
+        "MinValue": "ABC",
+        "MaxValue": "ABC"
+      },
+      "IsRural": false
+    }
+  },
+  "IsMessagingAllowed": false,
+  "PriceType": 0,
+  "NewCarInformation": {
+    "Availability": 2,
+    "Condition": 1,
+    "CertifiedPreOwned": {
+      "LogoUrl": "ABC",
+      "DarkModeLogoUrl": "ABC"
+    }
+  },
+  "Sponsored": {
+    "TopSortProductId": "ABC",
+    "TopSortVendorId": "ABC"
+  },
+  "ListingPlatform": 0,
+  "AllowsPickups": 0,
+  "Member": {
+    "MemberId": 123,
+    "Nickname": "ABC",
+    "DateAddressVerified": "\/Date(1514764800)\/",
+    "DateJoined": "\/Date(1514764800)\/",
+    "Email": "ABC",
+    "UniqueNegative": 123,
+    "UniquePositive": 123,
+    "FeedbackCount": 123,
+    "IsAddressVerified": false,
+    "Suburb": "ABC",
+    "Region": "ABC",
+    "IsDealer": false,
+    "IsAuthenticated": false,
+    "IsInTrade": false,
+    "ImportChargesMayApply": false,
+    "Photo": "ABC",
+    "Profile": {
+      "Occupation": "ABC",
+      "Biography": "ABC",
+      "Quote": "ABC",
+      "Photo": "ABC"
+    },
+    "IsTopSeller": false,
+    "IsRentiUser": false
+  },
+  "Body": "ABC",
+  "Bids": {
+    "TotalCount": 123,
+    "Page": 123,
+    "PageSize": 123,
+    "List": [
+      {
+        "Account": "ABC",
+        "BidAmount": 123.0,
+        "IsByMobile": false,
+        "IsByProxy": false,
+        "BidDate": "\/Date(1514764800)\/",
+        "IsBuyNow": false,
+        "Bidder": {
+        },
+        "SelectedShippingOption": 123
+      },
+      {
+        "Account": "ABC",
+        "BidAmount": 123.0,
+        "IsByMobile": false,
+        "IsByProxy": false,
+        "BidDate": "\/Date(1514764800)\/",
+        "IsBuyNow": false,
+        "Bidder": {
+        },
+        "SelectedShippingOption": 123
+      }
+    ]
+  },
+  "Questions": {
+    "TotalCount": 123,
+    "Page": 123,
+    "PageSize": 123,
+    "List": [
+      {
+        "ListingId": 123,
+        "ListingQuestionId": 123,
+        "Comment": "ABC",
+        "CommentDate": "\/Date(1514764800)\/",
+        "Answer": "ABC",
+        "AnswerDate": "\/Date(1514764800)\/",
+        "IsSellerComment": false,
+        "AskingMember": {
+        }
+      },
+      {
+        "ListingId": 123,
+        "ListingQuestionId": 123,
+        "Comment": "ABC",
+        "CommentDate": "\/Date(1514764800)\/",
+        "Answer": "ABC",
+        "AnswerDate": "\/Date(1514764800)\/",
+        "IsSellerComment": false,
+        "AskingMember": {
+        }
+      }
+    ]
+  },
+  "Photos": [
+    {
+      "Key": 123,
+      "Value": {
+        "Thumbnail": "ABC",
+        "List": "ABC",
+        "Medium": "ABC",
+        "Gallery": "ABC",
+        "Large": "ABC",
+        "FullSize": "ABC",
+        "PlusSize": "ABC",
+        "PhotoId": 123,
+        "OriginalWidth": 123,
+        "OriginalHeight": 123
+      }
+    },
+    {
+      "Key": 123,
+      "Value": {
+        "Thumbnail": "ABC",
+        "List": "ABC",
+        "Medium": "ABC",
+        "Gallery": "ABC",
+        "Large": "ABC",
+        "FullSize": "ABC",
+        "PlusSize": "ABC",
+        "PhotoId": 123,
+        "OriginalWidth": 123,
+        "OriginalHeight": 123
+      }
+    }
+  ],
+  "PickupLocation": "ABC",
+  "ShippingOptions": [
+    {
+      "Type": 0,
+      "Price": 123.0,
+      "Method": "ABC",
+      "ShippingId": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        }
+      ]
+    },
+    {
+      "Type": 0,
+      "Price": 123.0,
+      "Method": "ABC",
+      "ShippingId": 123,
+      "TaxesIncluded": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false,
+          "IsApplied": false,
+          "TaxAmount": 123.0,
+          "WasPriceTaxAmount": 123.0
+        }
+      ]
+    }
+  ],
+  "PaymentOptions": "ABC",
+  "CurrentAutoBid": 123.0,
+  "Dealership": {
+    "Id": 123,
+    "Name": "ABC",
+    "Address": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "PhoneNumber": "ABC",
+    "FaxNumber": "ABC",
+    "EMail": "ABC",
+    "Website": "ABC",
+    "Logo": "ABC",
+    "Branding": {
+      "LargeSquareLogo": "ABC",
+      "LargeWideLogo": "ABC",
+      "BackgroundColor": "ABC",
+      "TextColor": "ABC",
+      "StrokeColor": "ABC",
+      "DisableBanner": false,
+      "OfficeLocation": "ABC",
+      "LargeBannerURL": "ABC"
+    },
+    "Logo2": "ABC",
+    "PhoneNumbers": [
+      "ABC",
+      "ABC"
+    ],
+    "Dealers": [
+      {
+        "FullName": "ABC",
+        "Position": "ABC",
+        "MobilePhoneNumber": "ABC",
+        "OfficePhoneNumber": "ABC",
+        "EMail": "ABC",
+        "FaxNumber": "ABC",
+        "HomePhoneNumber": "ABC"
+      },
+      {
+        "FullName": "ABC",
+        "Position": "ABC",
+        "MobilePhoneNumber": "ABC",
+        "OfficePhoneNumber": "ABC",
+        "EMail": "ABC",
+        "FaxNumber": "ABC",
+        "HomePhoneNumber": "ABC"
+      }
+    ],
+    "Showroom": {
+      "Id": 123,
+      "Url": "ABC",
+      "Logo": "ABC",
+      "Banner": "ABC",
+      "BackgroundColour": "ABC"
+    },
+    "AboutUs": "ABC",
+    "ListingCounts": {
+      "Total": 123,
+      "Cars": 123,
+      "Boats": 123,
+      "Bikes": 123
+    },
+    "Product": "ABC",
+    "StaticMapsImage": "ABC",
+    "HasSearchCardBranding": false,
+    "Video": {
+      "VideoKey": "ABC",
+      "VideoType": 0
+    },
+    "BannerImages": {
+      "Original": "ABC",
+      "Small": "ABC"
+    },
+    "Subheading": "ABC",
+    "UrlSlug": "ABC",
+    "PackageId": 1,
+    "Company": {
+      "Id": 123,
+      "CompanyName": "ABC"
+    },
+    "ShippingOptionsEnabled": false,
+    "Settings": [
+      {
+        "Code": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "Code": "ABC",
+        "Value": "ABC"
+      }
+    ],
+    "RenderOptions": [
+      1,
+      1
+    ]
+  },
+  "Agency": {
+    "Id": 123,
+    "Name": "ABC",
+    "Address": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "PhoneNumber": "ABC",
+    "FaxNumber": "ABC",
+    "EMail": "ABC",
+    "Website": "ABC",
+    "Logo": "ABC",
+    "Branding": {
+      "LargeSquareLogo": "ABC",
+      "LargeWideLogo": "ABC",
+      "BackgroundColor": "ABC",
+      "TextColor": "ABC",
+      "StrokeColor": "ABC",
+      "DisableBanner": false,
+      "OfficeLocation": "ABC",
+      "LargeBannerURL": "ABC"
+    },
+    "Logo2": "ABC",
+    "Agents": [
+      {
+        "FullName": "ABC",
+        "Position": "ABC",
+        "MobilePhoneNumber": "ABC",
+        "OfficePhoneNumber": "ABC",
+        "EMail": "ABC",
+        "FaxNumber": "ABC",
+        "HomePhoneNumber": "ABC",
+        "Photo": "ABC",
+        "UrlSlug": "ABC",
+        "TestimonialsCount": 123,
+        "ReviewsCount": 123
+      },
+      {
+        "FullName": "ABC",
+        "Position": "ABC",
+        "MobilePhoneNumber": "ABC",
+        "OfficePhoneNumber": "ABC",
+        "EMail": "ABC",
+        "FaxNumber": "ABC",
+        "HomePhoneNumber": "ABC",
+        "Photo": "ABC",
+        "UrlSlug": "ABC",
+        "TestimonialsCount": 123,
+        "ReviewsCount": 123
+      }
+    ],
+    "IsRealEstateAgency": false,
+    "IsJobAgency": false,
+    "IsLicensedPropertyAgency": false,
+    "JobAgent": {
+      "TradingName": "ABC",
+      "AgentType": 0,
+      "Links": [
+        {
+          "Href": "ABC",
+          "Rel": "ABC",
+          "Prompt": "ABC",
+          "Method": "ABC"
+        },
+        {
+          "Href": "ABC",
+          "Rel": "ABC",
+          "Prompt": "ABC",
+          "Method": "ABC"
+        }
+      ],
+      "MemberLevel": "ABC",
+      "Description": "ABC",
+      "AgentBranding": {
+        "FullscreenBannerUrl": "ABC",
+        "SmallBannerUrl": "ABC",
+        "LogoUrl": "ABC",
+        "PhotoUrls": [
+          {
+            "Key": 123,
+            "Value": {
+            }
+          },
+          {
+            "Key": 123,
+            "Value": {
+            }
+          }
+        ],
+        "YoutubeUrl": "ABC"
+      },
+      "CanonicalName": "ABC",
+      "SEOCompanyName": "ABC",
+      "PageTitle": "ABC",
+      "DisplayTitle": "ABC",
+      "AgentId": 123
+    }
+  },
+  "Store": {
+    "Name": "ABC",
+    "LogoImageUri": "ABC",
+    "BannerImageUri": "ABC",
+    "Promotions": [
+      {
+        "ImageUri": "ABC"
+      },
+      {
+        "ImageUri": "ABC"
+      }
+    ],
+    "ShortDescription": "ABC",
+    "LargeBannerImage": {
+      "Small": "ABC",
+      "Medium": "ABC",
+      "Large": "ABC",
+      "XLarge": "ABC"
+    },
+    "StorePath": "ABC",
+    "Location": "ABC",
+    "PhoneNumber": "ABC",
+    "Website": "ABC",
+    "Member": {
+    }
+  },
+  "ContactDetails": {
+    "ContactName": "ABC",
+    "PhoneNumber": "ABC",
+    "MobilePhoneNumber": "ABC",
+    "BestContactTime": "ABC",
+    "Website": "ABC"
+  },
+  "IsOrNearOffer": false,
+  "AuthenticatedMembersOnly": false,
+  "Sales": [
+    {
+      "PurchaseId": 123,
+      "ReferenceNumber": "ABC",
+      "SoldDate": "\/Date(1514764800)\/",
+      "Method": 0,
+      "SelectedShipping": "ABC",
+      "ShippingPrice": 123.0,
+      "ShippingType": 0,
+      "Buyer": {
+      },
+      "QuantitySold": 123,
+      "Price": 123.0,
+      "SubtotalPrice": 123.0,
+      "TotalShippingPrice": 123.0,
+      "TotalSalePrice": 123.0,
+      "HasSellerPlacedFeedback": false,
+      "HasBuyerPlacedFeedback": false,
+      "DeliveryDetailsSent": false,
+      "DeliveryAddress": {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC",
+        "PhoneNumber": "ABC"
+      },
+      "MessageFromBuyer": "ABC",
+      "PaymentInstructions": "ABC",
+      "HasPaidByCreditCard": false,
+      "IsPaymentPending": false,
+      "CreditCardPaymentDate": "\/Date(1514764800)\/",
+      "CreditCardType": "ABC",
+      "CreditCardLastFourDigits": "ABC",
+      "OrderId": 123,
+      "Status": 10,
+      "StatusDate": "\/Date(1514764800)\/",
+      "TaxSubTotals": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "SubTotal": 123.0,
+          "FlatRate": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "SubTotal": 123.0,
+          "FlatRate": 123.0
+        }
+      ]
+    },
+    {
+      "PurchaseId": 123,
+      "ReferenceNumber": "ABC",
+      "SoldDate": "\/Date(1514764800)\/",
+      "Method": 0,
+      "SelectedShipping": "ABC",
+      "ShippingPrice": 123.0,
+      "ShippingType": 0,
+      "Buyer": {
+      },
+      "QuantitySold": 123,
+      "Price": 123.0,
+      "SubtotalPrice": 123.0,
+      "TotalShippingPrice": 123.0,
+      "TotalSalePrice": 123.0,
+      "HasSellerPlacedFeedback": false,
+      "HasBuyerPlacedFeedback": false,
+      "DeliveryDetailsSent": false,
+      "DeliveryAddress": {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC",
+        "PhoneNumber": "ABC"
+      },
+      "MessageFromBuyer": "ABC",
+      "PaymentInstructions": "ABC",
+      "HasPaidByCreditCard": false,
+      "IsPaymentPending": false,
+      "CreditCardPaymentDate": "\/Date(1514764800)\/",
+      "CreditCardType": "ABC",
+      "CreditCardLastFourDigits": "ABC",
+      "OrderId": 123,
+      "Status": 10,
+      "StatusDate": "\/Date(1514764800)\/",
+      "TaxSubTotals": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "SubTotal": 123.0,
+          "FlatRate": 123.0
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "SubTotal": 123.0,
+          "FlatRate": 123.0
+        }
+      ]
+    }
+  ],
+  "OfferStatus": 0,
+  "PendingOffer": {
+    "OfferPrice": 123.0,
+    "OfferExpiryDate": "\/Date(1514764800)\/",
+    "Quantity": 123,
+    "TaxesIncluded": [
+      {
+      },
+      {
+      }
+    ],
+    "Recipients": [
+      {
+        "Member": {
+        },
+        "Decision": 0
+      },
+      {
+        "Member": {
+        },
+        "Decision": 0
+      }
+    ]
+  },
+  "ClosedOffer": {
+    "OfferPrice": 123.0,
+    "OfferExpiryDate": "\/Date(1514764800)\/",
+    "Quantity": 123,
+    "TaxesIncluded": [
+      {
+      },
+      {
+      }
+    ]
+  },
+  "FirearmsLicenseRequiredToBuy": false,
+  "Over18DeclarationRequiredToBuy": false,
+  "CanOffer": false,
+  "CanRelist": false,
+  "WithdrawnBySeller": false,
+  "DonationRecipient": {
+    "CharityType": 0,
+    "ImageSource": "ABC",
+    "DarkModeImageSource": "ABC",
+    "Description": "ABC",
+    "Tagline": "ABC"
+  },
+  "IsInTradeProtected": false,
+  "IsInCart": false,
+  "CurrentShippingPromotion": {
+    "Threshold": 123,
+    "ThresholdType": 1
+  },
+  "IsLeading": false,
+  "IsOutbid": false,
+  "CanAddToCart": false,
+  "CartItemId": 123,
+  "MemberProfile": {
+  },
+  "EmbeddedContent": {
+    "YouTubeVideoKey": "ABC",
+    "MatterportKey": "ABC",
+    "IStagingKey": "ABC",
+    "VimeoVideoKey": "ABC",
+    "DiakritFurnishKey": "ABC",
+    "DiakritStylerKey": "ABC",
+    "DiakritPanoramaKey": "ABC",
+    "VirtualToursCreatorKey": "ABC",
+    "Approved3DTourUrl": "ABC"
+  },
+  "SponsorLinks": [
+    {
+      "Type": 0,
+      "Name": "ABC",
+      "Link": "ABC"
+    },
+    {
+      "Type": 0,
+      "Name": "ABC",
+      "Link": "ABC"
+    }
+  ],
+  "MotorWebBasicReport": {
+    "Damaged": "ABC",
+    "ReportedStolen": "ABC",
+    "MoneyOwing": "ABC",
+    "ReRegistered": "ABC",
+    "GeneratedAt": "\/Date(1514764800)\/",
+    "RegoOrVin": "ABC",
+    "Title": "ABC",
+    "PartialReportUrl": "ABC"
+  },
+  "ContactCount": 123,
+  "BroadbandTechnologies": [
+    {
+      "Name": "ABC",
+      "Availability": "ABC"
+    },
+    {
+      "Name": "ABC",
+      "Availability": "ABC"
+    }
+  ],
+  "FormattedStartDate": "ABC",
+  "SuperFeatureEndDate": "\/Date(1514764800)\/",
+  "MemberRequestInformation": {
+    "RequestRelistStatus": 0,
+    "RequestOfferStatus": 0
+  },
+  "IsEligibleForBuyerProtection": false,
+  "SupportsQuestionsAndAnswers": false,
+  "HasContactDetails": false,
+  "SuppressRelatedListings": false,
+  "SuppressComplementaryListings": false,
+  "PaymentMethods": [
+    {
+      "Id": 0,
+      "Name": "ABC",
+      "LogoUrl": "ABC"
+    },
+    {
+      "Id": 0,
+      "Name": "ABC",
+      "LogoUrl": "ABC"
+    }
+  ],
+  "FinanceOffer": {
+    "WeeklyPayment": 123.0,
+    "DepositPercent": 123.0,
+    "TermInMonths": 123,
+    "InterestRate": 123.0,
+    "InterestType": 0,
+    "EstablishmentFee": 123.0,
+    "MonthlyFee": 123.0,
+    "TotalPayment": 123.0,
+    "OfferDescription": "ABC",
+    "OfferDisclaimer": "ABC",
+    "FinancePayment": 123.0,
+    "DepositPayment": 123.0,
+    "IsPersonalised": false
+  },
+  "ProductSpecification": {
+    "GTIN": "ABC",
+    "Brand": "ABC",
+    "ManufacturerCode": "ABC"
+  },
+  "BoundaryImage": {
+  },
+  "DealInfo": {
+    "WhyPayLabel": "ABC",
+    "WhyPayDescription": "ABC",
+    "WhyPayPrice": 123.0,
+    "DeliveryEstimate": "ABC"
+  },
+  "TaxesIncluded": [
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    },
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    }
+  ],
+  "RenderOptions": [
+    0,
+    0
+  ],
+  "AreaOfBusiness": 0,
+  "SecondCategory": "ABC",
+  "SecondCategoryName": "ABC",
+  "SecondCategoryPath": "ABC",
+  "SuppressAdvertisersOtherListings": false,
+  "Office": {
+    "MembershipType": 0,
+    "HeroImages": {
+      "Original": "ABC",
+      "Small": "ABC"
+    },
+    "IsPartnerAccreditationEnabled": false
+  },
+  "IsExtendable": false,
+  "HasListingMetCompliance": {
+    "HasMetAnimalWelfareCompliance": false
+  },
+  "IncludeGstStartPrice": 123.0,
+  "SearchVisualProminence": 123,
+  "SpecialOffer": {
+    "Title": "ABC",
+    "Subtitle": "ABC",
+    "Description": "ABC",
+    "OfferUrl": "ABC",
+    "ImageUrl": "ABC",
+    "IsFinance": false,
+    "TermsAndConditions": "ABC"
+  },
+  "JobAdvertiserPageUrl": "ABC",
+  "JobAdvertiserOtherListingsUrl": "ABC",
+  "JobsSalaryTransparency": {
+    "HasOptedIn": false,
+    "ApproximatePayRangeDisplay": "ABC"
+  },
+  "IsAutoExtended": false,
+  "MotorsExternalMedia": {
+    "Instavid360SpinnerId": "ABC",
+    "Instavid360SpinnerThumbnailUrl": "ABC",
+    "VideoUrl": "ABC",
+    "VideoThumbnailUrl": "ABC"
+  },
+  "PropertySaleInformation": {
+    "PropertySaleType": 0,
+    "PropertyDateOfSale": "\/Date(1514764800)\/"
+  },
+  "BackgroundRecheckEligibility": 1,
+  "PropertyAttributes": [
+    {
+      "Name": "ABC",
+      "Value": "ABC",
+      "Source": "ABC",
+      "DisplayName": "ABC",
+      "DisplayGroup": "ABC",
+      "DisplayGroupOrder": 123,
+      "DisplayOrder": 123,
+      "Description": "ABC"
+    },
+    {
+      "Name": "ABC",
+      "Value": "ABC",
+      "Source": "ABC",
+      "DisplayName": "ABC",
+      "DisplayGroup": "ABC",
+      "DisplayGroupOrder": 123,
+      "DisplayOrder": 123,
+      "Description": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

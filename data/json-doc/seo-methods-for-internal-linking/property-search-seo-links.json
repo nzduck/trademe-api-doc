@@ -1,0 +1,75 @@
+{
+  "endpoint": "PropertySearchSeoLinks",
+  "title": "Property Search SEO links",
+  "description": "Gets the list of SEO links for the Property search",
+  "source": "https://developer.trademe.co.nz/api-reference/seo-methods-for-internal-linking/property-search-seo-links",
+  "url": "https://api.trademe.co.nz/v1/seo/property/search.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "categoryId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ID for the Category filter"
+      },
+      {
+        "name": "districtId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ID for the District filter"
+      },
+      {
+        "name": "regionId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ID for the Region filter"
+      },
+      {
+        "name": "suburbIds",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Comma separated IDs for the Suburb filter"
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <SeoLink>",
+    "fields": []
+  },
+  "examples": {
+    "response_json": [
+      {},
+      {}
+    ]
+  }
+}

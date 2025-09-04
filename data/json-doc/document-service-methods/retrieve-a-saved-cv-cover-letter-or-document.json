@@ -1,0 +1,119 @@
+{
+  "endpoint": "RetrieveASavedCvCoverLetterOrDocument",
+  "title": "Retrieve a saved CV, cover letter or document",
+  "description": "Retrieves the metadata and content of a specific CV, cover letter or document.",
+  "source": "https://developer.trademe.co.nz/api-reference/document-service-methods/retrieve-a-saved-cv-cover-letter-or-document",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/SavedDocuments/{savedDocumentId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "savedDocumentId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The unique ID of the document."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "exclude_file_content",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If true, does not return the file content in the response (the base64 encoded file). Defaults to false."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SavedDocument> Information about a single CV, cover letter or other type of document.",
+    "fields": [
+      {
+        "name": "SavedDocumentId",
+        "type": "Integer",
+        "required": false,
+        "description": "The unique identifier of the document. Not required when uploading a document."
+      },
+      {
+        "name": "FileName",
+        "type": "String or null",
+        "required": false,
+        "description": "The file name of the document. When uploading a new document, this can be the full path or just the file name, with or without a file extension."
+      },
+      {
+        "name": "DocumentType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of document.",
+        "enum": [
+          {
+            "name": "Cv",
+            "value": "0",
+            "description": "A CV document"
+          },
+          {
+            "name": "CoverLetter",
+            "value": "1",
+            "description": "A cover letter"
+          },
+          {
+            "name": "Other",
+            "value": "2",
+            "description": "Other documents"
+          },
+          {
+            "name": "All",
+            "value": "4",
+            "description": "All saved documents"
+          }
+        ]
+      },
+      {
+        "name": "SavedDocumentData",
+        "type": "String or null",
+        "required": false,
+        "description": "The actual document data (base64 encoded)."
+      },
+      {
+        "name": "UploadDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the document was uploaded"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "SavedDocumentId": 123,
+      "FileName": "ABC",
+      "DocumentType": 0,
+      "SavedDocumentData": "ABC",
+      "UploadDate": "/Date(1514764800)/"
+    }
+  }
+}

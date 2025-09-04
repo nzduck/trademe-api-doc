@@ -1,0 +1,162 @@
+{
+  "endpoint": "RetrieveYourWeeklySalesStatisticsNew",
+  "title": "Retrieve your weekly sales statistics (new)",
+  "description": "Retrieve sales statistics for the authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-weekly-sales-statistics-new",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/WeeklySummary.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<WeeklySummaryCollection> Statistics for the current week and the previous six weeks.",
+    "fields": [
+      {
+        "name": "List",
+        "type": "Collection of <WeeklySalesItem> or null",
+        "required": false,
+        "description": "A list of weekly sales data for the past 6 weeks.",
+        "nested_fields": [
+          {
+            "field_name": "StartDate",
+            "field_type": "DateTime",
+            "description": "The start date of the summary."
+          },
+          {
+            "field_name": "EndDate",
+            "field_type": "DateTime",
+            "description": "The end date of the summary."
+          },
+          {
+            "field_name": "ReserveMet",
+            "field_type": "Integer",
+            "description": "The number of items which met their reserve price in the time period."
+          },
+          {
+            "field_name": "BuyNow",
+            "field_type": "Integer",
+            "description": "The number of items which were purchased via Buy Now in the time period."
+          },
+          {
+            "field_name": "FixedPriceOffer",
+            "field_type": "Integer",
+            "description": "The number of items which sold via a fixed price offer in the time period."
+          },
+          {
+            "field_name": "TotalSold",
+            "field_type": "Integer",
+            "description": "The number of items sold in the time period."
+          },
+          {
+            "field_name": "TotalValue",
+            "field_type": "Number",
+            "description": "The total value of items sold in the time period."
+          },
+          {
+            "field_name": "UnsoldItems",
+            "field_type": "Integer",
+            "description": "The total number of items unsold in the time period."
+          },
+          {
+            "field_name": "SellThroughRate",
+            "field_type": "Number",
+            "description": "The sell-through rate in the time period."
+          }
+        ]
+      },
+      {
+        "name": "WeekToDate",
+        "type": "<WeeklySalesItem> or null",
+        "required": false,
+        "description": "The week to date totals."
+      },
+      {
+        "name": "SixWeekTotals",
+        "type": "<WeeklySalesItem> or null",
+        "required": false,
+        "description": "The sum of the previous 6 weeks (excludes week to date)."
+      },
+      {
+        "name": "HvlData",
+        "type": "<HvlSummary> or null",
+        "required": false,
+        "description": "Summary of data describing how close the member is to paying High Volume Listing Fees.",
+        "nested_fields": [
+          {
+            "field_name": "ContributingListings",
+            "field_type": "Integer",
+            "description": "How many listings currently count towards the member's HVL-fee-free listing allowance"
+          },
+          {
+            "field_name": "UserThreshold",
+            "field_type": "Integer",
+            "description": "How many listings the member can list before incurring HVL fees"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "List": [
+        {
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ReserveMet": 123,
+          "BuyNow": 123,
+          "FixedPriceOffer": 123,
+          "TotalSold": 123,
+          "TotalValue": 123.0,
+          "UnsoldItems": 123,
+          "SellThroughRate": 123.0
+        },
+        {
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ReserveMet": 123,
+          "BuyNow": 123,
+          "FixedPriceOffer": 123,
+          "TotalSold": 123,
+          "TotalValue": 123.0,
+          "UnsoldItems": 123,
+          "SellThroughRate": 123.0
+        }
+      ],
+      "WeekToDate": {},
+      "SixWeekTotals": {},
+      "HvlData": {
+        "ContributingListings": 123,
+        "UserThreshold": 123
+      }
+    }
+  }
+}

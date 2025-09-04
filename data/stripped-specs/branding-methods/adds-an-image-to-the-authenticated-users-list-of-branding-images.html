@@ -1,0 +1,197 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/branding-methods/adds-an-image-to-the-authenticated-users-list-of-branding-images -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Adds an image to the authenticated user's list of branding images</h1>
+<!-- Page content -->
+<p>Adds an image to the authenticated user's list of branding images. These photos can be used when listing a classified. Branding images are only supported for Job listings.</p> At the moment, only the following image types are supported: <ul><li>Logo</li><li>Banner</li><li>Square</li></ul> Image types are inferred from the file name extensions and they should be one of the following types (Case is ignored): <ul><li>JPEG or JPG</li><li>PNG</li><li>GIF</li></ul> Maximum acceptable image size is 5MB.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> memberId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> POST Data </h2>
+<p> &lt;UploadBrandingRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> FileName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>File name (including the extension of the file to upload.)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingImageType </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>Branding image type</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>Default value; It should not be used</p>
+</td>
+</tr>
+<tr>
+<td>Logo</td>
+<td>1</td>
+<td>
+<p>Branding logo (Width= 480px, Height= 200px)</p>
+</td>
+</tr>
+<tr>
+<td>Banner</td>
+<td>2</td>
+<td>
+<p>Branding banner (Width= 758px, Height= 75px)</p>
+</td>
+</tr>
+<tr>
+<td>Square</td>
+<td>3</td>
+<td>
+<p>Branding square (Width= 480px, Height= 480px)</p>
+</td>
+</tr>
+<tr>
+<td>FullScreenBanner</td>
+<td>4</td>
+<td>
+<p>Branding full screen banner (Width= 1440px, Height= 250px)</p>
+</td>
+</tr>
+<tr>
+<td>Photo</td>
+<td>5</td>
+<td>
+<p>Branding photo (Width= 712px, Height= 330px)</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImageData </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The actual image data which is base64 encoded.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;UploadBrandingResponse&gt; </p>
+<p> <p>Information about the uploaded branding</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BrandingImageDetails </th>
+<td style="width: 22%"> &lt;BrandingImageDetails&gt; or null </td>
+<td>
+<p>The uploaded image information</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+</table>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Href", "field_type": "String or null", "description": "An HREF representing the uri to the resource"}, {"field_name": "Rel", "field_type": "String or null", "description": "A REL representing the relationship between the sending resource and the linked resource"}, {"field_name": "Prompt", "field_type": "String or null", "description": "A PROMPT, optional display text to represent the resource to a user"}, {"field_name": "Method", "field_type": "String or null", "description": "A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET."}]'>
+<th style="width: 22%"> Links </th>
+<td style="width: 22%"> Collection of &lt;Link&gt; or null </td>
+<td>
+<p>Links to related operations</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "FileName": "ABC",
+  "BrandingImageType": 0,
+  "ImageData": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "BrandingImageDetails": {
+  },
+  "Links": [
+    {
+      "Href": "ABC",
+      "Rel": "ABC",
+      "Prompt": "ABC",
+      "Method": "ABC"
+    },
+    {
+      "Href": "ABC",
+      "Rel": "ABC",
+      "Prompt": "ABC",
+      "Method": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

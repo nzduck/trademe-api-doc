@@ -1,0 +1,79 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-complaint-subjects -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve complaint subjects</h1>
+<!-- Page content -->
+<p>Retrieves a list of possible complaint subjects. This is used in conjunction with the <a href="https://developer.trademe.co.nz/api-reference/listing-methods/send-a-complaint-about-an-auction/"> send a complaint</a> API.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/ComplaintSubjects.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;ComplaintSubject&gt; </p>
+<p>A list of subjects that can be used when making a complaint.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> SubjectId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the complaint subject.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the complaint subject, suitable for displaying to a user.</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><a href="https://api.trademe.co.nz/v1/ComplaintSubjects.xml">https://api.trademe.co.nz/v1/ComplaintSubjects.xml</a></p>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "SubjectId": 123,
+    "Description": "ABC"
+  },
+  {
+    "SubjectId": 123,
+    "Description": "ABC"
+  }
+]</code></pre>
+</div>

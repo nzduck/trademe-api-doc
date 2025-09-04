@@ -1,0 +1,334 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/shipping-methods/get-a-shipping-template-by-id -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get a Shipping Template by Id</h1>
+<!-- Page content -->
+<p>Retrieves the details of a single shipping template.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Shipping/Templates/{shippingTemplateId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> shippingTemplateId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;ShippingTemplate&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> ShippingTemplateId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Unique identifier of the Shipping Template</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the Shipping Template</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HandlingTime </th>
+<td style="width: 22%"> TimeSpan </td>
+<td>
+<p>Handling time of the Shipping Template</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HandlingTimeCutOff </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Handling time cut off of the Shipping Template. It is a 24-hour time in ISO 8601 extended format. Any seconds are truncated. E.g. for a cut-off time of 4:30 pm, this value will be "16:30".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsOversized </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>If the Shipping Template is oversized</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRestricted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>If the Shipping Template is restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingOptions </th>
+<td style="width: 22%"> Collection of &lt;StructuredShippingOption&gt; or null </td>
+<td>
+<p>List of Shipping Options related to the Shipping Template</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ShippingOptionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Unique identifier of the Shipping Option</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Cost </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Cost of the Shipping Option</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CarrierProduct </th>
+<td style="width: 22%"> &lt;CarrierProduct&gt; or null </td>
+<td>
+<p>Carrier Product related to the Shipping Option</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> CarrierProductId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Unique identifier of the Carrier Product</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the Carrier Product</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinimumDeliveryTime </th>
+<td style="width: 22%"> TimeSpan </td>
+<td>
+<p>Minimum delivery time of the Carrier Product</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaximumDeliveryTime </th>
+<td style="width: 22%"> TimeSpan </td>
+<td>
+<p>Maximum delivery time of the Carrier Product</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRural </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>If the product is rural</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCombined </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>If the product is combined shipping</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShipToRegions </th>
+<td style="width: 22%"> Collection of &lt;Region&gt; or null </td>
+<td>
+<p>List of Regions that the Shipping Option ships to</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> RegionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Unique identifier of the Region</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the Region</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Addons </th>
+<td style="width: 22%"> Collection of &lt;ShippingOptionAddon&gt; or null </td>
+<td>
+<p>List of Addons that are available to the Shipping Option</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> CarrierAddonId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Identifier of the Carrier Addon</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the addon</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Signature", "value": "0", "description": "Addon is Signature"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Type of the addon</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> AdditionalCost </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Additional cost of the addon</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "ShippingTemplateId": 123,
+  "Name": "ABC",
+  "HandlingTime": "PT4H5M",
+  "HandlingTimeCutOff": "ABC",
+  "IsOversized": false,
+  "IsRestricted": false,
+  "ShippingOptions": [
+    {
+      "ShippingOptionId": 123,
+      "Cost": 123.0,
+      "CarrierProduct": {
+        "CarrierProductId": 123,
+        "Name": "ABC",
+        "MinimumDeliveryTime": "PT4H5M",
+        "MaximumDeliveryTime": "PT4H5M",
+        "IsRural": false,
+        "IsCombined": false
+      },
+      "ShipToRegions": [
+        {
+          "RegionId": 123,
+          "Name": "ABC"
+        },
+        {
+          "RegionId": 123,
+          "Name": "ABC"
+        }
+      ],
+      "Addons": [
+        {
+          "CarrierAddonId": 123,
+          "Name": "ABC",
+          "Type": 0,
+          "AdditionalCost": 123.0
+        },
+        {
+          "CarrierAddonId": 123,
+          "Name": "ABC",
+          "Type": 0,
+          "AdditionalCost": 123.0
+        }
+      ]
+    },
+    {
+      "ShippingOptionId": 123,
+      "Cost": 123.0,
+      "CarrierProduct": {
+        "CarrierProductId": 123,
+        "Name": "ABC",
+        "MinimumDeliveryTime": "PT4H5M",
+        "MaximumDeliveryTime": "PT4H5M",
+        "IsRural": false,
+        "IsCombined": false
+      },
+      "ShipToRegions": [
+        {
+          "RegionId": 123,
+          "Name": "ABC"
+        },
+        {
+          "RegionId": 123,
+          "Name": "ABC"
+        }
+      ],
+      "Addons": [
+        {
+          "CarrierAddonId": 123,
+          "Name": "ABC",
+          "Type": 0,
+          "AdditionalCost": 123.0
+        },
+        {
+          "CarrierAddonId": 123,
+          "Name": "ABC",
+          "Type": 0,
+          "AdditionalCost": 123.0
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</div>

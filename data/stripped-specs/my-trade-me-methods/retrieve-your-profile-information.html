@@ -1,0 +1,1186 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-profile-information -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your profile information</h1>
+<!-- Page content -->
+<p>Retrieves full statistics and profile information for the authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/summary.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> return_member_profile </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true, also returns the member's public profile information (occupation, bio, photo, etc).</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;MemberSummary&gt; </p>
+<p>The user's name, email address, bought, sold and feedback stats.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> WatchListCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items on the watchlist.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WonCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items won.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LostCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items lost.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SellingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items being sold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SoldCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items sold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnsoldCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items unsold.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositiveFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total positive feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NegativeFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total negative feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalFeedback </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total feedback (positive - negative).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's nickname.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateJoined </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member registered for an account on Trade Me.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateAddressVerified </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the member became address verified, if they are address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAddressVerified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is address verified. This means the member entered a code that was delivered via the postal system to the member's street address. Note that currently, members retain their address verified status if they move, so having this status doesn't necessarily mean that the member's current address is valid.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Balance </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The member's Trade Me account balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PayNowBalance </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The member's Pay Now account balance.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirstName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's first name.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's last name.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FixedPriceOffers </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of fixed price offers for the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Email </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The email address for the member.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Unspecified", "value": "0", "description": "The gender is not specified."}, {"name": "Male", "value": "1", "description": "The member is male."}, {"name": "Female", "value": "2", "description": "The member is female."}, {"name": "DiverseGender", "value": "3", "description": "The member is gender diverse."}]'>
+<th style="width: 22%"> Gender </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The gender of the member.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> MembershipAddress </th>
+<td style="width: 22%"> &lt;DeliveryAddress&gt; or null </td>
+<td>
+<p>The member's primary address.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the person whom the item is being delivered to.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address1 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The first line of the address.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address2 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The second line of the address (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The suburb (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> City </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The city.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Postcode </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The postcode (optional).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country (currently restricted to "New Zealand" or "Australia").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsMembershipAddress </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBusiness </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has registered as a business.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BusinessName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's business name (business memberships only).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BillingAddress </th>
+<td style="width: 22%"> &lt;DeliveryAddress&gt; or null </td>
+<td>
+<p>The member's billing address (business memberships only). This is optional even for business memberships. If it doesn't exist, assume the billing address is the same as the delivery address.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestLocality </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the closest locality to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestDistrict </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the closest district to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ClosestDistrictId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the closest district to the member. Based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAuthenticated </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is authenticated.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsPayNowAccepted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can accept Pay Now payments.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteSearchCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved searches in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteCategoryCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved categories in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteSellerCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of saved sellers in the member's favourites.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoBillingEnabled </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has set up auto-billing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanListClearanceItems </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can list clearance items using the IsClearance flag. This is currently only for certain elite sellers.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTopSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is currently a registered top seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRegisteredWineSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is currently a registered wine seller. This will be <b>false</b> if the member has not registered, or if the registration has been disabled, or if the off-license has expired, or if the member cannot accept Pay Now payments.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsPropertyAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a property agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRentalAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a rental agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsJobAgent </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is registered as a job agent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardType </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If the user has a saved credit card that they can use, contains the card type ("Visa", "MasterCard", etc). Will be omitted if the user does not have a saved card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardLastFourDigits </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If the user has a saved credit card, contains the last four digits of the card number (e.g. "1234"). Will be omitted if the user does not have a saved card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardExpiryMonth </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>If the user has a saved credit card, contains the month when it expires (1 = January, 12 = December).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CreditCardExpiryYear </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>If the user has a saved credit card, contains the year when it expires.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RecentSearchesEnabled </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether recent searches are recorded against the user's profile.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighVolumeListingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of active listings the member has which contribute towards the high volume threshold. Generally speaking, auctions contribute towards the high volume threshold while classifieds do not. Some categories are exempt; listings within those categories do not count towards the threshold either.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighVolumeThreshold </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The user's high volume listing allowance. This is the number of active listings you can have without incurring a high volume listing fee (this fee is charged for each new listing). All classifieds and auctions in some categories are exempt from high volume listing fees.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanRemoveBids </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member can remove bids using the remove bid API.</p>
+<p style="color: red">
+                                This field will always return true.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShoppingCartCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items in the members cart.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsInTrade </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a professional trader. If they are a professional trader then their listings are protected by the Consumer Guarantees Act.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberProfile </th>
+<td style="width: 22%"> &lt;SimpleMemberProfile&gt; or null </td>
+<td>
+<p>This member's public profile information.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Occupation </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The occupation of the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Biography </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's bio.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quote </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's favourite quote.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Photo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A URL representing the member's photo.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalTrackingToken </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>An external tracking token used to uniquely identify a member without exposing member information.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LandlinePhoneNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's landline phone number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MobilePhoneNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's mobile phone number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberToken </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The members token</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotRegistered", "value": "0", "description": "Not registered with a Tradevine account"}, {"name": "TradevineLite", "value": "1", "description": "Tradevine Lite account"}, {"name": "Tradevine", "value": "2", "description": "Full Tradevine account"}, {"name": "NewGoodsFeed", "value": "3", "description": "NGF account"}, {"name": "TradeRunner", "value": "4", "description": "TradeRunner account"}]'>
+<th style="width: 22%"> TradevineAccountType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The member's Tradevine account type (Tradevine, MyProducts or neither)</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> DraftSummary </th>
+<td style="width: 22%"> &lt;DraftSummary&gt; or null </td>
+<td>
+<p>The number of items lost.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DraftCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>current number of drafts</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DraftLimit </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>the maximum limit of drafts allowed for each member</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> JobProfiles </th>
+<td style="width: 22%"> Collection of &lt;JobProfileSummary&gt; or null </td>
+<td>
+<p>The member's job profiles</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ProfileId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The id of the profile</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Key </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A key to identify the profile</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AvailableExternalPaymentProviders </th>
+<td style="width: 22%"> Collection of Enumeration or null </td>
+<td>
+<p>List of deferred payments the member can use</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberTokens </th>
+<td style="width: 22%"> Collection of &lt;MemberToken&gt; or null </td>
+<td>
+<p>The collection of member tokens a member has for external services</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Do not use."}, {"name": "Sentry", "value": "1", "description": "The token is for use with the sentry.io service."}, {"name": "GoogleAnalytics", "value": "2", "description": "The token is for use with GA (Google Analytics)"}, {"name": "ExternalSearch", "value": "3", "description": "The token is for use with external search"}, {"name": "ListingCollections", "value": "4", "description": "The token is for use with the listing collections service"}, {"name": "InternalServices", "value": "6", "description": "The token is for use with Trade Me internal services."}]'>
+<th style="width: 22%"> Service </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The service the token is for.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Token </th>
+<td style="width: 22%"> Guid </td>
+<td>
+<p>The token used for the service to uniquely identify the member.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LoyaltySubscriptionDetails </th>
+<td style="width: 22%"> &lt;MemberLoyaltySubscriptionDetails&gt; or null </td>
+<td>
+<p>The member's loyalty subscription details.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsMemberEligibleForNewSubscription </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is eligible for a new loyalty subscription</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subscription </th>
+<td style="width: 22%"> &lt;LoyaltySubscriptionDetail&gt; or null </td>
+<td>
+<p>Return the current member subscription</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Subscription Id</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotSubscribed", "value": "0", "description": "Member not subscribed"}, {"name": "Active", "value": "1", "description": "Subscription is active"}, {"name": "Expired", "value": "2", "description": "Subscription is expired"}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Status of the subscription</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SubscribedAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>When the subscription was purchased</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExpiresAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>When the subscription expires</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Product </th>
+<td style="width: 22%"> &lt;LoyaltyProductDetail&gt; or null </td>
+<td>
+<p>Product details for the current subscription</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Product ID</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Product price per PaymentInterval unit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentInterval </th>
+<td style="width: 22%"> &lt;LoyaltyPaymentIntervalDetail&gt; or null </td>
+<td>
+<p>String representation of the subscription period</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Description of the payment interval in a friendly format</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Once", "value": "0", "description": "One time only"}, {"name": "Week", "value": "1", "description": "Weekly"}, {"name": "Month", "value": "2", "description": "Monthly"}]'>
+<th style="width: 22%"> IntervalType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of payment interval</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> IntervalsPerPayment </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of payment intervals between payments</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Benefits </th>
+<td style="width: 22%"> Collection of &lt;LoyaltyBenefitDetail&gt; or null </td>
+<td>
+<p>Benefits provided by this product.</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "Unknown", "value": "0", "description": "Unknown"}, {"name": "FreeShipping", "value": "1", "description": "Free shipping on eligible items"}, {"name": "FreeSuccessFee", "value": "2", "description": "Free success fee"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Type of benefit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SubsidyLimit </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The maximum shipping subsidy given by this benefit</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsUnlimited </th>
+<td style="width: 22%"> Boolean or null </td>
+<td>
+<p>Indicates whether the free success fee benefit is unlimited</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quota </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The total number of free success fee sales benefits available</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QuotaRemaining </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The remaining number of free success fee sales benefits available</p>
+<p style="color: red">
+                                This field is deprecated.
+                            </p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TaxLiabilities </th>
+<td style="width: 22%"> Collection of &lt;TaxRate&gt; or null </td>
+<td>
+<p>The taxes that Trade Me will collect automatically on behalf of this member when they sell on Trade Me</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "NZ_GST_Overseas_Supplies", "value": "1", "description": "New Zealand GST on overseas supplies"}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of tax that is included</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Country </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The country that is levying the tax e.g. NZ</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the tax e.g. GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FlatRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The rate at which the tax is charged (as a decimal e.g 0.15)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string that can be used as a caption where necessary</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellRestrictionsEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTaxEffective </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Location </th>
+<td style="width: 22%"> &lt;MapPoint&gt; or null </td>
+<td>
+<p>Longitude and Latitude of member's location. For now it's based on the "Closest town" information supplied by the member when creating their account.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Latitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Latitude of the map point</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Longitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Longitude of the map point</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Unknown", "value": "0", "description": "Status Unknown"}, {"name": "NotRegistered", "value": "1", "description": "Not Registered"}, {"name": "PendingFirstActivation", "value": "2", "description": "Pending First Activation"}, {"name": "ActivePendingReplacementActivation", "value": "3", "description": "Active Pending Replacement Activation"}, {"name": "Active", "value": "4", "description": "Active"}, {"name": "Suspended", "value": "5", "description": "Suspended"}, {"name": "Bounced", "value": "6", "description": "Bounced"}, {"name": "BouncedPendingReplacementActivation", "value": "7", "description": "Bounced Pending Replacement Activation"}]'>
+<th style="width: 22%"> PayNowStatus </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the member's pay now account.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SegmentUserId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's Segment user ID.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBasic </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates the member has only registered with a small portion of information</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CddCaseSummary </th>
+<td style="width: 22%"> &lt;CddCaseSummary&gt; or null </td>
+<td>
+<p>Member's AML - CDD case summary details</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> DisplayStatus </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Status of the CDD case</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Verification URL for a member</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastUpdated </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>CDD status last updated</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "WatchListCount": 123,
+  "WonCount": 123,
+  "LostCount": 123,
+  "SellingCount": 123,
+  "SoldCount": 123,
+  "UnsoldCount": 123,
+  "PositiveFeedback": 123,
+  "NegativeFeedback": 123,
+  "TotalFeedback": 123,
+  "MemberId": 123,
+  "Nickname": "ABC",
+  "DateJoined": "\/Date(1514764800)\/",
+  "DateAddressVerified": "\/Date(1514764800)\/",
+  "IsAddressVerified": false,
+  "Balance": 123.0,
+  "PayNowBalance": 123.0,
+  "FirstName": "ABC",
+  "LastName": "ABC",
+  "FixedPriceOffers": 123,
+  "Email": "ABC",
+  "Gender": 0,
+  "MembershipAddress": {
+    "Name": "ABC",
+    "Address1": "ABC",
+    "Address2": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "Postcode": "ABC",
+    "Country": "ABC",
+    "IsMembershipAddress": false
+  },
+  "IsBusiness": false,
+  "BusinessName": "ABC",
+  "BillingAddress": {
+    "Name": "ABC",
+    "Address1": "ABC",
+    "Address2": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "Postcode": "ABC",
+    "Country": "ABC"
+  },
+  "ClosestLocality": "ABC",
+  "ClosestDistrict": "ABC",
+  "ClosestDistrictId": 123,
+  "IsAuthenticated": false,
+  "IsPayNowAccepted": false,
+  "FavouriteSearchCount": 123,
+  "FavouriteCategoryCount": 123,
+  "FavouriteSellerCount": 123,
+  "AutoBillingEnabled": false,
+  "CanListClearanceItems": false,
+  "IsTopSeller": false,
+  "IsRegisteredWineSeller": false,
+  "IsPropertyAgent": false,
+  "IsRentalAgent": false,
+  "IsJobAgent": false,
+  "CreditCardType": "ABC",
+  "CreditCardLastFourDigits": "ABC",
+  "CreditCardExpiryMonth": 123,
+  "CreditCardExpiryYear": 123,
+  "RecentSearchesEnabled": false,
+  "HighVolumeListingCount": 123,
+  "HighVolumeThreshold": 123,
+  "CanRemoveBids": false,
+  "ShoppingCartCount": 123,
+  "IsInTrade": false,
+  "MemberProfile": {
+    "Occupation": "ABC",
+    "Biography": "ABC",
+    "Quote": "ABC",
+    "Photo": "ABC"
+  },
+  "ExternalTrackingToken": "ABC",
+  "LandlinePhoneNumber": "ABC",
+  "MobilePhoneNumber": "ABC",
+  "MemberToken": "ABC",
+  "TradevineAccountType": 0,
+  "DraftSummary": {
+    "DraftCount": 123,
+    "DraftLimit": 123
+  },
+  "JobProfiles": [
+    {
+      "ProfileId": 123,
+      "Key": "ABC"
+    },
+    {
+      "ProfileId": 123,
+      "Key": "ABC"
+    }
+  ],
+  "AvailableExternalPaymentProviders": [
+    1,
+    1
+  ],
+  "MemberTokens": [
+    {
+      "Service": 0,
+      "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+    },
+    {
+      "Service": 0,
+      "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+    }
+  ],
+  "LoyaltySubscriptionDetails": {
+    "IsMemberEligibleForNewSubscription": false,
+    "Subscription": {
+      "Id": 123,
+      "Status": 0,
+      "SubscribedAt": "\/Date(1514764800)\/",
+      "ExpiresAt": "\/Date(1514764800)\/",
+      "Product": {
+        "Id": 123,
+        "Price": 123.0,
+        "PaymentInterval": {
+          "Description": "ABC",
+          "IntervalType": 0,
+          "IntervalsPerPayment": 123
+        },
+        "Benefits": [
+          {
+            "Type": 0,
+            "SubsidyLimit": 123.0,
+            "IsUnlimited": false,
+            "Quota": 123,
+            "QuotaRemaining": 123
+          },
+          {
+            "Type": 0,
+            "SubsidyLimit": 123.0,
+            "IsUnlimited": false,
+            "Quota": 123,
+            "QuotaRemaining": 123
+          }
+        ]
+      }
+    }
+  },
+  "TaxLiabilities": [
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    },
+    {
+      "Type": 1,
+      "Country": "ABC",
+      "Name": "ABC",
+      "FlatRate": 123.0,
+      "Description": "ABC",
+      "IsSellRestrictionsEffective": false,
+      "IsTaxEffective": false
+    }
+  ],
+  "Location": {
+    "Latitude": 123.0,
+    "Longitude": 123.0
+  },
+  "PayNowStatus": 0,
+  "SegmentUserId": "ABC",
+  "IsBasic": false,
+  "CddCaseSummary": {
+    "DisplayStatus": "ABC",
+    "Url": "ABC",
+    "LastUpdated": "\/Date(1514764800)\/"
+  }
+}</code></pre>
+</div>

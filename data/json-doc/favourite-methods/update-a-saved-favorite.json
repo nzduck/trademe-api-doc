@@ -1,0 +1,122 @@
+{
+  "endpoint": "UpdateASavedFavorite",
+  "title": "Update a saved favorite",
+  "description": "Modifies the email frequency for a saved favourite.",
+  "source": "https://developer.trademe.co.nz/api-reference/favourite-methods/update-a-saved-favorite",
+  "url": "https://api.trademe.co.nz/v1/favourites/{favouriteId}/{type}/{frequency}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "favouriteId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the favourite."
+      },
+      {
+        "name": "type",
+        "type": "String (required)",
+        "required": true,
+        "description": "The type of favourite (must be \"Category\", \"Search\", \"AttributeSearch\" or \"Seller\")."
+      },
+      {
+        "name": "frequency",
+        "type": "String (required)",
+        "required": true,
+        "description": "The frequency that emails should be sent (must be \"None\", \"Daily\", \"Every3Days\" or \"Weekly\")."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SavedFavouriteResponse> Details indicating whether the operation succeeded.",
+    "fields": [
+      {
+        "name": "SearchId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the saved favourite."
+      },
+      {
+        "name": "Response",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the error, if the operation failed."
+      },
+      {
+        "name": "Saved",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the favourite was saved."
+      },
+      {
+        "name": "FavouriteType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates what type of favourite was saved.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Nothing"
+          },
+          {
+            "name": "Category",
+            "value": "1",
+            "description": "Category"
+          },
+          {
+            "name": "Search",
+            "value": "3",
+            "description": "General search"
+          },
+          {
+            "name": "AttributeSearch",
+            "value": "4",
+            "description": "Attributed search"
+          },
+          {
+            "name": "Seller",
+            "value": "6",
+            "description": "Seller"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "SearchId": 123,
+      "Response": "ABC",
+      "Saved": false,
+      "FavouriteType": 0
+    }
+  }
+}

@@ -1,0 +1,187 @@
+{
+  "endpoint": "RetrievesJobAgentReport",
+  "title": "Retrieves job agent report",
+  "description": "Retrieves a report of the job agent's listings",
+  "source": "https://developer.trademe.co.nz/api-reference/job-agent-methods/retrieves-job-agent-report",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Members/{memberId}/Agent/Report/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The member id to retrieve the report for. Must be the authenticated member"
+      },
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "The range for the report. CurrentAll the current listings.Last45DaysListings in the last 45 days.Last7DaysListings in the last 7 days.AllAll the current listings."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<JobAgentReport> The job agent report data.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <JobAgentReportLine> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "ListingId",
+            "field_type": "Integer",
+            "description": "The ID of the listing."
+          },
+          {
+            "field_name": "AgentReference",
+            "field_type": "String or null",
+            "description": "The agent's reference for the listing."
+          },
+          {
+            "field_name": "Title",
+            "field_type": "String or null",
+            "description": "The title used for the listing."
+          },
+          {
+            "field_name": "District",
+            "field_type": "String or null",
+            "description": "The district the listing is located."
+          },
+          {
+            "field_name": "Region",
+            "field_type": "String or null",
+            "description": "The region name for the listing."
+          },
+          {
+            "field_name": "Views",
+            "field_type": "Integer",
+            "description": "The number of views on the listing."
+          },
+          {
+            "field_name": "StartDate",
+            "field_type": "DateTime",
+            "description": "The UTC start date of the listing."
+          },
+          {
+            "field_name": "EndDate",
+            "field_type": "DateTime",
+            "description": "The UTC end date of the listing."
+          },
+          {
+            "field_name": "Category",
+            "field_type": "String or null",
+            "description": "The category of the listing."
+          },
+          {
+            "field_name": "CompanyName",
+            "field_type": "String or null",
+            "description": "The name of the company for the listing."
+          },
+          {
+            "field_name": "Applications",
+            "field_type": "Integer",
+            "description": "The number of applications for the job."
+          },
+          {
+            "field_name": "IsFeatured",
+            "field_type": "Boolean",
+            "description": "Indicates whether the listing is featured."
+          },
+          {
+            "field_name": "ClicksToApply",
+            "field_type": "Integer",
+            "description": "The number of clicks to apply for the job."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ListingId": 123,
+          "AgentReference": "ABC",
+          "Title": "ABC",
+          "District": "ABC",
+          "Region": "ABC",
+          "Views": 123,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "Category": "ABC",
+          "CompanyName": "ABC",
+          "Applications": 123,
+          "IsFeatured": false,
+          "ClicksToApply": 123
+        },
+        {
+          "ListingId": 123,
+          "AgentReference": "ABC",
+          "Title": "ABC",
+          "District": "ABC",
+          "Region": "ABC",
+          "Views": 123,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "Category": "ABC",
+          "CompanyName": "ABC",
+          "Applications": 123,
+          "IsFeatured": false,
+          "ClicksToApply": 123
+        }
+      ]
+    }
+  }
+}

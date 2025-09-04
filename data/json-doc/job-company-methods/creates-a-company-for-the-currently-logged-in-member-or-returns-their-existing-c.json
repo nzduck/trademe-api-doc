@@ -1,0 +1,97 @@
+{
+  "endpoint": "CreatesACompanyForTheCurrentlyLoggedInMemberOrReturnsTheirExistingCompanyIfTheyAlreadyHaveOne",
+  "title": "Creates a company for the currently logged in member, or returns their existing company if they already have one",
+  "description": "Creates a company for the currently logged in member, or returns their existing company if they already have one",
+  "source": "https://developer.trademe.co.nz/api-reference/job-company-methods/creates-a-company-for-the-currently-logged-in-member-or-returns-their-existing-c",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Companies.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<JobCompany>",
+    "fields": [
+      {
+        "name": "CompanyId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The id of the company"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The name of the company"
+      },
+      {
+        "name": "IsCompanyOwner",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "The flag indicates whether the current member is the owner of the company"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<JobCompany> The created company",
+    "fields": [
+      {
+        "name": "CompanyId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the company"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the company"
+      },
+      {
+        "name": "IsCompanyOwner",
+        "type": "Boolean",
+        "required": false,
+        "description": "The flag indicates whether the current member is the owner of the company"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "CompanyId": 123,
+      "CompanyName": "ABC",
+      "IsCompanyOwner": false
+    },
+    "response_json": {
+      "CompanyId": 123,
+      "CompanyName": "ABC",
+      "IsCompanyOwner": false
+    }
+  }
+}

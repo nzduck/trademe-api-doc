@@ -1,0 +1,388 @@
+{
+  "endpoint": "GetMyShippingTemplates",
+  "title": "Get my Shipping Templates",
+  "description": "Retrieves a summary of all shipping templates for the user. This summary is shallow and excludes nested objects i.e.: ShippingOptions are not included. Use String) to retrieve a fully expanded ShippingTemplate.",
+  "source": "https://developer.trademe.co.nz/api-reference/shipping-methods/get-my-shipping-templates",
+  "url": "https://api.trademe.co.nz/v1/Shipping/Templates.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <ShippingTemplate>",
+    "fields": [
+      {
+        "name": "ShippingTemplateId",
+        "type": "Integer",
+        "required": false,
+        "description": "Unique identifier of the Shipping Template"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the Shipping Template"
+      },
+      {
+        "name": "HandlingTime",
+        "type": "TimeSpan",
+        "required": false,
+        "description": "Handling time of the Shipping Template"
+      },
+      {
+        "name": "HandlingTimeCutOff",
+        "type": "String or null",
+        "required": false,
+        "description": "Handling time cut off of the Shipping Template. It is a 24-hour time in ISO 8601 extended format. Any seconds are truncated. E.g. for a cut-off time of 4:30 pm, this value will be \"16:30\"."
+      },
+      {
+        "name": "IsOversized",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the Shipping Template is oversized"
+      },
+      {
+        "name": "IsRestricted",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the Shipping Template is restricted"
+      },
+      {
+        "name": "ShippingOptions",
+        "type": "Collection of <StructuredShippingOption> or null",
+        "required": false,
+        "description": "List of Shipping Options related to the Shipping Template"
+      },
+      {
+        "name": "ShippingOptionId",
+        "type": "ShippingOptionId \n Integer \n\nUnique identifier of the Shipping Option\n\n\n\n Cost \n Number \n\nCost of the Shipping Option\n\n\n\n CarrierProduct \n <CarrierProduct> or null \n\nCarrier Product related to the Shipping Option\n\n\n\n\n\n\n CarrierProductId \n Integer \n\nUnique identifier of the Carrier Product\n\n\n\n Name \n String or null \n\nName of the Carrier Product\n\n\n\n MinimumDeliveryTime \n TimeSpan \n\nMinimum delivery time of the Carrier Product\n\n\n\n MaximumDeliveryTime \n TimeSpan \n\nMaximum delivery time of the Carrier Product\n\n\n\n IsRural \n Boolean \n\nIf the product is rural\n\n\n\n IsCombined \n Boolean \n\nIf the product is combined shipping\n\n\n\n\n\n\n ShipToRegions \n Collection of <Region> or null \n\nList of Regions that the Shipping Option ships to\n\n\n\n\n\n\n RegionId \n Integer \n\nUnique identifier of the Region\n\n\n\n Name \n String or null \n\nThe name of the Region\n\n\n\n\n\n\n Addons \n Collection of <ShippingOptionAddon> or null \n\nList of Addons that are available to the Shipping Option\n\n\n\n\n\n\n CarrierAddonId \n Integer \n\nIdentifier of the Carrier Addon\n\n\n\n Name \n String or null \n\nName of the addon\n\n\n\n Type \n Enumeration \n\nType of the addon\n\n\n\n AdditionalCost \n Number \n\nAdditional cost of the addon",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ShippingOptionId",
+        "type": "Integer",
+        "required": false,
+        "description": "Unique identifier of the Shipping Option"
+      },
+      {
+        "name": "Cost",
+        "type": "Number",
+        "required": false,
+        "description": "Cost of the Shipping Option"
+      },
+      {
+        "name": "CarrierProduct",
+        "type": "<CarrierProduct> or null",
+        "required": false,
+        "description": "Carrier Product related to the Shipping Option"
+      },
+      {
+        "name": "CarrierProductId",
+        "type": "CarrierProductId \n Integer \n\nUnique identifier of the Carrier Product\n\n\n\n Name \n String or null \n\nName of the Carrier Product\n\n\n\n MinimumDeliveryTime \n TimeSpan \n\nMinimum delivery time of the Carrier Product\n\n\n\n MaximumDeliveryTime \n TimeSpan \n\nMaximum delivery time of the Carrier Product\n\n\n\n IsRural \n Boolean \n\nIf the product is rural\n\n\n\n IsCombined \n Boolean \n\nIf the product is combined shipping",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "CarrierProductId",
+        "type": "Integer",
+        "required": false,
+        "description": "Unique identifier of the Carrier Product"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the Carrier Product"
+      },
+      {
+        "name": "MinimumDeliveryTime",
+        "type": "TimeSpan",
+        "required": false,
+        "description": "Minimum delivery time of the Carrier Product"
+      },
+      {
+        "name": "MaximumDeliveryTime",
+        "type": "TimeSpan",
+        "required": false,
+        "description": "Maximum delivery time of the Carrier Product"
+      },
+      {
+        "name": "IsRural",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the product is rural"
+      },
+      {
+        "name": "IsCombined",
+        "type": "Boolean",
+        "required": false,
+        "description": "If the product is combined shipping"
+      },
+      {
+        "name": "ShipToRegions",
+        "type": "Collection of <Region> or null",
+        "required": false,
+        "description": "List of Regions that the Shipping Option ships to"
+      },
+      {
+        "name": "RegionId",
+        "type": "RegionId \n Integer \n\nUnique identifier of the Region\n\n\n\n Name \n String or null \n\nThe name of the Region",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "Unique identifier of the Region"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the Region"
+      },
+      {
+        "name": "Addons",
+        "type": "Collection of <ShippingOptionAddon> or null",
+        "required": false,
+        "description": "List of Addons that are available to the Shipping Option"
+      },
+      {
+        "name": "CarrierAddonId",
+        "type": "CarrierAddonId \n Integer \n\nIdentifier of the Carrier Addon\n\n\n\n Name \n String or null \n\nName of the addon\n\n\n\n Type \n Enumeration \n\nType of the addon\n\n\n\n AdditionalCost \n Number \n\nAdditional cost of the addon",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "CarrierAddonId",
+        "type": "Integer",
+        "required": false,
+        "description": "Identifier of the Carrier Addon"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the addon"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Type of the addon",
+        "enum": [
+          {
+            "name": "Signature",
+            "value": "0",
+            "description": "Addon is Signature"
+          }
+        ]
+      },
+      {
+        "name": "AdditionalCost",
+        "type": "Number",
+        "required": false,
+        "description": "Additional cost of the addon"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "ShippingTemplateId": 123,
+        "Name": "ABC",
+        "HandlingTime": "PT4H5M",
+        "HandlingTimeCutOff": "ABC",
+        "IsOversized": false,
+        "IsRestricted": false,
+        "ShippingOptions": [
+          {
+            "ShippingOptionId": 123,
+            "Cost": 123.0,
+            "CarrierProduct": {
+              "CarrierProductId": 123,
+              "Name": "ABC",
+              "MinimumDeliveryTime": "PT4H5M",
+              "MaximumDeliveryTime": "PT4H5M",
+              "IsRural": false,
+              "IsCombined": false
+            },
+            "ShipToRegions": [
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              },
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              }
+            ],
+            "Addons": [
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              },
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              }
+            ]
+          },
+          {
+            "ShippingOptionId": 123,
+            "Cost": 123.0,
+            "CarrierProduct": {
+              "CarrierProductId": 123,
+              "Name": "ABC",
+              "MinimumDeliveryTime": "PT4H5M",
+              "MaximumDeliveryTime": "PT4H5M",
+              "IsRural": false,
+              "IsCombined": false
+            },
+            "ShipToRegions": [
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              },
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              }
+            ],
+            "Addons": [
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              },
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "ShippingTemplateId": 123,
+        "Name": "ABC",
+        "HandlingTime": "PT4H5M",
+        "HandlingTimeCutOff": "ABC",
+        "IsOversized": false,
+        "IsRestricted": false,
+        "ShippingOptions": [
+          {
+            "ShippingOptionId": 123,
+            "Cost": 123.0,
+            "CarrierProduct": {
+              "CarrierProductId": 123,
+              "Name": "ABC",
+              "MinimumDeliveryTime": "PT4H5M",
+              "MaximumDeliveryTime": "PT4H5M",
+              "IsRural": false,
+              "IsCombined": false
+            },
+            "ShipToRegions": [
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              },
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              }
+            ],
+            "Addons": [
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              },
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              }
+            ]
+          },
+          {
+            "ShippingOptionId": 123,
+            "Cost": 123.0,
+            "CarrierProduct": {
+              "CarrierProductId": 123,
+              "Name": "ABC",
+              "MinimumDeliveryTime": "PT4H5M",
+              "MaximumDeliveryTime": "PT4H5M",
+              "IsRural": false,
+              "IsCombined": false
+            },
+            "ShipToRegions": [
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              },
+              {
+                "RegionId": 123,
+                "Name": "ABC"
+              }
+            ],
+            "Addons": [
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              },
+              {
+                "CarrierAddonId": 123,
+                "Name": "ABC",
+                "Type": 0,
+                "AdditionalCost": 123.0
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

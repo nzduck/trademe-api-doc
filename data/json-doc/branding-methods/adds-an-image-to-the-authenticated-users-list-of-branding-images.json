@@ -1,0 +1,98 @@
+{
+  "endpoint": "AddsAnImageToTheAuthenticatedUserSListOfBrandingImages",
+  "title": "Adds an image to the authenticated user's list of branding images",
+  "description": "Adds an image to the authenticated user's list of branding images. These photos can be used when listing a classified. Branding images are only supported for Job listings.",
+  "source": "https://developer.trademe.co.nz/api-reference/branding-methods/adds-an-image-to-the-authenticated-users-list-of-branding-images",
+  "url": "https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<UploadBrandingRequest>",
+    "fields": [
+      {
+        "name": "FileName",
+        "type": "String (required)",
+        "required": true,
+        "description": "File name (including the extension of the file to upload.)"
+      },
+      {
+        "name": "BrandingImageType",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "Branding image type"
+      },
+      {
+        "name": "ImageData",
+        "type": "String (required)",
+        "required": true,
+        "description": "The actual image data which is base64 encoded."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<UploadBrandingResponse> Information about the uploaded branding\n\n\n Success \n Boolean \n\nIndicates whether the operation was successful.\n\n\n\n Description \n String or null \n\nThe description of the error, if the operation failed.\n\n\n\n BrandingImageDetails \n <BrandingImageDetails> or null \n\nThe uploaded image information\n\n\n\n\n\n\n\n\n\n Links \n Collection of <Link> or null \n\nLinks to related operations\n\n\n\n\n Example JSON Request  \n{\n  \"FileName\": \"ABC\",\n  \"BrandingImageType\": 0,\n  \"ImageData\": \"ABC\"\n}\n\n\n Example JSON Response  \n{\n  \"Success\": false,\n  \"Description\": \"ABC\",\n  \"BrandingImageDetails\": {\n  },\n  \"Links\": [\n    {\n      \"Href\": \"ABC\",\n      \"Rel\": \"ABC\",\n      \"Prompt\": \"ABC\",\n      \"Method\": \"ABC\"\n    },\n    {\n      \"Href\": \"ABC\",\n      \"Rel\": \"ABC\",\n      \"Prompt\": \"ABC\",\n      \"Method\": \"ABC\"\n    }\n  ]\n}",
+    "fields": []
+  },
+  "examples": {
+    "request_json": {
+      "FileName": "ABC",
+      "BrandingImageType": 0,
+      "ImageData": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "BrandingImageDetails": {},
+      "Links": [
+        {
+          "Href": "ABC",
+          "Rel": "ABC",
+          "Prompt": "ABC",
+          "Method": "ABC"
+        },
+        {
+          "Href": "ABC",
+          "Rel": "ABC",
+          "Prompt": "ABC",
+          "Method": "ABC"
+        }
+      ]
+    }
+  }
+}

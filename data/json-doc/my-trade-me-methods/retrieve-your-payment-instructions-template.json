@@ -1,0 +1,63 @@
+{
+  "endpoint": "RetrieveYourPaymentInstructionsTemplate",
+  "title": "Retrieve your payment instructions template",
+  "description": "Retrieves your payment instructions template. The payment instructions template affects the behaviour of listings with the SendPaymentInstructions flag set. Specifically if a listing with that flag sells, the buyer will be sent a payment instructions email that contains the text of your payment instructions template and the buyer can view the payment instructions from the Trade Me website, mobile apps or third-party tools.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-payment-instructions-template",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/PaymentInstructions.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PaymentInstructionsTemplate> The payment instructions template.",
+    "fields": [
+      {
+        "name": "Template",
+        "type": "String or null",
+        "required": false,
+        "description": "The payment instructions template. This should not include a salutation (\"Hi John\"). If payment instructions haven't been set up then this will be null."
+      },
+      {
+        "name": "CopySeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the seller's preference is to CC payment instructions emails. The default is false."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Template": "ABC",
+      "CopySeller": false
+    }
+  }
+}

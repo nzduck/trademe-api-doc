@@ -1,0 +1,45 @@
+{
+  "endpoint": "Createrequesttoken",
+  "title": "CreateRequestToken",
+  "description": "Creates an oauth request token with the given consumer information. This is the first step in the OAuth 1 process",
+  "source": "https://developer.trademe.co.nz/api-reference/oauth-methods/createrequesttoken",
+  "url": "https://api.trademe.co.nz/OAuth/RequestToken.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Nothing.",
+    "fields": []
+  },
+  "examples": null
+}

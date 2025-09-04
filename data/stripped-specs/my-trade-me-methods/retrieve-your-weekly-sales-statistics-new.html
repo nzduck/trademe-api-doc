@@ -1,0 +1,126 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-weekly-sales-statistics-new -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your weekly sales statistics (new)</h1>
+<!-- Page content -->
+<p>Retrieve sales statistics for the authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/MyTradeMe/WeeklySummary.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;WeeklySummaryCollection&gt; </p>
+<p>Statistics for the current week and the previous six weeks.</p>
+<table class="dense" id="returns">
+<tr data-nested-fields='[{"field_name": "StartDate", "field_type": "DateTime", "description": "The start date of the summary."}, {"field_name": "EndDate", "field_type": "DateTime", "description": "The end date of the summary."}, {"field_name": "ReserveMet", "field_type": "Integer", "description": "The number of items which met their reserve price in the time period."}, {"field_name": "BuyNow", "field_type": "Integer", "description": "The number of items which were purchased via Buy Now in the time period."}, {"field_name": "FixedPriceOffer", "field_type": "Integer", "description": "The number of items which sold via a fixed price offer in the time period."}, {"field_name": "TotalSold", "field_type": "Integer", "description": "The number of items sold in the time period."}, {"field_name": "TotalValue", "field_type": "Number", "description": "The total value of items sold in the time period."}, {"field_name": "UnsoldItems", "field_type": "Integer", "description": "The total number of items unsold in the time period."}, {"field_name": "SellThroughRate", "field_type": "Number", "description": "The sell-through rate in the time period."}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;WeeklySalesItem&gt; or null </td>
+<td>
+<p>A list of weekly sales data for the past 6 weeks.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> WeekToDate </th>
+<td style="width: 22%"> &lt;WeeklySalesItem&gt; or null </td>
+<td>
+<p>The week to date totals.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> SixWeekTotals </th>
+<td style="width: 22%"> &lt;WeeklySalesItem&gt; or null </td>
+<td>
+<p>The sum of the previous 6 weeks (excludes week to date).</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;ContributingListings&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;How many listings currently count towards the member's HVL-fee-free listing allowance&quot;}, {&quot;field_name&quot;: &quot;UserThreshold&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;How many listings the member can list before incurring HVL fees&quot;}]">
+<th style="width: 22%"> HvlData </th>
+<td style="width: 22%"> &lt;HvlSummary&gt; or null </td>
+<td>
+<p>Summary of data describing how close the member is to paying High Volume Listing Fees.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "List": [
+    {
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "ReserveMet": 123,
+      "BuyNow": 123,
+      "FixedPriceOffer": 123,
+      "TotalSold": 123,
+      "TotalValue": 123.0,
+      "UnsoldItems": 123,
+      "SellThroughRate": 123.0
+    },
+    {
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "ReserveMet": 123,
+      "BuyNow": 123,
+      "FixedPriceOffer": 123,
+      "TotalSold": 123,
+      "TotalValue": 123.0,
+      "UnsoldItems": 123,
+      "SellThroughRate": 123.0
+    }
+  ],
+  "WeekToDate": {
+  },
+  "SixWeekTotals": {
+  },
+  "HvlData": {
+    "ContributingListings": 123,
+    "UserThreshold": 123
+  }
+}</code></pre>
+</div>

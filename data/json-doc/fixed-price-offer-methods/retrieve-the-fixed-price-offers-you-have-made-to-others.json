@@ -1,0 +1,179 @@
+{
+  "endpoint": "RetrieveTheFixedPriceOffersYouHaveMadeToOthers",
+  "title": "Retrieve the fixed price offers you have made to others",
+  "description": "Retrieves a list of the active fixed price offers that have been made by the currently authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-the-fixed-price-offers-you-have-made-to-others",
+  "url": "https://api.trademe.co.nz/v1/FixedPriceOffers/Offered.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "listing_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Filters the results to the offers for a single listing. Currently a listing can only have a single offer."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "photo_size",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The size of the images to return in the results. Defaults to Thumbnail."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<FixedPriceOffers> A list of active fixed price offers.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <FixedPriceOffer> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "OfferPrice",
+            "field_type": "Number",
+            "description": "The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included."
+          },
+          {
+            "field_name": "OfferExpiryDate",
+            "field_type": "DateTime",
+            "description": "The date and time the fixed price offer expires."
+          },
+          {
+            "field_name": "Quantity",
+            "field_type": "Integer",
+            "description": "The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends."
+          },
+          {
+            "field_name": "ListingId",
+            "field_type": "Integer",
+            "description": "The listing ID of the item on offer."
+          },
+          {
+            "field_name": "Title",
+            "field_type": "String or null",
+            "description": "The title of the item on offer."
+          },
+          {
+            "field_name": "StartDate",
+            "field_type": "DateTime",
+            "description": "The date and time the auction started."
+          },
+          {
+            "field_name": "EndDate",
+            "field_type": "DateTime",
+            "description": "The date and time the auction ended."
+          },
+          {
+            "field_name": "BidCount",
+            "field_type": "Integer",
+            "description": "The number of bids placed on the auction."
+          },
+          {
+            "field_name": "Mcat",
+            "field_type": "String or null",
+            "description": "The identifier of the category the item is listing in."
+          },
+          {
+            "field_name": "PictureHref",
+            "field_type": "String or null",
+            "description": "The URL of the thumbnail photo."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "OfferPrice": 123.0,
+          "OfferExpiryDate": "/Date(1514764800)/",
+          "Quantity": 123,
+          "ListingId": 123,
+          "Title": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "BidCount": 123,
+          "Mcat": "ABC",
+          "PictureHref": "ABC"
+        },
+        {
+          "OfferPrice": 123.0,
+          "OfferExpiryDate": "/Date(1514764800)/",
+          "Quantity": 123,
+          "ListingId": 123,
+          "Title": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "BidCount": 123,
+          "Mcat": "ABC",
+          "PictureHref": "ABC"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "endpoint": "RetrieveBluRayIds",
+  "title": "Retrieve Blu-ray IDs",
+  "description": "Returns a the list of Blu-ray catalogue ID numbers. You can use this list to validate the catalogue ID before listing a Blu-ray. These ID numbers don't change very often so you should cache them and only periodically refresh them.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-blu-ray-ids",
+  "url": "https://api.trademe.co.nz/v1/BluRayValidation.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <BluRayValidation> A list containing the IDs of all Bluray titles.",
+    "fields": [
+      {
+        "name": "BluRayId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the Blu-ray."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "BluRayId": 123
+      },
+      {
+        "BluRayId": 123
+      }
+    ]
+  }
+}

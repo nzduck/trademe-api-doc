@@ -1,0 +1,111 @@
+{
+  "endpoint": "UploadACvCoverLetterOrDocument",
+  "title": "Upload a CV, cover letter or document",
+  "description": "Uploads a new CV, cover letter or document.",
+  "source": "https://developer.trademe.co.nz/api-reference/document-service-methods/upload-a-cv-cover-letter-or-document",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/SavedDocuments.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SavedDocument>",
+    "fields": [
+      {
+        "name": "SavedDocumentId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The unique identifier of the document. Not required when uploading a document."
+      },
+      {
+        "name": "FileName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The file name of the document. When uploading a new document, this can be the full path or just the file name, with or without a file extension."
+      },
+      {
+        "name": "DocumentType",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The type of document."
+      },
+      {
+        "name": "SavedDocumentData",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The actual document data (base64 encoded)."
+      },
+      {
+        "name": "UploadDate",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The date the document was uploaded"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<MemberSavedDocumentResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "SavedDocumentId",
+        "type": "Integer",
+        "required": false,
+        "description": "The unique identifier of the document."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "SavedDocumentId": 123,
+      "FileName": "ABC",
+      "DocumentType": 0,
+      "SavedDocumentData": "ABC",
+      "UploadDate": "/Date(1514764800)/"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "SavedDocumentId": 123
+    }
+  }
+}

@@ -1,0 +1,147 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/update-courier-parcel-by-id -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Update Courier Parcel by Id</h1>
+<!-- Page content -->
+<p>Update an existing Courier Parcel by Id</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/MyTradeMe/CourierParcels/{courierParcelId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> courierParcelId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>Id of the existing parcel</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;CourierParcelTrackingRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Parcel </th>
+<td style="width: 22%"> &lt;CourierParcel&gt; (required) </td>
+<td>
+<p>Parcel to be tracked</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> CourierCompany </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The courier company. Commonly used values include: CourierPost, Fastway, New Zealand Couriers, Post Haste, GoSweetSpot, Castle Parcels</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AccountNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Optional account number specific to the courier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TrackingReference </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The tracking reference specific to the courier company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AuctionSoldIds </th>
+<td style="width: 22%"> Collection of Integer (required) </td>
+<td>
+<p>The list of purchase IDs (auction sold IDs) that where shipped with this parcel</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;UpdateParcelResponse&gt; </p>
+<p>Details of whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "OK", "value": "0", "description": "Parcel was successfully updated in our system"}, {"name": "ParcelNotFound", "value": "1", "description": "The specified parcel does not exist"}, {"name": "TrackingReferenceEmpty", "value": "2", "description": "Tracking reference is empty"}, {"name": "TrackingReferenceTooLong", "value": "3", "description": "Tracking reference is too long"}, {"name": "AccountNumberTooLong", "value": "4", "description": "Account number is too long"}, {"name": "MemberIsNotSeller", "value": "5", "description": "This member did not create one or more of the supplied listing ids"}, {"name": "InvalidAuctionSoldIds", "value": "6", "description": "One or more of the sold listing ids do not exist"}, {"name": "AuctionSoldIdsEmpty", "value": "7", "description": "Need to specify at least one auction sold id"}, {"name": "AuctionSoldIdsArentForTheSameBuyer", "value": "8", "description": "All auctions must be for the same buyer"}, {"name": "CourierCompanyNotSpecified", "value": "9", "description": "Courier company is not specified"}]'>
+<th style="width: 22%"> Code </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>More information as to the result of the operation</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Parcel": {
+    "CourierCompany": "ABC",
+    "AccountNumber": "ABC",
+    "TrackingReference": "ABC",
+    "AuctionSoldIds": [
+      123,
+      123
+    ]
+  }
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "Code": 0
+}</code></pre>
+</div>

@@ -1,0 +1,290 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/jobs-catalogue-methods/get-position-packages -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get position packages</h1>
+<!-- Page content -->
+<p>Returns a set of position package tiers</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Catalogue/PositionPackages.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> category_id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Used to determine pricing based on category if applicable</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> position_id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Used when editing a position to ensure you get the version of package data included when the position was created</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> return_metadata </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Should be provided if we want to return metadata about the PackageSetVersion</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> skip_current_agent </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Used when want to get all packages tiers as an anonymous member</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PositionPackageResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> PackageSetVersionMetadata </th>
+<td style="width: 22%"> &lt;PackageSetVersionMetadata&gt; or null </td>
+<td>
+<p>Metadata about the package set, only returned if requested</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PackageSetVersionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The package set version ID</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackageData </th>
+<td style="width: 22%"> Collection of &lt;PackageData&gt; or null </td>
+<td>
+<p>List of position packages</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "None"}, {"name": "Bronze", "value": "1", "description": "Bronze"}, {"name": "Silver", "value": "2", "description": "Silver"}, {"name": "Gold", "value": "3", "description": "Gold"}, {"name": "Platinum", "value": "4", "description": "Platinum"}, {"name": "Fifth", "value": "5", "description": "Fifth"}, {"name": "Sixth", "value": "6", "description": "Sixth"}]'>
+<th style="width: 22%"> Tier </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of package tier</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> DisplayName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display name for the package tier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceGstExcluded </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the package tier excluding GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceGstIncluded </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the package tier including GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighlightFlagValue </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The highlight flag for the package tier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Featured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the package tier is featured</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllowsBranding </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the package tier allows branding</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllowsPhotos </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the package tier allows photos</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllowsVideo </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the package tier allows video</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllowsPromotedListing </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the package tier allows promoted listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DurationDays </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Duration of listings for the package tier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CandidateSearchQuotaAdded </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Candidate search quota for listings in the package tier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ProvidingSource </th>
+<td style="width: 22%"> &lt;FeeItemProvidingSource&gt; or null </td>
+<td>
+<p>Listing fee providing source for the package tier</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the providing source.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Remaining </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items remaining in this source, or 0 if the source is unlimited.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsUnlimited </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>True if it is possible to create unlimited listings at the provided rate</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GroupName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The group name for the package tier</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "PackageSetVersionMetadata": {
+    "PackageSetVersionId": 123
+  },
+  "PackageData": [
+    {
+      "Tier": 0,
+      "DisplayName": "ABC",
+      "PriceGstExcluded": 123.0,
+      "PriceGstIncluded": 123.0,
+      "HighlightFlagValue": "ABC",
+      "Featured": false,
+      "AllowsBranding": false,
+      "AllowsPhotos": false,
+      "AllowsVideo": false,
+      "AllowsPromotedListing": false,
+      "DurationDays": 123,
+      "CandidateSearchQuotaAdded": 123,
+      "ProvidingSource": {
+        "Name": "ABC",
+        "Remaining": 123,
+        "IsUnlimited": false
+      },
+      "GroupName": "ABC"
+    },
+    {
+      "Tier": 0,
+      "DisplayName": "ABC",
+      "PriceGstExcluded": 123.0,
+      "PriceGstIncluded": 123.0,
+      "HighlightFlagValue": "ABC",
+      "Featured": false,
+      "AllowsBranding": false,
+      "AllowsPhotos": false,
+      "AllowsVideo": false,
+      "AllowsPromotedListing": false,
+      "DurationDays": 123,
+      "CandidateSearchQuotaAdded": 123,
+      "ProvidingSource": {
+        "Name": "ABC",
+        "Remaining": 123,
+        "IsUnlimited": false
+      },
+      "GroupName": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

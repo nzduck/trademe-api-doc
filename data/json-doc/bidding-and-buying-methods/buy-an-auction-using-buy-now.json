@@ -1,0 +1,350 @@
+{
+  "endpoint": "BuyAnAuctionUsingBuyNow",
+  "title": "Buy an auction using Buy Now",
+  "description": "Buys an item using Buy Now.",
+  "source": "https://developer.trademe.co.nz/api-reference/bidding-and-buying-methods/buy-an-auction-using-buy-now",
+  "url": "https://api.trademe.co.nz/v1/bidding/buynow.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "BiddingAndBuying: Place bids, and complete purchases using Buy Now & Fixed Price Offers.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<BuyNowRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing the Buy Now request is for."
+      },
+      {
+        "name": "ShippingOption",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the preferred shipping option which will be used if the Buy Now request succeeds. This ID can be retrieved from the ShippingId field in the listing detail."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The quantity to buy. Defaults to 1. Only applicable to Buy Now Only auctions."
+      },
+      {
+        "name": "FirearmsLicence",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The user's firearms licence number. This is required for firearms purchases."
+      },
+      {
+        "name": "FirearmsLicenceHolder",
+        "type": "<FirearmsLicenceHolderDetails> (optional)",
+        "required": false,
+        "description": "The user Enters First, Middle, and Last Names associated to the firearms licence."
+      },
+      {
+        "name": "FirstName",
+        "type": "FirstName \n String (required) \n\nFirst name of Licence Holder. Required;\n\n\n\n MiddleNames \n String (optional) \n\nMiddle Names of Licence Holder. Optional;\n\n\n\n LastName \n String (required) \n\nLast name of Licence Holder. Required;",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "FirstName",
+        "type": "String (required)",
+        "required": true,
+        "description": "First name of Licence Holder. Required;"
+      },
+      {
+        "name": "MiddleNames",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Middle Names of Licence Holder. Optional;"
+      },
+      {
+        "name": "LastName",
+        "type": "String (required)",
+        "required": true,
+        "description": "Last name of Licence Holder. Required;"
+      },
+      {
+        "name": "IsBuyerOlderThan18",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "The user agrees they are older than 18. This is required for wine purchases."
+      },
+      {
+        "name": "ReturnListingDetails",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether full listing details should be returned in the response."
+      },
+      {
+        "name": "ReferringSearchQueryId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The search query ID for the search which referred the user to the listing."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<BuyNowResponse> The details of the Buy Now request.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "StatusCode",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the Buy Now request.",
+        "enum": [
+          {
+            "name": "Success",
+            "value": "0",
+            "description": "The bid was a success."
+          },
+          {
+            "name": "None",
+            "value": "1",
+            "description": "The bid had some other error."
+          },
+          {
+            "name": "ReserveMet",
+            "value": "2",
+            "description": "The reserve was met."
+          },
+          {
+            "name": "ErrorAccountDisabled",
+            "value": "3",
+            "description": "The buyer account is disabled."
+          },
+          {
+            "name": "ReserveNotMet",
+            "value": "4",
+            "description": "The reserve was not met."
+          },
+          {
+            "name": "ErrorBadMemberDetails",
+            "value": "5",
+            "description": "Not a member."
+          },
+          {
+            "name": "ReserveMetAutoBidGreaterThanReserve",
+            "value": "6",
+            "description": "The auto bid was higher than the reserve."
+          },
+          {
+            "name": "ErrorHeavyQuarantine",
+            "value": "7",
+            "description": "Needs proof of goods."
+          },
+          {
+            "name": "ReserveMetAutoBidIncreased",
+            "value": "8",
+            "description": "The autobid was increased."
+          },
+          {
+            "name": "ReserveNotMetAutoBid",
+            "value": "9",
+            "description": "An autobid did not met the reserve."
+          },
+          {
+            "name": "ReserveMetExistingAutoBidGreaterThanBid",
+            "value": "10",
+            "description": "Someone else has a higher bid which mets the reserve."
+          },
+          {
+            "name": "ErrorOwnAuction",
+            "value": "11",
+            "description": "This is an auction owed by the member."
+          },
+          {
+            "name": "ReserveNotMetExistingAutoBidGreaterThanBid",
+            "value": "12",
+            "description": "Someone else has a higher bid and the reserve is not met."
+          },
+          {
+            "name": "ErrorBlacklisted",
+            "value": "13",
+            "description": "The member has been blacklisted by the seller."
+          },
+          {
+            "name": "ReserveMetExistingAutoBidEqualToBid",
+            "value": "14",
+            "description": "The reserve is met and the auto bids match."
+          },
+          {
+            "name": "ErrorAuthenticatedMembersOnlyAuction",
+            "value": "15",
+            "description": "The member needs to be authenticated to bid."
+          },
+          {
+            "name": "ReserveNotMetExistingAutoBidEqualToBid",
+            "value": "16",
+            "description": "The reserve is not met and the auto bids match."
+          },
+          {
+            "name": "ErrorAccountIndebt",
+            "value": "17",
+            "description": "The accountis in debt and can not bid."
+          },
+          {
+            "name": "ReserveMetAutoBid",
+            "value": "18",
+            "description": "The reserve is met by an auto bid."
+          },
+          {
+            "name": "ErrorBidTooHigh",
+            "value": "19",
+            "description": "The bid is too high for our rules."
+          },
+          {
+            "name": "ErrorBidLessThanMinimumNextBid",
+            "value": "21",
+            "description": "The bid is too low."
+          },
+          {
+            "name": "ErrorBidLessThanFiftyCents",
+            "value": "23",
+            "description": "Bid needs to be higher than 50c."
+          },
+          {
+            "name": "ErrorBidLessThanStartPrice",
+            "value": "25",
+            "description": "The bid must be greater than the start price."
+          },
+          {
+            "name": "ErrorTooManyBids",
+            "value": "27",
+            "description": "There have been too many bids from the member in the last 24 hours."
+          },
+          {
+            "name": "ErrorHasTopAutoBid",
+            "value": "29",
+            "description": "The member already has the top autobid."
+          },
+          {
+            "name": "ErrorAuctionClosed",
+            "value": "30",
+            "description": "The auction is closed."
+          },
+          {
+            "name": "ErrorDatabase",
+            "value": "31",
+            "description": "There was an error in the database."
+          },
+          {
+            "name": "ErrorListingAcceptsBuyNowOnly",
+            "value": "34",
+            "description": "Attempting to bid on a listing that can't be bidded on."
+          },
+          {
+            "name": "ErrorQuantityInvalid",
+            "value": "35",
+            "description": "Quantity is either less than 1 or greater than the maximum."
+          },
+          {
+            "name": "ErrorListingIsAClassified",
+            "value": "36",
+            "description": "Attempting to bid on a classified listing."
+          },
+          {
+            "name": "ErrorInvalidShipping",
+            "value": "37",
+            "description": "Invalid shipping ID."
+          },
+          {
+            "name": "ErrorInvalidFirearmsLicense",
+            "value": "38",
+            "description": "Invalid or missing firearms license number."
+          },
+          {
+            "name": "ErrorAgeConfirmationRequired",
+            "value": "39",
+            "description": "Age confirmation is required for this listing."
+          },
+          {
+            "name": "ErrorListingAcceptsPayNowOnly",
+            "value": "40",
+            "description": "Attempting to buy a listing that can only be paid for by pay now"
+          },
+          {
+            "name": "ErrorBuyProcessBan",
+            "value": "41",
+            "description": "Attempting to bid or buy now when member has been purchase banned."
+          },
+          {
+            "name": "AutoBidDecreased",
+            "value": "42",
+            "description": "The autobid was decreased."
+          }
+        ]
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the purchase that was just made."
+      },
+      {
+        "name": "Listing",
+        "type": "<ListedItemDetail> or null",
+        "required": false,
+        "description": "The state of the listing, after the Buy Now has successfully completed. This field is only present if the ReturnListingDetails parameter is true and the Buy Now operation was successful. This field will also be missing if there was an error retrieving the listing details. For more information on this field, see the documentation for the listing details API."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "ShippingOption": 123,
+      "Quantity": 123,
+      "FirearmsLicence": "ABC",
+      "FirearmsLicenceHolder": {
+        "FirstName": "ABC",
+        "MiddleNames": "ABC",
+        "LastName": "ABC"
+      },
+      "IsBuyerOlderThan18": false,
+      "ReturnListingDetails": false,
+      "ReferringSearchQueryId": "ABC"
+    },
+    "response_json": "{\n  \"Success\": false,\n  \"Description\": \"ABC\",\n  \"StatusCode\": 0,\n  \"PurchaseId\": 123,\n  \"Listing\": { ... }\n}"
+  }
+}

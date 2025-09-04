@@ -1,0 +1,69 @@
+{
+  "endpoint": "RemoveAListingFromYourWatchlist",
+  "title": "Remove a listing from your watchlist",
+  "description": "Removes a listing from the authenticated user's watchlist.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-listing-from-your-watchlist",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/WatchList/{listingId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to remove."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<WatchListResponse> Details on whether the operation succeeded. Attempting to remove an auction that doesn't exist or is not on the watchlist will not produce an error.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

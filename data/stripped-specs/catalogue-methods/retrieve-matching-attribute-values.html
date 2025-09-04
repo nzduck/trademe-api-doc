@@ -1,0 +1,91 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-matching-attribute-values -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve matching attribute values</h1>
+<!-- Page content -->
+<p>Returns a list of attribute values that match the string provided</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/attributesuggestions/{id}/{input}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> id </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the attribute to match against</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> input </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The string that matches the start of the values to be returned</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;AttributeOption&gt; </p>
+<p>A list of attribute values</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The value of the item as a string.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Display </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>What should be displayed for this value (often the same).</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "Value": "ABC",
+    "Display": "ABC"
+  },
+  {
+    "Value": "ABC",
+    "Display": "ABC"
+  }
+]</code></pre>
+</div>

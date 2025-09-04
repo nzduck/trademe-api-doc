@@ -1,0 +1,315 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/jobs-payment-methods/retrieves-a-job-pack-invoice-for-a-member -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieves a Job Pack invoice for a member</h1>
+<!-- Page content -->
+<p>Retrieves a Job Pack invoice for a member</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Payments/Invoices/JobPacks/{invoiceId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> invoiceId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>Invoice Id to return</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;JobPackInvoiceDetail&gt; </p>
+<p>A <b>JobPackInvoiceDetail</b></p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> InvoiceId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Invoice Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InvoiceDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>Date of the invoice</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CompanyName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the company</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PurchaseOrderNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A Purchase Order (PO) Number</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InvoiceDetails </th>
+<td style="width: 22%"> &lt;InvoiceDetails&gt; or null </td>
+<td>
+<p>Details of the purchase</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> AddOns </th>
+<td style="width: 22%"> Collection of &lt;AddOn&gt; or null </td>
+<td>
+<p>Add-ons purchased</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the add-on</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of add-ons</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of an add-on</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The total price of all of the add-ons</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of listings in the job pack being purchased</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackTotalPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The base price of the job pack before any discounts are applied</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackDiscount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The discount on the pack after the discount code is applied. Between 0.0 and 1.0.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackTotalPriceAfterDiscount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the job pack after pack discount is applied</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SubTotal </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The combined price of the add-ons and the job pack (after discount is applied)</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ResellerDiscount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The reseller discount to apply to the sub total. Between 0.0 and 1.0.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPriceAfterResellerDiscount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The total price after the reseller discount is applied to the sub total</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPriceExcludingGst </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The final total price excluding GST</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalPriceIncludingGst </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The final total price including GST</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ContactDetails </th>
+<td style="width: 22%"> &lt;AccountPayableContact&gt; or null </td>
+<td>
+<p>Details of the account payable contact for invoicing purposes</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ContactName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Required name of the contact</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PrimaryEmail </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Required primary email address on the contact</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondaryEmail </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Secondary email address of the contact</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address1 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Line one of the postal address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Address2 </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Line two of the postal address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The suburb of the address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> City </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The city of the address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Postcode </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The postcode of the address</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "InvoiceId": 123,
+  "InvoiceDate": "\/Date(1514764800)\/",
+  "CompanyName": "ABC",
+  "PurchaseOrderNumber": "ABC",
+  "InvoiceDetails": {
+    "AddOns": [
+      {
+        "Name": "ABC",
+        "Quantity": 123,
+        "Price": 123.0,
+        "TotalPrice": 123.0
+      },
+      {
+        "Name": "ABC",
+        "Quantity": 123,
+        "Price": 123.0,
+        "TotalPrice": 123.0
+      }
+    ],
+    "PackSize": 123,
+    "PackTotalPrice": 123.0,
+    "PackDiscount": 123.0,
+    "PackTotalPriceAfterDiscount": 123.0,
+    "SubTotal": 123.0,
+    "ResellerDiscount": 123.0,
+    "TotalPriceAfterResellerDiscount": 123.0,
+    "TotalPriceExcludingGst": 123.0,
+    "TotalPriceIncludingGst": 123.0
+  },
+  "ContactDetails": {
+    "ContactName": "ABC",
+    "PrimaryEmail": "ABC",
+    "SecondaryEmail": "ABC",
+    "Address1": "ABC",
+    "Address2": "ABC",
+    "Suburb": "ABC",
+    "City": "ABC",
+    "Postcode": "ABC"
+  }
+}</code></pre>
+</div>

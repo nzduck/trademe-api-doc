@@ -1,0 +1,103 @@
+{
+  "endpoint": "RetrieveANote",
+  "title": "Retrieve a note",
+  "description": "Retrieves the note for a listing, if there is one.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-a-note",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/Notes/{listingId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "String (required)",
+        "required": true,
+        "description": "The ID of the listing to retrieve the note for."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "is_purchase_id",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether the listing ID is actually a purchase ID. Defaults to false."
+      },
+      {
+        "name": "offer_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the offer associated with the note. Defaults to 0, which indicates the note to retrieve is not associated with a fixed price offer."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<NoteResponse> Whether the operation was successful and the note details.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the note."
+      },
+      {
+        "name": "Text",
+        "type": "String or null",
+        "required": false,
+        "description": "The note text."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the fixed price offer, or 0 if the note is not associated with a fixed price offer."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "NoteId": 123,
+      "Text": "ABC",
+      "OfferId": 123
+    }
+  }
+}

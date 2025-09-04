@@ -1,0 +1,59 @@
+{
+  "endpoint": "RetrievesMenuLinksForJobHomepage",
+  "title": "Retrieves menu links for job homepage",
+  "description": "Retrieves menu links for job homepage.",
+  "source": "https://developer.trademe.co.nz/api-reference/seo-methods-for-menu-links/retrieves-menu-links-for-job-homepage",
+  "url": "https://api.trademe.co.nz/v1/seo/jobs/menuinfo.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MenuInfo>",
+    "fields": [
+      {
+        "name": "MenuLinks",
+        "type": "Collection of <MenuLinkGroup> or null",
+        "required": false,
+        "description": "A list of menu links"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "MenuLinks": [
+        {},
+        {}
+      ]
+    }
+  }
+}

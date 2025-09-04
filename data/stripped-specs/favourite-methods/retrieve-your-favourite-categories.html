@@ -1,0 +1,351 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/favourite-methods/retrieve-your-favourite-categories -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your favourite categories</h1>
+<!-- Page content -->
+<p>Retrieves the list of favourite categories for the currently authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/favourites/categories.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to all favourites.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;SavedCategories&gt; </p>
+<p>A list of favourite categories.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedCategory&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> FavouriteId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the favourite.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "General", "value": "0", "description": "General search."}, {"name": "UsedMotors", "value": "1", "description": "Used cars."}, {"name": "MotorBoat", "value": "2", "description": "Motor boats."}, {"name": "MotorBike", "value": "3", "description": "Motor bikes."}, {"name": "Residential", "value": "4", "description": "Residential property for sale."}, {"name": "Rental", "value": "5", "description": "Residential property to rent."}, {"name": "CommercialSale", "value": "6", "description": "Commercial property for sale."}, {"name": "CommercialLease", "value": "7", "description": "Commercial property leases."}, {"name": "Rural", "value": "8", "description": "Rural property."}, {"name": "Lifestyle", "value": "9", "description": "Lifestyle blocks."}, {"name": "Flatmate", "value": "10", "description": "Flatmates."}, {"name": "OpenHomes", "value": "11", "description": "Open homes."}, {"name": "Retirement", "value": "12", "description": "Retirement villages."}, {"name": "Job", "value": "13", "description": "Jobs."}, {"name": "NewHomes", "value": "14", "description": "New Homes property."}, {"name": "Caravan", "value": "15", "description": "Motors caravan property"}, {"name": "Motorhome", "value": "16", "description": "Motors motorhomes property"}]'>
+<th style="width: 22%"> SearchApi </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include "General", "Motors/Used", etc.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SearchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> &lt;SearchAttributes&gt; or null </td>
+<td>
+<p>The attributes saved in the search.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SearchAttribute&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A name which uniquely identifies the attribute. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayValue </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The value of the attribute as it needs to be displayed to the end users</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchParameterName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the attribute when used in a search string.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails are sent."}, {"name": "Daily", "value": "1", "description": "An email is sent every day."}, {"name": "Every3Days", "value": "3", "description": "An email is sent each third day."}, {"name": "Weekly", "value": "7", "description": "An email is sent every week."}]'>
+<th style="width: 22%"> EmailOptions </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates how often the email updates should be sent for this favourite.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Nothing"}, {"name": "Category", "value": "1", "description": "Category"}, {"name": "Search", "value": "3", "description": "General search"}, {"name": "AttributeSearch", "value": "4", "description": "Attributed search"}, {"name": "Seller", "value": "6", "description": "Seller"}]'>
+<th style="width: 22%"> Option </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The favourite type. Only used when updating and deleting.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> LastAccessed </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date the favourite was last accessed in UTC format.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Push not enabled for this favourite."}, {"name": "Instant", "value": "1", "description": "Push is enabled for this favourite."}]'>
+<th style="width: 22%"> FavouritePushFrequency </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The push notification of the favourite, which the <b>FavouriteId</b> property refers to.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Label </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display label of the favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The breadcrumb trail for the category, e.g. "Books &gt; Children &amp; babies &gt; Picture books &gt; Beatrix Potter".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The full category identifier, e.g. "0193-0462-0255-6659-".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The category ID, e.g. 6659.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "FavouriteId": 123,
+      "SearchApi": 0,
+      "SearchString": "ABC",
+      "Attributes": {
+        "TotalCount": 123,
+        "Page": 123,
+        "PageSize": 123,
+        "List": [
+          {
+            "Name": "ABC",
+            "DisplayName": "ABC",
+            "Value": "ABC",
+            "DisplayValue": "ABC",
+            "SearchParameterName": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "DisplayName": "ABC",
+            "Value": "ABC",
+            "DisplayValue": "ABC",
+            "SearchParameterName": "ABC"
+          }
+        ]
+      },
+      "EmailOptions": 0,
+      "Option": 0,
+      "LastAccessed": "\/Date(1514764800)\/",
+      "FavouritePushFrequency": 0,
+      "Label": "ABC",
+      "CategoryPath": "ABC",
+      "CategoryName": "ABC",
+      "Category": "ABC",
+      "CategoryId": 123
+    },
+    {
+      "FavouriteId": 123,
+      "SearchApi": 0,
+      "SearchString": "ABC",
+      "Attributes": {
+        "TotalCount": 123,
+        "Page": 123,
+        "PageSize": 123,
+        "List": [
+          {
+            "Name": "ABC",
+            "DisplayName": "ABC",
+            "Value": "ABC",
+            "DisplayValue": "ABC",
+            "SearchParameterName": "ABC"
+          },
+          {
+            "Name": "ABC",
+            "DisplayName": "ABC",
+            "Value": "ABC",
+            "DisplayValue": "ABC",
+            "SearchParameterName": "ABC"
+          }
+        ]
+      },
+      "EmailOptions": 0,
+      "Option": 0,
+      "LastAccessed": "\/Date(1514764800)\/",
+      "FavouritePushFrequency": 0,
+      "Label": "ABC",
+      "CategoryPath": "ABC",
+      "CategoryName": "ABC",
+      "Category": "ABC",
+      "CategoryId": 123
+    }
+  ]
+}</code></pre>
+</div>

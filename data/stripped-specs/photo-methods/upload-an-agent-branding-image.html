@@ -1,0 +1,130 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/photo-methods/upload-an-agent-branding-image -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Upload an agent branding image</h1>
+<!-- Page content -->
+<p>Adds the agent branding image to the authenticated user's list of agent branding images. These images can be used to enhance an agent contact details. This API method is currently available only for property agents.</p><p>These images are retained indefinitely.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/photos/agentbranding.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> POST Data </h2>
+<p> &lt;PhotoUploadRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> PhotoData </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The actual image data which is base64 encoded.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A textual label for the image, which is intended to make it easier for the user to find the photo when creating a listing. If the file name looks like a path (with forward slash or backslash characters) all characters up to the last slash will be removed. The following characters are not allowed: " &lt; &gt; |</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FileType </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The file type of the image ("BMP", "GIF", "JPG", "JPEG" or "PNG"). Case is ignored.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PhotoResponse&gt; </p>
+<p>The ID of the added agent branding image.</p>
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "Failure", "value": "0", "description": "The photo action was a failure."}, {"name": "Success", "value": "1", "description": "The photo action was a success."}, {"name": "NotMemberPhoto", "value": "2", "description": "The photo is not owned by the member."}, {"name": "NotMemberAuction", "value": "3", "description": "The auction is not owned by the member."}, {"name": "NotFound", "value": "4", "description": "The auction was not found."}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status of the photo operation.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the error message, if an error occurred.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Thumbnail", "field_type": "String or null", "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."}, {"field_name": "List", "field_type": "String or null", "description": "The URL for the list view sized photo (scaled down to fit 160x120)."}, {"field_name": "Medium", "field_type": "String or null", "description": "The URL for the medium sized photo (scaled down to fit 175x175)."}, {"field_name": "Gallery", "field_type": "String or null", "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."}, {"field_name": "Large", "field_type": "String or null", "description": "The URL for the large sized photo (scaled down to fit 352x264)."}, {"field_name": "FullSize", "field_type": "String or null", "description": "The URL for the full sized photo (scaled down to fit 670x502)."}, {"field_name": "PlusSize", "field_type": "String or null", "description": "The URL for the plus sized photo (scaled down to fit)."}, {"field_name": "PhotoId", "field_type": "Integer", "description": "The ID of the photo."}]'>
+<th style="width: 22%"> PhotoUrls </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; or null </td>
+<td>
+<p>When uploading a new photo, contains a collection of URLs for this photo, one for each size.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "PhotoData": "ABC",
+  "FileName": "ABC",
+  "FileType": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Status": 0,
+  "PhotoId": 123,
+  "Description": "ABC",
+  "PhotoUrls": {
+    "Thumbnail": "ABC",
+    "List": "ABC",
+    "Medium": "ABC",
+    "Gallery": "ABC",
+    "Large": "ABC",
+    "FullSize": "ABC",
+    "PlusSize": "ABC",
+    "PhotoId": 123
+  }
+}</code></pre>
+</div>

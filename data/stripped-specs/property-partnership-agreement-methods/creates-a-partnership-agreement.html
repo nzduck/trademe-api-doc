@@ -1,0 +1,225 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/property-partnership-agreement-methods/creates-a-partnership-agreement -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Creates a partnership agreement</h1>
+<!-- Page content -->
+<p>Creates a depth commitment contract. An agreement between an agency (member) and Trade Me, to upgrade all listings of a matched criteria, to a set level of depth product.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/PartnershipAgreements.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> PropertyB2BInternalServicesWrite: Oidc write permission for Customer Broker Api </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;CommitmentContractRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> CrmId </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The external ID of the contract from the source system</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The member ID of the agency for which this contract applies</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The start date of the contract. If not supplied, this will be defaulted to the current date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>The end date of the contract. If not supplied, the contract will not expire</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ItemCode </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The financial item code for the depth product applied to listings as part of this contract. This will be used for invoicing purposes</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InvoiceLine </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The descriptive invoice line for the depth product applied to listings as part of this contract</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentType </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The payment type for the depth product applied to listings as part of this contract</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingFee </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true, when a listing is created while this contract is in effect, the listing fee (or base fee) will not be charged. If false, the listing fee will continue to be charged</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeatureCombo </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>If true, Feature Combo will be applied to listings subject to this contract</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PackageCode </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The code of any package that are applied to listings subject to this contract</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryIds </th>
+<td style="width: 22%"> Collection of Integer (required) </td>
+<td>
+<p>The listing categories in which this contract will apply</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingExtras </th>
+<td style="width: 22%"> Collection of &lt;ListingExtras&gt; (optional) </td>
+<td>
+<p>The listing extras that are applied to listings subject to this contract</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The name of the extra.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Variant </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoApplyPremiumPackage </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Flag for whether the PA is NOT Flexi or Flexi (true = Not Flexi)</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;CommitmentContractResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CommitmentContractId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The internal ID of the commitment contract</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "CrmId": "ABC",
+  "MemberId": 123,
+  "StartDate": "\/Date(1514764800)\/",
+  "EndDate": "\/Date(1514764800)\/",
+  "ItemCode": "ABC",
+  "InvoiceLine": "ABC",
+  "PaymentType": "ABC",
+  "ListingFee": false,
+  "FeatureCombo": false,
+  "PackageCode": "ABC",
+  "CategoryIds": [
+    123,
+    123
+  ],
+  "ListingExtras": [
+    {
+      "Name": "ABC",
+      "Variant": "ABC"
+    },
+    {
+      "Name": "ABC",
+      "Variant": "ABC"
+    }
+  ],
+  "AutoApplyPremiumPackage": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "CommitmentContractId": 123
+}</code></pre>
+</div>

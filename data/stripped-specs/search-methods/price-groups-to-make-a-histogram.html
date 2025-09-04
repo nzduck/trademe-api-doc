@@ -1,0 +1,132 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/search-methods/price-groups-to-make-a-histogram -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Price groups to make a histogram</h1>
+<!-- Page content -->
+<p>Retrieve price grouping data representing the price distribution of listings retrieved from a given search query. Intended to be rendered as a histogram.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Search/PriceHistogram.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PriceHistogramBucketResponse&gt; </p>
+<p>Price buckets making up a histogram</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BucketCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Number of price buckets</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceInterval </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Interval / length of each price bucket</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceOutlierBoundary </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Prices over this value are considered to be outliers</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceMin </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The lowest price included in the histogram</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceMax </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The highest price included in the histogram</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingCountClippedLimitSuggestion </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>In order to render the histogram data effectively, clients may want to clip the listing counts of buckets to this amount. This is effective when one bucket is much larger than others.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "PriceFrom", "field_type": "Number", "description": "PriceFrom"}, {"field_name": "PriceTo", "field_type": "Number or null", "description": "PriceTo"}, {"field_name": "ListingCount", "field_type": "Integer", "description": "ListingCount"}, {"field_name": "IsExtendedRange", "field_type": "Boolean or null", "description": "IsExtendedRange"}]'>
+<th style="width: 22%"> PriceGroupBuckets </th>
+<td style="width: 22%"> Collection of &lt;PriceRangeGroupBucket&gt; </td>
+<td>
+<p>The price buckets which make up the histogram</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "BucketCount": 123,
+  "PriceInterval": 123.0,
+  "PriceOutlierBoundary": 123.0,
+  "PriceMin": 123.0,
+  "PriceMax": 123.0,
+  "ListingCountClippedLimitSuggestion": 123.0,
+  "PriceGroupBuckets": [
+    {
+      "PriceFrom": 123.0,
+      "PriceTo": 123.0,
+      "ListingCount": 123,
+      "IsExtendedRange": false
+    },
+    {
+      "PriceFrom": 123.0,
+      "PriceTo": 123.0,
+      "ListingCount": 123,
+      "IsExtendedRange": false
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,523 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/favourite-methods/retrieve-your-favourite-searches-with-details -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your favourite searches with details</h1>
+<!-- Page content -->
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/favourites/searches-detail/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;VersionedSavedSearchListViewModel&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of items available across all pages.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The current page number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items per page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Version </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The version of the view model.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "favouriteId", "field_type": "Integer", "description": "The ID of the favourite."}, {"field_name": "searchApi", "field_type": "Enumeration", "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.", "enum_values": [{"name": "General", "value": "0", "description": "General search."}, {"name": "UsedMotors", "value": "1", "description": "Used cars."}, {"name": "MotorBoat", "value": "2", "description": "Motor boats."}, {"name": "MotorBike", "value": "3", "description": "Motor bikes."}, {"name": "Residential", "value": "4", "description": "Residential property for sale."}, {"name": "Rental", "value": "5", "description": "Residential property to rent."}, {"name": "CommercialSale", "value": "6", "description": "Commercial property for sale."}, {"name": "CommercialLease", "value": "7", "description": "Commercial property leases."}, {"name": "Rural", "value": "8", "description": "Rural property."}, {"name": "Lifestyle", "value": "9", "description": "Lifestyle blocks."}, {"name": "Flatmate", "value": "10", "description": "Flatmates."}, {"name": "OpenHomes", "value": "11", "description": "Open homes."}, {"name": "Retirement", "value": "12", "description": "Retirement villages."}, {"name": "Job", "value": "13", "description": "Jobs."}, {"name": "NewHomes", "value": "14", "description": "New Homes property."}, {"name": "Caravan", "value": "15", "description": "Motors caravan property"}, {"name": "Motorhome", "value": "16", "description": "Motors motorhomes property"}]}, {"field_name": "searchString", "field_type": "String or null", "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."}, {"field_name": "emailOptions", "field_type": "Enumeration", "description": "Indicates how often the email updates should be sent for this favourite.", "enum_values": [{"name": "None", "value": "0", "description": "No emails are sent."}, {"name": "Daily", "value": "1", "description": "An email is sent every day."}, {"name": "Every3Days", "value": "3", "description": "An email is sent each third day."}, {"name": "Weekly", "value": "7", "description": "An email is sent every week."}]}, {"field_name": "option", "field_type": "Enumeration", "description": "The favourite type. Only used when updating and deleting.", "enum_values": [{"name": "None", "value": "0", "description": "Nothing"}, {"name": "Category", "value": "1", "description": "Category"}, {"name": "Search", "value": "3", "description": "General search"}, {"name": "AttributeSearch", "value": "4", "description": "Attributed search"}, {"name": "Seller", "value": "6", "description": "Seller"}]}, {"field_name": "favouritePushFrequency", "field_type": "Enumeration", "description": "The push notification of the favourite, which theFavouriteIdproperty refers to.", "enum_values": [{"name": "None", "value": "0", "description": "Push not enabled for this favourite."}, {"name": "Instant", "value": "1", "description": "Push is enabled for this favourite."}]}, {"field_name": "lastAccessed", "field_type": "DateTime or null", "description": "The date the favourite was last accessed in UTC format."}, {"field_name": "searchName", "field_type": "String or null", "description": "The custom name the user has given to the saved search."}, {"field_name": "title", "field_type": "String or null", "description": "The primary title to display for the saved search card."}, {"field_name": "subTitle", "field_type": "String or null", "description": "The secondary text or subtitle to display for the saved search card."}, {"field_name": "imageUrls", "field_type": "Collection of String", "description": "A URL for a representative images to display on the card. This could be a single image or a static map image."}, {"field_name": "hasNewSearches", "field_type": "Boolean", "description": "A flag indicating if there are new results for this search since it was last viewed."}, {"field_name": "newSearchText", "field_type": "String or null", "description": "The display text for the new results label (e.g., \"15 new\")."}, {"field_name": "newSearchesSearchString", "field_type": "String or null", "description": "An optional search string to view only the new items. Null if there are no new items."}]'>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedSearchCard&gt; or null </td>
+<td>
+<p>The list of saved search cards for the current page.</p>
+</td>
+</tr>
+
+</table>
+<h3>This type is not used directly, refer to usage of the following sub-types.</h3>
+<table class="dense">
+<tr>
+<th>SavedSearchListViewModel</th>
+<td>&lt;SavedSearchListViewModel&gt;</td>
+<td></td>
+</tr>
+<tr>
+<th>Usage</th>
+<td colspan="2">
+                                Format for JSON { "__type"="SavedSearchListViewModel:http://api.trademe.co.nz/v1" } <br/>
+                                Format for XML &lt; i:type="SavedSearchListViewModel"&gt;
+                            </td>
+</tr>
+<tr>
+<td colspan="3">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of items available across all pages.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The current page number.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items per page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Version </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The version of the view model.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;SavedSearchCard&gt; or null </td>
+<td>
+<p>The list of saved search cards for the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> favouriteId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchApi </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include "General", "Motors/Used", etc.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>General</td>
+<td>0</td>
+<td>
+<p>General search.</p>
+</td>
+</tr>
+<tr>
+<td>UsedMotors</td>
+<td>1</td>
+<td>
+<p>Used cars.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBoat</td>
+<td>2</td>
+<td>
+<p>Motor boats.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBike</td>
+<td>3</td>
+<td>
+<p>Motor bikes.</p>
+</td>
+</tr>
+<tr>
+<td>Residential</td>
+<td>4</td>
+<td>
+<p>Residential property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>Rental</td>
+<td>5</td>
+<td>
+<p>Residential property to rent.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialSale</td>
+<td>6</td>
+<td>
+<p>Commercial property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialLease</td>
+<td>7</td>
+<td>
+<p>Commercial property leases.</p>
+</td>
+</tr>
+<tr>
+<td>Rural</td>
+<td>8</td>
+<td>
+<p>Rural property.</p>
+</td>
+</tr>
+<tr>
+<td>Lifestyle</td>
+<td>9</td>
+<td>
+<p>Lifestyle blocks.</p>
+</td>
+</tr>
+<tr>
+<td>Flatmate</td>
+<td>10</td>
+<td>
+<p>Flatmates.</p>
+</td>
+</tr>
+<tr>
+<td>OpenHomes</td>
+<td>11</td>
+<td>
+<p>Open homes.</p>
+</td>
+</tr>
+<tr>
+<td>Retirement</td>
+<td>12</td>
+<td>
+<p>Retirement villages.</p>
+</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>13</td>
+<td>
+<p>Jobs.</p>
+</td>
+</tr>
+<tr>
+<td>NewHomes</td>
+<td>14</td>
+<td>
+<p>New Homes property.</p>
+</td>
+</tr>
+<tr>
+<td>Caravan</td>
+<td>15</td>
+<td>
+<p>Motors caravan property</p>
+</td>
+</tr>
+<tr>
+<td>Motorhome</td>
+<td>16</td>
+<td>
+<p>Motors motorhomes property</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> emailOptions </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates how often the email updates should be sent for this favourite.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No emails are sent.</p>
+</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>1</td>
+<td>
+<p>An email is sent every day.</p>
+</td>
+</tr>
+<tr>
+<td>Every3Days</td>
+<td>3</td>
+<td>
+<p>An email is sent each third day.</p>
+</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td>7</td>
+<td>
+<p>An email is sent every week.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> option </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The favourite type. Only used when updating and deleting.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Nothing</p>
+</td>
+</tr>
+<tr>
+<td>Category</td>
+<td>1</td>
+<td>
+<p>Category</p>
+</td>
+</tr>
+<tr>
+<td>Search</td>
+<td>3</td>
+<td>
+<p>General search</p>
+</td>
+</tr>
+<tr>
+<td>AttributeSearch</td>
+<td>4</td>
+<td>
+<p>Attributed search</p>
+</td>
+</tr>
+<tr>
+<td>Seller</td>
+<td>6</td>
+<td>
+<p>Seller</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> favouritePushFrequency </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The push notification of the favourite, which the <b>FavouriteId</b> property refers to.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Push not enabled for this favourite.</p>
+</td>
+</tr>
+<tr>
+<td>Instant</td>
+<td>1</td>
+<td>
+<p>Push is enabled for this favourite.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> lastAccessed </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date the favourite was last accessed in UTC format.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> searchName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The custom name the user has given to the saved search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The primary title to display for the saved search card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> subTitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The secondary text or subtitle to display for the saved search card.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> imageUrls </th>
+<td style="width: 22%"> Collection of String </td>
+<td>
+<p>A URL for a representative images to display on the card. This could be a single image or a static map image.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> hasNewSearches </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>A flag indicating if there are new results for this search since it was last viewed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> newSearchText </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display text for the new results label (e.g., "15 new").</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> newSearchesSearchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>An optional search string to view only the new items. Null if there are no new items.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "Version": "ABC",
+  "List": [
+    {
+      "favouriteId": 123,
+      "searchApi": 0,
+      "searchString": "ABC",
+      "emailOptions": 0,
+      "option": 0,
+      "favouritePushFrequency": 0,
+      "lastAccessed": "\/Date(1514764800)\/",
+      "searchName": "ABC",
+      "title": "ABC",
+      "subTitle": "ABC",
+      "imageUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "hasNewSearches": false,
+      "newSearchText": "ABC",
+      "newSearchesSearchString": "ABC"
+    },
+    {
+      "favouriteId": 123,
+      "searchApi": 0,
+      "searchString": "ABC",
+      "emailOptions": 0,
+      "option": 0,
+      "favouritePushFrequency": 0,
+      "lastAccessed": "\/Date(1514764800)\/",
+      "searchName": "ABC",
+      "title": "ABC",
+      "subTitle": "ABC",
+      "imageUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "hasNewSearches": false,
+      "newSearchText": "ABC",
+      "newSearchesSearchString": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

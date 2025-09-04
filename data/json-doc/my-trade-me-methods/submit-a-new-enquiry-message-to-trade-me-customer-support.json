@@ -1,0 +1,83 @@
+{
+  "endpoint": "SubmitANewEnquiryMessageToTradeMeCustomerSupport",
+  "title": "Submit a new enquiry message to Trade Me customer support",
+  "description": "Submits a new enquiry message to Trade Me customer support.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/submit-a-new-enquiry-message-to-trade-me-customer-support",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/CustomerSupportEnquiry.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<CustomerSupportRequest>",
+    "fields": [
+      {
+        "name": "Topic",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The topic that the message belongs under."
+      },
+      {
+        "name": "Message",
+        "type": "String (required)",
+        "required": true,
+        "description": "The message submitted."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<CustomerSupportResponse> Details on whether the enquiry message was submitted successfully.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Topic": 0,
+      "Message": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

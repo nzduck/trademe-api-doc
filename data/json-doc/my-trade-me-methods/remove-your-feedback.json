@@ -1,0 +1,150 @@
+{
+  "endpoint": "RemoveYourFeedback",
+  "title": "Remove your feedback",
+  "description": "Removes feedback the authenticated user has posted against a listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-your-feedback",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/Feedback/{feedbackId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "feedbackId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the feedback to remove."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<FeedbackResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "StatusCode",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status code indicating what went wrong if the operation failed.",
+        "enum": [
+          {
+            "name": "Ok",
+            "value": "0",
+            "description": "Success."
+          },
+          {
+            "name": "AlreadyPlaced",
+            "value": "1",
+            "description": "Feedback already posted."
+          },
+          {
+            "name": "AlreadyEdited",
+            "value": "2",
+            "description": "Feedback already edited."
+          },
+          {
+            "name": "ErrorDeleting",
+            "value": "3",
+            "description": "Error deleting."
+          },
+          {
+            "name": "MemberNotFound",
+            "value": "4",
+            "description": "The member could not be found."
+          },
+          {
+            "name": "NotSelf",
+            "value": "5",
+            "description": "Cannot give feedback on self."
+          },
+          {
+            "name": "IncorrectMember",
+            "value": "6",
+            "description": "The feedback is not for this member."
+          },
+          {
+            "name": "NotWinner",
+            "value": "7",
+            "description": "The member did not win the auction."
+          },
+          {
+            "name": "NotWinnerOffer",
+            "value": "8",
+            "description": "The member did not win the offer."
+          },
+          {
+            "name": "DatabaseError",
+            "value": "10",
+            "description": "There was another database error."
+          },
+          {
+            "name": "NotSupported",
+            "value": "11",
+            "description": "The feedback type is not supported."
+          },
+          {
+            "name": "NoFixedPriceOffer",
+            "value": "12",
+            "description": "There is not a fixed price offer."
+          },
+          {
+            "name": "InvalidFeedback",
+            "value": "13",
+            "description": "The feedback text submitted is not valid."
+          }
+        ]
+      },
+      {
+        "name": "FeedbackId",
+        "type": "Integer",
+        "required": false,
+        "description": "If the operation succeeded, the ID of the new feedback."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "StatusCode": 0,
+      "FeedbackId": 123
+    }
+  }
+}

@@ -1,0 +1,125 @@
+{
+  "endpoint": "RetrieveYourDeliveryAddresses",
+  "title": "Retrieve your delivery addresses",
+  "description": "Retrieves a list of delivery addresses for the authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-delivery-addresses",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/DeliveryAddresses.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Address> A collection of delivery addresses.",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the person whom the item is being delivered to."
+      },
+      {
+        "name": "Address1",
+        "type": "String or null",
+        "required": false,
+        "description": "The first line of the address."
+      },
+      {
+        "name": "Address2",
+        "type": "String or null",
+        "required": false,
+        "description": "The second line of the address (optional)."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The suburb (optional)."
+      },
+      {
+        "name": "City",
+        "type": "String or null",
+        "required": false,
+        "description": "The city."
+      },
+      {
+        "name": "Postcode",
+        "type": "String or null",
+        "required": false,
+        "description": "The postcode (optional)."
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country (currently restricted to \"New Zealand\" or \"Australia\")."
+      },
+      {
+        "name": "IsMembershipAddress",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address."
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the delivery address. The membership address always has an ID of zero. This field is ignored when adding a delivery address."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC",
+        "IsMembershipAddress": false,
+        "Id": 123
+      },
+      {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC",
+        "IsMembershipAddress": false,
+        "Id": 123
+      }
+    ]
+  }
+}

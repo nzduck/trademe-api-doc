@@ -1,0 +1,138 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-the-details-of-a-settlement-into-your-bank-account -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve the details of a settlement into your bank account</h1>
+<!-- Page content -->
+<p>Returns Pay Now ledger entries for a settlement into the authenticated user's bank account.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/paynowsettlement/{batchId}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> batchId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the settlement. This can be retrieved from the Pay Now ledger API.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PayNowLedger&gt; </p>
+<p>Settlement details for the authenticated user.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Type&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The transaction type.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Sale&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;A sale.&quot;}, {&quot;name&quot;: &quot;PaymentToMemberBankAccount&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;A payment to the member's bank account.&quot;}, {&quot;name&quot;: &quot;FailedPaymentToMemberBankAccount&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;A failed payment to the member's bank account.&quot;}, {&quot;name&quot;: &quot;Refund&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;A refund.&quot;}, {&quot;name&quot;: &quot;Transfer&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;Transfer from Trade Me account.&quot;}, {&quot;name&quot;: &quot;Chargeback&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;A bank chargeback.&quot;}, {&quot;name&quot;: &quot;Other&quot;, &quot;value&quot;: &quot;6&quot;, &quot;description&quot;: &quot;An unknown transaction.&quot;}]}, {&quot;field_name&quot;: &quot;Date&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The transaction date and time. May be blank for&quot;}, {&quot;field_name&quot;: &quot;Description&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A description of the transaction.&quot;}, {&quot;field_name&quot;: &quot;Credit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount the member's Pay Now account was credited, in NZD, after fees have been accounted for. For example, the sale of an item generates a credit (but that same transaction will be a debit when it is paid into the member's account). This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;Debit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount the member's Pay Now account was debited, in NZD. For example, a refund is a debit (but that same transaction will be a credit when it is in the settlement breakdown). This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;ListingId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the associated listing, or 0 if there is no associated listing.&quot;}, {&quot;field_name&quot;: &quot;OfferId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the associated fixed price offer. This value is omitted if the payment is not associated with a fixed price offer.&quot;}, {&quot;field_name&quot;: &quot;PurchaseId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The purchase-specific ID (or auction sold id).&quot;}, {&quot;field_name&quot;: &quot;ListingTitle&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The title of the associated listing. This value is omitted if there is no associated listing.&quot;}, {&quot;field_name&quot;: &quot;Fee&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The fee associated with the transaction. This value is omitted if there is no associated fee. This value is never negative.&quot;}, {&quot;field_name&quot;: &quot;SettlementId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;An ID that can be used to get the breakdown of a settlement. Only populated if the payment type is PaymentToMemberBankAccount (or FailedPaymentToMemberBankAccount).&quot;}]">
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;PayNowLedgerItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "Type": 0,
+      "Date": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "ListingId": 123,
+      "OfferId": 123,
+      "PurchaseId": 123,
+      "ListingTitle": "ABC",
+      "Fee": 123.0,
+      "SettlementId": 123
+    },
+    {
+      "Type": 0,
+      "Date": "\/Date(1514764800)\/",
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "ListingId": 123,
+      "OfferId": 123,
+      "PurchaseId": 123,
+      "ListingTitle": "ABC",
+      "Fee": 123.0,
+      "SettlementId": 123
+    }
+  ]
+}</code></pre>
+</div>

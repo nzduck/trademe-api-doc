@@ -1,0 +1,1014 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Get your ping balance ledger - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a> &gt; </li>
+<li class="current">Get your ping balance ledger</li>
+</ul>
+<!-- Page heading -->
+<h1>Get your ping balance ledger</h1>
+<!-- Page content -->
+<p>Gets the ping balance ledger for the logged in member</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Ping/Transactions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> date_from </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>Exclude transactions before this date. Specify dates in the UTC time zone.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> date_to </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>Exclude transactions after this date. Specify dates in the UTC time zone.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50 and supports a maximum of 50</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;BalanceLedgerResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;Transaction&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TransactionId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Ping transaction ID.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Purchase", "value": "0", "description": "Purchase made as a buyer"}, {"name": "PurchaseReverse", "value": "1", "description": "Purchase made as a buyer - reversed by Trust and Safety"}, {"name": "Sale", "value": "2", "description": "Sale made as a seller"}, {"name": "SaleReverse", "value": "3", "description": "Sale made as a seller - reversed by Trust and Safety"}, {"name": "RefundToAccount", "value": "4", "description": "Refund given as a seller"}, {"name": "RefundFromAccount", "value": "5", "description": "Refund received as a buyer"}, {"name": "Withdrawal", "value": "6", "description": "Ping balance transfer out"}, {"name": "WithdrawalReverse", "value": "7", "description": "Ping balance transfer out - reversed by Trust and Safety"}, {"name": "PurchaseRelease", "value": "8", "description": "Purchase release"}, {"name": "SaleRelease", "value": "9", "description": "Sale release"}, {"name": "CartPurchase", "value": "10", "description": "Cart purchase made as a buyer"}, {"name": "CartSale", "value": "11", "description": "Cart Sale transaction"}, {"name": "Peer", "value": "12", "description": "Peer to Peer transaction, Donations will appear as Peer to Peer"}, {"name": "CartPurchaseReverse", "value": "13", "description": "Cart purchase made as a buyer - reversed by Trust and Safety"}, {"name": "RefundToAccountReverse", "value": "14", "description": "Refund given as a seller - reversed by Trust and Safety"}, {"name": "RefundFromAccountReverse", "value": "15", "description": "Refund received as a buyer - reversed by Trust and Safety"}, {"name": "AdminCredit", "value": "16", "description": "Ping credit added to account"}, {"name": "TopUp", "value": "18", "description": "Top up Ping account"}, {"name": "PurchaseAndTopup", "value": "19", "description": "Purchase and top up"}, {"name": "RefundFromAccountRelease", "value": "20", "description": "Refund received as a buyer - transferred to balance by admin"}, {"name": "WithdrawalRelease", "value": "21", "description": "Ping balance transfer out released"}, {"name": "PurchaseReverseRelease", "value": "22", "description": "Purchase made as a buyer reversed and released"}, {"name": "SettlementReverse", "value": "23", "description": "Settlement reversed"}, {"name": "Dishonour", "value": "24", "description": "Dishonour"}, {"name": "PurchaseCancelledUnclaimed", "value": "25", "description": "Purchase cancelled and unclaimed"}, {"name": "RefundRetry", "value": "26", "description": "Refund retry"}, {"name": "RefundUnclaimed", "value": "27", "description": "Refund unclaimed"}, {"name": "PurchaseCancelledRetry", "value": "28", "description": "Purchase cancelled and retry"}, {"name": "TopUpRelease", "value": "29", "description": "Top up release"}, {"name": "PurchaseAndTopupRelease", "value": "30", "description": "Purchase and top up release"}, {"name": "TopUpReverse", "value": "31", "description": "Top up Ping account reversed by Trust and Safety"}, {"name": "PurchaseAndTopupReverse", "value": "32", "description": "Purchase and top up reversed by Trust and Safety"}, {"name": "TopUpCancelledRetry", "value": "33", "description": "Top up cancelled retry"}, {"name": "PurchaseAndTopUpCancelledRetry", "value": "34", "description": "Purchase and top up cancelled retry"}, {"name": "TopUpReverseRelease", "value": "35", "description": "Top up Ping account reversed and released by Trust and Safety"}, {"name": "PurchaseAndTopupReverseRelease", "value": "36", "description": "Purchase and top up reversed and released by Trust and Safety"}, {"name": "TopUpReverseUnclaimed", "value": "37", "description": "Top up Ping account reversed and moved to unclaimed by Trust and Safety"}, {"name": "PurchaseAndTopupReverseUnclaimed", "value": "38", "description": "Purchase and top up reversed and moved to unclaimed by Trust and Safety"}, {"name": "CartSaleRelease", "value": "39", "description": "Cart sale release"}, {"name": "Chargeback", "value": "40", "description": "Chargeback"}, {"name": "PurchaseHold", "value": "41", "description": "Purchase on hold"}, {"name": "TopUpHold", "value": "42", "description": "Top up on holds"}, {"name": "PurchaseAndTopUpHold", "value": "43", "description": "Purchase and top up on hold"}, {"name": "TradeMeAccountTopUp", "value": "44", "description": "Trade Me account top up"}, {"name": "FeeRefund", "value": "45", "description": "Fee refund"}, {"name": "BuyerProtectionRefund", "value": "49", "description": "Buyer Protection refund"}, {"name": "CartPurchaseAndTopUp", "value": "50", "description": "Cart purchase and top up"}, {"name": "CartPurchaseReverseRelease", "value": "51", "description": "Cart purchase reversed and then released"}, {"name": "CartPurchaseAndTopUpReverse", "value": "52", "description": "Cart purchase and top up reversed"}, {"name": "CartPurchaseAndTopUpReverseRelease", "value": "53", "description": "Cart purchase and top up reversed and then released"}, {"name": "AdminDebit", "value": "17", "description": "Admin debit"}]'>
+<th style="width: 22%"> TransactionType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Ping transaction type.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> TransactionDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>Date transaction was made in UTC time zone</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TransactionParts </th>
+<td style="width: 22%"> Collection of &lt;TransactionPart&gt; or null </td>
+<td>
+<p>The transaction parts.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "RefundToBalance", "value": "0", "description": "Refund to Ping balance"}, {"name": "RefundToCard", "value": "1", "description": "Refund to credit/debit card"}, {"name": "RefundToBankAccount", "value": "2", "description": "Refund to bank account"}, {"name": "PingBalanceTopUp", "value": "3", "description": "Ping balance top up"}, {"name": "PaymentFromBalance", "value": "4", "description": "Payment from Ping balance"}, {"name": "PaymentFromCard", "value": "5", "description": "Payment from credit/debit card"}, {"name": "PaymentFromBankAccount", "value": "6", "description": "Payment from bank account"}, {"name": "Purchase", "value": "7", "description": "A purchased or sold item"}, {"name": "LoyaltySubscriptionPurchase", "value": "8", "description": "A loyalty subscription purchase"}, {"name": "PaymentFromLoyalty", "value": "9", "description": "Payment from loyalty"}, {"name": "RefundToLoyalty", "value": "10", "description": "Refund to loyalty"}, {"name": "PaymentFromOpenBank", "value": "11", "description": "Payment from open bank"}]'>
+<th style="width: 22%"> TransactionPartType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Type of the Transaction part.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Title of the Transaction part.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Amount of the Transaction part.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GstCollected </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>GST Collected from this transaction part.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferenceNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The transaction part's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with "P", Withdrawals begin with "W", Top-ups begin "TU", Refunds begin with "R", Peer to Peer and Donations with "Q"</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Sku </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Sku of the Transaction part if its a purchase.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FundSources </th>
+<td style="width: 22%"> &lt;FundSources&gt; or null </td>
+<td>
+<p>Sources of fund used in a transaction.</p>
+<p style="color: red">
+                                Deprecated - use PaymentFrom instead of FundSources
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> AvailableBalance </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The current available ping balance for use in funding a purchase.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FundSources </th>
+<td style="width: 22%"> Collection of &lt;FundSource&gt; or null </td>
+<td>
+<p>The collection of credit/debit card or bank account funding sources</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "CreditCard", "value": "1", "description": "The fund source is a credit/debit card."}, {"name": "BankAccount", "value": "2", "description": "The fund source is a bank account."}, {"name": "PingBalance", "value": "3", "description": "The fund source is the Ping balance. Cannot be used in a purchase or top up. In a purchase use UseBalance = true instead."}, {"name": "TmLoyalty", "value": "4", "description": "The fund source is the Loyalty Subscription."}, {"name": "OpenBank", "value": "5", "description": "The fund source is Open Banking."}]'>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of fund source. If the type is unrecognised, the API client should ignore this fund source and move on to the next one.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FundSourceId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>A unique ID that can be passed to the purchase API to identify the fund source to use.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaskedAccountNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A string containing the card or bank account number, with most of the digits blacked out for privacy reasons (e.g. "**** **** **** 1234" for a CC or "12 3456 ****789 00" for a bank account).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Label </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The user-provided label, if the user entered one for this fund source, or a generic label like "Visa credit card" otherwise.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Logo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL to the card or bank logo. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DarkModeLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL to the card or bank logo for dark mode. API clients should not assume any fixed dimensions, but instead scale the image to fit the space available. Logos are likely to be either square or wider than they are tall.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Active", "value": "0", "description": "Represents an active bank account"}, {"name": "Disabled", "value": "1", "description": "Represents a disabled bank account"}, {"name": "Enabled", "value": "2", "description": "Represents a bank account that had not been verified and does not need to be verified. If you are checking if enabled, please also check for verified, as they are both statuses that allows a bank account to be used."}, {"name": "Verified", "value": "3", "description": "Represents a verified bank account. This is the same as enabled, but with a past verification taking place. If you are checking if verified, please also check for enabled, as they are both statuses that allows a bank account to be used."}, {"name": "Historical", "value": "4", "description": "Represents an historical bank account"}, {"name": "VerificationRequired", "value": "5", "description": "Represents a bank account that needs verification."}]'>
+<th style="width: 22%"> VerificationStatus </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The verification status of a bank account. Not applicable for credit/debit card fund sources.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Amount taken from the fund source.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VerificationCodeCreationDate </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentFrom </th>
+<td style="width: 22%"> Collection of &lt;FundSource&gt; or null </td>
+<td>
+<p>Fund sources the payment was made from</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> FundDestinations </th>
+<td style="width: 22%"> &lt;FundDestinations&gt; or null </td>
+<td>
+<p>Destination of fund going out of the Ping account.</p>
+<p style="color: red">
+                                Deprecated - use PaymentTo instead of FundDestinations
+                            </p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The current available ping balance for use in funding a purchase.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FundDestinations </th>
+<td style="width: 22%"> Collection of &lt;FundDestination&gt; or null </td>
+<td>
+<p>The collection of credit/debit card or bank account fund destinations.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BankAccountId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Id used to identify the bank account</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaskedAccountNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Masked account number eg. "12 3456 ****789 00"</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Active", "value": "0", "description": "Represents an active bank account"}, {"name": "Disabled", "value": "1", "description": "Represents a disabled bank account"}, {"name": "Enabled", "value": "2", "description": "Represents a bank account that had not been verified and does not need to be verified. If you are checking if enabled, please also check for verified, as they are both statuses that allows a bank account to be used."}, {"name": "Verified", "value": "3", "description": "Represents a verified bank account. This is the same as enabled, but with a past verification taking place. If you are checking if verified, please also check for enabled, as they are both statuses that allows a bank account to be used."}, {"name": "Historical", "value": "4", "description": "Represents an historical bank account"}, {"name": "VerificationRequired", "value": "5", "description": "Represents a bank account that needs verification."}]'>
+<th style="width: 22%"> Status </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The bank account status</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Label </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Personal label to identify the account</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Logo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Fund destination logo</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DarkModeLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Fund destination logo for dark mode</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SortOrder </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>the order of the account, 0 being the preferential account</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Amount added to the fund destination.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VerificationCodeCreationDate </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>The date of the last sent verification code or null if a verification code has not been sent. This will be null if either no verification is required(see Status) or the batch payment process that includes the verification code for this fund source has not yet run(currently once per business day).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PaymentTo </th>
+<td style="width: 22%"> Collection of &lt;FundSource&gt; or null </td>
+<td>
+<p>Fund sources the payment was made to</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Money either credited/deducted from the Ping account.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Balance </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Available balance for the Ping account at the end of the transaction.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Fees </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Total of all Fee amounts in the transaction parts.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Gst </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Total of all Fee amounts in the transaction parts.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The action causing a balance change or the listing title for purchases and sales. Refer to transaction parts for multi item purchase or topups</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing id. Refer transaction parts ListingId cart and purchase + topups</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferenceNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The transaction's reference number for correlation across systems and bank account and credit card statements. Purchase references begin with "P", Cart purchases begin with "C", Withdrawals begin with "W", Top-ups begin "TU", Refunds begin with "R", Peer to Peer and Donations with "Q"</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Sku </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Stock Keeping Unit (SKU) of the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Additional information regarding the transaction's action</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsCart </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Determines whether or not this transaction was used to complete a cart purchase.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;BalanceLedgerResponse xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+  &lt;Page&gt;123&lt;/Page&gt;
+  &lt;PageSize&gt;123&lt;/PageSize&gt;
+  &lt;List&gt;
+    &lt;Transaction&gt;
+      &lt;TransactionId&gt;123&lt;/TransactionId&gt;
+      &lt;TransactionType&gt;Purchase&lt;/TransactionType&gt;
+      &lt;TransactionDate&gt;2018-01-01T00:00:00Z&lt;/TransactionDate&gt;
+      &lt;TransactionParts&gt;
+        &lt;TransactionPart&gt;
+          &lt;TransactionPartType&gt;RefundToBalance&lt;/TransactionPartType&gt;
+          &lt;Title&gt;ABC&lt;/Title&gt;
+          &lt;Amount&gt;123.0&lt;/Amount&gt;
+          &lt;GstCollected&gt;123.0&lt;/GstCollected&gt;
+          &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+          &lt;Sku&gt;ABC&lt;/Sku&gt;
+        &lt;/TransactionPart&gt;
+        &lt;TransactionPart&gt;
+          &lt;TransactionPartType&gt;RefundToBalance&lt;/TransactionPartType&gt;
+          &lt;Title&gt;ABC&lt;/Title&gt;
+          &lt;Amount&gt;123.0&lt;/Amount&gt;
+          &lt;GstCollected&gt;123.0&lt;/GstCollected&gt;
+          &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+          &lt;Sku&gt;ABC&lt;/Sku&gt;
+        &lt;/TransactionPart&gt;
+      &lt;/TransactionParts&gt;
+      &lt;FundSources&gt;
+        &lt;AvailableBalance&gt;123.0&lt;/AvailableBalance&gt;
+        &lt;FundSources&gt;
+          &lt;FundSource&gt;
+            &lt;Type&gt;CreditCard&lt;/Type&gt;
+            &lt;FundSourceId&gt;123&lt;/FundSourceId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;VerificationStatus&gt;Active&lt;/VerificationStatus&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundSource&gt;
+          &lt;FundSource&gt;
+            &lt;Type&gt;CreditCard&lt;/Type&gt;
+            &lt;FundSourceId&gt;123&lt;/FundSourceId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;VerificationStatus&gt;Active&lt;/VerificationStatus&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundSource&gt;
+        &lt;/FundSources&gt;
+      &lt;/FundSources&gt;
+      &lt;PaymentFrom&gt;
+        &lt;FundSource /&gt;
+        &lt;FundSource /&gt;
+      &lt;/PaymentFrom&gt;
+      &lt;FundDestinations&gt;
+        &lt;Amount&gt;123.0&lt;/Amount&gt;
+        &lt;FundDestinations&gt;
+          &lt;FundDestination&gt;
+            &lt;BankAccountId&gt;123&lt;/BankAccountId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Status&gt;Active&lt;/Status&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;SortOrder&gt;123&lt;/SortOrder&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundDestination&gt;
+          &lt;FundDestination&gt;
+            &lt;BankAccountId&gt;123&lt;/BankAccountId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Status&gt;Active&lt;/Status&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;SortOrder&gt;123&lt;/SortOrder&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundDestination&gt;
+        &lt;/FundDestinations&gt;
+      &lt;/FundDestinations&gt;
+      &lt;PaymentTo&gt;
+        &lt;FundSource /&gt;
+        &lt;FundSource /&gt;
+      &lt;/PaymentTo&gt;
+      &lt;Amount&gt;123.0&lt;/Amount&gt;
+      &lt;Balance&gt;123.0&lt;/Balance&gt;
+      &lt;Fees&gt;123.0&lt;/Fees&gt;
+      &lt;Gst&gt;123.0&lt;/Gst&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;ListingId&gt;ABC&lt;/ListingId&gt;
+      &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+      &lt;Sku&gt;ABC&lt;/Sku&gt;
+      &lt;Subtitle&gt;ABC&lt;/Subtitle&gt;
+      &lt;IsCart&gt;false&lt;/IsCart&gt;
+    &lt;/Transaction&gt;
+    &lt;Transaction&gt;
+      &lt;TransactionId&gt;123&lt;/TransactionId&gt;
+      &lt;TransactionType&gt;Purchase&lt;/TransactionType&gt;
+      &lt;TransactionDate&gt;2018-01-01T00:00:00Z&lt;/TransactionDate&gt;
+      &lt;TransactionParts&gt;
+        &lt;TransactionPart&gt;
+          &lt;TransactionPartType&gt;RefundToBalance&lt;/TransactionPartType&gt;
+          &lt;Title&gt;ABC&lt;/Title&gt;
+          &lt;Amount&gt;123.0&lt;/Amount&gt;
+          &lt;GstCollected&gt;123.0&lt;/GstCollected&gt;
+          &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+          &lt;Sku&gt;ABC&lt;/Sku&gt;
+        &lt;/TransactionPart&gt;
+        &lt;TransactionPart&gt;
+          &lt;TransactionPartType&gt;RefundToBalance&lt;/TransactionPartType&gt;
+          &lt;Title&gt;ABC&lt;/Title&gt;
+          &lt;Amount&gt;123.0&lt;/Amount&gt;
+          &lt;GstCollected&gt;123.0&lt;/GstCollected&gt;
+          &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+          &lt;Sku&gt;ABC&lt;/Sku&gt;
+        &lt;/TransactionPart&gt;
+      &lt;/TransactionParts&gt;
+      &lt;FundSources&gt;
+        &lt;AvailableBalance&gt;123.0&lt;/AvailableBalance&gt;
+        &lt;FundSources&gt;
+          &lt;FundSource&gt;
+            &lt;Type&gt;CreditCard&lt;/Type&gt;
+            &lt;FundSourceId&gt;123&lt;/FundSourceId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;VerificationStatus&gt;Active&lt;/VerificationStatus&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundSource&gt;
+          &lt;FundSource&gt;
+            &lt;Type&gt;CreditCard&lt;/Type&gt;
+            &lt;FundSourceId&gt;123&lt;/FundSourceId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;VerificationStatus&gt;Active&lt;/VerificationStatus&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundSource&gt;
+        &lt;/FundSources&gt;
+      &lt;/FundSources&gt;
+      &lt;PaymentFrom&gt;
+        &lt;FundSource /&gt;
+        &lt;FundSource /&gt;
+      &lt;/PaymentFrom&gt;
+      &lt;FundDestinations&gt;
+        &lt;Amount&gt;123.0&lt;/Amount&gt;
+        &lt;FundDestinations&gt;
+          &lt;FundDestination&gt;
+            &lt;BankAccountId&gt;123&lt;/BankAccountId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Status&gt;Active&lt;/Status&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;SortOrder&gt;123&lt;/SortOrder&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundDestination&gt;
+          &lt;FundDestination&gt;
+            &lt;BankAccountId&gt;123&lt;/BankAccountId&gt;
+            &lt;MaskedAccountNumber&gt;ABC&lt;/MaskedAccountNumber&gt;
+            &lt;Status&gt;Active&lt;/Status&gt;
+            &lt;Label&gt;ABC&lt;/Label&gt;
+            &lt;Logo&gt;ABC&lt;/Logo&gt;
+            &lt;DarkModeLogo&gt;ABC&lt;/DarkModeLogo&gt;
+            &lt;SortOrder&gt;123&lt;/SortOrder&gt;
+            &lt;Amount&gt;123.0&lt;/Amount&gt;
+            &lt;VerificationCodeCreationDate&gt;2018-01-01T00:00:00Z&lt;/VerificationCodeCreationDate&gt;
+          &lt;/FundDestination&gt;
+        &lt;/FundDestinations&gt;
+      &lt;/FundDestinations&gt;
+      &lt;PaymentTo&gt;
+        &lt;FundSource /&gt;
+        &lt;FundSource /&gt;
+      &lt;/PaymentTo&gt;
+      &lt;Amount&gt;123.0&lt;/Amount&gt;
+      &lt;Balance&gt;123.0&lt;/Balance&gt;
+      &lt;Fees&gt;123.0&lt;/Fees&gt;
+      &lt;Gst&gt;123.0&lt;/Gst&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;ListingId&gt;ABC&lt;/ListingId&gt;
+      &lt;ReferenceNumber&gt;ABC&lt;/ReferenceNumber&gt;
+      &lt;Sku&gt;ABC&lt;/Sku&gt;
+      &lt;Subtitle&gt;ABC&lt;/Subtitle&gt;
+      &lt;IsCart&gt;false&lt;/IsCart&gt;
+    &lt;/Transaction&gt;
+  &lt;/List&gt;
+&lt;/BalanceLedgerResponse&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "TransactionId": 123,
+      "TransactionType": 0,
+      "TransactionDate": "\/Date(1514764800)\/",
+      "TransactionParts": [
+        {
+          "TransactionPartType": 0,
+          "Title": "ABC",
+          "Amount": 123.0,
+          "GstCollected": 123.0,
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC"
+        },
+        {
+          "TransactionPartType": 0,
+          "Title": "ABC",
+          "Amount": 123.0,
+          "GstCollected": 123.0,
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC"
+        }
+      ],
+      "FundSources": {
+        "AvailableBalance": 123.0,
+        "FundSources": [
+          {
+            "Type": 1,
+            "FundSourceId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "VerificationStatus": 0,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          },
+          {
+            "Type": 1,
+            "FundSourceId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "VerificationStatus": 0,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          }
+        ]
+      },
+      "PaymentFrom": [
+        {
+        },
+        {
+        }
+      ],
+      "FundDestinations": {
+        "Amount": 123.0,
+        "FundDestinations": [
+          {
+            "BankAccountId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Status": 0,
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "SortOrder": 123,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          },
+          {
+            "BankAccountId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Status": 0,
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "SortOrder": 123,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          }
+        ]
+      },
+      "PaymentTo": [
+        {
+        },
+        {
+        }
+      ],
+      "Amount": 123.0,
+      "Balance": 123.0,
+      "Fees": 123.0,
+      "Gst": 123.0,
+      "Title": "ABC",
+      "ListingId": "ABC",
+      "ReferenceNumber": "ABC",
+      "Sku": "ABC",
+      "Subtitle": "ABC",
+      "IsCart": false
+    },
+    {
+      "TransactionId": 123,
+      "TransactionType": 0,
+      "TransactionDate": "\/Date(1514764800)\/",
+      "TransactionParts": [
+        {
+          "TransactionPartType": 0,
+          "Title": "ABC",
+          "Amount": 123.0,
+          "GstCollected": 123.0,
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC"
+        },
+        {
+          "TransactionPartType": 0,
+          "Title": "ABC",
+          "Amount": 123.0,
+          "GstCollected": 123.0,
+          "ReferenceNumber": "ABC",
+          "Sku": "ABC"
+        }
+      ],
+      "FundSources": {
+        "AvailableBalance": 123.0,
+        "FundSources": [
+          {
+            "Type": 1,
+            "FundSourceId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "VerificationStatus": 0,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          },
+          {
+            "Type": 1,
+            "FundSourceId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "VerificationStatus": 0,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          }
+        ]
+      },
+      "PaymentFrom": [
+        {
+        },
+        {
+        }
+      ],
+      "FundDestinations": {
+        "Amount": 123.0,
+        "FundDestinations": [
+          {
+            "BankAccountId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Status": 0,
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "SortOrder": 123,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          },
+          {
+            "BankAccountId": 123,
+            "MaskedAccountNumber": "ABC",
+            "Status": 0,
+            "Label": "ABC",
+            "Logo": "ABC",
+            "DarkModeLogo": "ABC",
+            "SortOrder": 123,
+            "Amount": 123.0,
+            "VerificationCodeCreationDate": "\/Date(1514764800)\/"
+          }
+        ]
+      },
+      "PaymentTo": [
+        {
+        },
+        {
+        }
+      ],
+      "Amount": 123.0,
+      "Balance": 123.0,
+      "Fees": 123.0,
+      "Gst": 123.0,
+      "Title": "ABC",
+      "ListingId": "ABC",
+      "ReferenceNumber": "ABC",
+      "Sku": "ABC",
+      "Subtitle": "ABC",
+      "IsCart": false
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

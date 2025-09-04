@@ -1,0 +1,320 @@
+{
+  "endpoint": "RetrievePropertyJobsAndServicesLocalities",
+  "title": "Retrieve Property, Jobs and Services localities",
+  "description": "Returns a three-tier locality hierarchy of regions, districts and their respective suburbs (including adjacent suburbs, if they have them). These values are used in Trade Me Property, Trade Me Jobs and Services.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-property-jobs-and-services-localities",
+  "url": "https://api.trademe.co.nz/v1/localities.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "listing_type",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The type of listing to include in the count property, if with_counts is true. Valid values are \"HOUSES_TO_BUY\", \"HOUSES_TO_RENT\", \"COMMERCIAL_FOR_SALE\", \"COMMERCIAL_FOR_LEASE\", \"FLATMATES_WANTED\", \"RURAL\", \"RETIREMENT_VILLAGES\" and \"LIFESTYLE\". Defaults to \"HOUSES_TO_BUY\"."
+      },
+      {
+        "name": "with_counts",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to include the listing count for each locality. Defaults to false. This option currently does not work."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Locality> A list of all localities.",
+    "fields": [
+      {
+        "name": "LocalityId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the region."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the region."
+      },
+      {
+        "name": "Districts",
+        "type": "Collection of <District> or null",
+        "required": false,
+        "description": "The list of districts that belong to this region."
+      },
+      {
+        "name": "DistrictId",
+        "type": "DistrictId \n Integer \n\nThe ID of the district.\n\n\n\n Name \n String or null \n\nThe name of the district.\n\n\n\n Suburbs \n Collection of <Suburb> or null \n\nThe list of suburbs that belong to this district.\n\n\n\n\n\n\n SuburbId \n Integer \n\nThe ID of the suburb.\n\n\n\n Name \n String or null \n\nThe name of the suburb.\n\n\n\n AdjacentSuburbs \n Collection of Integer or null \n\nA list containing the IDs of the suburbs adjacent to this suburb.\n\n\n\n Count \n Integer \n\nThe number of items being sold in this suburb.\n\n\n\n SeoDrivenUrl \n <SeoDrivenUrl> or null \n\nCanonical URL to this suburb\n\n\n\n\n\n\n SeoDrivenCanonicalUrl \n String or null \n\nNew Canonical Url structure Eg. \"\\/marketplace\\/s\\/bbqs-outdoor-ovens\\/\"\n\n\n\n\n\n\n\n\n\n Count \n Integer \n\nThe number of items that are being sold in this district.\n\n\n\n SeoDrivenUrl \n <SeoDrivenUrl> or null \n\nCanonical URL to this district\n\n\n\n\n                                 (This type has already been defined)",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "DistrictId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the district."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the district."
+      },
+      {
+        "name": "Suburbs",
+        "type": "Collection of <Suburb> or null",
+        "required": false,
+        "description": "The list of suburbs that belong to this district."
+      },
+      {
+        "name": "SuburbId",
+        "type": "SuburbId \n Integer \n\nThe ID of the suburb.\n\n\n\n Name \n String or null \n\nThe name of the suburb.\n\n\n\n AdjacentSuburbs \n Collection of Integer or null \n\nA list containing the IDs of the suburbs adjacent to this suburb.\n\n\n\n Count \n Integer \n\nThe number of items being sold in this suburb.\n\n\n\n SeoDrivenUrl \n <SeoDrivenUrl> or null \n\nCanonical URL to this suburb\n\n\n\n\n\n\n SeoDrivenCanonicalUrl \n String or null \n\nNew Canonical Url structure Eg. \"\\/marketplace\\/s\\/bbqs-outdoor-ovens\\/\"",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "SuburbId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the suburb."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the suburb."
+      },
+      {
+        "name": "AdjacentSuburbs",
+        "type": "Collection of Integer or null",
+        "required": false,
+        "description": "A list containing the IDs of the suburbs adjacent to this suburb."
+      },
+      {
+        "name": "Count",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items being sold in this suburb."
+      },
+      {
+        "name": "SeoDrivenUrl",
+        "type": "<SeoDrivenUrl> or null",
+        "required": false,
+        "description": "Canonical URL to this suburb"
+      },
+      {
+        "name": "SeoDrivenCanonicalUrl",
+        "type": "SeoDrivenCanonicalUrl \n String or null \n\nNew Canonical Url structure Eg. \"\\/marketplace\\/s\\/bbqs-outdoor-ovens\\/\"",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "SeoDrivenCanonicalUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "New Canonical Url structure Eg. \"\\/marketplace\\/s\\/bbqs-outdoor-ovens\\/\""
+      },
+      {
+        "name": "Count",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items that are being sold in this district."
+      },
+      {
+        "name": "SeoDrivenUrl",
+        "type": "<SeoDrivenUrl> or null",
+        "required": false,
+        "description": "Canonical URL to this district"
+      },
+      {
+        "name": "Count",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items being sold in this region."
+      },
+      {
+        "name": "SeoDrivenUrl",
+        "type": "<SeoDrivenUrl> or null",
+        "required": false,
+        "description": "Canonical URL to this region"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "LocalityId": 123,
+        "Name": "ABC",
+        "Districts": [
+          {
+            "DistrictId": 123,
+            "Name": "ABC",
+            "Suburbs": [
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              },
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              }
+            ],
+            "Count": 123,
+            "SeoDrivenUrl": {}
+          },
+          {
+            "DistrictId": 123,
+            "Name": "ABC",
+            "Suburbs": [
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              },
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              }
+            ],
+            "Count": 123,
+            "SeoDrivenUrl": {}
+          }
+        ],
+        "Count": 123,
+        "SeoDrivenUrl": {}
+      },
+      {
+        "LocalityId": 123,
+        "Name": "ABC",
+        "Districts": [
+          {
+            "DistrictId": 123,
+            "Name": "ABC",
+            "Suburbs": [
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              },
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              }
+            ],
+            "Count": 123,
+            "SeoDrivenUrl": {}
+          },
+          {
+            "DistrictId": 123,
+            "Name": "ABC",
+            "Suburbs": [
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              },
+              {
+                "SuburbId": 123,
+                "Name": "ABC",
+                "AdjacentSuburbs": [
+                  123,
+                  123
+                ],
+                "Count": 123,
+                "SeoDrivenUrl": {
+                  "SeoDrivenCanonicalUrl": "ABC"
+                }
+              }
+            ],
+            "Count": 123,
+            "SeoDrivenUrl": {}
+          }
+        ],
+        "Count": 123,
+        "SeoDrivenUrl": {}
+      }
+    ]
+  }
+}

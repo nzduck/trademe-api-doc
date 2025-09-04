@@ -1,0 +1,69 @@
+{
+  "endpoint": "MotorsSearchSeoLinks",
+  "title": "Motors Search SEO links",
+  "description": "Gets the list of SEO links for the Motors search",
+  "source": "https://developer.trademe.co.nz/api-reference/seo-methods-for-internal-linking/motors-search-seo-links",
+  "url": "https://api.trademe.co.nz/v1/seo/motors/search.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "categoryId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ID for the Category filter"
+      },
+      {
+        "name": "make",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Name of the make to filter by"
+      },
+      {
+        "name": "model",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Name of the model to filter by"
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <SeoLink>",
+    "fields": []
+  },
+  "examples": {
+    "response_json": [
+      {},
+      {}
+    ]
+  }
+}

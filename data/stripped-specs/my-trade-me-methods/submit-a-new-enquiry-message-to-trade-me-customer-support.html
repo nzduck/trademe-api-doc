@@ -1,0 +1,188 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/submit-a-new-enquiry-message-to-trade-me-customer-support -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Submit a new enquiry message to Trade Me customer support</h1>
+<!-- Page content -->
+<p>Submits a new enquiry message to Trade Me customer support.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/CustomerSupportEnquiry.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;CustomerSupportRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Topic </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The topic that the message belongs under.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>AppFeedback</td>
+<td>0</td>
+<td>
+<p>General feedback about the app</p>
+</td>
+</tr>
+<tr>
+<td>AccountInfo</td>
+<td>1</td>
+<td>
+<p>Account info</p>
+</td>
+</tr>
+<tr>
+<td>PaymentsAndRefunds</td>
+<td>2</td>
+<td>
+<p>Payments and refunds</p>
+</td>
+</tr>
+<tr>
+<td>TradeDisputes</td>
+<td>3</td>
+<td>
+<p>Trade disputes</p>
+</td>
+</tr>
+<tr>
+<td>Buying</td>
+<td>4</td>
+<td>
+<p>Buying</p>
+</td>
+</tr>
+<tr>
+<td>Selling</td>
+<td>5</td>
+<td>
+<p>Selling</p>
+</td>
+</tr>
+<tr>
+<td>Policies</td>
+<td>6</td>
+<td>
+<p>Policies</p>
+</td>
+</tr>
+<tr>
+<td>MessageBoard</td>
+<td>7</td>
+<td>
+<p>Message board</p>
+</td>
+</tr>
+<tr>
+<td>FinancialDisputes</td>
+<td>8</td>
+<td>
+<p>Financial disputes</p>
+</td>
+</tr>
+<tr>
+<td>InappropriateBehaviour</td>
+<td>9</td>
+<td>
+<p>Inappropriate behaviour</p>
+</td>
+</tr>
+<tr>
+<td>SuspiciousBehaviour</td>
+<td>10</td>
+<td>
+<p>Suspicious behaviour</p>
+</td>
+</tr>
+<tr>
+<td>CorporateEnquiries</td>
+<td>11</td>
+<td>
+<p>Corporate enquiries</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Message </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The message submitted.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;CustomerSupportResponse&gt; </p>
+<p>Details on whether the enquiry message was submitted successfully.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Topic": 0,
+  "Message": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC"
+}</code></pre>
+</div>

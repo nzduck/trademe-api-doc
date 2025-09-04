@@ -1,0 +1,302 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/search-methods/get-search-suggestions -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get search suggestions</h1>
+<!-- Page content -->
+<p>Returns up to three collections of search suggestions all based on the passed in search term: Autosuggestions - suggestions based on similar search terms popular with the Trade Me community Recent searches - suggestions based on previous searches the logged in member has performed Category suggestions - suggestions based on categories similar to the passed in search term.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Search/Suggestions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> category_id </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The identifier of the category to be used when generating suggestions, use 0 for all categories. Defaults to 0.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> max_auto_suggestions </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of autosuggest suggestions to be returned. Defaults to 12.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> max_category_suggestions </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of category suggestions to be returned. Defaults to 12.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> max_recent_searches </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of recent searches to be returned. Defaults to 12.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> max_total_suggestions </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of suggestions of all types to be returned. Defaults to 12.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> search_string </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The partial keyword that the suggestions will be based on.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;SearchSuggestions&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> RecentSearches </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>List of search terms the logged in member has recently searched for ordered by most recent first.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoSuggestions </th>
+<td style="width: 22%"> Collection of &lt;AutoSuggestion&gt; or null </td>
+<td>
+<p>List of suggested search terms based on terms popular with Trade Me members ordered by their popularity.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> SearchTerm </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The search term Trade Me members have been using.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchTermCategorySuggestions </th>
+<td style="width: 22%"> Collection of &lt;SearchTermCategory&gt; or null </td>
+<td>
+<p>Categories we suggest you search for the search term in. This is only populated if you are searching in all categories.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description for the suggested category.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategorySuggestions </th>
+<td style="width: 22%"> Collection of &lt;CategorySuggestion&gt; or null </td>
+<td>
+<p>List of category suggestions that that are relevant to the given search term.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the suggested category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the suggested category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AncestorsNames </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>A list of names of the suggested categories ancestors. Collection is ordered from root to leaf.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StoreSuggestions </th>
+<td style="width: 22%"> Collection of &lt;StoreSuggestion&gt; or null </td>
+<td>
+<p>List of store suggestions that are relevant to the given search term.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the suggested store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StoreName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the suggested store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StorePath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The path of the suggested store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the suggested store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LogoImageUri </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The profile logo image URL of the suggested store.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "RecentSearches": [
+    "ABC",
+    "ABC"
+  ],
+  "AutoSuggestions": [
+    {
+      "SearchTerm": "ABC",
+      "SearchTermCategorySuggestions": [
+        {
+          "Id": 123,
+          "Description": "ABC"
+        },
+        {
+          "Id": 123,
+          "Description": "ABC"
+        }
+      ]
+    },
+    {
+      "SearchTerm": "ABC",
+      "SearchTermCategorySuggestions": [
+        {
+          "Id": 123,
+          "Description": "ABC"
+        },
+        {
+          "Id": 123,
+          "Description": "ABC"
+        }
+      ]
+    }
+  ],
+  "CategorySuggestions": [
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "AncestorsNames": [
+        "ABC",
+        "ABC"
+      ]
+    },
+    {
+      "Id": 123,
+      "Name": "ABC",
+      "AncestorsNames": [
+        "ABC",
+        "ABC"
+      ]
+    }
+  ],
+  "StoreSuggestions": [
+    {
+      "MemberId": 123,
+      "StoreName": "ABC",
+      "StorePath": "ABC",
+      "Description": "ABC",
+      "LogoImageUri": "ABC"
+    },
+    {
+      "MemberId": 123,
+      "StoreName": "ABC",
+      "StorePath": "ABC",
+      "Description": "ABC",
+      "LogoImageUri": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

@@ -1,0 +1,168 @@
+{
+  "endpoint": "RetrieveMemberSellingPreferences",
+  "title": "Retrieve member selling preferences",
+  "description": "Retrieves the selling preferences of the authenticated member",
+  "source": "https://developer.trademe.co.nz/api-reference/selling-methods/retrieve-member-selling-preferences",
+  "url": "https://api.trademe.co.nz/v1/Selling/Preferences.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SellingPreferences> The selling preferences.",
+    "fields": [
+      {
+        "name": "OnlyAuthenticatedMembersCanBid",
+        "type": "Boolean",
+        "required": false,
+        "description": "Determines if only authenticated members can bid on the listings. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "DonationRecipient",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Indicates the user would like to round up their success fees to the nearest dollar and donate the difference to the selected charity."
+      },
+      {
+        "name": "ShowPickUpLocation",
+        "type": "Boolean",
+        "required": false,
+        "description": "Determines if the listings with pick-up option will be available for Sell Local. When true, the three-tier region/district/suburb location will be displayed for listings with pick-up option. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "PickUpLocation",
+        "type": "<SellingPreferencesPickUpLocation> or null",
+        "required": false,
+        "description": "The pick-up three-tier region/district/suburb location info to be displayed when Sell Local is enabled (ShowPickUpLocation is true). Only applicable to auctions, ignored for classifieds.",
+        "nested_fields": [
+          {
+            "field_name": "SuburbId",
+            "field_type": "Integer",
+            "description": "The pick-up suburb id"
+          },
+          {
+            "field_name": "SuburbName",
+            "field_type": "String or null",
+            "description": "The pick-up suburb name"
+          },
+          {
+            "field_name": "DistrictId",
+            "field_type": "Integer",
+            "description": "The pick-up district id"
+          },
+          {
+            "field_name": "DistrictName",
+            "field_type": "String or null",
+            "description": "The pick-up district name"
+          },
+          {
+            "field_name": "RegionId",
+            "field_type": "Integer",
+            "description": "The pick-up region id"
+          },
+          {
+            "field_name": "RegionName",
+            "field_type": "String or null",
+            "description": "The pick-up region name"
+          }
+        ]
+      },
+      {
+        "name": "DefaultEnabledSellingMethods",
+        "type": "Collection of Enumeration or null",
+        "required": false,
+        "description": "Selling methods that will be enabled by default in the listing flow",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No payment methods provided."
+          },
+          {
+            "name": "BankDeposit",
+            "value": "1",
+            "description": "NZ bank deposit."
+          },
+          {
+            "name": "CreditCard",
+            "value": "2",
+            "description": "Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)"
+          },
+          {
+            "name": "Cash",
+            "value": "4",
+            "description": "Cash."
+          },
+          {
+            "name": "SafeTrader",
+            "value": "8",
+            "description": "Safe Trader (Now obsolete)."
+          },
+          {
+            "name": "Other",
+            "value": "16",
+            "description": "Other (needs to be specified)."
+          },
+          {
+            "name": "Ping",
+            "value": "32",
+            "description": "Ping."
+          },
+          {
+            "name": "Afterpay",
+            "value": "64",
+            "description": "Afterpay."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "OnlyAuthenticatedMembersCanBid": false,
+      "DonationRecipient": 123,
+      "ShowPickUpLocation": false,
+      "PickUpLocation": {
+        "SuburbId": 123,
+        "SuburbName": "ABC",
+        "DistrictId": 123,
+        "DistrictName": "ABC",
+        "RegionId": 123,
+        "RegionName": "ABC"
+      },
+      "DefaultEnabledSellingMethods": [
+        0,
+        0
+      ]
+    }
+  }
+}

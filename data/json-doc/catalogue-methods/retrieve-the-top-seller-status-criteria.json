@@ -1,0 +1,98 @@
+{
+  "endpoint": "RetrieveTheTopSellerStatusCriteria",
+  "title": "Retrieve the Top Seller status criteria",
+  "description": "Returns Top Seller Criteria",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-the-top-seller-status-criteria",
+  "url": "https://api.trademe.co.nz/v1/TopSellerCriteria.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<TopSellerCriteria> Criteria that needs to be met to become a Top Seller",
+    "fields": [
+      {
+        "name": "SalesCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of sales needed to qualify for Top Seller status."
+      },
+      {
+        "name": "SalesValue",
+        "type": "Number",
+        "required": false,
+        "description": "The total value of sales in dollars needed to qualify for Top Seller status."
+      },
+      {
+        "name": "SellThroughRate",
+        "type": "Number",
+        "required": false,
+        "description": "The sell-through rate in percent needed to qualify for Top Seller status."
+      },
+      {
+        "name": "FeedbackRating",
+        "type": "Number",
+        "required": false,
+        "description": "The feedback rating needed to qualify for Top Seller status."
+      },
+      {
+        "name": "InTradeStatus",
+        "type": "Boolean",
+        "required": false,
+        "description": "The in trade status needed to qualify for Top Seller status."
+      },
+      {
+        "name": "PeriodStart",
+        "type": "DateTime",
+        "required": false,
+        "description": "The start date of the qualifying period (in UTC). Only applicable to members that are not top sellers."
+      },
+      {
+        "name": "PeriodEnd",
+        "type": "DateTime",
+        "required": false,
+        "description": "The end date of the qualifying period (in UTC). Only applicable to members that are not top sellers."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "SalesCount": 123,
+      "SalesValue": 123.0,
+      "SellThroughRate": 123.0,
+      "FeedbackRating": 123.0,
+      "InTradeStatus": false,
+      "PeriodStart": "/Date(1514764800)/",
+      "PeriodEnd": "/Date(1514764800)/"
+    }
+  }
+}

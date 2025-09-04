@@ -1,0 +1,97 @@
+{
+  "endpoint": "UpdateMemberSellingPreferences",
+  "title": "Update member selling preferences",
+  "description": "Updates the selling preferences of the authenticated member",
+  "source": "https://developer.trademe.co.nz/api-reference/selling-methods/update-member-selling-preferences",
+  "url": "https://api.trademe.co.nz/v1/Selling/Preferences.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SellingPreferencesRequest>",
+    "fields": [
+      {
+        "name": "OnlyAuthenticatedMembersCanBid",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Determines if only authenticated members can bid on the listings. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "DonationRecipient",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Indicates the user would like to round up their success fees to the nearest dollar and donate the difference to the selected charity."
+      },
+      {
+        "name": "ShowPickUpLocation",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Determines if the listings with pick-up option will be available for Sell Local. When true, the three-tier region/district/suburb location will be displayed for listings with pick-up option. Only applicable to auctions, ignored for classifieds."
+      },
+      {
+        "name": "PickUpSuburbId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The pick-up suburb id. It uses the three-tier region/district/suburb system. Required when Sell Local is enabled (ShowPickUpLocation is true). Only applicable to auctions, ignored for classifieds."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<SellingPreferencesResponse> Indicates whether or not the operation succeeded.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "OnlyAuthenticatedMembersCanBid": false,
+      "DonationRecipient": 123,
+      "ShowPickUpLocation": false,
+      "PickUpSuburbId": 123
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

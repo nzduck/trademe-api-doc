@@ -1,0 +1,104 @@
+{
+  "endpoint": "SearchByAddress",
+  "title": "Search by address",
+  "description": "Search by address",
+  "source": "https://developer.trademe.co.nz/api-reference/address-methods/search-by-address",
+  "url": "https://api.trademe.co.nz/v1/Property/Address.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "search",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The partial address to retrieve suggestions for."
+      },
+      {
+        "name": "type_filter",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The type to filter by(address, street, suburb, city)."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<AddressSearchResponse>",
+    "fields": [
+      {
+        "name": "Results",
+        "type": "Collection of <AddressSearchResult> or null",
+        "required": false,
+        "description": "Results",
+        "nested_fields": [
+          {
+            "field_name": "Latitude",
+            "field_type": "Number",
+            "description": "Latitude"
+          },
+          {
+            "field_name": "Longitude",
+            "field_type": "Number",
+            "description": "Longitude"
+          },
+          {
+            "field_name": "HomesSuburbId",
+            "field_type": "Integer or null",
+            "description": "HomesSuburbId"
+          },
+          {
+            "field_name": "Address",
+            "field_type": "String or null",
+            "description": "Address"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Results": [
+        {
+          "Latitude": 123.0,
+          "Longitude": 123.0,
+          "HomesSuburbId": 123,
+          "Address": "ABC"
+        },
+        {
+          "Latitude": 123.0,
+          "Longitude": 123.0,
+          "HomesSuburbId": 123,
+          "Address": "ABC"
+        }
+      ]
+    }
+  }
+}

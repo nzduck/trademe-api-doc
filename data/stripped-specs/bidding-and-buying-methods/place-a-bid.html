@@ -1,0 +1,254 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/bidding-and-buying-methods/place-a-bid -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Place a bid</h1>
+<!-- Page content -->
+<p>Place a bid (normal or auto-bid) on a listing.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/bidding/bid.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> BiddingAndBuying: Place bids, and complete purchases using Buy Now &amp; Fixed Price Offers. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;BidRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The listing ID of the item the bid is for.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Amount </th>
+<td style="width: 22%"> Number (required) </td>
+<td>
+<p>The bid amount, in New Zealand dollars.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AutoBid </th>
+<td style="width: 22%"> Boolean (required) </td>
+<td>
+<p>Indicates whether the bid is an <a href="https://www.trademe.co.nz/help/76/auto-bids"> auto-bid</a>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingOption </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the preferred shipping option which will be used when this request happens to be the winning bid. This ID can be retrieved from the ShippingId field in the listing detail.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EmailOutBid </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether the bidder should be emailed if they are outbid.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirearmsLicence </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The user's firearms licence number. This is required for firearms purchases.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirearmsLicenceHolder </th>
+<td style="width: 22%"> &lt;FirearmsLicenceHolderDetails&gt; (optional) </td>
+<td>
+<p>The user Enters First, Middle, and Last Names associated to the firearms licence.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> FirstName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>First name of Licence Holder. Required;</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MiddleNames </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Middle Names of Licence Holder. Optional;</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>Last name of Licence Holder. Required;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBuyerOlderThan18 </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>The user agrees they are older than 18. This is required for wine purchases.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReturnListingDetails </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether full listing details should be returned in the Listing field.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReferringSearchQueryId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The search query ID for the search which referred the user to the listing.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;AuctionBidResponse&gt; </p>
+<p>The details of the bid.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTooHigh </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the bid is too high.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTooLow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the bid is too low.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsReserveMet </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the reserve has been met.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinimumNextBid </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The minimum next bid price.</p>
+</td>
+</tr>
+<tr data-enum-values="[{&quot;name&quot;: &quot;Success&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;The bid was a success.&quot;}, {&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;The bid had some other error.&quot;}, {&quot;name&quot;: &quot;ReserveMet&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;The reserve was met.&quot;}, {&quot;name&quot;: &quot;ErrorAccountDisabled&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;The buyer account is disabled.&quot;}, {&quot;name&quot;: &quot;ReserveNotMet&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;The reserve was not met.&quot;}, {&quot;name&quot;: &quot;ErrorBadMemberDetails&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;Not a member.&quot;}, {&quot;name&quot;: &quot;ReserveMetAutoBidGreaterThanReserve&quot;, &quot;value&quot;: &quot;6&quot;, &quot;description&quot;: &quot;The auto bid was higher than the reserve.&quot;}, {&quot;name&quot;: &quot;ErrorHeavyQuarantine&quot;, &quot;value&quot;: &quot;7&quot;, &quot;description&quot;: &quot;Needs proof of goods.&quot;}, {&quot;name&quot;: &quot;ReserveMetAutoBidIncreased&quot;, &quot;value&quot;: &quot;8&quot;, &quot;description&quot;: &quot;The autobid was increased.&quot;}, {&quot;name&quot;: &quot;ReserveNotMetAutoBid&quot;, &quot;value&quot;: &quot;9&quot;, &quot;description&quot;: &quot;An autobid did not met the reserve.&quot;}, {&quot;name&quot;: &quot;ReserveMetExistingAutoBidGreaterThanBid&quot;, &quot;value&quot;: &quot;10&quot;, &quot;description&quot;: &quot;Someone else has a higher bid which mets the reserve.&quot;}, {&quot;name&quot;: &quot;ErrorOwnAuction&quot;, &quot;value&quot;: &quot;11&quot;, &quot;description&quot;: &quot;This is an auction owed by the member.&quot;}, {&quot;name&quot;: &quot;ReserveNotMetExistingAutoBidGreaterThanBid&quot;, &quot;value&quot;: &quot;12&quot;, &quot;description&quot;: &quot;Someone else has a higher bid and the reserve is not met.&quot;}, {&quot;name&quot;: &quot;ErrorBlacklisted&quot;, &quot;value&quot;: &quot;13&quot;, &quot;description&quot;: &quot;The member has been blacklisted by the seller.&quot;}, {&quot;name&quot;: &quot;ReserveMetExistingAutoBidEqualToBid&quot;, &quot;value&quot;: &quot;14&quot;, &quot;description&quot;: &quot;The reserve is met and the auto bids match.&quot;}, {&quot;name&quot;: &quot;ErrorAuthenticatedMembersOnlyAuction&quot;, &quot;value&quot;: &quot;15&quot;, &quot;description&quot;: &quot;The member needs to be authenticated to bid.&quot;}, {&quot;name&quot;: &quot;ReserveNotMetExistingAutoBidEqualToBid&quot;, &quot;value&quot;: &quot;16&quot;, &quot;description&quot;: &quot;The reserve is not met and the auto bids match.&quot;}, {&quot;name&quot;: &quot;ErrorAccountIndebt&quot;, &quot;value&quot;: &quot;17&quot;, &quot;description&quot;: &quot;The accountis in debt and can not bid.&quot;}, {&quot;name&quot;: &quot;ReserveMetAutoBid&quot;, &quot;value&quot;: &quot;18&quot;, &quot;description&quot;: &quot;The reserve is met by an auto bid.&quot;}, {&quot;name&quot;: &quot;ErrorBidTooHigh&quot;, &quot;value&quot;: &quot;19&quot;, &quot;description&quot;: &quot;The bid is too high for our rules.&quot;}, {&quot;name&quot;: &quot;ErrorBidLessThanMinimumNextBid&quot;, &quot;value&quot;: &quot;21&quot;, &quot;description&quot;: &quot;The bid is too low.&quot;}, {&quot;name&quot;: &quot;ErrorBidLessThanFiftyCents&quot;, &quot;value&quot;: &quot;23&quot;, &quot;description&quot;: &quot;Bid needs to be higher than 50c.&quot;}, {&quot;name&quot;: &quot;ErrorBidLessThanStartPrice&quot;, &quot;value&quot;: &quot;25&quot;, &quot;description&quot;: &quot;The bid must be greater than the start price.&quot;}, {&quot;name&quot;: &quot;ErrorTooManyBids&quot;, &quot;value&quot;: &quot;27&quot;, &quot;description&quot;: &quot;There have been too many bids from the member in the last 24 hours.&quot;}, {&quot;name&quot;: &quot;ErrorHasTopAutoBid&quot;, &quot;value&quot;: &quot;29&quot;, &quot;description&quot;: &quot;The member already has the top autobid.&quot;}, {&quot;name&quot;: &quot;ErrorAuctionClosed&quot;, &quot;value&quot;: &quot;30&quot;, &quot;description&quot;: &quot;The auction is closed.&quot;}, {&quot;name&quot;: &quot;ErrorDatabase&quot;, &quot;value&quot;: &quot;31&quot;, &quot;description&quot;: &quot;There was an error in the database.&quot;}, {&quot;name&quot;: &quot;ErrorListingAcceptsBuyNowOnly&quot;, &quot;value&quot;: &quot;34&quot;, &quot;description&quot;: &quot;Attempting to bid on a listing that can't be bidded on.&quot;}, {&quot;name&quot;: &quot;ErrorQuantityInvalid&quot;, &quot;value&quot;: &quot;35&quot;, &quot;description&quot;: &quot;Quantity is either less than 1 or greater than the maximum.&quot;}, {&quot;name&quot;: &quot;ErrorListingIsAClassified&quot;, &quot;value&quot;: &quot;36&quot;, &quot;description&quot;: &quot;Attempting to bid on a classified listing.&quot;}, {&quot;name&quot;: &quot;ErrorInvalidShipping&quot;, &quot;value&quot;: &quot;37&quot;, &quot;description&quot;: &quot;Invalid shipping ID.&quot;}, {&quot;name&quot;: &quot;ErrorInvalidFirearmsLicense&quot;, &quot;value&quot;: &quot;38&quot;, &quot;description&quot;: &quot;Invalid or missing firearms license number.&quot;}, {&quot;name&quot;: &quot;ErrorAgeConfirmationRequired&quot;, &quot;value&quot;: &quot;39&quot;, &quot;description&quot;: &quot;Age confirmation is required for this listing.&quot;}, {&quot;name&quot;: &quot;ErrorListingAcceptsPayNowOnly&quot;, &quot;value&quot;: &quot;40&quot;, &quot;description&quot;: &quot;Attempting to buy a listing that can only be paid for by pay now&quot;}, {&quot;name&quot;: &quot;ErrorBuyProcessBan&quot;, &quot;value&quot;: &quot;41&quot;, &quot;description&quot;: &quot;Attempting to bid or buy now when member has been purchase banned.&quot;}, {&quot;name&quot;: &quot;AutoBidDecreased&quot;, &quot;value&quot;: &quot;42&quot;, &quot;description&quot;: &quot;The autobid was decreased.&quot;}]">
+<th style="width: 22%"> StatusCode </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The state of the bid.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Listing </th>
+<td style="width: 22%"> &lt;ListedItemDetail&gt; or null </td>
+<td>
+<p>The state of the listing, after the bid has been successfully placed. This field is only present if the ReturnListingDetails parameter is <b>true</b> and the bid operation was successful. This field will also be missing if there was an error retrieving the listing details. For more information on this field, see the documentation for the listing details API.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type is defined elsewhere)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> CurrentAutoBid </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>If you are the bidder then the highest AutoBid value is returned</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "Amount": 123.0,
+  "AutoBid": false,
+  "ShippingOption": 123,
+  "EmailOutBid": false,
+  "FirearmsLicence": "ABC",
+  "FirearmsLicenceHolder": {
+    "FirstName": "ABC",
+    "MiddleNames": "ABC",
+    "LastName": "ABC"
+  },
+  "IsBuyerOlderThan18": false,
+  "ReturnListingDetails": false,
+  "ReferringSearchQueryId": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "IsTooHigh": false,
+  "IsTooLow": false,
+  "IsReserveMet": false,
+  "MinimumNextBid": 123.0,
+  "StatusCode": 0,
+  "Listing": { ... },
+  "CurrentAutoBid": 123.0
+}</code></pre>
+</div>

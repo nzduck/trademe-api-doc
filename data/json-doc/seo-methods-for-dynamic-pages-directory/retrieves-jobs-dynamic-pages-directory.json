@@ -1,0 +1,93 @@
+{
+  "endpoint": "RetrievesJobsDynamicPagesDirectory",
+  "title": "Retrieves jobs dynamic pages directory",
+  "description": "Retrieves jobs dynamic pages directory.",
+  "source": "https://developer.trademe.co.nz/api-reference/seo-methods-for-dynamic-pages-directory/retrieves-jobs-dynamic-pages-directory",
+  "url": "https://api.trademe.co.nz/v1/seo/jobs/dynamicpagesdirectory.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page of results to return, defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results to return, defaults to 5000."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<DynamicPagesDirectoryInfo>",
+    "fields": [
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "Current page"
+      },
+      {
+        "name": "Rows",
+        "type": "Integer",
+        "required": false,
+        "description": "Number of rows"
+      },
+      {
+        "name": "Total",
+        "type": "Integer",
+        "required": false,
+        "description": "Total records of dynamic pages categories"
+      },
+      {
+        "name": "DynamicPagesCategories",
+        "type": "Collection of <DynamicPagesCategoryInfo> or null",
+        "required": false,
+        "description": "List of dynamic page categories"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Page": 123,
+      "Rows": 123,
+      "Total": 123,
+      "DynamicPagesCategories": [
+        {},
+        {}
+      ]
+    }
+  }
+}

@@ -1,0 +1,244 @@
+{
+  "endpoint": "RetrieveYourPayNowStatement",
+  "title": "Retrieve your Pay Now statement",
+  "description": "Returns Pay Now ledger entries for the authenticated user. If the authenticated user isn't Pay Now enabled, returns an error message.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-pay-now-statement",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/paynowledger/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "A filter on the results. AllReturns all Pay Now ledger recordsSalesReturn only sale paymentsPaymentsToMyBankAccountReturn only ledger records with payments to the member's bank account.RefundsReturns only Pay Now refunds."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "days",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of days worth of data to return. Defaults to 60. Not applicable when doing a settlement breakdown."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PayNowLedger> The PayNow ledger for the authenticated user.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <PayNowLedgerItem> or null",
+        "required": false,
+        "description": "A list of the results in the current page.",
+        "nested_fields": [
+          {
+            "field_name": "Type",
+            "field_type": "Enumeration",
+            "description": "The transaction type.",
+            "enum_values": [
+              {
+                "name": "Sale",
+                "value": "0",
+                "description": "A sale."
+              },
+              {
+                "name": "PaymentToMemberBankAccount",
+                "value": "1",
+                "description": "A payment to the member's bank account."
+              },
+              {
+                "name": "FailedPaymentToMemberBankAccount",
+                "value": "2",
+                "description": "A failed payment to the member's bank account."
+              },
+              {
+                "name": "Refund",
+                "value": "3",
+                "description": "A refund."
+              },
+              {
+                "name": "Transfer",
+                "value": "4",
+                "description": "Transfer from Trade Me account."
+              },
+              {
+                "name": "Chargeback",
+                "value": "5",
+                "description": "A bank chargeback."
+              },
+              {
+                "name": "Other",
+                "value": "6",
+                "description": "An unknown transaction."
+              }
+            ]
+          },
+          {
+            "field_name": "Date",
+            "field_type": "DateTime",
+            "description": "The transaction date and time. May be blank for"
+          },
+          {
+            "field_name": "Description",
+            "field_type": "String or null",
+            "description": "A description of the transaction."
+          },
+          {
+            "field_name": "Credit",
+            "field_type": "Number",
+            "description": "The amount the member's Pay Now account was credited, in NZD, after fees have been accounted for. For example, the sale of an item generates a credit (but that same transaction will be a debit when it is paid into the member's account). This value is never negative."
+          },
+          {
+            "field_name": "Debit",
+            "field_type": "Number",
+            "description": "The amount the member's Pay Now account was debited, in NZD. For example, a refund is a debit (but that same transaction will be a credit when it is in the settlement breakdown). This value is never negative."
+          },
+          {
+            "field_name": "Balance",
+            "field_type": "Number or null",
+            "description": "The amount owed (unpaid) by Trade Me to the member, after the transaction, in NZD. Omitted for settlement transactions."
+          },
+          {
+            "field_name": "ListingId",
+            "field_type": "Integer",
+            "description": "The ID of the associated listing, or 0 if there is no associated listing."
+          },
+          {
+            "field_name": "OfferId",
+            "field_type": "Integer",
+            "description": "The ID of the associated fixed price offer. This value is omitted if the payment is not associated with a fixed price offer."
+          },
+          {
+            "field_name": "PurchaseId",
+            "field_type": "Integer",
+            "description": "The purchase-specific ID (or auction sold id)."
+          },
+          {
+            "field_name": "ListingTitle",
+            "field_type": "String or null",
+            "description": "The title of the associated listing. This value is omitted if there is no associated listing."
+          },
+          {
+            "field_name": "Fee",
+            "field_type": "Number",
+            "description": "The fee associated with the transaction. This value is omitted if there is no associated fee. This value is never negative."
+          },
+          {
+            "field_name": "SettlementId",
+            "field_type": "Integer",
+            "description": "An ID that can be used to get the breakdown of a settlement. Only populated if the payment type is PaymentToMemberBankAccount (or FailedPaymentToMemberBankAccount)."
+          },
+          {
+            "field_name": "LedgerId",
+            "field_type": "Integer",
+            "description": "The unique identifier for this ledger item."
+          },
+          {
+            "field_name": "TotalNzGst",
+            "field_type": "Number or null",
+            "description": "The total NZ GST collected on this sale by Trade Me to be forwarded to IRD"
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "Type": 0,
+          "Date": "/Date(1514764800)/",
+          "Description": "ABC",
+          "Credit": 123.0,
+          "Debit": 123.0,
+          "Balance": 123.0,
+          "ListingId": 123,
+          "OfferId": 123,
+          "PurchaseId": 123,
+          "ListingTitle": "ABC",
+          "Fee": 123.0,
+          "SettlementId": 123,
+          "LedgerId": 123,
+          "TotalNzGst": 123.0
+        },
+        {
+          "Type": 0,
+          "Date": "/Date(1514764800)/",
+          "Description": "ABC",
+          "Credit": 123.0,
+          "Debit": 123.0,
+          "Balance": 123.0,
+          "ListingId": 123,
+          "OfferId": 123,
+          "PurchaseId": 123,
+          "ListingTitle": "ABC",
+          "Fee": 123.0,
+          "SettlementId": 123,
+          "LedgerId": 123,
+          "TotalNzGst": 123.0
+        }
+      ]
+    }
+  }
+}

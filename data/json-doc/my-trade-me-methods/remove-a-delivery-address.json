@@ -1,0 +1,69 @@
+{
+  "endpoint": "RemoveADeliveryAddress",
+  "title": "Remove a delivery address",
+  "description": "Removes a delivery address from the authenticated user's profile.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-delivery-address",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/DeliveryAddresses/{deliveryId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "deliveryId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the delivery address ID to delete."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<DeliveryAddressResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

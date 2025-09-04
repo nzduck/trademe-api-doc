@@ -1,0 +1,125 @@
+{
+  "endpoint": "CreateOrUpdateANote",
+  "title": "Create or update a note",
+  "description": "Creates or updates the note on a listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/create-or-update-a-note",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/Notes.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SaveNoteRequest>",
+    "fields": [
+      {
+        "name": "Text",
+        "type": "String (required)",
+        "required": true,
+        "description": "The text to display in the note. Cannot be empty."
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to associate the note with."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the note. Can be omitted when creating a note."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the fixed price offer to associate the note with. Can be omitted if the note is not associated with a fixed price offer."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the Purchase to associate the note with (such as a won or sold item). Can be omitted if the note is not associated with a Purchase."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<NoteResponse> Whether the operation was successful and the note details.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the note."
+      },
+      {
+        "name": "Text",
+        "type": "String or null",
+        "required": false,
+        "description": "The note text."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the fixed price offer, or 0 if the note is not associated with a fixed price offer."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Text": "ABC",
+      "ListingId": 123,
+      "NoteId": 123,
+      "OfferId": 123,
+      "PurchaseId": 123
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "NoteId": 123,
+      "Text": "ABC",
+      "OfferId": 123
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "endpoint": "AddYourReviewToAListing",
+  "title": "Add your review to a listing",
+  "description": "Adds your review to a listing. Currently only applicable to services listings. You must be authenticated to post a review. You cannot post a review on your own listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/add-your-review-to-a-listing",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/addreview.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to add a review to."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<AddReviewRequest>",
+    "fields": [
+      {
+        "name": "ReviewText",
+        "type": "String (required)",
+        "required": true,
+        "description": "The review text (maximum of 500 characters)."
+      },
+      {
+        "name": "Positive",
+        "type": "Boolean (required)",
+        "required": true,
+        "description": "Indicates whether the review is a positive review (i.e. thumbs up)."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ReviewResponse> Information on whether the operation was successful.",
+    "fields": []
+  },
+  "examples": {
+    "request_json": {
+      "ReviewText": "ABC",
+      "Positive": false
+    },
+    "response_json": {}
+  }
+}

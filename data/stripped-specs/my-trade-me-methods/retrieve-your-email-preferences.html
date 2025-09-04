@@ -1,0 +1,181 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-email-preferences -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your email preferences</h1>
+<!-- Page content -->
+<p>Retrieves the authenticated user's email preferences.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/emailoptions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;EmailOptions&gt; </p>
+<p>The authenticated user's email preferences.</p>
+<table class="dense" id="returns">
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails for watchlist items."}, {"name": "OneHourBefore", "value": "1", "description": "One hour before the listing closes."}, {"name": "TwelveHoursBefore", "value": "2", "description": "Twelve hours before the listing closes."}, {"name": "TwentyFourHoursBefore", "value": "4", "description": "Twenty hours before the listing closes."}]'>
+<th style="width: 22%"> WatchlistReminder </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get watchlist emails.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No newsletters."}, {"name": "Monthly", "value": "1", "description": "Monthly general newsletter."}, {"name": "Motors", "value": "2", "description": "Motors newsletter."}, {"name": "Property", "value": "4", "description": "Property newsletter."}, {"name": "Jobs", "value": "8", "description": "Jobs newsletter."}, {"name": "DailyDeals", "value": "16", "description": "Daily Deals newsletter. DEPRECATED."}]'>
+<th style="width: 22%"> Newsletter </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of which newsletters they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "Html", "value": "1", "description": "Html, with pictures etc."}, {"name": "Plain", "value": "2", "description": "Just text."}]'>
+<th style="width: 22%"> EmailFormat </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The format that emails are sent in.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No emails wanted."}, {"name": "FpoDeclined", "value": "1", "description": "Fixed price offer declined by trader."}, {"name": "FpoExpired", "value": "2", "description": "Fixed price offer expired."}, {"name": "NewFeedback", "value": "4", "description": "New feedback posted about member."}, {"name": "DailyListingSummary", "value": "8", "description": "Summary of listing listed."}, {"name": "ListingUnsold", "value": "16", "description": "Listing closed below reserve."}, {"name": "ListingSold", "value": "32", "description": "Listing sold."}, {"name": "Outbid", "value": "64", "description": "Member outbid."}, {"name": "BuyNowAdded", "value": "128", "description": "BuyNow added to item on watchlist."}, {"name": "ClassifiedExpired", "value": "256", "description": "Classified listed by member has expired."}, {"name": "ServiceReviewed", "value": "512", "description": "Service reviewed by another member."}]'>
+<th style="width: 22%"> EmailMemberWhen </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference indicating which events should trigger an email.</p>
+</td>
+</tr>
+
+<tr data-enum-values="[{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Don't send notifications.&quot;}, {&quot;name&quot;: &quot;Bid&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;When a bid is placed.&quot;}, {&quot;name&quot;: &quot;Watchlist&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;If an item added to watchlist.&quot;}, {&quot;name&quot;: &quot;BidAndWatchlist&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;If an item has a bid or added to watchlist.&quot;}]">
+<th style="width: 22%"> FixedPriceOffer </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get fixed price offer notifications.</p>
+</td>
+</tr>
+
+<tr data-enum-values="[{&quot;name&quot;: &quot;None&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;Don't send notifications.&quot;}, {&quot;name&quot;: &quot;Bid&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;When a bid is placed.&quot;}, {&quot;name&quot;: &quot;Watchlist&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;If an item added to watchlist.&quot;}, {&quot;name&quot;: &quot;BidAndWatchlist&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;If an item has a bid or added to watchlist.&quot;}]">
+<th style="width: 22%"> Relist </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference of when they should get relist notifications.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Agent reports are not sent."}, {"name": "Current", "value": "1", "description": "Send agent reports for all current listings."}, {"name": "SevenDays", "value": "2", "description": "Send agent reports for listings closed in the last seven days."}, {"name": "FortyfiveDays", "value": "4", "description": "Send agent reports for listings closed in the last 45 days."}]'>
+<th style="width: 22%"> Agent </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The user's preference for when agent emails should be sent.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Not given."}, {"name": "Csv", "value": "1", "description": "Agent reports should use the CSV format."}, {"name": "Pdf", "value": "2", "description": "Agent reports should use the PDF format."}]'>
+<th style="width: 22%"> AgentReportFormat </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The format that agent emails are in.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No promotional emails."}, {"name": "TradeMeProperty", "value": "2", "description": "Promos, contest, etc. from Trade Me Property. DEPRECATED."}, {"name": "TradeMeJobs", "value": "4", "description": "Promos, contest, etc. from Trade Me Jobs. DEPRECATED."}, {"name": "TradeMeMotors", "value": "8", "description": "Promos, contest, etc. from Trade Me Motors. DEPRECATED."}, {"name": "FindSomeone", "value": "16", "description": "Promos, contests, etc. from Findsomeone."}, {"name": "Travelbug", "value": "32", "description": "Promos, contests, etc. from TravelBug."}, {"name": "HolidayHouses", "value": "64", "description": "Promos, contests, etc. from Holiday Houses."}, {"name": "LifeDirect", "value": "128", "description": "Promos, contests, etc. from LifeDirect."}, {"name": "Harmoney", "value": "256", "description": "Promos, contests, etc. from Harmoney."}, {"name": "TradeMeInsurance", "value": "512", "description": "Promos, contests, etc. from Trade Me Insurance."}, {"name": "Sharesies", "value": "1024", "description": "Promos, contests, etc. from Sharesies."}]'>
+<th style="width: 22%"> Promotional </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which occasional promotional emails they want to receive about the Trade Me family of sites.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No promotional emails."}, {"name": "Tips", "value": "1", "description": "Trade Me Tips email. DEPRECATED."}, {"name": "Promos", "value": "2", "description": "Trade Me Promos email. DEPRECATED."}, {"name": "SellerSpecials", "value": "4", "description": "Trade Me Seller Specials email. DEPRECATED."}, {"name": "Specials", "value": "8", "description": "Trade Me Specials email. DEPRECATED."}]'>
+<th style="width: 22%"> Marketing </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which occasional marketing emails they want to receive regarding specials, promotions, and tips on site usage.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}, {"name": "Services", "value": "32", "description": "Services from TradeMe."}]'>
+<th style="width: 22%"> TradeMeUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Property emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}, {"name": "PropertyAgentUpdates", "value": "32", "description": "Receive agent updates from Properties you are watchlisting."}]'>
+<th style="width: 22%"> TradeMePropertyUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Property update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Jobs emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}]'>
+<th style="width: 22%"> TradeMeJobsUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Jobs update emails they want to receive.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "No Trade Me Motors emails."}, {"name": "CompsAndPromos", "value": "1", "description": "Competitions &amp; promotions."}, {"name": "DealsAndOffers", "value": "2", "description": "Deals &amp; offers."}, {"name": "PersonalisedRecommendations", "value": "4", "description": "Personalised recommendations."}, {"name": "Surveys", "value": "8", "description": "Surveys."}, {"name": "TipsAndUpdates", "value": "16", "description": "Tips &amp; updates."}]'>
+<th style="width: 22%"> TradeMeMotorsUpdates </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>The user's preference of which Trade Me Motors updates emails they want to receive.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "WatchlistReminder": 0,
+  "Newsletter": 0,
+  "EmailFormat": 1,
+  "EmailMemberWhen": 0,
+  "FixedPriceOffer": 0,
+  "Relist": 0,
+  "Agent": 0,
+  "AgentReportFormat": 0,
+  "Promotional": 0,
+  "Marketing": 0,
+  "TradeMeUpdates": 0,
+  "TradeMePropertyUpdates": 0,
+  "TradeMeJobsUpdates": 0,
+  "TradeMeMotorsUpdates": 0
+}</code></pre>
+</div>

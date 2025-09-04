@@ -1,0 +1,272 @@
+{
+  "endpoint": "GetSearchSuggestions",
+  "title": "Get search suggestions",
+  "description": "Returns up to three collections of search suggestions all based on the passed in search term: Autosuggestions - suggestions based on similar search terms popular with the Trade Me community Recent searches - suggestions based on previous searches the logged in member has performed Category suggestions - suggestions based on categories similar to the passed in search term.",
+  "source": "https://developer.trademe.co.nz/api-reference/search-methods/get-search-suggestions",
+  "url": "https://api.trademe.co.nz/v1/Search/Suggestions.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "category_id",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The identifier of the category to be used when generating suggestions, use 0 for all categories. Defaults to 0."
+      },
+      {
+        "name": "max_auto_suggestions",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum number of autosuggest suggestions to be returned. Defaults to 12."
+      },
+      {
+        "name": "max_category_suggestions",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum number of category suggestions to be returned. Defaults to 12."
+      },
+      {
+        "name": "max_recent_searches",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum number of recent searches to be returned. Defaults to 12."
+      },
+      {
+        "name": "max_total_suggestions",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The maximum number of suggestions of all types to be returned. Defaults to 12."
+      },
+      {
+        "name": "search_string",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The partial keyword that the suggestions will be based on."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SearchSuggestions>",
+    "fields": [
+      {
+        "name": "RecentSearches",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "List of search terms the logged in member has recently searched for ordered by most recent first."
+      },
+      {
+        "name": "AutoSuggestions",
+        "type": "Collection of <AutoSuggestion> or null",
+        "required": false,
+        "description": "List of suggested search terms based on terms popular with Trade Me members ordered by their popularity."
+      },
+      {
+        "name": "SearchTerm",
+        "type": "SearchTerm \n String or null \n\nThe search term Trade Me members have been using.\n\n\n\n SearchTermCategorySuggestions \n Collection of <SearchTermCategory> or null \n\nCategories we suggest you search for the search term in. This is only populated if you are searching in all categories.\n\n\n\n\n\n\n Id \n Integer \n\nThe ID of the category.\n\n\n\n Description \n String or null \n\nThe description for the suggested category.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "SearchTerm",
+        "type": "String or null",
+        "required": false,
+        "description": "The search term Trade Me members have been using."
+      },
+      {
+        "name": "SearchTermCategorySuggestions",
+        "type": "Collection of <SearchTermCategory> or null",
+        "required": false,
+        "description": "Categories we suggest you search for the search term in. This is only populated if you are searching in all categories."
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nThe ID of the category.\n\n\n\n Description \n String or null \n\nThe description for the suggested category.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the category."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description for the suggested category."
+      },
+      {
+        "name": "CategorySuggestions",
+        "type": "Collection of <CategorySuggestion> or null",
+        "required": false,
+        "description": "List of category suggestions that that are relevant to the given search term."
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nThe ID of the suggested category.\n\n\n\n Name \n String or null \n\nThe name of the suggested category.\n\n\n\n AncestorsNames \n Collection of String or null \n\nA list of names of the suggested categories ancestors. Collection is ordered from root to leaf.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the suggested category."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the suggested category."
+      },
+      {
+        "name": "AncestorsNames",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "A list of names of the suggested categories ancestors. Collection is ordered from root to leaf."
+      },
+      {
+        "name": "StoreSuggestions",
+        "type": "Collection of <StoreSuggestion> or null",
+        "required": false,
+        "description": "List of store suggestions that are relevant to the given search term."
+      },
+      {
+        "name": "MemberId",
+        "type": "MemberId \n Integer \n\nThe ID of the suggested store.\n\n\n\n StoreName \n String or null \n\nThe name of the suggested store.\n\n\n\n StorePath \n String or null \n\nThe path of the suggested store.\n\n\n\n Description \n String or null \n\nThe description of the suggested store.\n\n\n\n LogoImageUri \n String or null \n\nThe profile logo image URL of the suggested store.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the suggested store."
+      },
+      {
+        "name": "StoreName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the suggested store."
+      },
+      {
+        "name": "StorePath",
+        "type": "String or null",
+        "required": false,
+        "description": "The path of the suggested store."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the suggested store."
+      },
+      {
+        "name": "LogoImageUri",
+        "type": "String or null",
+        "required": false,
+        "description": "The profile logo image URL of the suggested store."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "RecentSearches": [
+        "ABC",
+        "ABC"
+      ],
+      "AutoSuggestions": [
+        {
+          "SearchTerm": "ABC",
+          "SearchTermCategorySuggestions": [
+            {
+              "Id": 123,
+              "Description": "ABC"
+            },
+            {
+              "Id": 123,
+              "Description": "ABC"
+            }
+          ]
+        },
+        {
+          "SearchTerm": "ABC",
+          "SearchTermCategorySuggestions": [
+            {
+              "Id": 123,
+              "Description": "ABC"
+            },
+            {
+              "Id": 123,
+              "Description": "ABC"
+            }
+          ]
+        }
+      ],
+      "CategorySuggestions": [
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "AncestorsNames": [
+            "ABC",
+            "ABC"
+          ]
+        },
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "AncestorsNames": [
+            "ABC",
+            "ABC"
+          ]
+        }
+      ],
+      "StoreSuggestions": [
+        {
+          "MemberId": 123,
+          "StoreName": "ABC",
+          "StorePath": "ABC",
+          "Description": "ABC",
+          "LogoImageUri": "ABC"
+        },
+        {
+          "MemberId": 123,
+          "StoreName": "ABC",
+          "StorePath": "ABC",
+          "Description": "ABC",
+          "LogoImageUri": "ABC"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,333 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve general categories - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a> &gt; </li>
+<li class="current">Retrieve general categories</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve general categories</h1>
+<!-- Page content -->
+<p>Retrieves all or part of the Trade Me category tree.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/categories/{number}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> number </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The category number of the root of the returned tree. If this parameter is empty, it returns a fictional category named "Root" with all the top categories included as subcategories.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> depth </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The depth of the category tree to return. 0 = a single category. 1 = the specified category plus any subcategories. The default is to return all subcategories.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> region </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the region used to filter listing counts. Only applicable if with_counts is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> with_counts </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Indicates whether to include the number of listings in each category. Defaults to <b>false</b>.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;Category&gt; </p>
+<p> <p>A category tree.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Number </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A unique identifier for the category e.g. "0004-0369-6076-". We plan to change this to a numeric identifier (e.g. "6076") so you should ensure you can cope with both formats.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Path </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The full URL path of this category e.g. "/Home-living/Beds-bedroom-furniture/Bedside-tables".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subcategories </th>
+<td style="width: 22%"> Collection of &lt;Category&gt; or null </td>
+<td>
+<p>The list of subcategories belonging to this category.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Count </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of items for sale in this category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRestricted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the category is restricted to adults only (i.e. the category is R18).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasLegalNotice </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the category has legal requirements. You should ask the user to accept the legal notice before listing in this category. There is an API to get the text of the legal notice.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasClassifieds </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether classifieds are allowed in this category.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotSpecified", "value": "0", "description": "None specified."}, {"name": "All", "value": "0", "description": "All"}, {"name": "Marketplace", "value": "1", "description": "Marketplace"}, {"name": "Property", "value": "2", "description": "Property"}, {"name": "Motors", "value": "3", "description": "Motors"}, {"name": "Jobs", "value": "4", "description": "Jobs"}, {"name": "Services", "value": "5", "description": "Services"}]'>
+<th style="width: 22%"> AreaOfBusiness </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Area of business this category is related to</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> CanHaveSecondCategory </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this category can be paired with a second category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanBeSecondCategory </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this category can be selected as a second category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsLeaf </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the category is a leaf category (i.e. has no children).</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><a href="https://api.trademe.co.nz/v1/Categories.xml">https://api.trademe.co.nz/v1/Categories.xml</a> - Retrieves all categories.<br/><a href="https://api.trademe.co.nz/v1/Categories/0001-.xml">https://api.trademe.co.nz/v1/Categories/0001-.xml</a> - Returns all Trade Me Motors subcategories (“0001” is the top level Trade Me Motors category).<br/><a href="https://api.trademe.co.nz/v1/Categories/0001-0026-1255-.xml">https://api.trademe.co.nz/v1/Categories/0001-0026-1255-.xml</a> - Returns all Motorbike subcategories (0001-0026-1255- is the Motorbikes category).</p>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;Category xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;Name&gt;ABC&lt;/Name&gt;
+  &lt;Number&gt;ABC&lt;/Number&gt;
+  &lt;Path&gt;ABC&lt;/Path&gt;
+  &lt;Subcategories&gt;
+    &lt;Category /&gt;
+    &lt;Category /&gt;
+  &lt;/Subcategories&gt;
+  &lt;Count&gt;123&lt;/Count&gt;
+  &lt;IsRestricted&gt;false&lt;/IsRestricted&gt;
+  &lt;HasLegalNotice&gt;false&lt;/HasLegalNotice&gt;
+  &lt;HasClassifieds&gt;false&lt;/HasClassifieds&gt;
+  &lt;AreaOfBusiness&gt;NotSpecified&lt;/AreaOfBusiness&gt;
+  &lt;CanHaveSecondCategory&gt;false&lt;/CanHaveSecondCategory&gt;
+  &lt;CanBeSecondCategory&gt;false&lt;/CanBeSecondCategory&gt;
+  &lt;IsLeaf&gt;false&lt;/IsLeaf&gt;
+&lt;/Category&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "Name": "ABC",
+  "Number": "ABC",
+  "Path": "ABC",
+  "Subcategories": [
+    {
+    },
+    {
+    }
+  ],
+  "Count": 123,
+  "IsRestricted": false,
+  "HasLegalNotice": false,
+  "HasClassifieds": false,
+  "AreaOfBusiness": 0,
+  "CanHaveSecondCategory": false,
+  "CanBeSecondCategory": false,
+  "IsLeaf": false
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,1519 @@
+{
+  "endpoint": "RetrievesComplementaryListings",
+  "title": "Retrieves complementary listings",
+  "description": "Retrieves complementary items for a given listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/retrieves-complementary-listings",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/Complementary.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to retrieve complementary results of."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "rsqid",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The referring search query ID; used to link requests to searches for analytics purposes. Optional."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<ComplementaryListings> Listings that are complementary to the listing with the given listing ID.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <Listing> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "ListingId",
+        "type": "ListingId \n Integer \n\nThe ID of the listing.\n\n\n\n Title \n String or null \n\nThe listing title.\n\n\n\n Category \n String or null \n\nThe listing category.\n\n\n\n StartPrice \n Number \n\nThe start price.\n\n\n\n BuyNowPrice \n Number \n\nThe Buy Now price.\n\n\n\n StartDate \n DateTime \n\nThe date the listing was created.\n\n\n\n EndDate \n DateTime \n\nThe date the listing will end.\n\n\n\n IsFeatured \n Boolean \n\nIs this a featured listing?\n\n\n\n HasGallery \n Boolean \n\nIs this a gallery listing?\n\n\n\n IsBold \n Boolean \n\nIs this a bold listing?\n\n\n\n IsHighlighted \n Boolean \n\nIs this a highlighted listing?\n\n\n\n HasHomePageFeature \n Boolean \n\nIs this a homepage feature listing?\n\n\n\n MaxBidAmount \n Number \n\nThe current leading bid amount.\n\n\n\n AsAt \n DateTime \n\nThe date and time the response was generated on the server.\n\n\n\n CategoryPath \n String or null \n\nThe category path.\n\n\n\n PictureHref \n String or null \n\nThe URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.\n\n\n\n HasPayNow \n Boolean \n\nIndicates whether the item has Pay Now.\n\n\n\n IsNew \n Boolean \n\nIndicates whether the item is marked as new.\n\n\n\n RegionId \n Integer \n\nThe ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.\n\n                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.\n                            \n\n\n\n Region \n String or null \n\nThe name of the region where this item is located.\n\n\n\n SuburbId \n Integer \n\nThe ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system.\n\n\n\n Suburb \n String or null \n\nThe name of the suburb where this item is located.\n\n\n\n PickupLocality \n <PickupLocality> or null \n\nThe pick-up location details if pick-up is allowed and has been specified.\n\n\n\n\n\n\n Suburb \n String or null \n\nThe pickup suburb.\n\n\n\n District \n String or null \n\nThe pickup district.\n\n\n\n Region \n String or null \n\nThe pickup region.\n\n\n\n\n\n\n BidCount \n Integer \n\nThe number of bids on the item.\n\n\n\n IsReserveMet \n Boolean \n\nIndicates whether the item's reserve has been met.\n\n\n\n HasReserve \n Boolean \n\nIndicates whether the item has a reserve.\n\n\n\n HasBuyNow \n Boolean \n\nIndicates whether the item has Buy Now.\n\n\n\n NoteDate \n DateTime \n\nThe date of the note on an item.\n\n\n\n ReserveState \n Enumeration \n\nThe flag to display on an item.\n\n\n\n Attributes \n Collection of <Attribute> or null \n\nThe attributes for the item that are intended to be displayed on the UI.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n\n\n\n IsClassified \n Boolean \n\nIndicates whether the item is a classified.\n\n\n\n OpenHomes \n Collection of <OpenHome> or null \n\nA collection of open home times for this listing. Only applies to open home listings.\n\n\n\n\n\n\n Start \n DateTime \n\nThe date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.\n\n\n\n End \n DateTime \n\nThe date and time the open home is no longer open for viewing. Must be the same day as Start.\n\n\n\n\n\n\n Subtitle \n String or null \n\nThe subtitle, if present.\n\n\n\n IsBuyNowOnly \n Boolean \n\nIndicates whether or not this is a Buy Now Only listing.\n\n\n\n RemainingGalleryPlusRelists \n Integer or null \n\nThe number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).\n\n\n\n IsOnWatchList \n Boolean \n\nIndicates whether the item is on the authenticated member's watchlist.\n\n\n\n GeographicLocation \n <GeographicLocation> or null \n\nThe geographic location (latitude and longitude) of a property.\n\n\n\n\n\n\n Latitude \n Number \n\nThe latitude of the location, in degrees (WGS84).\n\n\n\n Longitude \n Number \n\nThe longitude of the location, in degrees (WGS84).\n\n\n\n Northing \n Integer \n\nThe northing of the location, in metres (NZTM).\n\n\n\n Easting \n Integer \n\nThe easting of the location, in metres (NZTM).\n\n\n\n Accuracy \n Enumeration \n\nThe accuracy of the geographic location (address, street or suburb).\n\n\n\n\n\n\n PriceDisplay \n String or null \n\nThe price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\".\n\n\n\n TotalReviewCount \n Integer \n\nThe total number of user-submitted reviews. Currently only applies to services listings.\n\n\n\n PositiveReviewCount \n Integer \n\nThe number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings.\n\n\n\n HasFreeShipping \n Boolean \n\nIndicates if the listing offers free shipping as an option\n\n\n\n IsClearance \n Boolean \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number or null \n\nThe usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.\n\n\n\n PercentageOff \n Integer or null \n\nThe percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.\n\n\n\n Branding \n <Branding> or null \n\nA list of branding images associated with this listing.\n\n\n\n\n\n\n LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n BackgroundColor \n String or null \n\nBanner outline/stroke colour, tick the checkbox before saving to apply the new colour\n\n\n\n TextColor \n String or null \n\nBanner background colour, tick the checkbox before saving to apply the new colour\n\n\n\n StrokeColor \n String or null \n\nBanner text colour, tick the checkbox before saving to apply the new colour\n\n\n\n DisableBanner \n Boolean \n\nDisable the agent branding regardless of Super Feature status\n\n\n\n OfficeLocation \n String or null \n\nThe name of the office location\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo\n\n\n\n\n\n\n IsSuperFeatured \n Boolean \n\nIs this a super featured listing?\n\n\n\n ShortDescription \n String or null \n\nShort description of a listing. This is Jobs and Services specfic.\n\n\n\n PhotoUrls \n Collection of String or null \n\nA collection of photo urls for the listing\n\n\n\n PromotionId \n Integer or null \n\nThe ID of the promotion applied to this listing.\n\n\n\n HasEmbeddedVideo \n Boolean \n\nIndicates whether the listing has an embedded video\n\n\n\n VariantDefinitionSummary \n <VariantDefinitionSummary> or null \n\nA summary of the variant information.\n\n\n\n\n\n\n PriceLow \n Number or null \n\nThe lowest price of all the variants, if there is a price range.\n\n\n\n PriceHigh \n Number or null \n\nThe highest price of all the variants, if there is a price range.\n\n\n\n Price \n Number or null \n\nThe price of all the variants, if they are all the same.\n\n\n\n HasPriceRange \n Boolean \n\nWhether or not the variants have a single price or a price range.\n\n\n\n DiscountPercentLow \n Integer or null \n\nThe lowest discount percentage of all the variants, if there is a discount percentage range.\n\n\n\n DiscountPercentHigh \n Integer or null \n\nThe highest discount percentage of all the variants, if there is a discount percentage range.\n\n\n\n DiscountPercent \n Integer or null \n\nThe discount percentage of all the variants, if they are all the same.\n\n\n\n HasDiscountPercentRange \n Boolean \n\nWhether or not the variants have a single discount percentage or a discount percentage range.\n\n\n\n AllDiscounted \n Boolean \n\nWhether or not the variants are all discounted.\n\n\n\n AllOnClearance \n Boolean \n\nWhether or not the variants are all on clearance.\n\n\n\n\n\n\n AdditionalData \n <AdditionalData> or null \n\nStructured information for Listing Additional Data\n\n\n\n\n\n\n BulletPoints \n Collection of String or null \n\nThe bullet points for display in the search results\n\n\n\n Tags \n Collection of <Tag> or null \n\nThe tags for display in the search results\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the tag\n\n\n\n\n\n\n\n\n\n ListingExtras \n Collection of String or null \n\nA collection of extras that are currently applied to the listing\n\n\n\n IsLoyaltyEligible \n Boolean \n\nIndicates whether the listing is eligible to loyalty program.\n\n\n\n HasPing \n Boolean \n\nIndicates whether Ping is a supported payment option.\n\n\n\n StoreBrandLogoUrl \n String or null \n\nThe store seller profile photo Url. This field is populated only if below criterias met - Listing has Gallery or Feature depth products - Listing belongs to a store - Store has a tier where store brand logo feature has turned on\n\n\n\n WhyPayPrice \n Number or null \n\nThe why pay marketing price that is supplied by the deal provider when they create listings for our deal channel.\n\n\n\n Has3DTour \n Boolean \n\nIndicates whether the listing has a 3D Tour\n\n\n\n ShippingDetails \n <ShippingDetails> or null \n\nShipping details for the current listing. Null if no shipping details available.\n\n\n\n\n\n\n ShippingTemplateId \n Integer or null \n\nRepresents the template used to create the shipping options on this listing\n\n\n\n SuggestedShipping \n <SuggestedShipping> or null \n\nSuggested shipping details, based on member preferences.\n\n\n\n\n\n\n Price \n Number or null \n\nThe price of the delivery option; 0 if it's free shipping\n\n\n\n Destination \n String or null \n\nName of the shipping destination, if structured shipping information exists.\n\n\n\n DeliveryTime \n <ShippingDeliveryTime> or null \n\nDelivery time details for the current listing, if structured shipping information exists.\n\n\n\n\n\n\n MinValue \n String or null \n\nThe earliest expected delivery time returned in ISO 8601 duration format.\n\n\n\n MaxValue \n String or null \n\nThe latest expected delivery time returned in ISO 8601 duration format.\n\n\n\n\n\n\n IsRural \n Boolean or null \n\nIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.\n\n\n\n\n\n\n\n\n\n PriceType \n Enumeration or null \n\nIndicates the price type of boat and farming machinery listings\n\n\n\n HasSpecialOffer \n Boolean \n\nIndicates whether there is a special offer for motors and farming machinery listings\n\n\n\n NewCarInformation \n <NewCarInformation> or null \n\nInformation specific to new cars if the current listing is a new car listing.\n\n\n\n\n\n\n Availability \n Enumeration \n\nEnum value denoting the availability of the car, can be : 'inTransit' , 'availableToOrder'\n\n\n\n Condition \n Enumeration \n\nEnum value denoting the condition of the car, can be : 'brandNew', 'exDemo', 'certifiedPreOwned'\n\n\n\n CertifiedPreOwned \n <CertifiedPreOwnedProgramme> or null \n\nThe car's certified pre-owned programme.\n\n\n\n\n\n\n LogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a light background).\n\n\n\n DarkModeLogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a dark background).\n\n\n\n\n\n\n\n\n\n MemberDateJoined \n DateTime or null \n\nMember joining date\n\n\n\n LastServiceReview \n <LastServiceReview> or null \n\nLatest positive review for a super feature addons. Null if no positive review available.\n\n\n\n\n\n\n ServiceReviewerNickname \n String or null \n\nLatest positive service reviewer's nick name\n\n\n\n ServiceReviewText \n String or null \n\nLatest positive service review\n\n\n\n ServiceReviewDateEntered \n DateTime or null \n\nLatest positive service review date\n\n\n\n\n\n\n Sponsored \n <SponsoredListingsDetails> or null \n\nlisting’s required metadata relating to Sponsored Listings.\n\n\n\n\n\n\n TopSortProductId \n String or null \n\nThe ID for the Tradevine (and thus TopSort) Product that the listing is related to.\n\n\n\n TopSortResolveBidId \n String or null \n\nTopSort ID for the bid that has won the sponsorship auction.\n\n\n\n TopSortUniqueId \n String or null \n\nUnique ID derived from the TopSort ID that is sent to TopSort for each impression / click\n\n\n\n\n\n\n MotorsExternalMediaOverview \n <MotorsExternalMediaOverview> or null \n\nAn overview of what motors external media information exists.\n\n\n\n\n\n\n HasInstavid360Spinner \n Boolean \n\nWhether the listing has data for an Instavid 360 spinner.\n\n\n\n\n\n\n ListingPlatform \n Enumeration \n\nThe backend platform that controls the listing.\n\n\n\n AllowsPickups \n Enumeration \n\nThe pickup option for the listing.\n\n\n\n SearchResultAttributes \n Collection of <SearchResultAttribute> or null \n\nAttributes related to the search result, not the listing itself\n\n\n\n\n\n\n Id \n Enumeration \n\n\n\n\n DisplayValue \n String or null \n\n\n\n\n Name \n String or null",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing title."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing category."
+      },
+      {
+        "name": "StartPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The start price."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The Buy Now price."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing was created."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing will end."
+      },
+      {
+        "name": "IsFeatured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a featured listing?"
+      },
+      {
+        "name": "HasGallery",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a gallery listing?"
+      },
+      {
+        "name": "IsBold",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a bold listing?"
+      },
+      {
+        "name": "IsHighlighted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a highlighted listing?"
+      },
+      {
+        "name": "HasHomePageFeature",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a homepage feature listing?"
+      },
+      {
+        "name": "MaxBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The current leading bid amount."
+      },
+      {
+        "name": "AsAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the response was generated on the server."
+      },
+      {
+        "name": "CategoryPath",
+        "type": "String or null",
+        "required": false,
+        "description": "The category path."
+      },
+      {
+        "name": "PictureHref",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter."
+      },
+      {
+        "name": "HasPayNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Pay Now."
+      },
+      {
+        "name": "IsNew",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is marked as new."
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.\n\n                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used."
+      },
+      {
+        "name": "Region",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the region where this item is located."
+      },
+      {
+        "name": "SuburbId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the suburb where this item is located."
+      },
+      {
+        "name": "PickupLocality",
+        "type": "<PickupLocality> or null",
+        "required": false,
+        "description": "The pick-up location details if pick-up is allowed and has been specified."
+      },
+      {
+        "name": "Suburb",
+        "type": "Suburb \n String or null \n\nThe pickup suburb.\n\n\n\n District \n String or null \n\nThe pickup district.\n\n\n\n Region \n String or null \n\nThe pickup region.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The pickup suburb."
+      },
+      {
+        "name": "District",
+        "type": "String or null",
+        "required": false,
+        "description": "The pickup district."
+      },
+      {
+        "name": "Region",
+        "type": "String or null",
+        "required": false,
+        "description": "The pickup region."
+      },
+      {
+        "name": "BidCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bids on the item."
+      },
+      {
+        "name": "IsReserveMet",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item's reserve has been met."
+      },
+      {
+        "name": "HasReserve",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has a reserve."
+      },
+      {
+        "name": "HasBuyNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Buy Now."
+      },
+      {
+        "name": "NoteDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the note on an item."
+      },
+      {
+        "name": "ReserveState",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The flag to display on an item.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."
+          },
+          {
+            "name": "Met",
+            "value": "1",
+            "description": "The value of the highest bid has exceeded the reserve price."
+          },
+          {
+            "name": "NotMet",
+            "value": "2",
+            "description": "The value of the highest bid has not reached the reserve price."
+          },
+          {
+            "name": "NotApplicable",
+            "value": "3",
+            "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."
+          }
+        ]
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> or null",
+        "required": false,
+        "description": "The attributes for the item that are intended to be displayed on the UI."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "IsClassified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is a classified."
+      },
+      {
+        "name": "OpenHomes",
+        "type": "Collection of <OpenHome> or null",
+        "required": false,
+        "description": "A collection of open home times for this listing. Only applies to open home listings."
+      },
+      {
+        "name": "Start",
+        "type": "Start \n DateTime \n\nThe date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.\n\n\n\n End \n DateTime \n\nThe date and time the open home is no longer open for viewing. Must be the same day as Start.",
+        "required": false,
+        "description": "DateTime"
+      },
+      {
+        "name": "Start",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone."
+      },
+      {
+        "name": "End",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the open home is no longer open for viewing. Must be the same day as Start."
+      },
+      {
+        "name": "Subtitle",
+        "type": "String or null",
+        "required": false,
+        "description": "The subtitle, if present."
+      },
+      {
+        "name": "IsBuyNowOnly",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether or not this is a Buy Now Only listing."
+      },
+      {
+        "name": "RemainingGalleryPlusRelists",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect)."
+      },
+      {
+        "name": "IsOnWatchList",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is on the authenticated member's watchlist."
+      },
+      {
+        "name": "GeographicLocation",
+        "type": "<GeographicLocation> or null",
+        "required": false,
+        "description": "The geographic location (latitude and longitude) of a property."
+      },
+      {
+        "name": "Latitude",
+        "type": "Latitude \n Number \n\nThe latitude of the location, in degrees (WGS84).\n\n\n\n Longitude \n Number \n\nThe longitude of the location, in degrees (WGS84).\n\n\n\n Northing \n Integer \n\nThe northing of the location, in metres (NZTM).\n\n\n\n Easting \n Integer \n\nThe easting of the location, in metres (NZTM).\n\n\n\n Accuracy \n Enumeration \n\nThe accuracy of the geographic location (address, street or suburb).",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "Latitude",
+        "type": "Number",
+        "required": false,
+        "description": "The latitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Longitude",
+        "type": "Number",
+        "required": false,
+        "description": "The longitude of the location, in degrees (WGS84)."
+      },
+      {
+        "name": "Northing",
+        "type": "Integer",
+        "required": false,
+        "description": "The northing of the location, in metres (NZTM)."
+      },
+      {
+        "name": "Easting",
+        "type": "Integer",
+        "required": false,
+        "description": "The easting of the location, in metres (NZTM)."
+      },
+      {
+        "name": "Accuracy",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The accuracy of the geographic location (address, street or suburb).",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The accuracy of the geographic location is not known."
+          },
+          {
+            "name": "Address",
+            "value": "1",
+            "description": "The geographic location is accurate to the address level."
+          },
+          {
+            "name": "Street",
+            "value": "3",
+            "description": "The geographic location is accurate to the street level."
+          },
+          {
+            "name": "Suburb",
+            "value": "2",
+            "description": "The geographic location is accurate to the suburb level."
+          },
+          {
+            "name": "AdminPinpoint",
+            "value": "4",
+            "description": "The geographic location is accurate to the AdminPinPoint level."
+          }
+        ]
+      },
+      {
+        "name": "PriceDisplay",
+        "type": "String or null",
+        "required": false,
+        "description": "The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have \"Price by negotiation\"."
+      },
+      {
+        "name": "TotalReviewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of user-submitted reviews. Currently only applies to services listings."
+      },
+      {
+        "name": "PositiveReviewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings."
+      },
+      {
+        "name": "HasFreeShipping",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates if the listing offers free shipping as an option"
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean",
+        "required": false,
+        "description": "This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "PercentageOff",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "Branding",
+        "type": "<Branding> or null",
+        "required": false,
+        "description": "A list of branding images associated with this listing."
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "LargeSquareLogo \n String or null \n\nA large square branding image with dimensions of 480x480.\n\n\n\n LargeWideLogo \n String or null \n\nA large rectangular branding image with dimensions of 480x200.\n\n\n\n BackgroundColor \n String or null \n\nBanner outline/stroke colour, tick the checkbox before saving to apply the new colour\n\n\n\n TextColor \n String or null \n\nBanner background colour, tick the checkbox before saving to apply the new colour\n\n\n\n StrokeColor \n String or null \n\nBanner text colour, tick the checkbox before saving to apply the new colour\n\n\n\n DisableBanner \n Boolean \n\nDisable the agent branding regardless of Super Feature status\n\n\n\n OfficeLocation \n String or null \n\nThe name of the office location\n\n\n\n LargeBannerURL \n String or null \n\nThe url of a larger version of the logo",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "LargeSquareLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large square branding image with dimensions of 480x480."
+      },
+      {
+        "name": "LargeWideLogo",
+        "type": "String or null",
+        "required": false,
+        "description": "A large rectangular branding image with dimensions of 480x200."
+      },
+      {
+        "name": "BackgroundColor",
+        "type": "String or null",
+        "required": false,
+        "description": "Banner outline/stroke colour, tick the checkbox before saving to apply the new colour"
+      },
+      {
+        "name": "TextColor",
+        "type": "String or null",
+        "required": false,
+        "description": "Banner background colour, tick the checkbox before saving to apply the new colour"
+      },
+      {
+        "name": "StrokeColor",
+        "type": "String or null",
+        "required": false,
+        "description": "Banner text colour, tick the checkbox before saving to apply the new colour"
+      },
+      {
+        "name": "DisableBanner",
+        "type": "Boolean",
+        "required": false,
+        "description": "Disable the agent branding regardless of Super Feature status"
+      },
+      {
+        "name": "OfficeLocation",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the office location"
+      },
+      {
+        "name": "LargeBannerURL",
+        "type": "String or null",
+        "required": false,
+        "description": "The url of a larger version of the logo"
+      },
+      {
+        "name": "IsSuperFeatured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a super featured listing?"
+      },
+      {
+        "name": "ShortDescription",
+        "type": "String or null",
+        "required": false,
+        "description": "Short description of a listing. This is Jobs and Services specfic."
+      },
+      {
+        "name": "PhotoUrls",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "A collection of photo urls for the listing"
+      },
+      {
+        "name": "PromotionId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The ID of the promotion applied to this listing."
+      },
+      {
+        "name": "HasEmbeddedVideo",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the listing has an embedded video"
+      },
+      {
+        "name": "VariantDefinitionSummary",
+        "type": "<VariantDefinitionSummary> or null",
+        "required": false,
+        "description": "A summary of the variant information."
+      },
+      {
+        "name": "PriceLow",
+        "type": "PriceLow \n Number or null \n\nThe lowest price of all the variants, if there is a price range.\n\n\n\n PriceHigh \n Number or null \n\nThe highest price of all the variants, if there is a price range.\n\n\n\n Price \n Number or null \n\nThe price of all the variants, if they are all the same.\n\n\n\n HasPriceRange \n Boolean \n\nWhether or not the variants have a single price or a price range.\n\n\n\n DiscountPercentLow \n Integer or null \n\nThe lowest discount percentage of all the variants, if there is a discount percentage range.\n\n\n\n DiscountPercentHigh \n Integer or null \n\nThe highest discount percentage of all the variants, if there is a discount percentage range.\n\n\n\n DiscountPercent \n Integer or null \n\nThe discount percentage of all the variants, if they are all the same.\n\n\n\n HasDiscountPercentRange \n Boolean \n\nWhether or not the variants have a single discount percentage or a discount percentage range.\n\n\n\n AllDiscounted \n Boolean \n\nWhether or not the variants are all discounted.\n\n\n\n AllOnClearance \n Boolean \n\nWhether or not the variants are all on clearance.",
+        "required": false,
+        "description": "Number or null"
+      },
+      {
+        "name": "PriceLow",
+        "type": "Number or null",
+        "required": false,
+        "description": "The lowest price of all the variants, if there is a price range."
+      },
+      {
+        "name": "PriceHigh",
+        "type": "Number or null",
+        "required": false,
+        "description": "The highest price of all the variants, if there is a price range."
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of all the variants, if they are all the same."
+      },
+      {
+        "name": "HasPriceRange",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether or not the variants have a single price or a price range."
+      },
+      {
+        "name": "DiscountPercentLow",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The lowest discount percentage of all the variants, if there is a discount percentage range."
+      },
+      {
+        "name": "DiscountPercentHigh",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The highest discount percentage of all the variants, if there is a discount percentage range."
+      },
+      {
+        "name": "DiscountPercent",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The discount percentage of all the variants, if they are all the same."
+      },
+      {
+        "name": "HasDiscountPercentRange",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether or not the variants have a single discount percentage or a discount percentage range."
+      },
+      {
+        "name": "AllDiscounted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether or not the variants are all discounted."
+      },
+      {
+        "name": "AllOnClearance",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether or not the variants are all on clearance."
+      },
+      {
+        "name": "AdditionalData",
+        "type": "<AdditionalData> or null",
+        "required": false,
+        "description": "Structured information for Listing Additional Data"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "BulletPoints \n Collection of String or null \n\nThe bullet points for display in the search results\n\n\n\n Tags \n Collection of <Tag> or null \n\nThe tags for display in the search results\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the tag",
+        "required": false,
+        "description": "Collection of String or null"
+      },
+      {
+        "name": "BulletPoints",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "The bullet points for display in the search results"
+      },
+      {
+        "name": "Tags",
+        "type": "Collection of <Tag> or null",
+        "required": false,
+        "description": "The tags for display in the search results"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the tag",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tag"
+      },
+      {
+        "name": "ListingExtras",
+        "type": "Collection of String or null",
+        "required": false,
+        "description": "A collection of extras that are currently applied to the listing"
+      },
+      {
+        "name": "IsLoyaltyEligible",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the listing is eligible to loyalty program."
+      },
+      {
+        "name": "HasPing",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether Ping is a supported payment option."
+      },
+      {
+        "name": "StoreBrandLogoUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "The store seller profile photo Url. This field is populated only if below criterias met - Listing has Gallery or Feature depth products - Listing belongs to a store - Store has a tier where store brand logo feature has turned on"
+      },
+      {
+        "name": "WhyPayPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The why pay marketing price that is supplied by the deal provider when they create listings for our deal channel."
+      },
+      {
+        "name": "Has3DTour",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the listing has a 3D Tour"
+      },
+      {
+        "name": "ShippingDetails",
+        "type": "<ShippingDetails> or null",
+        "required": false,
+        "description": "Shipping details for the current listing. Null if no shipping details available."
+      },
+      {
+        "name": "ShippingTemplateId",
+        "type": "ShippingTemplateId \n Integer or null \n\nRepresents the template used to create the shipping options on this listing\n\n\n\n SuggestedShipping \n <SuggestedShipping> or null \n\nSuggested shipping details, based on member preferences.\n\n\n\n\n\n\n Price \n Number or null \n\nThe price of the delivery option; 0 if it's free shipping\n\n\n\n Destination \n String or null \n\nName of the shipping destination, if structured shipping information exists.\n\n\n\n DeliveryTime \n <ShippingDeliveryTime> or null \n\nDelivery time details for the current listing, if structured shipping information exists.\n\n\n\n\n\n\n MinValue \n String or null \n\nThe earliest expected delivery time returned in ISO 8601 duration format.\n\n\n\n MaxValue \n String or null \n\nThe latest expected delivery time returned in ISO 8601 duration format.\n\n\n\n\n\n\n IsRural \n Boolean or null \n\nIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.",
+        "required": false,
+        "description": "Integer or null"
+      },
+      {
+        "name": "ShippingTemplateId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "Represents the template used to create the shipping options on this listing"
+      },
+      {
+        "name": "SuggestedShipping",
+        "type": "<SuggestedShipping> or null",
+        "required": false,
+        "description": "Suggested shipping details, based on member preferences."
+      },
+      {
+        "name": "Price",
+        "type": "Price \n Number or null \n\nThe price of the delivery option; 0 if it's free shipping\n\n\n\n Destination \n String or null \n\nName of the shipping destination, if structured shipping information exists.\n\n\n\n DeliveryTime \n <ShippingDeliveryTime> or null \n\nDelivery time details for the current listing, if structured shipping information exists.\n\n\n\n\n\n\n MinValue \n String or null \n\nThe earliest expected delivery time returned in ISO 8601 duration format.\n\n\n\n MaxValue \n String or null \n\nThe latest expected delivery time returned in ISO 8601 duration format.\n\n\n\n\n\n\n IsRural \n Boolean or null \n\nIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.",
+        "required": false,
+        "description": "Number or null"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of the delivery option; 0 if it's free shipping"
+      },
+      {
+        "name": "Destination",
+        "type": "String or null",
+        "required": false,
+        "description": "Name of the shipping destination, if structured shipping information exists."
+      },
+      {
+        "name": "DeliveryTime",
+        "type": "<ShippingDeliveryTime> or null",
+        "required": false,
+        "description": "Delivery time details for the current listing, if structured shipping information exists."
+      },
+      {
+        "name": "MinValue",
+        "type": "MinValue \n String or null \n\nThe earliest expected delivery time returned in ISO 8601 duration format.\n\n\n\n MaxValue \n String or null \n\nThe latest expected delivery time returned in ISO 8601 duration format.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "MinValue",
+        "type": "String or null",
+        "required": false,
+        "description": "The earliest expected delivery time returned in ISO 8601 duration format."
+      },
+      {
+        "name": "MaxValue",
+        "type": "String or null",
+        "required": false,
+        "description": "The latest expected delivery time returned in ISO 8601 duration format."
+      },
+      {
+        "name": "IsRural",
+        "type": "Boolean or null",
+        "required": false,
+        "description": "Indicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists."
+      },
+      {
+        "name": "PriceType",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "Indicates the price type of boat and farming machinery listings",
+        "enum": [
+          {
+            "name": "AskingPrice",
+            "value": "0",
+            "description": "Asking Price."
+          },
+          {
+            "name": "PriceOnApplication",
+            "value": "1",
+            "description": "Price On Application."
+          },
+          {
+            "name": "ExcludingGST",
+            "value": "2",
+            "description": "Excluding GST."
+          }
+        ]
+      },
+      {
+        "name": "HasSpecialOffer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether there is a special offer for motors and farming machinery listings"
+      },
+      {
+        "name": "NewCarInformation",
+        "type": "<NewCarInformation> or null",
+        "required": false,
+        "description": "Information specific to new cars if the current listing is a new car listing."
+      },
+      {
+        "name": "Availability",
+        "type": "Availability \n Enumeration \n\nEnum value denoting the availability of the car, can be : 'inTransit' , 'availableToOrder'\n\n\n\n Condition \n Enumeration \n\nEnum value denoting the condition of the car, can be : 'brandNew', 'exDemo', 'certifiedPreOwned'\n\n\n\n CertifiedPreOwned \n <CertifiedPreOwnedProgramme> or null \n\nThe car's certified pre-owned programme.\n\n\n\n\n\n\n LogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a light background).\n\n\n\n DarkModeLogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a dark background).",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Availability",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Enum value denoting the availability of the car, can be : 'inTransit' , 'availableToOrder'",
+        "enum": [
+          {
+            "name": "InTransit",
+            "value": "2",
+            "description": "New car is in transit: on its way to the dealer"
+          },
+          {
+            "name": "AvailableToOrder",
+            "value": "3",
+            "description": "New car is available to order"
+          }
+        ]
+      },
+      {
+        "name": "Condition",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Enum value denoting the condition of the car, can be : 'brandNew', 'exDemo', 'certifiedPreOwned'",
+        "enum": [
+          {
+            "name": "BrandNew",
+            "value": "1",
+            "description": "Indicates that this car is brand new"
+          },
+          {
+            "name": "ExDemo",
+            "value": "2",
+            "description": "Indicates that this car is an ex-demo"
+          },
+          {
+            "name": "CertifiedPreOwned",
+            "value": "4",
+            "description": "New car is certified pre owned"
+          }
+        ]
+      },
+      {
+        "name": "CertifiedPreOwned",
+        "type": "<CertifiedPreOwnedProgramme> or null",
+        "required": false,
+        "description": "The car's certified pre-owned programme."
+      },
+      {
+        "name": "LogoUrl",
+        "type": "LogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a light background).\n\n\n\n DarkModeLogoUrl \n String or null \n\nUrl of the certified preowned programme's logo (designed for a dark background).",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "LogoUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Url of the certified preowned programme's logo (designed for a light background)."
+      },
+      {
+        "name": "DarkModeLogoUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "Url of the certified preowned programme's logo (designed for a dark background)."
+      },
+      {
+        "name": "MemberDateJoined",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Member joining date"
+      },
+      {
+        "name": "LastServiceReview",
+        "type": "<LastServiceReview> or null",
+        "required": false,
+        "description": "Latest positive review for a super feature addons. Null if no positive review available."
+      },
+      {
+        "name": "ServiceReviewerNickname",
+        "type": "ServiceReviewerNickname \n String or null \n\nLatest positive service reviewer's nick name\n\n\n\n ServiceReviewText \n String or null \n\nLatest positive service review\n\n\n\n ServiceReviewDateEntered \n DateTime or null \n\nLatest positive service review date",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ServiceReviewerNickname",
+        "type": "String or null",
+        "required": false,
+        "description": "Latest positive service reviewer's nick name"
+      },
+      {
+        "name": "ServiceReviewText",
+        "type": "String or null",
+        "required": false,
+        "description": "Latest positive service review"
+      },
+      {
+        "name": "ServiceReviewDateEntered",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Latest positive service review date"
+      },
+      {
+        "name": "Sponsored",
+        "type": "<SponsoredListingsDetails> or null",
+        "required": false,
+        "description": "listing’s required metadata relating to Sponsored Listings."
+      },
+      {
+        "name": "TopSortProductId",
+        "type": "TopSortProductId \n String or null \n\nThe ID for the Tradevine (and thus TopSort) Product that the listing is related to.\n\n\n\n TopSortResolveBidId \n String or null \n\nTopSort ID for the bid that has won the sponsorship auction.\n\n\n\n TopSortUniqueId \n String or null \n\nUnique ID derived from the TopSort ID that is sent to TopSort for each impression / click",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "TopSortProductId",
+        "type": "String or null",
+        "required": false,
+        "description": "The ID for the Tradevine (and thus TopSort) Product that the listing is related to."
+      },
+      {
+        "name": "TopSortResolveBidId",
+        "type": "String or null",
+        "required": false,
+        "description": "TopSort ID for the bid that has won the sponsorship auction."
+      },
+      {
+        "name": "TopSortUniqueId",
+        "type": "String or null",
+        "required": false,
+        "description": "Unique ID derived from the TopSort ID that is sent to TopSort for each impression / click"
+      },
+      {
+        "name": "MotorsExternalMediaOverview",
+        "type": "<MotorsExternalMediaOverview> or null",
+        "required": false,
+        "description": "An overview of what motors external media information exists."
+      },
+      {
+        "name": "HasInstavid360Spinner",
+        "type": "HasInstavid360Spinner \n Boolean \n\nWhether the listing has data for an Instavid 360 spinner.",
+        "required": false,
+        "description": "Boolean"
+      },
+      {
+        "name": "HasInstavid360Spinner",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the listing has data for an Instavid 360 spinner."
+      },
+      {
+        "name": "ListingPlatform",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The backend platform that controls the listing.",
+        "enum": [
+          {
+            "name": "Unset",
+            "value": "0",
+            "description": "The platform has not been set."
+          },
+          {
+            "name": "TradeMe",
+            "value": "1",
+            "description": "The listing is controlled by Trade Me."
+          },
+          {
+            "name": "Koru",
+            "value": "2",
+            "description": "The listing is controlled by Koru."
+          }
+        ]
+      },
+      {
+        "name": "AllowsPickups",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The pickup option for the listing.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The listing allows pick up, but does not require it."
+          },
+          {
+            "name": "Allow",
+            "value": "1",
+            "description": "The buyer can pickup if they so choose."
+          },
+          {
+            "name": "Demand",
+            "value": "2",
+            "description": "The buyer must pickup the item."
+          },
+          {
+            "name": "Forbid",
+            "value": "3",
+            "description": "The buyer cannot pickup the item (delivery only)."
+          }
+        ]
+      },
+      {
+        "name": "SearchResultAttributes",
+        "type": "Collection of <SearchResultAttribute> or null",
+        "required": false,
+        "description": "Attributes related to the search result, not the listing itself"
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Enumeration \n\n\n\n\n DisplayValue \n String or null \n\n\n\n\n Name \n String or null",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Id",
+        "type": "Enumeration",
+        "required": false,
+        "description": "",
+        "enum": [
+          {
+            "name": "Odometer",
+            "value": "1",
+            "description": ""
+          },
+          {
+            "name": "FuelType",
+            "value": "2",
+            "description": ""
+          },
+          {
+            "name": "Location",
+            "value": "3",
+            "description": ""
+          },
+          {
+            "name": "Transmission",
+            "value": "4",
+            "description": ""
+          },
+          {
+            "name": "EngineSize",
+            "value": "5",
+            "description": ""
+          },
+          {
+            "name": "GrossVehicleMass",
+            "value": "6",
+            "description": ""
+          },
+          {
+            "name": "DinghyType",
+            "value": "7",
+            "description": ""
+          },
+          {
+            "name": "Length",
+            "value": "8",
+            "description": ""
+          },
+          {
+            "name": "EngineHours",
+            "value": "9",
+            "description": ""
+          },
+          {
+            "name": "EngineDetails",
+            "value": "10",
+            "description": ""
+          },
+          {
+            "name": "Berths",
+            "value": "11",
+            "description": ""
+          },
+          {
+            "name": "SelfContained",
+            "value": "12",
+            "description": ""
+          },
+          {
+            "name": "CaravanLength",
+            "value": "13",
+            "description": ""
+          },
+          {
+            "name": "MotorhomeLength",
+            "value": "14",
+            "description": ""
+          },
+          {
+            "name": "HullType",
+            "value": "15",
+            "description": ""
+          },
+          {
+            "name": "MotorBikeType",
+            "value": "16",
+            "description": ""
+          }
+        ]
+      },
+      {
+        "name": "DisplayValue",
+        "type": "String or null",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": ""
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "HasPayNow": false,
+          "IsNew": false,
+          "RegionId": 123,
+          "Region": "ABC",
+          "SuburbId": 123,
+          "Suburb": "ABC",
+          "PickupLocality": {
+            "Suburb": "ABC",
+            "District": "ABC",
+            "Region": "ABC"
+          },
+          "BidCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "NoteDate": "/Date(1514764800)/",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "OpenHomes": [
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            },
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            }
+          ],
+          "Subtitle": "ABC",
+          "IsBuyNowOnly": false,
+          "RemainingGalleryPlusRelists": 123,
+          "IsOnWatchList": false,
+          "GeographicLocation": {
+            "Latitude": 123.0,
+            "Longitude": 123.0,
+            "Northing": 123,
+            "Easting": 123,
+            "Accuracy": 0
+          },
+          "PriceDisplay": "ABC",
+          "TotalReviewCount": 123,
+          "PositiveReviewCount": 123,
+          "HasFreeShipping": false,
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "BackgroundColor": "ABC",
+            "TextColor": "ABC",
+            "StrokeColor": "ABC",
+            "DisableBanner": false,
+            "OfficeLocation": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "IsSuperFeatured": false,
+          "ShortDescription": "ABC",
+          "PhotoUrls": [
+            "ABC",
+            "ABC"
+          ],
+          "PromotionId": 123,
+          "HasEmbeddedVideo": false,
+          "VariantDefinitionSummary": {
+            "PriceLow": 123.0,
+            "PriceHigh": 123.0,
+            "Price": 123.0,
+            "HasPriceRange": false,
+            "DiscountPercentLow": 123,
+            "DiscountPercentHigh": 123,
+            "DiscountPercent": 123,
+            "HasDiscountPercentRange": false,
+            "AllDiscounted": false,
+            "AllOnClearance": false
+          },
+          "AdditionalData": {
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "Tags": [
+              {
+                "Name": "ABC"
+              },
+              {
+                "Name": "ABC"
+              }
+            ]
+          },
+          "ListingExtras": [
+            "ABC",
+            "ABC"
+          ],
+          "IsLoyaltyEligible": false,
+          "HasPing": false,
+          "StoreBrandLogoUrl": "ABC",
+          "WhyPayPrice": 123.0,
+          "Has3DTour": false,
+          "ShippingDetails": {
+            "ShippingTemplateId": 123,
+            "SuggestedShipping": {
+              "Price": 123.0,
+              "Destination": "ABC",
+              "DeliveryTime": {
+                "MinValue": "ABC",
+                "MaxValue": "ABC"
+              },
+              "IsRural": false
+            }
+          },
+          "PriceType": 0,
+          "HasSpecialOffer": false,
+          "NewCarInformation": {
+            "Availability": 2,
+            "Condition": 1,
+            "CertifiedPreOwned": {
+              "LogoUrl": "ABC",
+              "DarkModeLogoUrl": "ABC"
+            }
+          },
+          "MemberDateJoined": "/Date(1514764800)/",
+          "LastServiceReview": {
+            "ServiceReviewerNickname": "ABC",
+            "ServiceReviewText": "ABC",
+            "ServiceReviewDateEntered": "/Date(1514764800)/"
+          },
+          "Sponsored": {
+            "TopSortProductId": "ABC",
+            "TopSortResolveBidId": "ABC",
+            "TopSortUniqueId": "ABC"
+          },
+          "MotorsExternalMediaOverview": {
+            "HasInstavid360Spinner": false
+          },
+          "ListingPlatform": 0,
+          "AllowsPickups": 0,
+          "SearchResultAttributes": [
+            {
+              "Id": 1,
+              "DisplayValue": "ABC",
+              "Name": "ABC"
+            },
+            {
+              "Id": 1,
+              "DisplayValue": "ABC",
+              "Name": "ABC"
+            }
+          ]
+        },
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "HasPayNow": false,
+          "IsNew": false,
+          "RegionId": 123,
+          "Region": "ABC",
+          "SuburbId": 123,
+          "Suburb": "ABC",
+          "PickupLocality": {
+            "Suburb": "ABC",
+            "District": "ABC",
+            "Region": "ABC"
+          },
+          "BidCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "NoteDate": "/Date(1514764800)/",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "OpenHomes": [
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            },
+            {
+              "Start": "/Date(1514764800)/",
+              "End": "/Date(1514764800)/"
+            }
+          ],
+          "Subtitle": "ABC",
+          "IsBuyNowOnly": false,
+          "RemainingGalleryPlusRelists": 123,
+          "IsOnWatchList": false,
+          "GeographicLocation": {
+            "Latitude": 123.0,
+            "Longitude": 123.0,
+            "Northing": 123,
+            "Easting": 123,
+            "Accuracy": 0
+          },
+          "PriceDisplay": "ABC",
+          "TotalReviewCount": 123,
+          "PositiveReviewCount": 123,
+          "HasFreeShipping": false,
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Branding": {
+            "LargeSquareLogo": "ABC",
+            "LargeWideLogo": "ABC",
+            "BackgroundColor": "ABC",
+            "TextColor": "ABC",
+            "StrokeColor": "ABC",
+            "DisableBanner": false,
+            "OfficeLocation": "ABC",
+            "LargeBannerURL": "ABC"
+          },
+          "IsSuperFeatured": false,
+          "ShortDescription": "ABC",
+          "PhotoUrls": [
+            "ABC",
+            "ABC"
+          ],
+          "PromotionId": 123,
+          "HasEmbeddedVideo": false,
+          "VariantDefinitionSummary": {
+            "PriceLow": 123.0,
+            "PriceHigh": 123.0,
+            "Price": 123.0,
+            "HasPriceRange": false,
+            "DiscountPercentLow": 123,
+            "DiscountPercentHigh": 123,
+            "DiscountPercent": 123,
+            "HasDiscountPercentRange": false,
+            "AllDiscounted": false,
+            "AllOnClearance": false
+          },
+          "AdditionalData": {
+            "BulletPoints": [
+              "ABC",
+              "ABC"
+            ],
+            "Tags": [
+              {
+                "Name": "ABC"
+              },
+              {
+                "Name": "ABC"
+              }
+            ]
+          },
+          "ListingExtras": [
+            "ABC",
+            "ABC"
+          ],
+          "IsLoyaltyEligible": false,
+          "HasPing": false,
+          "StoreBrandLogoUrl": "ABC",
+          "WhyPayPrice": 123.0,
+          "Has3DTour": false,
+          "ShippingDetails": {
+            "ShippingTemplateId": 123,
+            "SuggestedShipping": {
+              "Price": 123.0,
+              "Destination": "ABC",
+              "DeliveryTime": {
+                "MinValue": "ABC",
+                "MaxValue": "ABC"
+              },
+              "IsRural": false
+            }
+          },
+          "PriceType": 0,
+          "HasSpecialOffer": false,
+          "NewCarInformation": {
+            "Availability": 2,
+            "Condition": 1,
+            "CertifiedPreOwned": {
+              "LogoUrl": "ABC",
+              "DarkModeLogoUrl": "ABC"
+            }
+          },
+          "MemberDateJoined": "/Date(1514764800)/",
+          "LastServiceReview": {
+            "ServiceReviewerNickname": "ABC",
+            "ServiceReviewText": "ABC",
+            "ServiceReviewDateEntered": "/Date(1514764800)/"
+          },
+          "Sponsored": {
+            "TopSortProductId": "ABC",
+            "TopSortResolveBidId": "ABC",
+            "TopSortUniqueId": "ABC"
+          },
+          "MotorsExternalMediaOverview": {
+            "HasInstavid360Spinner": false
+          },
+          "ListingPlatform": 0,
+          "AllowsPickups": 0,
+          "SearchResultAttributes": [
+            {
+              "Id": 1,
+              "DisplayValue": "ABC",
+              "Name": "ABC"
+            },
+            {
+              "Id": 1,
+              "DisplayValue": "ABC",
+              "Name": "ABC"
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

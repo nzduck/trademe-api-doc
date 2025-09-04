@@ -1,0 +1,989 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve your items currently for sale - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a> &gt; </li>
+<li class="current">Retrieve your items currently for sale</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve your items currently for sale</h1>
+<!-- Page content -->
+<p>Retrieves the authenticated user's active listings. Listings that are in the closing state are included in the list.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/sellingitems/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A filter on the results. <table><tr><td>All</td><td>Returns all currently active listings.</td></tr><tr><td>ClosingToday</td><td>Return only listings that are due to close in 24 hours.</td></tr><tr><td>ListingsWithBids</td><td>Returns listings with bids.</td></tr><tr><td>ReserveMet</td><td>Returns listings where the reserve price is met.</td></tr><tr><td>ReserveNotMet</td><td>Returns listings where the reserve price is not met.</td></tr><tr><td>UnansweredQuestions</td><td>Returns listings with unanswered questions.</td></tr></table></p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> photo_size </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The size of the images to return in the results. Defaults to Thumbnail.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Thumbnail</td>
+<td>
+<p>The thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<td>List</td>
+<td>
+<p>The list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<td>Medium</td>
+<td>
+<p>The medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<td>Gallery</td>
+<td>
+<p>The gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<td>Large</td>
+<td>
+<p>The large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<td>FullSize</td>
+<td>
+<p>The full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<td>JobSearchCard</td>
+<td>
+<p>The SearchCard photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> sort_order </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The order the results will be sorted. Defaults to ExpiryAsc.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>ExpiryAsc</td>
+<td>
+<p>Sort by expiry date (expiring soon).</p>
+</td>
+</tr>
+<tr>
+<td>ExpiryDesc</td>
+<td>
+<p>Sort by expiry date (newest listings).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;Items&gt; </p>
+<p> <p>A list of items currently being sold.</p> </p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;Item&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing title.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The start price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BuyNowPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The Buy Now price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing was created.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing will end.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingLength </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing length.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Restrictions </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The restictions associated with the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a featured listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGallery </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a gallery listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBold </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a bold listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHighlighted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a highlighted listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasHomePageFeature </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a homepage feature listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasExtraPhotos </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a listing with extra photos?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasScheduledEndDate </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a listing with a scheduled end date?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BidderAndWatchers </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bidders and watcher for this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxBidAmount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The current leading bid amount.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AsAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the response was generated on the server.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The category path.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PictureHref </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the primary photo for the listing (if the listing has a photo).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BidCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bids on the item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ViewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of times the listing has been viewed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsReserveMet </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item's reserve has been met.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasReserve </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has a reserve.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasBuyNow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has Buy Now.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NoteDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date of the note on an item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The display name of the category.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."}, {"name": "Met", "value": "1", "description": "The value of the highest bid has exceeded the reserve price."}, {"name": "NotMet", "value": "2", "description": "The value of the highest bid has not reached the reserve price."}, {"name": "NotApplicable", "value": "3", "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."}]'>
+<th style="width: 22%"> ReserveState </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The flag to display on an item.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; or null </td>
+<td>
+<p>The attributes for the item that are intended to be displayed on the UI.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A name which uniquely identifies the attribute. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClassified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is a classified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The subtitle, if present.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReservePrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBuyNowOnly </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether or not this is a Buy Now Only listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quantity </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RemainingGalleryPlusRelists </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceDisplay </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have "Price by negotiation".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ExternalReferenceId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The external reference ID, if one exists. Only available to the seller of a listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SKU </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClearance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PercentageOff </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> &lt;Branding&gt; or null </td>
+<td>
+<p>A list of branding images associated with this listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> LargeSquareLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A large square branding image with dimensions of 480x480.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LargeWideLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A large rectangular branding image with dimensions of 480x200.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LargeBannerURL </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The url of a larger version of the logo</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Options </th>
+<td style="width: 22%"> Collection of &lt;Option&gt; or null </td>
+<td>
+<p>The combination of variant options that this variant represents.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingGroupId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnansweredQuestionCount </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of unanswered questions</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;Items xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;TotalCount&gt;123&lt;/TotalCount&gt;
+  &lt;Page&gt;123&lt;/Page&gt;
+  &lt;PageSize&gt;123&lt;/PageSize&gt;
+  &lt;List&gt;
+    &lt;Item&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;Category&gt;ABC&lt;/Category&gt;
+      &lt;StartPrice&gt;123.0&lt;/StartPrice&gt;
+      &lt;BuyNowPrice&gt;123.0&lt;/BuyNowPrice&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;ListingLength&gt;ABC&lt;/ListingLength&gt;
+      &lt;Restrictions&gt;ABC&lt;/Restrictions&gt;
+      &lt;IsFeatured&gt;false&lt;/IsFeatured&gt;
+      &lt;HasGallery&gt;false&lt;/HasGallery&gt;
+      &lt;IsBold&gt;false&lt;/IsBold&gt;
+      &lt;IsHighlighted&gt;false&lt;/IsHighlighted&gt;
+      &lt;HasHomePageFeature&gt;false&lt;/HasHomePageFeature&gt;
+      &lt;HasExtraPhotos&gt;false&lt;/HasExtraPhotos&gt;
+      &lt;HasScheduledEndDate&gt;false&lt;/HasScheduledEndDate&gt;
+      &lt;BidderAndWatchers&gt;123&lt;/BidderAndWatchers&gt;
+      &lt;MaxBidAmount&gt;123.0&lt;/MaxBidAmount&gt;
+      &lt;AsAt&gt;2018-01-01T00:00:00Z&lt;/AsAt&gt;
+      &lt;CategoryPath&gt;ABC&lt;/CategoryPath&gt;
+      &lt;PictureHref&gt;ABC&lt;/PictureHref&gt;
+      &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+      &lt;BidCount&gt;123&lt;/BidCount&gt;
+      &lt;ViewCount&gt;123&lt;/ViewCount&gt;
+      &lt;IsReserveMet&gt;false&lt;/IsReserveMet&gt;
+      &lt;HasReserve&gt;false&lt;/HasReserve&gt;
+      &lt;HasBuyNow&gt;false&lt;/HasBuyNow&gt;
+      &lt;NoteDate&gt;2018-01-01T00:00:00Z&lt;/NoteDate&gt;
+      &lt;CategoryName&gt;ABC&lt;/CategoryName&gt;
+      &lt;ReserveState&gt;None&lt;/ReserveState&gt;
+      &lt;Attributes&gt;
+        &lt;Attribute&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Attribute&gt;
+        &lt;Attribute&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Attribute&gt;
+      &lt;/Attributes&gt;
+      &lt;IsClassified&gt;false&lt;/IsClassified&gt;
+      &lt;Subtitle&gt;ABC&lt;/Subtitle&gt;
+      &lt;ReservePrice&gt;123.0&lt;/ReservePrice&gt;
+      &lt;IsBuyNowOnly&gt;false&lt;/IsBuyNowOnly&gt;
+      &lt;Quantity&gt;123&lt;/Quantity&gt;
+      &lt;RemainingGalleryPlusRelists&gt;123&lt;/RemainingGalleryPlusRelists&gt;
+      &lt;PriceDisplay&gt;ABC&lt;/PriceDisplay&gt;
+      &lt;ExternalReferenceId&gt;ABC&lt;/ExternalReferenceId&gt;
+      &lt;SKU&gt;ABC&lt;/SKU&gt;
+      &lt;IsClearance&gt;false&lt;/IsClearance&gt;
+      &lt;WasPrice&gt;123.0&lt;/WasPrice&gt;
+      &lt;PercentageOff&gt;123&lt;/PercentageOff&gt;
+      &lt;Branding&gt;
+        &lt;LargeSquareLogo&gt;ABC&lt;/LargeSquareLogo&gt;
+        &lt;LargeWideLogo&gt;ABC&lt;/LargeWideLogo&gt;
+        &lt;LargeBannerURL&gt;ABC&lt;/LargeBannerURL&gt;
+      &lt;/Branding&gt;
+      &lt;Options&gt;
+        &lt;Option /&gt;
+        &lt;Option /&gt;
+      &lt;/Options&gt;
+      &lt;ListingGroupId&gt;123&lt;/ListingGroupId&gt;
+      &lt;UnansweredQuestionCount&gt;123&lt;/UnansweredQuestionCount&gt;
+    &lt;/Item&gt;
+    &lt;Item&gt;
+      &lt;ListingId&gt;123&lt;/ListingId&gt;
+      &lt;Title&gt;ABC&lt;/Title&gt;
+      &lt;Category&gt;ABC&lt;/Category&gt;
+      &lt;StartPrice&gt;123.0&lt;/StartPrice&gt;
+      &lt;BuyNowPrice&gt;123.0&lt;/BuyNowPrice&gt;
+      &lt;StartDate&gt;2018-01-01T00:00:00Z&lt;/StartDate&gt;
+      &lt;EndDate&gt;2018-01-01T00:00:00Z&lt;/EndDate&gt;
+      &lt;ListingLength&gt;ABC&lt;/ListingLength&gt;
+      &lt;Restrictions&gt;ABC&lt;/Restrictions&gt;
+      &lt;IsFeatured&gt;false&lt;/IsFeatured&gt;
+      &lt;HasGallery&gt;false&lt;/HasGallery&gt;
+      &lt;IsBold&gt;false&lt;/IsBold&gt;
+      &lt;IsHighlighted&gt;false&lt;/IsHighlighted&gt;
+      &lt;HasHomePageFeature&gt;false&lt;/HasHomePageFeature&gt;
+      &lt;HasExtraPhotos&gt;false&lt;/HasExtraPhotos&gt;
+      &lt;HasScheduledEndDate&gt;false&lt;/HasScheduledEndDate&gt;
+      &lt;BidderAndWatchers&gt;123&lt;/BidderAndWatchers&gt;
+      &lt;MaxBidAmount&gt;123.0&lt;/MaxBidAmount&gt;
+      &lt;AsAt&gt;2018-01-01T00:00:00Z&lt;/AsAt&gt;
+      &lt;CategoryPath&gt;ABC&lt;/CategoryPath&gt;
+      &lt;PictureHref&gt;ABC&lt;/PictureHref&gt;
+      &lt;PhotoId&gt;123&lt;/PhotoId&gt;
+      &lt;BidCount&gt;123&lt;/BidCount&gt;
+      &lt;ViewCount&gt;123&lt;/ViewCount&gt;
+      &lt;IsReserveMet&gt;false&lt;/IsReserveMet&gt;
+      &lt;HasReserve&gt;false&lt;/HasReserve&gt;
+      &lt;HasBuyNow&gt;false&lt;/HasBuyNow&gt;
+      &lt;NoteDate&gt;2018-01-01T00:00:00Z&lt;/NoteDate&gt;
+      &lt;CategoryName&gt;ABC&lt;/CategoryName&gt;
+      &lt;ReserveState&gt;None&lt;/ReserveState&gt;
+      &lt;Attributes&gt;
+        &lt;Attribute&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Attribute&gt;
+        &lt;Attribute&gt;
+          &lt;Name&gt;ABC&lt;/Name&gt;
+          &lt;DisplayName&gt;ABC&lt;/DisplayName&gt;
+          &lt;Value&gt;ABC&lt;/Value&gt;
+        &lt;/Attribute&gt;
+      &lt;/Attributes&gt;
+      &lt;IsClassified&gt;false&lt;/IsClassified&gt;
+      &lt;Subtitle&gt;ABC&lt;/Subtitle&gt;
+      &lt;ReservePrice&gt;123.0&lt;/ReservePrice&gt;
+      &lt;IsBuyNowOnly&gt;false&lt;/IsBuyNowOnly&gt;
+      &lt;Quantity&gt;123&lt;/Quantity&gt;
+      &lt;RemainingGalleryPlusRelists&gt;123&lt;/RemainingGalleryPlusRelists&gt;
+      &lt;PriceDisplay&gt;ABC&lt;/PriceDisplay&gt;
+      &lt;ExternalReferenceId&gt;ABC&lt;/ExternalReferenceId&gt;
+      &lt;SKU&gt;ABC&lt;/SKU&gt;
+      &lt;IsClearance&gt;false&lt;/IsClearance&gt;
+      &lt;WasPrice&gt;123.0&lt;/WasPrice&gt;
+      &lt;PercentageOff&gt;123&lt;/PercentageOff&gt;
+      &lt;Branding&gt;
+        &lt;LargeSquareLogo&gt;ABC&lt;/LargeSquareLogo&gt;
+        &lt;LargeWideLogo&gt;ABC&lt;/LargeWideLogo&gt;
+        &lt;LargeBannerURL&gt;ABC&lt;/LargeBannerURL&gt;
+      &lt;/Branding&gt;
+      &lt;Options&gt;
+        &lt;Option /&gt;
+        &lt;Option /&gt;
+      &lt;/Options&gt;
+      &lt;ListingGroupId&gt;123&lt;/ListingGroupId&gt;
+      &lt;UnansweredQuestionCount&gt;123&lt;/UnansweredQuestionCount&gt;
+    &lt;/Item&gt;
+  &lt;/List&gt;
+&lt;/Items&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "ListingId": 123,
+      "Title": "ABC",
+      "Category": "ABC",
+      "StartPrice": 123.0,
+      "BuyNowPrice": 123.0,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "ListingLength": "ABC",
+      "Restrictions": "ABC",
+      "IsFeatured": false,
+      "HasGallery": false,
+      "IsBold": false,
+      "IsHighlighted": false,
+      "HasHomePageFeature": false,
+      "HasExtraPhotos": false,
+      "HasScheduledEndDate": false,
+      "BidderAndWatchers": 123,
+      "MaxBidAmount": 123.0,
+      "AsAt": "\/Date(1514764800)\/",
+      "CategoryPath": "ABC",
+      "PictureHref": "ABC",
+      "PhotoId": 123,
+      "BidCount": 123,
+      "ViewCount": 123,
+      "IsReserveMet": false,
+      "HasReserve": false,
+      "HasBuyNow": false,
+      "NoteDate": "\/Date(1514764800)\/",
+      "CategoryName": "ABC",
+      "ReserveState": 0,
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC"
+        }
+      ],
+      "IsClassified": false,
+      "Subtitle": "ABC",
+      "ReservePrice": 123.0,
+      "IsBuyNowOnly": false,
+      "Quantity": 123,
+      "RemainingGalleryPlusRelists": 123,
+      "PriceDisplay": "ABC",
+      "ExternalReferenceId": "ABC",
+      "SKU": "ABC",
+      "IsClearance": false,
+      "WasPrice": 123.0,
+      "PercentageOff": 123,
+      "Branding": {
+        "LargeSquareLogo": "ABC",
+        "LargeWideLogo": "ABC",
+        "LargeBannerURL": "ABC"
+      },
+      "Options": [
+        {
+        },
+        {
+        }
+      ],
+      "ListingGroupId": 123,
+      "UnansweredQuestionCount": 123
+    },
+    {
+      "ListingId": 123,
+      "Title": "ABC",
+      "Category": "ABC",
+      "StartPrice": 123.0,
+      "BuyNowPrice": 123.0,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "ListingLength": "ABC",
+      "Restrictions": "ABC",
+      "IsFeatured": false,
+      "HasGallery": false,
+      "IsBold": false,
+      "IsHighlighted": false,
+      "HasHomePageFeature": false,
+      "HasExtraPhotos": false,
+      "HasScheduledEndDate": false,
+      "BidderAndWatchers": 123,
+      "MaxBidAmount": 123.0,
+      "AsAt": "\/Date(1514764800)\/",
+      "CategoryPath": "ABC",
+      "PictureHref": "ABC",
+      "PhotoId": 123,
+      "BidCount": 123,
+      "ViewCount": 123,
+      "IsReserveMet": false,
+      "HasReserve": false,
+      "HasBuyNow": false,
+      "NoteDate": "\/Date(1514764800)\/",
+      "CategoryName": "ABC",
+      "ReserveState": 0,
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Value": "ABC"
+        }
+      ],
+      "IsClassified": false,
+      "Subtitle": "ABC",
+      "ReservePrice": 123.0,
+      "IsBuyNowOnly": false,
+      "Quantity": 123,
+      "RemainingGalleryPlusRelists": 123,
+      "PriceDisplay": "ABC",
+      "ExternalReferenceId": "ABC",
+      "SKU": "ABC",
+      "IsClearance": false,
+      "WasPrice": 123.0,
+      "PercentageOff": 123,
+      "Branding": {
+        "LargeSquareLogo": "ABC",
+        "LargeWideLogo": "ABC",
+        "LargeBannerURL": "ABC"
+      },
+      "Options": [
+        {
+        },
+        {
+        }
+      ],
+      "ListingGroupId": 123,
+      "UnansweredQuestionCount": 123
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

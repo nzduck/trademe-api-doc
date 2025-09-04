@@ -1,0 +1,182 @@
+{
+  "endpoint": "UploadAnAgentBrandingImage",
+  "title": "Upload an agent branding image",
+  "description": "Adds the agent branding image to the authenticated user's list of agent branding images. These images can be used to enhance an agent contact details. This API method is currently available only for property agents.",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/upload-an-agent-branding-image",
+  "url": "https://api.trademe.co.nz/v1/photos/agentbranding.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<PhotoUploadRequest>",
+    "fields": [
+      {
+        "name": "PhotoData",
+        "type": "String (required)",
+        "required": true,
+        "description": "The actual image data which is base64 encoded."
+      },
+      {
+        "name": "FileName",
+        "type": "String (required)",
+        "required": true,
+        "description": "A textual label for the image, which is intended to make it easier for the user to find the photo when creating a listing. If the file name looks like a path (with forward slash or backslash characters) all characters up to the last slash will be removed. The following characters are not allowed: \" < > |"
+      },
+      {
+        "name": "FileType",
+        "type": "String (required)",
+        "required": true,
+        "description": "The file type of the image (\"BMP\", \"GIF\", \"JPG\", \"JPEG\" or \"PNG\"). Case is ignored."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PhotoResponse> The ID of the added agent branding image.",
+    "fields": [
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the photo operation.",
+        "enum": [
+          {
+            "name": "Failure",
+            "value": "0",
+            "description": "The photo action was a failure."
+          },
+          {
+            "name": "Success",
+            "value": "1",
+            "description": "The photo action was a success."
+          },
+          {
+            "name": "NotMemberPhoto",
+            "value": "2",
+            "description": "The photo is not owned by the member."
+          },
+          {
+            "name": "NotMemberAuction",
+            "value": "3",
+            "description": "The auction is not owned by the member."
+          },
+          {
+            "name": "NotFound",
+            "value": "4",
+            "description": "The auction was not found."
+          }
+        ]
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the photo."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the error message, if an error occurred."
+      },
+      {
+        "name": "PhotoUrls",
+        "type": "<PhotoUrl> or null",
+        "required": false,
+        "description": "When uploading a new photo, contains a collection of URLs for this photo, one for each size.",
+        "nested_fields": [
+          {
+            "field_name": "Thumbnail",
+            "field_type": "String or null",
+            "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."
+          },
+          {
+            "field_name": "List",
+            "field_type": "String or null",
+            "description": "The URL for the list view sized photo (scaled down to fit 160x120)."
+          },
+          {
+            "field_name": "Medium",
+            "field_type": "String or null",
+            "description": "The URL for the medium sized photo (scaled down to fit 175x175)."
+          },
+          {
+            "field_name": "Gallery",
+            "field_type": "String or null",
+            "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."
+          },
+          {
+            "field_name": "Large",
+            "field_type": "String or null",
+            "description": "The URL for the large sized photo (scaled down to fit 352x264)."
+          },
+          {
+            "field_name": "FullSize",
+            "field_type": "String or null",
+            "description": "The URL for the full sized photo (scaled down to fit 670x502)."
+          },
+          {
+            "field_name": "PlusSize",
+            "field_type": "String or null",
+            "description": "The URL for the plus sized photo (scaled down to fit)."
+          },
+          {
+            "field_name": "PhotoId",
+            "field_type": "Integer",
+            "description": "The ID of the photo."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "PhotoData": "ABC",
+      "FileName": "ABC",
+      "FileType": "ABC"
+    },
+    "response_json": {
+      "Status": 0,
+      "PhotoId": 123,
+      "Description": "ABC",
+      "PhotoUrls": {
+        "Thumbnail": "ABC",
+        "List": "ABC",
+        "Medium": "ABC",
+        "Gallery": "ABC",
+        "Large": "ABC",
+        "FullSize": "ABC",
+        "PlusSize": "ABC",
+        "PhotoId": 123
+      }
+    }
+  }
+}

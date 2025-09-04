@@ -1,0 +1,145 @@
+{
+  "endpoint": "SaveASellerToYourFavourites",
+  "title": "Save a seller to your favourites",
+  "description": "Saves a seller to the currently authenticated user's list of favourite sellers.",
+  "source": "https://developer.trademe.co.nz/api-reference/favourite-methods/save-a-seller-to-your-favourites",
+  "url": "https://api.trademe.co.nz/v1/favourites/seller.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SaveSellerRequest>",
+    "fields": [
+      {
+        "name": "Email",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The frequency that emails should be sent."
+      },
+      {
+        "name": "Push",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The frequency that push notifications should be sent."
+      },
+      {
+        "name": "Label",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The label of the favourite should be sent."
+      },
+      {
+        "name": "SellerId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The member ID of the seller to save."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<SavedFavouriteResponse> Details of the saved favourite, including the ID.",
+    "fields": [
+      {
+        "name": "SearchId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the saved favourite."
+      },
+      {
+        "name": "Response",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the error, if the operation failed."
+      },
+      {
+        "name": "Saved",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the favourite was saved."
+      },
+      {
+        "name": "FavouriteType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates what type of favourite was saved.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Nothing"
+          },
+          {
+            "name": "Category",
+            "value": "1",
+            "description": "Category"
+          },
+          {
+            "name": "Search",
+            "value": "3",
+            "description": "General search"
+          },
+          {
+            "name": "AttributeSearch",
+            "value": "4",
+            "description": "Attributed search"
+          },
+          {
+            "name": "Seller",
+            "value": "6",
+            "description": "Seller"
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "Display Label of favourite was saved."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Email": 0,
+      "Push": 0,
+      "Label": "ABC",
+      "SellerId": 123
+    },
+    "response_json": {
+      "SearchId": 123,
+      "Response": "ABC",
+      "Saved": false,
+      "FavouriteType": 0,
+      "Label": "ABC"
+    }
+  }
+}

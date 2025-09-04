@@ -1,0 +1,264 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/photo-methods/retrieve-your-photos -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your photos</h1>
+<!-- Page content -->
+<p>Returns a list of all currently available photos uploaded by authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/photos.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;MemberPhotos&gt; </p>
+<p>A collection of <b>MemberPhoto</b>.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;MemberPhoto&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description accompanying the photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsUsed </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this photo is used.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Auctions </th>
+<td style="width: 22%"> Collection of Integer or null </td>
+<td>
+<p>A list of IDs of the auctions this photo is used in.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoUrls </th>
+<td style="width: 22%"> &lt;PhotoUrl&gt; or null </td>
+<td>
+<p>A collection of URLs for this photo, one for each size.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Thumbnail </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the thumbnail sized photo (always 85x64, with white borders).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the list view sized photo (scaled down to fit 160x120).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Medium </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the medium sized photo (scaled down to fit 175x175).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Gallery </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the gallery sized photo (scaled down to fit 233x176).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Large </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the large sized photo (scaled down to fit 352x264).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FullSize </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the full sized photo (scaled down to fit 670x502).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PlusSize </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL for the plus sized photo (scaled down to fit).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the photo.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OriginalWidth </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The original image width in pixels.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OriginalHeight </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The original image height in pixels.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "Id": 123,
+      "Description": "ABC",
+      "IsUsed": false,
+      "Auctions": [
+        123,
+        123
+      ],
+      "PhotoUrls": {
+        "Thumbnail": "ABC",
+        "List": "ABC",
+        "Medium": "ABC",
+        "Gallery": "ABC",
+        "Large": "ABC",
+        "FullSize": "ABC",
+        "PlusSize": "ABC",
+        "PhotoId": 123
+      },
+      "OriginalWidth": 123,
+      "OriginalHeight": 123
+    },
+    {
+      "Id": 123,
+      "Description": "ABC",
+      "IsUsed": false,
+      "Auctions": [
+        123,
+        123
+      ],
+      "PhotoUrls": {
+        "Thumbnail": "ABC",
+        "List": "ABC",
+        "Medium": "ABC",
+        "Gallery": "ABC",
+        "Large": "ABC",
+        "FullSize": "ABC",
+        "PlusSize": "ABC",
+        "PhotoId": 123
+      },
+      "OriginalWidth": 123,
+      "OriginalHeight": 123
+    }
+  ]
+}</code></pre>
+</div>

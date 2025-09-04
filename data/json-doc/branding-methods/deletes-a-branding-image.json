@@ -1,0 +1,68 @@
+{
+  "endpoint": "DeletesABrandingImage",
+  "title": "Deletes a branding image",
+  "description": "Deletes a specific branding image. The physical branding file will not physically be deleted immediately.",
+  "source": "https://developer.trademe.co.nz/api-reference/branding-methods/deletes-a-branding-image",
+  "url": "https://api.trademe.co.nz/v1/Member/{memberId}/BrandingImages/{brandingId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "memberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "brandingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<DeleteBrandingResponse> Status of operation",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false
+    }
+  }
+}

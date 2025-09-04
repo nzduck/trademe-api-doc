@@ -1,0 +1,1337 @@
+{
+  "endpoint": "RetrieveDetailedInformationAboutASingleCategoryByMcatPath",
+  "title": "Retrieve detailed information about a single category by mcat path",
+  "description": "Retrieves detailed information about a single category. This includes\n          applicable attributes, a legal notice (for categories that have one),\n          available listing durations, listing fees and information about\n          whether classifieds and/or auctions are allowed to be sold within the\n          category.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category-by-mcat-path",
+  "url": "https://api.trademe.co.nz/v1/categories/details.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "mcat_path",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The string path of the category. If this parameter is empty, it\n                returns a fictional category named \"Root\"."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<CategoryDetails>",
+    "fields": [
+      {
+        "name": "CategoryId",
+        "type": "Integer",
+        "required": false,
+        "description": "An integer ID that identifies the category."
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the category."
+      },
+      {
+        "name": "Path",
+        "type": "String or null",
+        "required": false,
+        "description": "The full URL path of this category e.g.\n                \"/Home-living/Beds-bedroom-furniture/Bedside-tables\"."
+      },
+      {
+        "name": "IsRestricted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the category is restricted to adults only\n                (i.e. the category is R18)."
+      },
+      {
+        "name": "IsWine",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category is a wine category, which means\n                only registered wine sellers are allowed to sell in this\n                category."
+      },
+      {
+        "name": "CanListAuctions",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether auctions can be listed in this category using\n                the API."
+      },
+      {
+        "name": "CanListClassifieds",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether classifieds can be listed in this category\n                using the API."
+      },
+      {
+        "name": "CanRelist",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether listings in this category can be relisted\n                using the API."
+      },
+      {
+        "name": "AuthenticatedBidsOnly",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether bids on listings in this category are only\n                accepted from authenticated members. If this is true, the\n                AuthenticatedMembersOnly field in the sell API request is\n                ignored."
+      },
+      {
+        "name": "LegalNotice",
+        "type": "String or null",
+        "required": false,
+        "description": "The text of a legal notice, if any. Users must be shown the\n                legal notice before being allowed to list in this category. An\n                example of a category that requires a legal notice is the carbon\n                credits category (because carbon credits must be certified and\n                registered before they can be sold)."
+      },
+      {
+        "name": "DefaultDuration",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The default duration for a listing that is listed in this\n                category.",
+        "enum": [
+          {
+            "name": "EndDate",
+            "value": "0",
+            "description": "An end date will be used to set the duration."
+          },
+          {
+            "name": "Two",
+            "value": "2",
+            "description": "Two days."
+          },
+          {
+            "name": "Three",
+            "value": "3",
+            "description": "Three days."
+          },
+          {
+            "name": "Four",
+            "value": "4",
+            "description": "Four days."
+          },
+          {
+            "name": "Five",
+            "value": "5",
+            "description": "Five days."
+          },
+          {
+            "name": "Six",
+            "value": "6",
+            "description": "Six days."
+          },
+          {
+            "name": "Seven",
+            "value": "7",
+            "description": "A week."
+          },
+          {
+            "name": "Ten",
+            "value": "10",
+            "description": "Ten days."
+          },
+          {
+            "name": "Fourteen",
+            "value": "14",
+            "description": "14 days."
+          },
+          {
+            "name": "TwentyOne",
+            "value": "21",
+            "description": "21 days."
+          },
+          {
+            "name": "TwentyEight",
+            "value": "28",
+            "description": "28 days."
+          },
+          {
+            "name": "Thirty",
+            "value": "30",
+            "description": "30 days."
+          },
+          {
+            "name": "FortyTwo",
+            "value": "42",
+            "description": "42 days."
+          },
+          {
+            "name": "FiftySix",
+            "value": "56",
+            "description": "56 days."
+          },
+          {
+            "name": "EightyFour",
+            "value": "84",
+            "description": "84 days (Commercial for Sale, Commercial for Lease, New Homes only)."
+          },
+          {
+            "name": "Ninety",
+            "value": "90",
+            "description": "90 days (Retirement Villages only)."
+          },
+          {
+            "name": "HundredSixtyEight",
+            "value": "168",
+            "description": "168 days (Commercial for Sale, Commercial for Lease only)."
+          },
+          {
+            "name": "UntilWithdrawn",
+            "value": "-1",
+            "description": "until withdrawn (only available for agents outside of the services category)"
+          }
+        ]
+      },
+      {
+        "name": "AllowedDurations",
+        "type": "Collection of Enumeration or null",
+        "required": false,
+        "description": "A list of durations that are allowed when listing in this\n                category.",
+        "enum": [
+          {
+            "name": "EndDate",
+            "value": "0",
+            "description": "An end date will be used to set the duration."
+          },
+          {
+            "name": "Two",
+            "value": "2",
+            "description": "Two days."
+          },
+          {
+            "name": "Three",
+            "value": "3",
+            "description": "Three days."
+          },
+          {
+            "name": "Four",
+            "value": "4",
+            "description": "Four days."
+          },
+          {
+            "name": "Five",
+            "value": "5",
+            "description": "Five days."
+          },
+          {
+            "name": "Six",
+            "value": "6",
+            "description": "Six days."
+          },
+          {
+            "name": "Seven",
+            "value": "7",
+            "description": "A week."
+          },
+          {
+            "name": "Ten",
+            "value": "10",
+            "description": "Ten days."
+          },
+          {
+            "name": "Fourteen",
+            "value": "14",
+            "description": "14 days."
+          },
+          {
+            "name": "TwentyOne",
+            "value": "21",
+            "description": "21 days."
+          },
+          {
+            "name": "TwentyEight",
+            "value": "28",
+            "description": "28 days."
+          },
+          {
+            "name": "Thirty",
+            "value": "30",
+            "description": "30 days."
+          },
+          {
+            "name": "FortyTwo",
+            "value": "42",
+            "description": "42 days."
+          },
+          {
+            "name": "FiftySix",
+            "value": "56",
+            "description": "56 days."
+          },
+          {
+            "name": "EightyFour",
+            "value": "84",
+            "description": "84 days (Commercial for Sale, Commercial for Lease, New Homes only)."
+          },
+          {
+            "name": "Ninety",
+            "value": "90",
+            "description": "90 days (Retirement Villages only)."
+          },
+          {
+            "name": "HundredSixtyEight",
+            "value": "168",
+            "description": "168 days (Commercial for Sale, Commercial for Lease only)."
+          },
+          {
+            "name": "UntilWithdrawn",
+            "value": "-1",
+            "description": "until withdrawn (only available for agents outside of the services category)"
+          }
+        ]
+      },
+      {
+        "name": "Fees",
+        "type": "<ListingFees> or null",
+        "required": false,
+        "description": "An estimate of the various fees for this category. If the API\n                call is authenticated then these values will reflect any\n                member-specific discounts. Fees may differ due to the user\n                selecting certain combinations of promotions, or other reasons.\n                For promotional fees specifically, if a fee is missing it means\n                the associated promotion is not available, whereas if a fee is\n                $0 it means the promotion is available for free. (This is a\n                rather nebulous distinction - most clients should not make any\n                distinction between the two).",
+        "nested_fields": [
+          {
+            "field_name": "Bold",
+            "field_type": "Number or null",
+            "description": "The price of the bold title promotion. Listings with this\n                      promotion have a bold title in search results. If the\n                      property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "Bundle",
+            "field_type": "Number or null",
+            "description": "The price of having the feature, bold and gallery\n                      promotions. If the property is not present, then this\n                      promotion is not available. Note that some categories do\n                      not allow certain promotions - in this case only the\n                      supported promotions are included in the price."
+          },
+          {
+            "field_name": "EndDate",
+            "field_type": "Number or null",
+            "description": "The price of the scheduled end time promotion. If the\n                      property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "Feature",
+            "field_type": "Number or null",
+            "description": "The price of the feature promotion. Listings with this\n                      promotion are shown higher in search results. If the\n                      property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "Gallery",
+            "field_type": "Number or null",
+            "description": "The price of the gallery promotion. Listings with this\n                      promotion show photos in search results. If the property\n                      is not present, then this promotion is not available."
+          },
+          {
+            "field_name": "GalleryPlus",
+            "field_type": "Number or null",
+            "description": "The price of the gallery plus promotion. Listings with\n                      this promotion get the gallery promotion, plus the next\n                      two relists also get the gallery promotion if the item\n                      doesn't sell. If the property is not present, then this\n                      promotion is not available."
+          },
+          {
+            "field_name": "Highlight",
+            "field_type": "Number or null",
+            "description": "The price of the highlight promotion. Listings with this\n                      promotion have a bright yellow border. If the property is\n                      not present, then this promotion is not available."
+          },
+          {
+            "field_name": "Homepage",
+            "field_type": "Number or null",
+            "description": "The price of featuring the listing on the homepage. If the\n                      property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "Listing",
+            "field_type": "Number or null",
+            "description": "The base price of listing an item. Applies to classifieds\n                      and auctions in some categories. Note that in some\n                      categories the fee for listing a classified depends on the\n                      asking price (or the rateable value/rent per week for\n                      properties) - for these categories this property will\n                      contain the price at the lowest tier. If this property is\n                      not present, then there is no listing fee for this\n                      category. For Motors the field is only applicable to\n                      Auctions"
+          },
+          {
+            "field_name": "MultiPhoto",
+            "field_type": "Number or null",
+            "description": "The price for additional photos. If the property is not\n                      present, then this promotion is not available."
+          },
+          {
+            "field_name": "Reserve",
+            "field_type": "Number or null",
+            "description": "The price for having a reserve. If the property is not\n                      present, then this promotion is not available."
+          },
+          {
+            "field_name": "Subtitle",
+            "field_type": "Number or null",
+            "description": "The cost of the subtitle promotion. Listings with this\n                      promotion have a subtitle in search results and listing\n                      pages. If the property is not present, then this promotion\n                      is not available."
+          },
+          {
+            "field_name": "TenDays",
+            "field_type": "Number or null",
+            "description": "The price to extend the listing to a duration of 10 days.\n                      If the property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "Withdrawal",
+            "field_type": "Number or null",
+            "description": "The minimum withdrawal fee for a listing. For some\n                      categories, including Motors, the withdrawal fee is\n                      calculated based on the sale price of the item at the time\n                      of the withdrawal. Withdrawing the item in the first hour\n                      is fee.Retrieve fees for withdrawing a listingendpoint is used to calculate the correct value."
+          },
+          {
+            "field_name": "SuperFeature",
+            "field_type": "Number or null",
+            "description": "The price for the super feature promotion. Listings with\n                      the super feature promotion are listed on the landing page\n                      for certain verticals, such as Trade Me Motors. This price\n                      is irrelevant for general marketplace listings. This is\n                      the price for super feature only - it does not include the\n                      feature combo extras. It is only available when adding the\n                      super feature promotion to a listing which had it already,\n                      but where the super feature period has expired. If the\n                      property is not present, then this promotion is not\n                      available."
+          },
+          {
+            "field_name": "SuperFeatureBundle",
+            "field_type": "Number or null",
+            "description": "The price for the super feature promotion. Listings with\n                      the super feature promotion are listed on the landing page\n                      for categories in general marketplace and verticals, such\n                      as Trade Me Motors. This price includes feature, bold,\n                      highlight and gallery, where applicable. If the property\n                      is not present, then this promotion is not available."
+          },
+          {
+            "field_name": "HighVolume",
+            "field_type": "Number or null",
+            "description": "The price for listing more than a set number of listings\n                      concurrently. The maximum number of listings you can run\n                      without incurring a fee starts at 50, but increases based\n                      on the number of items you have sold. See ourhelp pagefor more information. This fee does not apply to\n                      classifieds. This fee is the same for all categories (i.e.\n                      it is not category-specific)."
+          },
+          {
+            "field_name": "ListingFeeTiers",
+            "field_type": "Collection of <FeeTier> or null",
+            "description": "If the listing fee is dependent on the asking price, then\n                      this field will contain a list of pricing tiers. Only\n                      applies to categories where a tiered listing fee has been\n                      applied."
+          },
+          {
+            "field_name": "MinimumTierPriceNumberThe minimum price (may be the sale price, asking\n                            price, rateable value or rent per week, depending on\n                            the category and the type of fee) for this tier. The\n                            maximum price for this tier is defined by the\n                            minimum price for the next tier (if this is the last\n                            tier, then the maximum price is unlimited).FixedFeeNumberThe fixed fee that applies to listings within this\n                            tier. If the PercentageFee property is also present,\n                            then this fee applies in addition to that one.PercentageFeeNumberThe fee that applies to listings within this tier,\n                            as a percentage of the price increase over the\n                            minimum tier price. For example, if this fee applies\n                            to a sale price of $250, the MinimumTierPrice is\n                            $200, and the PercentageFee is 4.9, then this fee is\n                            4.9% of the $50 which amounts to $2.45. If the\n                            FixedFee property is present, then this fee applies\n                            in addition to that one.",
+            "field_type": "MinimumTierPrice",
+            "description": "Number"
+          },
+          {
+            "field_name": "MinimumTierPrice",
+            "field_type": "Number",
+            "description": "The minimum price (may be the sale price, asking\n                            price, rateable value or rent per week, depending on\n                            the category and the type of fee) for this tier. The\n                            maximum price for this tier is defined by the\n                            minimum price for the next tier (if this is the last\n                            tier, then the maximum price is unlimited)."
+          },
+          {
+            "field_name": "FixedFee",
+            "field_type": "Number",
+            "description": "The fixed fee that applies to listings within this\n                            tier. If the PercentageFee property is also present,\n                            then this fee applies in addition to that one."
+          },
+          {
+            "field_name": "PercentageFee",
+            "field_type": "Number",
+            "description": "The fee that applies to listings within this tier,\n                            as a percentage of the price increase over the\n                            minimum tier price. For example, if this fee applies\n                            to a sale price of $250, the MinimumTierPrice is\n                            $200, and the PercentageFee is 4.9, then this fee is\n                            4.9% of the $50 which amounts to $2.45. If the\n                            FixedFee property is present, then this fee applies\n                            in addition to that one."
+          },
+          {
+            "field_name": "MinimumSuccessFee",
+            "field_type": "Number",
+            "description": "The minimum success fee. Success fees only apply to\n                      auctions. If the property is not present, then the minimum\n                      success fee is zero."
+          },
+          {
+            "field_name": "MaximumSuccessFee",
+            "field_type": "Number",
+            "description": "The maximum success fee. Success fees only apply to\n                      auctions. If the property is not present, then success\n                      fees do not apply to this category."
+          },
+          {
+            "field_name": "SuccessFeeTiers",
+            "field_type": "Collection of <FeeTier> or null",
+            "description": "A list of success fee tiers. Only applies to auctions. If\n                      the property is not present, then success fees do not\n                      apply to this category."
+          },
+          {
+            "field_name": "Branding",
+            "field_type": "Number",
+            "description": "The price of the branding promotion. Listings with this\n                      promotion can have logo and/or banner. If the property is\n                      not present, then this promotion is not available."
+          },
+          {
+            "field_name": "SecondCategory",
+            "field_type": "Number",
+            "description": "The price of the second category promotion. Listings with\n                      this promotion will also appear in the second category\n                      selected."
+          },
+          {
+            "field_name": "Discounts",
+            "field_type": "Collection of <FeeDiscount> or null",
+            "description": "Additional information regarding member specific discounts\n                      for this category. The discount values are already applied\n                      to the Fees."
+          },
+          {
+            "field_name": "TypeEnumerationFee discount type.MessageString or nullA short description of the fee discount.",
+            "field_type": "Type",
+            "description": "Enumeration"
+          },
+          {
+            "field_name": "Type",
+            "field_type": "Enumeration",
+            "description": "Fee discount type.",
+            "enum_values": [
+              {
+                "name": "NotSpecified",
+                "value": "0",
+                "description": "No fee discount specified."
+              },
+              {
+                "name": "SuccessFee",
+                "value": "1",
+                "description": "The fee for a successful auction."
+              },
+              {
+                "name": "Gallery",
+                "value": "2",
+                "description": "The fee of the gallery promotion."
+              },
+              {
+                "name": "Feature",
+                "value": "3",
+                "description": "The fee of the feature promotion."
+              },
+              {
+                "name": "FeatureCombo",
+                "value": "4",
+                "description": "The fee of the feature combo promotion."
+              },
+              {
+                "name": "SuperFeature",
+                "value": "5",
+                "description": "The fee of the super feature promotion."
+              },
+              {
+                "name": "Subtitle",
+                "value": "6",
+                "description": "The fee of the subtitle promotion."
+              },
+              {
+                "name": "Reserve",
+                "value": "7",
+                "description": "The fee for having a reserve price."
+              },
+              {
+                "name": "TenDays",
+                "value": "8",
+                "description": "The fee for extending the listing to a duration of 10 days."
+              },
+              {
+                "name": "EndDate",
+                "value": "9",
+                "description": "The fee of the scheduled end time promotion."
+              }
+            ]
+          },
+          {
+            "field_name": "Message",
+            "field_type": "String or null",
+            "description": "A short description of the fee discount."
+          }
+        ]
+      },
+      {
+        "name": "FreePhotoCount",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of photos that are allowed on a listing without a fee\n                being incurred. After this limit is exceeded, a fee is charged\n                per photo."
+      },
+      {
+        "name": "MaximumPhotoCount",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The maximum number of photos allowed on a single listing in this\n                category."
+      },
+      {
+        "name": "IsFreeToRelist",
+        "type": "Boolean",
+        "required": false,
+        "description": "If this value is true, then the fees that are normally\n                charged are waived when relisting a listing in this category.\n                You may still be charged if the relist adds additional extras\n                that were not present in the original listing."
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> or null",
+        "required": false,
+        "description": "A list of the attributes that apply to this category.",
+        "nested_fields": [
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "A name which uniquely identifies the attribute. Required\n                      when selling or editing."
+          },
+          {
+            "field_name": "DisplayName",
+            "field_type": "String or null",
+            "description": "The name of the attribute, in a form suitable for\n                      displaying to users. Not required when selling or editing."
+          },
+          {
+            "field_name": "Type",
+            "field_type": "Enumeration",
+            "description": "The type of the attribute, which determines the range of\n                      acceptable values. Not required when selling or editing.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "Not used."
+              },
+              {
+                "name": "Boolean",
+                "value": "1",
+                "description": "The attribute value is a boolean (true/false)."
+              },
+              {
+                "name": "Integer",
+                "value": "2",
+                "description": "The attribute value is an integer."
+              },
+              {
+                "name": "Decimal",
+                "value": "3",
+                "description": "The attribute value is a floating point number."
+              },
+              {
+                "name": "String",
+                "value": "4",
+                "description": "The attribute value can be arbitrary text."
+              },
+              {
+                "name": "DateTime",
+                "value": "5",
+                "description": "The attribute value is a date & time (in UTC)."
+              }
+            ]
+          },
+          {
+            "field_name": "Range",
+            "field_type": "<AttributeRange> or null",
+            "description": "The allowed range of the attribute. Only applies to\n                      numeric attributes. Not required when selling or editing."
+          },
+          {
+            "field_name": "LowerString or nullThe lowest allowed value of the attribute.UpperString or nullThe highest allowed value of the attribute.",
+            "field_type": "Lower",
+            "description": "String or null"
+          },
+          {
+            "field_name": "Lower",
+            "field_type": "String or null",
+            "description": "The lowest allowed value of the attribute."
+          },
+          {
+            "field_name": "Upper",
+            "field_type": "String or null",
+            "description": "The highest allowed value of the attribute."
+          },
+          {
+            "field_name": "MaxStringLength",
+            "field_type": "Integer",
+            "description": "The maximum allowed length of the attribute value, in\n                      characters. Only applies to string attributes. Some string\n                      attributes do not have a maximum length because they are\n                      restricted to a fixed list of options, or because any\n                      length is acceptable. Not required when selling or\n                      editing."
+          },
+          {
+            "field_name": "Options",
+            "field_type": "Collection of <AttributeOption> or null",
+            "description": "A list of options, if the attribute is restricted to a\n                      fixed set of values. Not required when selling or editing."
+          },
+          {
+            "field_name": "ValueString or nullThe value of the item as a string.DisplayString or nullWhat should be displayed for this value (often the\n                            same).",
+            "field_type": "Value",
+            "description": "String or null"
+          },
+          {
+            "field_name": "Value",
+            "field_type": "String or null",
+            "description": "The value of the item as a string."
+          },
+          {
+            "field_name": "Display",
+            "field_type": "String or null",
+            "description": "What should be displayed for this value (often the\n                            same)."
+          },
+          {
+            "field_name": "Units",
+            "field_type": "Collection of <AttributeUnit> or null",
+            "description": "A list of units that apply (MHz, hectares, etc). Only\n                      applies to numeric attributes. Not required when selling\n                      or editing."
+          },
+          {
+            "field_name": "DisplayString or nullThe unit name, in a format suitable for displaying\n                            to a user (e.g. \"MHz\").MultiplierNumberThe multiplier to apply to the value the user\n                            entered to get a value suitable for passing to the\n                            sell API.",
+            "field_type": "Display",
+            "description": "String or null"
+          },
+          {
+            "field_name": "Display",
+            "field_type": "String or null",
+            "description": "The unit name, in a format suitable for displaying\n                            to a user (e.g. \"MHz\")."
+          },
+          {
+            "field_name": "Multiplier",
+            "field_type": "Number",
+            "description": "The multiplier to apply to the value the user\n                            entered to get a value suitable for passing to the\n                            sell API."
+          },
+          {
+            "field_name": "IsRequiredForSell",
+            "field_type": "Boolean",
+            "description": "Indicates whether the attribute must be present when\n                      selling an item."
+          },
+          {
+            "field_name": "GroupName",
+            "field_type": "String or null",
+            "description": "Suggests the category name for the attribute grouping on\n                      the UI level."
+          }
+        ]
+      },
+      {
+        "name": "Charities",
+        "type": "Collection of <Charity> or null",
+        "required": false,
+        "description": "Returns the list of available charity options which are\n                available to donate to when listing.",
+        "nested_fields": [
+          {
+            "field_name": "CharityType",
+            "field_type": "Enumeration",
+            "description": "The unique identifier of the charity.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "The default charity identifier. Used if the user chose not to donate to a charity at all."
+              },
+              {
+                "name": "ForestAndBird",
+                "value": "1",
+                "description": "Donate to Forest and Bird's kiwis for kiwis program."
+              },
+              {
+                "name": "Plunket",
+                "value": "2",
+                "description": "Donate to Plunket."
+              },
+              {
+                "name": "StJohn",
+                "value": "3",
+                "description": "Donate to St John."
+              },
+              {
+                "name": "OurPeopleOurCityFund",
+                "value": "4",
+                "description": "Donate to Our People, Our City Fund."
+              },
+              {
+                "name": "WomensRefuge",
+                "value": "5",
+                "description": "Donate to Women's Refuge"
+              },
+              {
+                "name": "KidsCan",
+                "value": "6",
+                "description": "Donate to KidsCan"
+              }
+            ]
+          },
+          {
+            "field_name": "ImageSource",
+            "field_type": "String or null",
+            "description": "The URL for this charity's brand image (designed for a\n                      light background)."
+          },
+          {
+            "field_name": "DarkModeImageSource",
+            "field_type": "String or null",
+            "description": "The URL for this charity's brand image (designed for a\n                      dark background)."
+          },
+          {
+            "field_name": "Description",
+            "field_type": "String or null",
+            "description": "The name of the charity e.g. \"Plunket\", \"Kiwis for kiwi\"."
+          },
+          {
+            "field_name": "Tagline",
+            "field_type": "String or null",
+            "description": "A short description of what the charity does."
+          }
+        ]
+      },
+      {
+        "name": "IsMemberRestrictedFromListing",
+        "type": "Boolean or null",
+        "required": false,
+        "description": "Specifies whether the current member has been restricted from\n                listing in this category."
+      },
+      {
+        "name": "HasCatalogue",
+        "type": "Boolean",
+        "required": false,
+        "description": "Returns true if the catagory supports listing via a catalogue."
+      },
+      {
+        "name": "Promotions",
+        "type": "Collection of <Promotion> or null",
+        "required": false,
+        "description": "The list of available promotional options. Only one promotional\n                option can be selected. These are only available in categories\n                where Super Grid has been enabled.",
+        "nested_fields": [
+          {
+            "field_name": "Id",
+            "field_type": "Integer",
+            "description": "The unique identifier of the promotion."
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the promotion."
+          },
+          {
+            "field_name": "Description",
+            "field_type": "String or null",
+            "description": "A short description of the promotion."
+          },
+          {
+            "field_name": "Price",
+            "field_type": "Number",
+            "description": "The current price of the promotion. This price should\n                      include any discounts currently applied."
+          },
+          {
+            "field_name": "OriginalPrice",
+            "field_type": "Number",
+            "description": "The price of the promotion before any discounts have been\n                      applied."
+          },
+          {
+            "field_name": "Recommended",
+            "field_type": "Boolean",
+            "description": "Whether this promotion is currently being recommended."
+          },
+          {
+            "field_name": "MinimumPhotoCount",
+            "field_type": "Integer",
+            "description": "The minimum number of photos required for the promotion."
+          },
+          {
+            "field_name": "DiscountDescription",
+            "field_type": "String or null",
+            "description": "A short description of any discount applied to this\n                      promotion."
+          },
+          {
+            "field_name": "DiscountStartDate",
+            "field_type": "String or null",
+            "description": "The start date of any discount applied to this promotion."
+          },
+          {
+            "field_name": "DiscountEndDate",
+            "field_type": "String or null",
+            "description": "The end date of any discount applied to this promotion."
+          },
+          {
+            "field_name": "DiscountDisclaimer",
+            "field_type": "String or null",
+            "description": "The legal disclaimer of any discount applied to this\n                      promotion."
+          },
+          {
+            "field_name": "GoodFor2RelistsFee",
+            "field_type": "Number",
+            "description": "The value of the GoodFor2Relists fee if eligible for this\n                      promotion."
+          }
+        ]
+      },
+      {
+        "name": "EmbeddedContentOptions",
+        "type": "Collection of <EmbeddedContentOption> or null",
+        "required": false,
+        "description": "A list of the embedded content options that apply to this\n                category.",
+        "nested_fields": [
+          {
+            "field_name": "Value",
+            "field_type": "String or null",
+            "description": "The value of the item as a string."
+          }
+        ]
+      },
+      {
+        "name": "HasAutomaticallyCreatedTitle",
+        "type": "Boolean",
+        "required": false,
+        "description": "This flag indicates if this category has automatically generated\n                listing titles. For example car auctions have automatically\n                generated listings titles and any title provided during creation\n                or edit will be ignored."
+      },
+      {
+        "name": "CanUseTradeMeShipping",
+        "type": "Boolean",
+        "required": false,
+        "description": "Returns true if the authenticated member and category can use\n                Trade Me shipping. If the call is unathenticated returns false."
+      },
+      {
+        "name": "PaymentMethods",
+        "type": "Collection of <PaymentMethodDetail> or null",
+        "required": false,
+        "description": "A list of the supported payment methods.",
+        "nested_fields": [
+          {
+            "field_name": "Id",
+            "field_type": "Enumeration",
+            "description": "The unique identifier for the payment method.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "No payment methods provided."
+              },
+              {
+                "name": "BankDeposit",
+                "value": "1",
+                "description": "NZ bank deposit."
+              },
+              {
+                "name": "CreditCard",
+                "value": "2",
+                "description": "Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)"
+              },
+              {
+                "name": "Cash",
+                "value": "4",
+                "description": "Cash."
+              },
+              {
+                "name": "SafeTrader",
+                "value": "8",
+                "description": "Safe Trader (Now obsolete)."
+              },
+              {
+                "name": "Other",
+                "value": "16",
+                "description": "Other (needs to be specified)."
+              },
+              {
+                "name": "Ping",
+                "value": "32",
+                "description": "Ping."
+              },
+              {
+                "name": "Afterpay",
+                "value": "64",
+                "description": "Afterpay."
+              }
+            ]
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The text to display to the user."
+          },
+          {
+            "field_name": "DefaultsToOn",
+            "field_type": "Boolean",
+            "description": "Indicates whether the option should be selected by default\n                      when the user is creating a new listing."
+          },
+          {
+            "field_name": "LogoUrl",
+            "field_type": "String or null",
+            "description": "A url for the payment methods logo."
+          },
+          {
+            "field_name": "SellerFeePercentage",
+            "field_type": "Number",
+            "description": "The percentage fee of this payment method for the logged\n                      in member."
+          }
+        ]
+      },
+      {
+        "name": "MaximumTitleLength",
+        "type": "Integer",
+        "required": false,
+        "description": "The maximum length of listing titles."
+      },
+      {
+        "name": "AreaOfBusiness",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Area of business this category is related to",
+        "enum": [
+          {
+            "name": "NotSpecified",
+            "value": "0",
+            "description": "None specified."
+          },
+          {
+            "name": "All",
+            "value": "0",
+            "description": "All"
+          },
+          {
+            "name": "Marketplace",
+            "value": "1",
+            "description": "Marketplace"
+          },
+          {
+            "name": "Property",
+            "value": "2",
+            "description": "Property"
+          },
+          {
+            "name": "Motors",
+            "value": "3",
+            "description": "Motors"
+          },
+          {
+            "name": "Jobs",
+            "value": "4",
+            "description": "Jobs"
+          },
+          {
+            "name": "Services",
+            "value": "5",
+            "description": "Services"
+          }
+        ]
+      },
+      {
+        "name": "ExtensionPeriod",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of days that a listed item can be extended for"
+      },
+      {
+        "name": "DefaultRelistDuration",
+        "type": "Integer",
+        "required": false,
+        "description": "The default number of days to relist an expired item"
+      },
+      {
+        "name": "CanHaveSecondCategory",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category can be paired with a second\n                category."
+      },
+      {
+        "name": "CanBeSecondCategory",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category can be selected as a second\n                category."
+      },
+      {
+        "name": "PremiumPackages",
+        "type": "Collection of <PremiumPackage> or null",
+        "required": false,
+        "description": "A list of all available premium packages.",
+        "nested_fields": [
+          {
+            "field_name": "Code",
+            "field_type": "String or null",
+            "description": "The package code."
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The display name of this package."
+          }
+        ]
+      },
+      {
+        "name": "ListingExtras",
+        "type": "Collection of <ListingExtras> or null",
+        "required": false,
+        "description": "A collection of extras that are allowed when listing in this\n                category. We require Name, & Variant for each ListingExtra\n                when creating or editing a listing.",
+        "nested_fields": [
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the extra."
+          },
+          {
+            "field_name": "Variant",
+            "field_type": "String or null",
+            "description": "The variation of the extra. For example this could\n                      determine the duration, delay, or configuration of the\n                      listing extra."
+          },
+          {
+            "field_name": "Description",
+            "field_type": "String or null",
+            "description": "The description of the extra; informational only."
+          },
+          {
+            "field_name": "Duration",
+            "field_type": "Integer or null",
+            "description": "The number of days the extra will be active; informational\n                      only."
+          },
+          {
+            "field_name": "Delay",
+            "field_type": "Integer or null",
+            "description": "The number of days before the extra will become active\n                      after purchase; informational only."
+          }
+        ]
+      },
+      {
+        "name": "Blurb",
+        "type": "String or null",
+        "required": false,
+        "description": "A blurb content used for displaying on category landing pages\n                for SEO"
+      },
+      {
+        "name": "CanUseCounterOffers",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether listings in this category can use\n                MakeAnOffer(CounterOffers) feature."
+      },
+      {
+        "name": "PartnershipAgreementContents",
+        "type": "<PartnershipAgreementContentsCollection> or null",
+        "required": false,
+        "description": "The contents of the commitment contract for the member. Includes\n                listing extras or packages for specified category",
+        "nested_fields": [
+          {
+            "field_name": "ListingExtras",
+            "field_type": "Collection of <ListingExtras> or null",
+            "description": "Listing Extras provided in commitment contract or\n                      partnership agreement"
+          },
+          {
+            "field_name": "PremiumPackages",
+            "field_type": "Collection of <PremiumPackage> or null",
+            "description": "Packages provided in commitment contract or partnership\n                      agreement"
+          }
+        ]
+      },
+      {
+        "name": "IsFirearms",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category is a firearms category, which\n                means only users having a Firearms licence are allowed to sell\n                or buy in this category."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "CategoryId": 123,
+      "Name": "ABC",
+      "Path": "ABC",
+      "IsRestricted": false,
+      "IsWine": false,
+      "CanListAuctions": false,
+      "CanListClassifieds": false,
+      "CanRelist": false,
+      "AuthenticatedBidsOnly": false,
+      "LegalNotice": "ABC",
+      "DefaultDuration": 0,
+      "AllowedDurations": [
+        0,
+        0
+      ],
+      "Fees": {
+        "Bold": 123.0,
+        "Bundle": 123.0,
+        "EndDate": 123.0,
+        "Feature": 123.0,
+        "Gallery": 123.0,
+        "GalleryPlus": 123.0,
+        "Highlight": 123.0,
+        "Homepage": 123.0,
+        "Listing": 123.0,
+        "MultiPhoto": 123.0,
+        "Reserve": 123.0,
+        "Subtitle": 123.0,
+        "TenDays": 123.0,
+        "Withdrawal": 123.0,
+        "SuperFeature": 123.0,
+        "SuperFeatureBundle": 123.0,
+        "HighVolume": 123.0,
+        "ListingFeeTiers": [
+          {
+            "MinimumTierPrice": 123.0,
+            "FixedFee": 123.0,
+            "PercentageFee": 123.0
+          },
+          {
+            "MinimumTierPrice": 123.0,
+            "FixedFee": 123.0,
+            "PercentageFee": 123.0
+          }
+        ],
+        "MinimumSuccessFee": 123.0,
+        "MaximumSuccessFee": 123.0,
+        "SuccessFeeTiers": [
+          {},
+          {}
+        ],
+        "Branding": 123.0,
+        "SecondCategory": 123.0,
+        "Discounts": [
+          {
+            "Type": 0,
+            "Message": "ABC"
+          },
+          {
+            "Type": 0,
+            "Message": "ABC"
+          }
+        ]
+      },
+      "FreePhotoCount": 123,
+      "MaximumPhotoCount": 123,
+      "IsFreeToRelist": false,
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Type": 0,
+          "Range": {
+            "Lower": "ABC",
+            "Upper": "ABC"
+          },
+          "MaxStringLength": 123,
+          "Options": [
+            {
+              "Value": "ABC",
+              "Display": "ABC"
+            },
+            {
+              "Value": "ABC",
+              "Display": "ABC"
+            }
+          ],
+          "Units": [
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            },
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            }
+          ],
+          "IsRequiredForSell": false,
+          "GroupName": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "DisplayName": "ABC",
+          "Type": 0,
+          "Range": {
+            "Lower": "ABC",
+            "Upper": "ABC"
+          },
+          "MaxStringLength": 123,
+          "Options": [
+            {
+              "Value": "ABC",
+              "Display": "ABC"
+            },
+            {
+              "Value": "ABC",
+              "Display": "ABC"
+            }
+          ],
+          "Units": [
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            },
+            {
+              "Display": "ABC",
+              "Multiplier": 123.0
+            }
+          ],
+          "IsRequiredForSell": false,
+          "GroupName": "ABC"
+        }
+      ],
+      "Charities": [
+        {
+          "CharityType": 0,
+          "ImageSource": "ABC",
+          "DarkModeImageSource": "ABC",
+          "Description": "ABC",
+          "Tagline": "ABC"
+        },
+        {
+          "CharityType": 0,
+          "ImageSource": "ABC",
+          "DarkModeImageSource": "ABC",
+          "Description": "ABC",
+          "Tagline": "ABC"
+        }
+      ],
+      "IsMemberRestrictedFromListing": false,
+      "HasCatalogue": false,
+      "Promotions": [
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Description": "ABC",
+          "Price": 123.0,
+          "OriginalPrice": 123.0,
+          "Recommended": false,
+          "MinimumPhotoCount": 123,
+          "DiscountDescription": "ABC",
+          "DiscountStartDate": "ABC",
+          "DiscountEndDate": "ABC",
+          "DiscountDisclaimer": "ABC",
+          "GoodFor2RelistsFee": 123.0
+        },
+        {
+          "Id": 123,
+          "Name": "ABC",
+          "Description": "ABC",
+          "Price": 123.0,
+          "OriginalPrice": 123.0,
+          "Recommended": false,
+          "MinimumPhotoCount": 123,
+          "DiscountDescription": "ABC",
+          "DiscountStartDate": "ABC",
+          "DiscountEndDate": "ABC",
+          "DiscountDisclaimer": "ABC",
+          "GoodFor2RelistsFee": 123.0
+        }
+      ],
+      "EmbeddedContentOptions": [
+        {
+          "Value": "ABC"
+        },
+        {
+          "Value": "ABC"
+        }
+      ],
+      "HasAutomaticallyCreatedTitle": false,
+      "CanUseTradeMeShipping": false,
+      "PaymentMethods": [
+        {
+          "Id": 0,
+          "Name": "ABC",
+          "DefaultsToOn": false,
+          "LogoUrl": "ABC",
+          "SellerFeePercentage": 123.0
+        },
+        {
+          "Id": 0,
+          "Name": "ABC",
+          "DefaultsToOn": false,
+          "LogoUrl": "ABC",
+          "SellerFeePercentage": 123.0
+        }
+      ],
+      "MaximumTitleLength": 123,
+      "AreaOfBusiness": 0,
+      "ExtensionPeriod": 123,
+      "DefaultRelistDuration": 123,
+      "CanHaveSecondCategory": false,
+      "CanBeSecondCategory": false,
+      "PremiumPackages": [
+        {
+          "Code": "ABC",
+          "Name": "ABC"
+        },
+        {
+          "Code": "ABC",
+          "Name": "ABC"
+        }
+      ],
+      "ListingExtras": [
+        {
+          "Name": "ABC",
+          "Variant": "ABC",
+          "Description": "ABC",
+          "Duration": 123,
+          "Delay": 123
+        },
+        {
+          "Name": "ABC",
+          "Variant": "ABC",
+          "Description": "ABC",
+          "Duration": 123,
+          "Delay": 123
+        }
+      ],
+      "Blurb": "ABC",
+      "CanUseCounterOffers": false,
+      "PartnershipAgreementContents": {
+        "ListingExtras": [
+          {},
+          {}
+        ],
+        "PremiumPackages": [
+          {},
+          {}
+        ]
+      },
+      "IsFirearms": false
+    }
+  }
+}

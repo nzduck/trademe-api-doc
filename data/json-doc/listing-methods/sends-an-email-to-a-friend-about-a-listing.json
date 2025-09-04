@@ -1,0 +1,131 @@
+{
+  "endpoint": "SendsAnEmailToAFriendAboutAListing",
+  "title": "Sends an email to a friend about a listing",
+  "description": "Sends a message to a friend via an email.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/sends-an-email-to-a-friend-about-a-listing",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/emailFriend.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing the email is about."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<EmailFriendRequest>",
+    "fields": [
+      {
+        "name": "Message",
+        "type": "String (required)",
+        "required": true,
+        "description": "Message"
+      },
+      {
+        "name": "CopyToSelf",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "CopyToSelf"
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "PhoneNumber"
+      },
+      {
+        "name": "EmailAddress",
+        "type": "String (optional)",
+        "required": false,
+        "description": "EmailAddress"
+      },
+      {
+        "name": "FirstName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "FirstName"
+      },
+      {
+        "name": "LastName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "LastName"
+      },
+      {
+        "name": "EnquiryType",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "EnquiryType"
+      },
+      {
+        "name": "ReferringSearchId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ReferringSearchId"
+      },
+      {
+        "name": "EmailTo",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The email address of the recipient."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<EmailResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Message": "ABC",
+      "CopyToSelf": false,
+      "PhoneNumber": "ABC",
+      "EmailAddress": "ABC",
+      "FirstName": "ABC",
+      "LastName": "ABC",
+      "EnquiryType": 0,
+      "ReferringSearchId": "ABC",
+      "EmailTo": "ABC"
+    },
+    "response_json": {
+      "Success": false
+    }
+  }
+}

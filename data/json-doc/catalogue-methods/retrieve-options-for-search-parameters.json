@@ -1,0 +1,90 @@
+{
+  "endpoint": "RetrieveOptionsForSearchParameters",
+  "title": "Retrieve options for search parameters",
+  "description": "Retrieves a list of options for a search filter. The list of options may depend on the value of another filter.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-options-for-search-parameters",
+  "url": "https://api.trademe.co.nz/v1/SearchOptions.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "dependent_value",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The value of the dependent parameter, if any."
+      },
+      {
+        "name": "key",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The key, as specified in the ExternalOptionsKey field when return_metadata=true is passed to a search API."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <AttributeOption> A list of values and display values.",
+    "fields": [
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The value of the item as a string."
+      },
+      {
+        "name": "Display",
+        "type": "String or null",
+        "required": false,
+        "description": "What should be displayed for this value (often the same)."
+      },
+      {
+        "name": "Count",
+        "type": "Integer or null",
+        "required": false,
+        "description": "How many child elements are available."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Value": "ABC",
+        "Display": "ABC",
+        "Count": 123
+      },
+      {
+        "Value": "ABC",
+        "Display": "ABC",
+        "Count": 123
+      }
+    ]
+  }
+}

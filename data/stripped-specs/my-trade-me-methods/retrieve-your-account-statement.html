@@ -1,0 +1,192 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-account-statement -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your account statement</h1>
+<!-- Page content -->
+<p>Gets the member ledger for the authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/memberledger/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A time-based filter on the results. <table><tr><td>All</td><td>Return member ledger records from the last 365 days.</td></tr><tr><td>Last60Days</td><td>Return member ledger records from the last 60 days.</td></tr><tr><td>Last45Days</td><td>Return member ledger records from the last 45 days.</td></tr><tr><td>Last28Days</td><td>Return member ledger records from the last 28 days.</td></tr><tr><td>Last14Days</td><td>Return member ledger records from the last 14 days.</td></tr><tr><td>Last7Days</td><td>Return member ledger records from the last 7 days.</td></tr><tr><td>Last24Hours</td><td>Return member ledger records from the last 24 hours.</td></tr></table></p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The number of results per page; also the maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> type </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>A filter on the type of results returned.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>All</td>
+<td>
+<p>Return all available ledger items.</p>
+</td>
+</tr>
+<tr>
+<td>AllDebits</td>
+<td>
+<p>Return all debits.</p>
+</td>
+</tr>
+<tr>
+<td>AllCredits</td>
+<td>
+<p>Return all credits.</p>
+</td>
+</tr>
+<tr>
+<td>AccountCredits</td>
+<td>
+<p>Only return account credits (where the account is topped up manually or via auto billing).</p>
+</td>
+</tr>
+<tr>
+<td>Refunds</td>
+<td>
+<p>Only return refunds.</p>
+</td>
+</tr>
+<tr>
+<td>TopSellerDiscounts</td>
+<td>
+<p>Only return top seller discounts.</p>
+</td>
+</tr>
+<tr>
+<td>GoldTradeRebates</td>
+<td>
+<p>Only return gold trade rebates (final sales values rebates).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;MemberLedger&gt; </p>
+<p>The member ledger for the authenticated user.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;Date&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The transaction date.&quot;}, {&quot;field_name&quot;: &quot;Type&quot;, &quot;field_type&quot;: &quot;Enumeration&quot;, &quot;description&quot;: &quot;The transaction type.&quot;, &quot;enum_values&quot;: [{&quot;name&quot;: &quot;Other&quot;, &quot;value&quot;: &quot;0&quot;, &quot;description&quot;: &quot;An unknown ledger item.&quot;}, {&quot;name&quot;: &quot;ListingFee&quot;, &quot;value&quot;: &quot;1&quot;, &quot;description&quot;: &quot;The fee for a listing an item (applies to classifieds and auctions in certain categories).&quot;}, {&quot;name&quot;: &quot;HighVolumeFee&quot;, &quot;value&quot;: &quot;2&quot;, &quot;description&quot;: &quot;The fee for exceeding the free listing allowance.&quot;}, {&quot;name&quot;: &quot;SuccessFeeBid&quot;, &quot;value&quot;: &quot;3&quot;, &quot;description&quot;: &quot;The fee for a successful auction (won via a bid).&quot;}, {&quot;name&quot;: &quot;SuccessFeeOffer&quot;, &quot;value&quot;: &quot;4&quot;, &quot;description&quot;: &quot;The fee for a successful auction (won via a fixed price offer).&quot;}, {&quot;name&quot;: &quot;SuccessFeeBuyNow&quot;, &quot;value&quot;: &quot;5&quot;, &quot;description&quot;: &quot;The fee for a successful auction (won via Buy Now).&quot;}, {&quot;name&quot;: &quot;GalleryPromotion&quot;, &quot;value&quot;: &quot;100&quot;, &quot;description&quot;: &quot;The fee for listing an item with the gallery promotion.&quot;}, {&quot;name&quot;: &quot;GalleryPlusPromotion&quot;, &quot;value&quot;: &quot;101&quot;, &quot;description&quot;: &quot;The fee for listing an item with the gallery plus promotion.&quot;}, {&quot;name&quot;: &quot;BoldPromotion&quot;, &quot;value&quot;: &quot;102&quot;, &quot;description&quot;: &quot;The fee for listing an item with the bold title promotion.&quot;}, {&quot;name&quot;: &quot;SubtitlePromotion&quot;, &quot;value&quot;: &quot;103&quot;, &quot;description&quot;: &quot;The fee for listing an item with a subtitle.&quot;}, {&quot;name&quot;: &quot;HighlightPromotion&quot;, &quot;value&quot;: &quot;104&quot;, &quot;description&quot;: &quot;The fee for listing an item with a highlight.&quot;}, {&quot;name&quot;: &quot;FeaturePromotion&quot;, &quot;value&quot;: &quot;105&quot;, &quot;description&quot;: &quot;The fee for listing an item with the feature promotion.&quot;}, {&quot;name&quot;: &quot;FeatureComboPromotion&quot;, &quot;value&quot;: &quot;106&quot;, &quot;description&quot;: &quot;The fee for listing an item with the feature combo promotion.&quot;}, {&quot;name&quot;: &quot;HomepageFeaturePromotion&quot;, &quot;value&quot;: &quot;107&quot;, &quot;description&quot;: &quot;The fee for listing an item with the homepage feature promotion.&quot;}, {&quot;name&quot;: &quot;SuperFeaturePromotion&quot;, &quot;value&quot;: &quot;108&quot;, &quot;description&quot;: &quot;The fee for listing an item with the super feature promotion.&quot;}, {&quot;name&quot;: &quot;SuperFeatureComboPromotion&quot;, &quot;value&quot;: &quot;109&quot;, &quot;description&quot;: &quot;The fee for listing an item with the super feature combo promotion.&quot;}, {&quot;name&quot;: &quot;TenDayAuctionFee&quot;, &quot;value&quot;: &quot;110&quot;, &quot;description&quot;: &quot;The fee for listing an item with a duration of ten days.&quot;}, {&quot;name&quot;: &quot;MultiPhotoFee&quot;, &quot;value&quot;: &quot;111&quot;, &quot;description&quot;: &quot;The fee for listing an item with additional photos.&quot;}, {&quot;name&quot;: &quot;ScheduledEndDateFee&quot;, &quot;value&quot;: &quot;112&quot;, &quot;description&quot;: &quot;The fee for listing an item with a scheduled end date/time.&quot;}, {&quot;name&quot;: &quot;ReserveFee&quot;, &quot;value&quot;: &quot;113&quot;, &quot;description&quot;: &quot;The fee for listing an item with a reserve price.&quot;}, {&quot;name&quot;: &quot;SecondaryCategoryPromotion&quot;, &quot;value&quot;: &quot;114&quot;, &quot;description&quot;: &quot;The fee for listing an item with a reserve price.&quot;}, {&quot;name&quot;: &quot;JobPack5&quot;, &quot;value&quot;: &quot;200&quot;, &quot;description&quot;: &quot;The purchase of a five listing job pack.&quot;}, {&quot;name&quot;: &quot;JobPack10&quot;, &quot;value&quot;: &quot;201&quot;, &quot;description&quot;: &quot;The purchase of a ten listing job pack.&quot;}, {&quot;name&quot;: &quot;JobPack20&quot;, &quot;value&quot;: &quot;202&quot;, &quot;description&quot;: &quot;The purchase of a twenty listing job pack.&quot;}, {&quot;name&quot;: &quot;JobPack30&quot;, &quot;value&quot;: &quot;204&quot;, &quot;description&quot;: &quot;The purchase of a thirty listing job pack.&quot;}, {&quot;name&quot;: &quot;JobPack50&quot;, &quot;value&quot;: &quot;203&quot;, &quot;description&quot;: &quot;The purchase of a fifty listing job pack.&quot;}, {&quot;name&quot;: &quot;JobPack100&quot;, &quot;value&quot;: &quot;205&quot;, &quot;description&quot;: &quot;The purchase of a hundred listing job pack.&quot;}, {&quot;name&quot;: &quot;WithdrawalFee&quot;, &quot;value&quot;: &quot;300&quot;, &quot;description&quot;: &quot;The fee for withdrawing an auction over an hour after it started.&quot;}, {&quot;name&quot;: &quot;QuotableValueReportFee&quot;, &quot;value&quot;: &quot;301&quot;, &quot;description&quot;: &quot;The fee for purchasing a QV report.&quot;}, {&quot;name&quot;: &quot;MonthlyStoreFee&quot;, &quot;value&quot;: &quot;302&quot;, &quot;description&quot;: &quot;The monthly fee for having a Trade Me store.&quot;}, {&quot;name&quot;: &quot;CreditViaCreditCard&quot;, &quot;value&quot;: &quot;400&quot;, &quot;description&quot;: &quot;The member credited their account with a credit card.&quot;}, {&quot;name&quot;: &quot;CreditViaBankTransfer&quot;, &quot;value&quot;: &quot;401&quot;, &quot;description&quot;: &quot;The member credited their account using internet banking.&quot;}, {&quot;name&quot;: &quot;CreditViaCheque&quot;, &quot;value&quot;: &quot;402&quot;, &quot;description&quot;: &quot;The member credited their account with a cheque.&quot;}, {&quot;name&quot;: &quot;CreditViaPing&quot;, &quot;value&quot;: &quot;403&quot;, &quot;description&quot;: &quot;This member credited their account with Ping.&quot;}, {&quot;name&quot;: &quot;RebateForListingFee&quot;, &quot;value&quot;: &quot;500&quot;, &quot;description&quot;: &quot;The rebate for listing an item.&quot;}, {&quot;name&quot;: &quot;RebateForHighVolumeFee&quot;, &quot;value&quot;: &quot;501&quot;, &quot;description&quot;: &quot;The rebate for exceeding the free listing allowance.&quot;}, {&quot;name&quot;: &quot;RebateForSuccessFeeBid&quot;, &quot;value&quot;: &quot;502&quot;, &quot;description&quot;: &quot;The rebate for a successful auction (won via a bid).&quot;}, {&quot;name&quot;: &quot;RebateForSuccessFeeOffer&quot;, &quot;value&quot;: &quot;503&quot;, &quot;description&quot;: &quot;The rebate for a successful auction (won via a fixed price offer).&quot;}, {&quot;name&quot;: &quot;RebateForSuccessFeeBuyNow&quot;, &quot;value&quot;: &quot;504&quot;, &quot;description&quot;: &quot;The rebate for a successful auction (won via Buy Now).&quot;}, {&quot;name&quot;: &quot;RebateForGalleryPromotion&quot;, &quot;value&quot;: &quot;505&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the gallery promotion.&quot;}, {&quot;name&quot;: &quot;RebateForGalleryPlusPromotion&quot;, &quot;value&quot;: &quot;506&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the gallery plus promotion.&quot;}, {&quot;name&quot;: &quot;RebateForBoldPromotion&quot;, &quot;value&quot;: &quot;507&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the bold title promotion.&quot;}, {&quot;name&quot;: &quot;RebateForSubtitlePromotion&quot;, &quot;value&quot;: &quot;508&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a subtitle.&quot;}, {&quot;name&quot;: &quot;RebateForHighlightPromotion&quot;, &quot;value&quot;: &quot;509&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a highlight.&quot;}, {&quot;name&quot;: &quot;RebateForFeaturePromotion&quot;, &quot;value&quot;: &quot;510&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the feature promotion.&quot;}, {&quot;name&quot;: &quot;RebateForFeatureComboPromotion&quot;, &quot;value&quot;: &quot;511&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the feature combo promotion.&quot;}, {&quot;name&quot;: &quot;RebateForHomepageFeaturePromotion&quot;, &quot;value&quot;: &quot;512&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the homepage feature promotion.&quot;}, {&quot;name&quot;: &quot;RebateForSuperFeaturePromotion&quot;, &quot;value&quot;: &quot;513&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the super feature promotion.&quot;}, {&quot;name&quot;: &quot;RebateForSuperFeatureComboPromotion&quot;, &quot;value&quot;: &quot;514&quot;, &quot;description&quot;: &quot;The rebate for listing an item with the super feature combo promotion.&quot;}, {&quot;name&quot;: &quot;RebateForTenDayAuctionFee&quot;, &quot;value&quot;: &quot;515&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a duration of ten days.&quot;}, {&quot;name&quot;: &quot;RebateForMultiPhotoFee&quot;, &quot;value&quot;: &quot;516&quot;, &quot;description&quot;: &quot;The rebate for listing an item with additional photos.&quot;}, {&quot;name&quot;: &quot;RebateForScheduledEndDateFee&quot;, &quot;value&quot;: &quot;517&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a scheduled end date/time.&quot;}, {&quot;name&quot;: &quot;RebateForReserveFee&quot;, &quot;value&quot;: &quot;518&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a reserve price.&quot;}, {&quot;name&quot;: &quot;RebateForSecondaryCategoryPromotion&quot;, &quot;value&quot;: &quot;519&quot;, &quot;description&quot;: &quot;The rebate for listing an item with a secondary category.&quot;}, {&quot;name&quot;: &quot;RefundOfListingFee&quot;, &quot;value&quot;: &quot;600&quot;, &quot;description&quot;: &quot;A refund for listing an item.&quot;}, {&quot;name&quot;: &quot;RefundOfSuccessFee&quot;, &quot;value&quot;: &quot;601&quot;, &quot;description&quot;: &quot;Refund of auction success fees.&quot;}, {&quot;name&quot;: &quot;RefundOfGalleryPromotion&quot;, &quot;value&quot;: &quot;602&quot;, &quot;description&quot;: &quot;The refund for listing an item with the gallery promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfGalleryPlusPromotion&quot;, &quot;value&quot;: &quot;603&quot;, &quot;description&quot;: &quot;The refund for listing an item with the gallery plus promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfBoldPromotion&quot;, &quot;value&quot;: &quot;604&quot;, &quot;description&quot;: &quot;The refund for listing an item with the bold title promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfSubtitlePromotion&quot;, &quot;value&quot;: &quot;605&quot;, &quot;description&quot;: &quot;The refund for listing an item with a subtitle.&quot;}, {&quot;name&quot;: &quot;RefundOfHighlightPromotion&quot;, &quot;value&quot;: &quot;606&quot;, &quot;description&quot;: &quot;The refund for listing an item with a highlight.&quot;}, {&quot;name&quot;: &quot;RefundOfFeaturePromotion&quot;, &quot;value&quot;: &quot;607&quot;, &quot;description&quot;: &quot;The refund for listing an item with the feature promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfFeatureComboPromotion&quot;, &quot;value&quot;: &quot;608&quot;, &quot;description&quot;: &quot;The refund for listing an item with the feature combo promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfHomepageFeaturePromotion&quot;, &quot;value&quot;: &quot;609&quot;, &quot;description&quot;: &quot;The refund for listing an item with the homepage feature promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfSuperFeaturePromotion&quot;, &quot;value&quot;: &quot;610&quot;, &quot;description&quot;: &quot;The refund for listing an item with the super feature promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfSuperFeatureComboPromotion&quot;, &quot;value&quot;: &quot;611&quot;, &quot;description&quot;: &quot;The refund for listing an item with the super feature combo promotion.&quot;}, {&quot;name&quot;: &quot;RefundOfTenDayAuctionFee&quot;, &quot;value&quot;: &quot;612&quot;, &quot;description&quot;: &quot;The refund for listing an item with a duration of ten days.&quot;}, {&quot;name&quot;: &quot;RefundOfMultiPhotoFee&quot;, &quot;value&quot;: &quot;613&quot;, &quot;description&quot;: &quot;The refund for listing an item with additional photos.&quot;}, {&quot;name&quot;: &quot;RefundOfScheduledEndDateFee&quot;, &quot;value&quot;: &quot;614&quot;, &quot;description&quot;: &quot;The refund for listing an item with a scheduled end date/time.&quot;}, {&quot;name&quot;: &quot;RefundOfReserveFee&quot;, &quot;value&quot;: &quot;615&quot;, &quot;description&quot;: &quot;The refund for listing an item with a reserve price.&quot;}, {&quot;name&quot;: &quot;RefundOfSecondaryCategoryPromotion&quot;, &quot;value&quot;: &quot;616&quot;, &quot;description&quot;: &quot;The refund for listing an item with a secondary category.&quot;}, {&quot;name&quot;: &quot;DiscountOfListingFee&quot;, &quot;value&quot;: &quot;617&quot;, &quot;description&quot;: &quot;Discount of listing fee&quot;}, {&quot;name&quot;: &quot;DiscountOfSuperfeature&quot;, &quot;value&quot;: &quot;618&quot;, &quot;description&quot;: &quot;Discount of superfeature fee&quot;}, {&quot;name&quot;: &quot;DiscountOfHighlight&quot;, &quot;value&quot;: &quot;619&quot;, &quot;description&quot;: &quot;Discount of highlight fee&quot;}, {&quot;name&quot;: &quot;DiscountOfFeature&quot;, &quot;value&quot;: &quot;620&quot;, &quot;description&quot;: &quot;Discount of feature fee&quot;}, {&quot;name&quot;: &quot;DiscountOfBoldTitle&quot;, &quot;value&quot;: &quot;621&quot;, &quot;description&quot;: &quot;Discount of boldTitle fee&quot;}, {&quot;name&quot;: &quot;DiscountOfFeatureCombo&quot;, &quot;value&quot;: &quot;622&quot;, &quot;description&quot;: &quot;Discount of feature combo fee&quot;}, {&quot;name&quot;: &quot;DiscountOfSubtitle&quot;, &quot;value&quot;: &quot;623&quot;, &quot;description&quot;: &quot;Discount of subtitle fee&quot;}, {&quot;name&quot;: &quot;RebateForGoldTradeSuccessFee&quot;, &quot;value&quot;: &quot;624&quot;, &quot;description&quot;: &quot;The rebate for providing timely shipping information.&quot;}, {&quot;name&quot;: &quot;MotorsFeatureBundleUpgrade&quot;, &quot;value&quot;: &quot;625&quot;, &quot;description&quot;: &quot;For upgrading Motors Feature Bundle&quot;}]}, {&quot;field_name&quot;: &quot;Description&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;A description of the transaction.&quot;}, {&quot;field_name&quot;: &quot;Credit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount to credit to the member's account.&quot;}, {&quot;field_name&quot;: &quot;Debit&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The amount to debit from the member's account.&quot;}, {&quot;field_name&quot;: &quot;Balance&quot;, &quot;field_type&quot;: &quot;Number&quot;, &quot;description&quot;: &quot;The balance of the member's account after the transaction. This field is not populated when filtering by transaction type.&quot;}, {&quot;field_name&quot;: &quot;ReferenceId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;For ledger entries that relate to a listing, this field contains the listing ID. For other types of ledger entries, the contents of this field should be ignored.&quot;}, {&quot;field_name&quot;: &quot;PurchaseId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;For ledger entries that relate to a specific purchase, this field contains the purchase ID.&quot;}, {&quot;field_name&quot;: &quot;Sku&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The SKU for the listing, if any.&quot;}, {&quot;field_name&quot;: &quot;LedgerId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The unique identifier for this ledger item.&quot;}]">
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;MemberLedgerItem&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "Date": "\/Date(1514764800)\/",
+      "Type": 0,
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "Balance": 123.0,
+      "ReferenceId": 123,
+      "PurchaseId": 123,
+      "Sku": "ABC",
+      "LedgerId": 123
+    },
+    {
+      "Date": "\/Date(1514764800)\/",
+      "Type": 0,
+      "Description": "ABC",
+      "Credit": 123.0,
+      "Debit": 123.0,
+      "Balance": 123.0,
+      "ReferenceId": 123,
+      "PurchaseId": 123,
+      "Sku": "ABC",
+      "LedgerId": 123
+    }
+  ]
+}</code></pre>
+</div>

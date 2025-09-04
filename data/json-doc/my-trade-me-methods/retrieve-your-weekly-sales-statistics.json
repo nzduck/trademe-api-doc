@@ -1,0 +1,125 @@
+{
+  "endpoint": "RetrieveYourWeeklySalesStatistics",
+  "title": "Retrieve your weekly sales statistics",
+  "description": "Retrieve sales statistics for the authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-weekly-sales-statistics",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/SalesSummary.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <WeeklySalesItem> Statistics for the current week and the previous six weeks.",
+    "fields": [
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The start date of the summary."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The end date of the summary."
+      },
+      {
+        "name": "ReserveMet",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items which met their reserve price in the time period."
+      },
+      {
+        "name": "BuyNow",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items which were purchased via Buy Now in the time period."
+      },
+      {
+        "name": "FixedPriceOffer",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items which sold via a fixed price offer in the time period."
+      },
+      {
+        "name": "TotalSold",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items sold in the time period."
+      },
+      {
+        "name": "TotalValue",
+        "type": "Number",
+        "required": false,
+        "description": "The total value of items sold in the time period."
+      },
+      {
+        "name": "UnsoldItems",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of items unsold in the time period."
+      },
+      {
+        "name": "SellThroughRate",
+        "type": "Number",
+        "required": false,
+        "description": "The sell-through rate in the time period."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "StartDate": "/Date(1514764800)/",
+        "EndDate": "/Date(1514764800)/",
+        "ReserveMet": 123,
+        "BuyNow": 123,
+        "FixedPriceOffer": 123,
+        "TotalSold": 123,
+        "TotalValue": 123.0,
+        "UnsoldItems": 123,
+        "SellThroughRate": 123.0
+      },
+      {
+        "StartDate": "/Date(1514764800)/",
+        "EndDate": "/Date(1514764800)/",
+        "ReserveMet": 123,
+        "BuyNow": 123,
+        "FixedPriceOffer": 123,
+        "TotalSold": 123,
+        "TotalValue": 123.0,
+        "UnsoldItems": 123,
+        "SellThroughRate": 123.0
+      }
+    ]
+  }
+}

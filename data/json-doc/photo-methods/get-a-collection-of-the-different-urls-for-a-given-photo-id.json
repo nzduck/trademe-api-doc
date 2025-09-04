@@ -1,0 +1,111 @@
+{
+  "endpoint": "GetACollectionOfTheDifferentUrlsForAGivenPhotoId",
+  "title": "Get a collection of the different URLs for a given photo ID",
+  "description": "Get a collection of the different URLs for a given photo ID",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/get-a-collection-of-the-different-urls-for-a-given-photo-id",
+  "url": "https://api.trademe.co.nz/v1/photos/{photoId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "photoId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PhotoUrl>",
+    "fields": [
+      {
+        "name": "Thumbnail",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the thumbnail sized photo (always 85x64, with white borders)."
+      },
+      {
+        "name": "List",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the list view sized photo (scaled down to fit 160x120)."
+      },
+      {
+        "name": "Medium",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the medium sized photo (scaled down to fit 175x175)."
+      },
+      {
+        "name": "Gallery",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the gallery sized photo (scaled down to fit 233x176)."
+      },
+      {
+        "name": "Large",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the large sized photo (scaled down to fit 352x264)."
+      },
+      {
+        "name": "FullSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the full sized photo (scaled down to fit 670x502)."
+      },
+      {
+        "name": "PlusSize",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL for the plus sized photo (scaled down to fit)."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the photo."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Thumbnail": "ABC",
+      "List": "ABC",
+      "Medium": "ABC",
+      "Gallery": "ABC",
+      "Large": "ABC",
+      "FullSize": "ABC",
+      "PlusSize": "ABC",
+      "PhotoId": 123
+    }
+  }
+}

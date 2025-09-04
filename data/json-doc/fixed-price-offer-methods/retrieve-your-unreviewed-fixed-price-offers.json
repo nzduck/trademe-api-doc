@@ -1,0 +1,572 @@
+{
+  "endpoint": "RetrieveYourUnreviewedFixedPriceOffers",
+  "title": "Retrieve your unreviewed fixed price offers",
+  "description": "Retrieves a list of the outstanding fixed price offers that have been offered to the currently authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/retrieve-your-unreviewed-fixed-price-offers",
+  "url": "https://api.trademe.co.nz/v1/FixedPriceOffers/List.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "photo_size",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The size of the images to return in the results. Defaults to Thumbnail."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<FixedPriceOffers> A list of active fixed price offers.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <FixedPriceOffer> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "OfferPrice",
+        "type": "OfferPrice \n Number \n\nThe offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included.\n\n\n\n OfferExpiryDate \n DateTime \n\nThe date and time the fixed price offer expires.\n\n\n\n Quantity \n Integer \n\nThe number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends.\n\n\n\n TaxesIncluded \n Collection of <TaxRate> or null \n\nThe taxes included in the offer price\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n\n\n\n ListingId \n Integer \n\nThe listing ID of the item on offer.\n\n\n\n Title \n String or null \n\nThe title of the item on offer.\n\n\n\n StartDate \n DateTime \n\nThe date and time the auction started.\n\n\n\n EndDate \n DateTime \n\nThe date and time the auction ended.\n\n\n\n BidCount \n Integer \n\nThe number of bids placed on the auction.\n\n\n\n Mcat \n String or null \n\nThe identifier of the category the item is listing in.\n\n\n\n ShippingOptions \n Collection of <ShippingOption> or null \n\nA list of shipping options for this fixed price offer.\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of delivery.\n\n\n\n Price \n Number \n\nThe price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.\n\n\n\n Method \n String or null \n\nThe name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom.\n\n\n\n ShippingId \n Integer \n\nThe ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.\n\n\n\n TaxesIncluded \n Collection of <TaxRateOnPrice> or null \n\nIndicates if taxes (and what type) are included in the Shipping Price\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n IsApplied \n Boolean \n\nWhether the price has had the tax applied (i.e. are inclusive prices)\n\n\n\n TaxAmount \n Number or null \n\nThe amount of tax that was added to the price if applied\n\n\n\n WasPriceTaxAmount \n Number or null \n\nThe amount of tax that was added to the was/now price if applied\n\n\n\n\n\n\n\n\n\n PictureHref \n String or null \n\nThe URL of the thumbnail photo.",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "OfferPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included."
+      },
+      {
+        "name": "OfferExpiryDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the fixed price offer expires."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends."
+      },
+      {
+        "name": "TaxesIncluded",
+        "type": "Collection of <TaxRate> or null",
+        "required": false,
+        "description": "The taxes included in the offer price"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of tax that is included",
+        "enum": [
+          {
+            "name": "NZ_GST_Overseas_Supplies",
+            "value": "1",
+            "description": "New Zealand GST on overseas supplies"
+          }
+        ]
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country that is levying the tax e.g. NZ"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tax e.g. GST"
+      },
+      {
+        "name": "FlatRate",
+        "type": "Number",
+        "required": false,
+        "description": "The rate at which the tax is charged (as a decimal e.g 0.15)"
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A string that can be used as a caption where necessary"
+      },
+      {
+        "name": "IsSellRestrictionsEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted"
+      },
+      {
+        "name": "IsTaxEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The listing ID of the item on offer."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The title of the item on offer."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the auction started."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the auction ended."
+      },
+      {
+        "name": "BidCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bids placed on the auction."
+      },
+      {
+        "name": "Mcat",
+        "type": "String or null",
+        "required": false,
+        "description": "The identifier of the category the item is listing in."
+      },
+      {
+        "name": "ShippingOptions",
+        "type": "Collection of <ShippingOption> or null",
+        "required": false,
+        "description": "A list of shipping options for this fixed price offer."
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of delivery.\n\n\n\n Price \n Number \n\nThe price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.\n\n\n\n Method \n String or null \n\nThe name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom.\n\n\n\n ShippingId \n Integer \n\nThe ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.\n\n\n\n TaxesIncluded \n Collection of <TaxRateOnPrice> or null \n\nIndicates if taxes (and what type) are included in the Shipping Price\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n IsApplied \n Boolean \n\nWhether the price has had the tax applied (i.e. are inclusive prices)\n\n\n\n TaxAmount \n Number or null \n\nThe amount of tax that was added to the price if applied\n\n\n\n WasPriceTaxAmount \n Number or null \n\nThe amount of tax that was added to the was/now price if applied",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of delivery.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The type of the \"None of the options apply to me\" shipping option. Do not use when listing an item."
+          },
+          {
+            "name": "Unknown",
+            "value": "0",
+            "description": "Obsolete. Do not use."
+          },
+          {
+            "name": "Undecided",
+            "value": "1",
+            "description": "Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options."
+          },
+          {
+            "name": "Pickup",
+            "value": "2",
+            "description": "Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead)."
+          },
+          {
+            "name": "Free",
+            "value": "3",
+            "description": "Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options."
+          },
+          {
+            "name": "Custom",
+            "value": "4",
+            "description": "Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten)."
+          },
+          {
+            "name": "TradeMe",
+            "value": "5",
+            "description": "Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options."
+          }
+        ]
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places."
+      },
+      {
+        "name": "Method",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the delivery method (e.g. \"NZ Courier\", \"Rural Delivery\"). Only applicable if ShippingType is Custom."
+      },
+      {
+        "name": "ShippingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item."
+      },
+      {
+        "name": "TaxesIncluded",
+        "type": "Collection of <TaxRateOnPrice> or null",
+        "required": false,
+        "description": "Indicates if taxes (and what type) are included in the Shipping Price"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST\n\n\n\n IsApplied \n Boolean \n\nWhether the price has had the tax applied (i.e. are inclusive prices)\n\n\n\n TaxAmount \n Number or null \n\nThe amount of tax that was added to the price if applied\n\n\n\n WasPriceTaxAmount \n Number or null \n\nThe amount of tax that was added to the was/now price if applied",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of tax that is included",
+        "enum": [
+          {
+            "name": "NZ_GST_Overseas_Supplies",
+            "value": "1",
+            "description": "New Zealand GST on overseas supplies"
+          }
+        ]
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country that is levying the tax e.g. NZ"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tax e.g. GST"
+      },
+      {
+        "name": "FlatRate",
+        "type": "Number",
+        "required": false,
+        "description": "The rate at which the tax is charged (as a decimal e.g 0.15)"
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A string that can be used as a caption where necessary"
+      },
+      {
+        "name": "IsSellRestrictionsEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted"
+      },
+      {
+        "name": "IsTaxEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST"
+      },
+      {
+        "name": "IsApplied",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the price has had the tax applied (i.e. are inclusive prices)"
+      },
+      {
+        "name": "TaxAmount",
+        "type": "Number or null",
+        "required": false,
+        "description": "The amount of tax that was added to the price if applied"
+      },
+      {
+        "name": "WasPriceTaxAmount",
+        "type": "Number or null",
+        "required": false,
+        "description": "The amount of tax that was added to the was/now price if applied"
+      },
+      {
+        "name": "PictureHref",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the thumbnail photo."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "OfferPrice": 123.0,
+          "OfferExpiryDate": "/Date(1514764800)/",
+          "Quantity": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false
+            }
+          ],
+          "ListingId": 123,
+          "Title": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "BidCount": 123,
+          "Mcat": "ABC",
+          "ShippingOptions": [
+            {
+              "Type": 0,
+              "Price": 123.0,
+              "Method": "ABC",
+              "ShippingId": 123,
+              "TaxesIncluded": [
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                },
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                }
+              ]
+            },
+            {
+              "Type": 0,
+              "Price": 123.0,
+              "Method": "ABC",
+              "ShippingId": 123,
+              "TaxesIncluded": [
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                },
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                }
+              ]
+            }
+          ],
+          "PictureHref": "ABC"
+        },
+        {
+          "OfferPrice": 123.0,
+          "OfferExpiryDate": "/Date(1514764800)/",
+          "Quantity": 123,
+          "TaxesIncluded": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "FlatRate": 123.0,
+              "Description": "ABC",
+              "IsSellRestrictionsEffective": false,
+              "IsTaxEffective": false
+            }
+          ],
+          "ListingId": 123,
+          "Title": "ABC",
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "BidCount": 123,
+          "Mcat": "ABC",
+          "ShippingOptions": [
+            {
+              "Type": 0,
+              "Price": 123.0,
+              "Method": "ABC",
+              "ShippingId": 123,
+              "TaxesIncluded": [
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                },
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                }
+              ]
+            },
+            {
+              "Type": 0,
+              "Price": 123.0,
+              "Method": "ABC",
+              "ShippingId": 123,
+              "TaxesIncluded": [
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                },
+                {
+                  "Type": 1,
+                  "Country": "ABC",
+                  "Name": "ABC",
+                  "FlatRate": 123.0,
+                  "Description": "ABC",
+                  "IsSellRestrictionsEffective": false,
+                  "IsTaxEffective": false,
+                  "IsApplied": false,
+                  "TaxAmount": 123.0,
+                  "WasPriceTaxAmount": 123.0
+                }
+              ]
+            }
+          ],
+          "PictureHref": "ABC"
+        }
+      ]
+    }
+  }
+}

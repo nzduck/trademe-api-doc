@@ -1,0 +1,1351 @@
+{
+  "endpoint": "RetrieveYourSoldItems",
+  "title": "Retrieve your sold items",
+  "description": "Retrieves a list of sales for the authenticated user. Multiple-quantity auctions can have multiple sales. Note that multiple items can be sold in a single sale (the QuantitySold field will contain the number of items sold).",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-sold-items",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/solditems/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "A filter on the results. Last45DaysReturns items sold in the last 45 days.Last30DaysReturns items sold in the last 30 days.Last7DaysReturns items sold in the last 7 days.Last3DaysReturns items sold in the last 3 days.Last24HoursReturns items sold in the last 24 hours.LastHourReturns items sold in the last hour.PaymentInstructionsToSendReturns items without sent payment instructions.FeedbackToPlaceReturns items with pending feedback.EmailSentReturns sold items marked with \"Email sent\" status.PaymentReceivedReturns sold items marked with \"Payment received\" status.GoodsShippedReturns sold items marked with \"Goods shipped\" status.SaleCompletedReturns sold items marked with \"Sale completed\" status."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "deleted",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether deleted items should be included in the results."
+      },
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "photo_size",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The size of the images to return in the results. Defaults to Thumbnail."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 50."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SoldItems> The list of all the sold listings.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SoldItem> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "ListingId",
+        "type": "ListingId \n Integer \n\nThe ID of the listing.\n\n\n\n Title \n String or null \n\nThe listing title.\n\n\n\n Category \n String or null \n\nThe listing category.\n\n\n\n StartPrice \n Number \n\nThe start price.\n\n\n\n BuyNowPrice \n Number \n\nThe Buy Now price.\n\n\n\n StartDate \n DateTime \n\nThe date the listing was created.\n\n\n\n EndDate \n DateTime \n\nThe date the listing will end.\n\n\n\n ListingLength \n String or null \n\nThe listing length.\n\n\n\n Restrictions \n String or null \n\nThe restictions associated with the listing.\n\n\n\n IsFeatured \n Boolean \n\nIs this a featured listing?\n\n\n\n HasGallery \n Boolean \n\nIs this a gallery listing?\n\n\n\n IsBold \n Boolean \n\nIs this a bold listing?\n\n\n\n IsHighlighted \n Boolean \n\nIs this a highlighted listing?\n\n\n\n HasHomePageFeature \n Boolean \n\nIs this a homepage feature listing?\n\n\n\n HasExtraPhotos \n Boolean \n\nIs this a listing with extra photos?\n\n\n\n HasScheduledEndDate \n Boolean \n\nIs this a listing with a scheduled end date?\n\n\n\n BidderAndWatchers \n Integer \n\nThe number of bidders and watcher for this listing.\n\n\n\n MaxBidAmount \n Number \n\nThe current leading bid amount.\n\n\n\n AsAt \n DateTime \n\nThe date and time the response was generated on the server.\n\n\n\n CategoryPath \n String or null \n\nThe category path.\n\n\n\n PictureHref \n String or null \n\nThe URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.\n\n\n\n PhotoId \n Integer \n\nThe ID of the primary photo for the listing (if the listing has a photo).\n\n\n\n BidCount \n Integer \n\nThe number of bids on the item.\n\n\n\n ViewCount \n Integer \n\nThe number of times the listing has been viewed.\n\n\n\n IsReserveMet \n Boolean \n\nIndicates whether the item's reserve has been met.\n\n\n\n HasReserve \n Boolean \n\nIndicates whether the item has a reserve.\n\n\n\n HasBuyNow \n Boolean \n\nIndicates whether the item has Buy Now.\n\n\n\n Note \n String or null \n\nThe note on an item.\n\n\n\n NoteId \n Integer \n\nThe note id on an item.\n\n\n\n NoteDate \n DateTime \n\nThe date of the note on an item.\n\n\n\n CategoryName \n String or null \n\nThe display name of the category.\n\n\n\n ReserveState \n Enumeration \n\nThe flag to display on an item.\n\n\n\n Attributes \n Collection of <Attribute> or null \n\nThe attributes for the item that are intended to be displayed on the UI.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n\n\n\n IsClassified \n Boolean \n\nIndicates whether the item is a classified.\n\n\n\n RelistedItemId \n Integer \n\nThe ID of the new listing if this listing was relisted.\n\n\n\n Subtitle \n String or null \n\nThe subtitle, if present.\n\n\n\n ReservePrice \n Number \n\nThe reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.\n\n\n\n IsBuyNowOnly \n Boolean \n\nIndicates whether or not this is a Buy Now Only listing.\n\n\n\n IsFlatShippingCharge \n Boolean \n\nIndicates whether one flat shipping fee will be charged if more than one of this item is purchased. Only applicable for Buy Now Only listings.\n\n\n\n RemainingGalleryPlusRelists \n Integer or null \n\nThe number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).\n\n\n\n ExternalReferenceId \n String or null \n\nThe external reference ID, if one exists. Only available to the seller of a listing.\n\n\n\n SKU \n String or null \n\nSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.\n\n\n\n IsClearance \n Boolean \n\nThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.\n\n\n\n WasPrice \n Number or null \n\nThe usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.\n\n\n\n PercentageOff \n Integer or null \n\nThe percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.\n\n\n\n Options \n Collection of <Option> or null \n\nThe combination of variant options that this variant represents.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ListingGroupId \n Integer or null \n\nThe identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant\n\n\n\n Status \n Integer \n\nThe status of the sale. Valid status values are as follows: 0 = the item didn't sell or the status is unknown, 10 = an email has been sent to the buyer, 20 = the payment has been received from the buyer, 30 = the goods have shipped, 40 = the sale is completed. This can be set by the seller to track the status of an order; it is never set by Trade Me.\n\n\n\n StatusDate \n DateTime \n\nThe date the status was last changed.\n\n\n\n SoldDate \n DateTime \n\nThe date and time the item was sold.\n\n\n\n SoldType \n String or null \n\nThe method of sale. Valid values are \"Auction\", \"Buy now\" and \"Fixed price offer\".\n\n\n\n SalePrice \n Number \n\nThe price the item was sold for, excluding shipping. If this was a multi-quantity purchase, then this is the price each individual item sold for multiplied by the quantity sold (i.e. the total value of the transaction, minus the shipping cost).\n\n\n\n SelectedShipping \n String or null \n\nA description of the selected shipping method (e.g. \"$8.00 Nation-wide courier\").\n\n\n\n BuyerDeliveryAddress \n String or null \n\nThe delivery address as indicated by the buyer.\n\n\n\n MessageFromBuyer \n String or null \n\nThe message from the buyer, if any.\n\n\n\n SuccessFees \n Number \n\nThe success fees associated with the sale.\n\n\n\n IsPayNowPurchase \n Boolean \n\nIndicates whether the buyer has purchased the item using Pay Now. For high risk payments, the value will be false until the payment has been manually approved by the Trade Me customer service team.\n\n\n\n IsPaymentPending \n Boolean \n\nIndicates whether a Pay Now payment is currently under review by the Trade Me customer service team. If this flag is set, you should not send payment reminder notices to the buyer. Note: the Trade Me website uses the label \"Payment Held\" for payments in this state.\n\n\n\n PayNowRefundValue \n Number \n\nIf the item was a Pay Now purchase, the portion of the original purchase price that has been refunded, as a dollar figure. If the value is missing, it may be assumed to be $0 (i.e. the payment was not refunded).\n\n\n\n ShippingPrice \n Number \n\nThe price of shipping.\n\n\n\n ShippingType \n Enumeration \n\nThe type of shipping that was selected.\n\n\n\n HasSellerPlaceFeedback \n Boolean \n\nIndicates whether the seller has placed feedback.\n\n\n\n HasBuyerPlaceFeedback \n Boolean \n\nIndicates whether the buyer has placed feedback.\n\n\n\n OfferId \n Integer \n\nThe ID of the fixed price offer, if any.\n\n\n\n InvoiceId \n Integer \n\nThe ID of the associated invoice. Only populated when an invoice is actually generated, which is typically when payment instructions are sent to the buyer.\n\n\n\n Buyer \n <Member> or null \n\nThe member who bought the item.\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n DeliveryAddress \n <Address> or null \n\nThe delivery address as indicated by the buyer.\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the person whom the item is being delivered to.\n\n\n\n Address1 \n String or null \n\nThe first line of the address.\n\n\n\n Address2 \n String or null \n\nThe second line of the address (optional).\n\n\n\n Suburb \n String or null \n\nThe suburb (optional).\n\n\n\n City \n String or null \n\nThe city.\n\n\n\n Postcode \n String or null \n\nThe postcode (optional).\n\n\n\n Country \n String or null \n\nThe country (currently restricted to \"New Zealand\" or \"Australia\").\n\n\n\n PhoneNumber \n String or null \n\nThe contact phone number (optional).\n\n\n\n\n\n\n QuantitySold \n Integer \n\nThe number of items sold as part of this sale. Will be 1 if the sale is via a bid or a regular Buy Now.\n\n\n\n PurchaseId \n Integer \n\nThe purchase-specific id (or auction sold id).\n\n\n\n ReferenceNumber \n String or null \n\nThe reference number that the buyer can use when making a deposit into the seller's bank account.\n\n\n\n Price \n Number \n\nThe price the item was sold for, excluding shipping. If the purchase was for multiple items, this is the price of a single item.\n\n\n\n SubtotalPrice \n Number \n\nThe price for all items, excluding shipping (i.e. equal to SalePrice * QuantitySold).\n\n\n\n TotalShippingPrice \n Number \n\nThe total price for shipping. If flat shipping is not enabled, equal to ShippingPrice * QuantitySold.\n\n\n\n TotalSalePrice \n Number \n\nThe total price for the entire sale, including shipping. If the purchase was for multiple items, all items are included in this price.\n\n\n\n OrderId \n Integer or null \n\nIf the item was purchased via the shopping cart then a purchased cart id is returned which is called order Id.\n\n\n\n PaymentMethod \n Enumeration \n\nThe payment method used to purchase this item\n\n\n\n PaymentDetails \n <PaymentDetails> or null \n\nThe payment details for this sale.\n\n\n\n\n\n\n IsPaymentPending \n Boolean \n\nThe current state of the payment\n\n\n\n PaymentType \n Enumeration \n\nThe type of payment\n\n\n\n PaymentAmount \n Number \n\nThe total amount of this payment\n\n\n\n PaymentMethodFee \n Number \n\nThe fee amount paid as part of this payment\n\n\n\n RefundCollection \n Collection of <RefundDetails> or null \n\nA collection of refunds that have been made against this payment\n\n\n\n\n\n\n Amount \n Number \n\nThe amount refunded\n\n\n\n Destination \n String or null \n\nThe destination the refund was sent to.\n\n\n\n Date \n DateTime or null \n\nThe date the refund issued.\n\n\n\n\n\n\n GstCollected \n Number \n\nGST collected from this transaction\n\n\n\n PingEscrowStatus \n Enumeration or null \n\nPing payment escrow status\n\n\n\n\n\n\n TrackedParcels \n Collection of <TrackedParcel> or null \n\nTracked courier parcels for this purchase\n\n\n\n\n\n\n CourierParcelId \n Integer \n\nThe ID of this parcel\n\n\n\n CourierCompanyName \n String or null \n\nThe name of the courier company\n\n\n\n TrackingReference \n String or null \n\nThe tracking reference\n\n\n\n TrackingUrl \n String or null \n\nThe tracking url\n\n\n\n Status \n Enumeration or null \n\nLast event of this parcel\n\n\n\n DateAdded \n DateTime or null \n\nDate the tracking parcel order was created\n\n\n\n\n\n\n TaxSubTotals \n Collection of <TaxSubTotal> or null \n\nSum of all taxes included in this sale\n\n\n\n\n\n\n Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n SubTotal \n Number \n\nThe total amount of tax that has been charged\n\n\n\n FlatRate \n Number \n\nThe rate of the tax",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing title."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing category."
+      },
+      {
+        "name": "StartPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The start price."
+      },
+      {
+        "name": "BuyNowPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The Buy Now price."
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing was created."
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the listing will end."
+      },
+      {
+        "name": "ListingLength",
+        "type": "String or null",
+        "required": false,
+        "description": "The listing length."
+      },
+      {
+        "name": "Restrictions",
+        "type": "String or null",
+        "required": false,
+        "description": "The restictions associated with the listing."
+      },
+      {
+        "name": "IsFeatured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a featured listing?"
+      },
+      {
+        "name": "HasGallery",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a gallery listing?"
+      },
+      {
+        "name": "IsBold",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a bold listing?"
+      },
+      {
+        "name": "IsHighlighted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a highlighted listing?"
+      },
+      {
+        "name": "HasHomePageFeature",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a homepage feature listing?"
+      },
+      {
+        "name": "HasExtraPhotos",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a listing with extra photos?"
+      },
+      {
+        "name": "HasScheduledEndDate",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a listing with a scheduled end date?"
+      },
+      {
+        "name": "BidderAndWatchers",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bidders and watcher for this listing."
+      },
+      {
+        "name": "MaxBidAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The current leading bid amount."
+      },
+      {
+        "name": "AsAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the response was generated on the server."
+      },
+      {
+        "name": "CategoryPath",
+        "type": "String or null",
+        "required": false,
+        "description": "The category path."
+      },
+      {
+        "name": "PictureHref",
+        "type": "String or null",
+        "required": false,
+        "description": "The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter."
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the primary photo for the listing (if the listing has a photo)."
+      },
+      {
+        "name": "BidCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of bids on the item."
+      },
+      {
+        "name": "ViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of times the listing has been viewed."
+      },
+      {
+        "name": "IsReserveMet",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item's reserve has been met."
+      },
+      {
+        "name": "HasReserve",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has a reserve."
+      },
+      {
+        "name": "HasBuyNow",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item has Buy Now."
+      },
+      {
+        "name": "Note",
+        "type": "String or null",
+        "required": false,
+        "description": "The note on an item."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The note id on an item."
+      },
+      {
+        "name": "NoteDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the note on an item."
+      },
+      {
+        "name": "CategoryName",
+        "type": "String or null",
+        "required": false,
+        "description": "The display name of the category."
+      },
+      {
+        "name": "ReserveState",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The flag to display on an item.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."
+          },
+          {
+            "name": "Met",
+            "value": "1",
+            "description": "The value of the highest bid has exceeded the reserve price."
+          },
+          {
+            "name": "NotMet",
+            "value": "2",
+            "description": "The value of the highest bid has not reached the reserve price."
+          },
+          {
+            "name": "NotApplicable",
+            "value": "3",
+            "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."
+          }
+        ]
+      },
+      {
+        "name": "Attributes",
+        "type": "Collection of <Attribute> or null",
+        "required": false,
+        "description": "The attributes for the item that are intended to be displayed on the UI."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "IsClassified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the item is a classified."
+      },
+      {
+        "name": "RelistedItemId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the new listing if this listing was relisted."
+      },
+      {
+        "name": "Subtitle",
+        "type": "String or null",
+        "required": false,
+        "description": "The subtitle, if present."
+      },
+      {
+        "name": "ReservePrice",
+        "type": "Number",
+        "required": false,
+        "description": "The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API."
+      },
+      {
+        "name": "IsBuyNowOnly",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether or not this is a Buy Now Only listing."
+      },
+      {
+        "name": "IsFlatShippingCharge",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether one flat shipping fee will be charged if more than one of this item is purchased. Only applicable for Buy Now Only listings."
+      },
+      {
+        "name": "RemainingGalleryPlusRelists",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect)."
+      },
+      {
+        "name": "ExternalReferenceId",
+        "type": "String or null",
+        "required": false,
+        "description": "The external reference ID, if one exists. Only available to the seller of a listing."
+      },
+      {
+        "name": "SKU",
+        "type": "String or null",
+        "required": false,
+        "description": "SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line."
+      },
+      {
+        "name": "IsClearance",
+        "type": "Boolean",
+        "required": false,
+        "description": "This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock."
+      },
+      {
+        "name": "WasPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "PercentageOff",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true."
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <Option> or null",
+        "required": false,
+        "description": "The combination of variant options that this variant represents."
+      },
+      {
+        "name": "ListingGroupId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant"
+      },
+      {
+        "name": "Status",
+        "type": "Integer",
+        "required": false,
+        "description": "The status of the sale. Valid status values are as follows: 0 = the item didn't sell or the status is unknown, 10 = an email has been sent to the buyer, 20 = the payment has been received from the buyer, 30 = the goods have shipped, 40 = the sale is completed. This can be set by the seller to track the status of an order; it is never set by Trade Me."
+      },
+      {
+        "name": "StatusDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the status was last changed."
+      },
+      {
+        "name": "SoldDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the item was sold."
+      },
+      {
+        "name": "SoldType",
+        "type": "String or null",
+        "required": false,
+        "description": "The method of sale. Valid values are \"Auction\", \"Buy now\" and \"Fixed price offer\"."
+      },
+      {
+        "name": "SalePrice",
+        "type": "Number",
+        "required": false,
+        "description": "The price the item was sold for, excluding shipping. If this was a multi-quantity purchase, then this is the price each individual item sold for multiplied by the quantity sold (i.e. the total value of the transaction, minus the shipping cost)."
+      },
+      {
+        "name": "SelectedShipping",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the selected shipping method (e.g. \"$8.00 Nation-wide courier\")."
+      },
+      {
+        "name": "BuyerDeliveryAddress",
+        "type": "String or null",
+        "required": false,
+        "description": "The delivery address as indicated by the buyer."
+      },
+      {
+        "name": "MessageFromBuyer",
+        "type": "String or null",
+        "required": false,
+        "description": "The message from the buyer, if any."
+      },
+      {
+        "name": "SuccessFees",
+        "type": "Number",
+        "required": false,
+        "description": "The success fees associated with the sale."
+      },
+      {
+        "name": "IsPayNowPurchase",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the buyer has purchased the item using Pay Now. For high risk payments, the value will be false until the payment has been manually approved by the Trade Me customer service team."
+      },
+      {
+        "name": "IsPaymentPending",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether a Pay Now payment is currently under review by the Trade Me customer service team. If this flag is set, you should not send payment reminder notices to the buyer. Note: the Trade Me website uses the label \"Payment Held\" for payments in this state."
+      },
+      {
+        "name": "PayNowRefundValue",
+        "type": "Number",
+        "required": false,
+        "description": "If the item was a Pay Now purchase, the portion of the original purchase price that has been refunded, as a dollar figure. If the value is missing, it may be assumed to be $0 (i.e. the payment was not refunded)."
+      },
+      {
+        "name": "ShippingPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The price of shipping."
+      },
+      {
+        "name": "ShippingType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of shipping that was selected.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "The type of the \"None of the options apply to me\" shipping option. Do not use when listing an item."
+          },
+          {
+            "name": "Unknown",
+            "value": "0",
+            "description": "Obsolete. Do not use."
+          },
+          {
+            "name": "Undecided",
+            "value": "1",
+            "description": "Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options."
+          },
+          {
+            "name": "Pickup",
+            "value": "2",
+            "description": "Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead)."
+          },
+          {
+            "name": "Free",
+            "value": "3",
+            "description": "Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options."
+          },
+          {
+            "name": "Custom",
+            "value": "4",
+            "description": "Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten)."
+          },
+          {
+            "name": "TradeMe",
+            "value": "5",
+            "description": "Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options."
+          }
+        ]
+      },
+      {
+        "name": "HasSellerPlaceFeedback",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the seller has placed feedback."
+      },
+      {
+        "name": "HasBuyerPlaceFeedback",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the buyer has placed feedback."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the fixed price offer, if any."
+      },
+      {
+        "name": "InvoiceId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the associated invoice. Only populated when an invoice is actually generated, which is typically when payment instructions are sent to the buyer."
+      },
+      {
+        "name": "Buyer",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "The member who bought the item."
+      },
+      {
+        "name": "DeliveryAddress",
+        "type": "<Address> or null",
+        "required": false,
+        "description": "The delivery address as indicated by the buyer."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the person whom the item is being delivered to.\n\n\n\n Address1 \n String or null \n\nThe first line of the address.\n\n\n\n Address2 \n String or null \n\nThe second line of the address (optional).\n\n\n\n Suburb \n String or null \n\nThe suburb (optional).\n\n\n\n City \n String or null \n\nThe city.\n\n\n\n Postcode \n String or null \n\nThe postcode (optional).\n\n\n\n Country \n String or null \n\nThe country (currently restricted to \"New Zealand\" or \"Australia\").\n\n\n\n PhoneNumber \n String or null \n\nThe contact phone number (optional).",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the person whom the item is being delivered to."
+      },
+      {
+        "name": "Address1",
+        "type": "String or null",
+        "required": false,
+        "description": "The first line of the address."
+      },
+      {
+        "name": "Address2",
+        "type": "String or null",
+        "required": false,
+        "description": "The second line of the address (optional)."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The suburb (optional)."
+      },
+      {
+        "name": "City",
+        "type": "String or null",
+        "required": false,
+        "description": "The city."
+      },
+      {
+        "name": "Postcode",
+        "type": "String or null",
+        "required": false,
+        "description": "The postcode (optional)."
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country (currently restricted to \"New Zealand\" or \"Australia\")."
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The contact phone number (optional)."
+      },
+      {
+        "name": "QuantitySold",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items sold as part of this sale. Will be 1 if the sale is via a bid or a regular Buy Now."
+      },
+      {
+        "name": "PurchaseId",
+        "type": "Integer",
+        "required": false,
+        "description": "The purchase-specific id (or auction sold id)."
+      },
+      {
+        "name": "ReferenceNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The reference number that the buyer can use when making a deposit into the seller's bank account."
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "The price the item was sold for, excluding shipping. If the purchase was for multiple items, this is the price of a single item."
+      },
+      {
+        "name": "SubtotalPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The price for all items, excluding shipping (i.e. equal to SalePrice * QuantitySold)."
+      },
+      {
+        "name": "TotalShippingPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The total price for shipping. If flat shipping is not enabled, equal to ShippingPrice * QuantitySold."
+      },
+      {
+        "name": "TotalSalePrice",
+        "type": "Number",
+        "required": false,
+        "description": "The total price for the entire sale, including shipping. If the purchase was for multiple items, all items are included in this price."
+      },
+      {
+        "name": "OrderId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "If the item was purchased via the shopping cart then a purchased cart id is returned which is called order Id."
+      },
+      {
+        "name": "PaymentMethod",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The payment method used to purchase this item",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No payment methods provided."
+          },
+          {
+            "name": "BankDeposit",
+            "value": "1",
+            "description": "NZ bank deposit."
+          },
+          {
+            "name": "CreditCard",
+            "value": "2",
+            "description": "Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)"
+          },
+          {
+            "name": "Cash",
+            "value": "4",
+            "description": "Cash."
+          },
+          {
+            "name": "SafeTrader",
+            "value": "8",
+            "description": "Safe Trader (Now obsolete)."
+          },
+          {
+            "name": "Other",
+            "value": "16",
+            "description": "Other (needs to be specified)."
+          },
+          {
+            "name": "Ping",
+            "value": "32",
+            "description": "Ping."
+          },
+          {
+            "name": "Afterpay",
+            "value": "64",
+            "description": "Afterpay."
+          }
+        ]
+      },
+      {
+        "name": "PaymentDetails",
+        "type": "<PaymentDetails> or null",
+        "required": false,
+        "description": "The payment details for this sale."
+      },
+      {
+        "name": "IsPaymentPending",
+        "type": "IsPaymentPending \n Boolean \n\nThe current state of the payment\n\n\n\n PaymentType \n Enumeration \n\nThe type of payment\n\n\n\n PaymentAmount \n Number \n\nThe total amount of this payment\n\n\n\n PaymentMethodFee \n Number \n\nThe fee amount paid as part of this payment\n\n\n\n RefundCollection \n Collection of <RefundDetails> or null \n\nA collection of refunds that have been made against this payment\n\n\n\n\n\n\n Amount \n Number \n\nThe amount refunded\n\n\n\n Destination \n String or null \n\nThe destination the refund was sent to.\n\n\n\n Date \n DateTime or null \n\nThe date the refund issued.\n\n\n\n\n\n\n GstCollected \n Number \n\nGST collected from this transaction\n\n\n\n PingEscrowStatus \n Enumeration or null \n\nPing payment escrow status",
+        "required": false,
+        "description": "Boolean"
+      },
+      {
+        "name": "IsPaymentPending",
+        "type": "Boolean",
+        "required": false,
+        "description": "The current state of the payment"
+      },
+      {
+        "name": "PaymentType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of payment",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No payment methods provided."
+          },
+          {
+            "name": "BankDeposit",
+            "value": "1",
+            "description": "NZ bank deposit."
+          },
+          {
+            "name": "CreditCard",
+            "value": "2",
+            "description": "Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)"
+          },
+          {
+            "name": "Cash",
+            "value": "4",
+            "description": "Cash."
+          },
+          {
+            "name": "SafeTrader",
+            "value": "8",
+            "description": "Safe Trader (Now obsolete)."
+          },
+          {
+            "name": "Other",
+            "value": "16",
+            "description": "Other (needs to be specified)."
+          },
+          {
+            "name": "Ping",
+            "value": "32",
+            "description": "Ping."
+          },
+          {
+            "name": "Afterpay",
+            "value": "64",
+            "description": "Afterpay."
+          }
+        ]
+      },
+      {
+        "name": "PaymentAmount",
+        "type": "Number",
+        "required": false,
+        "description": "The total amount of this payment"
+      },
+      {
+        "name": "PaymentMethodFee",
+        "type": "Number",
+        "required": false,
+        "description": "The fee amount paid as part of this payment"
+      },
+      {
+        "name": "RefundCollection",
+        "type": "Collection of <RefundDetails> or null",
+        "required": false,
+        "description": "A collection of refunds that have been made against this payment"
+      },
+      {
+        "name": "Amount",
+        "type": "Amount \n Number \n\nThe amount refunded\n\n\n\n Destination \n String or null \n\nThe destination the refund was sent to.\n\n\n\n Date \n DateTime or null \n\nThe date the refund issued.",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "Amount",
+        "type": "Number",
+        "required": false,
+        "description": "The amount refunded"
+      },
+      {
+        "name": "Destination",
+        "type": "String or null",
+        "required": false,
+        "description": "The destination the refund was sent to."
+      },
+      {
+        "name": "Date",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date the refund issued."
+      },
+      {
+        "name": "GstCollected",
+        "type": "Number",
+        "required": false,
+        "description": "GST collected from this transaction"
+      },
+      {
+        "name": "PingEscrowStatus",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "Ping payment escrow status",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Not an escrow transaction"
+          },
+          {
+            "name": "ActiveEscrow",
+            "value": "1",
+            "description": "Has an active escrow"
+          },
+          {
+            "name": "ReleasedFromEscrow",
+            "value": "2",
+            "description": "Escrow has been released"
+          },
+          {
+            "name": "ReversedFromEscrow",
+            "value": "3",
+            "description": "Escrow has been reversed"
+          }
+        ]
+      },
+      {
+        "name": "TrackedParcels",
+        "type": "Collection of <TrackedParcel> or null",
+        "required": false,
+        "description": "Tracked courier parcels for this purchase"
+      },
+      {
+        "name": "CourierParcelId",
+        "type": "CourierParcelId \n Integer \n\nThe ID of this parcel\n\n\n\n CourierCompanyName \n String or null \n\nThe name of the courier company\n\n\n\n TrackingReference \n String or null \n\nThe tracking reference\n\n\n\n TrackingUrl \n String or null \n\nThe tracking url\n\n\n\n Status \n Enumeration or null \n\nLast event of this parcel\n\n\n\n DateAdded \n DateTime or null \n\nDate the tracking parcel order was created",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "CourierParcelId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of this parcel"
+      },
+      {
+        "name": "CourierCompanyName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the courier company"
+      },
+      {
+        "name": "TrackingReference",
+        "type": "String or null",
+        "required": false,
+        "description": "The tracking reference"
+      },
+      {
+        "name": "TrackingUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "The tracking url"
+      },
+      {
+        "name": "Status",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "Last event of this parcel",
+        "enum": [
+          {
+            "name": "Unknown",
+            "value": "0",
+            "description": "Unknown"
+          },
+          {
+            "name": "PickedUp",
+            "value": "1",
+            "description": "The parcel has been picked up"
+          },
+          {
+            "name": "InTransit",
+            "value": "2",
+            "description": "The parcel is moving between depots."
+          },
+          {
+            "name": "InternationalTransit",
+            "value": "3",
+            "description": "The parcel is on board an international carrier."
+          },
+          {
+            "name": "Info",
+            "value": "4",
+            "description": "An informational update."
+          },
+          {
+            "name": "OnBoardForDelivery",
+            "value": "5",
+            "description": "The parcel is with a courier for delivery."
+          },
+          {
+            "name": "Delivered",
+            "value": "6",
+            "description": "The parcel has been delivered."
+          },
+          {
+            "name": "CustomsReleased",
+            "value": "8",
+            "description": "The parcel has passed NZ customs."
+          },
+          {
+            "name": "Failed",
+            "value": "9",
+            "description": "The parcel was out for delivery but not delivered. E.g. signature required but no-one home."
+          },
+          {
+            "name": "Exception",
+            "value": "10",
+            "description": "The parcel has failed along its journey."
+          }
+        ]
+      },
+      {
+        "name": "DateAdded",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "Date the tracking parcel order was created"
+      },
+      {
+        "name": "TaxSubTotals",
+        "type": "Collection of <TaxSubTotal> or null",
+        "required": false,
+        "description": "Sum of all taxes included in this sale"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n SubTotal \n Number \n\nThe total amount of tax that has been charged\n\n\n\n FlatRate \n Number \n\nThe rate of the tax",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of tax that is included",
+        "enum": [
+          {
+            "name": "NZ_GST_Overseas_Supplies",
+            "value": "1",
+            "description": "New Zealand GST on overseas supplies"
+          }
+        ]
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country that is levying the tax e.g. NZ"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tax e.g. GST"
+      },
+      {
+        "name": "SubTotal",
+        "type": "Number",
+        "required": false,
+        "description": "The total amount of tax that has been charged"
+      },
+      {
+        "name": "FlatRate",
+        "type": "Number",
+        "required": false,
+        "description": "The rate of the tax"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ListingLength": "ABC",
+          "Restrictions": "ABC",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "HasExtraPhotos": false,
+          "HasScheduledEndDate": false,
+          "BidderAndWatchers": 123,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "BidCount": 123,
+          "ViewCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "Note": "ABC",
+          "NoteId": 123,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "RelistedItemId": 123,
+          "Subtitle": "ABC",
+          "ReservePrice": 123.0,
+          "IsBuyNowOnly": false,
+          "IsFlatShippingCharge": false,
+          "RemainingGalleryPlusRelists": 123,
+          "ExternalReferenceId": "ABC",
+          "SKU": "ABC",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "Status": 123,
+          "StatusDate": "/Date(1514764800)/",
+          "SoldDate": "/Date(1514764800)/",
+          "SoldType": "ABC",
+          "SalePrice": 123.0,
+          "SelectedShipping": "ABC",
+          "BuyerDeliveryAddress": "ABC",
+          "MessageFromBuyer": "ABC",
+          "SuccessFees": 123.0,
+          "IsPayNowPurchase": false,
+          "IsPaymentPending": false,
+          "PayNowRefundValue": 123.0,
+          "ShippingPrice": 123.0,
+          "ShippingType": 0,
+          "HasSellerPlaceFeedback": false,
+          "HasBuyerPlaceFeedback": false,
+          "OfferId": 123,
+          "InvoiceId": 123,
+          "Buyer": {},
+          "DeliveryAddress": {
+            "Name": "ABC",
+            "Address1": "ABC",
+            "Address2": "ABC",
+            "Suburb": "ABC",
+            "City": "ABC",
+            "Postcode": "ABC",
+            "Country": "ABC",
+            "PhoneNumber": "ABC"
+          },
+          "QuantitySold": 123,
+          "PurchaseId": 123,
+          "ReferenceNumber": "ABC",
+          "Price": 123.0,
+          "SubtotalPrice": 123.0,
+          "TotalShippingPrice": 123.0,
+          "TotalSalePrice": 123.0,
+          "OrderId": 123,
+          "PaymentMethod": 0,
+          "PaymentDetails": {
+            "IsPaymentPending": false,
+            "PaymentType": 0,
+            "PaymentAmount": 123.0,
+            "PaymentMethodFee": 123.0,
+            "RefundCollection": [
+              {
+                "Amount": 123.0,
+                "Destination": "ABC",
+                "Date": "/Date(1514764800)/"
+              },
+              {
+                "Amount": 123.0,
+                "Destination": "ABC",
+                "Date": "/Date(1514764800)/"
+              }
+            ],
+            "GstCollected": 123.0,
+            "PingEscrowStatus": 0
+          },
+          "TrackedParcels": [
+            {
+              "CourierParcelId": 123,
+              "CourierCompanyName": "ABC",
+              "TrackingReference": "ABC",
+              "TrackingUrl": "ABC",
+              "Status": 0,
+              "DateAdded": "/Date(1514764800)/"
+            },
+            {
+              "CourierParcelId": 123,
+              "CourierCompanyName": "ABC",
+              "TrackingReference": "ABC",
+              "TrackingUrl": "ABC",
+              "Status": 0,
+              "DateAdded": "/Date(1514764800)/"
+            }
+          ],
+          "TaxSubTotals": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "SubTotal": 123.0,
+              "FlatRate": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "SubTotal": 123.0,
+              "FlatRate": 123.0
+            }
+          ]
+        },
+        {
+          "ListingId": 123,
+          "Title": "ABC",
+          "Category": "ABC",
+          "StartPrice": 123.0,
+          "BuyNowPrice": 123.0,
+          "StartDate": "/Date(1514764800)/",
+          "EndDate": "/Date(1514764800)/",
+          "ListingLength": "ABC",
+          "Restrictions": "ABC",
+          "IsFeatured": false,
+          "HasGallery": false,
+          "IsBold": false,
+          "IsHighlighted": false,
+          "HasHomePageFeature": false,
+          "HasExtraPhotos": false,
+          "HasScheduledEndDate": false,
+          "BidderAndWatchers": 123,
+          "MaxBidAmount": 123.0,
+          "AsAt": "/Date(1514764800)/",
+          "CategoryPath": "ABC",
+          "PictureHref": "ABC",
+          "PhotoId": 123,
+          "BidCount": 123,
+          "ViewCount": 123,
+          "IsReserveMet": false,
+          "HasReserve": false,
+          "HasBuyNow": false,
+          "Note": "ABC",
+          "NoteId": 123,
+          "NoteDate": "/Date(1514764800)/",
+          "CategoryName": "ABC",
+          "ReserveState": 0,
+          "Attributes": [
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            },
+            {
+              "Name": "ABC",
+              "DisplayName": "ABC",
+              "Value": "ABC"
+            }
+          ],
+          "IsClassified": false,
+          "RelistedItemId": 123,
+          "Subtitle": "ABC",
+          "ReservePrice": 123.0,
+          "IsBuyNowOnly": false,
+          "IsFlatShippingCharge": false,
+          "RemainingGalleryPlusRelists": 123,
+          "ExternalReferenceId": "ABC",
+          "SKU": "ABC",
+          "IsClearance": false,
+          "WasPrice": 123.0,
+          "PercentageOff": 123,
+          "Options": [
+            {},
+            {}
+          ],
+          "ListingGroupId": 123,
+          "Status": 123,
+          "StatusDate": "/Date(1514764800)/",
+          "SoldDate": "/Date(1514764800)/",
+          "SoldType": "ABC",
+          "SalePrice": 123.0,
+          "SelectedShipping": "ABC",
+          "BuyerDeliveryAddress": "ABC",
+          "MessageFromBuyer": "ABC",
+          "SuccessFees": 123.0,
+          "IsPayNowPurchase": false,
+          "IsPaymentPending": false,
+          "PayNowRefundValue": 123.0,
+          "ShippingPrice": 123.0,
+          "ShippingType": 0,
+          "HasSellerPlaceFeedback": false,
+          "HasBuyerPlaceFeedback": false,
+          "OfferId": 123,
+          "InvoiceId": 123,
+          "Buyer": {},
+          "DeliveryAddress": {
+            "Name": "ABC",
+            "Address1": "ABC",
+            "Address2": "ABC",
+            "Suburb": "ABC",
+            "City": "ABC",
+            "Postcode": "ABC",
+            "Country": "ABC",
+            "PhoneNumber": "ABC"
+          },
+          "QuantitySold": 123,
+          "PurchaseId": 123,
+          "ReferenceNumber": "ABC",
+          "Price": 123.0,
+          "SubtotalPrice": 123.0,
+          "TotalShippingPrice": 123.0,
+          "TotalSalePrice": 123.0,
+          "OrderId": 123,
+          "PaymentMethod": 0,
+          "PaymentDetails": {
+            "IsPaymentPending": false,
+            "PaymentType": 0,
+            "PaymentAmount": 123.0,
+            "PaymentMethodFee": 123.0,
+            "RefundCollection": [
+              {
+                "Amount": 123.0,
+                "Destination": "ABC",
+                "Date": "/Date(1514764800)/"
+              },
+              {
+                "Amount": 123.0,
+                "Destination": "ABC",
+                "Date": "/Date(1514764800)/"
+              }
+            ],
+            "GstCollected": 123.0,
+            "PingEscrowStatus": 0
+          },
+          "TrackedParcels": [
+            {
+              "CourierParcelId": 123,
+              "CourierCompanyName": "ABC",
+              "TrackingReference": "ABC",
+              "TrackingUrl": "ABC",
+              "Status": 0,
+              "DateAdded": "/Date(1514764800)/"
+            },
+            {
+              "CourierParcelId": 123,
+              "CourierCompanyName": "ABC",
+              "TrackingReference": "ABC",
+              "TrackingUrl": "ABC",
+              "Status": 0,
+              "DateAdded": "/Date(1514764800)/"
+            }
+          ],
+          "TaxSubTotals": [
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "SubTotal": 123.0,
+              "FlatRate": 123.0
+            },
+            {
+              "Type": 1,
+              "Country": "ABC",
+              "Name": "ABC",
+              "SubTotal": 123.0,
+              "FlatRate": 123.0
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

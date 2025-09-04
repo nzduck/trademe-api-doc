@@ -1,0 +1,61 @@
+{
+  "endpoint": "RetrieveDvdIds",
+  "title": "Retrieve DVD IDs",
+  "description": "Returns a list of DVD catalogue ID numbers. You can use this list to validate the catalogue ID before listing a DVD. These ID numbers don't change very often so you should cache them and only periodically refresh them.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-dvd-ids",
+  "url": "https://api.trademe.co.nz/v1/DvdValidation.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <DvdValidation> A list containing the IDs of all DVD titles.",
+    "fields": [
+      {
+        "name": "DvdId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the DVD."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "DvdId": 123
+      },
+      {
+        "DvdId": 123
+      }
+    ]
+  }
+}

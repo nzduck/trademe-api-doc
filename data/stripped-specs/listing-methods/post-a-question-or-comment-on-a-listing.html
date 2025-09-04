@@ -1,0 +1,211 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/listing-methods/post-a-question-or-comment-on-a-listing -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Post a question or comment on a listing</h1>
+<!-- Page content -->
+<p>Adds a question (or a comment) to a listing. The seller will be notified.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/listings/{listingId}/addcomment.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> listingId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the listing to add the comment to.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> POST Data </h2>
+<p> &lt;ListingAddComment&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> comment </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The comment text (500 characters max).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirearmsLicence </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The user's firearms licence number. This is required for firearms purchases.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FirearmsLicenceHolder </th>
+<td style="width: 22%"> &lt;FirearmsLicenceHolderDetails&gt; (optional) </td>
+<td>
+<p>The user Enters First, Middle, and Last Names associated to the firearms licence.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> FirstName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>First name of Licence Holder. Required;</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MiddleNames </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Middle Names of Licence Holder. Optional;</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>Last name of Licence Holder. Required;</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBuyerOlderThan18 </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>The user agrees they are older than 18. This is required for wine purchases.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;Question&gt; </p>
+<p>A <b>ListingQuestion</b> that contains the added comment.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing this question belongs to.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingQuestionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The question ID.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Comment </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The text of the question.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CommentDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the question was asked.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Answer </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The answer given to the question by the owner of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AnswerDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the question was answered.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSellerComment </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether this is a comment from the seller rather than a question.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MemberId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;Nickname&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;DateAddressVerified&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member was address verified.&quot;}, {&quot;field_name&quot;: &quot;DateJoined&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member joined.&quot;}, {&quot;field_name&quot;: &quot;UniqueNegative&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed negative feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;UniquePositive&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed positive feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;FeedbackCount&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The member's total feedback (UniquePositive minus UniqueNegative).&quot;}, {&quot;field_name&quot;: &quot;IsAddressVerified&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been address verified.&quot;}, {&quot;field_name&quot;: &quot;IsDealer&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a car dealer.&quot;}, {&quot;field_name&quot;: &quot;IsAuthenticated&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is authenticated.&quot;}, {&quot;field_name&quot;: &quot;Photo&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The profile photo URL of the member&quot;}]">
+<th style="width: 22%"> AskingMember </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>The member details for the member asking the question.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "comment": "ABC",
+  "FirearmsLicence": "ABC",
+  "FirearmsLicenceHolder": {
+    "FirstName": "ABC",
+    "MiddleNames": "ABC",
+    "LastName": "ABC"
+  },
+  "IsBuyerOlderThan18": false
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "ListingQuestionId": 123,
+  "Comment": "ABC",
+  "CommentDate": "\/Date(1514764800)\/",
+  "Answer": "ABC",
+  "AnswerDate": "\/Date(1514764800)\/",
+  "IsSellerComment": false,
+  "AskingMember": {
+    "MemberId": 123,
+    "Nickname": "ABC",
+    "DateAddressVerified": "\/Date(1514764800)\/",
+    "DateJoined": "\/Date(1514764800)\/",
+    "UniqueNegative": 123,
+    "UniquePositive": 123,
+    "FeedbackCount": 123,
+    "IsAddressVerified": false,
+    "IsDealer": false,
+    "IsAuthenticated": false,
+    "Photo": "ABC"
+  }
+}</code></pre>
+</div>

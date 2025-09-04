@@ -1,0 +1,686 @@
+{
+  "endpoint": "SetYourEmailPreferences",
+  "title": "Set your email preferences",
+  "description": "Sets the authenticated user's email preferences.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/set-your-email-preferences",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/emailoptions.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<EmailOptions>",
+    "fields": [
+      {
+        "name": "IsAppliedToExisting",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether watchlist options are applied to existing items."
+      },
+      {
+        "name": "WatchlistReminder",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of when they should get watchlist emails."
+      },
+      {
+        "name": "Newsletter",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which newsletters they want to receive."
+      },
+      {
+        "name": "EmailFormat",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The format that emails are sent in."
+      },
+      {
+        "name": "EmailMemberWhen",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference indicating which events should trigger an email."
+      },
+      {
+        "name": "FixedPriceOffer",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of when they should get fixed price offer notifications."
+      },
+      {
+        "name": "Relist",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of when they should get relist notifications."
+      },
+      {
+        "name": "Agent",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference for when agent emails should be sent."
+      },
+      {
+        "name": "AgentReportFormat",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The format that agent emails are in."
+      },
+      {
+        "name": "Promotional",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which occasional promotional emails they want to receive about the Trade Me family of sites."
+      },
+      {
+        "name": "Marketing",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which occasional marketing emails they want to receive regarding specials, promotions, and tips on site usage."
+      },
+      {
+        "name": "TradeMeUpdates",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which Trade Me update emails they want to receive."
+      },
+      {
+        "name": "TradeMePropertyUpdates",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which Trade Me Property update emails they want to receive."
+      },
+      {
+        "name": "TradeMeJobsUpdates",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which Trade Me Jobs update emails they want to receive."
+      },
+      {
+        "name": "TradeMeMotorsUpdates",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "The user's preference of which Trade Me Motors updates emails they want to receive."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<EmailOptions> The authenticated user's email preferences, after the changes were applied.",
+    "fields": [
+      {
+        "name": "WatchlistReminder",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference of when they should get watchlist emails.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No emails for watchlist items."
+          },
+          {
+            "name": "OneHourBefore",
+            "value": "1",
+            "description": "One hour before the listing closes."
+          },
+          {
+            "name": "TwelveHoursBefore",
+            "value": "2",
+            "description": "Twelve hours before the listing closes."
+          },
+          {
+            "name": "TwentyFourHoursBefore",
+            "value": "4",
+            "description": "Twenty hours before the listing closes."
+          }
+        ]
+      },
+      {
+        "name": "Newsletter",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference of which newsletters they want to receive.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No newsletters."
+          },
+          {
+            "name": "Monthly",
+            "value": "1",
+            "description": "Monthly general newsletter."
+          },
+          {
+            "name": "Motors",
+            "value": "2",
+            "description": "Motors newsletter."
+          },
+          {
+            "name": "Property",
+            "value": "4",
+            "description": "Property newsletter."
+          },
+          {
+            "name": "Jobs",
+            "value": "8",
+            "description": "Jobs newsletter."
+          },
+          {
+            "name": "DailyDeals",
+            "value": "16",
+            "description": "Daily Deals newsletter. DEPRECATED."
+          }
+        ]
+      },
+      {
+        "name": "EmailFormat",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The format that emails are sent in.",
+        "enum": [
+          {
+            "name": "Html",
+            "value": "1",
+            "description": "Html, with pictures etc."
+          },
+          {
+            "name": "Plain",
+            "value": "2",
+            "description": "Just text."
+          }
+        ]
+      },
+      {
+        "name": "EmailMemberWhen",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference indicating which events should trigger an email.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No emails wanted."
+          },
+          {
+            "name": "FpoDeclined",
+            "value": "1",
+            "description": "Fixed price offer declined by trader."
+          },
+          {
+            "name": "FpoExpired",
+            "value": "2",
+            "description": "Fixed price offer expired."
+          },
+          {
+            "name": "NewFeedback",
+            "value": "4",
+            "description": "New feedback posted about member."
+          },
+          {
+            "name": "DailyListingSummary",
+            "value": "8",
+            "description": "Summary of listing listed."
+          },
+          {
+            "name": "ListingUnsold",
+            "value": "16",
+            "description": "Listing closed below reserve."
+          },
+          {
+            "name": "ListingSold",
+            "value": "32",
+            "description": "Listing sold."
+          },
+          {
+            "name": "Outbid",
+            "value": "64",
+            "description": "Member outbid."
+          },
+          {
+            "name": "BuyNowAdded",
+            "value": "128",
+            "description": "BuyNow added to item on watchlist."
+          },
+          {
+            "name": "ClassifiedExpired",
+            "value": "256",
+            "description": "Classified listed by member has expired."
+          },
+          {
+            "name": "ServiceReviewed",
+            "value": "512",
+            "description": "Service reviewed by another member."
+          }
+        ]
+      },
+      {
+        "name": "FixedPriceOffer",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference of when they should get fixed price offer notifications.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Don't send notifications."
+          },
+          {
+            "name": "Bid",
+            "value": "1",
+            "description": "When a bid is placed."
+          },
+          {
+            "name": "Watchlist",
+            "value": "2",
+            "description": "If an item added to watchlist."
+          },
+          {
+            "name": "BidAndWatchlist",
+            "value": "3",
+            "description": "If an item has a bid or added to watchlist."
+          }
+        ]
+      },
+      {
+        "name": "Relist",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference of when they should get relist notifications.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Don't send notifications."
+          },
+          {
+            "name": "Bid",
+            "value": "1",
+            "description": "When a bid is placed."
+          },
+          {
+            "name": "Watchlist",
+            "value": "2",
+            "description": "If an item added to watchlist."
+          },
+          {
+            "name": "BidAndWatchlist",
+            "value": "3",
+            "description": "If an item has a bid or added to watchlist."
+          }
+        ]
+      },
+      {
+        "name": "Agent",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The user's preference for when agent emails should be sent.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Agent reports are not sent."
+          },
+          {
+            "name": "Current",
+            "value": "1",
+            "description": "Send agent reports for all current listings."
+          },
+          {
+            "name": "SevenDays",
+            "value": "2",
+            "description": "Send agent reports for listings closed in the last seven days."
+          },
+          {
+            "name": "FortyfiveDays",
+            "value": "4",
+            "description": "Send agent reports for listings closed in the last 45 days."
+          }
+        ]
+      },
+      {
+        "name": "AgentReportFormat",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The format that agent emails are in.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Not given."
+          },
+          {
+            "name": "Csv",
+            "value": "1",
+            "description": "Agent reports should use the CSV format."
+          },
+          {
+            "name": "Pdf",
+            "value": "2",
+            "description": "Agent reports should use the PDF format."
+          }
+        ]
+      },
+      {
+        "name": "Promotional",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which occasional promotional emails they want to receive about the Trade Me family of sites.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No promotional emails."
+          },
+          {
+            "name": "TradeMeProperty",
+            "value": "2",
+            "description": "Promos, contest, etc. from Trade Me Property. DEPRECATED."
+          },
+          {
+            "name": "TradeMeJobs",
+            "value": "4",
+            "description": "Promos, contest, etc. from Trade Me Jobs. DEPRECATED."
+          },
+          {
+            "name": "TradeMeMotors",
+            "value": "8",
+            "description": "Promos, contest, etc. from Trade Me Motors. DEPRECATED."
+          },
+          {
+            "name": "FindSomeone",
+            "value": "16",
+            "description": "Promos, contests, etc. from Findsomeone."
+          },
+          {
+            "name": "Travelbug",
+            "value": "32",
+            "description": "Promos, contests, etc. from TravelBug."
+          },
+          {
+            "name": "HolidayHouses",
+            "value": "64",
+            "description": "Promos, contests, etc. from Holiday Houses."
+          },
+          {
+            "name": "LifeDirect",
+            "value": "128",
+            "description": "Promos, contests, etc. from LifeDirect."
+          },
+          {
+            "name": "Harmoney",
+            "value": "256",
+            "description": "Promos, contests, etc. from Harmoney."
+          },
+          {
+            "name": "TradeMeInsurance",
+            "value": "512",
+            "description": "Promos, contests, etc. from Trade Me Insurance."
+          },
+          {
+            "name": "Sharesies",
+            "value": "1024",
+            "description": "Promos, contests, etc. from Sharesies."
+          }
+        ]
+      },
+      {
+        "name": "Marketing",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which occasional marketing emails they want to receive regarding specials, promotions, and tips on site usage.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No promotional emails."
+          },
+          {
+            "name": "Tips",
+            "value": "1",
+            "description": "Trade Me Tips email. DEPRECATED."
+          },
+          {
+            "name": "Promos",
+            "value": "2",
+            "description": "Trade Me Promos email. DEPRECATED."
+          },
+          {
+            "name": "SellerSpecials",
+            "value": "4",
+            "description": "Trade Me Seller Specials email. DEPRECATED."
+          },
+          {
+            "name": "Specials",
+            "value": "8",
+            "description": "Trade Me Specials email. DEPRECATED."
+          }
+        ]
+      },
+      {
+        "name": "TradeMeUpdates",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which Trade Me update emails they want to receive.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No Trade Me emails."
+          },
+          {
+            "name": "CompsAndPromos",
+            "value": "1",
+            "description": "Competitions & promotions."
+          },
+          {
+            "name": "DealsAndOffers",
+            "value": "2",
+            "description": "Deals & offers."
+          },
+          {
+            "name": "PersonalisedRecommendations",
+            "value": "4",
+            "description": "Personalised recommendations."
+          },
+          {
+            "name": "Surveys",
+            "value": "8",
+            "description": "Surveys."
+          },
+          {
+            "name": "TipsAndUpdates",
+            "value": "16",
+            "description": "Tips & updates."
+          },
+          {
+            "name": "Services",
+            "value": "32",
+            "description": "Services from TradeMe."
+          }
+        ]
+      },
+      {
+        "name": "TradeMePropertyUpdates",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which Trade Me Property update emails they want to receive.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No Trade Me Property emails."
+          },
+          {
+            "name": "CompsAndPromos",
+            "value": "1",
+            "description": "Competitions & promotions."
+          },
+          {
+            "name": "DealsAndOffers",
+            "value": "2",
+            "description": "Deals & offers."
+          },
+          {
+            "name": "PersonalisedRecommendations",
+            "value": "4",
+            "description": "Personalised recommendations."
+          },
+          {
+            "name": "Surveys",
+            "value": "8",
+            "description": "Surveys."
+          },
+          {
+            "name": "TipsAndUpdates",
+            "value": "16",
+            "description": "Tips & updates."
+          },
+          {
+            "name": "PropertyAgentUpdates",
+            "value": "32",
+            "description": "Receive agent updates from Properties you are watchlisting."
+          }
+        ]
+      },
+      {
+        "name": "TradeMeJobsUpdates",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which Trade Me Jobs update emails they want to receive.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No Trade Me Jobs emails."
+          },
+          {
+            "name": "CompsAndPromos",
+            "value": "1",
+            "description": "Competitions & promotions."
+          },
+          {
+            "name": "DealsAndOffers",
+            "value": "2",
+            "description": "Deals & offers."
+          },
+          {
+            "name": "PersonalisedRecommendations",
+            "value": "4",
+            "description": "Personalised recommendations."
+          },
+          {
+            "name": "Surveys",
+            "value": "8",
+            "description": "Surveys."
+          },
+          {
+            "name": "TipsAndUpdates",
+            "value": "16",
+            "description": "Tips & updates."
+          }
+        ]
+      },
+      {
+        "name": "TradeMeMotorsUpdates",
+        "type": "Enumeration or null",
+        "required": false,
+        "description": "The user's preference of which Trade Me Motors updates emails they want to receive.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No Trade Me Motors emails."
+          },
+          {
+            "name": "CompsAndPromos",
+            "value": "1",
+            "description": "Competitions & promotions."
+          },
+          {
+            "name": "DealsAndOffers",
+            "value": "2",
+            "description": "Deals & offers."
+          },
+          {
+            "name": "PersonalisedRecommendations",
+            "value": "4",
+            "description": "Personalised recommendations."
+          },
+          {
+            "name": "Surveys",
+            "value": "8",
+            "description": "Surveys."
+          },
+          {
+            "name": "TipsAndUpdates",
+            "value": "16",
+            "description": "Tips & updates."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "IsAppliedToExisting": false,
+      "WatchlistReminder": 0,
+      "Newsletter": 0,
+      "EmailFormat": 1,
+      "EmailMemberWhen": 0,
+      "FixedPriceOffer": 0,
+      "Relist": 0,
+      "Agent": 0,
+      "AgentReportFormat": 0,
+      "Promotional": 0,
+      "Marketing": 0,
+      "TradeMeUpdates": 0,
+      "TradeMePropertyUpdates": 0,
+      "TradeMeJobsUpdates": 0,
+      "TradeMeMotorsUpdates": 0
+    },
+    "response_json": {
+      "WatchlistReminder": 0,
+      "Newsletter": 0,
+      "EmailFormat": 1,
+      "EmailMemberWhen": 0,
+      "FixedPriceOffer": 0,
+      "Relist": 0,
+      "Agent": 0,
+      "AgentReportFormat": 0,
+      "Promotional": 0,
+      "Marketing": 0,
+      "TradeMeUpdates": 0,
+      "TradeMePropertyUpdates": 0,
+      "TradeMeJobsUpdates": 0,
+      "TradeMeMotorsUpdates": 0
+    }
+  }
+}

@@ -1,0 +1,833 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/property-map-methods/get-map-dots-for-a-given-search-request -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get map dots for a given search request</h1>
+<!-- Page content -->
+<p>Get map dots for a given search request</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/Map/Dots.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;MapDotsRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Polylines </th>
+<td style="width: 22%"> Collection of String (optional) </td>
+<td>
+<p>Map items</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Limit </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Limit</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Page</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Sort </th>
+<td style="width: 22%"> &lt;Sort&gt; (optional) </td>
+<td>
+<p>Sort</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Order </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Order</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Direction </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Direction</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayRentals </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Display Rentals</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForSale </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>For Sale</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForRent </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>For Rent</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> JustSold </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Just Sold</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarket </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p>Off Market</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalePriceMin </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Sale Price Min</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalePriceMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Sale Price Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RentRateMin </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Rent Rate Min</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RentRateMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Rent Rate Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketMin </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Min</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForSaleBathrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Sale Bathrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForSaleBedrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Sale Bedrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForRentBathrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Rent Bathrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForRentBedrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Rent Bedrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketBathrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Bathrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketBedrooms </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Bedrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForSaleBathroomsMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Sale Bathrooms Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForRentBathroomsMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Rent Bathrooms Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ForRentBedroomsMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>For Rent Bedrooms Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketBathroomsMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Bathrooms Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OffMarketBedroomsMax </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Off Market Bedrooms Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateMin </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>Date Min</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateMax </th>
+<td style="width: 22%"> DateTime (optional) </td>
+<td>
+<p>Date Max</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Suburb Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FilterOutTbc </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>Filter Out TBC</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnitIdentifier </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Unit Identifier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetNumber </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Street Number</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetName </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Street Name</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetType </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Street Type</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetDirection </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Street Direction</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetAlpha </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Street Alpha</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinLatitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>Minimum latitude when maxLatitude is provided</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MinLongitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>Center longitude of the search area Or minimum longitude when maxLongitude is provided</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxLatitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>MaxLatitude to be used in conjunction with Latitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxLongitude </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>MaxLongitude to be used in conjunction with Longitude to define a search area When MaxLatitude and MaxLongitude is specified, polyline will be generated to cover the area within the two coordinates.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;MapDotsResponse&gt; </p>
+<p>A list of properties on a map</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> MapItems </th>
+<td style="width: 22%"> Collection of &lt;MapItem&gt; or null </td>
+<td>
+<p>Map items</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ItemId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Item Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> State </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>State</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Point </th>
+<td style="width: 22%"> &lt;Point&gt; or null </td>
+<td>
+<p>Point</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Lat </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Lat</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Long </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>Long</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedAt </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Featured At</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedPlan </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Featured Plan</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayPriceShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Price Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayStreetNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Street Number</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Clusters </th>
+<td style="width: 22%"> Collection of &lt;Cluster&gt; or null </td>
+<td>
+<p>Clusters</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Properties </th>
+<td style="width: 22%"> Collection of &lt;Property&gt; or null </td>
+<td>
+<p>Properties</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ItemId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Item Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> State </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>State</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Date </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayPrice </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertyDetails </th>
+<td style="width: 22%"> &lt;PropertyDetails&gt; or null </td>
+<td>
+<p>Property Details</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Address </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CoverImageUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Cover Image Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GoogleStreetViewUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Google Street View Url</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Point </th>
+<td style="width: 22%"> &lt;Point&gt; or null </td>
+<td>
+<p>Point</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedAt </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Featured At</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedPlan </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Featured Plan</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayPriceShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Price Short</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> State </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>State</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Point </th>
+<td style="width: 22%"> &lt;Point&gt; or null </td>
+<td>
+<p>Point</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedAt </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Featured At</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedPlan </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Featured Plan</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Hits </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Hits</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Error </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Error</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Polylines": [
+    "ABC",
+    "ABC"
+  ],
+  "Limit": 123,
+  "Page": 123,
+  "Sort": {
+    "Order": "ABC",
+    "Direction": "ABC"
+  },
+  "DisplayRentals": false,
+  "ForSale": false,
+  "ForRent": false,
+  "JustSold": false,
+  "OffMarket": false,
+  "SalePriceMin": 123,
+  "SalePriceMax": 123,
+  "RentRateMin": 123,
+  "RentRateMax": 123,
+  "OffMarketMin": 123,
+  "OffMarketMax": 123,
+  "ForSaleBathrooms": 123,
+  "ForSaleBedrooms": 123,
+  "ForRentBathrooms": 123,
+  "ForRentBedrooms": 123,
+  "OffMarketBathrooms": 123,
+  "OffMarketBedrooms": 123,
+  "ForSaleBathroomsMax": 123,
+  "ForRentBathroomsMax": 123,
+  "ForRentBedroomsMax": 123,
+  "OffMarketBathroomsMax": 123,
+  "OffMarketBedroomsMax": 123,
+  "DateMin": "\/Date(1514764800)\/",
+  "DateMax": "\/Date(1514764800)\/",
+  "SuburbId": 123,
+  "FilterOutTbc": 123,
+  "UnitIdentifier": "ABC",
+  "StreetNumber": "ABC",
+  "StreetName": "ABC",
+  "StreetType": "ABC",
+  "StreetDirection": "ABC",
+  "StreetAlpha": "ABC",
+  "MinLatitude": 123.0,
+  "MinLongitude": 123.0,
+  "MaxLatitude": 123.0,
+  "MaxLongitude": 123.0
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "MapItems": [
+    {
+      "ItemId": "ABC",
+      "Id": "ABC",
+      "State": 123,
+      "Price": 123.0,
+      "Point": {
+        "Lat": 123.0,
+        "Long": 123.0
+      },
+      "Url": "ABC",
+      "FeaturedAt": "\/Date(1514764800)\/",
+      "FeaturedPlan": 123,
+      "DisplayPriceShort": "ABC",
+      "DisplayStreetNumber": "ABC"
+    },
+    {
+      "ItemId": "ABC",
+      "Id": "ABC",
+      "State": 123,
+      "Price": 123.0,
+      "Point": {
+        "Lat": 123.0,
+        "Long": 123.0
+      },
+      "Url": "ABC",
+      "FeaturedAt": "\/Date(1514764800)\/",
+      "FeaturedPlan": 123,
+      "DisplayPriceShort": "ABC",
+      "DisplayStreetNumber": "ABC"
+    }
+  ],
+  "Clusters": [
+    {
+      "Properties": [
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Date": "\/Date(1514764800)\/",
+          "DisplayPrice": "ABC",
+          "PropertyDetails": {
+            "Address": "ABC",
+            "CoverImageUrl": "ABC",
+            "GoogleStreetViewUrl": "ABC"
+          },
+          "Point": {
+          },
+          "Url": "ABC",
+          "FeaturedAt": "\/Date(1514764800)\/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC"
+        },
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Date": "\/Date(1514764800)\/",
+          "DisplayPrice": "ABC",
+          "PropertyDetails": {
+            "Address": "ABC",
+            "CoverImageUrl": "ABC",
+            "GoogleStreetViewUrl": "ABC"
+          },
+          "Point": {
+          },
+          "Url": "ABC",
+          "FeaturedAt": "\/Date(1514764800)\/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC"
+        }
+      ],
+      "State": 123,
+      "Point": {
+      },
+      "FeaturedAt": "\/Date(1514764800)\/",
+      "FeaturedPlan": 123
+    },
+    {
+      "Properties": [
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Date": "\/Date(1514764800)\/",
+          "DisplayPrice": "ABC",
+          "PropertyDetails": {
+            "Address": "ABC",
+            "CoverImageUrl": "ABC",
+            "GoogleStreetViewUrl": "ABC"
+          },
+          "Point": {
+          },
+          "Url": "ABC",
+          "FeaturedAt": "\/Date(1514764800)\/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC"
+        },
+        {
+          "ItemId": "ABC",
+          "Id": "ABC",
+          "State": 123,
+          "Price": 123.0,
+          "Date": "\/Date(1514764800)\/",
+          "DisplayPrice": "ABC",
+          "PropertyDetails": {
+            "Address": "ABC",
+            "CoverImageUrl": "ABC",
+            "GoogleStreetViewUrl": "ABC"
+          },
+          "Point": {
+          },
+          "Url": "ABC",
+          "FeaturedAt": "\/Date(1514764800)\/",
+          "FeaturedPlan": 123,
+          "DisplayPriceShort": "ABC"
+        }
+      ],
+      "State": 123,
+      "Point": {
+      },
+      "FeaturedAt": "\/Date(1514764800)\/",
+      "FeaturedPlan": 123
+    }
+  ],
+  "Hits": 123,
+  "Error": "ABC"
+}</code></pre>
+</div>

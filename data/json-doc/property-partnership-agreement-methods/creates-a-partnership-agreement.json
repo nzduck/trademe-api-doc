@@ -1,0 +1,197 @@
+{
+  "endpoint": "CreatesAPartnershipAgreement",
+  "title": "Creates a partnership agreement",
+  "description": "Creates a depth commitment contract. An agreement between an agency (member) and Trade Me, to upgrade all listings of a matched criteria, to a set level of depth product.",
+  "source": "https://developer.trademe.co.nz/api-reference/property-partnership-agreement-methods/creates-a-partnership-agreement",
+  "url": "https://api.trademe.co.nz/v1/Property/PartnershipAgreements.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "PropertyB2BInternalServicesWrite: Oidc write permission for Customer Broker Api",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<CommitmentContractRequest>",
+    "fields": [
+      {
+        "name": "CrmId",
+        "type": "String (required)",
+        "required": true,
+        "description": "The external ID of the contract from the source system"
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The member ID of the agency for which this contract applies"
+      },
+      {
+        "name": "StartDate",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The start date of the contract. If not supplied, this will be defaulted to the current date"
+      },
+      {
+        "name": "EndDate",
+        "type": "DateTime (optional)",
+        "required": false,
+        "description": "The end date of the contract. If not supplied, the contract will not expire"
+      },
+      {
+        "name": "ItemCode",
+        "type": "String (required)",
+        "required": true,
+        "description": "The financial item code for the depth product applied to listings as part of this contract. This will be used for invoicing purposes"
+      },
+      {
+        "name": "InvoiceLine",
+        "type": "String (required)",
+        "required": true,
+        "description": "The descriptive invoice line for the depth product applied to listings as part of this contract"
+      },
+      {
+        "name": "PaymentType",
+        "type": "String (required)",
+        "required": true,
+        "description": "The payment type for the depth product applied to listings as part of this contract"
+      },
+      {
+        "name": "ListingFee",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If true, when a listing is created while this contract is in effect, the listing fee (or base fee) will not be charged. If false, the listing fee will continue to be charged"
+      },
+      {
+        "name": "FeatureCombo",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If true, Feature Combo will be applied to listings subject to this contract"
+      },
+      {
+        "name": "PackageCode",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The code of any package that are applied to listings subject to this contract"
+      },
+      {
+        "name": "CategoryIds",
+        "type": "Collection of Integer (required)",
+        "required": true,
+        "description": "The listing categories in which this contract will apply"
+      },
+      {
+        "name": "ListingExtras",
+        "type": "Collection of <ListingExtras> (optional)",
+        "required": false,
+        "description": "The listing extras that are applied to listings subject to this contract"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String (required) \n\nThe name of the extra.\n\n\n\n Variant \n String (required) \n\nThe variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra.",
+        "required": true,
+        "description": "String (required)"
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "The name of the extra."
+      },
+      {
+        "name": "Variant",
+        "type": "String (required)",
+        "required": true,
+        "description": "The variation of the extra. For example this could determine the duration, delay, or configuration of the listing extra."
+      },
+      {
+        "name": "AutoApplyPremiumPackage",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Flag for whether the PA is NOT Flexi or Flexi (true = Not Flexi)"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<CommitmentContractResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "CommitmentContractId",
+        "type": "Integer",
+        "required": false,
+        "description": "The internal ID of the commitment contract"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "CrmId": "ABC",
+      "MemberId": 123,
+      "StartDate": "/Date(1514764800)/",
+      "EndDate": "/Date(1514764800)/",
+      "ItemCode": "ABC",
+      "InvoiceLine": "ABC",
+      "PaymentType": "ABC",
+      "ListingFee": false,
+      "FeatureCombo": false,
+      "PackageCode": "ABC",
+      "CategoryIds": [
+        123,
+        123
+      ],
+      "ListingExtras": [
+        {
+          "Name": "ABC",
+          "Variant": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "Variant": "ABC"
+        }
+      ],
+      "AutoApplyPremiumPackage": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "CommitmentContractId": 123
+    }
+  }
+}

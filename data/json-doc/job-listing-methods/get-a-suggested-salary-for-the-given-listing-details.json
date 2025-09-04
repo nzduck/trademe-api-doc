@@ -1,0 +1,132 @@
+{
+  "endpoint": "GetASuggestedSalaryForTheGivenListingDetails",
+  "title": "Get a suggested salary for the given listing details",
+  "description": "This method is to retrieve a salary suggestion for the given listing details",
+  "source": "https://developer.trademe.co.nz/api-reference/job-listing-methods/get-a-suggested-salary-for-the-given-listing-details",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Listings/SalarySuggestions.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SalarySuggestionsRequest>",
+    "fields": [
+      {
+        "name": "CategoryId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Category ID for the job listing"
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Region Id for the job listing"
+      },
+      {
+        "name": "DistrictId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "District Id for the job listing"
+      },
+      {
+        "name": "JobType",
+        "type": "String (required)",
+        "required": true,
+        "description": "Job type of the job listing (FULL_TIME or PART_TIME)"
+      },
+      {
+        "name": "ContractType",
+        "type": "String (required)",
+        "required": true,
+        "description": "Contract type for the job listing (CONTRACT or PERMANENT)"
+      },
+      {
+        "name": "Title",
+        "type": "String (required)",
+        "required": true,
+        "description": "Title for the job listing"
+      },
+      {
+        "name": "PayType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Pay type of the job listing (HOURLY or SALARY)"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<SalarySuggestionsResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "BandHigher",
+        "type": "Integer",
+        "required": false,
+        "description": "The upper bound of the recommended salary for the given position"
+      },
+      {
+        "name": "BandLower",
+        "type": "Integer",
+        "required": false,
+        "description": "The lower bound of the recommended salary for the given position"
+      },
+      {
+        "name": "PayType",
+        "type": "String or null",
+        "required": false,
+        "description": "The pay type of the recommended salary for the given position (e.g. SALARY or HOURLY)"
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "CategoryId": 123,
+      "RegionId": 123,
+      "DistrictId": 123,
+      "JobType": "ABC",
+      "ContractType": "ABC",
+      "Title": "ABC",
+      "PayType": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "BandHigher": 123,
+      "BandLower": 123,
+      "PayType": "ABC"
+    }
+  }
+}

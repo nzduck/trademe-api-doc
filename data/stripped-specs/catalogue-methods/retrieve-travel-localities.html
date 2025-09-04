@@ -1,0 +1,104 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-travel-localities -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve travel localities</h1>
+<!-- Page content -->
+<p>Returns a list of districts and suburbs as used by TradeMe travel.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/travelareas.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;Locality&gt; </p>
+<p>A list of all localities.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> LocalityId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the region.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the region.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "DistrictId", "field_type": "Integer", "description": "The ID of the district."}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the district."}]'>
+<th style="width: 22%"> Districts </th>
+<td style="width: 22%"> Collection of &lt;District&gt; or null </td>
+<td>
+<p>The list of districts that belong to this region.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "LocalityId": 123,
+    "Name": "ABC",
+    "Districts": [
+      {
+        "DistrictId": 123,
+        "Name": "ABC"
+      },
+      {
+        "DistrictId": 123,
+        "Name": "ABC"
+      }
+    ]
+  },
+  {
+    "LocalityId": 123,
+    "Name": "ABC",
+    "Districts": [
+      {
+        "DistrictId": 123,
+        "Name": "ABC"
+      },
+      {
+        "DistrictId": 123,
+        "Name": "ABC"
+      }
+    ]
+  }
+]</code></pre>
+</div>

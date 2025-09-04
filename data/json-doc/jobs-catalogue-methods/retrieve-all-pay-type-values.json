@@ -1,0 +1,69 @@
+{
+  "endpoint": "RetrieveAllPayTypeValues",
+  "title": "Retrieve all pay type values",
+  "description": "Returns a list of pay types",
+  "source": "https://developer.trademe.co.nz/api-reference/jobs-catalogue-methods/retrieve-all-pay-type-values",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Catalogue/PayTypes.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <CatalogueItem>",
+    "fields": [
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "The display label of the item"
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The value of the item"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Label": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "Label": "ABC",
+        "Value": "ABC"
+      }
+    ]
+  }
+}

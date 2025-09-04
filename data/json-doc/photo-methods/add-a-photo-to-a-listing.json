@@ -1,0 +1,109 @@
+{
+  "endpoint": "AddAPhotoToAListing",
+  "title": "Add a photo to a listing",
+  "description": "Adds a photo to an auction. The currently authenticated user must be the seller.",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/add-a-photo-to-a-listing",
+  "url": "https://api.trademe.co.nz/v1/photos/{photoId}/Add/{listingId}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "photoId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the photo to add."
+      },
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to add the photo to."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PhotoResponse> The ID of the added photo.",
+    "fields": [
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the photo operation.",
+        "enum": [
+          {
+            "name": "Failure",
+            "value": "0",
+            "description": "The photo action was a failure."
+          },
+          {
+            "name": "Success",
+            "value": "1",
+            "description": "The photo action was a success."
+          },
+          {
+            "name": "NotMemberPhoto",
+            "value": "2",
+            "description": "The photo is not owned by the member."
+          },
+          {
+            "name": "NotMemberAuction",
+            "value": "3",
+            "description": "The auction is not owned by the member."
+          },
+          {
+            "name": "NotFound",
+            "value": "4",
+            "description": "The auction was not found."
+          }
+        ]
+      },
+      {
+        "name": "PhotoId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the photo."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the error message, if an error occurred."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Status": 0,
+      "PhotoId": 123,
+      "Description": "ABC"
+    }
+  }
+}

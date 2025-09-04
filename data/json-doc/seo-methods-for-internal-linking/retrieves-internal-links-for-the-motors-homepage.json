@@ -1,0 +1,50 @@
+{
+  "endpoint": "RetrievesInternalLinksForTheMotorsHomepage",
+  "title": "Retrieves internal links for the Motors homepage",
+  "description": "Retrieves internal links for the Motors homepage.",
+  "source": "https://developer.trademe.co.nz/api-reference/seo-methods-for-internal-linking/retrieves-internal-links-for-the-motors-homepage",
+  "url": "https://api.trademe.co.nz/v1/seo/motors/landingpage.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <SeoLinkGroup>",
+    "fields": []
+  },
+  "examples": {
+    "response_json": [
+      {},
+      {}
+    ]
+  }
+}

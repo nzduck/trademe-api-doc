@@ -1,0 +1,182 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-top-seller-status-summary -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your Top Seller status summary</h1>
+<!-- Page content -->
+<p>Retrieve information for the authenticated user on if they have, or are eligible for Top Seller status.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/MyTradeMe/TopSellerSummary.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;TopSellerSummary&gt; </p>
+<p>Statistics for the current week and the previous six weeks.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> SalesCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of sales over the last six weeks.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalesValue </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The total value of sales in dollars over the last six weeks.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SellThroughRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The sell-through rate in percentage over the last six weeks.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackRating </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The feedback rating over the last six weeks.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> InTrade </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether this member is in trade or not</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsTopSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether or not the member is a Top Seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TopSellerStartDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The start date of the current period in which the member is a top seller (in UTC). Only applicable to members that are top sellers.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QualifyingSalesCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of sales threshold the seller has to reach to eligible for Top Seller status</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QualifyingSalesValue </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The value of sales threshold the seller has to reach to eligible for Top Seller status</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QualifyingSellThroughRate </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The sell-through rate threshold the seller has to reach to eligible for Top Seller status</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> QualifyingFeedbackRating </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The positive feedback ratio threshold the seller has to reach to eligible for Top Seller status</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TopSellerExpiryDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The end date of the current period in which the member is a top seller (in UTC). Only applicable to members that are top sellers.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TopSellerFeeDiscount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The percentage of discount (e.g. 0.15 for 15%) applicable to all fees except withdrawal fees, gallery plus, subtitle, reserve, 10-day auction, scheduled end time and second category. Only applicable to members that are top sellers.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "PeriodStart", "field_type": "DateTime", "description": "The start date of the period (in UTC)."}, {"field_name": "PeriodEnd", "field_type": "DateTime", "description": "The end date of the period (in UTC)."}, {"field_name": "SavingType", "field_type": "String or null", "description": "The fee type."}, {"field_name": "SavingAmount", "field_type": "Number", "description": "The amount saved."}, {"field_name": "WeekOffset", "field_type": "Integer", "description": "How many weeks before the current week this saving is. 0 = current week."}]'>
+<th style="width: 22%"> TopSellerSavings </th>
+<td style="width: 22%"> Collection of &lt;TopSellerSaving&gt; or null </td>
+<td>
+<p>The Top Seller savings for this member.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "SalesCount": 123,
+  "SalesValue": 123.0,
+  "SellThroughRate": 123.0,
+  "FeedbackRating": 123.0,
+  "InTrade": false,
+  "IsTopSeller": false,
+  "TopSellerStartDate": "\/Date(1514764800)\/",
+  "QualifyingSalesCount": 123,
+  "QualifyingSalesValue": 123.0,
+  "QualifyingSellThroughRate": 123.0,
+  "QualifyingFeedbackRating": 123.0,
+  "TopSellerExpiryDate": "\/Date(1514764800)\/",
+  "TopSellerFeeDiscount": 123.0,
+  "TopSellerSavings": [
+    {
+      "PeriodStart": "\/Date(1514764800)\/",
+      "PeriodEnd": "\/Date(1514764800)\/",
+      "SavingType": "ABC",
+      "SavingAmount": 123.0,
+      "WeekOffset": 123
+    },
+    {
+      "PeriodStart": "\/Date(1514764800)\/",
+      "PeriodEnd": "\/Date(1514764800)\/",
+      "SavingType": "ABC",
+      "SavingAmount": 123.0,
+      "WeekOffset": 123
+    }
+  ]
+}</code></pre>
+</div>

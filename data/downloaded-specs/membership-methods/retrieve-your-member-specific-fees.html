@@ -1,0 +1,458 @@
+
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="Our guide on how to get your integration with Trade Me up and running." name="description"/>
+<title>Retrieve your member-specific fees - Developer API Reference</title>
+<link href="/theme/styles.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/themes/prism.css" rel="stylesheet"/>
+<link href="/theme/icon32.png" rel="icon" sizes="32x32"/>
+<link href="/theme/icon192.png" rel="icon" sizes="192x192"/>
+</head>
+<body style="background-color: #eeeeee">
+<header>
+<a href="/"><img alt="Website logo" height="36" src="/theme/kev-logo.png" width="261"/></a>
+</header>
+<nav>
+<!-- Navigation menu -->
+<svg id="hamburger" viewbox="0 0 24 24">
+<path d="M3,13 L3,11 L21,11 L21,13 L3,13 Z M3,7 L3,5 L21,5 L21,7 L3,7 Z M3,19 L3,17 L21,17 L21,19 L3,19 Z" fill="white"></path>
+</svg>
+<a href="/" id="smallkev"></a>
+<ul>
+<li>
+<a href="/">
+                            Home
+                        </a>
+</li>
+<li>
+<a href="/getting-started">
+                            Get Started
+                        </a>
+</li>
+<li>
+<a href="/api-overview">
+                            API Overview
+                        </a>
+</li>
+<li class="current">
+<a href="/api-reference">
+                            API Reference
+                        </a>
+</li>
+<li>
+<a href="/terms-and-conditions">
+                            API Terms
+                        </a>
+</li>
+<li>
+<a href="/notifications">
+                            Notifications
+                        </a>
+</li>
+</ul>
+<svg id="hamburger-close" viewbox="0 0 24 24">
+<polygon fill="white" points="12 10.5857864 6.70710678 5.29289322 5.29289322 6.70710678 10.5857864 12 5.29289322 17.2928932 6.70710678 18.7071068 12 13.4142136 17.2928932 18.7071068 18.7071068 17.2928932 13.4142136 12 18.7071068 6.70710678 17.2928932 5.29289322 12 10.5857864"></polygon>
+</svg>
+<form action="/search" method="get">
+<input class="text" name="query" placeholder="Search website..." required="" type="search"/>
+<input type="submit" value="Search"/>
+</form>
+</nav>
+<main>
+<!-- Main content -->
+<!-- Side navigation -->
+<aside>
+<h3>API Reference</h3>
+<ul>
+<li><a href="/api-reference/api-index">API Index</a></li>
+<li><a href="/api-reference/bidding-and-buying-methods">Bidding and Buying Methods</a></li>
+<li><a href="/api-reference/branding-methods">Branding Methods</a></li>
+<li><a href="/api-reference/catalogue-methods">Catalogue Methods</a></li>
+<li><a href="/api-reference/document-service-methods">Document Service Methods</a></li>
+<li><a href="/api-reference/favourite-methods">Favourite Methods</a></li>
+<li><a href="/api-reference/fixed-price-offer-methods">Fixed Price Offer Methods</a></li>
+<li><a href="/api-reference/job-agent-methods">Job Agent Methods</a></li>
+<li><a href="/api-reference/job-company-methods">Job Company Methods</a></li>
+<li><a href="/api-reference/job-listing-methods">Job Listing Methods</a></li>
+<li><a href="/api-reference/job-position-methods">Job Position Methods</a></li>
+<li><a href="/api-reference/jobs-catalogue-methods">Jobs Catalogue Methods</a></li>
+<li><a href="/api-reference/jobs-payment-methods">Jobs Payment Methods</a></li>
+<li><a href="/api-reference/listing-methods">Listing Methods</a></li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a></li>
+<li><a href="/api-reference/my-trade-me-methods">My Trade Me Methods</a></li>
+<li><a href="/api-reference/oauth-methods">OAuth Methods</a></li>
+<li><a href="/api-reference/photo-methods">Photo Methods</a></li>
+<li><a href="/api-reference/ping-methods">Ping Methods</a></li>
+<li><a href="/api-reference/property-agency-methods">Property Agency Methods</a></li>
+<li><a href="/api-reference/property-agent-methods">Property Agent Methods</a></li>
+<li><a href="/api-reference/property-partnership-agreement-methods">Property partnership agreement methods</a></li>
+<li><a href="/api-reference/property-sold-search-methods">Property Sold Search Methods</a></li>
+<li><a href="/api-reference/property-timeline-methods">Property Timeline Methods</a></li>
+<li><a href="/api-reference/renti-methods">Renti Methods</a></li>
+<li><a href="/api-reference/search-methods">Search Methods</a></li>
+<li><a href="/api-reference/selling-methods">Selling Methods</a></li>
+<li><a href="/api-reference/seo-methods-for-dynamic-pages-directory">SEO methods for dynamic pages directory</a></li>
+<li><a href="/api-reference/seo-methods-for-internal-linking">SEO methods for internal linking</a></li>
+<li><a href="/api-reference/seo-methods-for-landing-page-content">SEO methods for landing page content</a></li>
+<li><a href="/api-reference/shipping-methods">Shipping Methods</a></li>
+<li><a href="/api-reference/suburb-search-methods">Suburb Search Methods</a></li>
+</ul>
+</aside>
+<section>
+<!-- Breadcrumbs -->
+<ul class="breadcrumbs">
+<li><a href="/">Home</a> &gt; </li>
+<li><a href="/api-reference">API Reference</a> &gt; </li>
+<li><a href="/api-reference/membership-methods">Membership Methods</a> &gt; </li>
+<li class="current">Retrieve your member-specific fees</li>
+</ul>
+<!-- Page heading -->
+<h1>Retrieve your member-specific fees</h1>
+<!-- Page content -->
+<p>Retrieves a list of fees for a category for the currently authenticated user. These fees can differ from the standard rates if the member is a top seller or is privileged in some other way.</p>
+<p style="color: red">
+                This API is deprecated in favour of the <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-detailed-information-about-a-single-category/">category details API</a>.
+            </p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Member/{category}/Fees.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> category </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The category number of the category to retrieve fees for.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;ListingFees&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Bold </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the bold title promotion. Listings with this promotion have a bold title in search results. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Bundle </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of having the feature, bold and gallery promotions. If the property is not present, then this promotion is not available. Note that some categories do not allow certain promotions - in this case only the supported promotions are included in the price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the scheduled end time promotion. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Feature </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the feature promotion. Listings with this promotion are shown higher in search results. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Gallery </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the gallery promotion. Listings with this promotion show photos in search results. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GalleryPlus </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the gallery plus promotion. Listings with this promotion get the gallery promotion, plus the next two relists also get the gallery promotion if the item doesn't sell. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Highlight </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the highlight promotion. Listings with this promotion have a bright yellow border. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Homepage </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of featuring the listing on the homepage. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Listing </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The base price of listing an item. Applies to classifieds and auctions in some categories. Note that in some categories the fee for listing a classified depends on the asking price (or the rateable value/rent per week for properties) - for these categories this property will contain the price at the lowest tier. If this property is not present, then there is no listing fee for this category. For Motors the field is only applicable to Auctions</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MultiPhoto </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price for additional photos. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Reserve </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price for having a reserve. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The cost of the subtitle promotion. Listings with this promotion have a subtitle in search results and listing pages. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TenDays </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price to extend the listing to a duration of 10 days. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Withdrawal </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The minimum withdrawal fee for a listing. For some categories, including Motors, the withdrawal fee is calculated based on the sale price of the item at the time of the withdrawal. Withdrawing the item in the first hour is fee. <a href="https://developer.trademe.co.nz/api-reference/selling-methods/retrieve-fees-for-withdrawing-a-listing"> Retrieve fees for withdrawing a listing</a> endpoint is used to calculate the correct value.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuperFeature </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price for the super feature promotion. Listings with the super feature promotion are listed on the landing page for certain verticals, such as Trade Me Motors. This price is irrelevant for general marketplace listings. This is the price for super feature only - it does not include the feature combo extras. It is only available when adding the super feature promotion to a listing which had it already, but where the super feature period has expired. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuperFeatureBundle </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price for the super feature promotion. Listings with the super feature promotion are listed on the landing page for categories in general marketplace and verticals, such as Trade Me Motors. This price includes feature, bold, highlight and gallery, where applicable. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HighVolume </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price for listing more than a set number of listings concurrently. The maximum number of listings you can run without incurring a fee starts at 50, but increases based on the number of items you have sold. See our <a href="https://www.trademe.co.nz/help/589/free-listing-allowance">help page</a> for more information. This fee does not apply to classifieds. This fee is the same for all categories (i.e. it is not category-specific).</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "MinimumTierPrice", "field_type": "Number", "description": "The minimum price (may be the sale price, asking price, rateable value or rent per week, depending on the category and the type of fee) for this tier. The maximum price for this tier is defined by the minimum price for the next tier (if this is the last tier, then the maximum price is unlimited)."}, {"field_name": "FixedFee", "field_type": "Number", "description": "The fixed fee that applies to listings within this tier. If the PercentageFee property is also present, then this fee applies in addition to that one."}, {"field_name": "PercentageFee", "field_type": "Number", "description": "The fee that applies to listings within this tier, as a percentage of the price increase over the minimum tier price. For example, if this fee applies to a sale price of $250, the MinimumTierPrice is $200, and the PercentageFee is 4.9, then this fee is 4.9% of the $50 which amounts to $2.45. If the FixedFee property is present, then this fee applies in addition to that one."}]'>
+<th style="width: 22%"> ListingFeeTiers </th>
+<td style="width: 22%"> Collection of &lt;FeeTier&gt; or null </td>
+<td>
+<p>If the listing fee is dependent on the asking price, then this field will contain a list of pricing tiers. Only applies to categories where a tiered listing fee has been applied.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> MinimumSuccessFee </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The minimum success fee. Success fees only apply to auctions. If the property is not present, then the minimum success fee is zero.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaximumSuccessFee </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The maximum success fee. Success fees only apply to auctions. If the property is not present, then success fees do not apply to this category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuccessFeeTiers </th>
+<td style="width: 22%"> Collection of &lt;FeeTier&gt; or null </td>
+<td>
+<p>A list of success fee tiers. Only applies to auctions. If the property is not present, then success fees do not apply to this category.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the branding promotion. Listings with this promotion can have logo and/or banner. If the property is not present, then this promotion is not available.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SecondCategory </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The price of the second category promotion. Listings with this promotion will also appear in the second category selected.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Type", "field_type": "Enumeration", "description": "Fee discount type.", "enum_values": [{"name": "NotSpecified", "value": "0", "description": "No fee discount specified."}, {"name": "SuccessFee", "value": "1", "description": "The fee for a successful auction."}, {"name": "Gallery", "value": "2", "description": "The fee of the gallery promotion."}, {"name": "Feature", "value": "3", "description": "The fee of the feature promotion."}, {"name": "FeatureCombo", "value": "4", "description": "The fee of the feature combo promotion."}, {"name": "SuperFeature", "value": "5", "description": "The fee of the super feature promotion."}, {"name": "Subtitle", "value": "6", "description": "The fee of the subtitle promotion."}, {"name": "Reserve", "value": "7", "description": "The fee for having a reserve price."}, {"name": "TenDays", "value": "8", "description": "The fee for extending the listing to a duration of 10 days."}, {"name": "EndDate", "value": "9", "description": "The fee of the scheduled end time promotion."}]}, {"field_name": "Message", "field_type": "String or null", "description": "A short description of the fee discount."}]'>
+<th style="width: 22%"> Discounts </th>
+<td style="width: 22%"> Collection of &lt;FeeDiscount&gt; or null </td>
+<td>
+<p>Additional information regarding member specific discounts for this category. The discount values are already applied to the Fees.</p>
+</td>
+</tr>
+
+</table>
+<div class="xml-message">
+<h2> Example XML Response <a class="switch-to-json-link" href="#">(switch to JSON)</a> </h2>
+<pre><code class="language-xml">&lt;ListingFees xmlns="http://api.trademe.co.nz/v1"&gt;
+  &lt;Bold&gt;123.0&lt;/Bold&gt;
+  &lt;Bundle&gt;123.0&lt;/Bundle&gt;
+  &lt;EndDate&gt;123.0&lt;/EndDate&gt;
+  &lt;Feature&gt;123.0&lt;/Feature&gt;
+  &lt;Gallery&gt;123.0&lt;/Gallery&gt;
+  &lt;GalleryPlus&gt;123.0&lt;/GalleryPlus&gt;
+  &lt;Highlight&gt;123.0&lt;/Highlight&gt;
+  &lt;Homepage&gt;123.0&lt;/Homepage&gt;
+  &lt;Listing&gt;123.0&lt;/Listing&gt;
+  &lt;MultiPhoto&gt;123.0&lt;/MultiPhoto&gt;
+  &lt;Reserve&gt;123.0&lt;/Reserve&gt;
+  &lt;Subtitle&gt;123.0&lt;/Subtitle&gt;
+  &lt;TenDays&gt;123.0&lt;/TenDays&gt;
+  &lt;Withdrawal&gt;123.0&lt;/Withdrawal&gt;
+  &lt;SuperFeature&gt;123.0&lt;/SuperFeature&gt;
+  &lt;SuperFeatureBundle&gt;123.0&lt;/SuperFeatureBundle&gt;
+  &lt;HighVolume&gt;123.0&lt;/HighVolume&gt;
+  &lt;ListingFeeTiers&gt;
+    &lt;FeeTier&gt;
+      &lt;MinimumTierPrice&gt;123.0&lt;/MinimumTierPrice&gt;
+      &lt;FixedFee&gt;123.0&lt;/FixedFee&gt;
+      &lt;PercentageFee&gt;123.0&lt;/PercentageFee&gt;
+    &lt;/FeeTier&gt;
+    &lt;FeeTier&gt;
+      &lt;MinimumTierPrice&gt;123.0&lt;/MinimumTierPrice&gt;
+      &lt;FixedFee&gt;123.0&lt;/FixedFee&gt;
+      &lt;PercentageFee&gt;123.0&lt;/PercentageFee&gt;
+    &lt;/FeeTier&gt;
+  &lt;/ListingFeeTiers&gt;
+  &lt;MinimumSuccessFee&gt;123.0&lt;/MinimumSuccessFee&gt;
+  &lt;MaximumSuccessFee&gt;123.0&lt;/MaximumSuccessFee&gt;
+  &lt;SuccessFeeTiers&gt;
+    &lt;FeeTier /&gt;
+    &lt;FeeTier /&gt;
+  &lt;/SuccessFeeTiers&gt;
+  &lt;Branding&gt;123.0&lt;/Branding&gt;
+  &lt;SecondCategory&gt;123.0&lt;/SecondCategory&gt;
+  &lt;Discounts&gt;
+    &lt;FeeDiscount&gt;
+      &lt;Type&gt;NotSpecified&lt;/Type&gt;
+      &lt;Message&gt;ABC&lt;/Message&gt;
+    &lt;/FeeDiscount&gt;
+    &lt;FeeDiscount&gt;
+      &lt;Type&gt;NotSpecified&lt;/Type&gt;
+      &lt;Message&gt;ABC&lt;/Message&gt;
+    &lt;/FeeDiscount&gt;
+  &lt;/Discounts&gt;
+&lt;/ListingFees&gt;</code></pre>
+</div>
+<div class="json-message">
+<h2> Example JSON Response <a class="switch-to-xml-link" href="#">(switch to XML)</a> </h2>
+<pre><code class="language-json">{
+  "Bold": 123.0,
+  "Bundle": 123.0,
+  "EndDate": 123.0,
+  "Feature": 123.0,
+  "Gallery": 123.0,
+  "GalleryPlus": 123.0,
+  "Highlight": 123.0,
+  "Homepage": 123.0,
+  "Listing": 123.0,
+  "MultiPhoto": 123.0,
+  "Reserve": 123.0,
+  "Subtitle": 123.0,
+  "TenDays": 123.0,
+  "Withdrawal": 123.0,
+  "SuperFeature": 123.0,
+  "SuperFeatureBundle": 123.0,
+  "HighVolume": 123.0,
+  "ListingFeeTiers": [
+    {
+      "MinimumTierPrice": 123.0,
+      "FixedFee": 123.0,
+      "PercentageFee": 123.0
+    },
+    {
+      "MinimumTierPrice": 123.0,
+      "FixedFee": 123.0,
+      "PercentageFee": 123.0
+    }
+  ],
+  "MinimumSuccessFee": 123.0,
+  "MaximumSuccessFee": 123.0,
+  "SuccessFeeTiers": [
+    {
+    },
+    {
+    }
+  ],
+  "Branding": 123.0,
+  "SecondCategory": 123.0,
+  "Discounts": [
+    {
+      "Type": 0,
+      "Message": "ABC"
+    },
+    {
+      "Type": 0,
+      "Message": "ABC"
+    }
+  ]
+}</code></pre>
+</div>
+</section>
+</main>
+<footer>
+        © 2025 Trade Me Limited
+    </footer>
+<script src="/theme/reference.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/components/prism-core.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.17.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

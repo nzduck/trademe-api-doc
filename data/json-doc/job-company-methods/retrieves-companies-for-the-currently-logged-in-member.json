@@ -1,0 +1,77 @@
+{
+  "endpoint": "RetrievesCompaniesForTheCurrentlyLoggedInMember",
+  "title": "Retrieves companies for the currently logged in member",
+  "description": "Retrieves companies for the currently logged in member",
+  "source": "https://developer.trademe.co.nz/api-reference/job-company-methods/retrieves-companies-for-the-currently-logged-in-member",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Companies.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Company> A collection of companies",
+    "fields": [
+      {
+        "name": "CompanyId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the company"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the company"
+      },
+      {
+        "name": "IsCompanyOwner",
+        "type": "Boolean",
+        "required": false,
+        "description": "The flag indicates whether the current member is the owner of the company"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "CompanyId": 123,
+        "CompanyName": "ABC",
+        "IsCompanyOwner": false
+      },
+      {
+        "CompanyId": 123,
+        "CompanyName": "ABC",
+        "IsCompanyOwner": false
+      }
+    ]
+  }
+}

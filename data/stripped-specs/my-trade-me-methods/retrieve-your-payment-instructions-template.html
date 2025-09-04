@@ -1,0 +1,71 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-payment-instructions-template -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve your payment instructions template</h1>
+<!-- Page content -->
+<p>Retrieves your payment instructions template. The payment instructions template affects the behaviour of listings with the SendPaymentInstructions flag set. Specifically if a listing with that flag sells, the buyer will be sent a payment instructions email that contains the text of your payment instructions template and the buyer can view the payment instructions from the Trade Me website, mobile apps or third-party tools.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/PaymentInstructions.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;PaymentInstructionsTemplate&gt; </p>
+<p>The payment instructions template.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Template </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The payment instructions template. This should not include a salutation ("Hi John"). If payment instructions haven't been set up then this will be null.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CopySeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the seller's preference is to CC payment instructions emails. The default is <b>false</b>.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Template": "ABC",
+  "CopySeller": false
+}</code></pre>
+</div>

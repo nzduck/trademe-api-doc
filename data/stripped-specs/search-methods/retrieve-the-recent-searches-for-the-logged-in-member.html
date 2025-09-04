@@ -1,0 +1,260 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/search-methods/retrieve-the-recent-searches-for-the-logged-in-member -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve the recent searches for the logged in member</h1>
+<!-- Page content -->
+<p>Retrieve the recent searches for the logged in member.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Search/RecentSearches.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> category_ids </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Comma separated list of category Ids. Default value is <b>null</b> and all recent searches will be returned.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> return_favourite_id </th>
+<td style="width: 22%"> Boolean (optional) </td>
+<td>
+<p><b>true</b> to populate the FavouriteId field. The default is <b>false</b>.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;RecentSearch&gt; </p>
+<p>A list of recent searches performed by the member.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A unique ID for the search. Used to identify the search when deleting.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "General", "value": "0", "description": "General search."}, {"name": "UsedMotors", "value": "1", "description": "Used cars."}, {"name": "MotorBoat", "value": "2", "description": "Motor boats."}, {"name": "MotorBike", "value": "3", "description": "Motor bikes."}, {"name": "Residential", "value": "4", "description": "Residential property for sale."}, {"name": "Rental", "value": "5", "description": "Residential property to rent."}, {"name": "CommercialSale", "value": "6", "description": "Commercial property for sale."}, {"name": "CommercialLease", "value": "7", "description": "Commercial property leases."}, {"name": "Rural", "value": "8", "description": "Rural property."}, {"name": "Lifestyle", "value": "9", "description": "Lifestyle blocks."}, {"name": "Flatmate", "value": "10", "description": "Flatmates."}, {"name": "OpenHomes", "value": "11", "description": "Open homes."}, {"name": "Retirement", "value": "12", "description": "Retirement villages."}, {"name": "Job", "value": "13", "description": "Jobs."}, {"name": "NewHomes", "value": "14", "description": "New Homes property."}, {"name": "Caravan", "value": "15", "description": "Motors caravan property"}, {"name": "Motorhome", "value": "16", "description": "Motors motorhomes property"}]'>
+<th style="width: 22%"> SearchApi </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates which search API should be used to run the search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchString </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The parameters to pass to the search API to reproduce the search.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Keywords </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a keyword filter exists, contains the keywords.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;MemberId&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;Nickname&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.&quot;}, {&quot;field_name&quot;: &quot;DateAddressVerified&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member was address verified.&quot;}, {&quot;field_name&quot;: &quot;DateJoined&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The date the member joined.&quot;}, {&quot;field_name&quot;: &quot;UniqueNegative&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed negative feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;UniquePositive&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of distinct members who have placed positive feedback against this member.&quot;}, {&quot;field_name&quot;: &quot;FeedbackCount&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The member's total feedback (UniquePositive minus UniqueNegative).&quot;}, {&quot;field_name&quot;: &quot;IsAddressVerified&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member has been address verified.&quot;}, {&quot;field_name&quot;: &quot;IsDealer&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a car dealer.&quot;}, {&quot;field_name&quot;: &quot;IsAuthenticated&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is authenticated.&quot;}, {&quot;field_name&quot;: &quot;IsInTrade&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is a professional trader.&quot;}, {&quot;field_name&quot;: &quot;IsTopSeller&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the member is currently a Top Seller&quot;}]">
+<th style="width: 22%"> Seller </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>If a seller filter exists, contains the details of that seller.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> CategoryName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a category filter exists, contains the full name of the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanonicalPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If a category filter exists, contains the canonical URL.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "DisplayName", "field_type": "String or null", "description": "Displayable name"}, {"field_name": "CanonicalPath", "field_type": "String or null", "description": "The canonical path up to the current fragment"}, {"field_name": "CanonicalPathFragment", "field_type": "String or null", "description": "The latest encoded fragment of the canonical path"}, {"field_name": "Name", "field_type": "String or null", "description": "The name of the attribute type, used to match the breadcrumb fragment to the corresponding UI elements"}, {"field_name": "Value", "field_type": "String or null", "description": "The underlying value for the breadcrumb fragment, this could be an Attrubute ID, a Category ID or some other value"}]'>
+<th style="width: 22%"> Breadcrumbs </th>
+<td style="width: 22%"> Collection of &lt;Breadcrumb&gt; or null </td>
+<td>
+<p>If a category filter exists, contains the breadcrumbs for the category.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "NotSpecified", "value": "0", "description": "None specified."}, {"name": "All", "value": "0", "description": "All"}, {"name": "Marketplace", "value": "1", "description": "Marketplace"}, {"name": "Property", "value": "2", "description": "Property"}, {"name": "Motors", "value": "3", "description": "Motors"}, {"name": "Jobs", "value": "4", "description": "Jobs"}, {"name": "Services", "value": "5", "description": "Services"}]'>
+<th style="width: 22%"> AreaOfBusiness </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>If a category filter exists, contains the associated business line.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "DisplayName", "field_type": "String or null", "description": "The name of the refinement, in a form suitable for displaying to users. Can benullwhen only the display value is required."}, {"field_name": "DisplayValue", "field_type": "String or null", "description": "The value of the refinement as it needs to be displayed to the end users."}]'>
+<th style="width: 22%"> Refinements </th>
+<td style="width: 22%"> Collection of &lt;RefinementDescriptor&gt; or null </td>
+<td>
+<p>A list of search filters, excluding keywords, category and seller information.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FavouriteId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The ID of a favourite search that corresponds to this recent search, if there is a favourite search that matches.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A generated Title based on the keywords, categories, and location of the search.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "Id": "ABC",
+    "SearchApi": 0,
+    "SearchString": "ABC",
+    "Keywords": "ABC",
+    "Seller": {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsInTrade": false,
+      "IsTopSeller": false
+    },
+    "CategoryName": "ABC",
+    "CanonicalPath": "ABC",
+    "Breadcrumbs": [
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      }
+    ],
+    "AreaOfBusiness": 0,
+    "Refinements": [
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      }
+    ],
+    "FavouriteId": 123,
+    "Title": "ABC"
+  },
+  {
+    "Id": "ABC",
+    "SearchApi": 0,
+    "SearchString": "ABC",
+    "Keywords": "ABC",
+    "Seller": {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsInTrade": false,
+      "IsTopSeller": false
+    },
+    "CategoryName": "ABC",
+    "CanonicalPath": "ABC",
+    "Breadcrumbs": [
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "CanonicalPath": "ABC",
+        "CanonicalPathFragment": "ABC",
+        "Name": "ABC",
+        "Value": "ABC"
+      }
+    ],
+    "AreaOfBusiness": 0,
+    "Refinements": [
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      },
+      {
+        "DisplayName": "ABC",
+        "DisplayValue": "ABC"
+      }
+    ],
+    "FavouriteId": 123,
+    "Title": "ABC"
+  }
+]</code></pre>
+</div>

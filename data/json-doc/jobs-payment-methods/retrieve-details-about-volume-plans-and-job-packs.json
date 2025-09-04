@@ -1,0 +1,253 @@
+{
+  "endpoint": "RetrieveDetailsAboutVolumePlansAndJobPacks",
+  "title": "Retrieve details about volume plans and job packs",
+  "description": "Retrieves fee information for job products including Job Packs and Volume Plans Specifically information that does not relate to purchasing a specfic listing",
+  "source": "https://developer.trademe.co.nz/api-reference/jobs-payment-methods/retrieve-details-about-volume-plans-and-job-packs",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Payments/FeeApiJobsAccessInformationProviders.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<JobsFees> A JobsFees containing details about Job Packs and Volume Plans",
+    "fields": [
+      {
+        "name": "JobPacks",
+        "type": "Collection of <JobPack> or null",
+        "required": false,
+        "description": "A collection of all available job packs"
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nThe id of the product\n\n\n\n Size \n Integer \n\nThe number of listings provided by the product\n\n\n\n Price \n Number \n\nThe cost of the product excluding GST\n\n\n\n Duration \n String or null \n\nA description of the duration of the product\n\n\n\n AddOns \n Collection of <AddOn> or null \n\nA collection of add-ons available for this product\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the add-on\n\n\n\n Price \n Number or null \n\nThe price of an add-on\n\n\n\n\n\n\n RequiresExtendedStatus \n Boolean \n\nRequires the purchaser to be a agent with extended job pack status enabled",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the product"
+      },
+      {
+        "name": "Size",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listings provided by the product"
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "The cost of the product excluding GST"
+      },
+      {
+        "name": "Duration",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the duration of the product"
+      },
+      {
+        "name": "AddOns",
+        "type": "Collection of <AddOn> or null",
+        "required": false,
+        "description": "A collection of add-ons available for this product"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the add-on\n\n\n\n Price \n Number or null \n\nThe price of an add-on",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the add-on"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of an add-on"
+      },
+      {
+        "name": "RequiresExtendedStatus",
+        "type": "Boolean",
+        "required": false,
+        "description": "Requires the purchaser to be a agent with extended job pack status enabled"
+      },
+      {
+        "name": "VolumePlans",
+        "type": "Collection of <VolumePlan> or null",
+        "required": false,
+        "description": "A collection of all available volume plans"
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nThe id of the product\n\n\n\n Size \n Integer \n\nThe number of listings provided by the product\n\n\n\n Price \n Number \n\nThe cost of the product excluding GST\n\n\n\n Duration \n String or null \n\nA description of the duration of the product\n\n\n\n AddOns \n Collection of <AddOn> or null \n\nA collection of add-ons available for this product\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the add-on\n\n\n\n Price \n Number or null \n\nThe price of an add-on\n\n\n\n\n\n\n FreeListings \n Integer \n\nThe number of free listings provided on top of the number of listings provided in the plan per month",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the product"
+      },
+      {
+        "name": "Size",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listings provided by the product"
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "The cost of the product excluding GST"
+      },
+      {
+        "name": "Duration",
+        "type": "String or null",
+        "required": false,
+        "description": "A description of the duration of the product"
+      },
+      {
+        "name": "AddOns",
+        "type": "Collection of <AddOn> or null",
+        "required": false,
+        "description": "A collection of add-ons available for this product"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the add-on\n\n\n\n Price \n Number or null \n\nThe price of an add-on",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the add-on"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of an add-on"
+      },
+      {
+        "name": "FreeListings",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of free listings provided on top of the number of listings provided in the plan per month"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "JobPacks": [
+        {
+          "Id": 123,
+          "Size": 123,
+          "Price": 123.0,
+          "Duration": "ABC",
+          "AddOns": [
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            },
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            }
+          ],
+          "RequiresExtendedStatus": false
+        },
+        {
+          "Id": 123,
+          "Size": 123,
+          "Price": 123.0,
+          "Duration": "ABC",
+          "AddOns": [
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            },
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            }
+          ],
+          "RequiresExtendedStatus": false
+        }
+      ],
+      "VolumePlans": [
+        {
+          "Id": 123,
+          "Size": 123,
+          "Price": 123.0,
+          "Duration": "ABC",
+          "AddOns": [
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            },
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            }
+          ],
+          "FreeListings": 123
+        },
+        {
+          "Id": 123,
+          "Size": 123,
+          "Price": 123.0,
+          "Duration": "ABC",
+          "AddOns": [
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            },
+            {
+              "Name": "ABC",
+              "Price": 123.0
+            }
+          ],
+          "FreeListings": 123
+        }
+      ]
+    }
+  }
+}

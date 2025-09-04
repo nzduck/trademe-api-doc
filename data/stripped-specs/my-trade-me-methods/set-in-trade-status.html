@@ -1,0 +1,105 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/set-in-trade-status -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Set In Trade Status</h1>
+<!-- Page content -->
+<p>Set whether the member is a professional trader. If they are a professional trader then their listings are protected by the Consumer Guarantees Act. See also <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/get-in-trade-reasons/"> get in trade reasons</a> API.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/InTrade.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;InTradeRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsInTrade </th>
+<td style="width: 22%"> Boolean (required) </td>
+<td>
+<p>Is the member in trade</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ReasonId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The reason for changing the in trade status. See 'ReasonId' in <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/get-in-trade-reasons/"> get in trade reasons</a> API.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Comment </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>An additional comment that is needed for specific reasons. See 'NeedsComment' in <a href="https://developer.trademe.co.nz/api-reference/catalogue-methods/get-in-trade-reasons/"> get in trade reasons</a> API.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;InTradeResponse&gt; </p>
+
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "IsInTrade": false,
+  "ReasonId": 123,
+  "Comment": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC"
+}</code></pre>
+</div>

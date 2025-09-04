@@ -1,0 +1,106 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-locality-options-for-search-parameters -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve locality options for search parameters</h1>
+<!-- Page content -->
+<p>Retrieves search options for a locality that matches the provided geo-location point.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/SearchOptions/Localities/@{latitude},{longitude}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> No </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> Public </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> No </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> latitude </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The latitude value (in decimal degrees WGS84) of the geographic location.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> longitude </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The longitude value (in decimal degrees WGS84) of the geographic location.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;LocationSearchOption&gt; </p>
+<p>A list of location keys and options.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Key </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The key of the location search parameter.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DependentOn </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>If present, the key of the dependent location search parameter.</p>
+</td>
+</tr>
+<tr data-nested-fields='[{"field_name": "Value", "field_type": "String or null", "description": "The value of the item as a string."}, {"field_name": "Display", "field_type": "String or null", "description": "What should be displayed for this value (often the same)."}]'>
+<th style="width: 22%"> Option </th>
+<td style="width: 22%"> &lt;AttributeOption&gt; or null </td>
+<td>
+<p>The location search option</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+    "Key": "ABC",
+    "DependentOn": "ABC",
+    "Option": {
+      "Value": "ABC",
+      "Display": "ABC"
+    }
+  },
+  {
+    "Key": "ABC",
+    "DependentOn": "ABC",
+    "Option": {
+      "Value": "ABC",
+      "Display": "ABC"
+    }
+  }
+]</code></pre>
+</div>

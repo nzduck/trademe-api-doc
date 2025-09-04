@@ -1,0 +1,128 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/refund-a-pay-now-payment -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Refund a Pay Now payment</h1>
+<!-- Page content -->
+<p>Refunds a Pay Now payment where the authenticated user is the seller.</p><p>Note that this API currently only works if the auction closed less than 45 days ago. If you need a refund for an auction that is older than this, please contact cusomter support.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/PayNowRefund.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;PayNowRefundRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the listing to refund.</p>
+<p style="color: red">
+                                This field is retained for backwards compatibility; please use PurchaseId instead.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfferId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the fixed price offer. Defaults to zero (i.e. no fixed price offer).</p>
+<p style="color: red">
+                                This field is retained for backwards compatibility; please use PurchaseId instead.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RefundAmount </th>
+<td style="width: 22%"> Number (optional) </td>
+<td>
+<p>The dollar value to refund, up to the original value of the auction. Defaults to refunding the full value of the original purchase.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PurchaseId </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The ID of the purchase to refund. If this is provided, ListingId and OfferId must not be present.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PayNowRefundResponse&gt; </p>
+<p>Details on whether the operation was successful.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Description </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Success", "value": "0", "description": "OK"}, {"name": "Failed", "value": "1", "description": "Generic failure."}, {"name": "InvalidAmount", "value": "2", "description": "The refund amount was too large or too small."}, {"name": "InvalidAuctionId", "value": "3", "description": "The auction ID is invalid."}, {"name": "PaymentIsFrozen", "value": "4", "description": "The payment is being investigated."}, {"name": "NotTheSeller", "value": "5", "description": "The caller is not the seller of the auction."}, {"name": "NotBoughtUsingPayNow", "value": "6", "description": "The auction did not use PayNow."}, {"name": "AlreadyChargedBack", "value": "7", "description": "The payment has already been charged back."}, {"name": "AlreadyRefunded", "value": "8", "description": "The payment has already been refunded."}, {"name": "RefundDeclined", "value": "9", "description": "The refund was declined by the payment provider."}, {"name": "RefundFailed", "value": "10", "description": "There was a failure while processing the refund."}]'>
+<th style="width: 22%"> StatusCode </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The status code indicating what went wrong if the operation failed.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "ListingId": 123,
+  "OfferId": 123,
+  "RefundAmount": 123.0,
+  "PurchaseId": 123
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false,
+  "Description": "ABC",
+  "StatusCode": 0
+}</code></pre>
+</div>

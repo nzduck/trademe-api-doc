@@ -1,0 +1,76 @@
+{
+  "endpoint": "ConfirmAddressVerificationByApplyingTheCodeThatHasBeenPhysicallyMailedToTheMember",
+  "title": "Confirm address verification by applying the code that has been physically mailed to the member",
+  "description": "Confirm address verification by applying the code that has been physically mailed to the member",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/confirm-address-verification-by-applying-the-code-that-has-been-physically-maile",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/ApplyAddressVerificationCode.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ApplyAddressVerificationCodeRequest>",
+    "fields": [
+      {
+        "name": "AddressVerificationCode",
+        "type": "String (optional)",
+        "required": false,
+        "description": "The verification code that has been physically mailed to the member"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<ApplyAddressVerificationCodeResponse> A response that indicates whether the operation succeeded.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "AddressVerificationCode": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

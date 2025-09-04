@@ -1,0 +1,96 @@
+{
+  "endpoint": "RetrieveJobsCategories",
+  "title": "Retrieve jobs categories",
+  "description": "This is a convenience method that returns jobs categories from Trade Me Jobs.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-jobs-categories",
+  "url": "https://api.trademe.co.nz/v1/categories/jobs.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "region",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the region used to filter listing counts. Only applicable if with_counts is true."
+      },
+      {
+        "name": "with_counts",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to include the number of listings in each category. Defaults to false."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <JobCategory> A category containing all job categories.",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the job category."
+      },
+      {
+        "name": "Code",
+        "type": "String or null",
+        "required": false,
+        "description": "The code number of the job category."
+      },
+      {
+        "name": "SubCategories",
+        "type": "Collection of <JobCategory> or null",
+        "required": false,
+        "description": "A list of subcategories."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Name": "ABC",
+        "Code": "ABC",
+        "SubCategories": [
+          {},
+          {}
+        ]
+      },
+      {
+        "Name": "ABC",
+        "Code": "ABC",
+        "SubCategories": [
+          {},
+          {}
+        ]
+      }
+    ]
+  }
+}

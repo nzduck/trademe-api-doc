@@ -1,0 +1,138 @@
+{
+  "endpoint": "SendRentiViewingRequestForAListing",
+  "title": "Send Renti viewing request for a listing",
+  "description": "Send Renti viewing request for a listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/renti-methods/send-renti-viewing-request-for-a-listing",
+  "url": "https://api.trademe.co.nz/v1/Property/Renti/Viewing/{listingId}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<RentiViewingRequest>",
+    "fields": [
+      {
+        "name": "FirstName",
+        "type": "String (required)",
+        "required": true,
+        "description": "FirstName"
+      },
+      {
+        "name": "LastName",
+        "type": "String (required)",
+        "required": true,
+        "description": "LastName"
+      },
+      {
+        "name": "Email",
+        "type": "String (required)",
+        "required": true,
+        "description": "Email"
+      },
+      {
+        "name": "Mobile",
+        "type": "String (required)",
+        "required": true,
+        "description": "Mobile"
+      },
+      {
+        "name": "Message",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Message"
+      },
+      {
+        "name": "Type",
+        "type": "String (required)",
+        "required": true,
+        "description": "Type"
+      },
+      {
+        "name": "StartTime",
+        "type": "String (optional)",
+        "required": false,
+        "description": "StartTime"
+      },
+      {
+        "name": "EndTime",
+        "type": "String (optional)",
+        "required": false,
+        "description": "EndTime"
+      },
+      {
+        "name": "RequestType",
+        "type": "String (optional)",
+        "required": false,
+        "description": "RequestType"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<RentiGeneralResponse> Whether response was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "FirstName": "ABC",
+      "LastName": "ABC",
+      "Email": "ABC",
+      "Mobile": "ABC",
+      "Message": "ABC",
+      "Type": "ABC",
+      "StartTime": "ABC",
+      "EndTime": "ABC",
+      "RequestType": "ABC"
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

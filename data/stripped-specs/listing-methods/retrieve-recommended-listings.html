@@ -1,0 +1,1446 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/listing-methods/retrieve-recommended-listings -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve recommended listings</h1>
+<!-- Page content -->
+<p>Retrieve a list of recommended listings, tailored to the current user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Listings/Recommendations.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> rsqid </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The referring search query ID. Used to link requests to a search. Optional.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;RecommendedListings&gt; </p>
+<p>A set of recommended listings.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;Listing&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Title </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing title.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The listing category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The start price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BuyNowPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The Buy Now price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StartDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing was created.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EndDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the listing will end.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a featured listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasGallery </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a gallery listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBold </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a bold listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHighlighted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a highlighted listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasHomePageFeature </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a homepage feature listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxBidAmount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The current leading bid amount.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AsAt </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the response was generated on the server.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CategoryPath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The category path.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PictureHref </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the primary photo for the listing (if the listing has a photo). By default you'll get a thumbnail-sized photo, but you can control the size of the photo using the photo_size parameter.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasPayNow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has Pay Now.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsNew </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is marked as new.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RegionId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.</p>
+<p style="color: red">
+                                This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.
+                            </p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Region </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the region where this item is located.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the suburb where this item is located.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PickupLocality </th>
+<td style="width: 22%"> &lt;PickupLocality&gt; or null </td>
+<td>
+<p>The pick-up location details if pick-up is allowed and has been specified.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The pickup suburb.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> District </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The pickup district.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Region </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The pickup region.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BidCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of bids on the item.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsReserveMet </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item's reserve has been met.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasReserve </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has a reserve.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasBuyNow </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item has Buy Now.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NoteDate </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date of the note on an item.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "There is no reserve on the item (i.e. the reserve price is the same as the starting price)."}, {"name": "Met", "value": "1", "description": "The value of the highest bid has exceeded the reserve price."}, {"name": "NotMet", "value": "2", "description": "The value of the highest bid has not reached the reserve price."}, {"name": "NotApplicable", "value": "3", "description": "The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction."}]'>
+<th style="width: 22%"> ReserveState </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The flag to display on an item.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Attributes </th>
+<td style="width: 22%"> Collection of &lt;Attribute&gt; or null </td>
+<td>
+<p>The attributes for the item that are intended to be displayed on the UI.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A name which uniquely identifies the attribute. Required when selling or editing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Value </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClassified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is a classified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OpenHomes </th>
+<td style="width: 22%"> Collection of &lt;OpenHome&gt; or null </td>
+<td>
+<p>A collection of open home times for this listing. Only applies to open home listings.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Start </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> End </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the open home is no longer open for viewing. Must be the same day as <b>Start</b>.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Subtitle </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The subtitle, if present.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsBuyNowOnly </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether or not this is a Buy Now Only listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> RemainingGalleryPlusRelists </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsOnWatchList </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the item is on the authenticated member's watchlist.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> GeographicLocation </th>
+<td style="width: 22%"> &lt;GeographicLocation&gt; or null </td>
+<td>
+<p>The geographic location (latitude and longitude) of a property.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Latitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The latitude of the location, in degrees (WGS84).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Longitude </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The longitude of the location, in degrees (WGS84).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Northing </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The northing of the location, in metres (NZTM).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Easting </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The easting of the location, in metres (NZTM).</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "The accuracy of the geographic location is not known."}, {"name": "Address", "value": "1", "description": "The geographic location is accurate to the address level."}, {"name": "Street", "value": "3", "description": "The geographic location is accurate to the street level."}, {"name": "Suburb", "value": "2", "description": "The geographic location is accurate to the suburb level."}, {"name": "AdminPinpoint", "value": "4", "description": "The geographic location is accurate to the AdminPinPoint level."}]'>
+<th style="width: 22%"> Accuracy </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The accuracy of the geographic location (address, street or suburb).</p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceDisplay </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have "Price by negotiation".</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TotalReviewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of user-submitted reviews. Currently only applies to services listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PositiveReviewCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasFreeShipping </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the listing offers free shipping as an option</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsClearance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WasPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PercentageOff </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if <b>IsClearance</b> is <b>true</b>.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Branding </th>
+<td style="width: 22%"> &lt;Branding&gt; or null </td>
+<td>
+<p>A list of branding images associated with this listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> LargeSquareLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A large square branding image with dimensions of 480x480.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LargeWideLogo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A large rectangular branding image with dimensions of 480x200.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BackgroundColor </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Banner outline/stroke colour, tick the checkbox before saving to apply the new colour</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TextColor </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Banner background colour, tick the checkbox before saving to apply the new colour</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StrokeColor </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Banner text colour, tick the checkbox before saving to apply the new colour</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisableBanner </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Disable the agent branding regardless of Super Feature status</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfficeLocation </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the office location</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LargeBannerURL </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The url of a larger version of the logo</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsSuperFeatured </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Is this a super featured listing?</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShortDescription </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Short description of a listing. This is Jobs and Services specfic.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PhotoUrls </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>A collection of photo urls for the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PromotionId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The ID of the promotion applied to this listing.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasEmbeddedVideo </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing has an embedded video</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> VariantDefinitionSummary </th>
+<td style="width: 22%"> &lt;VariantDefinitionSummary&gt; or null </td>
+<td>
+<p>A summary of the variant information.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> PriceLow </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The lowest price of all the variants, if there is a price range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PriceHigh </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The highest price of all the variants, if there is a price range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of all the variants, if they are all the same.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasPriceRange </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether or not the variants have a single price or a price range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountPercentLow </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The lowest discount percentage of all the variants, if there is a discount percentage range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountPercentHigh </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The highest discount percentage of all the variants, if there is a discount percentage range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DiscountPercent </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The discount percentage of all the variants, if they are all the same.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasDiscountPercentRange </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether or not the variants have a single discount percentage or a discount percentage range.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllDiscounted </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether or not the variants are all discounted.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AllOnClearance </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether or not the variants are all on clearance.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> AdditionalData </th>
+<td style="width: 22%"> &lt;AdditionalData&gt; or null </td>
+<td>
+<p>Structured information for Listing Additional Data</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> BulletPoints </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>The bullet points for display in the search results</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Tags </th>
+<td style="width: 22%"> Collection of &lt;Tag&gt; or null </td>
+<td>
+<p>The tags for display in the search results</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the tag</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingExtras </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>A collection of extras that are currently applied to the listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsLoyaltyEligible </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing is eligible to loyalty program.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasPing </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether Ping is a supported payment option.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StoreBrandLogoUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The store seller profile photo Url. This field is populated only if below criterias met - Listing has Gallery or Feature depth products - Listing belongs to a store - Store has a tier where store brand logo feature has turned on</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> WhyPayPrice </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The why pay marketing price that is supplied by the deal provider when they create listings for our deal channel.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Has3DTour </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the listing has a 3D Tour</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShippingDetails </th>
+<td style="width: 22%"> &lt;ShippingDetails&gt; or null </td>
+<td>
+<p>Shipping details for the current listing. Null if no shipping details available.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ShippingTemplateId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Represents the template used to create the shipping options on this listing</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuggestedShipping </th>
+<td style="width: 22%"> &lt;SuggestedShipping&gt; or null </td>
+<td>
+<p>Suggested shipping details, based on member preferences.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>The price of the delivery option; 0 if it's free shipping</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Destination </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the shipping destination, if structured shipping information exists.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DeliveryTime </th>
+<td style="width: 22%"> &lt;ShippingDeliveryTime&gt; or null </td>
+<td>
+<p>Delivery time details for the current listing, if structured shipping information exists.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> MinValue </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The earliest expected delivery time returned in ISO 8601 duration format.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaxValue </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The latest expected delivery time returned in ISO 8601 duration format.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRural </th>
+<td style="width: 22%"> Boolean or null </td>
+<td>
+<p>Indicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "AskingPrice", "value": "0", "description": "Asking Price."}, {"name": "PriceOnApplication", "value": "1", "description": "Price On Application."}, {"name": "ExcludingGST", "value": "2", "description": "Excluding GST."}]'>
+<th style="width: 22%"> PriceType </th>
+<td style="width: 22%"> Enumeration or null </td>
+<td>
+<p>Indicates the price type of boat and farming machinery listings</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> HasSpecialOffer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether there is a special offer for motors and farming machinery listings</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NewCarInformation </th>
+<td style="width: 22%"> &lt;NewCarInformation&gt; or null </td>
+<td>
+<p>Information specific to new cars if the current listing is a new car listing.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "InTransit", "value": "2", "description": "New car is in transit: on its way to the dealer"}, {"name": "AvailableToOrder", "value": "3", "description": "New car is available to order"}]'>
+<th style="width: 22%"> Availability </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Enum value denoting the availability of the car, can be : 'inTransit' , 'availableToOrder'</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "BrandNew", "value": "1", "description": "Indicates that this car is brand new"}, {"name": "ExDemo", "value": "2", "description": "Indicates that this car is an ex-demo"}, {"name": "CertifiedPreOwned", "value": "4", "description": "New car is certified pre owned"}]'>
+<th style="width: 22%"> Condition </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Enum value denoting the condition of the car, can be : 'brandNew', 'exDemo', 'certifiedPreOwned'</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> CertifiedPreOwned </th>
+<td style="width: 22%"> &lt;CertifiedPreOwnedProgramme&gt; or null </td>
+<td>
+<p>The car's certified pre-owned programme.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> LogoUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url of the certified preowned programme's logo (designed for a light background).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DarkModeLogoUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url of the certified preowned programme's logo (designed for a dark background).</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberDateJoined </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Member joining date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LastServiceReview </th>
+<td style="width: 22%"> &lt;LastServiceReview&gt; or null </td>
+<td>
+<p>Latest positive review for a super feature addons. Null if no positive review available.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> ServiceReviewerNickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Latest positive service reviewer's nick name</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ServiceReviewText </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Latest positive service review</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ServiceReviewDateEntered </th>
+<td style="width: 22%"> DateTime or null </td>
+<td>
+<p>Latest positive service review date</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Sponsored </th>
+<td style="width: 22%"> &lt;SponsoredListingsDetails&gt; or null </td>
+<td>
+<p>listing’s required metadata relating to Sponsored Listings.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> TopSortProductId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The ID for the Tradevine (and thus TopSort) Product that the listing is related to.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TopSortResolveBidId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>TopSort ID for the bid that has won the sponsorship auction.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TopSortUniqueId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Unique ID derived from the TopSort ID that is sent to TopSort for each impression / click</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MotorsExternalMediaOverview </th>
+<td style="width: 22%"> &lt;MotorsExternalMediaOverview&gt; or null </td>
+<td>
+<p>An overview of what motors external media information exists.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> HasInstavid360Spinner </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Whether the listing has data for an Instavid 360 spinner.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Unset", "value": "0", "description": "The platform has not been set."}, {"name": "TradeMe", "value": "1", "description": "The listing is controlled by Trade Me."}, {"name": "Koru", "value": "2", "description": "The listing is controlled by Koru."}]'>
+<th style="width: 22%"> ListingPlatform </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The backend platform that controls the listing.</p>
+</td>
+</tr>
+
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "The listing allows pick up, but does not require it."}, {"name": "Allow", "value": "1", "description": "The buyer can pickup if they so choose."}, {"name": "Demand", "value": "2", "description": "The buyer must pickup the item."}, {"name": "Forbid", "value": "3", "description": "The buyer cannot pickup the item (delivery only)."}]'>
+<th style="width: 22%"> AllowsPickups </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The pickup option for the listing.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> SearchResultAttributes </th>
+<td style="width: 22%"> Collection of &lt;SearchResultAttribute&gt; or null </td>
+<td>
+<p>Attributes related to the search result, not the listing itself</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr data-enum-values='[{"name": "Odometer", "value": "1", "description": ""}, {"name": "FuelType", "value": "2", "description": ""}, {"name": "Location", "value": "3", "description": ""}, {"name": "Transmission", "value": "4", "description": ""}, {"name": "EngineSize", "value": "5", "description": ""}, {"name": "GrossVehicleMass", "value": "6", "description": ""}, {"name": "DinghyType", "value": "7", "description": ""}, {"name": "Length", "value": "8", "description": ""}, {"name": "EngineHours", "value": "9", "description": ""}, {"name": "EngineDetails", "value": "10", "description": ""}, {"name": "Berths", "value": "11", "description": ""}, {"name": "SelfContained", "value": "12", "description": ""}, {"name": "CaravanLength", "value": "13", "description": ""}, {"name": "MotorhomeLength", "value": "14", "description": ""}, {"name": "HullType", "value": "15", "description": ""}, {"name": "MotorBikeType", "value": "16", "description": ""}]'>
+<th style="width: 22%"> Id </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> DisplayValue </th>
+<td style="width: 22%"> String or null </td>
+<td>
+
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "ListingId": 123,
+      "Title": "ABC",
+      "Category": "ABC",
+      "StartPrice": 123.0,
+      "BuyNowPrice": 123.0,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "IsFeatured": false,
+      "HasGallery": false,
+      "IsBold": false,
+      "IsHighlighted": false,
+      "HasHomePageFeature": false,
+      "MaxBidAmount": 123.0,
+      "AsAt": "\/Date(1514764800)\/",
+      "CategoryPath": "ABC",
+      "PictureHref": "ABC",
+      "HasPayNow": false,
+      "IsNew": false,
+      "RegionId": 123,
+      "Region": "ABC",
+      "SuburbId": 123,
+      "Suburb": "ABC",
+      "PickupLocality": {
+        "Suburb": "ABC",
+        "District": "ABC",
+        "Region": "ABC"
+      },
+      "BidCount": 123,
+      "IsReserveMet": false,
+      "HasReserve": false,
+      "HasBuyNow": false,
+      "NoteDate": "\/Date(1514764800)\/",
+      "ReserveState": 0,
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "Value": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "Value": "ABC"
+        }
+      ],
+      "IsClassified": false,
+      "OpenHomes": [
+        {
+          "Start": "\/Date(1514764800)\/",
+          "End": "\/Date(1514764800)\/"
+        },
+        {
+          "Start": "\/Date(1514764800)\/",
+          "End": "\/Date(1514764800)\/"
+        }
+      ],
+      "Subtitle": "ABC",
+      "IsBuyNowOnly": false,
+      "RemainingGalleryPlusRelists": 123,
+      "IsOnWatchList": false,
+      "GeographicLocation": {
+        "Latitude": 123.0,
+        "Longitude": 123.0,
+        "Northing": 123,
+        "Easting": 123,
+        "Accuracy": 0
+      },
+      "PriceDisplay": "ABC",
+      "TotalReviewCount": 123,
+      "PositiveReviewCount": 123,
+      "HasFreeShipping": false,
+      "IsClearance": false,
+      "WasPrice": 123.0,
+      "PercentageOff": 123,
+      "Branding": {
+        "LargeSquareLogo": "ABC",
+        "LargeWideLogo": "ABC",
+        "BackgroundColor": "ABC",
+        "TextColor": "ABC",
+        "StrokeColor": "ABC",
+        "DisableBanner": false,
+        "OfficeLocation": "ABC",
+        "LargeBannerURL": "ABC"
+      },
+      "IsSuperFeatured": false,
+      "ShortDescription": "ABC",
+      "PhotoUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "PromotionId": 123,
+      "HasEmbeddedVideo": false,
+      "VariantDefinitionSummary": {
+        "PriceLow": 123.0,
+        "PriceHigh": 123.0,
+        "Price": 123.0,
+        "HasPriceRange": false,
+        "DiscountPercentLow": 123,
+        "DiscountPercentHigh": 123,
+        "DiscountPercent": 123,
+        "HasDiscountPercentRange": false,
+        "AllDiscounted": false,
+        "AllOnClearance": false
+      },
+      "AdditionalData": {
+        "BulletPoints": [
+          "ABC",
+          "ABC"
+        ],
+        "Tags": [
+          {
+            "Name": "ABC"
+          },
+          {
+            "Name": "ABC"
+          }
+        ]
+      },
+      "ListingExtras": [
+        "ABC",
+        "ABC"
+      ],
+      "IsLoyaltyEligible": false,
+      "HasPing": false,
+      "StoreBrandLogoUrl": "ABC",
+      "WhyPayPrice": 123.0,
+      "Has3DTour": false,
+      "ShippingDetails": {
+        "ShippingTemplateId": 123,
+        "SuggestedShipping": {
+          "Price": 123.0,
+          "Destination": "ABC",
+          "DeliveryTime": {
+            "MinValue": "ABC",
+            "MaxValue": "ABC"
+          },
+          "IsRural": false
+        }
+      },
+      "PriceType": 0,
+      "HasSpecialOffer": false,
+      "NewCarInformation": {
+        "Availability": 2,
+        "Condition": 1,
+        "CertifiedPreOwned": {
+          "LogoUrl": "ABC",
+          "DarkModeLogoUrl": "ABC"
+        }
+      },
+      "MemberDateJoined": "\/Date(1514764800)\/",
+      "LastServiceReview": {
+        "ServiceReviewerNickname": "ABC",
+        "ServiceReviewText": "ABC",
+        "ServiceReviewDateEntered": "\/Date(1514764800)\/"
+      },
+      "Sponsored": {
+        "TopSortProductId": "ABC",
+        "TopSortResolveBidId": "ABC",
+        "TopSortUniqueId": "ABC"
+      },
+      "MotorsExternalMediaOverview": {
+        "HasInstavid360Spinner": false
+      },
+      "ListingPlatform": 0,
+      "AllowsPickups": 0,
+      "SearchResultAttributes": [
+        {
+          "Id": 1,
+          "DisplayValue": "ABC",
+          "Name": "ABC"
+        },
+        {
+          "Id": 1,
+          "DisplayValue": "ABC",
+          "Name": "ABC"
+        }
+      ]
+    },
+    {
+      "ListingId": 123,
+      "Title": "ABC",
+      "Category": "ABC",
+      "StartPrice": 123.0,
+      "BuyNowPrice": 123.0,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "IsFeatured": false,
+      "HasGallery": false,
+      "IsBold": false,
+      "IsHighlighted": false,
+      "HasHomePageFeature": false,
+      "MaxBidAmount": 123.0,
+      "AsAt": "\/Date(1514764800)\/",
+      "CategoryPath": "ABC",
+      "PictureHref": "ABC",
+      "HasPayNow": false,
+      "IsNew": false,
+      "RegionId": 123,
+      "Region": "ABC",
+      "SuburbId": 123,
+      "Suburb": "ABC",
+      "PickupLocality": {
+        "Suburb": "ABC",
+        "District": "ABC",
+        "Region": "ABC"
+      },
+      "BidCount": 123,
+      "IsReserveMet": false,
+      "HasReserve": false,
+      "HasBuyNow": false,
+      "NoteDate": "\/Date(1514764800)\/",
+      "ReserveState": 0,
+      "Attributes": [
+        {
+          "Name": "ABC",
+          "Value": "ABC"
+        },
+        {
+          "Name": "ABC",
+          "Value": "ABC"
+        }
+      ],
+      "IsClassified": false,
+      "OpenHomes": [
+        {
+          "Start": "\/Date(1514764800)\/",
+          "End": "\/Date(1514764800)\/"
+        },
+        {
+          "Start": "\/Date(1514764800)\/",
+          "End": "\/Date(1514764800)\/"
+        }
+      ],
+      "Subtitle": "ABC",
+      "IsBuyNowOnly": false,
+      "RemainingGalleryPlusRelists": 123,
+      "IsOnWatchList": false,
+      "GeographicLocation": {
+        "Latitude": 123.0,
+        "Longitude": 123.0,
+        "Northing": 123,
+        "Easting": 123,
+        "Accuracy": 0
+      },
+      "PriceDisplay": "ABC",
+      "TotalReviewCount": 123,
+      "PositiveReviewCount": 123,
+      "HasFreeShipping": false,
+      "IsClearance": false,
+      "WasPrice": 123.0,
+      "PercentageOff": 123,
+      "Branding": {
+        "LargeSquareLogo": "ABC",
+        "LargeWideLogo": "ABC",
+        "BackgroundColor": "ABC",
+        "TextColor": "ABC",
+        "StrokeColor": "ABC",
+        "DisableBanner": false,
+        "OfficeLocation": "ABC",
+        "LargeBannerURL": "ABC"
+      },
+      "IsSuperFeatured": false,
+      "ShortDescription": "ABC",
+      "PhotoUrls": [
+        "ABC",
+        "ABC"
+      ],
+      "PromotionId": 123,
+      "HasEmbeddedVideo": false,
+      "VariantDefinitionSummary": {
+        "PriceLow": 123.0,
+        "PriceHigh": 123.0,
+        "Price": 123.0,
+        "HasPriceRange": false,
+        "DiscountPercentLow": 123,
+        "DiscountPercentHigh": 123,
+        "DiscountPercent": 123,
+        "HasDiscountPercentRange": false,
+        "AllDiscounted": false,
+        "AllOnClearance": false
+      },
+      "AdditionalData": {
+        "BulletPoints": [
+          "ABC",
+          "ABC"
+        ],
+        "Tags": [
+          {
+            "Name": "ABC"
+          },
+          {
+            "Name": "ABC"
+          }
+        ]
+      },
+      "ListingExtras": [
+        "ABC",
+        "ABC"
+      ],
+      "IsLoyaltyEligible": false,
+      "HasPing": false,
+      "StoreBrandLogoUrl": "ABC",
+      "WhyPayPrice": 123.0,
+      "Has3DTour": false,
+      "ShippingDetails": {
+        "ShippingTemplateId": 123,
+        "SuggestedShipping": {
+          "Price": 123.0,
+          "Destination": "ABC",
+          "DeliveryTime": {
+            "MinValue": "ABC",
+            "MaxValue": "ABC"
+          },
+          "IsRural": false
+        }
+      },
+      "PriceType": 0,
+      "HasSpecialOffer": false,
+      "NewCarInformation": {
+        "Availability": 2,
+        "Condition": 1,
+        "CertifiedPreOwned": {
+          "LogoUrl": "ABC",
+          "DarkModeLogoUrl": "ABC"
+        }
+      },
+      "MemberDateJoined": "\/Date(1514764800)\/",
+      "LastServiceReview": {
+        "ServiceReviewerNickname": "ABC",
+        "ServiceReviewText": "ABC",
+        "ServiceReviewDateEntered": "\/Date(1514764800)\/"
+      },
+      "Sponsored": {
+        "TopSortProductId": "ABC",
+        "TopSortResolveBidId": "ABC",
+        "TopSortUniqueId": "ABC"
+      },
+      "MotorsExternalMediaOverview": {
+        "HasInstavid360Spinner": false
+      },
+      "ListingPlatform": 0,
+      "AllowsPickups": 0,
+      "SearchResultAttributes": [
+        {
+          "Id": 1,
+          "DisplayValue": "ABC",
+          "Name": "ABC"
+        },
+        {
+          "Id": 1,
+          "DisplayValue": "ABC",
+          "Name": "ABC"
+        }
+      ]
+    }
+  ]
+}</code></pre>
+</div>

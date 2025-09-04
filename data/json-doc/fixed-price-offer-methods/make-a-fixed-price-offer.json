@@ -1,0 +1,114 @@
+{
+  "endpoint": "MakeAFixedPriceOffer",
+  "title": "Make a fixed price offer",
+  "description": "Makes a fixed price offer for an auction to the specified members. The auction must have finished closing and must have been in the closed state for less than 45 days.",
+  "source": "https://developer.trademe.co.nz/api-reference/fixed-price-offer-methods/make-a-fixed-price-offer",
+  "url": "https://api.trademe.co.nz/v1/FixedPriceOffers/MakeOffer.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<FixedPriceOfferToMembersRequest>",
+    "fields": [
+      {
+        "name": "ListingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to make the offer on."
+      },
+      {
+        "name": "Price",
+        "type": "Number (required)",
+        "required": true,
+        "description": "The price of the offer. Truncated to two decimal places."
+      },
+      {
+        "name": "Duration",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The duration the offer is valid for (one, three or seven days)."
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The quantity of items available. Only applicable if the original listing was Buy Now only. The maximum is 1000."
+      },
+      {
+        "name": "MemberIds",
+        "type": "Collection of Integer (required)",
+        "required": true,
+        "description": "The list of member IDs corresponding to the members to send the offer to."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<FixedPriceOfferResponse> Details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "Code",
+        "type": "Integer",
+        "required": false,
+        "description": "The result code of the offer response.\n\n                                This field is always zero.  Do not use."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ListingId": 123,
+      "Price": 123.0,
+      "Duration": 0,
+      "Quantity": 123,
+      "MemberIds": [
+        123,
+        123
+      ]
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "Code": 123
+    }
+  }
+}

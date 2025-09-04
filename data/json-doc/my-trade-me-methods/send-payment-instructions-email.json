@@ -1,0 +1,96 @@
+{
+  "endpoint": "SendPaymentInstructionsEmail",
+  "title": "Send payment instructions email",
+  "description": "Sends payment instructions to the winner of an auction. This will send an email to the buyer and will make the payment instructions available on the Trade Me website, mobile apps and third-party tools. Payment instructions can only be sent once, and cannot be sent at all if the buyer has already paid via Pay Now. You can check if payment instructions have been sent using the InvoiceId field (in the sold items API) or the PaymentInstructions field (in the listing details API). You can check if the buyer has paid using Pay Now using the IsPayNowPurchase field (in the sold items API) or the HasPaidByCreditCard field (in the listing details API).",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/send-payment-instructions-email",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/SendPaymentInstructions/{purchaseId}.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "purchaseId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The purchase ID that identifies the buyer and the auction that was purchased."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<SendPaymentInstructionsRequest>",
+    "fields": [
+      {
+        "name": "Subject",
+        "type": "String (required)",
+        "required": true,
+        "description": "The subject line to use when sending the email. For example \"Payment instructions (P12345678) - Bipedal droid\"."
+      },
+      {
+        "name": "Body",
+        "type": "String (required)",
+        "required": true,
+        "description": "The customizable part of the email. It is intended that this be sourced from the member's payment instructions template, but it can be completely different."
+      },
+      {
+        "name": "CopySeller",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If true, sends you a copy of the email. Defaults to false."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<PaymentInstructionsResponse> A PaymentInstructionsResponse containing details on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Subject": "ABC",
+      "Body": "ABC",
+      "CopySeller": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

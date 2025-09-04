@@ -1,0 +1,876 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/suburb-search-methods/get-suburb-details-based-on-cityname-and-suburbname -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Get suburb details based on cityName, and suburbName.</h1>
+<!-- Page content -->
+<p>Get suburb details based on cityName, and suburbName. Accepted combinations should be city name, followed with the suburb name. All space should be replaced with dash. E.g "new-plymouth/highlands-park"</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Property/Sold/Suburb/{cityName}/{suburbName}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> cityName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> suburbName </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;SoldSuburbSearchResponse&gt; </p>
+<p>Details of the suburb, and its surrounding suburbs.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> NearbySuburbs </th>
+<td style="width: 22%"> Collection of &lt;SuburbDetails&gt; or null </td>
+<td>
+<p>Wrapper to store nearby suburb details</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> SuburbName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the suburb</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CityName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the city</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Boundary </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>The polyline that makes up this suburb</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbEstimate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Formatted price of the suburb’s estimate; E.g 960K, 1.01M</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbEstimateDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Last updated date for SuburbEstimate; E.g 2023-11-02T00:00:00Z</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CapitalGrowth </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Calculated value that indicates the capital growth of the suburb, in percentage unit. The formula to calculate the value will be the same used in Homes. E.g 5.1%</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BlurbText </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Blurb text returned from ClassifiedInsights</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NumOfHouseForSale </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>To display the number of Properties for sale</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NumOfHouseSoldLastYear </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>To display the number of Properties sold in the last 12 months</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertiesRecentlySold </th>
+<td style="width: 22%"> &lt;SoldSearchResponse&gt; or null </td>
+<td>
+<p>To list down Properties that are recently sold in the suburb Filtered by ‘ForSale' = true, DateMax = today’s date, DateMin = start of last month; to get the number of houses for sale in the past month.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Cards </th>
+<td style="width: 22%"> Collection of &lt;PropertyCard&gt; or null </td>
+<td>
+<p>Cards</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Date </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayPrice </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DistanceToPoint </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Distance To Point</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedAt </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Featured At</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeaturedPlan </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Featured Plan</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Listing Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Point </th>
+<td style="width: 22%"> &lt;GeoPoint&gt; or null </td>
+<td>
+<p>Point</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Price </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertyDetails </th>
+<td style="width: 22%"> &lt;PropertyCardPropertyDetails&gt; or null </td>
+<td>
+<p>Property Details</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Address </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayAddress </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Address</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CoverImageUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Cover Image Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CoverImageUrlSource </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Cover Image Url Source</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NumBathrooms </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Num Bathrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LatestBedrooms </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Latest Bedrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NumCarSpaces </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Num Car Spaces</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LatestCarSpaces </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Latest Car Spaces</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LatestSource </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Latest Source</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Headline </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Headline</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EstimatedValueRevisionDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Estimated Value Revision Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayEstimatedLowerValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Estimated Lower Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayEstimatedUpperValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Estimated Upper Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayEstimatedValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Estimated Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EstimatedRentalRevisionDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Estimated Rental Revision Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayEstimatedRentalLowerValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Estimated Rental Lower Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayEstimatedRentalUpperValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Estimated Rental Upper Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EstimatedRentalYield </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Estimated Rental Yield</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CapitalValue </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Capital Value</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ImprovementValue </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Improvement Value</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LandValue </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Land Value</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayCapitalValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Capital Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayImprovementValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Improvement Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayLandValueShort </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Land Value Short</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CurrentRevisionDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Current Revision Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PreviousCapitalValue </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Previous Capital Value</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PreviousRevisionDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Previous Revision Date</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Suburb Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CityId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>City Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UnitIdentifier </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Unit Identifier</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetNumber </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Street Number</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StreetAlpha </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Street Alpha</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Street </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Street</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Suburb </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Suburb</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> City </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>City</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Ta </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Ta</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> NumBedrooms </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Num Bedrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LatestBathrooms </th>
+<td style="width: 22%"> Number or null </td>
+<td>
+<p>Latest Bathrooms</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeSuburbId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Trademe suburb id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeRegionId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Trademe region id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeDistrictId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Trademe district id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TradeMeCoverImageUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Trademe cover image url</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertyId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Property Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SalesCount </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>Sales Count</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> State </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>State</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Url </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DisplayShortPrice </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Short Price</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> TMListingId </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Last TM Listing Id</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsHomeTracked </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the currently authenticated user is tracking the property.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Hits </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Hits</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Error </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Error</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbEstimate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Formatted price of the suburb’s estimate; E.g 960K, 1.01M</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbEstimateDate </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Last updated date for SuburbEstimate; E.g 2023-11-02T00:00:00Z</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CapitalGrowth </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Calculated value that indicates the capital growth of the suburb, in percentage unit. The formula to calculate the value will be the same used in Homes. E.g 5.1%</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Name of the suburb</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbUrl </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Url to the suburb page</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Polylines </th>
+<td style="width: 22%"> Collection of String or null </td>
+<td>
+<p>Specified the polylines that was used when searching.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertiesForSale </th>
+<td style="width: 22%"> &lt;SoldSearchResponse&gt; or null </td>
+<td>
+<p>To list down Properties that are currently for sale in the suburb</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> PropertiesForRent </th>
+<td style="width: 22%"> &lt;SoldSearchResponse&gt; or null </td>
+<td>
+<p>To list down Properties that are currently for rent in the suburb</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+<tr>
+<th style="width: 22%"> Error </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Error message</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CityName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>City name</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbName </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Suburb name</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SuburbId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>Suburb id</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "NearbySuburbs": [
+    {
+      "SuburbName": "ABC",
+      "CityName": "ABC",
+      "Boundary": [
+        "ABC",
+        "ABC"
+      ]
+    },
+    {
+      "SuburbName": "ABC",
+      "CityName": "ABC",
+      "Boundary": [
+        "ABC",
+        "ABC"
+      ]
+    }
+  ],
+  "SuburbEstimate": "ABC",
+  "SuburbEstimateDate": "ABC",
+  "CapitalGrowth": "ABC",
+  "BlurbText": "ABC",
+  "NumOfHouseForSale": 123,
+  "NumOfHouseSoldLastYear": 123,
+  "PropertiesRecentlySold": {
+    "Cards": [
+      {
+        "Date": "ABC",
+        "DisplayPrice": "ABC",
+        "DistanceToPoint": 123.0,
+        "FeaturedAt": "ABC",
+        "FeaturedPlan": 123,
+        "ListingId": "ABC",
+        "Point": {
+        },
+        "Price": 123.0,
+        "PropertyDetails": {
+          "Address": "ABC",
+          "DisplayAddress": "ABC",
+          "CoverImageUrl": "ABC",
+          "CoverImageUrlSource": "ABC",
+          "NumBathrooms": 123,
+          "LatestBedrooms": "ABC",
+          "NumCarSpaces": 123,
+          "LatestCarSpaces": "ABC",
+          "LatestSource": "ABC",
+          "Headline": "ABC",
+          "EstimatedValueRevisionDate": "ABC",
+          "DisplayEstimatedLowerValueShort": "ABC",
+          "DisplayEstimatedUpperValueShort": "ABC",
+          "DisplayEstimatedValueShort": "ABC",
+          "EstimatedRentalRevisionDate": "ABC",
+          "DisplayEstimatedRentalLowerValueShort": "ABC",
+          "DisplayEstimatedRentalUpperValueShort": "ABC",
+          "EstimatedRentalYield": "ABC",
+          "CapitalValue": 123.0,
+          "ImprovementValue": 123.0,
+          "LandValue": 123.0,
+          "DisplayCapitalValueShort": "ABC",
+          "DisplayImprovementValueShort": "ABC",
+          "DisplayLandValueShort": "ABC",
+          "CurrentRevisionDate": "ABC",
+          "PreviousCapitalValue": 123.0,
+          "PreviousRevisionDate": "ABC",
+          "SuburbId": 123,
+          "CityId": 123,
+          "UnitIdentifier": "ABC",
+          "StreetNumber": "ABC",
+          "StreetAlpha": "ABC",
+          "Street": "ABC",
+          "Suburb": "ABC",
+          "City": "ABC",
+          "Ta": "ABC",
+          "NumBedrooms": 123,
+          "LatestBathrooms": 123.0,
+          "TradeMeSuburbId": 123,
+          "TradeMeRegionId": 123,
+          "TradeMeDistrictId": 123,
+          "TradeMeCoverImageUrl": "ABC"
+        },
+        "PropertyId": "ABC",
+        "SalesCount": 123,
+        "State": 123,
+        "Url": "ABC",
+        "DisplayShortPrice": "ABC",
+        "TMListingId": "ABC",
+        "SuburbUrl": "ABC",
+        "IsHomeTracked": false
+      },
+      {
+        "Date": "ABC",
+        "DisplayPrice": "ABC",
+        "DistanceToPoint": 123.0,
+        "FeaturedAt": "ABC",
+        "FeaturedPlan": 123,
+        "ListingId": "ABC",
+        "Point": {
+        },
+        "Price": 123.0,
+        "PropertyDetails": {
+          "Address": "ABC",
+          "DisplayAddress": "ABC",
+          "CoverImageUrl": "ABC",
+          "CoverImageUrlSource": "ABC",
+          "NumBathrooms": 123,
+          "LatestBedrooms": "ABC",
+          "NumCarSpaces": 123,
+          "LatestCarSpaces": "ABC",
+          "LatestSource": "ABC",
+          "Headline": "ABC",
+          "EstimatedValueRevisionDate": "ABC",
+          "DisplayEstimatedLowerValueShort": "ABC",
+          "DisplayEstimatedUpperValueShort": "ABC",
+          "DisplayEstimatedValueShort": "ABC",
+          "EstimatedRentalRevisionDate": "ABC",
+          "DisplayEstimatedRentalLowerValueShort": "ABC",
+          "DisplayEstimatedRentalUpperValueShort": "ABC",
+          "EstimatedRentalYield": "ABC",
+          "CapitalValue": 123.0,
+          "ImprovementValue": 123.0,
+          "LandValue": 123.0,
+          "DisplayCapitalValueShort": "ABC",
+          "DisplayImprovementValueShort": "ABC",
+          "DisplayLandValueShort": "ABC",
+          "CurrentRevisionDate": "ABC",
+          "PreviousCapitalValue": 123.0,
+          "PreviousRevisionDate": "ABC",
+          "SuburbId": 123,
+          "CityId": 123,
+          "UnitIdentifier": "ABC",
+          "StreetNumber": "ABC",
+          "StreetAlpha": "ABC",
+          "Street": "ABC",
+          "Suburb": "ABC",
+          "City": "ABC",
+          "Ta": "ABC",
+          "NumBedrooms": 123,
+          "LatestBathrooms": 123.0,
+          "TradeMeSuburbId": 123,
+          "TradeMeRegionId": 123,
+          "TradeMeDistrictId": 123,
+          "TradeMeCoverImageUrl": "ABC"
+        },
+        "PropertyId": "ABC",
+        "SalesCount": 123,
+        "State": 123,
+        "Url": "ABC",
+        "DisplayShortPrice": "ABC",
+        "TMListingId": "ABC",
+        "SuburbUrl": "ABC",
+        "IsHomeTracked": false
+      }
+    ],
+    "Hits": 123,
+    "Error": "ABC",
+    "SuburbEstimate": "ABC",
+    "SuburbEstimateDate": "ABC",
+    "CapitalGrowth": "ABC",
+    "SuburbName": "ABC",
+    "SuburbUrl": "ABC",
+    "Polylines": [
+      "ABC",
+      "ABC"
+    ]
+  },
+  "PropertiesForSale": {
+  },
+  "PropertiesForRent": {
+  },
+  "Error": "ABC",
+  "CityName": "ABC",
+  "SuburbName": "ABC",
+  "SuburbId": 123
+}</code></pre>
+</div>

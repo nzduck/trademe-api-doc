@@ -1,0 +1,424 @@
+{
+  "endpoint": "GetPropertyOfficeLiveListingStatistics",
+  "title": "Get property office live listing statistics",
+  "description": "Retrieve a list of a property listings for office user, with some basic statistics for This endpoint is available for all Trademe partner API accounts however is rate limited to 100 calls per hour per consumer",
+  "source": "https://developer.trademe.co.nz/api-reference/property-agency-methods/get-property-office-live-listing-statistics",
+  "url": "https://api.trademe.co.nz/v1/Property/Office/{officeMemberId}/LiveListingStatistics.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "officeMemberId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "days",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of days statistics to retrieve, ending yesterday. Defaults to 30. Minimum 1, maximum 30"
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<LivePropertyListingStatistics> LivePropertyListingStatistics",
+    "fields": [
+      {
+        "name": "LiveListingStatistics",
+        "type": "Collection of <ListingStatistics> or null",
+        "required": false,
+        "description": "A list of live listings for the property agent with some basic statistics."
+      },
+      {
+        "name": "ListingId",
+        "type": "ListingId \n Integer \n\nThe ID of the listing.\n\n\n\n WatcherCount \n Integer \n\nThe number watchers for this listing.\n\n\n\n EnquiryCount \n Integer \n\nThe number of enquiries about this listing.\n\n\n\n IsSuperFeatured \n Boolean \n\nIs this a super-featured listing?\n\n\n\n DailyStatistics \n Collection of <DailyListingStatistics> or null \n\nThe daily statistics for this live listing for the specified number of days\n\n\n\n\n\n\n Day \n DateTime \n\nThe date of the day when these statistics occurred\n\n\n\n NewViewCount \n Integer \n\nThe number of times the listing was viewed on this day.\n\n\n\n NewImpressionsCount \n Integer \n\nThe number of new impressions for this listing on this day\n\n\n\n\n\n\n PerSuburbWatchersStatistics \n Collection of <PerSuburbListingStatistics> or null \n\nThe current count of watchers for this listing by suburb and region\n\n\n\n\n\n\n CurrentCount \n Integer \n\nCount of either views or watchers\n\n\n\n SuburbId \n Integer \n\nSuburb Id of the view or watcher\n\n\n\n SuburbName \n String or null \n\nSuburb name of the view or watcher\n\n\n\n RegionId \n Integer \n\nRegion Id of the view or watcher\n\n\n\n RegionName \n String or null \n\nRegion name of the view or watcher\n\n\n\n GSRegionId \n Integer \n\nGeoSpatial Region Id of the view or watcher\n\n\n\n\n\n\n PerSuburbViewsStatistics \n Collection of <PerSuburbListingStatistics> or null \n\nThe current count of views for this listing by suburb and region\n\n\n\n\n                                 (This type has already been defined)\n                        \n\n\n ClickToCallCount \n Integer \n\nThe current count of click to calls for this listing\n\n\n\n MemberIds \n Collection of Integer or null \n\na listing can be assign to many members\n\n\n\n GlobalPropertyNetworkStatistics \n <GlobalPropertyNetwork> or null \n\nglobal property network statistics\n\n\n\n\n\n\n ReaUrl \n String or null \n\nrea url\n\n\n\n RealtorUrl \n String or null \n\nrealtor url\n\n\n\n HousingUrl \n String or null \n\nhousing url\n\n\n\n ProptigerUrl \n String or null \n\nproptiger url\n\n\n\n MakaanUrl \n String or null \n\nmakaan url\n\n\n\n ThinkoflivingUrl \n String or null \n\nthinking of living url\n\n\n\n\n\n\n ImpressionsCount \n Integer \n\nThe number of impressions for this listing\n\n\n\n ImpressionsInPeriod \n Integer \n\nThe number of impressions for this listing in the specified period\n\n\n\n ImpressionsCountAvgPerDay \n Integer \n\nThe number of impressions count average per day for this listing",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ListingId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the listing."
+      },
+      {
+        "name": "WatcherCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number watchers for this listing."
+      },
+      {
+        "name": "EnquiryCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of enquiries about this listing."
+      },
+      {
+        "name": "IsSuperFeatured",
+        "type": "Boolean",
+        "required": false,
+        "description": "Is this a super-featured listing?"
+      },
+      {
+        "name": "DailyStatistics",
+        "type": "Collection of <DailyListingStatistics> or null",
+        "required": false,
+        "description": "The daily statistics for this live listing for the specified number of days"
+      },
+      {
+        "name": "Day",
+        "type": "Day \n DateTime \n\nThe date of the day when these statistics occurred\n\n\n\n NewViewCount \n Integer \n\nThe number of times the listing was viewed on this day.\n\n\n\n NewImpressionsCount \n Integer \n\nThe number of new impressions for this listing on this day",
+        "required": false,
+        "description": "DateTime"
+      },
+      {
+        "name": "Day",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the day when these statistics occurred"
+      },
+      {
+        "name": "NewViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of times the listing was viewed on this day."
+      },
+      {
+        "name": "NewImpressionsCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of new impressions for this listing on this day"
+      },
+      {
+        "name": "PerSuburbWatchersStatistics",
+        "type": "Collection of <PerSuburbListingStatistics> or null",
+        "required": false,
+        "description": "The current count of watchers for this listing by suburb and region"
+      },
+      {
+        "name": "CurrentCount",
+        "type": "CurrentCount \n Integer \n\nCount of either views or watchers\n\n\n\n SuburbId \n Integer \n\nSuburb Id of the view or watcher\n\n\n\n SuburbName \n String or null \n\nSuburb name of the view or watcher\n\n\n\n RegionId \n Integer \n\nRegion Id of the view or watcher\n\n\n\n RegionName \n String or null \n\nRegion name of the view or watcher\n\n\n\n GSRegionId \n Integer \n\nGeoSpatial Region Id of the view or watcher",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "CurrentCount",
+        "type": "Integer",
+        "required": false,
+        "description": "Count of either views or watchers"
+      },
+      {
+        "name": "SuburbId",
+        "type": "Integer",
+        "required": false,
+        "description": "Suburb Id of the view or watcher"
+      },
+      {
+        "name": "SuburbName",
+        "type": "String or null",
+        "required": false,
+        "description": "Suburb name of the view or watcher"
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "Region Id of the view or watcher"
+      },
+      {
+        "name": "RegionName",
+        "type": "String or null",
+        "required": false,
+        "description": "Region name of the view or watcher"
+      },
+      {
+        "name": "GSRegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "GeoSpatial Region Id of the view or watcher"
+      },
+      {
+        "name": "PerSuburbViewsStatistics",
+        "type": "Collection of <PerSuburbListingStatistics> or null",
+        "required": false,
+        "description": "The current count of views for this listing by suburb and region"
+      },
+      {
+        "name": "ClickToCallCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The current count of click to calls for this listing"
+      },
+      {
+        "name": "MemberIds",
+        "type": "Collection of Integer or null",
+        "required": false,
+        "description": "a listing can be assign to many members"
+      },
+      {
+        "name": "GlobalPropertyNetworkStatistics",
+        "type": "<GlobalPropertyNetwork> or null",
+        "required": false,
+        "description": "global property network statistics"
+      },
+      {
+        "name": "ReaUrl",
+        "type": "ReaUrl \n String or null \n\nrea url\n\n\n\n RealtorUrl \n String or null \n\nrealtor url\n\n\n\n HousingUrl \n String or null \n\nhousing url\n\n\n\n ProptigerUrl \n String or null \n\nproptiger url\n\n\n\n MakaanUrl \n String or null \n\nmakaan url\n\n\n\n ThinkoflivingUrl \n String or null \n\nthinking of living url",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ReaUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "rea url"
+      },
+      {
+        "name": "RealtorUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "realtor url"
+      },
+      {
+        "name": "HousingUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "housing url"
+      },
+      {
+        "name": "ProptigerUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "proptiger url"
+      },
+      {
+        "name": "MakaanUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "makaan url"
+      },
+      {
+        "name": "ThinkoflivingUrl",
+        "type": "String or null",
+        "required": false,
+        "description": "thinking of living url"
+      },
+      {
+        "name": "ImpressionsCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of impressions for this listing"
+      },
+      {
+        "name": "ImpressionsInPeriod",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of impressions for this listing in the specified period"
+      },
+      {
+        "name": "ImpressionsCountAvgPerDay",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of impressions count average per day for this listing"
+      },
+      {
+        "name": "OfficeDailyStatistics",
+        "type": "Collection of <OfficeDailyListingStatistics> or null",
+        "required": false,
+        "description": "The daily statistics for the office's combined live listings for the specified number of days."
+      },
+      {
+        "name": "Day",
+        "type": "Day \n DateTime \n\nThe date of the day when these statistics occurred\n\n\n\n ListingCount \n Integer \n\nThe number of listings the office had on this day.\n\n\n\n NewViewCount \n Integer \n\nThe number of times the office's listings were viewed on this day.\n\n\n\n NewImpressionCount \n Integer \n\nThe number of impressions of the office's listings on this day.",
+        "required": false,
+        "description": "DateTime"
+      },
+      {
+        "name": "Day",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date of the day when these statistics occurred"
+      },
+      {
+        "name": "ListingCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listings the office had on this day."
+      },
+      {
+        "name": "NewViewCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of times the office's listings were viewed on this day."
+      },
+      {
+        "name": "NewImpressionCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of impressions of the office's listings on this day."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "LiveListingStatistics": [
+        {
+          "ListingId": 123,
+          "WatcherCount": 123,
+          "EnquiryCount": 123,
+          "IsSuperFeatured": false,
+          "DailyStatistics": [
+            {
+              "Day": "/Date(1514764800)/",
+              "NewViewCount": 123,
+              "NewImpressionsCount": 123
+            },
+            {
+              "Day": "/Date(1514764800)/",
+              "NewViewCount": 123,
+              "NewImpressionsCount": 123
+            }
+          ],
+          "PerSuburbWatchersStatistics": [
+            {
+              "CurrentCount": 123,
+              "SuburbId": 123,
+              "SuburbName": "ABC",
+              "RegionId": 123,
+              "RegionName": "ABC",
+              "GSRegionId": 123
+            },
+            {
+              "CurrentCount": 123,
+              "SuburbId": 123,
+              "SuburbName": "ABC",
+              "RegionId": 123,
+              "RegionName": "ABC",
+              "GSRegionId": 123
+            }
+          ],
+          "PerSuburbViewsStatistics": [
+            {},
+            {}
+          ],
+          "ClickToCallCount": 123,
+          "MemberIds": [
+            123,
+            123
+          ],
+          "GlobalPropertyNetworkStatistics": {
+            "ReaUrl": "ABC",
+            "RealtorUrl": "ABC",
+            "HousingUrl": "ABC",
+            "ProptigerUrl": "ABC",
+            "MakaanUrl": "ABC",
+            "ThinkoflivingUrl": "ABC"
+          },
+          "ImpressionsCount": 123,
+          "ImpressionsInPeriod": 123,
+          "ImpressionsCountAvgPerDay": 123
+        },
+        {
+          "ListingId": 123,
+          "WatcherCount": 123,
+          "EnquiryCount": 123,
+          "IsSuperFeatured": false,
+          "DailyStatistics": [
+            {
+              "Day": "/Date(1514764800)/",
+              "NewViewCount": 123,
+              "NewImpressionsCount": 123
+            },
+            {
+              "Day": "/Date(1514764800)/",
+              "NewViewCount": 123,
+              "NewImpressionsCount": 123
+            }
+          ],
+          "PerSuburbWatchersStatistics": [
+            {
+              "CurrentCount": 123,
+              "SuburbId": 123,
+              "SuburbName": "ABC",
+              "RegionId": 123,
+              "RegionName": "ABC",
+              "GSRegionId": 123
+            },
+            {
+              "CurrentCount": 123,
+              "SuburbId": 123,
+              "SuburbName": "ABC",
+              "RegionId": 123,
+              "RegionName": "ABC",
+              "GSRegionId": 123
+            }
+          ],
+          "PerSuburbViewsStatistics": [
+            {},
+            {}
+          ],
+          "ClickToCallCount": 123,
+          "MemberIds": [
+            123,
+            123
+          ],
+          "GlobalPropertyNetworkStatistics": {
+            "ReaUrl": "ABC",
+            "RealtorUrl": "ABC",
+            "HousingUrl": "ABC",
+            "ProptigerUrl": "ABC",
+            "MakaanUrl": "ABC",
+            "ThinkoflivingUrl": "ABC"
+          },
+          "ImpressionsCount": 123,
+          "ImpressionsInPeriod": 123,
+          "ImpressionsCountAvgPerDay": 123
+        }
+      ],
+      "OfficeDailyStatistics": [
+        {
+          "Day": "/Date(1514764800)/",
+          "ListingCount": 123,
+          "NewViewCount": 123,
+          "NewImpressionCount": 123
+        },
+        {
+          "Day": "/Date(1514764800)/",
+          "ListingCount": 123,
+          "NewViewCount": 123,
+          "NewImpressionCount": 123
+        }
+      ]
+    }
+  }
+}

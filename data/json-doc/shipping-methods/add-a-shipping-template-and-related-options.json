@@ -1,0 +1,211 @@
+{
+  "endpoint": "AddAShippingTemplateAndRelatedOptions",
+  "title": "Add a Shipping Template and related options",
+  "description": "Adds a Shipping Template and related options.",
+  "source": "https://developer.trademe.co.nz/api-reference/shipping-methods/add-a-shipping-template-and-related-options",
+  "url": "https://api.trademe.co.nz/v1/Shipping/Templates.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<ShippingTemplateRequest>",
+    "fields": [
+      {
+        "name": "ShippingTemplateId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the shipping template. Can be omitted if it is adding a template."
+      },
+      {
+        "name": "Name",
+        "type": "String (required)",
+        "required": true,
+        "description": "Name of the Shipping Template"
+      },
+      {
+        "name": "HandlingTime",
+        "type": "TimeSpan (required)",
+        "required": true,
+        "description": "Handling time of the Shipping Template"
+      },
+      {
+        "name": "HandlingTimeCutOff",
+        "type": "String (required)",
+        "required": true,
+        "description": "Handling time cut-off of the Shipping Template. It must be a 24-hour time in ISO 8601 extended format. E.g. for a cut-off time of 4:30 pm, this value should be \"16:30\" or \"T16:30\". Timezones and fractional seconds are not supported."
+      },
+      {
+        "name": "IsOversized",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If the Shipping Template is oversized"
+      },
+      {
+        "name": "IsRestricted",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If the Shipping Template is restricted"
+      },
+      {
+        "name": "ShippingOptions",
+        "type": "Collection of <ShippingOptionRequest> (required)",
+        "required": true,
+        "description": "List of Shipping Options related to the Shipping Template"
+      },
+      {
+        "name": "ShippingOptionId",
+        "type": "ShippingOptionId \n Integer (optional) \n\nUnique identifier of the Shipping Option\n\n\n\n Cost \n Number (required) \n\nCost of the Shipping Option\n\n\n\n CarrierProductId \n Integer (required) \n\nCarrier Product related to the Shipping Option\n\n\n\n ShipToRegions \n Collection of Integer (optional) \n\nList of Regions that the Shipping Option ships to. If none are provided, it will default to Nationwide.\n\n\n\n Addons \n Collection of <ShippingOptionAddonRequest> (optional) \n\nList of Addons that are available to the Shipping Option\n\n\n\n\n\n\n CarrierAddonId \n Integer (required) \n\nIdentifier of the Carrier Addon\n\n\n\n AdditionalCost \n Number (required) \n\nAdditional cost of the addon",
+        "required": true,
+        "description": "Integer (optional)"
+      },
+      {
+        "name": "ShippingOptionId",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "Unique identifier of the Shipping Option"
+      },
+      {
+        "name": "Cost",
+        "type": "Number (required)",
+        "required": true,
+        "description": "Cost of the Shipping Option"
+      },
+      {
+        "name": "CarrierProductId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Carrier Product related to the Shipping Option"
+      },
+      {
+        "name": "ShipToRegions",
+        "type": "Collection of Integer (optional)",
+        "required": false,
+        "description": "List of Regions that the Shipping Option ships to. If none are provided, it will default to Nationwide."
+      },
+      {
+        "name": "Addons",
+        "type": "Collection of <ShippingOptionAddonRequest> (optional)",
+        "required": false,
+        "description": "List of Addons that are available to the Shipping Option"
+      },
+      {
+        "name": "CarrierAddonId",
+        "type": "CarrierAddonId \n Integer (required) \n\nIdentifier of the Carrier Addon\n\n\n\n AdditionalCost \n Number (required) \n\nAdditional cost of the addon",
+        "required": true,
+        "description": "Integer (required)"
+      },
+      {
+        "name": "CarrierAddonId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Identifier of the Carrier Addon"
+      },
+      {
+        "name": "AdditionalCost",
+        "type": "Number (required)",
+        "required": true,
+        "description": "Additional cost of the addon"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<AddShippingTemplateResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "ShippingTemplateId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the created shipping template."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "ShippingTemplateId": 123,
+      "Name": "ABC",
+      "HandlingTime": "PT4H5M",
+      "HandlingTimeCutOff": "ABC",
+      "IsOversized": false,
+      "IsRestricted": false,
+      "ShippingOptions": [
+        {
+          "ShippingOptionId": 123,
+          "Cost": 123.0,
+          "CarrierProductId": 123,
+          "ShipToRegions": [
+            123,
+            123
+          ],
+          "Addons": [
+            {
+              "CarrierAddonId": 123,
+              "AdditionalCost": 123.0
+            },
+            {
+              "CarrierAddonId": 123,
+              "AdditionalCost": 123.0
+            }
+          ]
+        },
+        {
+          "ShippingOptionId": 123,
+          "Cost": 123.0,
+          "CarrierProductId": 123,
+          "ShipToRegions": [
+            123,
+            123
+          ],
+          "Addons": [
+            {
+              "CarrierAddonId": 123,
+              "AdditionalCost": 123.0
+            },
+            {
+              "CarrierAddonId": 123,
+              "AdditionalCost": 123.0
+            }
+          ]
+        }
+      ]
+    },
+    "response_json": {
+      "Success": false,
+      "ShippingTemplateId": 123
+    }
+  }
+}

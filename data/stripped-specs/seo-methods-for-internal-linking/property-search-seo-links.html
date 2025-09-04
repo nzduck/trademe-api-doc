@@ -1,0 +1,90 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/seo-methods-for-internal-linking/property-search-seo-links -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Property Search SEO links</h1>
+<!-- Page content -->
+<p>Gets the list of SEO links for the Property search</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/seo/property/search.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> categoryId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>ID for the Category filter</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> districtId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>ID for the District filter</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> regionId </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>ID for the Region filter</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> suburbIds </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Comma separated IDs for the Suburb filter</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> Collection of &lt;SeoLink&gt; </p>
+
+<table class="dense" id="returns">
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">[
+  {
+  },
+  {
+  }
+]</code></pre>
+</div>

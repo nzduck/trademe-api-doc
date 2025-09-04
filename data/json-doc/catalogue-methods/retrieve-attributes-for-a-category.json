@@ -1,0 +1,241 @@
+{
+  "endpoint": "RetrieveAttributesForACategory",
+  "title": "Retrieve attributes for a category",
+  "description": "Retrieves the list of attributes which are applicable to a specific category.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-attributes-for-a-category",
+  "url": "https://api.trademe.co.nz/v1/categories/{category}/attributes.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "category",
+        "type": "String (required)",
+        "required": true,
+        "description": "The category number for which you wish to see the attributes for. This must be a leaf category (for example, you cannot view the attributes for Computers > Desktops, but you can for Computers > Desktops > CRT monitors)."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <Attribute>",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of the attribute, which determines the range of acceptable values. Not required when selling or editing.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Not used."
+          },
+          {
+            "name": "Boolean",
+            "value": "1",
+            "description": "The attribute value is a boolean (true/false)."
+          },
+          {
+            "name": "Integer",
+            "value": "2",
+            "description": "The attribute value is an integer."
+          },
+          {
+            "name": "Decimal",
+            "value": "3",
+            "description": "The attribute value is a floating point number."
+          },
+          {
+            "name": "String",
+            "value": "4",
+            "description": "The attribute value can be arbitrary text."
+          },
+          {
+            "name": "DateTime",
+            "value": "5",
+            "description": "The attribute value is a date & time (in UTC)."
+          }
+        ]
+      },
+      {
+        "name": "Range",
+        "type": "<AttributeRange> or null",
+        "required": false,
+        "description": "The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing.",
+        "nested_fields": [
+          {
+            "field_name": "Lower",
+            "field_type": "String or null",
+            "description": "The lowest allowed value of the attribute."
+          },
+          {
+            "field_name": "Upper",
+            "field_type": "String or null",
+            "description": "The highest allowed value of the attribute."
+          }
+        ]
+      },
+      {
+        "name": "MaxStringLength",
+        "type": "Integer",
+        "required": false,
+        "description": "The maximum allowed length of the attribute value, in characters. Only applies to string attributes. Some string attributes do not have a maximum length because they are restricted to a fixed list of options, or because any length is acceptable. Not required when selling or editing."
+      },
+      {
+        "name": "Options",
+        "type": "Collection of <AttributeOption> or null",
+        "required": false,
+        "description": "A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing.",
+        "nested_fields": [
+          {
+            "field_name": "Value",
+            "field_type": "String or null",
+            "description": "The value of the item as a string."
+          },
+          {
+            "field_name": "Display",
+            "field_type": "String or null",
+            "description": "What should be displayed for this value (often the same)."
+          }
+        ]
+      },
+      {
+        "name": "Units",
+        "type": "Collection of <AttributeUnit> or null",
+        "required": false,
+        "description": "A list of units that apply (MHz, hectares, etc). Only applies to numeric attributes. Not required when selling or editing.",
+        "nested_fields": [
+          {
+            "field_name": "Display",
+            "field_type": "String or null",
+            "description": "The unit name, in a format suitable for displaying to a user (e.g. \"MHz\")."
+          },
+          {
+            "field_name": "Multiplier",
+            "field_type": "Number",
+            "description": "The multiplier to apply to the value the user entered to get a value suitable for passing to the sell API."
+          }
+        ]
+      },
+      {
+        "name": "IsRequiredForSell",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the attribute must be present when selling an item."
+      },
+      {
+        "name": "GroupName",
+        "type": "String or null",
+        "required": false,
+        "description": "Suggests the category name for the attribute grouping on the UI level."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Name": "ABC",
+        "DisplayName": "ABC",
+        "Type": 0,
+        "Range": {
+          "Lower": "ABC",
+          "Upper": "ABC"
+        },
+        "MaxStringLength": 123,
+        "Options": [
+          {
+            "Value": "ABC",
+            "Display": "ABC"
+          },
+          {
+            "Value": "ABC",
+            "Display": "ABC"
+          }
+        ],
+        "Units": [
+          {
+            "Display": "ABC",
+            "Multiplier": 123.0
+          },
+          {
+            "Display": "ABC",
+            "Multiplier": 123.0
+          }
+        ],
+        "IsRequiredForSell": false,
+        "GroupName": "ABC"
+      },
+      {
+        "Name": "ABC",
+        "DisplayName": "ABC",
+        "Type": 0,
+        "Range": {
+          "Lower": "ABC",
+          "Upper": "ABC"
+        },
+        "MaxStringLength": 123,
+        "Options": [
+          {
+            "Value": "ABC",
+            "Display": "ABC"
+          },
+          {
+            "Value": "ABC",
+            "Display": "ABC"
+          }
+        ],
+        "Units": [
+          {
+            "Display": "ABC",
+            "Multiplier": 123.0
+          },
+          {
+            "Display": "ABC",
+            "Multiplier": 123.0
+          }
+        ],
+        "IsRequiredForSell": false,
+        "GroupName": "ABC"
+      }
+    ]
+  }
+}

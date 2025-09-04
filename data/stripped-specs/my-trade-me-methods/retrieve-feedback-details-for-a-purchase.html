@@ -1,0 +1,355 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-feedback-details-for-a-purchase -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieve feedback details for a purchase</h1>
+<!-- Page content -->
+<p>Retrieves feedback for a single purchase, both placed and received.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Purchases/{purchaseId}/Feedback.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> purchaseId </th>
+<td style="width: 22%"> Integer (required) </td>
+<td>
+<p>The ID of the purchase to retrieve feedback for.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Returns </h2>
+<p> &lt;PurchaseFeedback&gt; </p>
+<p>Feedback details for the purchase.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> CanCreate </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the logged in member can place feedback. This will be false if feedback has already been placed, or if feedback has previously been deleted.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanEdit </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the logged in member can edit their placed feedback. This will be false if no feedback is present, or if the user has edited their feedback too many times.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> CanDelete </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates if the logged in member can delete feedback. Currently this is always true if feedback has been placed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackPlaced </th>
+<td style="width: 22%"> &lt;FeedbackItem&gt; or null </td>
+<td>
+<p>Details of the feedback that the logged in member has placed, if any.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> IsSeller </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the feedback is from the seller.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateEntered </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the feedback was entered.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Text </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The text of the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the listing the feedback was about.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> BuyNowPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The Buy Now price.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAnOffer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Determines if the sale was an offer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MaximumBidAmount </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The final bid amount.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> OfferPrice </th>
+<td style="width: 22%"> Number </td>
+<td>
+<p>The offer price (if it was a fixed price offer).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateResponded </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date and time the response was given to the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Response </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The response to the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> HasReturnedFeedback </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether a response has been given to the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsEdited </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the feedback has been edited.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SellerId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The member ID of the seller.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "Negative", "value": "0", "description": "Negative feedback."}, {"name": "Positive", "value": "1", "description": "Positive feedback."}, {"name": "Neutral", "value": "2", "description": "Neutral feedback."}, {"name": "TradeMe", "value": "3", "description": "Feedback from the Trade Me customer service team."}]'>
+<th style="width: 22%"> FeedbackType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The type of feedback given (positive, negative, etc).</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> FeedbackFrom </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>The member who gave the feedback.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the member. This may be <b>0</b>, if we determine it is necessary to protect the member's privacy.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateAddressVerified </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member was address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateJoined </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member joined.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniqueNegative </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of distinct members who have placed negative feedback against this member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniquePositive </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of distinct members who have placed positive feedback against this member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The member's total feedback (UniquePositive minus UniqueNegative).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAddressVerified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has been address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsDealer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a car dealer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAuthenticated </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is authenticated.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsInTrade </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a professional trader.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRentiUser </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a renti user.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the the feedback.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PurchaseId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The purchase-specific ID (or auction sold id). Can only be provided for feedback against listings less than 45 days old, or eCommerce listings. Feedback cannot be placed against purchases older than 45 days regardless.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackReceived </th>
+<td style="width: 22%"> &lt;FeedbackItem&gt; or null </td>
+<td>
+<p>Details of the feedback that the other party to the purchase has placed against the logged in member, if any.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+                                 (This type has already been defined)
+                        </td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "CanCreate": false,
+  "CanEdit": false,
+  "CanDelete": false,
+  "FeedbackPlaced": {
+    "IsSeller": false,
+    "DateEntered": "\/Date(1514764800)\/",
+    "Text": "ABC",
+    "ListingId": 123,
+    "BuyNowPrice": 123.0,
+    "IsAnOffer": false,
+    "MaximumBidAmount": 123.0,
+    "OfferPrice": 123.0,
+    "DateResponded": "\/Date(1514764800)\/",
+    "Response": "ABC",
+    "HasReturnedFeedback": false,
+    "IsEdited": false,
+    "SellerId": 123,
+    "FeedbackType": 0,
+    "FeedbackFrom": {
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateAddressVerified": "\/Date(1514764800)\/",
+      "DateJoined": "\/Date(1514764800)\/",
+      "UniqueNegative": 123,
+      "UniquePositive": 123,
+      "FeedbackCount": 123,
+      "IsAddressVerified": false,
+      "IsDealer": false,
+      "IsAuthenticated": false,
+      "IsInTrade": false,
+      "IsRentiUser": false
+    },
+    "FeedbackId": 123,
+    "PurchaseId": 123
+  },
+  "FeedbackReceived": {
+  }
+}</code></pre>
+</div>

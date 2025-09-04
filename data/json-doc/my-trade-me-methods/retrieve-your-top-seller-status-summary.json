@@ -1,0 +1,189 @@
+{
+  "endpoint": "RetrieveYourTopSellerStatusSummary",
+  "title": "Retrieve your Top Seller status summary",
+  "description": "Retrieve information for the authenticated user on if they have, or are eligible for Top Seller status.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-top-seller-status-summary",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/TopSellerSummary.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<TopSellerSummary> Statistics for the current week and the previous six weeks.",
+    "fields": [
+      {
+        "name": "SalesCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of sales over the last six weeks."
+      },
+      {
+        "name": "SalesValue",
+        "type": "Number",
+        "required": false,
+        "description": "The total value of sales in dollars over the last six weeks."
+      },
+      {
+        "name": "SellThroughRate",
+        "type": "Number",
+        "required": false,
+        "description": "The sell-through rate in percentage over the last six weeks."
+      },
+      {
+        "name": "FeedbackRating",
+        "type": "Number",
+        "required": false,
+        "description": "The feedback rating over the last six weeks."
+      },
+      {
+        "name": "InTrade",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether this member is in trade or not"
+      },
+      {
+        "name": "IsTopSeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether or not the member is a Top Seller."
+      },
+      {
+        "name": "TopSellerStartDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The start date of the current period in which the member is a top seller (in UTC). Only applicable to members that are top sellers."
+      },
+      {
+        "name": "QualifyingSalesCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of sales threshold the seller has to reach to eligible for Top Seller status"
+      },
+      {
+        "name": "QualifyingSalesValue",
+        "type": "Number",
+        "required": false,
+        "description": "The value of sales threshold the seller has to reach to eligible for Top Seller status"
+      },
+      {
+        "name": "QualifyingSellThroughRate",
+        "type": "Number",
+        "required": false,
+        "description": "The sell-through rate threshold the seller has to reach to eligible for Top Seller status"
+      },
+      {
+        "name": "QualifyingFeedbackRating",
+        "type": "Number",
+        "required": false,
+        "description": "The positive feedback ratio threshold the seller has to reach to eligible for Top Seller status"
+      },
+      {
+        "name": "TopSellerExpiryDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "The end date of the current period in which the member is a top seller (in UTC). Only applicable to members that are top sellers."
+      },
+      {
+        "name": "TopSellerFeeDiscount",
+        "type": "Number",
+        "required": false,
+        "description": "The percentage of discount (e.g. 0.15 for 15%) applicable to all fees except withdrawal fees, gallery plus, subtitle, reserve, 10-day auction, scheduled end time and second category. Only applicable to members that are top sellers."
+      },
+      {
+        "name": "TopSellerSavings",
+        "type": "Collection of <TopSellerSaving> or null",
+        "required": false,
+        "description": "The Top Seller savings for this member.",
+        "nested_fields": [
+          {
+            "field_name": "PeriodStart",
+            "field_type": "DateTime",
+            "description": "The start date of the period (in UTC)."
+          },
+          {
+            "field_name": "PeriodEnd",
+            "field_type": "DateTime",
+            "description": "The end date of the period (in UTC)."
+          },
+          {
+            "field_name": "SavingType",
+            "field_type": "String or null",
+            "description": "The fee type."
+          },
+          {
+            "field_name": "SavingAmount",
+            "field_type": "Number",
+            "description": "The amount saved."
+          },
+          {
+            "field_name": "WeekOffset",
+            "field_type": "Integer",
+            "description": "How many weeks before the current week this saving is. 0 = current week."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "SalesCount": 123,
+      "SalesValue": 123.0,
+      "SellThroughRate": 123.0,
+      "FeedbackRating": 123.0,
+      "InTrade": false,
+      "IsTopSeller": false,
+      "TopSellerStartDate": "/Date(1514764800)/",
+      "QualifyingSalesCount": 123,
+      "QualifyingSalesValue": 123.0,
+      "QualifyingSellThroughRate": 123.0,
+      "QualifyingFeedbackRating": 123.0,
+      "TopSellerExpiryDate": "/Date(1514764800)/",
+      "TopSellerFeeDiscount": 123.0,
+      "TopSellerSavings": [
+        {
+          "PeriodStart": "/Date(1514764800)/",
+          "PeriodEnd": "/Date(1514764800)/",
+          "SavingType": "ABC",
+          "SavingAmount": 123.0,
+          "WeekOffset": 123
+        },
+        {
+          "PeriodStart": "/Date(1514764800)/",
+          "PeriodEnd": "/Date(1514764800)/",
+          "SavingType": "ABC",
+          "SavingAmount": 123.0,
+          "WeekOffset": 123
+        }
+      ]
+    }
+  }
+}

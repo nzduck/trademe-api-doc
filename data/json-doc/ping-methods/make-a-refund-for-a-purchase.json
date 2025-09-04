@@ -1,0 +1,83 @@
+{
+  "endpoint": "MakeARefundForAPurchase",
+  "title": "Make a refund for a purchase",
+  "description": "Performs full or partial refunds against a Ping purchase. Can be called multiple times for partial amounts.",
+  "source": "https://developer.trademe.co.nz/api-reference/ping-methods/make-a-refund-for-a-purchase",
+  "url": "https://api.trademe.co.nz/v1/Ping/Transactions/Refunds.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<RefundRequest>",
+    "fields": [
+      {
+        "name": "PurchaseId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the purchase to refund."
+      },
+      {
+        "name": "Amount",
+        "type": "Number (required)",
+        "required": true,
+        "description": "The dollar value to refund. Must be larger than zero and up to the total value of the purchase."
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<RefundResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "PurchaseId": 123,
+      "Amount": 123.0
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

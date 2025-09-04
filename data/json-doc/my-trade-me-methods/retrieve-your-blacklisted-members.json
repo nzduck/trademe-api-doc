@@ -1,0 +1,149 @@
+{
+  "endpoint": "RetrieveYourBlacklistedMembers",
+  "title": "Retrieve your blacklisted members",
+  "description": "Retrieves a list of all the members on the authenticated user's blacklist.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-blacklisted-members",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/Blacklist.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <MemberId> A list of blacklisted members.",
+    "fields": [
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "DateAddressVerified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member was address verified."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed negative feedback against this member."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed positive feedback against this member."
+      },
+      {
+        "name": "FeedbackCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+      },
+      {
+        "name": "IsAddressVerified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been address verified."
+      },
+      {
+        "name": "IsDealer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a car dealer."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is authenticated."
+      },
+      {
+        "name": "IsInTrade",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a professional trader."
+      },
+      {
+        "name": "IsRentiUser",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a renti user."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "/Date(1514764800)/",
+        "DateJoined": "/Date(1514764800)/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "IsInTrade": false,
+        "IsRentiUser": false
+      },
+      {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "/Date(1514764800)/",
+        "DateJoined": "/Date(1514764800)/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "IsInTrade": false,
+        "IsRentiUser": false
+      }
+    ]
+  }
+}

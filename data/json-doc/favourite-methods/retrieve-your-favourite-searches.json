@@ -1,0 +1,532 @@
+{
+  "endpoint": "RetrieveYourFavouriteSearches",
+  "title": "Retrieve your favourite searches",
+  "description": "Retrieves the list of favourite searches for the currently authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/favourite-methods/retrieve-your-favourite-searches",
+  "url": "https://api.trademe.co.nz/v1/favourites/searches/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": "Filters the list of searches to those of a given type. Must be \"All\", \"General\", \"Job\", \"Motor\" or \"Property\"."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to all favourites."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<SavedSearches> A list of favourite searches.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SavedSearch> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "FavouriteId",
+        "type": "FavouriteId \n Integer \n\nThe ID of the favourite.\n\n\n\n SearchApi \n Enumeration \n\nThe search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.\n\n\n\n SearchString \n String or null \n\nA string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.\n\n\n\n Attributes \n <SearchAttributes> or null \n\nThe attributes saved in the search.\n\n\n\n\n\n\n TotalCount \n Integer \n\nThe total number of results in the collection. Can be larger than the number of returned results.\n\n\n\n Page \n Integer \n\nThe index of the current page of results (starts at 1).\n\n\n\n PageSize \n Integer \n\nThe number of results in the current page.\n\n\n\n List \n Collection of <SearchAttribute> or null \n\nA list of the results in the current page.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n DisplayValue \n String or null \n\nThe value of the attribute as it needs to be displayed to the end users\n\n\n\n SearchParameterName \n String or null \n\nThe name of the attribute when used in a search string.\n\n\n\n\n\n\n\n\n\n EmailOptions \n Enumeration \n\nIndicates how often the email updates should be sent for this favourite.\n\n\n\n Option \n Enumeration \n\nThe favourite type. Only used when updating and deleting.\n\n\n\n LastAccessed \n DateTime or null \n\nThe date the favourite was last accessed in UTC format.\n\n\n\n FavouritePushFrequency \n Enumeration \n\nThe push notification of the favourite, which the FavouriteId property refers to.\n\n\n\n Label \n String or null \n\nDisplay label of the favourite.\n\n\n\n CategoryPath \n String or null \n\nThe breadcrumb trail for the category, e.g. \"Books > Children & babies > Picture books > Beatrix Potter\".\n\n\n\n CategoryName \n String or null \n\nThe name of the category.\n\n\n\n Category \n String or null \n\nThe full category identifier, e.g. \"0193-0462-0255-6659-\".\n\n\n\n CategoryId \n Integer \n\nThe category ID, e.g. 6659.\n\n\n\n Keywords \n String or null \n\nThe search query for the search.\n\n\n\n SearchType \n Enumeration \n\nThe type of saved search (motors, jobs, etc).\n\n\n\n RegionId \n Integer \n\nThe ID of the region this seach is for (doesn't apply to jobs, property or services).\n\n\n\n DistrictId \n Integer \n\nThe ID of the district this seach is for (doesn't apply to jobs, property or services).\n\n\n\n StaticMapsImage \n String or null \n\nThe Google static maps image URL belonging to the saved search",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "FavouriteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the favourite."
+      },
+      {
+        "name": "SearchApi",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.",
+        "enum": [
+          {
+            "name": "General",
+            "value": "0",
+            "description": "General search."
+          },
+          {
+            "name": "UsedMotors",
+            "value": "1",
+            "description": "Used cars."
+          },
+          {
+            "name": "MotorBoat",
+            "value": "2",
+            "description": "Motor boats."
+          },
+          {
+            "name": "MotorBike",
+            "value": "3",
+            "description": "Motor bikes."
+          },
+          {
+            "name": "Residential",
+            "value": "4",
+            "description": "Residential property for sale."
+          },
+          {
+            "name": "Rental",
+            "value": "5",
+            "description": "Residential property to rent."
+          },
+          {
+            "name": "CommercialSale",
+            "value": "6",
+            "description": "Commercial property for sale."
+          },
+          {
+            "name": "CommercialLease",
+            "value": "7",
+            "description": "Commercial property leases."
+          },
+          {
+            "name": "Rural",
+            "value": "8",
+            "description": "Rural property."
+          },
+          {
+            "name": "Lifestyle",
+            "value": "9",
+            "description": "Lifestyle blocks."
+          },
+          {
+            "name": "Flatmate",
+            "value": "10",
+            "description": "Flatmates."
+          },
+          {
+            "name": "OpenHomes",
+            "value": "11",
+            "description": "Open homes."
+          },
+          {
+            "name": "Retirement",
+            "value": "12",
+            "description": "Retirement villages."
+          },
+          {
+            "name": "Job",
+            "value": "13",
+            "description": "Jobs."
+          },
+          {
+            "name": "NewHomes",
+            "value": "14",
+            "description": "New Homes property."
+          },
+          {
+            "name": "Caravan",
+            "value": "15",
+            "description": "Motors caravan property"
+          },
+          {
+            "name": "Motorhome",
+            "value": "16",
+            "description": "Motors motorhomes property"
+          }
+        ]
+      },
+      {
+        "name": "SearchString",
+        "type": "String or null",
+        "required": false,
+        "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."
+      },
+      {
+        "name": "Attributes",
+        "type": "<SearchAttributes> or null",
+        "required": false,
+        "description": "The attributes saved in the search."
+      },
+      {
+        "name": "TotalCount",
+        "type": "TotalCount \n Integer \n\nThe total number of results in the collection. Can be larger than the number of returned results.\n\n\n\n Page \n Integer \n\nThe index of the current page of results (starts at 1).\n\n\n\n PageSize \n Integer \n\nThe number of results in the current page.\n\n\n\n List \n Collection of <SearchAttribute> or null \n\nA list of the results in the current page.\n\n\n\n\n\n\n Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n DisplayValue \n String or null \n\nThe value of the attribute as it needs to be displayed to the end users\n\n\n\n SearchParameterName \n String or null \n\nThe name of the attribute when used in a search string.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SearchAttribute> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nA name which uniquely identifies the attribute. Required when selling or editing.\n\n\n\n DisplayName \n String or null \n\nThe name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.\n\n\n\n Value \n String or null \n\nThe string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing.\n\n\n\n DisplayValue \n String or null \n\nThe value of the attribute as it needs to be displayed to the end users\n\n\n\n SearchParameterName \n String or null \n\nThe name of the attribute when used in a search string.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "A name which uniquely identifies the attribute. Required when selling or editing."
+      },
+      {
+        "name": "DisplayName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing."
+      },
+      {
+        "name": "Value",
+        "type": "String or null",
+        "required": false,
+        "description": "The string value of the attribute. When listing, the valid values for the attribute can be determined using the \"Retrieve attributes for a category\" API. Use \"false\" or \"true\" for boolean attributes. Required when selling or editing."
+      },
+      {
+        "name": "DisplayValue",
+        "type": "String or null",
+        "required": false,
+        "description": "The value of the attribute as it needs to be displayed to the end users"
+      },
+      {
+        "name": "SearchParameterName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the attribute when used in a search string."
+      },
+      {
+        "name": "EmailOptions",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates how often the email updates should be sent for this favourite.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "No emails are sent."
+          },
+          {
+            "name": "Daily",
+            "value": "1",
+            "description": "An email is sent every day."
+          },
+          {
+            "name": "Every3Days",
+            "value": "3",
+            "description": "An email is sent each third day."
+          },
+          {
+            "name": "Weekly",
+            "value": "7",
+            "description": "An email is sent every week."
+          }
+        ]
+      },
+      {
+        "name": "Option",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The favourite type. Only used when updating and deleting.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Nothing"
+          },
+          {
+            "name": "Category",
+            "value": "1",
+            "description": "Category"
+          },
+          {
+            "name": "Search",
+            "value": "3",
+            "description": "General search"
+          },
+          {
+            "name": "AttributeSearch",
+            "value": "4",
+            "description": "Attributed search"
+          },
+          {
+            "name": "Seller",
+            "value": "6",
+            "description": "Seller"
+          }
+        ]
+      },
+      {
+        "name": "LastAccessed",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date the favourite was last accessed in UTC format."
+      },
+      {
+        "name": "FavouritePushFrequency",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The push notification of the favourite, which the FavouriteId property refers to.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Push not enabled for this favourite."
+          },
+          {
+            "name": "Instant",
+            "value": "1",
+            "description": "Push is enabled for this favourite."
+          }
+        ]
+      },
+      {
+        "name": "Label",
+        "type": "String or null",
+        "required": false,
+        "description": "Display label of the favourite."
+      },
+      {
+        "name": "CategoryPath",
+        "type": "String or null",
+        "required": false,
+        "description": "The breadcrumb trail for the category, e.g. \"Books > Children & babies > Picture books > Beatrix Potter\"."
+      },
+      {
+        "name": "CategoryName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the category."
+      },
+      {
+        "name": "Category",
+        "type": "String or null",
+        "required": false,
+        "description": "The full category identifier, e.g. \"0193-0462-0255-6659-\"."
+      },
+      {
+        "name": "CategoryId",
+        "type": "Integer",
+        "required": false,
+        "description": "The category ID, e.g. 6659."
+      },
+      {
+        "name": "Keywords",
+        "type": "String or null",
+        "required": false,
+        "description": "The search query for the search."
+      },
+      {
+        "name": "SearchType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of saved search (motors, jobs, etc).",
+        "enum": [
+          {
+            "name": "All",
+            "value": "0",
+            "description": "General items."
+          },
+          {
+            "name": "General",
+            "value": "1",
+            "description": "General items."
+          },
+          {
+            "name": "Job",
+            "value": "2",
+            "description": "Jobs."
+          },
+          {
+            "name": "Motor",
+            "value": "3",
+            "description": "Motors."
+          },
+          {
+            "name": "Property",
+            "value": "4",
+            "description": "Property."
+          }
+        ]
+      },
+      {
+        "name": "RegionId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the region this seach is for (doesn't apply to jobs, property or services)."
+      },
+      {
+        "name": "DistrictId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the district this seach is for (doesn't apply to jobs, property or services)."
+      },
+      {
+        "name": "StaticMapsImage",
+        "type": "String or null",
+        "required": false,
+        "description": "The Google static maps image URL belonging to the saved search"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "FavouriteId": 123,
+          "SearchApi": 0,
+          "SearchString": "ABC",
+          "Attributes": {
+            "TotalCount": 123,
+            "Page": 123,
+            "PageSize": 123,
+            "List": [
+              {
+                "Name": "ABC",
+                "DisplayName": "ABC",
+                "Value": "ABC",
+                "DisplayValue": "ABC",
+                "SearchParameterName": "ABC"
+              },
+              {
+                "Name": "ABC",
+                "DisplayName": "ABC",
+                "Value": "ABC",
+                "DisplayValue": "ABC",
+                "SearchParameterName": "ABC"
+              }
+            ]
+          },
+          "EmailOptions": 0,
+          "Option": 0,
+          "LastAccessed": "/Date(1514764800)/",
+          "FavouritePushFrequency": 0,
+          "Label": "ABC",
+          "CategoryPath": "ABC",
+          "CategoryName": "ABC",
+          "Category": "ABC",
+          "CategoryId": 123,
+          "Keywords": "ABC",
+          "SearchType": 0,
+          "RegionId": 123,
+          "DistrictId": 123,
+          "StaticMapsImage": "ABC"
+        },
+        {
+          "FavouriteId": 123,
+          "SearchApi": 0,
+          "SearchString": "ABC",
+          "Attributes": {
+            "TotalCount": 123,
+            "Page": 123,
+            "PageSize": 123,
+            "List": [
+              {
+                "Name": "ABC",
+                "DisplayName": "ABC",
+                "Value": "ABC",
+                "DisplayValue": "ABC",
+                "SearchParameterName": "ABC"
+              },
+              {
+                "Name": "ABC",
+                "DisplayName": "ABC",
+                "Value": "ABC",
+                "DisplayValue": "ABC",
+                "SearchParameterName": "ABC"
+              }
+            ]
+          },
+          "EmailOptions": 0,
+          "Option": 0,
+          "LastAccessed": "/Date(1514764800)/",
+          "FavouritePushFrequency": 0,
+          "Label": "ABC",
+          "CategoryPath": "ABC",
+          "CategoryName": "ABC",
+          "Category": "ABC",
+          "CategoryId": 123,
+          "Keywords": "ABC",
+          "SearchType": 0,
+          "RegionId": 123,
+          "DistrictId": 123,
+          "StaticMapsImage": "ABC"
+        }
+      ]
+    }
+  }
+}

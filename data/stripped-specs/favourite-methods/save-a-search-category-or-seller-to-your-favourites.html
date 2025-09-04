@@ -1,0 +1,330 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/favourite-methods/save-a-search-category-or-seller-to-your-favourites -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Save a search, category or seller to your favourites</h1>
+<!-- Page content -->
+<p>Saves a search to the currently authenticated user's list of favourite searches. Can also be used to save a favourite category or seller with the option of specifying basic filters (condition, Buy Now, Pay Now) and sort order.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/favourites/search.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;SaveSearchRequest&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> Email </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The frequency that emails should be sent.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>No emails are sent.</p>
+</td>
+</tr>
+<tr>
+<td>Daily</td>
+<td>1</td>
+<td>
+<p>An email is sent every day.</p>
+</td>
+</tr>
+<tr>
+<td>Every3Days</td>
+<td>3</td>
+<td>
+<p>An email is sent each third day.</p>
+</td>
+</tr>
+<tr>
+<td>Weekly</td>
+<td>7</td>
+<td>
+<p>An email is sent every week.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Push </th>
+<td style="width: 22%"> Enumeration (optional) </td>
+<td>
+<p>The frequency that push notifications should be sent.</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>None</td>
+<td>0</td>
+<td>
+<p>Push not enabled for this favourite.</p>
+</td>
+</tr>
+<tr>
+<td>Instant</td>
+<td>1</td>
+<td>
+<p>Push is enabled for this favourite.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Label </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The label of the favourite should be sent.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SearchString </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>A string containing the search parameters. This should be formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by a search API (you can specify which search API using the SearchType field).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Type </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The type of search to save. The value of this field changes the allowed parameters in SearchString. For example, if this is "UsedMotors" then "make" and "model" parameters become available (see the search API documentation for details on exactly what parameters are allowed). When saving a category or seller, use "General".</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>General</td>
+<td>0</td>
+<td>
+<p>General search.</p>
+</td>
+</tr>
+<tr>
+<td>UsedMotors</td>
+<td>1</td>
+<td>
+<p>Used cars.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBoat</td>
+<td>2</td>
+<td>
+<p>Motor boats.</p>
+</td>
+</tr>
+<tr>
+<td>MotorBike</td>
+<td>3</td>
+<td>
+<p>Motor bikes.</p>
+</td>
+</tr>
+<tr>
+<td>Residential</td>
+<td>4</td>
+<td>
+<p>Residential property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>Rental</td>
+<td>5</td>
+<td>
+<p>Residential property to rent.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialSale</td>
+<td>6</td>
+<td>
+<p>Commercial property for sale.</p>
+</td>
+</tr>
+<tr>
+<td>CommercialLease</td>
+<td>7</td>
+<td>
+<p>Commercial property leases.</p>
+</td>
+</tr>
+<tr>
+<td>Rural</td>
+<td>8</td>
+<td>
+<p>Rural property.</p>
+</td>
+</tr>
+<tr>
+<td>Lifestyle</td>
+<td>9</td>
+<td>
+<p>Lifestyle blocks.</p>
+</td>
+</tr>
+<tr>
+<td>Flatmate</td>
+<td>10</td>
+<td>
+<p>Flatmates.</p>
+</td>
+</tr>
+<tr>
+<td>OpenHomes</td>
+<td>11</td>
+<td>
+<p>Open homes.</p>
+</td>
+</tr>
+<tr>
+<td>Retirement</td>
+<td>12</td>
+<td>
+<p>Retirement villages.</p>
+</td>
+</tr>
+<tr>
+<td>Job</td>
+<td>13</td>
+<td>
+<p>Jobs.</p>
+</td>
+</tr>
+<tr>
+<td>NewHomes</td>
+<td>14</td>
+<td>
+<p>New Homes property.</p>
+</td>
+</tr>
+<tr>
+<td>Caravan</td>
+<td>15</td>
+<td>
+<p>Motors caravan property</p>
+</td>
+</tr>
+<tr>
+<td>Motorhome</td>
+<td>16</td>
+<td>
+<p>Motors motorhomes property</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;SavedFavouriteResponse&gt; </p>
+<p>Details of the saved favourite, including the ID.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> SearchId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the saved favourite.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Response </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A description of the error, if the operation failed.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Saved </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the favourite was saved.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "None", "value": "0", "description": "Nothing"}, {"name": "Category", "value": "1", "description": "Category"}, {"name": "Search", "value": "3", "description": "General search"}, {"name": "AttributeSearch", "value": "4", "description": "Attributed search"}, {"name": "Seller", "value": "6", "description": "Seller"}]'>
+<th style="width: 22%"> FavouriteType </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>Indicates what type of favourite was saved.</p>
+</td>
+</tr>
+
+<tr>
+<th style="width: 22%"> Label </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>Display Label of favourite was saved.</p>
+</td>
+</tr>
+</table>
+<h2> Examples </h2>
+<p><p>Example of a saving a simple keyword search:</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;None&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;search_string=Karen%20Walker&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of a saving a simple keyword search sorted by highest number of bids:</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;None&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;search_string=Karen%20Walker&amp;amp;sort_order=BidsMost&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of a saving a motors search with price range and automatic transmission filters:</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;None&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;price_min=20000&amp;amp;price_max=30000&amp;amp;transmission=Automatic&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;UsedMotors&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of a saving a category (with a daily email):</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;Daily&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;category=4295&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of saving a category with a region filter:</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;None&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;category=4295&amp;amp;user_region=12&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of a saving a seller (with a weekly email):</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;Weekly&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;member_listing=158286&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre><p>Example of saving a seller with a Buy Now filter:</p><pre class="syntaxhighlighter">&lt;<span class="keyword">SaveSearchRequest</span> <span class="color1">xmlns</span>="<span class="string">http://api.trademe.co.nz/v1</span>"&gt;<br/>  &lt;<span class="keyword">Email</span>&gt;None&lt;/<span class="keyword">Email</span>&gt;<br/>  &lt;<span class="keyword">SearchString</span>&gt;member_listing=158286&amp;amp;buy=BuyNow&lt;/<span class="keyword">SearchString</span>&gt;<br/>  &lt;<span class="keyword">Type</span>&gt;General&lt;/<span class="keyword">Type</span>&gt;<br/>&lt;/<span class="keyword">SaveSearchRequest</span>&gt;</pre></p>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "Email": 0,
+  "Push": 0,
+  "Label": "ABC",
+  "SearchString": "ABC",
+  "Type": 0
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "SearchId": 123,
+  "Response": "ABC",
+  "Saved": false,
+  "FavouriteType": 0,
+  "Label": "ABC"
+}</code></pre>
+</div>

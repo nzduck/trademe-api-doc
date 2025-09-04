@@ -1,0 +1,145 @@
+{
+  "endpoint": "SendAnEmailToThePropertySeller",
+  "title": "Send an email to the property seller",
+  "description": "Sends an email to the seller of a property classified. If possible, the listing will be added to the authenticated member's watchlist.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/send-an-email-to-the-property-seller",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/EmailPropertySeller.{file_format}",
+  "method": "POST",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing the question is about."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": {
+    "type": "<EmailPropertyRequest>",
+    "fields": [
+      {
+        "name": "Message",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Message"
+      },
+      {
+        "name": "CopyToSelf",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "CopyToSelf"
+      },
+      {
+        "name": "PhoneNumber",
+        "type": "String (optional)",
+        "required": false,
+        "description": "PhoneNumber"
+      },
+      {
+        "name": "EmailAddress",
+        "type": "String (optional)",
+        "required": false,
+        "description": "EmailAddress"
+      },
+      {
+        "name": "FirstName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "FirstName"
+      },
+      {
+        "name": "LastName",
+        "type": "String (optional)",
+        "required": false,
+        "description": "LastName"
+      },
+      {
+        "name": "EnquiryType",
+        "type": "Enumeration (optional)",
+        "required": false,
+        "description": "EnquiryType"
+      },
+      {
+        "name": "ReferringSearchId",
+        "type": "String (optional)",
+        "required": false,
+        "description": "ReferringSearchId"
+      },
+      {
+        "name": "IsAppraisalRequested",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether an appraisal is requested alongside the enquiry"
+      },
+      {
+        "name": "PropertyFilesUnlocked",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Whether the inquiry unlocks one or more property files"
+      }
+    ]
+  },
+  "returns": {
+    "type": null,
+    "description": "<EmailResponse>",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      }
+    ]
+  },
+  "examples": {
+    "request_json": {
+      "Message": "ABC",
+      "CopyToSelf": false,
+      "PhoneNumber": "ABC",
+      "EmailAddress": "ABC",
+      "FirstName": "ABC",
+      "LastName": "ABC",
+      "EnquiryType": 0,
+      "ReferringSearchId": "ABC",
+      "IsAppraisalRequested": false,
+      "PropertyFilesUnlocked": false
+    },
+    "response_json": {
+      "Success": false,
+      "Description": "ABC"
+    }
+  }
+}

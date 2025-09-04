@@ -1,0 +1,280 @@
+{
+  "endpoint": "RetrievesAJobPackInvoiceForAMember",
+  "title": "Retrieves a Job Pack invoice for a member",
+  "description": "Retrieves a Job Pack invoice for a member",
+  "source": "https://developer.trademe.co.nz/api-reference/jobs-payment-methods/retrieves-a-job-pack-invoice-for-a-member",
+  "url": "https://api.trademe.co.nz/v1/Jobs/Payments/Invoices/JobPacks/{invoiceId}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "invoiceId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "Invoice Id to return"
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<JobPackInvoiceDetail> A JobPackInvoiceDetail",
+    "fields": [
+      {
+        "name": "InvoiceId",
+        "type": "Integer",
+        "required": false,
+        "description": "Invoice Id"
+      },
+      {
+        "name": "InvoiceDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "Date of the invoice"
+      },
+      {
+        "name": "CompanyName",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the company"
+      },
+      {
+        "name": "PurchaseOrderNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "A Purchase Order (PO) Number"
+      },
+      {
+        "name": "InvoiceDetails",
+        "type": "<InvoiceDetails> or null",
+        "required": false,
+        "description": "Details of the purchase"
+      },
+      {
+        "name": "AddOns",
+        "type": "AddOns \n Collection of <AddOn> or null \n\nAdd-ons purchased\n\n\n\n\n\n\n Name \n String or null \n\nThe name of the add-on\n\n\n\n Quantity \n Integer or null \n\nThe number of add-ons\n\n\n\n Price \n Number or null \n\nThe price of an add-on\n\n\n\n TotalPrice \n Number or null \n\nThe total price of all of the add-ons\n\n\n\n\n\n\n PackSize \n Integer \n\nThe number of listings in the job pack being purchased\n\n\n\n PackTotalPrice \n Number \n\nThe base price of the job pack before any discounts are applied\n\n\n\n PackDiscount \n Number \n\nThe discount on the pack after the discount code is applied. Between 0.0 and 1.0.\n\n\n\n PackTotalPriceAfterDiscount \n Number \n\nThe price of the job pack after pack discount is applied\n\n\n\n SubTotal \n Number \n\nThe combined price of the add-ons and the job pack (after discount is applied)\n\n\n\n ResellerDiscount \n Number \n\nThe reseller discount to apply to the sub total. Between 0.0 and 1.0.\n\n\n\n TotalPriceAfterResellerDiscount \n Number \n\nThe total price after the reseller discount is applied to the sub total\n\n\n\n TotalPriceExcludingGst \n Number \n\nThe final total price excluding GST\n\n\n\n TotalPriceIncludingGst \n Number \n\nThe final total price including GST",
+        "required": false,
+        "description": "Collection of <AddOn> or null"
+      },
+      {
+        "name": "AddOns",
+        "type": "Collection of <AddOn> or null",
+        "required": false,
+        "description": "Add-ons purchased"
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the add-on\n\n\n\n Quantity \n Integer or null \n\nThe number of add-ons\n\n\n\n Price \n Number or null \n\nThe price of an add-on\n\n\n\n TotalPrice \n Number or null \n\nThe total price of all of the add-ons",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the add-on"
+      },
+      {
+        "name": "Quantity",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The number of add-ons"
+      },
+      {
+        "name": "Price",
+        "type": "Number or null",
+        "required": false,
+        "description": "The price of an add-on"
+      },
+      {
+        "name": "TotalPrice",
+        "type": "Number or null",
+        "required": false,
+        "description": "The total price of all of the add-ons"
+      },
+      {
+        "name": "PackSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of listings in the job pack being purchased"
+      },
+      {
+        "name": "PackTotalPrice",
+        "type": "Number",
+        "required": false,
+        "description": "The base price of the job pack before any discounts are applied"
+      },
+      {
+        "name": "PackDiscount",
+        "type": "Number",
+        "required": false,
+        "description": "The discount on the pack after the discount code is applied. Between 0.0 and 1.0."
+      },
+      {
+        "name": "PackTotalPriceAfterDiscount",
+        "type": "Number",
+        "required": false,
+        "description": "The price of the job pack after pack discount is applied"
+      },
+      {
+        "name": "SubTotal",
+        "type": "Number",
+        "required": false,
+        "description": "The combined price of the add-ons and the job pack (after discount is applied)"
+      },
+      {
+        "name": "ResellerDiscount",
+        "type": "Number",
+        "required": false,
+        "description": "The reseller discount to apply to the sub total. Between 0.0 and 1.0."
+      },
+      {
+        "name": "TotalPriceAfterResellerDiscount",
+        "type": "Number",
+        "required": false,
+        "description": "The total price after the reseller discount is applied to the sub total"
+      },
+      {
+        "name": "TotalPriceExcludingGst",
+        "type": "Number",
+        "required": false,
+        "description": "The final total price excluding GST"
+      },
+      {
+        "name": "TotalPriceIncludingGst",
+        "type": "Number",
+        "required": false,
+        "description": "The final total price including GST"
+      },
+      {
+        "name": "ContactDetails",
+        "type": "<AccountPayableContact> or null",
+        "required": false,
+        "description": "Details of the account payable contact for invoicing purposes"
+      },
+      {
+        "name": "ContactName",
+        "type": "ContactName \n String or null \n\nRequired name of the contact\n\n\n\n PrimaryEmail \n String or null \n\nRequired primary email address on the contact\n\n\n\n SecondaryEmail \n String or null \n\nSecondary email address of the contact\n\n\n\n Address1 \n String or null \n\nLine one of the postal address\n\n\n\n Address2 \n String or null \n\nLine two of the postal address\n\n\n\n Suburb \n String or null \n\nThe suburb of the address\n\n\n\n City \n String or null \n\nThe city of the address\n\n\n\n Postcode \n String or null \n\nThe postcode of the address",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "ContactName",
+        "type": "String or null",
+        "required": false,
+        "description": "Required name of the contact"
+      },
+      {
+        "name": "PrimaryEmail",
+        "type": "String or null",
+        "required": false,
+        "description": "Required primary email address on the contact"
+      },
+      {
+        "name": "SecondaryEmail",
+        "type": "String or null",
+        "required": false,
+        "description": "Secondary email address of the contact"
+      },
+      {
+        "name": "Address1",
+        "type": "String or null",
+        "required": false,
+        "description": "Line one of the postal address"
+      },
+      {
+        "name": "Address2",
+        "type": "String or null",
+        "required": false,
+        "description": "Line two of the postal address"
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The suburb of the address"
+      },
+      {
+        "name": "City",
+        "type": "String or null",
+        "required": false,
+        "description": "The city of the address"
+      },
+      {
+        "name": "Postcode",
+        "type": "String or null",
+        "required": false,
+        "description": "The postcode of the address"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "InvoiceId": 123,
+      "InvoiceDate": "/Date(1514764800)/",
+      "CompanyName": "ABC",
+      "PurchaseOrderNumber": "ABC",
+      "InvoiceDetails": {
+        "AddOns": [
+          {
+            "Name": "ABC",
+            "Quantity": 123,
+            "Price": 123.0,
+            "TotalPrice": 123.0
+          },
+          {
+            "Name": "ABC",
+            "Quantity": 123,
+            "Price": 123.0,
+            "TotalPrice": 123.0
+          }
+        ],
+        "PackSize": 123,
+        "PackTotalPrice": 123.0,
+        "PackDiscount": 123.0,
+        "PackTotalPriceAfterDiscount": 123.0,
+        "SubTotal": 123.0,
+        "ResellerDiscount": 123.0,
+        "TotalPriceAfterResellerDiscount": 123.0,
+        "TotalPriceExcludingGst": 123.0,
+        "TotalPriceIncludingGst": 123.0
+      },
+      "ContactDetails": {
+        "ContactName": "ABC",
+        "PrimaryEmail": "ABC",
+        "SecondaryEmail": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC"
+      }
+    }
+  }
+}

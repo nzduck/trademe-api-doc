@@ -1,0 +1,487 @@
+{
+  "endpoint": "RetrieveYourFavouriteSearchesWithDetails",
+  "title": "Retrieve your favourite searches with details",
+  "description": "<VersionedSavedSearchListViewModel>",
+  "source": "https://developer.trademe.co.nz/api-reference/favourite-methods/retrieve-your-favourite-searches-with-details",
+  "url": "https://api.trademe.co.nz/v1/favourites/searches-detail/{filter}.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "filter",
+        "type": "String (required)",
+        "required": true,
+        "description": ""
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<VersionedSavedSearchListViewModel>",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of items available across all pages."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The current page number."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items per page."
+      },
+      {
+        "name": "Version",
+        "type": "String or null",
+        "required": false,
+        "description": "The version of the view model."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SavedSearchCard> or null",
+        "required": false,
+        "description": "The list of saved search cards for the current page.",
+        "nested_fields": [
+          {
+            "field_name": "favouriteId",
+            "field_type": "Integer",
+            "description": "The ID of the favourite."
+          },
+          {
+            "field_name": "searchApi",
+            "field_type": "Enumeration",
+            "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.",
+            "enum_values": [
+              {
+                "name": "General",
+                "value": "0",
+                "description": "General search."
+              },
+              {
+                "name": "UsedMotors",
+                "value": "1",
+                "description": "Used cars."
+              },
+              {
+                "name": "MotorBoat",
+                "value": "2",
+                "description": "Motor boats."
+              },
+              {
+                "name": "MotorBike",
+                "value": "3",
+                "description": "Motor bikes."
+              },
+              {
+                "name": "Residential",
+                "value": "4",
+                "description": "Residential property for sale."
+              },
+              {
+                "name": "Rental",
+                "value": "5",
+                "description": "Residential property to rent."
+              },
+              {
+                "name": "CommercialSale",
+                "value": "6",
+                "description": "Commercial property for sale."
+              },
+              {
+                "name": "CommercialLease",
+                "value": "7",
+                "description": "Commercial property leases."
+              },
+              {
+                "name": "Rural",
+                "value": "8",
+                "description": "Rural property."
+              },
+              {
+                "name": "Lifestyle",
+                "value": "9",
+                "description": "Lifestyle blocks."
+              },
+              {
+                "name": "Flatmate",
+                "value": "10",
+                "description": "Flatmates."
+              },
+              {
+                "name": "OpenHomes",
+                "value": "11",
+                "description": "Open homes."
+              },
+              {
+                "name": "Retirement",
+                "value": "12",
+                "description": "Retirement villages."
+              },
+              {
+                "name": "Job",
+                "value": "13",
+                "description": "Jobs."
+              },
+              {
+                "name": "NewHomes",
+                "value": "14",
+                "description": "New Homes property."
+              },
+              {
+                "name": "Caravan",
+                "value": "15",
+                "description": "Motors caravan property"
+              },
+              {
+                "name": "Motorhome",
+                "value": "16",
+                "description": "Motors motorhomes property"
+              }
+            ]
+          },
+          {
+            "field_name": "searchString",
+            "field_type": "String or null",
+            "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."
+          },
+          {
+            "field_name": "emailOptions",
+            "field_type": "Enumeration",
+            "description": "Indicates how often the email updates should be sent for this favourite.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "No emails are sent."
+              },
+              {
+                "name": "Daily",
+                "value": "1",
+                "description": "An email is sent every day."
+              },
+              {
+                "name": "Every3Days",
+                "value": "3",
+                "description": "An email is sent each third day."
+              },
+              {
+                "name": "Weekly",
+                "value": "7",
+                "description": "An email is sent every week."
+              }
+            ]
+          },
+          {
+            "field_name": "option",
+            "field_type": "Enumeration",
+            "description": "The favourite type. Only used when updating and deleting.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "Nothing"
+              },
+              {
+                "name": "Category",
+                "value": "1",
+                "description": "Category"
+              },
+              {
+                "name": "Search",
+                "value": "3",
+                "description": "General search"
+              },
+              {
+                "name": "AttributeSearch",
+                "value": "4",
+                "description": "Attributed search"
+              },
+              {
+                "name": "Seller",
+                "value": "6",
+                "description": "Seller"
+              }
+            ]
+          },
+          {
+            "field_name": "favouritePushFrequency",
+            "field_type": "Enumeration",
+            "description": "The push notification of the favourite, which theFavouriteIdproperty refers to.",
+            "enum_values": [
+              {
+                "name": "None",
+                "value": "0",
+                "description": "Push not enabled for this favourite."
+              },
+              {
+                "name": "Instant",
+                "value": "1",
+                "description": "Push is enabled for this favourite."
+              }
+            ]
+          },
+          {
+            "field_name": "lastAccessed",
+            "field_type": "DateTime or null",
+            "description": "The date the favourite was last accessed in UTC format."
+          },
+          {
+            "field_name": "searchName",
+            "field_type": "String or null",
+            "description": "The custom name the user has given to the saved search."
+          },
+          {
+            "field_name": "title",
+            "field_type": "String or null",
+            "description": "The primary title to display for the saved search card."
+          },
+          {
+            "field_name": "subTitle",
+            "field_type": "String or null",
+            "description": "The secondary text or subtitle to display for the saved search card."
+          },
+          {
+            "field_name": "imageUrls",
+            "field_type": "Collection of String",
+            "description": "A URL for a representative images to display on the card. This could be a single image or a static map image."
+          },
+          {
+            "field_name": "hasNewSearches",
+            "field_type": "Boolean",
+            "description": "A flag indicating if there are new results for this search since it was last viewed."
+          },
+          {
+            "field_name": "newSearchText",
+            "field_type": "String or null",
+            "description": "The display text for the new results label (e.g., \"15 new\")."
+          },
+          {
+            "field_name": "newSearchesSearchString",
+            "field_type": "String or null",
+            "description": "An optional search string to view only the new items. Null if there are no new items."
+          }
+        ]
+      },
+      {
+        "name": "SavedSearchListViewModel",
+        "type": "<SavedSearchListViewModel>",
+        "required": false,
+        "description": ""
+      },
+      {
+        "name": "Usage",
+        "type": "Format for JSON { \"__type\"=\"SavedSearchListViewModel:http://api.trademe.co.nz/v1\" } \n                                Format for XML < i:type=\"SavedSearchListViewModel\">",
+        "required": false,
+        "description": null
+      },
+      {
+        "name": "TotalCount",
+        "type": "TotalCount \n Integer \n\nThe total number of items available across all pages.\n\n\n\n Page \n Integer \n\nThe current page number.\n\n\n\n PageSize \n Integer \n\nThe number of items per page.\n\n\n\n Version \n String or null \n\nThe version of the view model.\n\n\n\n List \n Collection of <SavedSearchCard> or null \n\nThe list of saved search cards for the current page.\n\n\n\n\n\n\n favouriteId \n Integer \n\nThe ID of the favourite.\n\n\n\n searchApi \n Enumeration \n\nThe search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.\n\n\n\n\n\n\n\nGeneral\n0\n\nGeneral search.\n\n\n\nUsedMotors\n1\n\nUsed cars.\n\n\n\nMotorBoat\n2\n\nMotor boats.\n\n\n\nMotorBike\n3\n\nMotor bikes.\n\n\n\nResidential\n4\n\nResidential property for sale.\n\n\n\nRental\n5\n\nResidential property to rent.\n\n\n\nCommercialSale\n6\n\nCommercial property for sale.\n\n\n\nCommercialLease\n7\n\nCommercial property leases.\n\n\n\nRural\n8\n\nRural property.\n\n\n\nLifestyle\n9\n\nLifestyle blocks.\n\n\n\nFlatmate\n10\n\nFlatmates.\n\n\n\nOpenHomes\n11\n\nOpen homes.\n\n\n\nRetirement\n12\n\nRetirement villages.\n\n\n\nJob\n13\n\nJobs.\n\n\n\nNewHomes\n14\n\nNew Homes property.\n\n\n\nCaravan\n15\n\nMotors caravan property\n\n\n\nMotorhome\n16\n\nMotors motorhomes property\n\n\n\n\n\n\n searchString \n String or null \n\nA string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.\n\n\n\n emailOptions \n Enumeration \n\nIndicates how often the email updates should be sent for this favourite.\n\n\n\n\n\n\n\nNone\n0\n\nNo emails are sent.\n\n\n\nDaily\n1\n\nAn email is sent every day.\n\n\n\nEvery3Days\n3\n\nAn email is sent each third day.\n\n\n\nWeekly\n7\n\nAn email is sent every week.\n\n\n\n\n\n\n option \n Enumeration \n\nThe favourite type. Only used when updating and deleting.\n\n\n\n\n\n\n\nNone\n0\n\nNothing\n\n\n\nCategory\n1\n\nCategory\n\n\n\nSearch\n3\n\nGeneral search\n\n\n\nAttributeSearch\n4\n\nAttributed search\n\n\n\nSeller\n6\n\nSeller\n\n\n\n\n\n\n favouritePushFrequency \n Enumeration \n\nThe push notification of the favourite, which the FavouriteId property refers to.\n\n\n\n\n\n\n\nNone\n0\n\nPush not enabled for this favourite.\n\n\n\nInstant\n1\n\nPush is enabled for this favourite.\n\n\n\n\n\n\n lastAccessed \n DateTime or null \n\nThe date the favourite was last accessed in UTC format.\n\n\n\n searchName \n String or null \n\nThe custom name the user has given to the saved search.\n\n\n\n title \n String or null \n\nThe primary title to display for the saved search card.\n\n\n\n subTitle \n String or null \n\nThe secondary text or subtitle to display for the saved search card.\n\n\n\n imageUrls \n Collection of String \n\nA URL for a representative images to display on the card. This could be a single image or a static map image.\n\n\n\n hasNewSearches \n Boolean \n\nA flag indicating if there are new results for this search since it was last viewed.\n\n\n\n newSearchText \n String or null \n\nThe display text for the new results label (e.g., \"15 new\").\n\n\n\n newSearchesSearchString \n String or null \n\nAn optional search string to view only the new items. Null if there are no new items.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of items available across all pages."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The current page number."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items per page."
+      },
+      {
+        "name": "Version",
+        "type": "String or null",
+        "required": false,
+        "description": "The version of the view model."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <SavedSearchCard> or null",
+        "required": false,
+        "description": "The list of saved search cards for the current page."
+      },
+      {
+        "name": "favouriteId",
+        "type": "favouriteId \n Integer \n\nThe ID of the favourite.\n\n\n\n searchApi \n Enumeration \n\nThe search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc.\n\n\n\n\n\n\n\nGeneral\n0\n\nGeneral search.\n\n\n\nUsedMotors\n1\n\nUsed cars.\n\n\n\nMotorBoat\n2\n\nMotor boats.\n\n\n\nMotorBike\n3\n\nMotor bikes.\n\n\n\nResidential\n4\n\nResidential property for sale.\n\n\n\nRental\n5\n\nResidential property to rent.\n\n\n\nCommercialSale\n6\n\nCommercial property for sale.\n\n\n\nCommercialLease\n7\n\nCommercial property leases.\n\n\n\nRural\n8\n\nRural property.\n\n\n\nLifestyle\n9\n\nLifestyle blocks.\n\n\n\nFlatmate\n10\n\nFlatmates.\n\n\n\nOpenHomes\n11\n\nOpen homes.\n\n\n\nRetirement\n12\n\nRetirement villages.\n\n\n\nJob\n13\n\nJobs.\n\n\n\nNewHomes\n14\n\nNew Homes property.\n\n\n\nCaravan\n15\n\nMotors caravan property\n\n\n\nMotorhome\n16\n\nMotors motorhomes property\n\n\n\n\n\n\n searchString \n String or null \n\nA string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs.\n\n\n\n emailOptions \n Enumeration \n\nIndicates how often the email updates should be sent for this favourite.\n\n\n\n\n\n\n\nNone\n0\n\nNo emails are sent.\n\n\n\nDaily\n1\n\nAn email is sent every day.\n\n\n\nEvery3Days\n3\n\nAn email is sent each third day.\n\n\n\nWeekly\n7\n\nAn email is sent every week.\n\n\n\n\n\n\n option \n Enumeration \n\nThe favourite type. Only used when updating and deleting.\n\n\n\n\n\n\n\nNone\n0\n\nNothing\n\n\n\nCategory\n1\n\nCategory\n\n\n\nSearch\n3\n\nGeneral search\n\n\n\nAttributeSearch\n4\n\nAttributed search\n\n\n\nSeller\n6\n\nSeller\n\n\n\n\n\n\n favouritePushFrequency \n Enumeration \n\nThe push notification of the favourite, which the FavouriteId property refers to.\n\n\n\n\n\n\n\nNone\n0\n\nPush not enabled for this favourite.\n\n\n\nInstant\n1\n\nPush is enabled for this favourite.\n\n\n\n\n\n\n lastAccessed \n DateTime or null \n\nThe date the favourite was last accessed in UTC format.\n\n\n\n searchName \n String or null \n\nThe custom name the user has given to the saved search.\n\n\n\n title \n String or null \n\nThe primary title to display for the saved search card.\n\n\n\n subTitle \n String or null \n\nThe secondary text or subtitle to display for the saved search card.\n\n\n\n imageUrls \n Collection of String \n\nA URL for a representative images to display on the card. This could be a single image or a static map image.\n\n\n\n hasNewSearches \n Boolean \n\nA flag indicating if there are new results for this search since it was last viewed.\n\n\n\n newSearchText \n String or null \n\nThe display text for the new results label (e.g., \"15 new\").\n\n\n\n newSearchesSearchString \n String or null \n\nAn optional search string to view only the new items. Null if there are no new items.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "favouriteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the favourite."
+      },
+      {
+        "name": "searchApi",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The search API endpoint that should be used in conjunction with the SearchString property to build up a search URL. Examples include \"General\", \"Motors/Used\", etc."
+      },
+      {
+        "name": "searchString",
+        "type": "String or null",
+        "required": false,
+        "description": "A string containing the search parameters. This is formatted like a HTTP query string (but without a leading question mark) and can include any of the parameters accepted by the search APIs."
+      },
+      {
+        "name": "emailOptions",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates how often the email updates should be sent for this favourite."
+      },
+      {
+        "name": "option",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The favourite type. Only used when updating and deleting."
+      },
+      {
+        "name": "favouritePushFrequency",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The push notification of the favourite, which the FavouriteId property refers to."
+      },
+      {
+        "name": "lastAccessed",
+        "type": "DateTime or null",
+        "required": false,
+        "description": "The date the favourite was last accessed in UTC format."
+      },
+      {
+        "name": "searchName",
+        "type": "String or null",
+        "required": false,
+        "description": "The custom name the user has given to the saved search."
+      },
+      {
+        "name": "title",
+        "type": "String or null",
+        "required": false,
+        "description": "The primary title to display for the saved search card."
+      },
+      {
+        "name": "subTitle",
+        "type": "String or null",
+        "required": false,
+        "description": "The secondary text or subtitle to display for the saved search card."
+      },
+      {
+        "name": "imageUrls",
+        "type": "Collection of String",
+        "required": false,
+        "description": "A URL for a representative images to display on the card. This could be a single image or a static map image."
+      },
+      {
+        "name": "hasNewSearches",
+        "type": "Boolean",
+        "required": false,
+        "description": "A flag indicating if there are new results for this search since it was last viewed."
+      },
+      {
+        "name": "newSearchText",
+        "type": "String or null",
+        "required": false,
+        "description": "The display text for the new results label (e.g., \"15 new\")."
+      },
+      {
+        "name": "newSearchesSearchString",
+        "type": "String or null",
+        "required": false,
+        "description": "An optional search string to view only the new items. Null if there are no new items."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "Version": "ABC",
+      "List": [
+        {
+          "favouriteId": 123,
+          "searchApi": 0,
+          "searchString": "ABC",
+          "emailOptions": 0,
+          "option": 0,
+          "favouritePushFrequency": 0,
+          "lastAccessed": "/Date(1514764800)/",
+          "searchName": "ABC",
+          "title": "ABC",
+          "subTitle": "ABC",
+          "imageUrls": [
+            "ABC",
+            "ABC"
+          ],
+          "hasNewSearches": false,
+          "newSearchText": "ABC",
+          "newSearchesSearchString": "ABC"
+        },
+        {
+          "favouriteId": 123,
+          "searchApi": 0,
+          "searchString": "ABC",
+          "emailOptions": 0,
+          "option": 0,
+          "favouritePushFrequency": 0,
+          "lastAccessed": "/Date(1514764800)/",
+          "searchName": "ABC",
+          "title": "ABC",
+          "subTitle": "ABC",
+          "imageUrls": [
+            "ABC",
+            "ABC"
+          ],
+          "hasNewSearches": false,
+          "newSearchText": "ABC",
+          "newSearchesSearchString": "ABC"
+        }
+      ]
+    }
+  }
+}

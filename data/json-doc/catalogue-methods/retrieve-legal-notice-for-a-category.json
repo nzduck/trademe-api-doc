@@ -1,0 +1,62 @@
+{
+  "endpoint": "RetrieveLegalNoticeForACategory",
+  "title": "Retrieve legal notice for a category",
+  "description": "Retrieves the legal notice that the user is required to agree to before listing. Most categories do not require that the user agree to a legal notice - these categories will return an empty string.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-legal-notice-for-a-category",
+  "url": "https://api.trademe.co.nz/v1/categories/{category}/legalNotice.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "category",
+        "type": "String (required)",
+        "required": true,
+        "description": "The number of the category to retrieve the legal notice for. This must be a leaf category (for example, you cannot view the legal notice for Business, Farming & Industry, but you can for Business, Farming & Industry > Carbon credits)."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<LegalNotice>",
+    "fields": [
+      {
+        "name": "Text",
+        "type": "String or null",
+        "required": false,
+        "description": "The text which can be used to display a legal notice"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Text": "ABC"
+    }
+  }
+}

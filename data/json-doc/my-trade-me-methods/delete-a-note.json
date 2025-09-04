@@ -1,0 +1,95 @@
+{
+  "endpoint": "DeleteANote",
+  "title": "Delete a note",
+  "description": "Removes the note from a listing.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/delete-a-note",
+  "url": "https://api.trademe.co.nz/v1/MyTradeMe/Notes/{listingId}/{noteId}/{offerId}.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing the note is associated with."
+      },
+      {
+        "name": "noteId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the note."
+      },
+      {
+        "name": "offerId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the offer the note is associated with. Should be 0 if the note is not associated with a fixed price offer."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<NoteResponse> Whether the operation was successful and the note details.",
+    "fields": [
+      {
+        "name": "Success",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the operation was successful."
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "The description of the error, if the operation failed."
+      },
+      {
+        "name": "NoteId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the note."
+      },
+      {
+        "name": "OfferId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the fixed price offer, or 0 if the note is not associated with a fixed price offer."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Success": false,
+      "Description": "ABC",
+      "NoteId": 123,
+      "OfferId": 123
+    }
+  }
+}

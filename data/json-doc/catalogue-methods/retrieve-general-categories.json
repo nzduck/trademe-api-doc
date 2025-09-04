@@ -1,0 +1,198 @@
+{
+  "endpoint": "RetrieveGeneralCategories",
+  "title": "Retrieve general categories",
+  "description": "Retrieves all or part of the Trade Me category tree.",
+  "source": "https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-general-categories",
+  "url": "https://api.trademe.co.nz/v1/categories/{number}.{file_format}",
+  "method": "GET",
+  "authentication_required": false,
+  "permission_required": "Public",
+  "rate_limited": false,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "number",
+        "type": "String (required)",
+        "required": true,
+        "description": "The category number of the root of the returned tree. If this parameter is empty, it returns a fictional category named \"Root\" with all the top categories included as subcategories."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "depth",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The depth of the category tree to return. 0 = a single category. 1 = the specified category plus any subcategories. The default is to return all subcategories."
+      },
+      {
+        "name": "region",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The ID of the region used to filter listing counts. Only applicable if with_counts is true."
+      },
+      {
+        "name": "with_counts",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "Indicates whether to include the number of listings in each category. Defaults to false."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<Category> A category tree.",
+    "fields": [
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the category."
+      },
+      {
+        "name": "Number",
+        "type": "String or null",
+        "required": false,
+        "description": "A unique identifier for the category e.g. \"0004-0369-6076-\". We plan to change this to a numeric identifier (e.g. \"6076\") so you should ensure you can cope with both formats."
+      },
+      {
+        "name": "Path",
+        "type": "String or null",
+        "required": false,
+        "description": "The full URL path of this category e.g. \"/Home-living/Beds-bedroom-furniture/Bedside-tables\"."
+      },
+      {
+        "name": "Subcategories",
+        "type": "Collection of <Category> or null",
+        "required": false,
+        "description": "The list of subcategories belonging to this category."
+      },
+      {
+        "name": "Count",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items for sale in this category."
+      },
+      {
+        "name": "IsRestricted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the category is restricted to adults only (i.e. the category is R18)."
+      },
+      {
+        "name": "HasLegalNotice",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the category has legal requirements. You should ask the user to accept the legal notice before listing in this category. There is an API to get the text of the legal notice."
+      },
+      {
+        "name": "HasClassifieds",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether classifieds are allowed in this category."
+      },
+      {
+        "name": "AreaOfBusiness",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Area of business this category is related to",
+        "enum": [
+          {
+            "name": "NotSpecified",
+            "value": "0",
+            "description": "None specified."
+          },
+          {
+            "name": "All",
+            "value": "0",
+            "description": "All"
+          },
+          {
+            "name": "Marketplace",
+            "value": "1",
+            "description": "Marketplace"
+          },
+          {
+            "name": "Property",
+            "value": "2",
+            "description": "Property"
+          },
+          {
+            "name": "Motors",
+            "value": "3",
+            "description": "Motors"
+          },
+          {
+            "name": "Jobs",
+            "value": "4",
+            "description": "Jobs"
+          },
+          {
+            "name": "Services",
+            "value": "5",
+            "description": "Services"
+          }
+        ]
+      },
+      {
+        "name": "CanHaveSecondCategory",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category can be paired with a second category."
+      },
+      {
+        "name": "CanBeSecondCategory",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this category can be selected as a second category."
+      },
+      {
+        "name": "IsLeaf",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the category is a leaf category (i.e. has no children)."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Name": "ABC",
+      "Number": "ABC",
+      "Path": "ABC",
+      "Subcategories": [
+        {},
+        {}
+      ],
+      "Count": 123,
+      "IsRestricted": false,
+      "HasLegalNotice": false,
+      "HasClassifieds": false,
+      "AreaOfBusiness": 0,
+      "CanHaveSecondCategory": false,
+      "CanBeSecondCategory": false,
+      "IsLeaf": false
+    }
+  }
+}

@@ -1,0 +1,227 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/job-position-methods/tracking-the-listing-process -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Tracking the listing process</h1>
+<!-- Page content -->
+<p>Tracking the listing process</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Jobs/Positions/Track.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> POST </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeWrite: Maintain your watchlist, answer questions and post comments. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> POST Data </h2>
+<p> &lt;JobsListingProcessTrackingBody&gt; </p>
+<table class="dense">
+<tr>
+<th style="width: 22%"> DraftId </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>GUID for the listing process draft</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingStep </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>The listing step</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>Unknown</p>
+</td>
+</tr>
+<tr>
+<td>Basics</td>
+<td>1</td>
+<td>
+<p>listing step in the basic page</p>
+</td>
+</tr>
+<tr>
+<td>Details</td>
+<td>2</td>
+<td>
+<p>listing step in details page</p>
+</td>
+</tr>
+<tr>
+<td>Branding</td>
+<td>3</td>
+<td>
+<p>listing step in branding page</p>
+</td>
+</tr>
+<tr>
+<td>Confirm</td>
+<td>4</td>
+<td>
+<p>listing step in the comfirm page</p>
+</td>
+</tr>
+<tr>
+<td>Completed</td>
+<td>5</td>
+<td>
+<p>listing process completed</p>
+</td>
+</tr>
+<tr>
+<td>Questions</td>
+<td>6</td>
+<td>
+<p>listing process completed</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> EventType </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+<p>type of event</p>
+</td>
+</tr>
+<tr>
+<td></td>
+<td colspan="2">
+<table class="enum-values">
+<tr>
+<td>Unknown</td>
+<td>0</td>
+<td>
+<p>listing step unknown</p>
+</td>
+</tr>
+<tr>
+<td>ListingStepViewed</td>
+<td>1</td>
+<td>
+<p>listing step viewed</p>
+</td>
+</tr>
+<tr>
+<td>ListingStepCompleted</td>
+<td>2</td>
+<td>
+<p>listing step completed</p>
+</td>
+</tr>
+<tr>
+<td>ListingStepCreated</td>
+<td>3</td>
+<td>
+<p>listing step created</p>
+</td>
+</tr>
+<tr>
+<td>CategorySelected</td>
+<td>4</td>
+<td>
+<p>Category selected in basics page</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Category </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The category id if present</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UtmMedium </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Medium UTM parameter if present</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UtmSource </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Source UTM parameter if present</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UtmCampaign </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>Campaign UTM parameter if present</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;ListingTrackingProcessResponse&gt; </p>
+<p>Information about the update of the position</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> Success </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the operation was successful.</p>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Request  </h2>
+<pre><code class="language-json">{
+  "DraftId": "ABC",
+  "ListingStep": 0,
+  "EventType": 0,
+  "Category": 123,
+  "UtmMedium": "ABC",
+  "UtmSource": "ABC",
+  "UtmCampaign": "ABC"
+}</code></pre>
+</div>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "Success": false
+}</code></pre>
+</div>

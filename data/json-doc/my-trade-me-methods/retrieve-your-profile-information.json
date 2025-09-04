@@ -1,0 +1,1183 @@
+{
+  "endpoint": "RetrieveYourProfileInformation",
+  "title": "Retrieve your profile information",
+  "description": "Retrieves full statistics and profile information for the authenticated user.",
+  "source": "https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieve-your-profile-information",
+  "url": "https://api.trademe.co.nz/v1/mytrademe/summary.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "return_member_profile",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "If true, also returns the member's public profile information (occupation, bio, photo, etc)."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<MemberSummary> The user's name, email address, bought, sold and feedback stats.",
+    "fields": [
+      {
+        "name": "WatchListCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items on the watchlist."
+      },
+      {
+        "name": "WonCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items won."
+      },
+      {
+        "name": "LostCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items lost."
+      },
+      {
+        "name": "SellingCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items being sold."
+      },
+      {
+        "name": "SoldCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items sold."
+      },
+      {
+        "name": "UnsoldCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items unsold."
+      },
+      {
+        "name": "PositiveFeedback",
+        "type": "Integer",
+        "required": false,
+        "description": "The total positive feedback."
+      },
+      {
+        "name": "NegativeFeedback",
+        "type": "Integer",
+        "required": false,
+        "description": "The total negative feedback."
+      },
+      {
+        "name": "TotalFeedback",
+        "type": "Integer",
+        "required": false,
+        "description": "The total feedback (positive - negative)."
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's nickname."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member registered for an account on Trade Me."
+      },
+      {
+        "name": "DateAddressVerified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the member became address verified, if they are address verified."
+      },
+      {
+        "name": "IsAddressVerified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is address verified. This means the member entered a code that was delivered via the postal system to the member's street address. Note that currently, members retain their address verified status if they move, so having this status doesn't necessarily mean that the member's current address is valid."
+      },
+      {
+        "name": "Balance",
+        "type": "Number",
+        "required": false,
+        "description": "The member's Trade Me account balance."
+      },
+      {
+        "name": "PayNowBalance",
+        "type": "Number",
+        "required": false,
+        "description": "The member's Pay Now account balance."
+      },
+      {
+        "name": "FirstName",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's first name."
+      },
+      {
+        "name": "LastName",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's last name."
+      },
+      {
+        "name": "FixedPriceOffers",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of fixed price offers for the member."
+      },
+      {
+        "name": "Email",
+        "type": "String or null",
+        "required": false,
+        "description": "The email address for the member."
+      },
+      {
+        "name": "Gender",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The gender of the member.",
+        "enum": [
+          {
+            "name": "Unspecified",
+            "value": "0",
+            "description": "The gender is not specified."
+          },
+          {
+            "name": "Male",
+            "value": "1",
+            "description": "The member is male."
+          },
+          {
+            "name": "Female",
+            "value": "2",
+            "description": "The member is female."
+          },
+          {
+            "name": "DiverseGender",
+            "value": "3",
+            "description": "The member is gender diverse."
+          }
+        ]
+      },
+      {
+        "name": "MembershipAddress",
+        "type": "<DeliveryAddress> or null",
+        "required": false,
+        "description": "The member's primary address."
+      },
+      {
+        "name": "Name",
+        "type": "Name \n String or null \n\nThe name of the person whom the item is being delivered to.\n\n\n\n Address1 \n String or null \n\nThe first line of the address.\n\n\n\n Address2 \n String or null \n\nThe second line of the address (optional).\n\n\n\n Suburb \n String or null \n\nThe suburb (optional).\n\n\n\n City \n String or null \n\nThe city.\n\n\n\n Postcode \n String or null \n\nThe postcode (optional).\n\n\n\n Country \n String or null \n\nThe country (currently restricted to \"New Zealand\" or \"Australia\").\n\n\n\n IsMembershipAddress \n Boolean \n\nIndicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the person whom the item is being delivered to."
+      },
+      {
+        "name": "Address1",
+        "type": "String or null",
+        "required": false,
+        "description": "The first line of the address."
+      },
+      {
+        "name": "Address2",
+        "type": "String or null",
+        "required": false,
+        "description": "The second line of the address (optional)."
+      },
+      {
+        "name": "Suburb",
+        "type": "String or null",
+        "required": false,
+        "description": "The suburb (optional)."
+      },
+      {
+        "name": "City",
+        "type": "String or null",
+        "required": false,
+        "description": "The city."
+      },
+      {
+        "name": "Postcode",
+        "type": "String or null",
+        "required": false,
+        "description": "The postcode (optional)."
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country (currently restricted to \"New Zealand\" or \"Australia\")."
+      },
+      {
+        "name": "IsMembershipAddress",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether this address is a membership address. This type of address is comprised of address details that are supplied when registering an account. Do not supply this value when adding or updating a delivery address."
+      },
+      {
+        "name": "IsBusiness",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has registered as a business."
+      },
+      {
+        "name": "BusinessName",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's business name (business memberships only)."
+      },
+      {
+        "name": "BillingAddress",
+        "type": "<DeliveryAddress> or null",
+        "required": false,
+        "description": "The member's billing address (business memberships only). This is optional even for business memberships. If it doesn't exist, assume the billing address is the same as the delivery address."
+      },
+      {
+        "name": "ClosestLocality",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the closest locality to the member. Based on the \"Closest town\" information supplied by the member when creating their account."
+      },
+      {
+        "name": "ClosestDistrict",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the closest district to the member. Based on the \"Closest town\" information supplied by the member when creating their account."
+      },
+      {
+        "name": "ClosestDistrictId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the closest district to the member. Based on the \"Closest town\" information supplied by the member when creating their account."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is authenticated."
+      },
+      {
+        "name": "IsPayNowAccepted",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member can accept Pay Now payments."
+      },
+      {
+        "name": "FavouriteSearchCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of saved searches in the member's favourites."
+      },
+      {
+        "name": "FavouriteCategoryCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of saved categories in the member's favourites."
+      },
+      {
+        "name": "FavouriteSellerCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of saved sellers in the member's favourites."
+      },
+      {
+        "name": "AutoBillingEnabled",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has set up auto-billing."
+      },
+      {
+        "name": "CanListClearanceItems",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member can list clearance items using the IsClearance flag. This is currently only for certain elite sellers."
+      },
+      {
+        "name": "IsTopSeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is currently a registered top seller."
+      },
+      {
+        "name": "IsRegisteredWineSeller",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is currently a registered wine seller. This will be false if the member has not registered, or if the registration has been disabled, or if the off-license has expired, or if the member cannot accept Pay Now payments."
+      },
+      {
+        "name": "IsPropertyAgent",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is registered as a property agent."
+      },
+      {
+        "name": "IsRentalAgent",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is registered as a rental agent."
+      },
+      {
+        "name": "IsJobAgent",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is registered as a job agent."
+      },
+      {
+        "name": "CreditCardType",
+        "type": "String or null",
+        "required": false,
+        "description": "If the user has a saved credit card that they can use, contains the card type (\"Visa\", \"MasterCard\", etc). Will be omitted if the user does not have a saved card."
+      },
+      {
+        "name": "CreditCardLastFourDigits",
+        "type": "String or null",
+        "required": false,
+        "description": "If the user has a saved credit card, contains the last four digits of the card number (e.g. \"1234\"). Will be omitted if the user does not have a saved card."
+      },
+      {
+        "name": "CreditCardExpiryMonth",
+        "type": "Integer",
+        "required": false,
+        "description": "If the user has a saved credit card, contains the month when it expires (1 = January, 12 = December)."
+      },
+      {
+        "name": "CreditCardExpiryYear",
+        "type": "Integer",
+        "required": false,
+        "description": "If the user has a saved credit card, contains the year when it expires."
+      },
+      {
+        "name": "RecentSearchesEnabled",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether recent searches are recorded against the user's profile."
+      },
+      {
+        "name": "HighVolumeListingCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of active listings the member has which contribute towards the high volume threshold. Generally speaking, auctions contribute towards the high volume threshold while classifieds do not. Some categories are exempt; listings within those categories do not count towards the threshold either."
+      },
+      {
+        "name": "HighVolumeThreshold",
+        "type": "Integer",
+        "required": false,
+        "description": "The user's high volume listing allowance. This is the number of active listings you can have without incurring a high volume listing fee (this fee is charged for each new listing). All classifieds and auctions in some categories are exempt from high volume listing fees."
+      },
+      {
+        "name": "CanRemoveBids",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member can remove bids using the remove bid API.\n\n                                This field will always return true."
+      },
+      {
+        "name": "ShoppingCartCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of items in the members cart."
+      },
+      {
+        "name": "IsInTrade",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a professional trader. If they are a professional trader then their listings are protected by the Consumer Guarantees Act."
+      },
+      {
+        "name": "MemberProfile",
+        "type": "<SimpleMemberProfile> or null",
+        "required": false,
+        "description": "This member's public profile information."
+      },
+      {
+        "name": "Occupation",
+        "type": "Occupation \n String or null \n\nThe occupation of the member.\n\n\n\n Biography \n String or null \n\nThe member's bio.\n\n\n\n Quote \n String or null \n\nThe member's favourite quote.\n\n\n\n Photo \n String or null \n\nA URL representing the member's photo.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Occupation",
+        "type": "String or null",
+        "required": false,
+        "description": "The occupation of the member."
+      },
+      {
+        "name": "Biography",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's bio."
+      },
+      {
+        "name": "Quote",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's favourite quote."
+      },
+      {
+        "name": "Photo",
+        "type": "String or null",
+        "required": false,
+        "description": "A URL representing the member's photo."
+      },
+      {
+        "name": "ExternalTrackingToken",
+        "type": "String or null",
+        "required": false,
+        "description": "An external tracking token used to uniquely identify a member without exposing member information."
+      },
+      {
+        "name": "LandlinePhoneNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's landline phone number."
+      },
+      {
+        "name": "MobilePhoneNumber",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's mobile phone number."
+      },
+      {
+        "name": "MemberToken",
+        "type": "String or null",
+        "required": false,
+        "description": "The members token"
+      },
+      {
+        "name": "TradevineAccountType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The member's Tradevine account type (Tradevine, MyProducts or neither)",
+        "enum": [
+          {
+            "name": "NotRegistered",
+            "value": "0",
+            "description": "Not registered with a Tradevine account"
+          },
+          {
+            "name": "TradevineLite",
+            "value": "1",
+            "description": "Tradevine Lite account"
+          },
+          {
+            "name": "Tradevine",
+            "value": "2",
+            "description": "Full Tradevine account"
+          },
+          {
+            "name": "NewGoodsFeed",
+            "value": "3",
+            "description": "NGF account"
+          },
+          {
+            "name": "TradeRunner",
+            "value": "4",
+            "description": "TradeRunner account"
+          }
+        ]
+      },
+      {
+        "name": "DraftSummary",
+        "type": "<DraftSummary> or null",
+        "required": false,
+        "description": "The number of items lost."
+      },
+      {
+        "name": "DraftCount",
+        "type": "DraftCount \n Integer \n\ncurrent number of drafts\n\n\n\n DraftLimit \n Integer \n\nthe maximum limit of drafts allowed for each member",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "DraftCount",
+        "type": "Integer",
+        "required": false,
+        "description": "current number of drafts"
+      },
+      {
+        "name": "DraftLimit",
+        "type": "Integer",
+        "required": false,
+        "description": "the maximum limit of drafts allowed for each member"
+      },
+      {
+        "name": "JobProfiles",
+        "type": "Collection of <JobProfileSummary> or null",
+        "required": false,
+        "description": "The member's job profiles"
+      },
+      {
+        "name": "ProfileId",
+        "type": "ProfileId \n Integer \n\nThe id of the profile\n\n\n\n Key \n String or null \n\nA key to identify the profile",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ProfileId",
+        "type": "Integer",
+        "required": false,
+        "description": "The id of the profile"
+      },
+      {
+        "name": "Key",
+        "type": "String or null",
+        "required": false,
+        "description": "A key to identify the profile"
+      },
+      {
+        "name": "AvailableExternalPaymentProviders",
+        "type": "Collection of Enumeration or null",
+        "required": false,
+        "description": "List of deferred payments the member can use"
+      },
+      {
+        "name": "MemberTokens",
+        "type": "Collection of <MemberToken> or null",
+        "required": false,
+        "description": "The collection of member tokens a member has for external services"
+      },
+      {
+        "name": "Service",
+        "type": "Service \n Enumeration \n\nThe service the token is for.\n\n\n\n Token \n Guid \n\nThe token used for the service to uniquely identify the member.",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Service",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The service the token is for.",
+        "enum": [
+          {
+            "name": "None",
+            "value": "0",
+            "description": "Do not use."
+          },
+          {
+            "name": "Sentry",
+            "value": "1",
+            "description": "The token is for use with the sentry.io service."
+          },
+          {
+            "name": "GoogleAnalytics",
+            "value": "2",
+            "description": "The token is for use with GA (Google Analytics)"
+          },
+          {
+            "name": "ExternalSearch",
+            "value": "3",
+            "description": "The token is for use with external search"
+          },
+          {
+            "name": "ListingCollections",
+            "value": "4",
+            "description": "The token is for use with the listing collections service"
+          },
+          {
+            "name": "InternalServices",
+            "value": "6",
+            "description": "The token is for use with Trade Me internal services."
+          }
+        ]
+      },
+      {
+        "name": "Token",
+        "type": "Guid",
+        "required": false,
+        "description": "The token used for the service to uniquely identify the member."
+      },
+      {
+        "name": "LoyaltySubscriptionDetails",
+        "type": "<MemberLoyaltySubscriptionDetails> or null",
+        "required": false,
+        "description": "The member's loyalty subscription details."
+      },
+      {
+        "name": "IsMemberEligibleForNewSubscription",
+        "type": "IsMemberEligibleForNewSubscription \n Boolean \n\nIndicates whether the member is eligible for a new loyalty subscription\n\n\n\n Subscription \n <LoyaltySubscriptionDetail> or null \n\nReturn the current member subscription\n\n\n\n\n\n\n Id \n Integer \n\nSubscription Id\n\n\n\n Status \n Enumeration \n\nStatus of the subscription\n\n\n\n SubscribedAt \n DateTime \n\nWhen the subscription was purchased\n\n\n\n ExpiresAt \n DateTime \n\nWhen the subscription expires\n\n\n\n Product \n <LoyaltyProductDetail> or null \n\nProduct details for the current subscription\n\n\n\n\n\n\n Id \n Integer \n\nProduct ID\n\n                                This field is deprecated.\n                            \n\n\n\n Price \n Number \n\nProduct price per PaymentInterval unit\n\n                                This field is deprecated.\n                            \n\n\n\n PaymentInterval \n <LoyaltyPaymentIntervalDetail> or null \n\nString representation of the subscription period\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Description \n String or null \n\nDescription of the payment interval in a friendly format\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalType \n Enumeration \n\nThe type of payment interval\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalsPerPayment \n Integer \n\nThe number of payment intervals between payments\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Benefits \n Collection of <LoyaltyBenefitDetail> or null \n\nBenefits provided by this product.\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Type \n Enumeration \n\nType of benefit\n\n                                This field is deprecated.\n                            \n\n\n\n SubsidyLimit \n Number \n\nThe maximum shipping subsidy given by this benefit\n\n                                This field is deprecated.\n                            \n\n\n\n IsUnlimited \n Boolean or null \n\nIndicates whether the free success fee benefit is unlimited\n\n                                This field is deprecated.\n                            \n\n\n\n Quota \n Integer or null \n\nThe total number of free success fee sales benefits available\n\n                                This field is deprecated.\n                            \n\n\n\n QuotaRemaining \n Integer or null \n\nThe remaining number of free success fee sales benefits available\n\n                                This field is deprecated.",
+        "required": false,
+        "description": "Boolean"
+      },
+      {
+        "name": "IsMemberEligibleForNewSubscription",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is eligible for a new loyalty subscription"
+      },
+      {
+        "name": "Subscription",
+        "type": "<LoyaltySubscriptionDetail> or null",
+        "required": false,
+        "description": "Return the current member subscription"
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nSubscription Id\n\n\n\n Status \n Enumeration \n\nStatus of the subscription\n\n\n\n SubscribedAt \n DateTime \n\nWhen the subscription was purchased\n\n\n\n ExpiresAt \n DateTime \n\nWhen the subscription expires\n\n\n\n Product \n <LoyaltyProductDetail> or null \n\nProduct details for the current subscription\n\n\n\n\n\n\n Id \n Integer \n\nProduct ID\n\n                                This field is deprecated.\n                            \n\n\n\n Price \n Number \n\nProduct price per PaymentInterval unit\n\n                                This field is deprecated.\n                            \n\n\n\n PaymentInterval \n <LoyaltyPaymentIntervalDetail> or null \n\nString representation of the subscription period\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Description \n String or null \n\nDescription of the payment interval in a friendly format\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalType \n Enumeration \n\nThe type of payment interval\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalsPerPayment \n Integer \n\nThe number of payment intervals between payments\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Benefits \n Collection of <LoyaltyBenefitDetail> or null \n\nBenefits provided by this product.\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Type \n Enumeration \n\nType of benefit\n\n                                This field is deprecated.\n                            \n\n\n\n SubsidyLimit \n Number \n\nThe maximum shipping subsidy given by this benefit\n\n                                This field is deprecated.\n                            \n\n\n\n IsUnlimited \n Boolean or null \n\nIndicates whether the free success fee benefit is unlimited\n\n                                This field is deprecated.\n                            \n\n\n\n Quota \n Integer or null \n\nThe total number of free success fee sales benefits available\n\n                                This field is deprecated.\n                            \n\n\n\n QuotaRemaining \n Integer or null \n\nThe remaining number of free success fee sales benefits available\n\n                                This field is deprecated.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "Subscription Id"
+      },
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Status of the subscription",
+        "enum": [
+          {
+            "name": "NotSubscribed",
+            "value": "0",
+            "description": "Member not subscribed"
+          },
+          {
+            "name": "Active",
+            "value": "1",
+            "description": "Subscription is active"
+          },
+          {
+            "name": "Expired",
+            "value": "2",
+            "description": "Subscription is expired"
+          }
+        ]
+      },
+      {
+        "name": "SubscribedAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "When the subscription was purchased"
+      },
+      {
+        "name": "ExpiresAt",
+        "type": "DateTime",
+        "required": false,
+        "description": "When the subscription expires"
+      },
+      {
+        "name": "Product",
+        "type": "<LoyaltyProductDetail> or null",
+        "required": false,
+        "description": "Product details for the current subscription"
+      },
+      {
+        "name": "Id",
+        "type": "Id \n Integer \n\nProduct ID\n\n                                This field is deprecated.\n                            \n\n\n\n Price \n Number \n\nProduct price per PaymentInterval unit\n\n                                This field is deprecated.\n                            \n\n\n\n PaymentInterval \n <LoyaltyPaymentIntervalDetail> or null \n\nString representation of the subscription period\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Description \n String or null \n\nDescription of the payment interval in a friendly format\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalType \n Enumeration \n\nThe type of payment interval\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalsPerPayment \n Integer \n\nThe number of payment intervals between payments\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Benefits \n Collection of <LoyaltyBenefitDetail> or null \n\nBenefits provided by this product.\n\n                                This field is deprecated.\n                            \n\n\n\n\n\n\n Type \n Enumeration \n\nType of benefit\n\n                                This field is deprecated.\n                            \n\n\n\n SubsidyLimit \n Number \n\nThe maximum shipping subsidy given by this benefit\n\n                                This field is deprecated.\n                            \n\n\n\n IsUnlimited \n Boolean or null \n\nIndicates whether the free success fee benefit is unlimited\n\n                                This field is deprecated.\n                            \n\n\n\n Quota \n Integer or null \n\nThe total number of free success fee sales benefits available\n\n                                This field is deprecated.\n                            \n\n\n\n QuotaRemaining \n Integer or null \n\nThe remaining number of free success fee sales benefits available\n\n                                This field is deprecated.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "Id",
+        "type": "Integer",
+        "required": false,
+        "description": "Product ID\n\n                                This field is deprecated."
+      },
+      {
+        "name": "Price",
+        "type": "Number",
+        "required": false,
+        "description": "Product price per PaymentInterval unit\n\n                                This field is deprecated."
+      },
+      {
+        "name": "PaymentInterval",
+        "type": "<LoyaltyPaymentIntervalDetail> or null",
+        "required": false,
+        "description": "String representation of the subscription period\n\n                                This field is deprecated."
+      },
+      {
+        "name": "Description",
+        "type": "Description \n String or null \n\nDescription of the payment interval in a friendly format\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalType \n Enumeration \n\nThe type of payment interval\n\n                                This field is deprecated.\n                            \n\n\n\n IntervalsPerPayment \n Integer \n\nThe number of payment intervals between payments\n\n                                This field is deprecated.",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "Description of the payment interval in a friendly format\n\n                                This field is deprecated."
+      },
+      {
+        "name": "IntervalType",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of payment interval\n\n                                This field is deprecated.",
+        "enum": [
+          {
+            "name": "Once",
+            "value": "0",
+            "description": "One time only"
+          },
+          {
+            "name": "Week",
+            "value": "1",
+            "description": "Weekly"
+          },
+          {
+            "name": "Month",
+            "value": "2",
+            "description": "Monthly"
+          }
+        ]
+      },
+      {
+        "name": "IntervalsPerPayment",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of payment intervals between payments\n\n                                This field is deprecated."
+      },
+      {
+        "name": "Benefits",
+        "type": "Collection of <LoyaltyBenefitDetail> or null",
+        "required": false,
+        "description": "Benefits provided by this product.\n\n                                This field is deprecated."
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nType of benefit\n\n                                This field is deprecated.\n                            \n\n\n\n SubsidyLimit \n Number \n\nThe maximum shipping subsidy given by this benefit\n\n                                This field is deprecated.\n                            \n\n\n\n IsUnlimited \n Boolean or null \n\nIndicates whether the free success fee benefit is unlimited\n\n                                This field is deprecated.\n                            \n\n\n\n Quota \n Integer or null \n\nThe total number of free success fee sales benefits available\n\n                                This field is deprecated.\n                            \n\n\n\n QuotaRemaining \n Integer or null \n\nThe remaining number of free success fee sales benefits available\n\n                                This field is deprecated.",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Type of benefit\n\n                                This field is deprecated.",
+        "enum": [
+          {
+            "name": "Unknown",
+            "value": "0",
+            "description": "Unknown"
+          },
+          {
+            "name": "FreeShipping",
+            "value": "1",
+            "description": "Free shipping on eligible items"
+          },
+          {
+            "name": "FreeSuccessFee",
+            "value": "2",
+            "description": "Free success fee"
+          }
+        ]
+      },
+      {
+        "name": "SubsidyLimit",
+        "type": "Number",
+        "required": false,
+        "description": "The maximum shipping subsidy given by this benefit\n\n                                This field is deprecated."
+      },
+      {
+        "name": "IsUnlimited",
+        "type": "Boolean or null",
+        "required": false,
+        "description": "Indicates whether the free success fee benefit is unlimited\n\n                                This field is deprecated."
+      },
+      {
+        "name": "Quota",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The total number of free success fee sales benefits available\n\n                                This field is deprecated."
+      },
+      {
+        "name": "QuotaRemaining",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The remaining number of free success fee sales benefits available\n\n                                This field is deprecated."
+      },
+      {
+        "name": "TaxLiabilities",
+        "type": "Collection of <TaxRate> or null",
+        "required": false,
+        "description": "The taxes that Trade Me will collect automatically on behalf of this member when they sell on Trade Me"
+      },
+      {
+        "name": "Type",
+        "type": "Type \n Enumeration \n\nThe type of tax that is included\n\n\n\n Country \n String or null \n\nThe country that is levying the tax e.g. NZ\n\n\n\n Name \n String or null \n\nThe name of the tax e.g. GST\n\n\n\n FlatRate \n Number \n\nThe rate at which the tax is charged (as a decimal e.g 0.15)\n\n\n\n Description \n String or null \n\nA string that can be used as a caption where necessary\n\n\n\n IsSellRestrictionsEffective \n Boolean \n\nWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted\n\n\n\n IsTaxEffective \n Boolean \n\nWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GST",
+        "required": false,
+        "description": "Enumeration"
+      },
+      {
+        "name": "Type",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The type of tax that is included",
+        "enum": [
+          {
+            "name": "NZ_GST_Overseas_Supplies",
+            "value": "1",
+            "description": "New Zealand GST on overseas supplies"
+          }
+        ]
+      },
+      {
+        "name": "Country",
+        "type": "String or null",
+        "required": false,
+        "description": "The country that is levying the tax e.g. NZ"
+      },
+      {
+        "name": "Name",
+        "type": "String or null",
+        "required": false,
+        "description": "The name of the tax e.g. GST"
+      },
+      {
+        "name": "FlatRate",
+        "type": "Number",
+        "required": false,
+        "description": "The rate at which the tax is charged (as a decimal e.g 0.15)"
+      },
+      {
+        "name": "Description",
+        "type": "String or null",
+        "required": false,
+        "description": "A string that can be used as a caption where necessary"
+      },
+      {
+        "name": "IsSellRestrictionsEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted"
+      },
+      {
+        "name": "IsTaxEffective",
+        "type": "Boolean",
+        "required": false,
+        "description": "Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST"
+      },
+      {
+        "name": "Location",
+        "type": "<MapPoint> or null",
+        "required": false,
+        "description": "Longitude and Latitude of member's location. For now it's based on the \"Closest town\" information supplied by the member when creating their account."
+      },
+      {
+        "name": "Latitude",
+        "type": "Latitude \n Number \n\nLatitude of the map point\n\n\n\n Longitude \n Number \n\nLongitude of the map point",
+        "required": false,
+        "description": "Number"
+      },
+      {
+        "name": "Latitude",
+        "type": "Number",
+        "required": false,
+        "description": "Latitude of the map point"
+      },
+      {
+        "name": "Longitude",
+        "type": "Number",
+        "required": false,
+        "description": "Longitude of the map point"
+      },
+      {
+        "name": "PayNowStatus",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the member's pay now account.",
+        "enum": [
+          {
+            "name": "Unknown",
+            "value": "0",
+            "description": "Status Unknown"
+          },
+          {
+            "name": "NotRegistered",
+            "value": "1",
+            "description": "Not Registered"
+          },
+          {
+            "name": "PendingFirstActivation",
+            "value": "2",
+            "description": "Pending First Activation"
+          },
+          {
+            "name": "ActivePendingReplacementActivation",
+            "value": "3",
+            "description": "Active Pending Replacement Activation"
+          },
+          {
+            "name": "Active",
+            "value": "4",
+            "description": "Active"
+          },
+          {
+            "name": "Suspended",
+            "value": "5",
+            "description": "Suspended"
+          },
+          {
+            "name": "Bounced",
+            "value": "6",
+            "description": "Bounced"
+          },
+          {
+            "name": "BouncedPendingReplacementActivation",
+            "value": "7",
+            "description": "Bounced Pending Replacement Activation"
+          }
+        ]
+      },
+      {
+        "name": "SegmentUserId",
+        "type": "String or null",
+        "required": false,
+        "description": "The member's Segment user ID."
+      },
+      {
+        "name": "IsBasic",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates the member has only registered with a small portion of information"
+      },
+      {
+        "name": "CddCaseSummary",
+        "type": "<CddCaseSummary> or null",
+        "required": false,
+        "description": "Member's AML - CDD case summary details"
+      },
+      {
+        "name": "DisplayStatus",
+        "type": "DisplayStatus \n String or null \n\nStatus of the CDD case\n\n\n\n Url \n String or null \n\nVerification URL for a member\n\n\n\n LastUpdated \n DateTime \n\nCDD status last updated",
+        "required": false,
+        "description": "String or null"
+      },
+      {
+        "name": "DisplayStatus",
+        "type": "String or null",
+        "required": false,
+        "description": "Status of the CDD case"
+      },
+      {
+        "name": "Url",
+        "type": "String or null",
+        "required": false,
+        "description": "Verification URL for a member"
+      },
+      {
+        "name": "LastUpdated",
+        "type": "DateTime",
+        "required": false,
+        "description": "CDD status last updated"
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "WatchListCount": 123,
+      "WonCount": 123,
+      "LostCount": 123,
+      "SellingCount": 123,
+      "SoldCount": 123,
+      "UnsoldCount": 123,
+      "PositiveFeedback": 123,
+      "NegativeFeedback": 123,
+      "TotalFeedback": 123,
+      "MemberId": 123,
+      "Nickname": "ABC",
+      "DateJoined": "/Date(1514764800)/",
+      "DateAddressVerified": "/Date(1514764800)/",
+      "IsAddressVerified": false,
+      "Balance": 123.0,
+      "PayNowBalance": 123.0,
+      "FirstName": "ABC",
+      "LastName": "ABC",
+      "FixedPriceOffers": 123,
+      "Email": "ABC",
+      "Gender": 0,
+      "MembershipAddress": {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC",
+        "IsMembershipAddress": false
+      },
+      "IsBusiness": false,
+      "BusinessName": "ABC",
+      "BillingAddress": {
+        "Name": "ABC",
+        "Address1": "ABC",
+        "Address2": "ABC",
+        "Suburb": "ABC",
+        "City": "ABC",
+        "Postcode": "ABC",
+        "Country": "ABC"
+      },
+      "ClosestLocality": "ABC",
+      "ClosestDistrict": "ABC",
+      "ClosestDistrictId": 123,
+      "IsAuthenticated": false,
+      "IsPayNowAccepted": false,
+      "FavouriteSearchCount": 123,
+      "FavouriteCategoryCount": 123,
+      "FavouriteSellerCount": 123,
+      "AutoBillingEnabled": false,
+      "CanListClearanceItems": false,
+      "IsTopSeller": false,
+      "IsRegisteredWineSeller": false,
+      "IsPropertyAgent": false,
+      "IsRentalAgent": false,
+      "IsJobAgent": false,
+      "CreditCardType": "ABC",
+      "CreditCardLastFourDigits": "ABC",
+      "CreditCardExpiryMonth": 123,
+      "CreditCardExpiryYear": 123,
+      "RecentSearchesEnabled": false,
+      "HighVolumeListingCount": 123,
+      "HighVolumeThreshold": 123,
+      "CanRemoveBids": false,
+      "ShoppingCartCount": 123,
+      "IsInTrade": false,
+      "MemberProfile": {
+        "Occupation": "ABC",
+        "Biography": "ABC",
+        "Quote": "ABC",
+        "Photo": "ABC"
+      },
+      "ExternalTrackingToken": "ABC",
+      "LandlinePhoneNumber": "ABC",
+      "MobilePhoneNumber": "ABC",
+      "MemberToken": "ABC",
+      "TradevineAccountType": 0,
+      "DraftSummary": {
+        "DraftCount": 123,
+        "DraftLimit": 123
+      },
+      "JobProfiles": [
+        {
+          "ProfileId": 123,
+          "Key": "ABC"
+        },
+        {
+          "ProfileId": 123,
+          "Key": "ABC"
+        }
+      ],
+      "AvailableExternalPaymentProviders": [
+        1,
+        1
+      ],
+      "MemberTokens": [
+        {
+          "Service": 0,
+          "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+        },
+        {
+          "Service": 0,
+          "Token": "ABCDEF12-0123-4567-ABBA-01234567ABCD"
+        }
+      ],
+      "LoyaltySubscriptionDetails": {
+        "IsMemberEligibleForNewSubscription": false,
+        "Subscription": {
+          "Id": 123,
+          "Status": 0,
+          "SubscribedAt": "/Date(1514764800)/",
+          "ExpiresAt": "/Date(1514764800)/",
+          "Product": {
+            "Id": 123,
+            "Price": 123.0,
+            "PaymentInterval": {
+              "Description": "ABC",
+              "IntervalType": 0,
+              "IntervalsPerPayment": 123
+            },
+            "Benefits": [
+              {
+                "Type": 0,
+                "SubsidyLimit": 123.0,
+                "IsUnlimited": false,
+                "Quota": 123,
+                "QuotaRemaining": 123
+              },
+              {
+                "Type": 0,
+                "SubsidyLimit": 123.0,
+                "IsUnlimited": false,
+                "Quota": 123,
+                "QuotaRemaining": 123
+              }
+            ]
+          }
+        }
+      },
+      "TaxLiabilities": [
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        },
+        {
+          "Type": 1,
+          "Country": "ABC",
+          "Name": "ABC",
+          "FlatRate": 123.0,
+          "Description": "ABC",
+          "IsSellRestrictionsEffective": false,
+          "IsTaxEffective": false
+        }
+      ],
+      "Location": {
+        "Latitude": 123.0,
+        "Longitude": 123.0
+      },
+      "PayNowStatus": 0,
+      "SegmentUserId": "ABC",
+      "IsBasic": false,
+      "CddCaseSummary": {
+        "DisplayStatus": "ABC",
+        "Url": "ABC",
+        "LastUpdated": "/Date(1514764800)/"
+      }
+    }
+  }
+}

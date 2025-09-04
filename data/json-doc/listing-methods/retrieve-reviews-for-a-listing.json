@@ -1,0 +1,251 @@
+{
+  "endpoint": "RetrieveReviewsForAListing",
+  "title": "Retrieve reviews for a listing",
+  "description": "Retrieves reviews for a listing. Currently only applicable to services listings.",
+  "source": "https://developer.trademe.co.nz/api-reference/listing-methods/retrieve-reviews-for-a-listing",
+  "url": "https://api.trademe.co.nz/v1/listings/{listingId}/reviews.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": null,
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "listingId",
+        "type": "Integer (required)",
+        "required": true,
+        "description": "The ID of the listing to retrieve reviews for."
+      },
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "page",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The page number of the set of results to return, starting from 1. Defaults to 1."
+      },
+      {
+        "name": "rows",
+        "type": "Integer (optional)",
+        "required": false,
+        "description": "The number of results per page; also the maximum number of results to return. Defaults to 20."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<ListingReviewCollection> Information on whether the operation was successful.",
+    "fields": [
+      {
+        "name": "TotalCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The total number of results in the collection. Can be larger than the number of returned results."
+      },
+      {
+        "name": "Page",
+        "type": "Integer",
+        "required": false,
+        "description": "The index of the current page of results (starts at 1)."
+      },
+      {
+        "name": "PageSize",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of results in the current page."
+      },
+      {
+        "name": "List",
+        "type": "Collection of <ListingReview> or null",
+        "required": false,
+        "description": "A list of the results in the current page."
+      },
+      {
+        "name": "ReviewId",
+        "type": "ReviewId \n Integer \n\nThe ID of the review.\n\n\n\n Date \n DateTime \n\nThe date and time the review was added or updated.\n\n\n\n Positive \n Boolean \n\nIndicates whether the review is a positive review (i.e. thumbs up).\n\n\n\n ReviewText \n String or null \n\nThe review text.\n\n\n\n Member \n <Member> or null \n\nThe member that posted the review.\n\n\n\n\n\n\n MemberId \n Integer \n\nThe ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n DateAddressVerified \n DateTime \n\nThe date the member was address verified.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n UniqueNegative \n Integer \n\nThe number of distinct members who have placed negative feedback against this member.\n\n\n\n UniquePositive \n Integer \n\nThe number of distinct members who have placed positive feedback against this member.\n\n\n\n FeedbackCount \n Integer \n\nThe member's total feedback (UniquePositive minus UniqueNegative).\n\n\n\n IsAddressVerified \n Boolean \n\nIndicates whether the member has been address verified.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the member is a car dealer.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member is authenticated.\n\n\n\n\n\n\n Response \n String or null \n\nA response from the listing owner (optional).\n\n\n\n ResponseDate \n DateTime \n\nIf the listing owner posted a response, contains the date and time it was posted.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "ReviewId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the review."
+      },
+      {
+        "name": "Date",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date and time the review was added or updated."
+      },
+      {
+        "name": "Positive",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the review is a positive review (i.e. thumbs up)."
+      },
+      {
+        "name": "ReviewText",
+        "type": "String or null",
+        "required": false,
+        "description": "The review text."
+      },
+      {
+        "name": "Member",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "The member that posted the review."
+      },
+      {
+        "name": "MemberId",
+        "type": "MemberId \n Integer \n\nThe ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy.\n\n\n\n Nickname \n String or null \n\nThe nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.\n\n\n\n DateAddressVerified \n DateTime \n\nThe date the member was address verified.\n\n\n\n DateJoined \n DateTime \n\nThe date the member joined.\n\n\n\n UniqueNegative \n Integer \n\nThe number of distinct members who have placed negative feedback against this member.\n\n\n\n UniquePositive \n Integer \n\nThe number of distinct members who have placed positive feedback against this member.\n\n\n\n FeedbackCount \n Integer \n\nThe member's total feedback (UniquePositive minus UniqueNegative).\n\n\n\n IsAddressVerified \n Boolean \n\nIndicates whether the member has been address verified.\n\n\n\n IsDealer \n Boolean \n\nIndicates whether the member is a car dealer.\n\n\n\n IsAuthenticated \n Boolean \n\nIndicates whether the member is authenticated.",
+        "required": false,
+        "description": "Integer"
+      },
+      {
+        "name": "MemberId",
+        "type": "Integer",
+        "required": false,
+        "description": "The ID of the member. This may be 0, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "Nickname",
+        "type": "String or null",
+        "required": false,
+        "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+      },
+      {
+        "name": "DateAddressVerified",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member was address verified."
+      },
+      {
+        "name": "DateJoined",
+        "type": "DateTime",
+        "required": false,
+        "description": "The date the member joined."
+      },
+      {
+        "name": "UniqueNegative",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed negative feedback against this member."
+      },
+      {
+        "name": "UniquePositive",
+        "type": "Integer",
+        "required": false,
+        "description": "The number of distinct members who have placed positive feedback against this member."
+      },
+      {
+        "name": "FeedbackCount",
+        "type": "Integer",
+        "required": false,
+        "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+      },
+      {
+        "name": "IsAddressVerified",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member has been address verified."
+      },
+      {
+        "name": "IsDealer",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is a car dealer."
+      },
+      {
+        "name": "IsAuthenticated",
+        "type": "Boolean",
+        "required": false,
+        "description": "Indicates whether the member is authenticated."
+      },
+      {
+        "name": "Response",
+        "type": "String or null",
+        "required": false,
+        "description": "A response from the listing owner (optional)."
+      },
+      {
+        "name": "ResponseDate",
+        "type": "DateTime",
+        "required": false,
+        "description": "If the listing owner posted a response, contains the date and time it was posted."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "TotalCount": 123,
+      "Page": 123,
+      "PageSize": 123,
+      "List": [
+        {
+          "ReviewId": 123,
+          "Date": "/Date(1514764800)/",
+          "Positive": false,
+          "ReviewText": "ABC",
+          "Member": {
+            "MemberId": 123,
+            "Nickname": "ABC",
+            "DateAddressVerified": "/Date(1514764800)/",
+            "DateJoined": "/Date(1514764800)/",
+            "UniqueNegative": 123,
+            "UniquePositive": 123,
+            "FeedbackCount": 123,
+            "IsAddressVerified": false,
+            "IsDealer": false,
+            "IsAuthenticated": false
+          },
+          "Response": "ABC",
+          "ResponseDate": "/Date(1514764800)/"
+        },
+        {
+          "ReviewId": 123,
+          "Date": "/Date(1514764800)/",
+          "Positive": false,
+          "ReviewText": "ABC",
+          "Member": {
+            "MemberId": 123,
+            "Nickname": "ABC",
+            "DateAddressVerified": "/Date(1514764800)/",
+            "DateJoined": "/Date(1514764800)/",
+            "UniqueNegative": 123,
+            "UniquePositive": 123,
+            "FeedbackCount": 123,
+            "IsAddressVerified": false,
+            "IsDealer": false,
+            "IsAuthenticated": false
+          },
+          "Response": "ABC",
+          "ResponseDate": "/Date(1514764800)/"
+        }
+      ]
+    }
+  }
+}

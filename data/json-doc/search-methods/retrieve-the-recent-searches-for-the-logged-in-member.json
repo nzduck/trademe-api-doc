@@ -1,0 +1,461 @@
+{
+  "endpoint": "RetrieveTheRecentSearchesForTheLoggedInMember",
+  "title": "Retrieve the recent searches for the logged in member",
+  "description": "Retrieve the recent searches for the logged in member.",
+  "source": "https://developer.trademe.co.nz/api-reference/search-methods/retrieve-the-recent-searches-for-the-logged-in-member",
+  "url": "https://api.trademe.co.nz/v1/Search/RecentSearches.{file_format}",
+  "method": "GET",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeRead: Read your membership & listing data.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": [
+      {
+        "name": "category_ids",
+        "type": "String (optional)",
+        "required": false,
+        "description": "Comma separated list of category Ids. Default value is null and all recent searches will be returned."
+      },
+      {
+        "name": "return_favourite_id",
+        "type": "Boolean (optional)",
+        "required": false,
+        "description": "true to populate the FavouriteId field. The default is false."
+      }
+    ]
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "Collection of <RecentSearch> A list of recent searches performed by the member.",
+    "fields": [
+      {
+        "name": "Id",
+        "type": "String or null",
+        "required": false,
+        "description": "A unique ID for the search. Used to identify the search when deleting."
+      },
+      {
+        "name": "SearchApi",
+        "type": "Enumeration",
+        "required": false,
+        "description": "Indicates which search API should be used to run the search.",
+        "enum": [
+          {
+            "name": "General",
+            "value": "0",
+            "description": "General search."
+          },
+          {
+            "name": "UsedMotors",
+            "value": "1",
+            "description": "Used cars."
+          },
+          {
+            "name": "MotorBoat",
+            "value": "2",
+            "description": "Motor boats."
+          },
+          {
+            "name": "MotorBike",
+            "value": "3",
+            "description": "Motor bikes."
+          },
+          {
+            "name": "Residential",
+            "value": "4",
+            "description": "Residential property for sale."
+          },
+          {
+            "name": "Rental",
+            "value": "5",
+            "description": "Residential property to rent."
+          },
+          {
+            "name": "CommercialSale",
+            "value": "6",
+            "description": "Commercial property for sale."
+          },
+          {
+            "name": "CommercialLease",
+            "value": "7",
+            "description": "Commercial property leases."
+          },
+          {
+            "name": "Rural",
+            "value": "8",
+            "description": "Rural property."
+          },
+          {
+            "name": "Lifestyle",
+            "value": "9",
+            "description": "Lifestyle blocks."
+          },
+          {
+            "name": "Flatmate",
+            "value": "10",
+            "description": "Flatmates."
+          },
+          {
+            "name": "OpenHomes",
+            "value": "11",
+            "description": "Open homes."
+          },
+          {
+            "name": "Retirement",
+            "value": "12",
+            "description": "Retirement villages."
+          },
+          {
+            "name": "Job",
+            "value": "13",
+            "description": "Jobs."
+          },
+          {
+            "name": "NewHomes",
+            "value": "14",
+            "description": "New Homes property."
+          },
+          {
+            "name": "Caravan",
+            "value": "15",
+            "description": "Motors caravan property"
+          },
+          {
+            "name": "Motorhome",
+            "value": "16",
+            "description": "Motors motorhomes property"
+          }
+        ]
+      },
+      {
+        "name": "SearchString",
+        "type": "String or null",
+        "required": false,
+        "description": "The parameters to pass to the search API to reproduce the search."
+      },
+      {
+        "name": "Keywords",
+        "type": "String or null",
+        "required": false,
+        "description": "If a keyword filter exists, contains the keywords."
+      },
+      {
+        "name": "Seller",
+        "type": "<Member> or null",
+        "required": false,
+        "description": "If a seller filter exists, contains the details of that seller.",
+        "nested_fields": [
+          {
+            "field_name": "MemberId",
+            "field_type": "Integer",
+            "description": "The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "Nickname",
+            "field_type": "String or null",
+            "description": "The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy."
+          },
+          {
+            "field_name": "DateAddressVerified",
+            "field_type": "DateTime",
+            "description": "The date the member was address verified."
+          },
+          {
+            "field_name": "DateJoined",
+            "field_type": "DateTime",
+            "description": "The date the member joined."
+          },
+          {
+            "field_name": "UniqueNegative",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed negative feedback against this member."
+          },
+          {
+            "field_name": "UniquePositive",
+            "field_type": "Integer",
+            "description": "The number of distinct members who have placed positive feedback against this member."
+          },
+          {
+            "field_name": "FeedbackCount",
+            "field_type": "Integer",
+            "description": "The member's total feedback (UniquePositive minus UniqueNegative)."
+          },
+          {
+            "field_name": "IsAddressVerified",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member has been address verified."
+          },
+          {
+            "field_name": "IsDealer",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is a car dealer."
+          },
+          {
+            "field_name": "IsAuthenticated",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is authenticated."
+          },
+          {
+            "field_name": "IsInTrade",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is a professional trader."
+          },
+          {
+            "field_name": "IsTopSeller",
+            "field_type": "Boolean",
+            "description": "Indicates whether the member is currently a Top Seller"
+          }
+        ]
+      },
+      {
+        "name": "CategoryName",
+        "type": "String or null",
+        "required": false,
+        "description": "If a category filter exists, contains the full name of the category."
+      },
+      {
+        "name": "CanonicalPath",
+        "type": "String or null",
+        "required": false,
+        "description": "If a category filter exists, contains the canonical URL."
+      },
+      {
+        "name": "Breadcrumbs",
+        "type": "Collection of <Breadcrumb> or null",
+        "required": false,
+        "description": "If a category filter exists, contains the breadcrumbs for the category.",
+        "nested_fields": [
+          {
+            "field_name": "DisplayName",
+            "field_type": "String or null",
+            "description": "Displayable name"
+          },
+          {
+            "field_name": "CanonicalPath",
+            "field_type": "String or null",
+            "description": "The canonical path up to the current fragment"
+          },
+          {
+            "field_name": "CanonicalPathFragment",
+            "field_type": "String or null",
+            "description": "The latest encoded fragment of the canonical path"
+          },
+          {
+            "field_name": "Name",
+            "field_type": "String or null",
+            "description": "The name of the attribute type, used to match the breadcrumb fragment to the corresponding UI elements"
+          },
+          {
+            "field_name": "Value",
+            "field_type": "String or null",
+            "description": "The underlying value for the breadcrumb fragment, this could be an Attrubute ID, a Category ID or some other value"
+          }
+        ]
+      },
+      {
+        "name": "AreaOfBusiness",
+        "type": "Enumeration",
+        "required": false,
+        "description": "If a category filter exists, contains the associated business line.",
+        "enum": [
+          {
+            "name": "NotSpecified",
+            "value": "0",
+            "description": "None specified."
+          },
+          {
+            "name": "All",
+            "value": "0",
+            "description": "All"
+          },
+          {
+            "name": "Marketplace",
+            "value": "1",
+            "description": "Marketplace"
+          },
+          {
+            "name": "Property",
+            "value": "2",
+            "description": "Property"
+          },
+          {
+            "name": "Motors",
+            "value": "3",
+            "description": "Motors"
+          },
+          {
+            "name": "Jobs",
+            "value": "4",
+            "description": "Jobs"
+          },
+          {
+            "name": "Services",
+            "value": "5",
+            "description": "Services"
+          }
+        ]
+      },
+      {
+        "name": "Refinements",
+        "type": "Collection of <RefinementDescriptor> or null",
+        "required": false,
+        "description": "A list of search filters, excluding keywords, category and seller information.",
+        "nested_fields": [
+          {
+            "field_name": "DisplayName",
+            "field_type": "String or null",
+            "description": "The name of the refinement, in a form suitable for displaying to users. Can benullwhen only the display value is required."
+          },
+          {
+            "field_name": "DisplayValue",
+            "field_type": "String or null",
+            "description": "The value of the refinement as it needs to be displayed to the end users."
+          }
+        ]
+      },
+      {
+        "name": "FavouriteId",
+        "type": "Integer or null",
+        "required": false,
+        "description": "The ID of a favourite search that corresponds to this recent search, if there is a favourite search that matches."
+      },
+      {
+        "name": "Title",
+        "type": "String or null",
+        "required": false,
+        "description": "A generated Title based on the keywords, categories, and location of the search."
+      }
+    ]
+  },
+  "examples": {
+    "response_json": [
+      {
+        "Id": "ABC",
+        "SearchApi": 0,
+        "SearchString": "ABC",
+        "Keywords": "ABC",
+        "Seller": {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false,
+          "IsInTrade": false,
+          "IsTopSeller": false
+        },
+        "CategoryName": "ABC",
+        "CanonicalPath": "ABC",
+        "Breadcrumbs": [
+          {
+            "DisplayName": "ABC",
+            "CanonicalPath": "ABC",
+            "CanonicalPathFragment": "ABC",
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "DisplayName": "ABC",
+            "CanonicalPath": "ABC",
+            "CanonicalPathFragment": "ABC",
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "AreaOfBusiness": 0,
+        "Refinements": [
+          {
+            "DisplayName": "ABC",
+            "DisplayValue": "ABC"
+          },
+          {
+            "DisplayName": "ABC",
+            "DisplayValue": "ABC"
+          }
+        ],
+        "FavouriteId": 123,
+        "Title": "ABC"
+      },
+      {
+        "Id": "ABC",
+        "SearchApi": 0,
+        "SearchString": "ABC",
+        "Keywords": "ABC",
+        "Seller": {
+          "MemberId": 123,
+          "Nickname": "ABC",
+          "DateAddressVerified": "/Date(1514764800)/",
+          "DateJoined": "/Date(1514764800)/",
+          "UniqueNegative": 123,
+          "UniquePositive": 123,
+          "FeedbackCount": 123,
+          "IsAddressVerified": false,
+          "IsDealer": false,
+          "IsAuthenticated": false,
+          "IsInTrade": false,
+          "IsTopSeller": false
+        },
+        "CategoryName": "ABC",
+        "CanonicalPath": "ABC",
+        "Breadcrumbs": [
+          {
+            "DisplayName": "ABC",
+            "CanonicalPath": "ABC",
+            "CanonicalPathFragment": "ABC",
+            "Name": "ABC",
+            "Value": "ABC"
+          },
+          {
+            "DisplayName": "ABC",
+            "CanonicalPath": "ABC",
+            "CanonicalPathFragment": "ABC",
+            "Name": "ABC",
+            "Value": "ABC"
+          }
+        ],
+        "AreaOfBusiness": 0,
+        "Refinements": [
+          {
+            "DisplayName": "ABC",
+            "DisplayValue": "ABC"
+          },
+          {
+            "DisplayName": "ABC",
+            "DisplayValue": "ABC"
+          }
+        ],
+        "FavouriteId": 123,
+        "Title": "ABC"
+      }
+    ]
+  }
+}

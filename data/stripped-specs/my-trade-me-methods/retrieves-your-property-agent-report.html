@@ -1,0 +1,129 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/retrieves-your-property-agent-report -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Retrieves your property agent report</h1>
+<!-- Page content -->
+<p>Retrieves the Property Agent report for the authenticated user.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/mytrademe/propertyagentreport/{filter}.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> MyTradeMeRead: Read your membership &amp; listing data. </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr>
+<th style="width: 22%"> filter </th>
+<td style="width: 22%"> String (required) </td>
+<td>
+<p>The range for the report. <table><tr><td>Current</td><td>All the current listings.</td></tr><tr><td>Last45Days</td><td>Listings in the last 45 days.</td></tr><tr><td>Last7Days</td><td>Listings in the last 7 days.</td></tr><tr><td>All</td><td>The same as Last45Days</td></tr></table></p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;PropertyAgentReport&gt; </p>
+<p>The Property Agent report data.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr data-nested-fields="[{&quot;field_name&quot;: &quot;AgentReference&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The agent's reference for the listing.&quot;}, {&quot;field_name&quot;: &quot;Title&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The title used for the listing.&quot;}, {&quot;field_name&quot;: &quot;Views&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of views on the listing.&quot;}, {&quot;field_name&quot;: &quot;StartDate&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The UTC start date of the listing.&quot;}, {&quot;field_name&quot;: &quot;EndDate&quot;, &quot;field_type&quot;: &quot;DateTime&quot;, &quot;description&quot;: &quot;The UTC end date of the listing.&quot;}, {&quot;field_name&quot;: &quot;Category&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The category of the listing.&quot;}, {&quot;field_name&quot;: &quot;Agent&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The agent for the property.&quot;}, {&quot;field_name&quot;: &quot;Address&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The address to display.&quot;}, {&quot;field_name&quot;: &quot;Suburb&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The suburb name for the property.&quot;}, {&quot;field_name&quot;: &quot;Price&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The price description.&quot;}, {&quot;field_name&quot;: &quot;Watchers&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of views on the property.&quot;}, {&quot;field_name&quot;: &quot;Enquiries&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of enquiries on the property.&quot;}, {&quot;field_name&quot;: &quot;OpenHomes&quot;, &quot;field_type&quot;: &quot;Integer&quot;, &quot;description&quot;: &quot;The number of open homes.&quot;}, {&quot;field_name&quot;: &quot;IsFeatured&quot;, &quot;field_type&quot;: &quot;Boolean&quot;, &quot;description&quot;: &quot;Indicates whether the property is featured.&quot;}, {&quot;field_name&quot;: &quot;TradeMeReference&quot;, &quot;field_type&quot;: &quot;String or null&quot;, &quot;description&quot;: &quot;The Trade Me property reference.&quot;}]">
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;PropertyAgentReportLine&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "AgentReference": "ABC",
+      "Title": "ABC",
+      "Views": 123,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "Category": "ABC",
+      "Agent": "ABC",
+      "Address": "ABC",
+      "Suburb": "ABC",
+      "Price": "ABC",
+      "Watchers": 123,
+      "Enquiries": 123,
+      "OpenHomes": 123,
+      "IsFeatured": false,
+      "TradeMeReference": "ABC"
+    },
+    {
+      "AgentReference": "ABC",
+      "Title": "ABC",
+      "Views": 123,
+      "StartDate": "\/Date(1514764800)\/",
+      "EndDate": "\/Date(1514764800)\/",
+      "Category": "ABC",
+      "Agent": "ABC",
+      "Address": "ABC",
+      "Suburb": "ABC",
+      "Price": "ABC",
+      "Watchers": 123,
+      "Enquiries": 123,
+      "OpenHomes": 123,
+      "IsFeatured": false,
+      "TradeMeReference": "ABC"
+    }
+  ]
+}</code></pre>
+</div>

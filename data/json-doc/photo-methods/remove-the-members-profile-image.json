@@ -1,0 +1,83 @@
+{
+  "endpoint": "RemoveTheMemberSProfileImage",
+  "title": "Remove the member's profile image",
+  "description": "Removes the member's profile image",
+  "source": "https://developer.trademe.co.nz/api-reference/photo-methods/remove-the-members-profile-image",
+  "url": "https://api.trademe.co.nz/v1/photos/memberprofile.{file_format}",
+  "method": "DELETE",
+  "authentication_required": true,
+  "permission_required": "MyTradeMeWrite: Maintain your watchlist, answer questions and post comments.",
+  "rate_limited": true,
+  "supported_formats": [
+    "XML",
+    "JSON"
+  ],
+  "parameters": {
+    "path": [
+      {
+        "name": "file_format",
+        "type": "Enumeration (required)",
+        "required": true,
+        "description": "The format of the response.",
+        "enum": [
+          {
+            "name": "xml",
+            "value": "xml",
+            "description": "Serialize responses into XML."
+          },
+          {
+            "name": "json",
+            "value": "json",
+            "description": "Serialize responses into JSON."
+          }
+        ]
+      }
+    ],
+    "query": []
+  },
+  "request_body": null,
+  "returns": {
+    "type": null,
+    "description": "<PhotoResponse> Success if the image was removed. Failure otherwise.",
+    "fields": [
+      {
+        "name": "Status",
+        "type": "Enumeration",
+        "required": false,
+        "description": "The status of the photo operation.",
+        "enum": [
+          {
+            "name": "Failure",
+            "value": "0",
+            "description": "The photo action was a failure."
+          },
+          {
+            "name": "Success",
+            "value": "1",
+            "description": "The photo action was a success."
+          },
+          {
+            "name": "NotMemberPhoto",
+            "value": "2",
+            "description": "The photo is not owned by the member."
+          },
+          {
+            "name": "NotMemberAuction",
+            "value": "3",
+            "description": "The auction is not owned by the member."
+          },
+          {
+            "name": "NotFound",
+            "value": "4",
+            "description": "The auction was not found."
+          }
+        ]
+      }
+    ]
+  },
+  "examples": {
+    "response_json": {
+      "Status": 0
+    }
+  }
+}

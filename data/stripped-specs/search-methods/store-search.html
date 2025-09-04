@@ -1,0 +1,451 @@
+<!-- Source: https://developer.trademe.co.nz/api-reference/search-methods/store-search -->
+<!-- Breadcrumbs -->
+
+<!-- Page heading -->
+<h1>Store search</h1>
+<!-- Page content -->
+<p>Performs a search within the list of registered stores.</p>
+<table>
+<tr>
+<th style="width: 200px"> URL: </th>
+<td> https://api.trademe.co.nz/v1/Search/Stores.{file_format} </td>
+</tr>
+<tr>
+<th> HTTP Method: </th>
+<td> GET </td>
+</tr>
+<tr>
+<th> Requires Authentication? </th>
+<td> Yes </td>
+</tr>
+<tr>
+<th> Permission Required: </th>
+<td> None </td>
+</tr>
+<tr>
+<th> Supported Formats: </th>
+<td> XML, JSON </td>
+</tr>
+<tr>
+<th> Rate Limited? </th>
+<td> Yes </td>
+</tr>
+</table>
+<h2> URL parameters </h2>
+<table class="dense" id="url_parameters">
+<tr data-enum-values='[{"name": "xml", "value": "xml", "description": "Serialize responses into XML."}, {"name": "json", "value": "json", "description": "Serialize responses into JSON."}]'>
+<th style="width: 22%"> file_format </th>
+<td style="width: 22%"> Enumeration (required) </td>
+<td>
+                        The format of the response.
+                                            </td>
+</tr>
+
+</table>
+<h2> Query String parameters </h2>
+<table class="dense" id="querystring_parameters">
+<tr>
+<th style="width: 22%"> category </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>The ID of a category. Filters the list of stores to those that have at least one active listing in the category.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> page </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The page number of the set of results to return, starting from 1. Defaults to 1.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> rows </th>
+<td style="width: 22%"> Integer (optional) </td>
+<td>
+<p>The maximum number of results to return. Defaults to 50.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> search_string </th>
+<td style="width: 22%"> String (optional) </td>
+<td>
+<p>One or more search keywords.</p>
+</td>
+</tr>
+</table>
+<h2> Returns </h2>
+<p> &lt;Stores&gt; </p>
+<p>A list of stores that match the search criteria.</p>
+<table class="dense" id="returns">
+<tr>
+<th style="width: 22%"> TotalCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The total number of results in the collection. Can be larger than the number of returned results.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Page </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The index of the current page of results (starts at 1).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> PageSize </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of results in the current page.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> List </th>
+<td style="width: 22%"> Collection of &lt;Store&gt; or null </td>
+<td>
+<p>A list of the results in the current page.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Name </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The name of the store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the member which corresponds to this store.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LogoImageUri </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of a small logo image (180x52).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ListingCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of live listings. Only returned when browsing the stores list.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> ShortDescription </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A short description of what the store sells. Only returned when browsing the stores list.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> LargeBannerImage </th>
+<td style="width: 22%"> &lt;LargeBannerImage&gt; or null </td>
+<td>
+<p>The URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image.</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Small </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the promotional image in small size 320x180</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Medium </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the promotional image in medium size 768x432.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Large </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the promotional image in large size 1024x576.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> XLarge </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The URL of the promotional image in extra large size 1440x810.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> StorePath </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A url friendly path for the store, that is unique.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> SaleCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of on sale listings</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> MemberProfile </th>
+<td style="width: 22%"> &lt;SimpleMemberProfile&gt; or null </td>
+<td>
+<p>The member profile details associated with this store</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> Occupation </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The occupation of the member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Biography </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's bio.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Quote </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's favourite quote.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Photo </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>A URL representing the member's photo.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The member's nickname</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Member </th>
+<td style="width: 22%"> &lt;Member&gt; or null </td>
+<td>
+<p>The member details associated with this store</p>
+</td>
+</tr>
+<tr>
+<td colspan="4" style="padding-left: 20px">
+<table class="dense">
+<tr>
+<th style="width: 22%"> MemberId </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The ID of the member. This may be <b>0</b>, if we determine it is necessary to protect the member's privacy.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> Nickname </th>
+<td style="width: 22%"> String or null </td>
+<td>
+<p>The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateAddressVerified </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member was address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> DateJoined </th>
+<td style="width: 22%"> DateTime </td>
+<td>
+<p>The date the member joined.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniqueNegative </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of distinct members who have placed negative feedback against this member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> UniquePositive </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The number of distinct members who have placed positive feedback against this member.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FeedbackCount </th>
+<td style="width: 22%"> Integer </td>
+<td>
+<p>The member's total feedback (UniquePositive minus UniqueNegative).</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAddressVerified </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member has been address verified.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsDealer </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a car dealer.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsAuthenticated </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is authenticated.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsInTrade </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a professional trader.</p>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> IsRentiUser </th>
+<td style="width: 22%"> Boolean </td>
+<td>
+<p>Indicates whether the member is a renti user.</p>
+</td>
+</tr>
+</table>
+</td>
+</tr>
+<tr>
+<th style="width: 22%"> FavouriteId </th>
+<td style="width: 22%"> Integer or null </td>
+<td>
+<p>The ID of a favourite seller, if the call is authenticated and the authenticated member has added this store to their favourites. Currently only supported when retrieving promoted stores.</p>
+</td>
+</tr>
+<tr data-enum-values='[{"name": "NotAStore", "value": "0", "description": "Store tier not applicable"}, {"name": "Basic", "value": "1", "description": "Basic tier"}, {"name": "Premium", "value": "2", "description": "Premium tier"}]'>
+<th style="width: 22%"> Tier </th>
+<td style="width: 22%"> Enumeration </td>
+<td>
+<p>The tier ID of a tiered store</p>
+</td>
+</tr>
+
+</table>
+</td>
+</tr>
+</table>
+
+<div class="json-message">
+<h2> Example JSON Response  </h2>
+<pre><code class="language-json">{
+  "TotalCount": 123,
+  "Page": 123,
+  "PageSize": 123,
+  "List": [
+    {
+      "Name": "ABC",
+      "MemberId": 123,
+      "LogoImageUri": "ABC",
+      "ListingCount": 123,
+      "ShortDescription": "ABC",
+      "LargeBannerImage": {
+        "Small": "ABC",
+        "Medium": "ABC",
+        "Large": "ABC",
+        "XLarge": "ABC"
+      },
+      "StorePath": "ABC",
+      "SaleCount": 123,
+      "MemberProfile": {
+        "Occupation": "ABC",
+        "Biography": "ABC",
+        "Quote": "ABC",
+        "Photo": "ABC",
+        "Nickname": "ABC"
+      },
+      "Member": {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "\/Date(1514764800)\/",
+        "DateJoined": "\/Date(1514764800)\/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "IsInTrade": false,
+        "IsRentiUser": false
+      },
+      "FavouriteId": 123,
+      "Tier": 0
+    },
+    {
+      "Name": "ABC",
+      "MemberId": 123,
+      "LogoImageUri": "ABC",
+      "ListingCount": 123,
+      "ShortDescription": "ABC",
+      "LargeBannerImage": {
+        "Small": "ABC",
+        "Medium": "ABC",
+        "Large": "ABC",
+        "XLarge": "ABC"
+      },
+      "StorePath": "ABC",
+      "SaleCount": 123,
+      "MemberProfile": {
+        "Occupation": "ABC",
+        "Biography": "ABC",
+        "Quote": "ABC",
+        "Photo": "ABC",
+        "Nickname": "ABC"
+      },
+      "Member": {
+        "MemberId": 123,
+        "Nickname": "ABC",
+        "DateAddressVerified": "\/Date(1514764800)\/",
+        "DateJoined": "\/Date(1514764800)\/",
+        "UniqueNegative": 123,
+        "UniquePositive": 123,
+        "FeedbackCount": 123,
+        "IsAddressVerified": false,
+        "IsDealer": false,
+        "IsAuthenticated": false,
+        "IsInTrade": false,
+        "IsRentiUser": false
+      },
+      "FavouriteId": 123,
+      "Tier": 0
+    }
+  ]
+}</code></pre>
+</div>
