@@ -1,0 +1,61 @@
+type: object
+properties:
+  Type:
+    type: string
+    description: The type of tax that is included
+    enum:
+      - '1'
+    x-enum-descriptions:
+      - New Zealand GST on overseas supplies
+  Price:
+    type: number
+    description: The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.
+  Method:
+    type: string
+    nullable: true
+    description: The name of the delivery method (e.g. "NZ Courier", "Rural Delivery"). Only applicable if ShippingType is Custom.
+  ShippingId:
+    type: integer
+    description: The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.
+  TaxesIncluded:
+    type: array
+    items:
+      $ref: '#/components/schemas/taxrateonprice'
+    nullable: true
+    description: Indicates if taxes (and what type) are included in the Shipping Price
+  TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTFlatRateNumberThe rate at which the tax is charged (as a decimal e.g 0.15)DescriptionString or nullA string that can be used as a caption where necessaryIsSellRestrictionsEffectiveBooleanWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restrictedIsTaxEffectiveBooleanWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GSTIsAppliedBooleanWhether the price has had the tax applied (i.e. are inclusive prices)TaxAmountNumber or nullThe amount of tax that was added to the price if appliedWasPriceTaxAmountNumber or nullThe amount of tax that was added to the was/now price if applied:
+    type: string
+    description: Enumeration
+  Country:
+    type: string
+    nullable: true
+    description: The country that is levying the tax e.g. NZ
+  Name:
+    type: string
+    nullable: true
+    description: The name of the tax e.g. GST
+  FlatRate:
+    type: number
+    description: The rate at which the tax is charged (as a decimal e.g 0.15)
+  Description:
+    type: string
+    nullable: true
+    description: A string that can be used as a caption where necessary
+  IsSellRestrictionsEffective:
+    type: boolean
+    description: Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted
+  IsTaxEffective:
+    type: boolean
+    description: Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST
+  IsApplied:
+    type: boolean
+    description: Whether the price has had the tax applied (i.e. are inclusive prices)
+  TaxAmount:
+    type: number
+    nullable: true
+    description: The amount of tax that was added to the price if applied
+  WasPriceTaxAmount:
+    type: number
+    nullable: true
+    description: The amount of tax that was added to the was/now price if applied
+additionalProperties: true

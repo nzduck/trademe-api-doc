@@ -1,0 +1,22 @@
+type: object
+description: Response from watchlist operations indicating success or failure
+properties:
+  Success:
+    type: boolean
+    description: Indicates whether the operation was successful
+    example: true
+  Description:
+    type: string
+    nullable: true
+    description: Error description if the operation failed, null on success
+    example: null
+required:
+  - Success
+additionalProperties: false
+examples:
+  success:
+    Success: true
+    Description: null
+  failure:
+    Success: false
+    Description: "Listing not found or already on watchlist"

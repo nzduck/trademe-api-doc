@@ -1,0 +1,340 @@
+general-search:
+  get:
+    tags: [Search]
+    summary: General search
+    description: Allows you to search for listings on Trade Me by category, by keywords or a combination of these two. The result set can be filtered by a variety of properties, including availability of Buy Now, Pay Now, item condition or seller.
+    operationId: searchGeneral
+    # This endpoint requires OAuth authentication
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/search-methods/general-search
+    parameters:
+      - $ref: ../components/parameters/fileFormat.yaml
+      - name: buy
+        in: query
+        required: false
+        description: Filters listings to only those with Buy Now.
+        schema:
+          type: string
+      - name: category
+        in: query
+        required: false
+        description: Specifies the category in which you want to perform the search (e.g. 3419 or "0124-3419-" for Electronics & photography > Camera accessories).
+        schema:
+          type: string
+        example: "0124-3419-"
+      - name: clearance
+        in: query
+        required: false
+        description: Filter listings by clearance status.
+        schema:
+          type: string
+      - name: condition
+        in: query
+        required: false
+        description: Filter listings by condition.
+        schema:
+          type: string
+      - name: date_from
+        in: query
+        required: false
+        description: Excludes listings starting before this date.
+        schema:
+          type: string
+          format: date-time
+      - name: expired
+        in: query
+        required: false
+        description: Indicates whether the search should be made on expired listings. You cannot search current and expired listings at the same time. Note only authorized consumers can make expired searches.
+        schema:
+          type: boolean
+      - name: listed_as
+        in: query
+        required: false
+        description: Restricts search to either auctions or classifieds
+        schema:
+          type: string
+      - name: member_listing
+        in: query
+        required: false
+        description: Filters the listings to only those with the given seller.
+        schema:
+          type: integer
+      - name: new_homes
+        in: query
+        required: false
+        description: new homes only search filter, used by apps. true or false
+        schema:
+          type: boolean
+      - name: page
+        in: query
+        required: false
+        description: The page number of the set of results to return, starting from 1. Defaults to 1.
+        schema:
+          type: integer
+          minimum: 1
+          default: 1
+      - name: pay
+        in: query
+        required: false
+        description: This field is deprecated. Use the payment_types field instead.
+        deprecated: true
+        schema:
+          type: string
+      - name: payment_types
+        in: query
+        required: false
+        description: A comma-separated list of payment types. Valid values are "PayNow", "Afterpay".
+        schema:
+          type: string
+        example: "PayNow,Afterpay"
+      - name: photo_size
+        in: query
+        required: false
+        description: The size of the images to return in the results. Defaults to Thumbnail.
+        schema:
+          type: string
+          enum: [Thumbnail, List, Medium, Gallery, Large, FullSize, PlusSize]
+          default: Thumbnail
+      - name: return_24_hrs_aggregation
+        in: query
+        required: false
+        description: returns the number of listings which started in the last 24 hours for a given search.
+        schema:
+          type: boolean
+      - name: return_collections
+        in: query
+        required: false
+        description: Indicates whether any search collections should be returned. e.g. store collections
+        schema:
+          type: boolean
+      - name: return_did_you_mean
+        in: query
+        required: false
+        description: if the search string is typed incorrectly return a suggested correction.
+        schema:
+          type: boolean
+      - name: return_metadata
+        in: query
+        required: false
+        description: Indicates whether search parameter metadata should be returned.
+        schema:
+          type: boolean
+      - name: return_parameter_counts
+        in: query
+        required: false
+        description: Indicates whether parameter counts should be returned.
+        schema:
+          type: string
+      - name: rows
+        in: query
+        required: false
+        description: The number of results per page; also the maximum number of results to return. The maximum is 25 for unauthenticated requests and 500 for authenticated requests. Defaults to 25 (unauthenticated) or 50 (authenticated).
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 500
+      - name: search_string
+        in: query
+        required: false
+        description: One or more keywords to use in a search query.
+        schema:
+          type: string
+        example: "iPhone"
+      - name: seller_status
+        in: query
+        required: false
+        description: Filter listings by in trade status.
+        schema:
+          type: string
+      - name: shipping_method
+        in: query
+        required: false
+        description: Filters listings to those that have free shipping or those that allow pick ups.
+        schema:
+          type: string
+      - name: sort_order
+        in: query
+        required: false
+        description: Sorts the returned results using the specified sort order.
+        schema:
+          type: string
+          enum: [Default, TitleAsc, TitleDesc, PriceAsc, PriceDesc, ReserveAsc, ReserveDesc, 
+                 BidCountAsc, BidCountDesc, ExpiryAsc, ExpiryDesc, FeaturedFirst, 
+                 ListingLengthAsc, ListingLengthDesc]
+          default: Default
+      - name: user_district
+        in: query
+        required: false
+        description: Restricts search results to items from sellers located in the district with the given ID. Note that there are multiple district lists, this parameter accepts a membership district ID. Searching within multiple districts is supported, separate each district ID with a comma.
+        schema:
+          type: integer
+      - name: user_region
+        in: query
+        required: false
+        description: Restricts search results to items from sellers located in the region with the given ID. Note that there are multiple region lists, this parameter accepts a membership region ID.
+        schema:
+          type: integer
+    responses:
+      "200":
+        description: Search completed successfully
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/SearchResult.yaml
+            examples:
+              search_results:
+                summary: Search results example
+                value:
+                  TotalCount: 156
+                  Page: 1
+                  PageSize: 20
+                  List:
+                    - ListingId: 2149713189
+                      Title: "iPhone 12 Pro Max 128GB"
+                      PriceDisplay: "$899.00"
+                      StartPrice: 1.00
+                      BuyNowPrice: 899.00
+                      CategoryPath: "/Mobile-phones/Apple"
+                      Region: "Auckland"
+                      IsNew: false
+                    - ListingId: 2149713190
+                      Title: "iPhone 13 256GB Blue"
+                      PriceDisplay: "$1,200.00"
+                      StartPrice: 1200.00
+                      CategoryPath: "/Mobile-phones/Apple"
+                      Region: "Wellington"
+                      IsNew: true
+                  SearchExecutionTime: 45.2
+              empty_results:
+                summary: No results found
+                value:
+                  TotalCount: 0
+                  Page: 1
+                  PageSize: 20
+                  List: []
+                  DidYouMean: "iPhone"
+                  SearchExecutionTime: 23.1
+      "400":
+        description: Bad request - invalid search parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "BadRequest"
+                message:
+                  type: string
+                  example: "Invalid search parameters"
+
+search-suggestions:
+  get:
+    tags: [Search]
+    summary: Get search suggestions
+    description: |
+      Returns up to three collections of search suggestions all based on the passed in search term:
+      - Autosuggestions - suggestions based on similar search terms popular with the Trade Me community
+      - Recent searches - suggestions based on previous searches the logged in member has performed  
+      - Category suggestions - suggestions based on categories similar to the passed in search term
+    operationId: getSearchSuggestions
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/search-methods/get-search-suggestions
+    parameters:
+      - $ref: ../components/parameters/fileFormat.yaml
+      - name: search_string
+        in: query
+        required: false
+        description: The partial keyword that the suggestions will be based on.
+        schema:
+          type: string
+        example: "iphone"
+      - name: category_id
+        in: query
+        required: false
+        description: The identifier of the category to be used when generating suggestions, use 0 for all categories. Defaults to 0.
+        schema:
+          type: integer
+          default: 0
+        example: 0
+      - name: max_auto_suggestions
+        in: query
+        required: false
+        description: The maximum number of autosuggest suggestions to be returned. Defaults to 12.
+        schema:
+          type: integer
+          default: 12
+          minimum: 1
+      - name: max_category_suggestions
+        in: query
+        required: false
+        description: The maximum number of category suggestions to be returned. Defaults to 12.
+        schema:
+          type: integer
+          default: 12
+          minimum: 1
+      - name: max_recent_searches
+        in: query
+        required: false
+        description: The maximum number of recent searches to be returned. Defaults to 12.
+        schema:
+          type: integer
+          default: 12
+          minimum: 1
+      - name: max_total_suggestions
+        in: query
+        required: false
+        description: The maximum number of suggestions of all types to be returned. Defaults to 12.
+        schema:
+          type: integer
+          default: 12
+          minimum: 1
+    responses:
+      "200":
+        description: Search suggestions retrieved successfully
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/SearchSuggestions.yaml
+            examples:
+              suggestions:
+                summary: Search suggestions example
+                value:
+                  RecentSearches: ["laptop", "macbook"]
+                  AutoSuggestions:
+                    - SearchTerm: "iphone 12"
+                      SearchTermCategorySuggestions:
+                        - Id: 3419
+                          Description: "Mobile phones"
+                    - SearchTerm: "iphone case"
+                      SearchTermCategorySuggestions:
+                        - Id: 3420
+                          Description: "Mobile accessories"
+                  CategorySuggestions:
+                    - Id: 3419
+                      Name: "Mobile phones"
+                      AncestorsNames: ["Electronics & photography", "Mobile phones"]
+                    - Id: 3420
+                      Name: "Mobile accessories" 
+                      AncestorsNames: ["Electronics & photography", "Mobile accessories"]
+                  StoreSuggestions:
+                    - MemberId: 12345
+                      StoreName: "Tech Store NZ"
+                      StorePath: "/stores/tech-store-nz"
+                      Description: "Premium electronics retailer"
+                      LogoImageUri: "https://images.trademe.co.nz/stores/12345/logo.jpg"
+      "400":
+        description: Bad request - invalid parameters
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "BadRequest"
+                message:
+                  type: string
+                  example: "Invalid search parameters"

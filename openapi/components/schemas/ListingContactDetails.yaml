@@ -1,0 +1,23 @@
+type: object
+properties:
+  ContactName:
+    type: string
+    nullable: true
+    description: The name of the service provider.
+  PhoneNumber:
+    type: string
+    nullable: true
+    description: The seller's contact phone number (landline).
+  MobilePhoneNumber:
+    type: string
+    nullable: true
+    description: The seller's mobile phone number.
+  BestContactTime:
+    type: string
+    nullable: true
+    description: The best time to contact the seller.
+  Website:
+    type: string
+    nullable: true
+    description: The service provider's website.
+additionalProperties: true

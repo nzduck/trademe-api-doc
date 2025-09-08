@@ -1,0 +1,22 @@
+type: object
+properties:
+  Type:
+    type: string
+    description: The type of sponsor link, business partner/checklist
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - the default value
+      - represents a checklist link that gets shown in our apps
+      - represents a checklist link that gets shown in our apps
+  Name:
+    type: string
+    nullable: true
+    description: The name of the sponsor, westpac, GE, TMI etc
+  Link:
+    type: string
+    nullable: true
+    description: The url to link to
+additionalProperties: true

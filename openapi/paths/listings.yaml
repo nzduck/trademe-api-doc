@@ -1,0 +1,62 @@
+get-listing-by-id:
+  get:
+    tags: [Listings]
+    summary: Retrieve the details of a single listing
+    description: Retrieves comprehensive details for a specific marketplace listing using its unique identifier.
+    operationId: getListingById
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/listing-methods/retrieve-the-details-of-a-single-listing
+    parameters:
+      - $ref: ../components/parameters/listingId.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+      - name: increment_view_count
+        in: query
+        required: false
+        description: Indicates whether to increment the view count on the listing. Defaults to true.
+        schema:
+          type: boolean
+          default: true
+      - name: question_limit
+        in: query
+        required: false
+        description: The maximum number of questions and answers to return. Defaults to unlimited.
+        schema:
+          type: integer
+          minimum: 0
+      - name: return_member_profile
+        in: query
+        required: false
+        description: If true also returns the member's public profile information. Defaults to false.
+        schema:
+          type: boolean
+          default: false
+      - name: return_variants
+        in: query
+        required: false
+        description: If true, returns full details of all variants in the VariantDefinition field. Only applies to MVL listings.
+        schema:
+          type: boolean
+          default: false
+      - name: rsqid
+        in: query
+        required: false
+        description: The referring search query ID; used to link requests to searches for analytics purposes. Optional.
+        schema:
+          type: string
+    responses:
+      "200":
+        description: Listing found
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/Listing.yaml
+            examples:
+              minimal:
+                summary: Minimal example
+                value:
+                  ListingId: 2149713189
+                  Title: "Vintage lamp"
+                  PriceDisplay: "$49.00"
+      "404":
+        $ref: ../components/responses/NotFound.yaml

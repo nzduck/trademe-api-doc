@@ -1,0 +1,39 @@
+type: object
+properties:
+  YouTubeVideoKey:
+    type: string
+    nullable: true
+    description: The YouTube video key for the listing.
+  MatterportKey:
+    type: string
+    nullable: true
+    description: The Matterport video key for the listing's InsideView content.
+  IStagingKey:
+    type: string
+    nullable: true
+    description: The IStaging video key for the listing's InsideView content.
+  VimeoVideoKey:
+    type: string
+    nullable: true
+    description: The Vimeo video key for the listing.
+  DiakritFurnishKey:
+    type: string
+    nullable: true
+    description: The Diakrit Furnish key for the listing.
+  DiakritStylerKey:
+    type: string
+    nullable: true
+    description: The Diakrit Styler key for the listing.
+  DiakritPanoramaKey:
+    type: string
+    nullable: true
+    description: The Diakrit Panorama key for the listing.
+  VirtualToursCreatorKey:
+    type: string
+    nullable: true
+    description: The Virtual Tours Creator key for the listing.
+  Approved3DTourUrl:
+    type: string
+    nullable: true
+    description: The Approved 3d tour url for the listing.
+additionalProperties: true

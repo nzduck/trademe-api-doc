@@ -1,0 +1,3768 @@
+openapi: 3.1.0
+info:
+  title: Trade Me API (community)
+  version: 0.1.0
+  description: |
+    Community-maintained OpenAPI spec derived from public HTML docs. This file is intentionally *thin* and references other files via $ref.
+servers:
+  - url: https://api.tmsandbox.co.nz/v1
+    description: Sandbox
+  - url: https://api.trademe.co.nz/v1
+    description: Production
+security:
+  - TradeMeOAuth: []
+paths:
+  /listings/{listingId}.{file_format}:
+    get:
+      tags:
+        - Listings
+      summary: Retrieve the details of a single listing
+      description: Retrieves comprehensive details for a specific marketplace listing using its unique identifier.
+      operationId: getListingById
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/listing-methods/retrieve-the-details-of-a-single-listing
+      parameters:
+        - $ref: '#/components/parameters/listingId'
+        - $ref: '#/components/parameters/fileFormat'
+        - name: increment_view_count
+          in: query
+          required: false
+          description: Indicates whether to increment the view count on the listing. Defaults to true.
+          schema:
+            type: boolean
+            default: true
+        - name: question_limit
+          in: query
+          required: false
+          description: The maximum number of questions and answers to return. Defaults to unlimited.
+          schema:
+            type: integer
+            minimum: 0
+        - name: return_member_profile
+          in: query
+          required: false
+          description: If true also returns the member's public profile information. Defaults to false.
+          schema:
+            type: boolean
+            default: false
+        - name: return_variants
+          in: query
+          required: false
+          description: If true, returns full details of all variants in the VariantDefinition field. Only applies to MVL listings.
+          schema:
+            type: boolean
+            default: false
+        - name: rsqid
+          in: query
+          required: false
+          description: The referring search query ID; used to link requests to searches for analytics purposes. Optional.
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Listing found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Listing'
+              examples:
+                minimal:
+                  summary: Minimal example
+                  value:
+                    ListingId: 2149713189
+                    Title: Vintage lamp
+                    PriceDisplay: $49.00
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /categories/{number}.{file_format}:
+    get:
+      tags:
+        - Catalogue
+      summary: Retrieve general categories
+      description: Retrieves all or part of the Trade Me category tree.
+      operationId: getCategories
+      security: []
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-general-categories
+      parameters:
+        - $ref: '#/components/parameters/categoryNumber'
+        - $ref: '#/components/parameters/fileFormat'
+        - name: depth
+          in: query
+          required: false
+          description: The depth of the category tree to return. 0 = a single category. 1 = the specified category plus any subcategories. The default is to return all subcategories.
+          schema:
+            type: integer
+            minimum: 0
+          example: 1
+        - name: region
+          in: query
+          required: false
+          description: The ID of the region used to filter listing counts. Only applicable if with_counts is true.
+          schema:
+            type: integer
+            minimum: 1
+          example: 1
+        - name: with_counts
+          in: query
+          required: false
+          description: Indicates whether to include the number of listings in each category. Defaults to false.
+          schema:
+            type: boolean
+            default: false
+          example: true
+      responses:
+        '200':
+          description: Category tree successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Category'
+              examples:
+                root_categories:
+                  summary: Root categories with counts
+                  value:
+                    Name: Root
+                    Number: ''
+                    Path: ''
+                    Subcategories:
+                      - Name: Antiques & collectables
+                        Number: 0004-
+                        Path: /Antiques-collectables
+                        Count: 15234
+                        IsLeaf: false
+                      - Name: Books
+                        Number: 0008-
+                        Path: /Books
+                        Count: 8567
+                        IsLeaf: false
+                    Count: 0
+                    IsRestricted: false
+                    HasLegalNotice: false
+                    HasClassifieds: false
+                    AreaOfBusiness: 1
+                    CanHaveSecondCategory: false
+                    CanBeSecondCategory: false
+                    IsLeaf: false
+                single_category:
+                  summary: Single category details
+                  value:
+                    Name: Antiques & collectables
+                    Number: 0004-
+                    Path: /Antiques-collectables
+                    Subcategories:
+                      - Name: Collectables
+                        Number: 0004-0369-
+                        Path: /Antiques-collectables/Collectables
+                        Count: 5234
+                        IsLeaf: false
+                    Count: 15234
+                    IsRestricted: false
+                    HasLegalNotice: false
+                    HasClassifieds: false
+                    AreaOfBusiness: 1
+                    CanHaveSecondCategory: false
+                    CanBeSecondCategory: false
+                    IsLeaf: false
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /Search/General.{file_format}:
+    get:
+      tags:
+        - Search
+      summary: General search
+      description: Allows you to search for listings on Trade Me by category, by keywords or a combination of these two. The result set can be filtered by a variety of properties, including availability of Buy Now, Pay Now, item condition or seller.
+      operationId: searchGeneral
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/search-methods/general-search
+      parameters:
+        - $ref: '#/components/parameters/fileFormat'
+        - name: buy
+          in: query
+          required: false
+          description: Filters listings to only those with Buy Now.
+          schema:
+            type: string
+        - name: category
+          in: query
+          required: false
+          description: Specifies the category in which you want to perform the search (e.g. 3419 or "0124-3419-" for Electronics & photography > Camera accessories).
+          schema:
+            type: string
+          example: 0124-3419-
+        - name: clearance
+          in: query
+          required: false
+          description: Filter listings by clearance status.
+          schema:
+            type: string
+        - name: condition
+          in: query
+          required: false
+          description: Filter listings by condition.
+          schema:
+            type: string
+        - name: date_from
+          in: query
+          required: false
+          description: Excludes listings starting before this date.
+          schema:
+            type: string
+            format: date-time
+        - name: expired
+          in: query
+          required: false
+          description: Indicates whether the search should be made on expired listings. You cannot search current and expired listings at the same time. Note only authorized consumers can make expired searches.
+          schema:
+            type: boolean
+        - name: listed_as
+          in: query
+          required: false
+          description: Restricts search to either auctions or classifieds
+          schema:
+            type: string
+        - name: member_listing
+          in: query
+          required: false
+          description: Filters the listings to only those with the given seller.
+          schema:
+            type: integer
+        - name: new_homes
+          in: query
+          required: false
+          description: new homes only search filter, used by apps. true or false
+          schema:
+            type: boolean
+        - name: page
+          in: query
+          required: false
+          description: The page number of the set of results to return, starting from 1. Defaults to 1.
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: pay
+          in: query
+          required: false
+          description: This field is deprecated. Use the payment_types field instead.
+          deprecated: true
+          schema:
+            type: string
+        - name: payment_types
+          in: query
+          required: false
+          description: A comma-separated list of payment types. Valid values are "PayNow", "Afterpay".
+          schema:
+            type: string
+          example: PayNow,Afterpay
+        - name: photo_size
+          in: query
+          required: false
+          description: The size of the images to return in the results. Defaults to Thumbnail.
+          schema:
+            type: string
+            enum:
+              - Thumbnail
+              - List
+              - Medium
+              - Gallery
+              - Large
+              - FullSize
+              - PlusSize
+            default: Thumbnail
+        - name: return_24_hrs_aggregation
+          in: query
+          required: false
+          description: returns the number of listings which started in the last 24 hours for a given search.
+          schema:
+            type: boolean
+        - name: return_collections
+          in: query
+          required: false
+          description: Indicates whether any search collections should be returned. e.g. store collections
+          schema:
+            type: boolean
+        - name: return_did_you_mean
+          in: query
+          required: false
+          description: if the search string is typed incorrectly return a suggested correction.
+          schema:
+            type: boolean
+        - name: return_metadata
+          in: query
+          required: false
+          description: Indicates whether search parameter metadata should be returned.
+          schema:
+            type: boolean
+        - name: return_parameter_counts
+          in: query
+          required: false
+          description: Indicates whether parameter counts should be returned.
+          schema:
+            type: string
+        - name: rows
+          in: query
+          required: false
+          description: The number of results per page; also the maximum number of results to return. The maximum is 25 for unauthenticated requests and 500 for authenticated requests. Defaults to 25 (unauthenticated) or 50 (authenticated).
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 500
+        - name: search_string
+          in: query
+          required: false
+          description: One or more keywords to use in a search query.
+          schema:
+            type: string
+          example: iPhone
+        - name: seller_status
+          in: query
+          required: false
+          description: Filter listings by in trade status.
+          schema:
+            type: string
+        - name: shipping_method
+          in: query
+          required: false
+          description: Filters listings to those that have free shipping or those that allow pick ups.
+          schema:
+            type: string
+        - name: sort_order
+          in: query
+          required: false
+          description: Sorts the returned results using the specified sort order.
+          schema:
+            type: string
+            enum:
+              - Default
+              - TitleAsc
+              - TitleDesc
+              - PriceAsc
+              - PriceDesc
+              - ReserveAsc
+              - ReserveDesc
+              - BidCountAsc
+              - BidCountDesc
+              - ExpiryAsc
+              - ExpiryDesc
+              - FeaturedFirst
+              - ListingLengthAsc
+              - ListingLengthDesc
+            default: Default
+        - name: user_district
+          in: query
+          required: false
+          description: Restricts search results to items from sellers located in the district with the given ID. Note that there are multiple district lists, this parameter accepts a membership district ID. Searching within multiple districts is supported, separate each district ID with a comma.
+          schema:
+            type: integer
+        - name: user_region
+          in: query
+          required: false
+          description: Restricts search results to items from sellers located in the region with the given ID. Note that there are multiple region lists, this parameter accepts a membership region ID.
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Search completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchResult'
+              examples:
+                search_results:
+                  summary: Search results example
+                  value:
+                    TotalCount: 156
+                    Page: 1
+                    PageSize: 20
+                    List:
+                      - ListingId: 2149713189
+                        Title: iPhone 12 Pro Max 128GB
+                        PriceDisplay: $899.00
+                        StartPrice: 1
+                        BuyNowPrice: 899
+                        CategoryPath: /Mobile-phones/Apple
+                        Region: Auckland
+                        IsNew: false
+                      - ListingId: 2149713190
+                        Title: iPhone 13 256GB Blue
+                        PriceDisplay: $1,200.00
+                        StartPrice: 1200
+                        CategoryPath: /Mobile-phones/Apple
+                        Region: Wellington
+                        IsNew: true
+                    SearchExecutionTime: 45.2
+                empty_results:
+                  summary: No results found
+                  value:
+                    TotalCount: 0
+                    Page: 1
+                    PageSize: 20
+                    List: []
+                    DidYouMean: iPhone
+                    SearchExecutionTime: 23.1
+        '400':
+          description: Bad request - invalid search parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: BadRequest
+                  message:
+                    type: string
+                    example: Invalid search parameters
+  /Search/Suggestions.{file_format}:
+    get:
+      tags:
+        - Search
+      summary: Get search suggestions
+      description: |
+        Returns up to three collections of search suggestions all based on the passed in search term:
+        - Autosuggestions - suggestions based on similar search terms popular with the Trade Me community
+        - Recent searches - suggestions based on previous searches the logged in member has performed  
+        - Category suggestions - suggestions based on categories similar to the passed in search term
+      operationId: getSearchSuggestions
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/search-methods/get-search-suggestions
+      parameters:
+        - $ref: '#/components/parameters/fileFormat'
+        - name: search_string
+          in: query
+          required: false
+          description: The partial keyword that the suggestions will be based on.
+          schema:
+            type: string
+          example: iphone
+        - name: category_id
+          in: query
+          required: false
+          description: The identifier of the category to be used when generating suggestions, use 0 for all categories. Defaults to 0.
+          schema:
+            type: integer
+            default: 0
+          example: 0
+        - name: max_auto_suggestions
+          in: query
+          required: false
+          description: The maximum number of autosuggest suggestions to be returned. Defaults to 12.
+          schema:
+            type: integer
+            default: 12
+            minimum: 1
+        - name: max_category_suggestions
+          in: query
+          required: false
+          description: The maximum number of category suggestions to be returned. Defaults to 12.
+          schema:
+            type: integer
+            default: 12
+            minimum: 1
+        - name: max_recent_searches
+          in: query
+          required: false
+          description: The maximum number of recent searches to be returned. Defaults to 12.
+          schema:
+            type: integer
+            default: 12
+            minimum: 1
+        - name: max_total_suggestions
+          in: query
+          required: false
+          description: The maximum number of suggestions of all types to be returned. Defaults to 12.
+          schema:
+            type: integer
+            default: 12
+            minimum: 1
+      responses:
+        '200':
+          description: Search suggestions retrieved successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SearchSuggestions'
+              examples:
+                suggestions:
+                  summary: Search suggestions example
+                  value:
+                    RecentSearches:
+                      - laptop
+                      - macbook
+                    AutoSuggestions:
+                      - SearchTerm: iphone 12
+                        SearchTermCategorySuggestions:
+                          - Id: 3419
+                            Description: Mobile phones
+                      - SearchTerm: iphone case
+                        SearchTermCategorySuggestions:
+                          - Id: 3420
+                            Description: Mobile accessories
+                    CategorySuggestions:
+                      - Id: 3419
+                        Name: Mobile phones
+                        AncestorsNames:
+                          - Electronics & photography
+                          - Mobile phones
+                      - Id: 3420
+                        Name: Mobile accessories
+                        AncestorsNames:
+                          - Electronics & photography
+                          - Mobile accessories
+                    StoreSuggestions:
+                      - MemberId: 12345
+                        StoreName: Tech Store NZ
+                        StorePath: /stores/tech-store-nz
+                        Description: Premium electronics retailer
+                        LogoImageUri: https://images.trademe.co.nz/stores/12345/logo.jpg
+        '400':
+          description: Bad request - invalid parameters
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: BadRequest
+                  message:
+                    type: string
+                    example: Invalid search parameters
+  /mytrademe/watchList/{listingId}.{file_format}:
+    post:
+      tags:
+        - My Trade Me
+      summary: Add a listing to your watchlist
+      description: |
+        Adds a listing to the authenticated user's watchlist. Requires authentication 
+        and MyTradeMeWrite permission. Use the "Add a listing to your watchlist with 
+        options" endpoint for more watchlist configuration options.
+      operationId: addListingToWatchlist
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-listing-to-your-watchlist
+      security:
+        - TradeMeOAuth: []
+      parameters:
+        - $ref: '#/components/parameters/listingId'
+        - $ref: '#/components/parameters/fileFormat'
+      responses:
+        '200':
+          description: Watchlist operation completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListResponse'
+              examples:
+                success:
+                  summary: Successfully added to watchlist
+                  value:
+                    Success: true
+                    Description: null
+                failure:
+                  summary: Failed to add to watchlist
+                  value:
+                    Success: false
+                    Description: Listing not found or already on watchlist
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WatchListResponse'
+        '401':
+          description: Unauthorized - authentication required
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Unauthorized
+                  message:
+                    type: string
+                    example: Authentication required for watchlist operations
+        '403':
+          description: Forbidden - insufficient permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: Forbidden
+                  message:
+                    type: string
+                    example: MyTradeMeWrite permission required
+        '404':
+          description: Listing not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: NotFound
+                  message:
+                    type: string
+                    example: Listing with the specified ID was not found
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: TooManyRequests
+                  message:
+                    type: string
+                    example: Rate limit exceeded, please try again later
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+                    example: InternalServerError
+                  message:
+                    type: string
+                    example: An unexpected error occurred
+    delete:
+      tags:
+        - My Trade Me
+      summary: Remove a listing from your watchlist
+      description: |
+        Removes a listing from the authenticated user's watchlist. Requires authentication 
+        and MyTradeMeWrite permission.
+      operationId: removeListingFromWatchlist
+      externalDocs:
+        description: Official Trade Me API Documentation
+        url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-listing-from-your-watchlist
+      security:
+        - TradeMeOAuth: []
+      parameters:
+        - $ref: '#/components/parameters/listingId'
+        - $ref: '#/components/parameters/fileFormat'
+      responses:
+        '200':
+          description: Successfully removed from watchlist
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/WatchListResponse'
+              examples:
+                success:
+                  summary: Successfully removed from watchlist
+                  value:
+                    Success: true
+                    Description: null
+                not_on_watchlist:
+                  summary: Listing was not on watchlist
+                  value:
+                    Success: false
+                    Description: Listing not found on watchlist
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/WatchListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+        '500':
+          $ref: '#/components/responses/InternalServerError'
+components:
+  securitySchemes:
+    TradeMeOAuth:
+      type: oauth1
+      description: |
+        Trade Me uses OAuth 1.0a for authentication. Most endpoints require authentication.
+
+        To get started:
+        1. Register your application at https://developer.trademe.co.nz/
+        2. Obtain consumer key and secret
+        3. Follow OAuth 1.0a flow to get access token
+
+        For more details see: https://developer.trademe.co.nz/api-overview/authentication
+  parameters:
+    listingId:
+      name: listingId
+      in: path
+      required: true
+      description: The ID of the listing to retrieve.
+      schema:
+        type: integer
+        minimum: 1
+      example: 2149713189
+    fileFormat:
+      name: file_format
+      in: path
+      required: true
+      description: The format of the response.
+      schema:
+        type: string
+        enum:
+          - xml
+          - json
+        default: json
+      example: json
+    categoryNumber:
+      name: number
+      in: path
+      required: true
+      description: The category number of the root of the returned tree. If this parameter is empty, it returns a fictional category named "Root" with all the top categories included as subcategories.
+      schema:
+        type: string
+      example: 0004-0369-
+  schemas:
+    ListingPickupLocality:
+      type: object
+      properties:
+        Suburb:
+          type: string
+          nullable: true
+          description: The pickup suburb.
+        District:
+          type: string
+          nullable: true
+          description: The pickup district.
+        Region:
+          type: string
+          nullable: true
+          description: The pickup region.
+      additionalProperties: true
+    ListingAttributes:
+      type: object
+      properties:
+        Name:
+          type: string
+          nullable: true
+          description: A name which uniquely identifies the attribute. Required when selling or editing.
+        DisplayName:
+          type: string
+          nullable: true
+          description: The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.
+        Value:
+          type: string
+          nullable: true
+          description: The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.
+        Type:
+          type: string
+          description: The type of the attribute, which determines the range of acceptable values. Not required when selling or editing.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+          x-enum-descriptions:
+            - Not used.
+            - The attribute value is a boolean (true/false).
+            - The attribute value is an integer.
+            - The attribute value is a floating point number.
+            - The attribute value can be arbitrary text.
+            - The attribute value is a date & time (in UTC).
+        Range:
+          $ref: '#/components/schemas/attributerange'
+          nullable: true
+          description: The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing.
+        Options:
+          type: array
+          items:
+            $ref: '#/components/schemas/attributeoption'
+          nullable: true
+          description: A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing.
+        IsRequiredForSell:
+          type: boolean
+          description: Indicates whether the attribute must be present when selling an item.
+        DisplayValue:
+          type: string
+          nullable: true
+          description: The value of the attribute as it needs to be displayed to the end users
+      additionalProperties: true
+    ListingOpenHomes:
+      type: object
+      properties:
+        Start:
+          type: string
+          format: date-time
+          description: The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.
+        End:
+          type: string
+          format: date-time
+          description: The date and time the open home is no longer open for viewing. Must be the same day asStart.
+      additionalProperties: true
+    ListingGeographicLocation:
+      type: object
+      properties:
+        Latitude:
+          type: number
+          description: The latitude of the location, in degrees (WGS84).
+        Longitude:
+          type: number
+          description: The longitude of the location, in degrees (WGS84).
+        Northing:
+          type: integer
+          description: The northing of the location, in metres (NZTM).
+        Easting:
+          type: integer
+          description: The easting of the location, in metres (NZTM).
+        Accuracy:
+          type: string
+          description: The accuracy of the geographic location (address, street or suburb).
+          enum:
+            - '0'
+            - '1'
+            - '3'
+            - '2'
+            - '4'
+          x-enum-descriptions:
+            - The accuracy of the geographic location is not known.
+            - The geographic location is accurate to the address level.
+            - The geographic location is accurate to the street level.
+            - The geographic location is accurate to the suburb level.
+            - The geographic location is accurate to the AdminPinPoint level.
+      additionalProperties: true
+    ListingBranding:
+      type: object
+      properties:
+        LargeSquareLogo:
+          type: string
+          nullable: true
+          description: A large square branding image with dimensions of 480x480.
+        LargeWideLogo:
+          type: string
+          nullable: true
+          description: A large rectangular branding image with dimensions of 480x200.
+        BackgroundColor:
+          type: string
+          nullable: true
+          description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+        TextColor:
+          type: string
+          nullable: true
+          description: Banner background colour, tick the checkbox before saving to apply the new colour
+        StrokeColor:
+          type: string
+          nullable: true
+          description: Banner text colour, tick the checkbox before saving to apply the new colour
+        DisableBanner:
+          type: boolean
+          description: Disable the agent branding regardless of Super Feature status
+        OfficeLocation:
+          type: string
+          nullable: true
+          description: The name of the office location
+        LargeBannerURL:
+          type: string
+          nullable: true
+          description: The url of a larger version of the logo
+      additionalProperties: true
+    ListingVariantDefinition:
+      type: object
+      properties:
+        OptionSets:
+          type: array
+          items:
+            $ref: '#/components/schemas/optionset'
+          nullable: true
+          description: A collection of variant options.
+        NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour".ValuesCollection of String or nullThe choices available for this option set, e.g. "red", "blue". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.:
+          type: string
+          description: String or null
+        Name:
+          type: string
+          nullable: true
+          description: The name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.
+        Values:
+          type: string
+          nullable: true
+          description: The choices available for this option set, e.g. "red", "blue". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.
+        Variants:
+          type: array
+          items:
+            $ref: '#/components/schemas/variant'
+          nullable: true
+          description: A collection of variants.
+        ? SKUString or nullSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.PriceNumberThe Buy Now price of the variant. Must be a minimum of 50c.IsClearanceBooleanThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.WasPriceNumber or nullThe Was price of the variant. Must be a minimum of 50c.QuantityIntegerThis is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.PhotosCollection of <Photo> or nullA collection of photo URLs for the listing. Ignored when creating or editing a listing.KeyIntegerValue<PhotoUrl> or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.OptionsCollection of <Option> or nullThe combination of variant options that this variant represents.NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.AttributesCollection of <Attribute> or nullA collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.(This type has already been defined)ListingIdInteger or nullThe identifier of the listing that this variant represents.ProductSpecification<ProductSpecification> or nullThe specifications of the product if the variant relates to a productGTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D
+        : type: string
+          description: String or null
+        SKU:
+          type: string
+          nullable: true
+          description: SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.
+        Price:
+          type: number
+          description: The Buy Now price of the variant. Must be a minimum of 50c.
+        IsClearance:
+          type: boolean
+          description: This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.
+        WasPrice:
+          type: number
+          nullable: true
+          description: The Was price of the variant. Must be a minimum of 50c.
+        Quantity:
+          type: integer
+          description: This is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.
+        Photos:
+          type: array
+          items:
+            $ref: '#/components/schemas/photo'
+          nullable: true
+          description: A collection of photo URLs for the listing. Ignored when creating or editing a listing.
+        KeyIntegerValue<PhotoUrl> or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+          type: string
+          description: Integer
+        Key:
+          type: integer
+          description: ''
+        Value:
+          type: string
+          nullable: true
+          description: The choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.
+        ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+          type: string
+          description: String or null
+        Thumbnail:
+          type: string
+          nullable: true
+          description: The URL for the thumbnail sized photo (always 85x64, with white borders).
+        List:
+          type: string
+          nullable: true
+          description: The URL for the list view sized photo (scaled down to fit 160x120).
+        Medium:
+          type: string
+          nullable: true
+          description: The URL for the medium sized photo (scaled down to fit 175x175).
+        Gallery:
+          type: string
+          nullable: true
+          description: The URL for the gallery sized photo (scaled down to fit 233x176).
+        Large:
+          type: string
+          nullable: true
+          description: The URL for the large sized photo (scaled down to fit 352x264).
+        FullSize:
+          type: string
+          nullable: true
+          description: The URL for the full sized photo (scaled down to fit 670x502).
+        PlusSize:
+          type: string
+          nullable: true
+          description: The URL for the plus sized photo (scaled down to fit).
+        PhotoId:
+          type: integer
+          description: The ID of the photo.
+        OriginalWidth:
+          type: integer
+          description: The original width of the photo.
+        OriginalHeight:
+          type: integer
+          description: The original height of the photo.
+        Options:
+          type: array
+          items:
+            $ref: '#/components/schemas/option'
+          nullable: true
+          description: The combination of variant options that this variant represents.
+        NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.:
+          type: string
+          description: String or null
+        Attributes:
+          type: array
+          items:
+            $ref: '#/components/schemas/attribute'
+          nullable: true
+          description: A collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.
+        ListingId:
+          type: integer
+          nullable: true
+          description: The identifier of the listing that this variant represents.
+        ProductSpecification:
+          $ref: '#/components/schemas/productspecification'
+          nullable: true
+          description: The specifications of the product if the variant relates to a product
+        GTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D:
+          type: string
+          description: String or null
+        GTIN:
+          type: string
+          nullable: true
+          description: The GTIN of the product e.g. 027242896505
+        Brand:
+          type: string
+          nullable: true
+          description: The brand name of the product e.g. Sony
+        ManufacturerCode:
+          type: string
+          nullable: true
+          description: The product code used by the manufacturer e.g. KDL32W600D
+      additionalProperties: true
+    ListingAdditionalData:
+      type: object
+      properties:
+        BulletPoints:
+          type: string
+          nullable: true
+          description: The bullet points for display in the search results
+        Tags:
+          type: array
+          items:
+            $ref: '#/components/schemas/tag'
+          nullable: true
+          description: The tags for display in the search results
+        NameString or nullThe name of the tag:
+          type: string
+          description: String or null
+        Name:
+          type: string
+          nullable: true
+          description: The name of the tag
+      additionalProperties: true
+    ListingShippingDetails:
+      type: object
+      properties:
+        ShippingTemplateId:
+          type: integer
+          nullable: true
+          description: Represents the template used to create the shipping options on this listing
+        SuggestedShipping:
+          $ref: '#/components/schemas/suggestedshipping'
+          nullable: true
+          description: Suggested shipping details, based on member preferences.
+        PriceNumber or nullThe price of the delivery option; 0 if it's free shippingDestinationString or nullName of the shipping destination, if structured shipping information exists.DeliveryTime<ShippingDeliveryTime> or nullDelivery time details for the current listing, if structured shipping information exists.MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.IsRuralBoolean or nullIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.:
+          type: string
+          description: Number or null
+        Price:
+          type: number
+          nullable: true
+          description: The price of the delivery option; 0 if it's free shipping
+        Destination:
+          type: string
+          nullable: true
+          description: Name of the shipping destination, if structured shipping information exists.
+        DeliveryTime:
+          $ref: '#/components/schemas/shippingdeliverytime'
+          nullable: true
+          description: Delivery time details for the current listing, if structured shipping information exists.
+        MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.:
+          type: string
+          description: String or null
+        MinValue:
+          type: string
+          nullable: true
+          description: The earliest expected delivery time returned in ISO 8601 duration format.
+        MaxValue:
+          type: string
+          nullable: true
+          description: The latest expected delivery time returned in ISO 8601 duration format.
+        IsRural:
+          type: boolean
+          nullable: true
+          description: Indicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.
+      additionalProperties: true
+    ListingNewCarInformation:
+      type: object
+      properties:
+        Availability:
+          type: string
+          description: 'Enum value denoting the availability of the car, can be : ''inTransit'' , ''availableToOrder'''
+          enum:
+            - '2'
+            - '3'
+          x-enum-descriptions:
+            - 'New car is in transit: on its way to the dealer'
+            - New car is available to order
+        Condition:
+          type: string
+          description: 'Enum value denoting the condition of the car, can be : ''brandNew'', ''exDemo'', ''certifiedPreOwned'''
+          enum:
+            - '1'
+            - '2'
+            - '4'
+          x-enum-descriptions:
+            - Indicates that this car is brand new
+            - Indicates that this car is an ex-demo
+            - New car is certified pre owned
+        CertifiedPreOwned:
+          $ref: '#/components/schemas/certifiedpreownedprogramme'
+          nullable: true
+          description: The car's certified pre-owned programme.
+        LogoUrlString or nullUrl of the certified preowned programme's logo (designed for a light background).DarkModeLogoUrlString or nullUrl of the certified preowned programme's logo (designed for a dark background).:
+          type: string
+          description: String or null
+        LogoUrl:
+          type: string
+          nullable: true
+          description: Url of the certified preowned programme's logo (designed for a light background).
+        DarkModeLogoUrl:
+          type: string
+          nullable: true
+          description: Url of the certified preowned programme's logo (designed for a dark background).
+      additionalProperties: true
+    ListingSponsored:
+      type: object
+      properties:
+        TopSortProductId:
+          type: string
+          nullable: true
+          description: The ID for the Tradevine (and thus TopSort) Product that the listing is related to.
+        TopSortVendorId:
+          type: string
+          nullable: true
+          description: TopSort Vendor ID that is sent to TopSort for each purchase event
+      additionalProperties: true
+    ListingMember:
+      type: object
+      properties:
+        MemberId:
+          type: integer
+          description: The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.
+        Nickname:
+          type: string
+          nullable: true
+          description: The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.
+        DateAddressVerified:
+          type: string
+          format: date-time
+          description: The date the member was address verified.
+        DateJoined:
+          type: string
+          format: date-time
+          description: The date the member joined.
+        Email:
+          type: string
+          nullable: true
+          description: The member's email address.
+        UniqueNegative:
+          type: integer
+          description: The number of distinct members who have placed negative feedback against this member.
+        UniquePositive:
+          type: integer
+          description: The number of distinct members who have placed positive feedback against this member.
+        FeedbackCount:
+          type: integer
+          description: The member's total feedback (UniquePositive minus UniqueNegative).
+        IsAddressVerified:
+          type: boolean
+          description: Indicates whether the member has been address verified.
+        Suburb:
+          type: string
+          nullable: true
+          description: The name of the member's suburb.
+        Region:
+          type: string
+          nullable: true
+          description: The name of the member's region.
+        IsDealer:
+          type: boolean
+          description: Indicates whether the member is a car dealer.
+        IsAuthenticated:
+          type: boolean
+          description: Indicates whether the member is authenticated.
+        IsInTrade:
+          type: boolean
+          description: Indicates whether the member is a professional trader.
+        ImportChargesMayApply:
+          type: boolean
+          description: Indicates that the trader is an international seller, and therefore customs import charges may apply.
+        Photo:
+          type: string
+          nullable: true
+          description: A URL representing the member's photo.
+        Profile:
+          $ref: '#/components/schemas/simplememberprofile'
+          nullable: true
+          description: Member profile details
+        OccupationString or nullThe occupation of the member.BiographyString or nullThe member's bio.QuoteString or nullThe member's favourite quote.PhotoString or nullA URL representing the member's photo.:
+          type: string
+          description: String or null
+        Occupation:
+          type: string
+          nullable: true
+          description: The occupation of the member.
+        Biography:
+          type: string
+          nullable: true
+          description: The member's bio.
+        Quote:
+          type: string
+          nullable: true
+          description: The member's favourite quote.
+        IsTopSeller:
+          type: boolean
+          description: Indicates whether the member is currently a Top Seller
+        IsRentiUser:
+          type: boolean
+          description: Indicates whether the member is a renti user.
+      additionalProperties: true
+    ListingBids:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          description: The total number of results in the collection. Can be larger than the number of returned results.
+        Page:
+          type: integer
+          description: The index of the current page of results (starts at 1).
+        PageSize:
+          type: integer
+          description: The number of results in the current page.
+        List:
+          type: array
+          items:
+            $ref: '#/components/schemas/bid'
+          nullable: true
+          description: A list of the results in the current page.
+        AccountString or nullThe account the bid came from.BidAmountNumberThe amount of money the bid represents, in NZD.IsByMobileBooleanIndicates whether the bid came from a mobile phone.IsByProxyBooleanIndicates whether the bid was by proxy.BidDateDateTimeThe date and time the bid was placed.IsBuyNowBooleanIndicates whether the bid was a Buy Now bid.Bidder<Member> or nullThe member who placed the bid.(This type has already been defined)SelectedShippingOptionInteger or nullThe selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to.:
+          type: string
+          description: String or null
+        Account:
+          type: string
+          nullable: true
+          description: The account the bid came from.
+        BidAmount:
+          type: number
+          description: The amount of money the bid represents, in NZD.
+        IsByMobile:
+          type: boolean
+          description: Indicates whether the bid came from a mobile phone.
+        IsByProxy:
+          type: boolean
+          description: Indicates whether the bid was by proxy.
+        BidDate:
+          type: string
+          format: date-time
+          description: The date and time the bid was placed.
+        IsBuyNow:
+          type: boolean
+          description: Indicates whether the bid was a Buy Now bid.
+        Bidder:
+          $ref: '#/components/schemas/member'
+          nullable: true
+          description: The member who placed the bid.
+        SelectedShippingOption:
+          type: integer
+          nullable: true
+          description: The selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to.
+      additionalProperties: true
+    ListingQuestions:
+      type: object
+      properties:
+        TotalCount:
+          type: integer
+          description: The total number of results in the collection. Can be larger than the number of returned results.
+        Page:
+          type: integer
+          description: The index of the current page of results (starts at 1).
+        PageSize:
+          type: integer
+          description: The number of results in the current page.
+        List:
+          type: array
+          items:
+            $ref: '#/components/schemas/question'
+          nullable: true
+          description: A list of the results in the current page.
+        ListingIdIntegerThe ID of the listing this question belongs to.ListingQuestionIdIntegerThe question ID.CommentString or nullThe text of the question.CommentDateDateTimeThe date and time the question was asked.AnswerString or nullThe answer given to the question by the owner of the listing.AnswerDateDateTimeThe date the question was answered.IsSellerCommentBooleanIndicates whether this is a comment from the seller rather than a question.AskingMember<Member> or nullThe member details for the member asking the question.(This type has already been defined):
+          type: string
+          description: Integer
+        ListingId:
+          type: integer
+          description: The ID of the listing this question belongs to.
+        ListingQuestionId:
+          type: integer
+          description: The question ID.
+        Comment:
+          type: string
+          nullable: true
+          description: The text of the question.
+        CommentDate:
+          type: string
+          format: date-time
+          description: The date and time the question was asked.
+        Answer:
+          type: string
+          nullable: true
+          description: The answer given to the question by the owner of the listing.
+        AnswerDate:
+          type: string
+          format: date-time
+          description: The date the question was answered.
+        IsSellerComment:
+          type: boolean
+          description: Indicates whether this is a comment from the seller rather than a question.
+        AskingMember:
+          $ref: '#/components/schemas/member'
+          nullable: true
+          description: The member details for the member asking the question.
+      additionalProperties: true
+    ListingPhotos:
+      type: object
+      properties:
+        Key:
+          type: integer
+          description: ''
+        Value:
+          $ref: '#/components/schemas/photourl'
+          nullable: true
+          description: ''
+        ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+          type: string
+          description: String or null
+        Thumbnail:
+          type: string
+          nullable: true
+          description: The URL for the thumbnail sized photo (always 85x64, with white borders).
+        List:
+          type: string
+          nullable: true
+          description: The URL for the list view sized photo (scaled down to fit 160x120).
+        Medium:
+          type: string
+          nullable: true
+          description: The URL for the medium sized photo (scaled down to fit 175x175).
+        Gallery:
+          type: string
+          nullable: true
+          description: The URL for the gallery sized photo (scaled down to fit 233x176).
+        Large:
+          type: string
+          nullable: true
+          description: The URL for the large sized photo (scaled down to fit 352x264).
+        FullSize:
+          type: string
+          nullable: true
+          description: The URL for the full sized photo (scaled down to fit 670x502).
+        PlusSize:
+          type: string
+          nullable: true
+          description: The URL for the plus sized photo (scaled down to fit).
+        PhotoId:
+          type: integer
+          description: The ID of the photo.
+        OriginalWidth:
+          type: integer
+          description: The original width of the photo.
+        OriginalHeight:
+          type: integer
+          description: The original height of the photo.
+      additionalProperties: true
+    ListingShippingOptions:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: The type of tax that is included
+          enum:
+            - '1'
+          x-enum-descriptions:
+            - New Zealand GST on overseas supplies
+        Price:
+          type: number
+          description: The price of the delivery option. Only applicable if ShippingType is Custom. Rounded up to the nearest 2 decimal places.
+        Method:
+          type: string
+          nullable: true
+          description: The name of the delivery method (e.g. "NZ Courier", "Rural Delivery"). Only applicable if ShippingType is Custom.
+        ShippingId:
+          type: integer
+          description: The ID of the shipping option (used when bidding or for Buy Now). Not required when listing an item.
+        TaxesIncluded:
+          type: array
+          items:
+            $ref: '#/components/schemas/taxrateonprice'
+          nullable: true
+          description: Indicates if taxes (and what type) are included in the Shipping Price
+        TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTFlatRateNumberThe rate at which the tax is charged (as a decimal e.g 0.15)DescriptionString or nullA string that can be used as a caption where necessaryIsSellRestrictionsEffectiveBooleanWhether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restrictedIsTaxEffectiveBooleanWhether the effective date for the tax has been reached e.g. 1st Dec for NZ GSTIsAppliedBooleanWhether the price has had the tax applied (i.e. are inclusive prices)TaxAmountNumber or nullThe amount of tax that was added to the price if appliedWasPriceTaxAmountNumber or nullThe amount of tax that was added to the was/now price if applied:
+          type: string
+          description: Enumeration
+        Country:
+          type: string
+          nullable: true
+          description: The country that is levying the tax e.g. NZ
+        Name:
+          type: string
+          nullable: true
+          description: The name of the tax e.g. GST
+        FlatRate:
+          type: number
+          description: The rate at which the tax is charged (as a decimal e.g 0.15)
+        Description:
+          type: string
+          nullable: true
+          description: A string that can be used as a caption where necessary
+        IsSellRestrictionsEffective:
+          type: boolean
+          description: Whether certain features like auction, unspecified shipping, pickups, non hosted payment methods should be restricted
+        IsTaxEffective:
+          type: boolean
+          description: Whether the effective date for the tax has been reached e.g. 1st Dec for NZ GST
+        IsApplied:
+          type: boolean
+          description: Whether the price has had the tax applied (i.e. are inclusive prices)
+        TaxAmount:
+          type: number
+          nullable: true
+          description: The amount of tax that was added to the price if applied
+        WasPriceTaxAmount:
+          type: number
+          nullable: true
+          description: The amount of tax that was added to the was/now price if applied
+      additionalProperties: true
+    ListingDealership:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: The ID of the dealer company
+        Name:
+          type: string
+          nullable: true
+          description: The name of the company.
+        Address:
+          type: string
+          nullable: true
+          description: The address of the company HQ.
+        Suburb:
+          type: string
+          nullable: true
+          description: The suburb where the company HQ is located.
+        City:
+          type: string
+          nullable: true
+          description: The city where the company HQ is located.
+        PhoneNumber:
+          type: string
+          nullable: true
+          description: A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead
+        FaxNumber:
+          type: string
+          nullable: true
+          description: Get the fax number of a contact
+        EMail:
+          type: string
+          nullable: true
+          description: Gets the email of the dealer
+        Website:
+          type: string
+          nullable: true
+          description: The URL of the company website.
+        Logo:
+          type: string
+          nullable: true
+          description: Logo of the Showroom
+        Branding:
+          $ref: '#/components/schemas/branding'
+          nullable: true
+          description: The branding object for the company.
+        LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo:
+          type: string
+          description: String or null
+        LargeSquareLogo:
+          type: string
+          nullable: true
+          description: A large square branding image with dimensions of 480x480.
+        LargeWideLogo:
+          type: string
+          nullable: true
+          description: A large rectangular branding image with dimensions of 480x200.
+        BackgroundColor:
+          type: string
+          nullable: true
+          description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+        TextColor:
+          type: string
+          nullable: true
+          description: Banner background colour, tick the checkbox before saving to apply the new colour
+        StrokeColor:
+          type: string
+          nullable: true
+          description: Banner text colour, tick the checkbox before saving to apply the new colour
+        DisableBanner:
+          type: boolean
+          description: Disable the agent branding regardless of Super Feature status
+        OfficeLocation:
+          type: string
+          nullable: true
+          description: The name of the office location
+        LargeBannerURL:
+          type: string
+          nullable: true
+          description: The url of a larger version of the logo
+        Logo2:
+          type: string
+          nullable: true
+          description: A URL for the second company logo.
+        PhoneNumbers:
+          type: string
+          nullable: true
+          description: Array of up to two phone numbers which can be used to reach the dealership
+        Dealers:
+          type: array
+          items:
+            $ref: '#/components/schemas/dealer'
+          nullable: true
+          description: Gets the contact details of contacts within the dealership
+        FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contact:
+          type: string
+          description: String or null
+        FullName:
+          type: string
+          nullable: true
+          description: Get the name of a contact
+        Position:
+          type: string
+          nullable: true
+          description: Get the position of a contact
+        MobilePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the mobile phone number of a contact
+        OfficePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the office phone number of a contact
+        HomePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the home phone number of a contact
+        Showroom:
+          $ref: '#/components/schemas/dealershowroom'
+          nullable: true
+          description: The show room of theDealership
+        IdIntegerID of the ShowroomUrlString or nullUrl of the ShowroomLogoString or nullLogo of the ShowroomBannerString or nullBanner of the ShowroomBackgroundColourString or nullBackground colour of the Showroom banner / logo:
+          type: string
+          description: Integer
+        Url:
+          type: string
+          nullable: true
+          description: Url of the Showroom
+        Banner:
+          type: string
+          nullable: true
+          description: Banner of the Showroom
+        BackgroundColour:
+          type: string
+          nullable: true
+          description: Background colour of the Showroom banner / logo
+        AboutUs:
+          type: string
+          nullable: true
+          description: Description of theDealership
+        ListingCounts:
+          $ref: '#/components/schemas/dealershiplistingcounts'
+          nullable: true
+          description: Count of listings of dealership
+        TotalIntegerTotal of listingsCarsIntegerCount of car listingsBoatsIntegerCount of motorboat listingsBikesIntegerCount of motorbike listings:
+          type: string
+          description: Integer
+        Total:
+          type: integer
+          description: Total of listings
+        Cars:
+          type: integer
+          description: Count of car listings
+        Boats:
+          type: integer
+          description: Count of motorboat listings
+        Bikes:
+          type: integer
+          description: Count of motorbike listings
+        Product:
+          type: string
+          nullable: true
+          description: The product the dealership has purchased
+        StaticMapsImage:
+          type: string
+          nullable: true
+          description: The Google static map URL of the dealer location
+        HasSearchCardBranding:
+          type: boolean
+          nullable: true
+          description: Bool of whether dealer has search card branding
+        Video:
+          $ref: '#/components/schemas/dealershipvideo'
+          nullable: true
+          description: Returns a content key if the dealer has embedded content
+        'VideoKeyString or nullThe key of the videoVideoTypeEnumerationThe type of the video, eg: YouTube':
+          type: string
+          description: String or null
+        VideoKey:
+          type: string
+          nullable: true
+          description: The key of the video
+        VideoType:
+          type: string
+          description: 'The type of the video, eg: YouTube'
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+            - '8'
+            - '9'
+            - '10'
+            - '11'
+            - '12'
+          x-enum-descriptions:
+            - Unknown
+            - Other
+            - Youtube
+            - Vimeo
+            - DiakritPanorama
+            - DiakritStyler
+            - DiakritFurnish
+            - MP4URL
+            - VirtualToursCreator
+            - IStaging
+            - Matterport
+            - SlideShare
+            - Approved 3D tour content provider.
+        BannerImages:
+          $ref: '#/components/schemas/dealerbannerimageurl'
+          nullable: true
+          description: Returns a content key if the dealer has embedded content
+        OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image:
+          type: string
+          description: String or null
+        Original:
+          type: string
+          nullable: true
+          description: The URL of the original image
+        Small:
+          type: string
+          nullable: true
+          description: The URL of the small image
+        Subheading:
+          type: string
+          nullable: true
+          description: The h2 tag for the dealership
+        UrlSlug:
+          type: string
+          nullable: true
+          description: Returns the url slug of the dealer
+        PackageId:
+          type: string
+          nullable: true
+          description: Returns the package ID which the dealer is on
+          enum:
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+            - '8'
+            - '9'
+            - '10'
+            - '11'
+          x-enum-descriptions:
+            - Starter Package
+            - Bronze Package
+            - Silver Package
+            - Gold Package
+            - Platinum Package
+            - Entry Listing Package
+            - Lite Package
+            - Standard Package
+            - Enhanced Package
+            - Premium Package
+            - Ultimate Package
+        Company:
+          $ref: '#/components/schemas/dealercompany'
+          nullable: true
+          description: An object containing the ID and Name of the parent company
+        IdIntegerThe ID of the dealer companyCompanyNameString or nullThe name of the dealer company:
+          type: string
+          description: Integer
+        CompanyName:
+          type: string
+          nullable: true
+          description: The name of the dealer company
+        ShippingOptionsEnabled:
+          type: boolean
+          nullable: true
+          description: Bool of whether dealer has shipping options product
+        Settings:
+          type: array
+          items:
+            $ref: '#/components/schemas/setting'
+          nullable: true
+          description: A collection of settings that apply to this dealer.
+        CodeString or nullA code to identify which setting this value applies toValueString or nullThe value for this setting:
+          type: string
+          description: String or null
+        Code:
+          type: string
+          nullable: true
+          description: A code to identify which setting this value applies to
+        Value:
+          type: string
+          nullable: true
+          description: The value for this setting
+        RenderOptions:
+          type: string
+          nullable: true
+          description: A list of render options that apply to this dealer.
+          enum:
+            - '1'
+          x-enum-descriptions:
+            - CanRenderFinanceEnquiry
+      additionalProperties: true
+    ListingAgency:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: The ID of the company.
+        Name:
+          type: string
+          nullable: true
+          description: The name of the company.
+        Address:
+          type: string
+          nullable: true
+          description: The address of the company HQ.
+        Suburb:
+          type: string
+          nullable: true
+          description: The suburb where the company HQ is located.
+        City:
+          type: string
+          nullable: true
+          description: The city where the company HQ is located.
+        PhoneNumber:
+          type: string
+          nullable: true
+          description: A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead
+        FaxNumber:
+          type: string
+          nullable: true
+          description: Get the fax number of a contact
+        EMail:
+          type: string
+          nullable: true
+          description: Gets the email of the dealer
+        Website:
+          type: string
+          nullable: true
+          description: The URL of the company website.
+        Logo:
+          type: string
+          nullable: true
+          description: A URL for the company logo.
+        Branding:
+          $ref: '#/components/schemas/branding'
+          nullable: true
+          description: The branding object for the company.
+        LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo:
+          type: string
+          description: String or null
+        LargeSquareLogo:
+          type: string
+          nullable: true
+          description: A large square branding image with dimensions of 480x480.
+        LargeWideLogo:
+          type: string
+          nullable: true
+          description: A large rectangular branding image with dimensions of 480x200.
+        BackgroundColor:
+          type: string
+          nullable: true
+          description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+        TextColor:
+          type: string
+          nullable: true
+          description: Banner background colour, tick the checkbox before saving to apply the new colour
+        StrokeColor:
+          type: string
+          nullable: true
+          description: Banner text colour, tick the checkbox before saving to apply the new colour
+        DisableBanner:
+          type: boolean
+          description: Disable the agent branding regardless of Super Feature status
+        OfficeLocation:
+          type: string
+          nullable: true
+          description: The name of the office location
+        LargeBannerURL:
+          type: string
+          nullable: true
+          description: The url of a larger version of the logo
+        Logo2:
+          type: string
+          nullable: true
+          description: A URL for the second company logo.
+        Agents:
+          type: array
+          items:
+            $ref: '#/components/schemas/agent'
+          nullable: true
+          description: The contact details of contacts within the agency.
+        FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contactPhotoString or nullThe Url to agents profile photoUrlSlugString or nullThe property agent profile url identifier used to know which agent profile to displayTestimonialsCountIntegerThe property agent profile testimonials countReviewsCountIntegerThe property agent profile reviews count:
+          type: string
+          description: String or null
+        FullName:
+          type: string
+          nullable: true
+          description: Get the name of a contact
+        Position:
+          type: string
+          nullable: true
+          description: Get the position of a contact
+        MobilePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the mobile phone number of a contact
+        OfficePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the office phone number of a contact
+        HomePhoneNumber:
+          type: string
+          nullable: true
+          description: Get the home phone number of a contact
+        Photo:
+          type: string
+          nullable: true
+          description: The Url to agents profile photo
+        UrlSlug:
+          type: string
+          nullable: true
+          description: The property agent profile url identifier used to know which agent profile to display
+        TestimonialsCount:
+          type: integer
+          description: The property agent profile testimonials count
+        ReviewsCount:
+          type: integer
+          description: The property agent profile reviews count
+        IsRealEstateAgency:
+          type: boolean
+          description: Indicates whether the agency does real estate.
+        IsJobAgency:
+          type: boolean
+          description: Indicates whether the agency does job listings.
+        IsLicensedPropertyAgency:
+          type: boolean
+          description: Indicates whether the agency is an REAA licensed property agency
+        JobAgent:
+          $ref: '#/components/schemas/jobagent'
+          nullable: true
+          description: Return job agent details when agent is job agent
+        ? TradingNameString or nullThe trading name of the job agentAgentTypeEnumerationThe type of the job agentLinksCollection of <Link> or nullLinks to related operationsHrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.MemberLevelString or nullThe id of the member who owns the profileDescriptionString or nullcompany descriptionAgentBranding<JobAgentBranding> or nullagent brandingFullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of <Photo> or nullcompany photo urlsKeyIntegerValue<PhotoUrl> or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel urlCanonicalNameString or nullMember Canonical NameSEOCompanyNameString or nullSEO Company NamePageTitleString or nullPage TitleDisplayTitleString or nullDisplay TitleAgentIdIntegerAgentId
+        : type: string
+          description: String or null
+        TradingName:
+          type: string
+          nullable: true
+          description: The trading name of the job agent
+        AgentType:
+          type: string
+          description: The type of the job agent
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+          x-enum-descriptions:
+            - An agent who is an employer or business on a plan
+            - A casual account for a reseller
+            - A recruitment agency that is on a plan
+            - An account for an agent that is prepaid
+        Links:
+          type: array
+          items:
+            $ref: '#/components/schemas/link'
+          nullable: true
+          description: Links to related operations
+        HrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.:
+          type: string
+          description: String or null
+        Href:
+          type: string
+          nullable: true
+          description: An HREF representing the uri to the resource
+        Rel:
+          type: string
+          nullable: true
+          description: A REL representing the relationship between the sending resource and the linked resource
+        Prompt:
+          type: string
+          nullable: true
+          description: A PROMPT, optional display text to represent the resource to a user
+        Method:
+          type: string
+          nullable: true
+          description: A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.
+        MemberLevel:
+          type: string
+          nullable: true
+          description: The id of the member who owns the profile
+        Description:
+          type: string
+          nullable: true
+          description: company description
+        AgentBranding:
+          $ref: '#/components/schemas/jobagentbranding'
+          nullable: true
+          description: agent branding
+        FullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of <Photo> or nullcompany photo urlsKeyIntegerValue<PhotoUrl> or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel url:
+          type: string
+          description: String or null
+        FullscreenBannerUrl:
+          type: string
+          nullable: true
+          description: company full screen banner url
+        SmallBannerUrl:
+          type: string
+          nullable: true
+          description: company small banner url
+        LogoUrl:
+          type: string
+          nullable: true
+          description: company logo url
+        PhotoUrls:
+          type: array
+          items:
+            $ref: '#/components/schemas/photo'
+          nullable: true
+          description: company photo urls
+        KeyIntegerValue<PhotoUrl> or null(This type has already been defined):
+          type: string
+          description: Integer
+        Key:
+          type: integer
+          description: ''
+        Value:
+          $ref: '#/components/schemas/photourl'
+          nullable: true
+          description: ''
+        YoutubeUrl:
+          type: string
+          nullable: true
+          description: company youtube channel url
+        CanonicalName:
+          type: string
+          nullable: true
+          description: Member Canonical Name
+        SEOCompanyName:
+          type: string
+          nullable: true
+          description: SEO Company Name
+        PageTitle:
+          type: string
+          nullable: true
+          description: Page Title
+        DisplayTitle:
+          type: string
+          nullable: true
+          description: Display Title
+        AgentId:
+          type: integer
+          description: AgentId
+      additionalProperties: true
+    ListingStore:
+      type: object
+      properties:
+        Name:
+          type: string
+          nullable: true
+          description: The name of the store.
+        LogoImageUri:
+          type: string
+          nullable: true
+          description: The URL of a small logo image (180x52).
+        BannerImageUri:
+          type: string
+          nullable: true
+          description: The URL of a banner image. Stores extra banner images are 960x120. Store banner images are 633x75. When requesting listing details, only stores extra listings have a banner image.
+        Promotions:
+          type: array
+          items:
+            $ref: '#/components/schemas/storepromotion'
+          nullable: true
+          description: A collection of promotional images. Only applies to stores extra.
+        ImageUriString or nullThe URL of the promotional image 760x240.:
+          type: string
+          description: String or null
+        ImageUri:
+          type: string
+          nullable: true
+          description: The URL of the promotional image 760x240.
+        ShortDescription:
+          type: string
+          nullable: true
+          description: A short description of what the store sells. Only returned when browsing the stores list.
+        LargeBannerImage:
+          $ref: '#/components/schemas/largebannerimage'
+          nullable: true
+          description: The URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image.
+        SmallString or nullThe URL of the promotional image in small size 320x180MediumString or nullThe URL of the promotional image in medium size 768x432.LargeString or nullThe URL of the promotional image in large size 1024x576.XLargeString or nullThe URL of the promotional image in extra large size 1440x810.:
+          type: string
+          description: String or null
+        Small:
+          type: string
+          nullable: true
+          description: The URL of the promotional image in small size 320x180
+        Medium:
+          type: string
+          nullable: true
+          description: The URL of the promotional image in medium size 768x432.
+        Large:
+          type: string
+          nullable: true
+          description: The URL of the promotional image in large size 1024x576.
+        XLarge:
+          type: string
+          nullable: true
+          description: The URL of the promotional image in extra large size 1440x810.
+        StorePath:
+          type: string
+          nullable: true
+          description: A url friendly path for the store, that is unique.
+        Location:
+          type: string
+          nullable: true
+          description: The location for this store
+        PhoneNumber:
+          type: string
+          nullable: true
+          description: The phone number for this store
+        Website:
+          type: string
+          nullable: true
+          description: The website for this store
+        Member:
+          $ref: '#/components/schemas/member'
+          nullable: true
+          description: The member details associated with this store
+      additionalProperties: true
+    ListingContactDetails:
+      type: object
+      properties:
+        ContactName:
+          type: string
+          nullable: true
+          description: The name of the service provider.
+        PhoneNumber:
+          type: string
+          nullable: true
+          description: The seller's contact phone number (landline).
+        MobilePhoneNumber:
+          type: string
+          nullable: true
+          description: The seller's mobile phone number.
+        BestContactTime:
+          type: string
+          nullable: true
+          description: The best time to contact the seller.
+        Website:
+          type: string
+          nullable: true
+          description: The service provider's website.
+      additionalProperties: true
+    ListingSales:
+      type: object
+      properties:
+        PurchaseId:
+          type: integer
+          description: A unique identifier for the sale.
+        ReferenceNumber:
+          type: string
+          nullable: true
+          description: The reference number that should be used when making a deposit into the seller's bank account.
+        SoldDate:
+          type: string
+          format: date-time
+          description: The date and time the item was sold.
+        Method:
+          type: string
+          description: The method by which the sale was made.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - The auction was sold via a bid.
+            - The auction was sold via Buy Now.
+            - The auction was sold via a fixed price offer.
+        SelectedShipping:
+          type: string
+          nullable: true
+          description: A description of the selected shipping method (e.g. "Nationwide courier").
+        ShippingPrice:
+          type: number
+          description: The price of shipping.
+        ShippingType:
+          type: string
+          description: The type of shipping that was selected.
+          enum:
+            - '0'
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+          x-enum-descriptions:
+            - The type of the "None of the options apply to me" shipping option. Do not use when listing an item.
+            - Obsolete. Do not use.
+            - Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options.
+            - Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead).
+            - Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options.
+            - Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten).
+            - Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options.
+        Buyer:
+          $ref: '#/components/schemas/member'
+          nullable: true
+          description: The member who bought the item. Not available if you are the buyer.
+        QuantitySold:
+          type: integer
+          description: The quantity sold.
+        Price:
+          type: number
+          description: The price the item was sold for, excluding shipping. If the purchase was for multiple items, this is the price of a single item.
+        SubtotalPrice:
+          type: number
+          description: The price for all items, excluding shipping (i.e. equal to SalePrice * QuantitySold).
+        TotalShippingPrice:
+          type: number
+          description: The total price for shipping. If flat shipping is not enabled, equal to ShippingPrice * QuantitySold.
+        TotalSalePrice:
+          type: number
+          description: The total price for the entire sale, including shipping and buyer service fee if applicable. If the purchase was for multiple items, all items are included in this price.
+        HasSellerPlacedFeedback:
+          type: boolean
+          description: Indicates whether the seller has placed feedback on the buyer for this sale.
+        HasBuyerPlacedFeedback:
+          type: boolean
+          description: Indicates whether the buyer has placed feedback on the seller for this sale.
+        DeliveryDetailsSent:
+          type: boolean
+          description: Indicates whether delivery details (i.e. the delivery address, phone number and message) have been sent to the seller. Because all three elements are optional, this can betrueeven if the DeliveryAddress and MessageFromBuyer fields are missing.
+        DeliveryAddress:
+          $ref: '#/components/schemas/address'
+          nullable: true
+          description: The delivery address as indicated by the buyer.
+        NameString or nullThe name of the person whom the item is being delivered to.Address1String or nullThe first line of the address.Address2String or nullThe second line of the address (optional).SuburbString or nullThe suburb (optional).CityString or nullThe city.PostcodeString or nullThe postcode (optional).CountryString or nullThe country (currently restricted to "New Zealand" or "Australia").PhoneNumberString or nullThe contact phone number (optional).:
+          type: string
+          description: String or null
+        Name:
+          type: string
+          nullable: true
+          description: The name of the tax e.g. GST
+        Address1:
+          type: string
+          nullable: true
+          description: The first line of the address.
+        Address2:
+          type: string
+          nullable: true
+          description: The second line of the address (optional).
+        Suburb:
+          type: string
+          nullable: true
+          description: The suburb (optional).
+        City:
+          type: string
+          nullable: true
+          description: The city.
+        Postcode:
+          type: string
+          nullable: true
+          description: The postcode (optional).
+        Country:
+          type: string
+          nullable: true
+          description: The country that is levying the tax e.g. NZ
+        PhoneNumber:
+          type: string
+          nullable: true
+          description: The contact phone number (optional).
+        MessageFromBuyer:
+          type: string
+          nullable: true
+          description: The message from the buyer to the seller, if any.
+        PaymentInstructions:
+          type: string
+          nullable: true
+          description: The payment instructions that the seller has sent to the buyer, containing information on how to pay. Will be absent if the seller has not enabled payment instructions, or if the seller has not yet sent them to the buyer.
+        HasPaidByCreditCard:
+          type: boolean
+          description: Indicates whether the buyer has purchased the item using Pay Now. For high risk payments, the value will befalseuntil the payment has been manually approved by the Trade Me customer service team.
+        IsPaymentPending:
+          type: boolean
+          description: 'Indicates whether a Pay Now payment is currently under review by the Trade Me customer service team. If this flag is set, you should not send payment reminder notices to the buyer. Note: the Trade Me website uses the label "Payment Held" for payments in this state.'
+        CreditCardPaymentDate:
+          type: string
+          format: date-time
+          description: The date and time a payment was made with a credit card using Pay Now. Only valid if HasPaidByCreditCard istrue.
+        CreditCardType:
+          type: string
+          nullable: true
+          description: The type of credit card that was used to pay for the item ("Visa", "MasterCard", etc). Only available if Pay Now was used to make the purchase and you are logged in as the buyer.
+        CreditCardLastFourDigits:
+          type: string
+          nullable: true
+          description: The last four digits of the credit card used to pay for the item. Only available if Pay Now was used to make the purchase and you are logged in as the buyer.
+        OrderId:
+          type: integer
+          nullable: true
+          description: If the item was purchased via the shopping cart, then this is an ID that uniquely identifies the shopping cart transaction. All of the items that were ordered in the same cart transaction will have the same ID.
+        Status:
+          type: string
+          description: The status of the sale. This can be set by the seller to track the status of an order; it is never set by Trade Me. Only available if you are the seller of the listing.
+          enum:
+            - '10'
+            - '20'
+            - '30'
+            - '40'
+          x-enum-descriptions:
+            - An email has been sent to the buyer.
+            - Payment has been received from the buyer.
+            - The goods have been shipped to the buyer.
+            - The sale is completed.
+        StatusDate:
+          type: string
+          format: date-time
+          description: The date the status was last changed. Only available to the seller.
+        TaxSubTotals:
+          type: array
+          items:
+            $ref: '#/components/schemas/taxsubtotal'
+          nullable: true
+          description: Sum of all taxes included in this sale
+        TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTSubTotalNumberThe total amount of tax that has been chargedFlatRateNumberThe rate of the tax:
+          type: string
+          description: Enumeration
+        Type:
+          type: string
+          description: The type of tax that is included
+          enum:
+            - '1'
+          x-enum-descriptions:
+            - New Zealand GST on overseas supplies
+        SubTotal:
+          type: number
+          description: The total amount of tax that has been charged
+        FlatRate:
+          type: number
+          description: The rate of the tax
+      additionalProperties: true
+    ListingPendingOffer:
+      type: object
+      properties:
+        OfferPrice:
+          type: number
+          description: The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included.
+        OfferExpiryDate:
+          type: string
+          format: date-time
+          description: The date and time the fixed price offer expires.
+        Quantity:
+          type: integer
+          description: The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends.
+        TaxesIncluded:
+          type: array
+          items:
+            $ref: '#/components/schemas/taxrate'
+          nullable: true
+          description: The taxes included in the offer price
+        Recipients:
+          type: array
+          items:
+            $ref: '#/components/schemas/fixedpriceofferrecipient'
+          nullable: true
+          description: A list of recipients for the offer. Only available if you are the seller.
+        Member<Member> or nullMember details for the recipient of the offer.(This type has already been defined)DecisionEnumerationThe response of the member to the offer.:
+          type: string
+          description: <Member> or null
+        Member:
+          $ref: '#/components/schemas/member'
+          nullable: true
+          description: Member details for the recipient of the offer.
+        Decision:
+          type: string
+          description: The response of the member to the offer.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - The offer recipient has not responded yet.
+            - The offer recipient declined the offer.
+            - The offer recipient accepted the offer.
+      additionalProperties: true
+    ListingDonationRecipient:
+      type: object
+      properties:
+        CharityType:
+          type: string
+          description: The unique identifier of the charity.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+          x-enum-descriptions:
+            - The default charity identifier. Used if the user chose not to donate to a charity at all.
+            - Donate to Forest and Bird's kiwis for kiwis program.
+            - Donate to Plunket.
+            - Donate to St John.
+            - Donate to Our People, Our City Fund.
+            - Donate to Women's Refuge
+            - Donate to KidsCan
+        ImageSource:
+          type: string
+          nullable: true
+          description: The URL for this charity's brand image (designed for a light background).
+        DarkModeImageSource:
+          type: string
+          nullable: true
+          description: The URL for this charity's brand image (designed for a dark background).
+        Description:
+          type: string
+          nullable: true
+          description: The name of the charity e.g. "Plunket", "Kiwis for kiwi".
+        Tagline:
+          type: string
+          nullable: true
+          description: A short description of what the charity does.
+      additionalProperties: true
+    ListingCurrentShippingPromotion:
+      type: object
+      properties:
+        Threshold:
+          type: integer
+          description: The threshold a buyer needs to reach to qualify for this promotional shipping offer.
+        ThresholdType:
+          type: string
+          description: The type of threshold.
+          enum:
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - The buyer qualifies for the offer when the total value of items in their cart meets or exceeds the threshold.
+            - The buyer qualifies for the offer when the number of items in their cart (including selected quantities of multiple quantity listings) meets or exceeds the threshold.
+      additionalProperties: true
+    ListingEmbeddedContent:
+      type: object
+      properties:
+        YouTubeVideoKey:
+          type: string
+          nullable: true
+          description: The YouTube video key for the listing.
+        MatterportKey:
+          type: string
+          nullable: true
+          description: The Matterport video key for the listing's InsideView content.
+        IStagingKey:
+          type: string
+          nullable: true
+          description: The IStaging video key for the listing's InsideView content.
+        VimeoVideoKey:
+          type: string
+          nullable: true
+          description: The Vimeo video key for the listing.
+        DiakritFurnishKey:
+          type: string
+          nullable: true
+          description: The Diakrit Furnish key for the listing.
+        DiakritStylerKey:
+          type: string
+          nullable: true
+          description: The Diakrit Styler key for the listing.
+        DiakritPanoramaKey:
+          type: string
+          nullable: true
+          description: The Diakrit Panorama key for the listing.
+        VirtualToursCreatorKey:
+          type: string
+          nullable: true
+          description: The Virtual Tours Creator key for the listing.
+        Approved3DTourUrl:
+          type: string
+          nullable: true
+          description: The Approved 3d tour url for the listing.
+      additionalProperties: true
+    ListingSponsorLinks:
+      type: object
+      properties:
+        Type:
+          type: string
+          description: The type of sponsor link, business partner/checklist
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - the default value
+            - represents a checklist link that gets shown in our apps
+            - represents a checklist link that gets shown in our apps
+        Name:
+          type: string
+          nullable: true
+          description: The name of the sponsor, westpac, GE, TMI etc
+        Link:
+          type: string
+          nullable: true
+          description: The url to link to
+      additionalProperties: true
+    ListingMotorWebBasicReport:
+      type: object
+      properties:
+        Damaged:
+          type: string
+          nullable: true
+          description: Returns "YES" if the car was reported to be damaged during the import. Returns "NO" if the car was not reported to be damaged during the import. Returns "N/A" if value cannot be reliably read from the database.
+        ReportedStolen:
+          type: string
+          nullable: true
+          description: Returns "YES" if the car was reported to be stolen. Returns "NO" if the car was not reported to be stolen. Returns "N/A" if value cannot be reliably read from the database.
+        MoneyOwing:
+          type: string
+          nullable: true
+          description: Returns "YES" if a person or company has registered a security against the vehicle indicating they have a financial interest in the vehicle Returns "NO" if a person or company has not registered a security against the vehicle indicating they have a financial interest in the vehicle. Returns "N/A" if value cannot be reliably read from the database.
+        ReRegistered:
+          type: string
+          nullable: true
+          description: Returns "YES" Returns "NO" Returns "N/A" if value cannot be reliably read from the database.
+        GeneratedAt:
+          type: string
+          format: date-time
+          description: Returns the time stamp of the date and time when report has been generated.
+        RegoOrVin:
+          type: string
+          nullable: true
+          description: Returns the registration or VIN number which has been used to purchase the Motor Web Basic Report.
+        Title:
+          type: string
+          nullable: true
+          description: Returns the vehicle title
+        PartialReportUrl:
+          type: string
+          nullable: true
+          description: Returns the URL to the partial MotorWebReport
+      additionalProperties: true
+    ListingBroadbandTechnologies:
+      type: object
+      properties:
+        Name:
+          type: string
+          nullable: true
+          description: The technology name.
+        Availability:
+          type: string
+          nullable: true
+          description: The availability of the broadband technology.
+      additionalProperties: true
+    ListingMemberRequestInformation:
+      type: object
+      properties:
+        RequestRelistStatus:
+          type: string
+          description: Indicates whether the member can request a relist and the status of any request.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+          x-enum-descriptions:
+            - Member can request
+            - Sold already
+            - Member is blacklisted
+            - Member has made request already
+            - An offer has already been made
+            - Already relisted
+            - Member is not a valid offeree
+        RequestOfferStatus:
+          type: string
+          description: Indicates whether the member can request an offer and the status of any request.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+          x-enum-descriptions:
+            - Member can request
+            - Sold already
+            - Member is blacklisted
+            - Member has made request already
+            - An offer has already been made
+            - Already relisted
+            - Member is not a valid offeree
+      additionalProperties: true
+    ListingPaymentMethods:
+      type: object
+      properties:
+        Id:
+          type: string
+          description: The unique identifier for the payment method.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '4'
+            - '8'
+            - '16'
+            - '32'
+            - '64'
+          x-enum-descriptions:
+            - No payment methods provided.
+            - NZ bank deposit.
+            - Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)
+            - Cash.
+            - Safe Trader (Now obsolete).
+            - Other (needs to be specified).
+            - Ping.
+            - Afterpay.
+        Name:
+          type: string
+          nullable: true
+          description: The text to display to the user.
+        LogoUrl:
+          type: string
+          nullable: true
+          description: A url for the payment methods logo.
+      additionalProperties: true
+    ListingFinanceOffer:
+      type: object
+      properties:
+        WeeklyPayment:
+          type: number
+          description: The weekly payment required under the current conditions
+        DepositPercent:
+          type: number
+          description: The deposit percent required to qualify for this offer
+        TermInMonths:
+          type: integer
+          description: The duration of the finance offer
+        InterestRate:
+          type: number
+          description: The indicative interest rate used to calculate the offer
+        InterestType:
+          type: string
+          description: The type of interest for a finance offerThis field will always return the Fixed interest type
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - Fixed interest rate.
+            - Floating interest rate capped at a certain value.
+            - Floating interest rate.
+        EstablishmentFee:
+          type: number
+          description: The establishment fee required for this offer
+        MonthlyFee:
+          type: number
+          description: The monthly maintenance fee required for this offer
+        TotalPayment:
+          type: number
+          description: The total payment for the loan
+        OfferDescription:
+          type: string
+          nullable: true
+          description: The full description of the offer.This field is no longer in use.
+        OfferDisclaimer:
+          type: string
+          nullable: true
+          description: The disclaimer explaining the finance offers further.This field is no longer in use.
+        FinancePayment:
+          type: number
+          description: Includes the finance portion of the total payment
+        DepositPayment:
+          type: number
+          description: Includes the deposit value of the total payment
+        IsPersonalised:
+          type: boolean
+          description: Specifies whether the return values are based on member's finance preferences.
+      additionalProperties: true
+    ListingProductSpecification:
+      type: object
+      properties:
+        GTIN:
+          type: string
+          nullable: true
+          description: The GTIN of the product e.g. 027242896505
+        Brand:
+          type: string
+          nullable: true
+          description: The brand name of the product e.g. Sony
+        ManufacturerCode:
+          type: string
+          nullable: true
+          description: The product code used by the manufacturer e.g. KDL32W600D
+      additionalProperties: true
+    ListingDealInfo:
+      type: object
+      properties:
+        WhyPayLabel:
+          type: string
+          nullable: true
+          description: Get the WhyPay label
+        WhyPayDescription:
+          type: string
+          nullable: true
+          description: Get the WhyPay description
+        WhyPayPrice:
+          type: number
+          description: Get the WhyPay price
+        DeliveryEstimate:
+          type: string
+          nullable: true
+          description: Get the delivery estimate
+      additionalProperties: true
+    ListingOffice:
+      type: object
+      properties:
+        MembershipType:
+          type: string
+          description: The type of membership the office has.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+          x-enum-descriptions:
+            - Basic - no partnership agreement
+            - Gold OR Platinum
+            - Silver
+            - ExtraVariant
+        HeroImages:
+          $ref: '#/components/schemas/officeprofileheroimageurl'
+          nullable: true
+          description: The office's hero images.
+        OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image:
+          type: string
+          description: String or null
+        Original:
+          type: string
+          nullable: true
+          description: The URL of the original image
+        Small:
+          type: string
+          nullable: true
+          description: The URL of the small image
+        IsPartnerAccreditationEnabled:
+          type: boolean
+          description: Is the office's partner accreditation benefits turned on?
+      additionalProperties: true
+    ListingHasListingMetCompliance:
+      type: object
+      properties:
+        HasMetAnimalWelfareCompliance:
+          type: boolean
+          nullable: true
+          description: Whether the seller has indicated if the listing has met our code of animal welfare. If attribute is not applicable, field is not returned.
+      additionalProperties: true
+    ListingSpecialOffer:
+      type: object
+      properties:
+        Title:
+          type: string
+          nullable: true
+          description: The title for a special offer
+        Subtitle:
+          type: string
+          nullable: true
+          description: The subtitle for a special offer
+        Description:
+          type: string
+          nullable: true
+          description: The description for a special offer
+        OfferUrl:
+          type: string
+          nullable: true
+          description: The external offer url provided by the dealer for a special offer
+        ImageUrl:
+          type: string
+          nullable: true
+          description: The image url for a special offer's image
+        IsFinance:
+          type: boolean
+          description: boolean indicating whether a special offer is a finance special offer or not
+        TermsAndConditions:
+          type: string
+          nullable: true
+          description: the terms and conditions assosciated with a finance special offer
+      additionalProperties: true
+    ListingJobsSalaryTransparency:
+      type: object
+      properties:
+        HasOptedIn:
+          type: boolean
+          description: Shows if the user has opted in to display salary data
+        ApproximatePayRangeDisplay:
+          type: string
+          nullable: true
+          description: Shows the salary data range
+      additionalProperties: true
+    ListingMotorsExternalMedia:
+      type: object
+      properties:
+        Instavid360SpinnerId:
+          type: string
+          nullable: true
+          description: ID for displaying the Instavid 360 spinner.
+        Instavid360SpinnerThumbnailUrl:
+          type: string
+          nullable: true
+          description: Thumbnail placeholder for the Instavid 360 spinner.
+        VideoUrl:
+          type: string
+          nullable: true
+          description: URL for displaying the listing video.
+        VideoThumbnailUrl:
+          type: string
+          nullable: true
+          description: Thumbnail placeholder for the listing video.
+      additionalProperties: true
+    ListingPropertySaleInformation:
+      type: object
+      properties:
+        PropertySaleType:
+          type: string
+          description: Sales type (auction, deadline etc)
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+            - '6'
+            - '7'
+            - '8'
+          x-enum-descriptions:
+            - None
+            - AskingPrice
+            - EnquiriesOver
+            - Auction
+            - Tender
+            - PriceByNegotiation
+            - PriceOnApplication
+            - DeadlinePrivateTreaty
+            - AskingPricePlusGst
+        PropertyDateOfSale:
+          type: string
+          format: date-time
+          description: Date of the auction/deadline/etc
+      additionalProperties: true
+    ListingPropertyAttributes:
+      type: object
+      properties:
+        Name:
+          type: string
+          nullable: true
+          description: The identifier name. e.g., "floor_area"
+        Value:
+          type: string
+          nullable: true
+          description: The formatted value. e.g., "175m²"
+        Source:
+          type: string
+          nullable: true
+          description: The source of the data. e.g., "trademe", "council_data"
+        DisplayName:
+          type: string
+          nullable: true
+          description: The user-friendly name to be displayed for this attribute. e.g., "Floor Area"
+        DisplayGroup:
+          type: string
+          nullable: true
+          description: The user-friendly group name under which this attribute should be displayed. e.g., "Address"
+        DisplayGroupOrder:
+          type: integer
+          description: The display order priority for the group.
+        DisplayOrder:
+          type: integer
+          description: The display order priority for the attribute within its group.
+        Description:
+          type: string
+          nullable: true
+          description: User friendly description of the field
+      additionalProperties: true
+    Listing:
+      type: object
+      properties:
+        ListingId:
+          type: integer
+          description: The ID of the listing.
+        Title:
+          type: string
+          nullable: true
+          description: The listing title.
+        Category:
+          type: string
+          nullable: true
+          description: The listing category.
+        StartPrice:
+          type: number
+          description: The start price.
+        BuyNowPrice:
+          type: number
+          description: The Buy Now price.
+        StartDate:
+          type: string
+          format: date-time
+          description: The date the listing was created.
+        EndDate:
+          type: string
+          format: date-time
+          description: The date the listing will end.
+        IsFeatured:
+          type: boolean
+          description: Is this a featured listing?
+        HasGallery:
+          type: boolean
+          description: Is this a gallery listing?
+        IsBold:
+          type: boolean
+          description: Is this a bold listing?
+        IsHighlighted:
+          type: boolean
+          description: Is this a highlighted listing?
+        HasHomePageFeature:
+          type: boolean
+          description: Is this a homepage feature listing?
+        BidderAndWatchers:
+          type: integer
+          description: The number of bidders and watcher for this listing.
+        MaxBidAmount:
+          type: number
+          description: The current leading bid amount.
+        AsAt:
+          type: string
+          format: date-time
+          description: The date and time the response was generated on the server.
+        CategoryPath:
+          type: string
+          nullable: true
+          description: The category path.
+        PhotoId:
+          type: integer
+          description: The ID of the primary photo for the listing (if the listing has a photo).
+        HasPayNow:
+          type: boolean
+          description: Indicates whether the item has Pay Now.
+        IsNew:
+          type: boolean
+          description: Indicates whether the item is marked as new.
+        RegionId:
+          type: integer
+          description: |-
+            The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.
+
+                                            This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.
+        Region:
+          type: string
+          nullable: true
+          description: The name of the region where this item is located.
+        SuburbId:
+          type: integer
+          description: The ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system.
+        Suburb:
+          type: string
+          nullable: true
+          description: The name of the suburb where this item is located.
+        PickupLocality:
+          $ref: '#/components/schemas/ListingPickupLocality'
+          nullable: true
+          description: The pick-up location details if pick-up is allowed and has been specified.
+        BidCount:
+          type: integer
+          description: The number of bids on the item.
+        ViewCount:
+          type: integer
+          description: The number of times the listing has been viewed.
+        IsReserveMet:
+          type: boolean
+          description: Indicates whether the item's reserve has been met.
+        HasReserve:
+          type: boolean
+          description: Indicates whether the item has a reserve.
+        HasBuyNow:
+          type: boolean
+          description: Indicates whether the item has Buy Now.
+        NoteDate:
+          type: string
+          format: date-time
+          description: The date of the note on an item.
+        CategoryName:
+          type: string
+          nullable: true
+          description: The display name of the category.
+        ReserveState:
+          type: string
+          description: The flag to display on an item.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+          x-enum-descriptions:
+            - There is no reserve on the item (i.e. the reserve price is the same as the starting price).
+            - The value of the highest bid has exceeded the reserve price.
+            - The value of the highest bid has not reached the reserve price.
+            - The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction.
+        Attributes:
+          $ref: '#/components/schemas/ListingAttributes'
+          nullable: true
+          description: The attributes for the item that are intended to be displayed on the UI.
+        HiddenAttributes:
+          type: array
+          items:
+            type: object
+            description: Listing attribute
+          nullable: true
+          description: The attributes for the item that are not intended to be displayed on the UI.
+        IsClassified:
+          type: boolean
+          description: Indicates whether the item is a classified.
+        OpenHomes:
+          $ref: '#/components/schemas/ListingOpenHomes'
+          nullable: true
+          description: A collection of open home times for this listing. Only applies to open home listings.
+        RelistedItemId:
+          type: integer
+          description: The ID of the new listing if this listing was relisted.
+        Subtitle:
+          type: string
+          nullable: true
+          description: The subtitle, if present.
+        ReservePrice:
+          type: number
+          description: The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.
+        IsBuyNowOnly:
+          type: boolean
+          description: Indicates whether or not this is a Buy Now Only listing.
+        HasMultiple:
+          type: boolean
+          description: Indicates whether there is more than one item available. Only applicable for Buy Now Only listings.
+        Quantity:
+          type: integer
+          description: The total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller.
+        IsFlatShippingCharge:
+          type: boolean
+          description: Indicates whether one flat shipping fee will be charged if more than one of this item is purchased. Only applicable for Buy Now Only listings.
+        RemainingGalleryPlusRelists:
+          type: integer
+          nullable: true
+          description: The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).
+        MinimumNextBidAmount:
+          type: number
+          description: The smallest amount that will be accepted for the next bid. Only applicable to auctions which allow bidding (i.e. not classifieds and not Buy Now Only auctions). You must still check for the "bid too small" error when using this value, as someone may make a bid after you have checked this value but before you have finished placing your bid.
+        IsOnWatchList:
+          type: boolean
+          description: Indicates whether the item is on the authenticated member's watchlist.
+        WatchlistReminder:
+          type: string
+          description: If the item is on the watchlist, it indicates the user's preference of when they should get watchlist emails for the item.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '4'
+          x-enum-descriptions:
+            - No emails for watchlist items.
+            - One hour before the listing closes.
+            - Twelve hours before the listing closes.
+            - Twenty hours before the listing closes.
+        GeographicLocation:
+          $ref: '#/components/schemas/ListingGeographicLocation'
+          nullable: true
+          description: The geographic location (latitude and longitude) of a property.
+        PriceDisplay:
+          type: string
+          nullable: true
+          description: The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have "Price by negotiation".
+        TotalReviewCount:
+          type: integer
+          description: The total number of user-submitted reviews. Currently only applies to services listings.
+        PositiveReviewCount:
+          type: integer
+          description: The number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings.
+        SendPaymentInstructions:
+          type: boolean
+          description: Indicates whether payment instructions are automatically sent to buyers. This value is only present if you are the seller.
+        CanUsePayNowInstant:
+          type: boolean
+          description: Indicates whether the PayNowInstant is available for this listing.
+        ExternalReferenceId:
+          type: string
+          nullable: true
+          description: The external reference ID, if one exists. Only available to the seller of a listing.
+        HasAppliedForJob:
+          type: boolean
+          description: Indicates whether the authenticated member has applied for the job. Only applies for job listings.
+        JobApplicationDate:
+          type: string
+          format: date-time
+          nullable: true
+          description: The date and time of the member's most recent job application, if any. This field will only be populated if HasAppliedForJob is true.
+        SKU:
+          type: string
+          nullable: true
+          description: SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.
+        IsClearance:
+          type: boolean
+          description: This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.
+        WasPrice:
+          type: number
+          nullable: true
+          description: The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.
+        PercentageOff:
+          type: integer
+          nullable: true
+          description: The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.
+        Branding:
+          $ref: '#/components/schemas/ListingBranding'
+          nullable: true
+          description: A list of branding images associated with this listing.
+        AvailableToBuy:
+          type: string
+          nullable: true
+          description: The amount of listings available for purchase. If greater than 10, 10+ will be displayed.
+        IsSuperFeatured:
+          type: boolean
+          description: Is this a super featured listing?
+        VariantDefinition:
+          $ref: '#/components/schemas/ListingVariantDefinition'
+          nullable: true
+          description: The variants.
+        ListingGroupId:
+          type: integer
+          nullable: true
+          description: The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant
+        AdditionalData:
+          $ref: '#/components/schemas/ListingAdditionalData'
+          nullable: true
+          description: Structured information for Listing Additional Data
+        ListingExtras:
+          type: string
+          nullable: true
+          description: A collection of extras that are currently applied to the listing
+        IsLoyaltyEligible:
+          type: boolean
+          description: Indicates whether the listing is eligible to loyalty program.
+        HasPing:
+          type: boolean
+          description: Indicates whether Ping is a supported payment option.
+        UnansweredQuestionCount:
+          type: integer
+          nullable: true
+          description: The number of unanswered questions
+        LatestRelistedItemId:
+          type: integer
+          description: The ID of the current open listing if this listing has been continuously relisted.
+        IsCounterOffersAllowed:
+          type: boolean
+          description: Indicates whether the listing is enabled for Make an Offer.
+        MaximumOffers:
+          type: integer
+          nullable: true
+          description: The maximum number of Buyer offers the listing accepts if the listing has Counter Offers enabled.
+        ShippingDetails:
+          $ref: '#/components/schemas/ListingShippingDetails'
+          nullable: true
+          description: Shipping details for the current listing. Null if no shipping details available.
+        IsMessagingAllowed:
+          type: boolean
+          description: Indicates whether the listing is enabled for messaging via messaging service.
+        PriceType:
+          type: string
+          nullable: true
+          description: Indicates the price type of boat and farming machinery listings
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - Asking Price.
+            - Price On Application.
+            - Excluding GST.
+        NewCarInformation:
+          $ref: '#/components/schemas/ListingNewCarInformation'
+          nullable: true
+          description: Information specific to new cars if the current listing is a new car listing.
+        Sponsored:
+          $ref: '#/components/schemas/ListingSponsored'
+          nullable: true
+          description: listing’s required metadata relating to Sponsored Listings.
+        ListingPlatform:
+          type: string
+          description: The backend platform that controls the listing.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - The platform has not been set.
+            - The listing is controlled by Trade Me.
+            - The listing is controlled by Koru.
+        AllowsPickups:
+          type: string
+          description: The pickup option for the listing.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+          x-enum-descriptions:
+            - The listing allows pick up, but does not require it.
+            - The buyer can pickup if they so choose.
+            - The buyer must pickup the item.
+            - The buyer cannot pickup the item (delivery only).
+        Member:
+          $ref: '#/components/schemas/ListingMember'
+          nullable: true
+          description: The seller of the listing.
+        Body:
+          type: string
+          nullable: true
+          description: The text used as the body of the item.
+        Bids:
+          $ref: '#/components/schemas/ListingBids'
+          nullable: true
+          description: A list of the last 10 bids for the listing.
+        Questions:
+          $ref: '#/components/schemas/ListingQuestions'
+          nullable: true
+          description: A list of questions and answers for the listing.
+        Photos:
+          $ref: '#/components/schemas/ListingPhotos'
+          nullable: true
+          description: A collection of photos for the listing.
+        PickupLocation:
+          type: string
+          nullable: true
+          description: |-
+            The pick-up location details if pick-up is allowed.
+
+                                            This property is deprecated and will be removed. Use the ListedItem PickupLocality property instead.
+        ShippingOptions:
+          $ref: '#/components/schemas/ListingShippingOptions'
+          nullable: true
+          description: A list of shipping options.
+        PaymentOptions:
+          type: string
+          nullable: true
+          description: A comma-separated list of the available payment options e.g. "NZ Bank Deposit, Cash, Pay Now".
+        CurrentAutoBid:
+          type: number
+          nullable: true
+          description: If you are the bidder then the highest AutoBid value is returned
+        Dealership:
+          $ref: '#/components/schemas/ListingDealership'
+          nullable: true
+          description: The dealership details if this is a car dealer listing.
+        Agency:
+          $ref: '#/components/schemas/ListingAgency'
+          nullable: true
+          description: The agency details if this is a job or property listing.
+        Store:
+          $ref: '#/components/schemas/ListingStore'
+          nullable: true
+          description: The store details, if the seller has a Trade Me store.
+        ContactDetails:
+          $ref: '#/components/schemas/ListingContactDetails'
+          nullable: true
+          description: The contact details for a personal listing.
+        IsOrNearOffer:
+          type: boolean
+          description: Indicates whether a near offer is accepted.
+        AuthenticatedMembersOnly:
+          type: boolean
+          description: Indicates whether bidding on this auction is restricted to authenticated members. Note that there are many restrictions on non-authenticated users. For more information, see the help article on becoming authenticated.
+        Sales:
+          $ref: '#/components/schemas/ListingSales'
+          nullable: true
+          description: Contains sales information for the listing. A "sale" in this context can via Buy Now, a fixed price offer or a winning bid. If you are the seller of this listing, this field contains information on all sales. If you are the buyer, then it contains information about your purchases only.
+        OfferStatus:
+          type: string
+          description: The status of the fixed price offer for this listing (if there is one). Only available if you are the seller or a recipient of the offer.
+          enum:
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+          x-enum-descriptions:
+            - A fixed price offer has not been created for this listing, or you are not the seller or a recipient and so no information is available.
+            - A fixed price offer is currently active. The PendingOffer field will contain details of the offer. If PendingOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+            - A fixed price offer was created, but then was withdrawn by the seller. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+            - A fixed price offer was created, but time ran out before all the recipients could respond. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+            - The fixed price offer was declined by all the recipients. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+            - The fixed price offer was accepted. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+        PendingOffer:
+          $ref: '#/components/schemas/ListingPendingOffer'
+          nullable: true
+          description: Contains details of a fixed price offer that is pending for this auction. Only available if you are the seller or a recipient of the offer.
+        ClosedOffer:
+          type: object
+          nullable: true
+          description: Contains details of a fixed price offer that was made, but is no longer available, either because it was accepted, it expired or all recipients declined the offer. Only available if you are the seller or a recipient of the offer.
+        FirearmsLicenseRequiredToBuy:
+          type: boolean
+          description: Indicates whether a buyer is required to enter their firearms license number. Applies to firearms listings (e.g. Sports > Hunting & shooting > Rifles).
+        Over18DeclarationRequiredToBuy:
+          type: boolean
+          description: Indicates whether a buyer is required to confirm that they are over 18. Applies to wine listings (e.g. Home & living > Wine > Red > Pinot noir).
+        CanOffer:
+          type: boolean
+          description: Indicates whether a fixed price offer can be created for the listing. You can use this flag to hide the FPO button in your UI or to avoid a useless FPO API call. Note that if this flag is true it does not guarantee that a subsequent FPO operation will succeed.
+        CanRelist:
+          type: boolean
+          description: Indicates whether the listing can be relisted using the relist or relist with edits API. You can use this flag to hide the relist button in your UI or to avoid a useless relist API call. Note that if this flag is true it does not guarantee that a subsequent relist operation will succeed.
+        WithdrawnBySeller:
+          type: boolean
+          description: Indicates whether the listing was withdrawn by the seller.
+        DonationRecipient:
+          $ref: '#/components/schemas/ListingDonationRecipient'
+          nullable: true
+          description: Indicates the seller will round up their success fees to the nearest dollar and donate the difference to the selected charity.
+        IsInTradeProtected:
+          type: boolean
+          description: Indicates whether the listing is protected by the Consumer Guarantees Act
+        IsInCart:
+          type: boolean
+          nullable: true
+          description: Indicates if the item is also in the members cart.
+        CurrentShippingPromotion:
+          $ref: '#/components/schemas/ListingCurrentShippingPromotion'
+          nullable: true
+          description: A list of shipping promotions that are currently active for this listing
+        IsLeading:
+          type: boolean
+          description: Indicates whether the authenticated user is leading the bidding.
+        IsOutbid:
+          type: boolean
+          description: Indicates whether the authenticated user has been outbid. This will be false if the authenticated user has not made any bids.
+        CanAddToCart:
+          type: boolean
+          description: Indicates if the item can be added to members cart.
+        CartItemId:
+          type: integer
+          description: the cartItemId if the item is already in the members cart.
+        MemberProfile:
+          type: object
+          nullable: true
+          description: This listing member's public profile information.
+        EmbeddedContent:
+          $ref: '#/components/schemas/ListingEmbeddedContent'
+          nullable: true
+          description: The content keys that are embedded in the listing page (e.g. YouTube Video Key).
+        SponsorLinks:
+          $ref: '#/components/schemas/ListingSponsorLinks'
+          nullable: true
+          description: A collection of sponsored links for the listing.
+        MotorWebBasicReport:
+          $ref: '#/components/schemas/ListingMotorWebBasicReport'
+          nullable: true
+          description: MotorWeb basic report for car listings if purchased by the seller.
+        ContactCount:
+          type: integer
+          nullable: true
+          description: The number of contacts received for this listing, either emails, applications, or clicks-to-apply. Only available if you are the seller.
+        BroadbandTechnologies:
+          $ref: '#/components/schemas/ListingBroadbandTechnologies'
+          nullable: true
+          description: A list of broadband technology availability for property listings.
+        FormattedStartDate:
+          type: string
+          nullable: true
+          description: Listing start date, displayed as a string. Currently applies to Motors Classified listings only.
+        SuperFeatureEndDate:
+          type: string
+          format: date-time
+          description: End date of a super feature for a listing.
+        MemberRequestInformation:
+          $ref: '#/components/schemas/ListingMemberRequestInformation'
+          nullable: true
+          description: Provides information relating to the member regarding their ability to request a relist or offer and the status of any request.
+        IsEligibleForBuyerProtection:
+          type: boolean
+          description: Indicates whether the listing is eligible for buyer protection
+        SupportsQuestionsAndAnswers:
+          type: boolean
+          description: Indicates if questions and answers can be shown on the listing
+        HasContactDetails:
+          type: boolean
+          description: Indicates whether the listing has contact details
+        SuppressRelatedListings:
+          type: boolean
+          description: Indicates whether related listings should NOT be shown alongside this listing. This field will normally be false but may be true if related listings are simply not available, or because Trade Me has an agreement with the seller to not show competitor's listings next to theirs.
+        SuppressComplementaryListings:
+          type: boolean
+          description: Indicates whether complementary listings should NOT be shown alongside this listing. If this flag is true it means that we have foreknowledge that complementary listings are definitely not available, or there is a policy that means complementary listings should not be shown. Note that if the flag is false, it is still possible for the complementary listings endpoint to return zero results.
+        PaymentMethods:
+          $ref: '#/components/schemas/ListingPaymentMethods'
+          nullable: true
+          description: A list of the supported payment methods.
+        FinanceOffer:
+          $ref: '#/components/schemas/ListingFinanceOffer'
+          nullable: true
+          description: |-
+            A finance offer for the current listing
+
+                                            The property below is deprecated and will be removed. Use the Finance Estimate endpoint instead.
+        ProductSpecification:
+          $ref: '#/components/schemas/ListingProductSpecification'
+          nullable: true
+          description: The specifications of the product if the listing relates to a product
+        BoundaryImage:
+          type: object
+          nullable: true
+          description: The boundary image that is availability for only property listings
+        DealInfo:
+          $ref: '#/components/schemas/ListingDealInfo'
+          nullable: true
+          description: WhyPay deal information
+        TaxesIncluded:
+          type: array
+          items:
+            type: object
+            description: Tax rate on price
+          nullable: true
+          description: Indicates if taxes (and what type) are included in the BuyNowPrice
+        RenderOptions:
+          type: string
+          nullable: true
+          description: Holds a collection with all the available options to render additional content on the client
+          enum:
+            - '0'
+            - '1'
+            - '2'
+          x-enum-descriptions:
+            - Can Render Urls on the client
+            - Display Buyer's Contact Details
+            - Can the seller's member image be shown in the listing detail buyer options section.
+        AreaOfBusiness:
+          type: string
+          description: The area of business in which the listing's category resides.
+          enum:
+            - '0'
+            - '0'
+            - '1'
+            - '2'
+            - '3'
+            - '4'
+            - '5'
+          x-enum-descriptions:
+            - None specified.
+            - All
+            - Marketplace
+            - Property
+            - Motors
+            - Jobs
+            - Services
+        SecondCategory:
+          type: string
+          nullable: true
+          description: The secondary category the listing is in if this promotion is applicable to the listing
+        SecondCategoryName:
+          type: string
+          nullable: true
+          description: The display name of the secondary category the listing is in if this promotion is applicable to the listing
+        SecondCategoryPath:
+          type: string
+          nullable: true
+          description: The full path of the secondary category the listing is in if this promotion is applicable to the listing
+        SuppressAdvertisersOtherListings:
+          type: boolean
+          description: Indicates whether advertisers other listings should NOT be shown alongside this listing. This field will normally be false but may be true if the listing has been listed by a reseller job agent.
+        Office:
+          $ref: '#/components/schemas/ListingOffice'
+          nullable: true
+          description: The Office details if this is a property listing.
+        IsExtendable:
+          type: boolean
+          description: Indicates whether the listing is extendable.
+        HasListingMetCompliance:
+          $ref: '#/components/schemas/ListingHasListingMetCompliance'
+          nullable: true
+          description: Indicates whether the listing has met any relevant compliance requirements
+        IncludeGstStartPrice:
+          type: number
+          nullable: true
+          description: Indicates the start price and gst tax amount of boat and farming machinery listings
+        SearchVisualProminence:
+          type: integer
+          nullable: true
+          description: Indicates the listing type
+        SpecialOffer:
+          $ref: '#/components/schemas/ListingSpecialOffer'
+          nullable: true
+          description: Information about the special offer that a dealer has applied to a classified motors or farming listing
+        JobAdvertiserPageUrl:
+          type: string
+          nullable: true
+          description: The company page url for jobs
+        JobAdvertiserOtherListingsUrl:
+          type: string
+          nullable: true
+          description: The other listings url jobs
+        JobsSalaryTransparency:
+          $ref: '#/components/schemas/ListingJobsSalaryTransparency'
+          nullable: true
+          description: approximate pay range display information
+        IsAutoExtended:
+          type: boolean
+          description: Indicates if the listing is flagged as Auto Extended
+        MotorsExternalMedia:
+          $ref: '#/components/schemas/ListingMotorsExternalMedia'
+          nullable: true
+          description: Motors information for listings that have external media content
+        PropertySaleInformation:
+          $ref: '#/components/schemas/ListingPropertySaleInformation'
+          nullable: true
+          description: Property Sale Information
+        BackgroundRecheckEligibility:
+          type: string
+          nullable: true
+          description: What background check elements will be rechecked (if any) upon acceptance Applies to motors listings.
+          enum:
+            - '1'
+            - '99'
+          x-enum-descriptions:
+            - This offer is subject to recheck of money owing and stolen status upon acceptance
+            - This offer is not subject to recheck any background check items
+        PropertyAttributes:
+          $ref: '#/components/schemas/ListingPropertyAttributes'
+          nullable: true
+          description: List of property attributes and council data points.
+      additionalProperties: true
+      description: <ListedItemDetail> The details of the listing.
+    Category:
+      type: object
+      description: Trade Me category information
+      additionalProperties: true
+      properties:
+        Name:
+          type: string
+          nullable: true
+          description: The name of the category
+          example: Antiques & collectables
+        Number:
+          type: string
+          nullable: true
+          description: A unique identifier for the category
+          example: 0004-0369-6076-
+        Path:
+          type: string
+          nullable: true
+          description: The full URL path of this category
+          example: /Antiques-collectables/Collectables/Badges-pins
+        Subcategories:
+          type: array
+          nullable: true
+          description: The list of subcategories belonging to this category
+          items:
+            $ref: '#/components/schemas/Category'
+        Count:
+          type: integer
+          description: The number of items for sale in this category
+          example: 1234
+        IsRestricted:
+          type: boolean
+          description: Indicates whether the category is restricted to adults only (i.e. the category is R18)
+          example: false
+        HasLegalNotice:
+          type: boolean
+          description: Indicates whether the category has legal requirements
+          example: false
+        HasClassifieds:
+          type: boolean
+          description: Indicates whether classifieds are allowed in this category
+          example: false
+        AreaOfBusiness:
+          type: integer
+          description: Area of business this category is related to
+          enum:
+            - 0
+            - 1
+            - 2
+            - 3
+            - 4
+            - 5
+          example: 1
+        CanHaveSecondCategory:
+          type: boolean
+          description: Indicates whether this category can be paired with a second category
+          example: false
+        CanBeSecondCategory:
+          type: boolean
+          description: Indicates whether this category can be selected as a second category
+          example: false
+        IsLeaf:
+          type: boolean
+          description: Indicates whether the category is a leaf category (i.e. has no children)
+          example: true
+    SearchResult:
+      type: object
+      description: Search results from Trade Me general search
+      additionalProperties: true
+      properties:
+        TotalCount:
+          type: integer
+          description: The total number of results available
+          example: 1234
+        Page:
+          type: integer
+          description: The current page of results
+          example: 1
+        PageSize:
+          type: integer
+          description: The number of results per page
+          example: 20
+        List:
+          type: array
+          description: Array of search result listings
+          items:
+            $ref: '#/components/schemas/Listing'
+        DidYouMean:
+          type: string
+          nullable: true
+          description: Suggested alternative search term
+          example: iPhone
+        FoundCategories:
+          type: array
+          nullable: true
+          description: Categories that match the search
+          items:
+            $ref: '#/components/schemas/Category'
+        MemberListing:
+          type: object
+          nullable: true
+          description: Member listing information if searching for a specific member
+        Breadcrumbs:
+          type: array
+          nullable: true
+          description: Navigation breadcrumbs for the search
+          items:
+            type: object
+            properties:
+              Name:
+                type: string
+                description: Breadcrumb name
+              Category:
+                type: string
+                description: Category identifier
+        SearchExecutionTime:
+          type: number
+          description: Time taken to execute the search in milliseconds
+          example: 45.2
+    SearchSuggestions:
+      type: object
+      description: Search suggestions based on search terms, including category suggestions, recent searches, and auto-suggestions
+      properties:
+        RecentSearches:
+          type: array
+          nullable: true
+          description: List of search terms the logged in member has recently searched for ordered by most recent first
+          items:
+            type: string
+        AutoSuggestions:
+          type: array
+          nullable: true
+          description: List of suggested search terms based on terms popular with Trade Me members ordered by their popularity
+          items:
+            type: object
+            properties:
+              SearchTerm:
+                type: string
+                nullable: true
+                description: The search term Trade Me members have been using
+              SearchTermCategorySuggestions:
+                type: array
+                nullable: true
+                description: Categories we suggest you search for the search term in
+                items:
+                  type: object
+                  properties:
+                    Id:
+                      type: integer
+                      description: The ID of the category
+                    Description:
+                      type: string
+                      nullable: true
+                      description: The description for the suggested category
+        CategorySuggestions:
+          type: array
+          nullable: true
+          description: List of category suggestions that are relevant to the given search term
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: The ID of the suggested category
+              Name:
+                type: string
+                nullable: true
+                description: The name of the suggested category
+              AncestorsNames:
+                type: array
+                nullable: true
+                description: A list of names of the suggested categories ancestors, ordered from root to leaf
+                items:
+                  type: string
+        StoreSuggestions:
+          type: array
+          nullable: true
+          description: List of store suggestions that are relevant to the given search term
+          items:
+            type: object
+            properties:
+              MemberId:
+                type: integer
+                description: The ID of the suggested store
+              StoreName:
+                type: string
+                nullable: true
+                description: The name of the suggested store
+              StorePath:
+                type: string
+                nullable: true
+                description: The path of the suggested store
+              Description:
+                type: string
+                nullable: true
+                description: The description of the suggested store
+              LogoImageUri:
+                type: string
+                nullable: true
+                description: The profile logo image URL of the suggested store
+    WatchListResponse:
+      type: object
+      description: Response from watchlist operations indicating success or failure
+      properties:
+        Success:
+          type: boolean
+          description: Indicates whether the operation was successful
+          example: true
+        Description:
+          type: string
+          nullable: true
+          description: Error description if the operation failed, null on success
+          example: null
+      required:
+        - Success
+      additionalProperties: false
+      examples:
+        success:
+          Success: true
+          Description: null
+        failure:
+          Success: false
+          Description: Listing not found or already on watchlist
+  responses:
+    NotFound:
+      description: Resource not found
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: NotFound
+              message:
+                type: string
+                example: Listing not found
+    Unauthorized:
+      description: Unauthorized - authentication required
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Unauthorized
+              message:
+                type: string
+                example: Authentication required
+            required:
+              - error
+              - message
+    Forbidden:
+      description: Forbidden - insufficient permissions
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: Forbidden
+              message:
+                type: string
+                example: Insufficient permissions for this operation
+            required:
+              - error
+              - message
+    TooManyRequests:
+      description: Rate limit exceeded
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: TooManyRequests
+              message:
+                type: string
+                example: Rate limit exceeded, please try again later
+            required:
+              - error
+              - message
+    InternalServerError:
+      description: Internal server error
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              error:
+                type: string
+                example: InternalServerError
+              message:
+                type: string
+                example: An unexpected error occurred
+            required:
+              - error
+              - message

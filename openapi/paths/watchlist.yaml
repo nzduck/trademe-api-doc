@@ -1,0 +1,199 @@
+watchlist-operations:
+  post:
+    tags: [My Trade Me]
+    summary: Add a listing to your watchlist
+    description: |
+      Adds a listing to the authenticated user's watchlist. Requires authentication 
+      and MyTradeMeWrite permission. Use the "Add a listing to your watchlist with 
+      options" endpoint for more watchlist configuration options.
+    operationId: addListingToWatchlist
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-listing-to-your-watchlist
+    security:
+      - TradeMeOAuth: []
+    parameters:
+      - $ref: ../components/parameters/listingId.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+    responses:
+      "200":
+        description: Watchlist operation completed
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml
+            examples:
+              success:
+                summary: Successfully added to watchlist
+                value:
+                  Success: true
+                  Description: null
+              failure:
+                summary: Failed to add to watchlist
+                value:
+                  Success: false
+                  Description: "Listing not found or already on watchlist"
+          application/xml:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml
+      "401":
+        description: Unauthorized - authentication required
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "Unauthorized"
+                message:
+                  type: string
+                  example: "Authentication required for watchlist operations"
+      "403":
+        description: Forbidden - insufficient permissions
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "Forbidden" 
+                message:
+                  type: string
+                  example: "MyTradeMeWrite permission required"
+      "404":
+        description: Listing not found
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "NotFound"
+                message:
+                  type: string
+                  example: "Listing with the specified ID was not found"
+      "429":
+        description: Rate limit exceeded
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "TooManyRequests"
+                message:
+                  type: string
+                  example: "Rate limit exceeded, please try again later"
+      "500":
+        description: Internal server error
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                error:
+                  type: string
+                  example: "InternalServerError"
+                message:
+                  type: string
+                  example: "An unexpected error occurred"
+  delete:
+    tags: [My Trade Me]
+    summary: Remove a listing from your watchlist
+    description: |
+      Removes a listing from the authenticated user's watchlist. Requires authentication 
+      and MyTradeMeWrite permission.
+    operationId: removeListingFromWatchlist
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-listing-from-your-watchlist
+    security:
+      - TradeMeOAuth: []
+    parameters:
+      - $ref: ../components/parameters/listingId.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+    responses:
+      "200":
+        description: Successfully removed from watchlist
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml
+            examples:
+              success:
+                summary: Successfully removed from watchlist
+                value:
+                  Success: true
+                  Description: null
+              not_on_watchlist:
+                summary: Listing was not on watchlist
+                value:
+                  Success: false
+                  Description: "Listing not found on watchlist"
+          application/xml:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml
+      "401":
+        $ref: ../components/responses/Unauthorized.yaml
+      "403":
+        $ref: ../components/responses/Forbidden.yaml  
+      "404":
+        $ref: ../components/responses/NotFound.yaml
+      "429":
+        $ref: ../components/responses/TooManyRequests.yaml
+      "500":
+        $ref: ../components/responses/InternalServerError.yaml
+
+# Legacy individual operation references for backward compatibility
+add-listing-to-watchlist:
+  post:
+    tags: [My Trade Me]
+    summary: Add a listing to your watchlist
+    description: |
+      Adds a listing to the authenticated user's watchlist. Requires authentication 
+      and MyTradeMeWrite permission. Use the "Add a listing to your watchlist with 
+      options" endpoint for more watchlist configuration options.
+    operationId: addListingToWatchlist
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/add-a-listing-to-your-watchlist
+    security:
+      - TradeMeOAuth: []
+    parameters:
+      - $ref: ../components/parameters/listingId.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+    responses:
+      "200":
+        description: Watchlist operation completed
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml
+
+remove-listing-from-watchlist:
+  delete:
+    tags: [My Trade Me]
+    summary: Remove a listing from your watchlist
+    description: |
+      Removes a listing from the authenticated user's watchlist. Requires authentication 
+      and MyTradeMeWrite permission.
+    operationId: removeListingFromWatchlist
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/my-trade-me-methods/remove-a-listing-from-your-watchlist
+    security:
+      - TradeMeOAuth: []
+    parameters:
+      - $ref: ../components/parameters/listingId.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+    responses:
+      "200":
+        description: Successfully removed from watchlist
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/WatchListResponse.yaml

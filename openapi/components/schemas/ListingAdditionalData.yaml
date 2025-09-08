@@ -1,0 +1,20 @@
+type: object
+properties:
+  BulletPoints:
+    type: string
+    nullable: true
+    description: The bullet points for display in the search results
+  Tags:
+    type: array
+    items:
+      $ref: '#/components/schemas/tag'
+    nullable: true
+    description: The tags for display in the search results
+  NameString or nullThe name of the tag:
+    type: string
+    description: String or null
+  Name:
+    type: string
+    nullable: true
+    description: The name of the tag
+additionalProperties: true

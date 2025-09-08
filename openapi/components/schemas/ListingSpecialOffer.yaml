@@ -1,0 +1,30 @@
+type: object
+properties:
+  Title:
+    type: string
+    nullable: true
+    description: The title for a special offer
+  Subtitle:
+    type: string
+    nullable: true
+    description: The subtitle for a special offer
+  Description:
+    type: string
+    nullable: true
+    description: The description for a special offer
+  OfferUrl:
+    type: string
+    nullable: true
+    description: The external offer url provided by the dealer for a special offer
+  ImageUrl:
+    type: string
+    nullable: true
+    description: The image url for a special offer's image
+  IsFinance:
+    type: boolean
+    description: boolean indicating whether a special offer is a finance special offer or not
+  TermsAndConditions:
+    type: string
+    nullable: true
+    description: the terms and conditions assosciated with a finance special offer
+additionalProperties: true

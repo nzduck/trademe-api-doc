@@ -1,0 +1,38 @@
+type: object
+properties:
+  CharityType:
+    type: string
+    description: The unique identifier of the charity.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+    x-enum-descriptions:
+      - The default charity identifier. Used if the user chose not to donate to a charity at all.
+      - Donate to Forest and Bird's kiwis for kiwis program.
+      - Donate to Plunket.
+      - Donate to St John.
+      - Donate to Our People, Our City Fund.
+      - Donate to Women's Refuge
+      - Donate to KidsCan
+  ImageSource:
+    type: string
+    nullable: true
+    description: The URL for this charity's brand image (designed for a light background).
+  DarkModeImageSource:
+    type: string
+    nullable: true
+    description: The URL for this charity's brand image (designed for a dark background).
+  Description:
+    type: string
+    nullable: true
+    description: The name of the charity e.g. "Plunket", "Kiwis for kiwi".
+  Tagline:
+    type: string
+    nullable: true
+    description: A short description of what the charity does.
+additionalProperties: true

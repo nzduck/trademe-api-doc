@@ -1,0 +1,251 @@
+type: object
+properties:
+  Id:
+    type: integer
+    description: The ID of the company.
+  Name:
+    type: string
+    nullable: true
+    description: The name of the company.
+  Address:
+    type: string
+    nullable: true
+    description: The address of the company HQ.
+  Suburb:
+    type: string
+    nullable: true
+    description: The suburb where the company HQ is located.
+  City:
+    type: string
+    nullable: true
+    description: The city where the company HQ is located.
+  PhoneNumber:
+    type: string
+    nullable: true
+    description: A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead
+  FaxNumber:
+    type: string
+    nullable: true
+    description: Get the fax number of a contact
+  EMail:
+    type: string
+    nullable: true
+    description: Gets the email of the dealer
+  Website:
+    type: string
+    nullable: true
+    description: The URL of the company website.
+  Logo:
+    type: string
+    nullable: true
+    description: A URL for the company logo.
+  Branding:
+    $ref: '#/components/schemas/branding'
+    nullable: true
+    description: The branding object for the company.
+  LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo:
+    type: string
+    description: String or null
+  LargeSquareLogo:
+    type: string
+    nullable: true
+    description: A large square branding image with dimensions of 480x480.
+  LargeWideLogo:
+    type: string
+    nullable: true
+    description: A large rectangular branding image with dimensions of 480x200.
+  BackgroundColor:
+    type: string
+    nullable: true
+    description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+  TextColor:
+    type: string
+    nullable: true
+    description: Banner background colour, tick the checkbox before saving to apply the new colour
+  StrokeColor:
+    type: string
+    nullable: true
+    description: Banner text colour, tick the checkbox before saving to apply the new colour
+  DisableBanner:
+    type: boolean
+    description: Disable the agent branding regardless of Super Feature status
+  OfficeLocation:
+    type: string
+    nullable: true
+    description: The name of the office location
+  LargeBannerURL:
+    type: string
+    nullable: true
+    description: The url of a larger version of the logo
+  Logo2:
+    type: string
+    nullable: true
+    description: A URL for the second company logo.
+  Agents:
+    type: array
+    items:
+      $ref: '#/components/schemas/agent'
+    nullable: true
+    description: The contact details of contacts within the agency.
+  FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contactPhotoString or nullThe Url to agents profile photoUrlSlugString or nullThe property agent profile url identifier used to know which agent profile to displayTestimonialsCountIntegerThe property agent profile testimonials countReviewsCountIntegerThe property agent profile reviews count:
+    type: string
+    description: String or null
+  FullName:
+    type: string
+    nullable: true
+    description: Get the name of a contact
+  Position:
+    type: string
+    nullable: true
+    description: Get the position of a contact
+  MobilePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the mobile phone number of a contact
+  OfficePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the office phone number of a contact
+  HomePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the home phone number of a contact
+  Photo:
+    type: string
+    nullable: true
+    description: The Url to agents profile photo
+  UrlSlug:
+    type: string
+    nullable: true
+    description: The property agent profile url identifier used to know which agent profile to display
+  TestimonialsCount:
+    type: integer
+    description: The property agent profile testimonials count
+  ReviewsCount:
+    type: integer
+    description: The property agent profile reviews count
+  IsRealEstateAgency:
+    type: boolean
+    description: Indicates whether the agency does real estate.
+  IsJobAgency:
+    type: boolean
+    description: Indicates whether the agency does job listings.
+  IsLicensedPropertyAgency:
+    type: boolean
+    description: Indicates whether the agency is an REAA licensed property agency
+  JobAgent:
+    $ref: '#/components/schemas/jobagent'
+    nullable: true
+    description: Return job agent details when agent is job agent
+  ? TradingNameString or nullThe trading name of the job agentAgentTypeEnumerationThe type of the job agentLinksCollection of <Link> or nullLinks to related operationsHrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.MemberLevelString or nullThe id of the member who owns the profileDescriptionString or nullcompany descriptionAgentBranding<JobAgentBranding> or nullagent brandingFullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of <Photo> or nullcompany photo urlsKeyIntegerValue<PhotoUrl> or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel urlCanonicalNameString or nullMember Canonical NameSEOCompanyNameString or nullSEO Company NamePageTitleString or nullPage TitleDisplayTitleString or nullDisplay TitleAgentIdIntegerAgentId
+  : type: string
+    description: String or null
+  TradingName:
+    type: string
+    nullable: true
+    description: The trading name of the job agent
+  AgentType:
+    type: string
+    description: The type of the job agent
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+    x-enum-descriptions:
+      - An agent who is an employer or business on a plan
+      - A casual account for a reseller
+      - A recruitment agency that is on a plan
+      - An account for an agent that is prepaid
+  Links:
+    type: array
+    items:
+      $ref: '#/components/schemas/link'
+    nullable: true
+    description: Links to related operations
+  HrefString or nullAn HREF representing the uri to the resourceRelString or nullA REL representing the relationship between the sending resource and the linked resourcePromptString or nullA PROMPT, optional display text to represent the resource to a userMethodString or nullA METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.:
+    type: string
+    description: String or null
+  Href:
+    type: string
+    nullable: true
+    description: An HREF representing the uri to the resource
+  Rel:
+    type: string
+    nullable: true
+    description: A REL representing the relationship between the sending resource and the linked resource
+  Prompt:
+    type: string
+    nullable: true
+    description: A PROMPT, optional display text to represent the resource to a user
+  Method:
+    type: string
+    nullable: true
+    description: A METHOD, optional field to represent the HTTP method/verb to use. If not provided, default to GET.
+  MemberLevel:
+    type: string
+    nullable: true
+    description: The id of the member who owns the profile
+  Description:
+    type: string
+    nullable: true
+    description: company description
+  AgentBranding:
+    $ref: '#/components/schemas/jobagentbranding'
+    nullable: true
+    description: agent branding
+  FullscreenBannerUrlString or nullcompany full screen banner urlSmallBannerUrlString or nullcompany small banner urlLogoUrlString or nullcompany logo urlPhotoUrlsCollection of <Photo> or nullcompany photo urlsKeyIntegerValue<PhotoUrl> or null(This type has already been defined)YoutubeUrlString or nullcompany youtube channel url:
+    type: string
+    description: String or null
+  FullscreenBannerUrl:
+    type: string
+    nullable: true
+    description: company full screen banner url
+  SmallBannerUrl:
+    type: string
+    nullable: true
+    description: company small banner url
+  LogoUrl:
+    type: string
+    nullable: true
+    description: company logo url
+  PhotoUrls:
+    type: array
+    items:
+      $ref: '#/components/schemas/photo'
+    nullable: true
+    description: company photo urls
+  KeyIntegerValue<PhotoUrl> or null(This type has already been defined):
+    type: string
+    description: Integer
+  Key:
+    type: integer
+    description: ''
+  Value:
+    $ref: '#/components/schemas/photourl'
+    nullable: true
+    description: ''
+  YoutubeUrl:
+    type: string
+    nullable: true
+    description: company youtube channel url
+  CanonicalName:
+    type: string
+    nullable: true
+    description: Member Canonical Name
+  SEOCompanyName:
+    type: string
+    nullable: true
+    description: SEO Company Name
+  PageTitle:
+    type: string
+    nullable: true
+    description: Page Title
+  DisplayTitle:
+    type: string
+    nullable: true
+    description: Display Title
+  AgentId:
+    type: integer
+    description: AgentId
+additionalProperties: true

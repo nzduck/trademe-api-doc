@@ -1,0 +1,50 @@
+type: object
+properties:
+  Key:
+    type: integer
+    description: ''
+  Value:
+    $ref: '#/components/schemas/photourl'
+    nullable: true
+    description: ''
+  ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+    type: string
+    description: String or null
+  Thumbnail:
+    type: string
+    nullable: true
+    description: The URL for the thumbnail sized photo (always 85x64, with white borders).
+  List:
+    type: string
+    nullable: true
+    description: The URL for the list view sized photo (scaled down to fit 160x120).
+  Medium:
+    type: string
+    nullable: true
+    description: The URL for the medium sized photo (scaled down to fit 175x175).
+  Gallery:
+    type: string
+    nullable: true
+    description: The URL for the gallery sized photo (scaled down to fit 233x176).
+  Large:
+    type: string
+    nullable: true
+    description: The URL for the large sized photo (scaled down to fit 352x264).
+  FullSize:
+    type: string
+    nullable: true
+    description: The URL for the full sized photo (scaled down to fit 670x502).
+  PlusSize:
+    type: string
+    nullable: true
+    description: The URL for the plus sized photo (scaled down to fit).
+  PhotoId:
+    type: integer
+    description: The ID of the photo.
+  OriginalWidth:
+    type: integer
+    description: The original width of the photo.
+  OriginalHeight:
+    type: integer
+    description: The original height of the photo.
+additionalProperties: true

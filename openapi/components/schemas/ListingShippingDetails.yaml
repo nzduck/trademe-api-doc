@@ -1,0 +1,41 @@
+type: object
+properties:
+  ShippingTemplateId:
+    type: integer
+    nullable: true
+    description: Represents the template used to create the shipping options on this listing
+  SuggestedShipping:
+    $ref: '#/components/schemas/suggestedshipping'
+    nullable: true
+    description: Suggested shipping details, based on member preferences.
+  PriceNumber or nullThe price of the delivery option; 0 if it's free shippingDestinationString or nullName of the shipping destination, if structured shipping information exists.DeliveryTime<ShippingDeliveryTime> or nullDelivery time details for the current listing, if structured shipping information exists.MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.IsRuralBoolean or nullIndicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.:
+    type: string
+    description: Number or null
+  Price:
+    type: number
+    nullable: true
+    description: The price of the delivery option; 0 if it's free shipping
+  Destination:
+    type: string
+    nullable: true
+    description: Name of the shipping destination, if structured shipping information exists.
+  DeliveryTime:
+    $ref: '#/components/schemas/shippingdeliverytime'
+    nullable: true
+    description: Delivery time details for the current listing, if structured shipping information exists.
+  MinValueString or nullThe earliest expected delivery time returned in ISO 8601 duration format.MaxValueString or nullThe latest expected delivery time returned in ISO 8601 duration format.:
+    type: string
+    description: String or null
+  MinValue:
+    type: string
+    nullable: true
+    description: The earliest expected delivery time returned in ISO 8601 duration format.
+  MaxValue:
+    type: string
+    nullable: true
+    description: The latest expected delivery time returned in ISO 8601 duration format.
+  IsRural:
+    type: boolean
+    nullable: true
+    description: Indicates if the SuggestedShipping option is for rural delivery, if structured shipping information exists.
+additionalProperties: true

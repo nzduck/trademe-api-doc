@@ -1,0 +1,15 @@
+type: object
+properties:
+  Suburb:
+    type: string
+    nullable: true
+    description: The pickup suburb.
+  District:
+    type: string
+    nullable: true
+    description: The pickup district.
+  Region:
+    type: string
+    nullable: true
+    description: The pickup region.
+additionalProperties: true

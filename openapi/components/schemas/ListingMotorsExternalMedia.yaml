@@ -1,0 +1,19 @@
+type: object
+properties:
+  Instavid360SpinnerId:
+    type: string
+    nullable: true
+    description: ID for displaying the Instavid 360 spinner.
+  Instavid360SpinnerThumbnailUrl:
+    type: string
+    nullable: true
+    description: Thumbnail placeholder for the Instavid 360 spinner.
+  VideoUrl:
+    type: string
+    nullable: true
+    description: URL for displaying the listing video.
+  VideoThumbnailUrl:
+    type: string
+    nullable: true
+    description: Thumbnail placeholder for the listing video.
+additionalProperties: true

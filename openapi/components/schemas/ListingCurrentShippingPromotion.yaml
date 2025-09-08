@@ -1,0 +1,15 @@
+type: object
+properties:
+  Threshold:
+    type: integer
+    description: The threshold a buyer needs to reach to qualify for this promotional shipping offer.
+  ThresholdType:
+    type: string
+    description: The type of threshold.
+    enum:
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - The buyer qualifies for the offer when the total value of items in their cart meets or exceeds the threshold.
+      - The buyer qualifies for the offer when the number of items in their cart (including selected quantities of multiple quantity listings) meets or exceeds the threshold.
+additionalProperties: true

@@ -1,0 +1,187 @@
+type: object
+properties:
+  PurchaseId:
+    type: integer
+    description: A unique identifier for the sale.
+  ReferenceNumber:
+    type: string
+    nullable: true
+    description: The reference number that should be used when making a deposit into the seller's bank account.
+  SoldDate:
+    type: string
+    format: date-time
+    description: The date and time the item was sold.
+  Method:
+    type: string
+    description: The method by which the sale was made.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - The auction was sold via a bid.
+      - The auction was sold via Buy Now.
+      - The auction was sold via a fixed price offer.
+  SelectedShipping:
+    type: string
+    nullable: true
+    description: A description of the selected shipping method (e.g. "Nationwide courier").
+  ShippingPrice:
+    type: number
+    description: The price of shipping.
+  ShippingType:
+    type: string
+    description: The type of shipping that was selected.
+    enum:
+      - '0'
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    x-enum-descriptions:
+      - The type of the "None of the options apply to me" shipping option. Do not use when listing an item.
+      - Obsolete. Do not use.
+      - Indicates that the seller will confirm the shipping details with the buyer directly. This shipping option cannot be used when Pay Now is specified as a payment option. When listing an item, this option cannot be used in combination with other shipping options.
+      - Indicates the item can be picked up. Do not use when listing an item (use thePickupfield instead).
+      - Indicates the item can be shipped for free within New Zealand. When listing an item, this option cannot be used in combination with other shipping options.
+      - Custom shipping option. Allows the seller to specify the price and description. Multiple custom shipping options are allowed (up to ten).
+      - Trademe shipping option. Allows the seller to calculate the quotes from couriers, all calculated quotes will be saved in custom shipping options.
+  Buyer:
+    $ref: '#/components/schemas/member'
+    nullable: true
+    description: The member who bought the item. Not available if you are the buyer.
+  QuantitySold:
+    type: integer
+    description: The quantity sold.
+  Price:
+    type: number
+    description: The price the item was sold for, excluding shipping. If the purchase was for multiple items, this is the price of a single item.
+  SubtotalPrice:
+    type: number
+    description: The price for all items, excluding shipping (i.e. equal to SalePrice * QuantitySold).
+  TotalShippingPrice:
+    type: number
+    description: The total price for shipping. If flat shipping is not enabled, equal to ShippingPrice * QuantitySold.
+  TotalSalePrice:
+    type: number
+    description: The total price for the entire sale, including shipping and buyer service fee if applicable. If the purchase was for multiple items, all items are included in this price.
+  HasSellerPlacedFeedback:
+    type: boolean
+    description: Indicates whether the seller has placed feedback on the buyer for this sale.
+  HasBuyerPlacedFeedback:
+    type: boolean
+    description: Indicates whether the buyer has placed feedback on the seller for this sale.
+  DeliveryDetailsSent:
+    type: boolean
+    description: Indicates whether delivery details (i.e. the delivery address, phone number and message) have been sent to the seller. Because all three elements are optional, this can betrueeven if the DeliveryAddress and MessageFromBuyer fields are missing.
+  DeliveryAddress:
+    $ref: '#/components/schemas/address'
+    nullable: true
+    description: The delivery address as indicated by the buyer.
+  NameString or nullThe name of the person whom the item is being delivered to.Address1String or nullThe first line of the address.Address2String or nullThe second line of the address (optional).SuburbString or nullThe suburb (optional).CityString or nullThe city.PostcodeString or nullThe postcode (optional).CountryString or nullThe country (currently restricted to "New Zealand" or "Australia").PhoneNumberString or nullThe contact phone number (optional).:
+    type: string
+    description: String or null
+  Name:
+    type: string
+    nullable: true
+    description: The name of the tax e.g. GST
+  Address1:
+    type: string
+    nullable: true
+    description: The first line of the address.
+  Address2:
+    type: string
+    nullable: true
+    description: The second line of the address (optional).
+  Suburb:
+    type: string
+    nullable: true
+    description: The suburb (optional).
+  City:
+    type: string
+    nullable: true
+    description: The city.
+  Postcode:
+    type: string
+    nullable: true
+    description: The postcode (optional).
+  Country:
+    type: string
+    nullable: true
+    description: The country that is levying the tax e.g. NZ
+  PhoneNumber:
+    type: string
+    nullable: true
+    description: The contact phone number (optional).
+  MessageFromBuyer:
+    type: string
+    nullable: true
+    description: The message from the buyer to the seller, if any.
+  PaymentInstructions:
+    type: string
+    nullable: true
+    description: The payment instructions that the seller has sent to the buyer, containing information on how to pay. Will be absent if the seller has not enabled payment instructions, or if the seller has not yet sent them to the buyer.
+  HasPaidByCreditCard:
+    type: boolean
+    description: Indicates whether the buyer has purchased the item using Pay Now. For high risk payments, the value will befalseuntil the payment has been manually approved by the Trade Me customer service team.
+  IsPaymentPending:
+    type: boolean
+    description: 'Indicates whether a Pay Now payment is currently under review by the Trade Me customer service team. If this flag is set, you should not send payment reminder notices to the buyer. Note: the Trade Me website uses the label "Payment Held" for payments in this state.'
+  CreditCardPaymentDate:
+    type: string
+    format: date-time
+    description: The date and time a payment was made with a credit card using Pay Now. Only valid if HasPaidByCreditCard istrue.
+  CreditCardType:
+    type: string
+    nullable: true
+    description: The type of credit card that was used to pay for the item ("Visa", "MasterCard", etc). Only available if Pay Now was used to make the purchase and you are logged in as the buyer.
+  CreditCardLastFourDigits:
+    type: string
+    nullable: true
+    description: The last four digits of the credit card used to pay for the item. Only available if Pay Now was used to make the purchase and you are logged in as the buyer.
+  OrderId:
+    type: integer
+    nullable: true
+    description: If the item was purchased via the shopping cart, then this is an ID that uniquely identifies the shopping cart transaction. All of the items that were ordered in the same cart transaction will have the same ID.
+  Status:
+    type: string
+    description: The status of the sale. This can be set by the seller to track the status of an order; it is never set by Trade Me. Only available if you are the seller of the listing.
+    enum:
+      - '10'
+      - '20'
+      - '30'
+      - '40'
+    x-enum-descriptions:
+      - An email has been sent to the buyer.
+      - Payment has been received from the buyer.
+      - The goods have been shipped to the buyer.
+      - The sale is completed.
+  StatusDate:
+    type: string
+    format: date-time
+    description: The date the status was last changed. Only available to the seller.
+  TaxSubTotals:
+    type: array
+    items:
+      $ref: '#/components/schemas/taxsubtotal'
+    nullable: true
+    description: Sum of all taxes included in this sale
+  TypeEnumerationThe type of tax that is includedCountryString or nullThe country that is levying the tax e.g. NZNameString or nullThe name of the tax e.g. GSTSubTotalNumberThe total amount of tax that has been chargedFlatRateNumberThe rate of the tax:
+    type: string
+    description: Enumeration
+  Type:
+    type: string
+    description: The type of tax that is included
+    enum:
+      - '1'
+    x-enum-descriptions:
+      - New Zealand GST on overseas supplies
+  SubTotal:
+    type: number
+    description: The total amount of tax that has been charged
+  FlatRate:
+    type: number
+    description: The rate of the tax
+additionalProperties: true

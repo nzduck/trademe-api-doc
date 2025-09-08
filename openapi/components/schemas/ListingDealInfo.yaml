@@ -1,0 +1,18 @@
+type: object
+properties:
+  WhyPayLabel:
+    type: string
+    nullable: true
+    description: Get the WhyPay label
+  WhyPayDescription:
+    type: string
+    nullable: true
+    description: Get the WhyPay description
+  WhyPayPrice:
+    type: number
+    description: Get the WhyPay price
+  DeliveryEstimate:
+    type: string
+    nullable: true
+    description: Get the delivery estimate
+additionalProperties: true

@@ -1,0 +1,30 @@
+type: object
+properties:
+  PropertySaleType:
+    type: string
+    description: Sales type (auction, deadline etc)
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+    x-enum-descriptions:
+      - None
+      - AskingPrice
+      - EnquiriesOver
+      - Auction
+      - Tender
+      - PriceByNegotiation
+      - PriceOnApplication
+      - DeadlinePrivateTreaty
+      - AskingPricePlusGst
+  PropertyDateOfSale:
+    type: string
+    format: date-time
+    description: Date of the auction/deadline/etc
+additionalProperties: true

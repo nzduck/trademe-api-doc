@@ -1,0 +1,32 @@
+type: object
+properties:
+  Id:
+    type: string
+    description: The unique identifier for the payment method.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '4'
+      - '8'
+      - '16'
+      - '32'
+      - '64'
+    x-enum-descriptions:
+      - No payment methods provided.
+      - NZ bank deposit.
+      - Credit card. (Processed via Pay Now if the seller uses Pay Now, otherwise Buy Now)
+      - Cash.
+      - Safe Trader (Now obsolete).
+      - Other (needs to be specified).
+      - Ping.
+      - Afterpay.
+  Name:
+    type: string
+    nullable: true
+    description: The text to display to the user.
+  LogoUrl:
+    type: string
+    nullable: true
+    description: A url for the payment methods logo.
+additionalProperties: true

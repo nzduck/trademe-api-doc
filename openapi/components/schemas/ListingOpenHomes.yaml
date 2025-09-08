@@ -1,0 +1,11 @@
+type: object
+properties:
+  Start:
+    type: string
+    format: date-time
+    description: The date and time the open home is open for viewing. The date must be in the future and it must be less than 56 days from the current date. Specify dates in the UTC time zone.
+  End:
+    type: string
+    format: date-time
+    description: The date and time the open home is no longer open for viewing. Must be the same day asStart.
+additionalProperties: true

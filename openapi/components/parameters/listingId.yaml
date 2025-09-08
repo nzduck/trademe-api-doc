@@ -1,0 +1,8 @@
+name: listingId
+in: path
+required: true
+description: The ID of the listing to retrieve.
+schema:
+  type: integer
+  minimum: 1
+example: 2149713189

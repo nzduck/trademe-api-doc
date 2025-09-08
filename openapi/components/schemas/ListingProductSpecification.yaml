@@ -1,0 +1,15 @@
+type: object
+properties:
+  GTIN:
+    type: string
+    nullable: true
+    description: The GTIN of the product e.g. 027242896505
+  Brand:
+    type: string
+    nullable: true
+    description: The brand name of the product e.g. Sony
+  ManufacturerCode:
+    type: string
+    nullable: true
+    description: The product code used by the manufacturer e.g. KDL32W600D
+additionalProperties: true

@@ -1,0 +1,30 @@
+type: object
+properties:
+  Latitude:
+    type: number
+    description: The latitude of the location, in degrees (WGS84).
+  Longitude:
+    type: number
+    description: The longitude of the location, in degrees (WGS84).
+  Northing:
+    type: integer
+    description: The northing of the location, in metres (NZTM).
+  Easting:
+    type: integer
+    description: The easting of the location, in metres (NZTM).
+  Accuracy:
+    type: string
+    description: The accuracy of the geographic location (address, street or suburb).
+    enum:
+      - '0'
+      - '1'
+      - '3'
+      - '2'
+      - '4'
+    x-enum-descriptions:
+      - The accuracy of the geographic location is not known.
+      - The geographic location is accurate to the address level.
+      - The geographic location is accurate to the street level.
+      - The geographic location is accurate to the suburb level.
+      - The geographic location is accurate to the AdminPinPoint level.
+additionalProperties: true

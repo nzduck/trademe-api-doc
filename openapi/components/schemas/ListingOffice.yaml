@@ -1,0 +1,34 @@
+type: object
+properties:
+  MembershipType:
+    type: string
+    description: The type of membership the office has.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+    x-enum-descriptions:
+      - Basic - no partnership agreement
+      - Gold OR Platinum
+      - Silver
+      - ExtraVariant
+  HeroImages:
+    $ref: '#/components/schemas/officeprofileheroimageurl'
+    nullable: true
+    description: The office's hero images.
+  OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image:
+    type: string
+    description: String or null
+  Original:
+    type: string
+    nullable: true
+    description: The URL of the original image
+  Small:
+    type: string
+    nullable: true
+    description: The URL of the small image
+  IsPartnerAccreditationEnabled:
+    type: boolean
+    description: Is the office's partner accreditation benefits turned on?
+additionalProperties: true

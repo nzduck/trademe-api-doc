@@ -1,0 +1,9 @@
+name: file_format
+in: path
+required: true
+description: The format of the response.
+schema:
+  type: string
+  enum: ["xml", "json"]
+  default: "json"
+example: "json"

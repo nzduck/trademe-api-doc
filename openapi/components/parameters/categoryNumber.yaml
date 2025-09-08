@@ -1,0 +1,7 @@
+name: number
+in: path
+required: true
+description: The category number of the root of the returned tree. If this parameter is empty, it returns a fictional category named "Root" with all the top categories included as subcategories.
+schema:
+  type: string
+example: "0004-0369-"

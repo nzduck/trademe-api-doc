@@ -1,0 +1,12 @@
+description: Resource not found
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "NotFound"
+        message:
+          type: string
+          example: "Listing not found"

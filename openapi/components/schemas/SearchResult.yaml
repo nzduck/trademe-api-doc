@@ -1,0 +1,53 @@
+type: object
+description: Search results from Trade Me general search
+additionalProperties: true
+properties:
+  TotalCount:
+    type: integer
+    description: The total number of results available
+    example: 1234
+  Page:
+    type: integer
+    description: The current page of results
+    example: 1
+  PageSize:
+    type: integer
+    description: The number of results per page
+    example: 20
+  List:
+    type: array
+    description: Array of search result listings
+    items:
+      $ref: ./Listing.yaml
+  DidYouMean:
+    type: string
+    nullable: true
+    description: Suggested alternative search term
+    example: "iPhone"
+  FoundCategories:
+    type: array
+    nullable: true
+    description: Categories that match the search
+    items:
+      $ref: ./Category.yaml
+  MemberListing:
+    type: object
+    nullable: true
+    description: Member listing information if searching for a specific member
+  Breadcrumbs:
+    type: array
+    nullable: true
+    description: Navigation breadcrumbs for the search
+    items:
+      type: object
+      properties:
+        Name:
+          type: string
+          description: Breadcrumb name
+        Category:
+          type: string
+          description: Category identifier
+  SearchExecutionTime:
+    type: number
+    description: Time taken to execute the search in milliseconds
+    example: 45.2

@@ -92,6 +92,35 @@ cat specs/json-extraction-guide.md
 ls docs/endpoints/
 ```
 
+### Generate Interactive OpenAPI Documentation
+The repository includes OpenAPI 3.1 specifications that can be bundled into a consolidated documentation and viewed with Swagger UI:
+
+```bash
+# Generate consolidated OpenAPI spec and start documentation server
+./scripts/gen-consolidated-doc.sh
+```
+
+This will:
+1. Bundle all OpenAPI specs into a single consolidated file using Redocly
+2. Start a Docker container with Swagger UI 
+3. Make the documentation available at http://localhost:8080
+
+**Prerequisites:**
+- [Redocly CLI](https://redocly.com/docs/cli/installation/) installed: `npm install -g @redocly/cli`
+- Docker installed and running
+
+**Manual steps (if you prefer):**
+```bash
+# Generate consolidated spec
+redocly bundle openapi/api.yaml --output openapi/openapi-consolidated.yaml --force
+
+# Start documentation server
+docker run -p 8080:8080 \
+  -e SWAGGER_JSON=/openapi/openapi-consolidated.yaml \
+  -v "$(pwd)/openapi:/openapi" \
+  swaggerapi/swagger-ui
+```
+
 ## Data Quality & Characteristics
 
 ### What's Included

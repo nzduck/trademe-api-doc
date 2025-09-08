@@ -1,0 +1,140 @@
+type: object
+properties:
+  OptionSets:
+    type: array
+    items:
+      $ref: '#/components/schemas/optionset'
+    nullable: true
+    description: A collection of variant options.
+  NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour".ValuesCollection of String or nullThe choices available for this option set, e.g. "red", "blue". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.:
+    type: string
+    description: String or null
+  Name:
+    type: string
+    nullable: true
+    description: The name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.
+  Values:
+    type: string
+    nullable: true
+    description: The choices available for this option set, e.g. "red", "blue". The sequence in which values are supplied is reflected in the sequence of user-interface elements on listings.
+  Variants:
+    type: array
+    items:
+      $ref: '#/components/schemas/variant'
+    nullable: true
+    description: A collection of variants.
+  ? SKUString or nullSKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.PriceNumberThe Buy Now price of the variant. Must be a minimum of 50c.IsClearanceBooleanThis indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.WasPriceNumber or nullThe Was price of the variant. Must be a minimum of 50c.QuantityIntegerThis is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.PhotosCollection of <Photo> or nullA collection of photo URLs for the listing. Ignored when creating or editing a listing.KeyIntegerValue<PhotoUrl> or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.OptionsCollection of <Option> or nullThe combination of variant options that this variant represents.NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.AttributesCollection of <Attribute> or nullA collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.(This type has already been defined)ListingIdInteger or nullThe identifier of the listing that this variant represents.ProductSpecification<ProductSpecification> or nullThe specifications of the product if the variant relates to a productGTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D
+  : type: string
+    description: String or null
+  SKU:
+    type: string
+    nullable: true
+    description: SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line. Maximum of 50 characters.
+  Price:
+    type: number
+    description: The Buy Now price of the variant. Must be a minimum of 50c.
+  IsClearance:
+    type: boolean
+    description: This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.
+  WasPrice:
+    type: number
+    nullable: true
+    description: The Was price of the variant. Must be a minimum of 50c.
+  Quantity:
+    type: integer
+    description: This is the quantity of items that are available for sale. Can be between 1 and 1000. Note that when editing, the value must be less than or equal to 1000 - (quantity sold). The quantity sold for a listing can be calculated by adding up all the QuantitySold values from the listing details response.
+  Photos:
+    type: array
+    items:
+      $ref: '#/components/schemas/photo'
+    nullable: true
+    description: A collection of photo URLs for the listing. Ignored when creating or editing a listing.
+  KeyIntegerValue<PhotoUrl> or nullThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+    type: string
+    description: Integer
+  Key:
+    type: integer
+    description: ''
+  Value:
+    type: string
+    nullable: true
+    description: The choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.
+  ThumbnailString or nullThe URL for the thumbnail sized photo (always 85x64, with white borders).ListString or nullThe URL for the list view sized photo (scaled down to fit 160x120).MediumString or nullThe URL for the medium sized photo (scaled down to fit 175x175).GalleryString or nullThe URL for the gallery sized photo (scaled down to fit 233x176).LargeString or nullThe URL for the large sized photo (scaled down to fit 352x264).FullSizeString or nullThe URL for the full sized photo (scaled down to fit 670x502).PlusSizeString or nullThe URL for the plus sized photo (scaled down to fit).PhotoIdIntegerThe ID of the photo.OriginalWidthIntegerThe original width of the photo.OriginalHeightIntegerThe original height of the photo.:
+    type: string
+    description: String or null
+  Thumbnail:
+    type: string
+    nullable: true
+    description: The URL for the thumbnail sized photo (always 85x64, with white borders).
+  List:
+    type: string
+    nullable: true
+    description: The URL for the list view sized photo (scaled down to fit 160x120).
+  Medium:
+    type: string
+    nullable: true
+    description: The URL for the medium sized photo (scaled down to fit 175x175).
+  Gallery:
+    type: string
+    nullable: true
+    description: The URL for the gallery sized photo (scaled down to fit 233x176).
+  Large:
+    type: string
+    nullable: true
+    description: The URL for the large sized photo (scaled down to fit 352x264).
+  FullSize:
+    type: string
+    nullable: true
+    description: The URL for the full sized photo (scaled down to fit 670x502).
+  PlusSize:
+    type: string
+    nullable: true
+    description: The URL for the plus sized photo (scaled down to fit).
+  PhotoId:
+    type: integer
+    description: The ID of the photo.
+  OriginalWidth:
+    type: integer
+    description: The original width of the photo.
+  OriginalHeight:
+    type: integer
+    description: The original height of the photo.
+  Options:
+    type: array
+    items:
+      $ref: '#/components/schemas/option'
+    nullable: true
+    description: The combination of variant options that this variant represents.
+  NameString or nullThe name used to identify the group of option values, e.g. "size" or "colour". This name must match an entry in the option set collection.ValueString or nullThe choice that this variant has for the option, e.g. "red", "blue". This name must match an entry in the option set.:
+    type: string
+    description: String or null
+  Attributes:
+    type: array
+    items:
+      $ref: '#/components/schemas/attribute'
+    nullable: true
+    description: A collection of dynamic attributes that relate to this variant specifically. These can be any number of name-value pairs. Some well-known attribute names will also help users find your listings:Google Shopping FeedWe include attributes that are named and correctly formatted in a feed that goes to Google Shopping. These areBrand,GTINandManufacturer Codeso include this data if you have it.
+  ListingId:
+    type: integer
+    nullable: true
+    description: The identifier of the listing that this variant represents.
+  ProductSpecification:
+    $ref: '#/components/schemas/productspecification'
+    nullable: true
+    description: The specifications of the product if the variant relates to a product
+  GTINString or nullThe GTIN of the product e.g. 027242896505BrandString or nullThe brand name of the product e.g. SonyManufacturerCodeString or nullThe product code used by the manufacturer e.g. KDL32W600D:
+    type: string
+    description: String or null
+  GTIN:
+    type: string
+    nullable: true
+    description: The GTIN of the product e.g. 027242896505
+  Brand:
+    type: string
+    nullable: true
+    description: The brand name of the product e.g. Sony
+  ManufacturerCode:
+    type: string
+    nullable: true
+    description: The product code used by the manufacturer e.g. KDL32W600D
+additionalProperties: true

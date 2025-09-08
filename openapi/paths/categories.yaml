@@ -1,0 +1,92 @@
+get-categories:
+  get:
+    tags: [Catalogue]
+    summary: Retrieve general categories
+    description: Retrieves all or part of the Trade Me category tree.
+    operationId: getCategories
+    security: []  # This endpoint does not require authentication
+    externalDocs:
+      description: Official Trade Me API Documentation
+      url: https://developer.trademe.co.nz/api-reference/catalogue-methods/retrieve-general-categories
+    parameters:
+      - $ref: ../components/parameters/categoryNumber.yaml
+      - $ref: ../components/parameters/fileFormat.yaml
+      - name: depth
+        in: query
+        required: false
+        description: The depth of the category tree to return. 0 = a single category. 1 = the specified category plus any subcategories. The default is to return all subcategories.
+        schema:
+          type: integer
+          minimum: 0
+        example: 1
+      - name: region
+        in: query
+        required: false
+        description: The ID of the region used to filter listing counts. Only applicable if with_counts is true.
+        schema:
+          type: integer
+          minimum: 1
+        example: 1
+      - name: with_counts
+        in: query
+        required: false
+        description: Indicates whether to include the number of listings in each category. Defaults to false.
+        schema:
+          type: boolean
+          default: false
+        example: true
+    responses:
+      "200":
+        description: Category tree successfully retrieved
+        content:
+          application/json:
+            schema:
+              $ref: ../components/schemas/Category.yaml
+            examples:
+              root_categories:
+                summary: Root categories with counts
+                value:
+                  Name: "Root"
+                  Number: ""
+                  Path: ""
+                  Subcategories:
+                    - Name: "Antiques & collectables"
+                      Number: "0004-"
+                      Path: "/Antiques-collectables"
+                      Count: 15234
+                      IsLeaf: false
+                    - Name: "Books"
+                      Number: "0008-"
+                      Path: "/Books"
+                      Count: 8567
+                      IsLeaf: false
+                  Count: 0
+                  IsRestricted: false
+                  HasLegalNotice: false
+                  HasClassifieds: false
+                  AreaOfBusiness: 1
+                  CanHaveSecondCategory: false
+                  CanBeSecondCategory: false
+                  IsLeaf: false
+              single_category:
+                summary: Single category details
+                value:
+                  Name: "Antiques & collectables"
+                  Number: "0004-"
+                  Path: "/Antiques-collectables"
+                  Subcategories:
+                    - Name: "Collectables"
+                      Number: "0004-0369-"
+                      Path: "/Antiques-collectables/Collectables"
+                      Count: 5234
+                      IsLeaf: false
+                  Count: 15234
+                  IsRestricted: false
+                  HasLegalNotice: false
+                  HasClassifieds: false
+                  AreaOfBusiness: 1
+                  CanHaveSecondCategory: false
+                  CanBeSecondCategory: false
+                  IsLeaf: false
+      "404":
+        $ref: ../components/responses/NotFound.yaml

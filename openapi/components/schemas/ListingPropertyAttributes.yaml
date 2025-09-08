@@ -1,0 +1,33 @@
+type: object
+properties:
+  Name:
+    type: string
+    nullable: true
+    description: The identifier name. e.g., "floor_area"
+  Value:
+    type: string
+    nullable: true
+    description: The formatted value. e.g., "175m²"
+  Source:
+    type: string
+    nullable: true
+    description: The source of the data. e.g., "trademe", "council_data"
+  DisplayName:
+    type: string
+    nullable: true
+    description: The user-friendly name to be displayed for this attribute. e.g., "Floor Area"
+  DisplayGroup:
+    type: string
+    nullable: true
+    description: The user-friendly group name under which this attribute should be displayed. e.g., "Address"
+  DisplayGroupOrder:
+    type: integer
+    description: The display order priority for the group.
+  DisplayOrder:
+    type: integer
+    description: The display order priority for the attribute within its group.
+  Description:
+    type: string
+    nullable: true
+    description: User friendly description of the field
+additionalProperties: true

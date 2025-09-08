@@ -1,0 +1,38 @@
+type: object
+properties:
+  Availability:
+    type: string
+    description: 'Enum value denoting the availability of the car, can be : ''inTransit'' , ''availableToOrder'''
+    enum:
+      - '2'
+      - '3'
+    x-enum-descriptions:
+      - 'New car is in transit: on its way to the dealer'
+      - New car is available to order
+  Condition:
+    type: string
+    description: 'Enum value denoting the condition of the car, can be : ''brandNew'', ''exDemo'', ''certifiedPreOwned'''
+    enum:
+      - '1'
+      - '2'
+      - '4'
+    x-enum-descriptions:
+      - Indicates that this car is brand new
+      - Indicates that this car is an ex-demo
+      - New car is certified pre owned
+  CertifiedPreOwned:
+    $ref: '#/components/schemas/certifiedpreownedprogramme'
+    nullable: true
+    description: The car's certified pre-owned programme.
+  LogoUrlString or nullUrl of the certified preowned programme's logo (designed for a light background).DarkModeLogoUrlString or nullUrl of the certified preowned programme's logo (designed for a dark background).:
+    type: string
+    description: String or null
+  LogoUrl:
+    type: string
+    nullable: true
+    description: Url of the certified preowned programme's logo (designed for a light background).
+  DarkModeLogoUrl:
+    type: string
+    nullable: true
+    description: Url of the certified preowned programme's logo (designed for a dark background).
+additionalProperties: true

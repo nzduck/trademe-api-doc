@@ -1,0 +1,34 @@
+type: object
+properties:
+  LargeSquareLogo:
+    type: string
+    nullable: true
+    description: A large square branding image with dimensions of 480x480.
+  LargeWideLogo:
+    type: string
+    nullable: true
+    description: A large rectangular branding image with dimensions of 480x200.
+  BackgroundColor:
+    type: string
+    nullable: true
+    description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+  TextColor:
+    type: string
+    nullable: true
+    description: Banner background colour, tick the checkbox before saving to apply the new colour
+  StrokeColor:
+    type: string
+    nullable: true
+    description: Banner text colour, tick the checkbox before saving to apply the new colour
+  DisableBanner:
+    type: boolean
+    description: Disable the agent branding regardless of Super Feature status
+  OfficeLocation:
+    type: string
+    nullable: true
+    description: The name of the office location
+  LargeBannerURL:
+    type: string
+    nullable: true
+    description: The url of a larger version of the logo
+additionalProperties: true

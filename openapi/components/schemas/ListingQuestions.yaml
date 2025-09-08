@@ -1,0 +1,50 @@
+type: object
+properties:
+  TotalCount:
+    type: integer
+    description: The total number of results in the collection. Can be larger than the number of returned results.
+  Page:
+    type: integer
+    description: The index of the current page of results (starts at 1).
+  PageSize:
+    type: integer
+    description: The number of results in the current page.
+  List:
+    type: array
+    items:
+      $ref: '#/components/schemas/question'
+    nullable: true
+    description: A list of the results in the current page.
+  ListingIdIntegerThe ID of the listing this question belongs to.ListingQuestionIdIntegerThe question ID.CommentString or nullThe text of the question.CommentDateDateTimeThe date and time the question was asked.AnswerString or nullThe answer given to the question by the owner of the listing.AnswerDateDateTimeThe date the question was answered.IsSellerCommentBooleanIndicates whether this is a comment from the seller rather than a question.AskingMember<Member> or nullThe member details for the member asking the question.(This type has already been defined):
+    type: string
+    description: Integer
+  ListingId:
+    type: integer
+    description: The ID of the listing this question belongs to.
+  ListingQuestionId:
+    type: integer
+    description: The question ID.
+  Comment:
+    type: string
+    nullable: true
+    description: The text of the question.
+  CommentDate:
+    type: string
+    format: date-time
+    description: The date and time the question was asked.
+  Answer:
+    type: string
+    nullable: true
+    description: The answer given to the question by the owner of the listing.
+  AnswerDate:
+    type: string
+    format: date-time
+    description: The date the question was answered.
+  IsSellerComment:
+    type: boolean
+    description: Indicates whether this is a comment from the seller rather than a question.
+  AskingMember:
+    $ref: '#/components/schemas/member'
+    nullable: true
+    description: The member details for the member asking the question.
+additionalProperties: true

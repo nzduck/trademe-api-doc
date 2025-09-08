@@ -1,0 +1,75 @@
+type: object
+properties:
+  Name:
+    type: string
+    nullable: true
+    description: The name of the store.
+  LogoImageUri:
+    type: string
+    nullable: true
+    description: The URL of a small logo image (180x52).
+  BannerImageUri:
+    type: string
+    nullable: true
+    description: The URL of a banner image. Stores extra banner images are 960x120. Store banner images are 633x75. When requesting listing details, only stores extra listings have a banner image.
+  Promotions:
+    type: array
+    items:
+      $ref: '#/components/schemas/storepromotion'
+    nullable: true
+    description: A collection of promotional images. Only applies to stores extra.
+  ImageUriString or nullThe URL of the promotional image 760x240.:
+    type: string
+    description: String or null
+  ImageUri:
+    type: string
+    nullable: true
+    description: The URL of the promotional image 760x240.
+  ShortDescription:
+    type: string
+    nullable: true
+    description: A short description of what the store sells. Only returned when browsing the stores list.
+  LargeBannerImage:
+    $ref: '#/components/schemas/largebannerimage'
+    nullable: true
+    description: The URL's of a large banner image for each breakpoint, small, medium, large, extra large. When requesting listing details, only stores extra listings have a large banner image.
+  SmallString or nullThe URL of the promotional image in small size 320x180MediumString or nullThe URL of the promotional image in medium size 768x432.LargeString or nullThe URL of the promotional image in large size 1024x576.XLargeString or nullThe URL of the promotional image in extra large size 1440x810.:
+    type: string
+    description: String or null
+  Small:
+    type: string
+    nullable: true
+    description: The URL of the promotional image in small size 320x180
+  Medium:
+    type: string
+    nullable: true
+    description: The URL of the promotional image in medium size 768x432.
+  Large:
+    type: string
+    nullable: true
+    description: The URL of the promotional image in large size 1024x576.
+  XLarge:
+    type: string
+    nullable: true
+    description: The URL of the promotional image in extra large size 1440x810.
+  StorePath:
+    type: string
+    nullable: true
+    description: A url friendly path for the store, that is unique.
+  Location:
+    type: string
+    nullable: true
+    description: The location for this store
+  PhoneNumber:
+    type: string
+    nullable: true
+    description: The phone number for this store
+  Website:
+    type: string
+    nullable: true
+    description: The website for this store
+  Member:
+    $ref: '#/components/schemas/member'
+    nullable: true
+    description: The member details associated with this store
+additionalProperties: true

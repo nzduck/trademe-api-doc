@@ -1,0 +1,15 @@
+description: Rate limit exceeded
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "TooManyRequests"
+        message:
+          type: string
+          example: "Rate limit exceeded, please try again later"
+      required:
+        - error
+        - message

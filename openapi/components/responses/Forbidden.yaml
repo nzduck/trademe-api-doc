@@ -1,0 +1,15 @@
+description: Forbidden - insufficient permissions
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Forbidden"
+        message:
+          type: string  
+          example: "Insufficient permissions for this operation"
+      required:
+        - error
+        - message

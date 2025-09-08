@@ -1,0 +1,35 @@
+type: object
+properties:
+  Damaged:
+    type: string
+    nullable: true
+    description: Returns "YES" if the car was reported to be damaged during the import. Returns "NO" if the car was not reported to be damaged during the import. Returns "N/A" if value cannot be reliably read from the database.
+  ReportedStolen:
+    type: string
+    nullable: true
+    description: Returns "YES" if the car was reported to be stolen. Returns "NO" if the car was not reported to be stolen. Returns "N/A" if value cannot be reliably read from the database.
+  MoneyOwing:
+    type: string
+    nullable: true
+    description: Returns "YES" if a person or company has registered a security against the vehicle indicating they have a financial interest in the vehicle Returns "NO" if a person or company has not registered a security against the vehicle indicating they have a financial interest in the vehicle. Returns "N/A" if value cannot be reliably read from the database.
+  ReRegistered:
+    type: string
+    nullable: true
+    description: Returns "YES" Returns "NO" Returns "N/A" if value cannot be reliably read from the database.
+  GeneratedAt:
+    type: string
+    format: date-time
+    description: Returns the time stamp of the date and time when report has been generated.
+  RegoOrVin:
+    type: string
+    nullable: true
+    description: Returns the registration or VIN number which has been used to purchase the Motor Web Basic Report.
+  Title:
+    type: string
+    nullable: true
+    description: Returns the vehicle title
+  PartialReportUrl:
+    type: string
+    nullable: true
+    description: Returns the URL to the partial MotorWebReport
+additionalProperties: true

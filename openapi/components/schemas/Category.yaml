@@ -1,0 +1,58 @@
+type: object
+description: Trade Me category information
+additionalProperties: true
+properties:
+  Name:
+    type: string
+    nullable: true
+    description: The name of the category
+    example: "Antiques & collectables"
+  Number:
+    type: string
+    nullable: true
+    description: A unique identifier for the category
+    example: "0004-0369-6076-"
+  Path:
+    type: string
+    nullable: true
+    description: The full URL path of this category
+    example: "/Antiques-collectables/Collectables/Badges-pins"
+  Subcategories:
+    type: array
+    nullable: true
+    description: The list of subcategories belonging to this category
+    items:
+      $ref: "#"
+  Count:
+    type: integer
+    description: The number of items for sale in this category
+    example: 1234
+  IsRestricted:
+    type: boolean
+    description: Indicates whether the category is restricted to adults only (i.e. the category is R18)
+    example: false
+  HasLegalNotice:
+    type: boolean
+    description: Indicates whether the category has legal requirements
+    example: false
+  HasClassifieds:
+    type: boolean
+    description: Indicates whether classifieds are allowed in this category
+    example: false
+  AreaOfBusiness:
+    type: integer
+    description: Area of business this category is related to
+    enum: [0, 1, 2, 3, 4, 5]
+    example: 1
+  CanHaveSecondCategory:
+    type: boolean
+    description: Indicates whether this category can be paired with a second category
+    example: false
+  CanBeSecondCategory:
+    type: boolean
+    description: Indicates whether this category can be selected as a second category
+    example: false
+  IsLeaf:
+    type: boolean
+    description: Indicates whether the category is a leaf category (i.e. has no children)
+    example: true

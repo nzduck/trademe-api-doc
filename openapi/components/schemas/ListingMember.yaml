@@ -1,0 +1,83 @@
+type: object
+properties:
+  MemberId:
+    type: integer
+    description: The ID of the member. This may be0, if we determine it is necessary to protect the member's privacy.
+  Nickname:
+    type: string
+    nullable: true
+    description: The nickname of the member. Some characters may be changed, if we determine it is necessary to protect the member's privacy.
+  DateAddressVerified:
+    type: string
+    format: date-time
+    description: The date the member was address verified.
+  DateJoined:
+    type: string
+    format: date-time
+    description: The date the member joined.
+  Email:
+    type: string
+    nullable: true
+    description: The member's email address.
+  UniqueNegative:
+    type: integer
+    description: The number of distinct members who have placed negative feedback against this member.
+  UniquePositive:
+    type: integer
+    description: The number of distinct members who have placed positive feedback against this member.
+  FeedbackCount:
+    type: integer
+    description: The member's total feedback (UniquePositive minus UniqueNegative).
+  IsAddressVerified:
+    type: boolean
+    description: Indicates whether the member has been address verified.
+  Suburb:
+    type: string
+    nullable: true
+    description: The name of the member's suburb.
+  Region:
+    type: string
+    nullable: true
+    description: The name of the member's region.
+  IsDealer:
+    type: boolean
+    description: Indicates whether the member is a car dealer.
+  IsAuthenticated:
+    type: boolean
+    description: Indicates whether the member is authenticated.
+  IsInTrade:
+    type: boolean
+    description: Indicates whether the member is a professional trader.
+  ImportChargesMayApply:
+    type: boolean
+    description: Indicates that the trader is an international seller, and therefore customs import charges may apply.
+  Photo:
+    type: string
+    nullable: true
+    description: A URL representing the member's photo.
+  Profile:
+    $ref: '#/components/schemas/simplememberprofile'
+    nullable: true
+    description: Member profile details
+  OccupationString or nullThe occupation of the member.BiographyString or nullThe member's bio.QuoteString or nullThe member's favourite quote.PhotoString or nullA URL representing the member's photo.:
+    type: string
+    description: String or null
+  Occupation:
+    type: string
+    nullable: true
+    description: The occupation of the member.
+  Biography:
+    type: string
+    nullable: true
+    description: The member's bio.
+  Quote:
+    type: string
+    nullable: true
+    description: The member's favourite quote.
+  IsTopSeller:
+    type: boolean
+    description: Indicates whether the member is currently a Top Seller
+  IsRentiUser:
+    type: boolean
+    description: Indicates whether the member is a renti user.
+additionalProperties: true

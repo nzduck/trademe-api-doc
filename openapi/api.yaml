@@ -1,0 +1,47 @@
+openapi: 3.1.0
+info:
+  title: Trade Me API (community)
+  version: 0.1.0
+  description: >
+    Community-maintained OpenAPI spec derived from public HTML docs.
+    This file is intentionally *thin* and references other files via $ref.
+
+servers:
+  - url: https://api.tmsandbox.co.nz/v1
+    description: Sandbox
+  - url: https://api.trademe.co.nz/v1
+    description: Production
+
+components:
+  securitySchemes:
+    TradeMeOAuth:
+      type: oauth1
+      description: |
+        Trade Me uses OAuth 1.0a for authentication. Most endpoints require authentication.
+        
+        To get started:
+        1. Register your application at https://developer.trademe.co.nz/
+        2. Obtain consumer key and secret
+        3. Follow OAuth 1.0a flow to get access token
+        
+        For more details see: https://developer.trademe.co.nz/api-overview/authentication
+        
+security:
+  - TradeMeOAuth: []
+
+paths:
+  /listings/{listingId}.{file_format}:
+    # Pull the operation from a separate file, so diffs stay small
+    $ref: ./paths/listings.yaml#/get-listing-by-id
+  /categories/{number}.{file_format}:
+    # Categories endpoint - public, no authentication required
+    $ref: ./paths/categories.yaml#/get-categories
+  /Search/General.{file_format}:
+    # General search endpoint - requires OAuth authentication
+    $ref: ./paths/search.yaml#/general-search
+  /Search/Suggestions.{file_format}:
+    # Search suggestions endpoint - requires OAuth authentication
+    $ref: ./paths/search.yaml#/search-suggestions
+  /mytrademe/watchList/{listingId}.{file_format}:
+    # Watchlist management endpoints - require OAuth authentication with MyTradeMeWrite permission
+    $ref: ./paths/watchlist.yaml#/watchlist-operations

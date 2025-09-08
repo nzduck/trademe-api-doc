@@ -1,0 +1,52 @@
+type: object
+properties:
+  WeeklyPayment:
+    type: number
+    description: The weekly payment required under the current conditions
+  DepositPercent:
+    type: number
+    description: The deposit percent required to qualify for this offer
+  TermInMonths:
+    type: integer
+    description: The duration of the finance offer
+  InterestRate:
+    type: number
+    description: The indicative interest rate used to calculate the offer
+  InterestType:
+    type: string
+    description: The type of interest for a finance offerThis field will always return the Fixed interest type
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - Fixed interest rate.
+      - Floating interest rate capped at a certain value.
+      - Floating interest rate.
+  EstablishmentFee:
+    type: number
+    description: The establishment fee required for this offer
+  MonthlyFee:
+    type: number
+    description: The monthly maintenance fee required for this offer
+  TotalPayment:
+    type: number
+    description: The total payment for the loan
+  OfferDescription:
+    type: string
+    nullable: true
+    description: The full description of the offer.This field is no longer in use.
+  OfferDisclaimer:
+    type: string
+    nullable: true
+    description: The disclaimer explaining the finance offers further.This field is no longer in use.
+  FinancePayment:
+    type: number
+    description: Includes the finance portion of the total payment
+  DepositPayment:
+    type: number
+    description: Includes the deposit value of the total payment
+  IsPersonalised:
+    type: boolean
+    description: Specifies whether the return values are based on member's finance preferences.
+additionalProperties: true

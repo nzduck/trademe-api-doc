@@ -1,0 +1,10 @@
+type: object
+properties:
+  HasOptedIn:
+    type: boolean
+    description: Shows if the user has opted in to display salary data
+  ApproximatePayRangeDisplay:
+    type: string
+    nullable: true
+    description: Shows the salary data range
+additionalProperties: true

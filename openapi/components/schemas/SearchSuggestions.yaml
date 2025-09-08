@@ -1,0 +1,80 @@
+type: object
+description: Search suggestions based on search terms, including category suggestions, recent searches, and auto-suggestions
+properties:
+  RecentSearches:
+    type: array
+    nullable: true
+    description: List of search terms the logged in member has recently searched for ordered by most recent first
+    items:
+      type: string
+  AutoSuggestions:
+    type: array
+    nullable: true
+    description: List of suggested search terms based on terms popular with Trade Me members ordered by their popularity
+    items:
+      type: object
+      properties:
+        SearchTerm:
+          type: string
+          nullable: true
+          description: The search term Trade Me members have been using
+        SearchTermCategorySuggestions:
+          type: array
+          nullable: true
+          description: Categories we suggest you search for the search term in
+          items:
+            type: object
+            properties:
+              Id:
+                type: integer
+                description: The ID of the category
+              Description:
+                type: string
+                nullable: true
+                description: The description for the suggested category
+  CategorySuggestions:
+    type: array
+    nullable: true
+    description: List of category suggestions that are relevant to the given search term
+    items:
+      type: object
+      properties:
+        Id:
+          type: integer
+          description: The ID of the suggested category
+        Name:
+          type: string
+          nullable: true
+          description: The name of the suggested category
+        AncestorsNames:
+          type: array
+          nullable: true
+          description: A list of names of the suggested categories ancestors, ordered from root to leaf
+          items:
+            type: string
+  StoreSuggestions:
+    type: array
+    nullable: true
+    description: List of store suggestions that are relevant to the given search term
+    items:
+      type: object
+      properties:
+        MemberId:
+          type: integer
+          description: The ID of the suggested store
+        StoreName:
+          type: string
+          nullable: true
+          description: The name of the suggested store
+        StorePath:
+          type: string
+          nullable: true
+          description: The path of the suggested store
+        Description:
+          type: string
+          nullable: true
+          description: The description of the suggested store
+        LogoImageUri:
+          type: string
+          nullable: true
+          description: The profile logo image URL of the suggested store

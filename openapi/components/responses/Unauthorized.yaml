@@ -1,0 +1,15 @@
+description: Unauthorized - authentication required
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        error:
+          type: string
+          example: "Unauthorized"
+        message:
+          type: string
+          example: "Authentication required"
+      required:
+        - error
+        - message

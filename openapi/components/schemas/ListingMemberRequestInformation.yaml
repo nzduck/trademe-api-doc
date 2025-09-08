@@ -1,0 +1,41 @@
+type: object
+properties:
+  RequestRelistStatus:
+    type: string
+    description: Indicates whether the member can request a relist and the status of any request.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+    x-enum-descriptions:
+      - Member can request
+      - Sold already
+      - Member is blacklisted
+      - Member has made request already
+      - An offer has already been made
+      - Already relisted
+      - Member is not a valid offeree
+  RequestOfferStatus:
+    type: string
+    description: Indicates whether the member can request an offer and the status of any request.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+    x-enum-descriptions:
+      - Member can request
+      - Sold already
+      - Member is blacklisted
+      - Member has made request already
+      - An offer has already been made
+      - Already relisted
+      - Member is not a valid offeree
+additionalProperties: true

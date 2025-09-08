@@ -1,0 +1,11 @@
+type: object
+properties:
+  TopSortProductId:
+    type: string
+    nullable: true
+    description: The ID for the Tradevine (and thus TopSort) Product that the listing is related to.
+  TopSortVendorId:
+    type: string
+    nullable: true
+    description: TopSort Vendor ID that is sent to TopSort for each purchase event
+additionalProperties: true

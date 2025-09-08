@@ -1,0 +1,11 @@
+type: object
+properties:
+  Name:
+    type: string
+    nullable: true
+    description: The technology name.
+  Availability:
+    type: string
+    nullable: true
+    description: The availability of the broadband technology.
+additionalProperties: true

@@ -1,0 +1,651 @@
+type: object
+properties:
+  ListingId:
+    type: integer
+    description: The ID of the listing.
+  Title:
+    type: string
+    nullable: true
+    description: The listing title.
+  Category:
+    type: string
+    nullable: true
+    description: The listing category.
+  StartPrice:
+    type: number
+    description: The start price.
+  BuyNowPrice:
+    type: number
+    description: The Buy Now price.
+  StartDate:
+    type: string
+    format: date-time
+    description: The date the listing was created.
+  EndDate:
+    type: string
+    format: date-time
+    description: The date the listing will end.
+  IsFeatured:
+    type: boolean
+    description: Is this a featured listing?
+  HasGallery:
+    type: boolean
+    description: Is this a gallery listing?
+  IsBold:
+    type: boolean
+    description: Is this a bold listing?
+  IsHighlighted:
+    type: boolean
+    description: Is this a highlighted listing?
+  HasHomePageFeature:
+    type: boolean
+    description: Is this a homepage feature listing?
+  BidderAndWatchers:
+    type: integer
+    description: The number of bidders and watcher for this listing.
+  MaxBidAmount:
+    type: number
+    description: The current leading bid amount.
+  AsAt:
+    type: string
+    format: date-time
+    description: The date and time the response was generated on the server.
+  CategoryPath:
+    type: string
+    nullable: true
+    description: The category path.
+  PhotoId:
+    type: integer
+    description: The ID of the primary photo for the listing (if the listing has a photo).
+  HasPayNow:
+    type: boolean
+    description: Indicates whether the item has Pay Now.
+  IsNew:
+    type: boolean
+    description: Indicates whether the item is marked as new.
+  RegionId:
+    type: integer
+    description: |-
+      The ID of the region where this item is located. In the general search, listing details and watchlist APIs this is the ID of the seller's region (using the two-tier region/suburb system), which means it might be inconsistent with the region name. In the property search API this is the ID of the property region, using the three-tier region/district/suburb system.
+
+                                      This field cannot cope with the two main geographical classification systems.  Except for the property search API, it should not be used.
+  Region:
+    type: string
+    nullable: true
+    description: The name of the region where this item is located.
+  SuburbId:
+    type: integer
+    description: The ID of the suburb where this item is located. Only populated by the property search API, which means it uses the three-tier region/district/suburb system.
+  Suburb:
+    type: string
+    nullable: true
+    description: The name of the suburb where this item is located.
+  PickupLocality:
+    $ref: './ListingPickupLocality.yaml'
+    nullable: true
+    description: The pick-up location details if pick-up is allowed and has been specified.
+  BidCount:
+    type: integer
+    description: The number of bids on the item.
+  ViewCount:
+    type: integer
+    description: The number of times the listing has been viewed.
+  IsReserveMet:
+    type: boolean
+    description: Indicates whether the item's reserve has been met.
+  HasReserve:
+    type: boolean
+    description: Indicates whether the item has a reserve.
+  HasBuyNow:
+    type: boolean
+    description: Indicates whether the item has Buy Now.
+  NoteDate:
+    type: string
+    format: date-time
+    description: The date of the note on an item.
+  CategoryName:
+    type: string
+    nullable: true
+    description: The display name of the category.
+  ReserveState:
+    type: string
+    description: The flag to display on an item.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+    x-enum-descriptions:
+      - There is no reserve on the item (i.e. the reserve price is the same as the starting price).
+      - The value of the highest bid has exceeded the reserve price.
+      - The value of the highest bid has not reached the reserve price.
+      - The listing cannot have a reserve because bidding is not allowed. This may be because it is a classified or because it is a Buy Now Only auction.
+  Attributes:
+    $ref: './ListingAttributes.yaml'
+    nullable: true
+    description: The attributes for the item that are intended to be displayed on the UI.
+  HiddenAttributes:
+    type: array
+    items:
+      type: object
+      description: Listing attribute
+    nullable: true
+    description: The attributes for the item that are not intended to be displayed on the UI.
+  IsClassified:
+    type: boolean
+    description: Indicates whether the item is a classified.
+  OpenHomes:
+    $ref: './ListingOpenHomes.yaml'
+    nullable: true
+    description: A collection of open home times for this listing. Only applies to open home listings.
+  RelistedItemId:
+    type: integer
+    description: The ID of the new listing if this listing was relisted.
+  Subtitle:
+    type: string
+    nullable: true
+    description: The subtitle, if present.
+  ReservePrice:
+    type: number
+    description: The reserve price for the auction. This is available in the sold/unsold items APIs and, if you are the seller, the listing details API.
+  IsBuyNowOnly:
+    type: boolean
+    description: Indicates whether or not this is a Buy Now Only listing.
+  HasMultiple:
+    type: boolean
+    description: Indicates whether there is more than one item available. Only applicable for Buy Now Only listings.
+  Quantity:
+    type: integer
+    description: The total quantity available of the item. Only applicable for Buy Now Only listings. When retrieving won items this value represents the number sold, not the total quantity. When retrieving sold items, this value is not present (use QuantitySold instead). When retrieving listing details, this value is only present if you are the seller.
+  IsFlatShippingCharge:
+    type: boolean
+    description: Indicates whether one flat shipping fee will be charged if more than one of this item is purchased. Only applicable for Buy Now Only listings.
+  RemainingGalleryPlusRelists:
+    type: integer
+    nullable: true
+    description: The number of times the item can be relisted and get the gallery promotion for free. This value is only present if you are the seller and the listing had the gallery promotion applied due to the gallery plus promotion. Note that for this field, a value of zero is not the same as if the field is missing (a value of zero means gallery plus is in effect whereas if the field is missing it means that you are not the seller or gallery plus is not in effect).
+  MinimumNextBidAmount:
+    type: number
+    description: The smallest amount that will be accepted for the next bid. Only applicable to auctions which allow bidding (i.e. not classifieds and not Buy Now Only auctions). You must still check for the "bid too small" error when using this value, as someone may make a bid after you have checked this value but before you have finished placing your bid.
+  IsOnWatchList:
+    type: boolean
+    description: Indicates whether the item is on the authenticated member's watchlist.
+  WatchlistReminder:
+    type: string
+    description: If the item is on the watchlist, it indicates the user's preference of when they should get watchlist emails for the item.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '4'
+    x-enum-descriptions:
+      - No emails for watchlist items.
+      - One hour before the listing closes.
+      - Twelve hours before the listing closes.
+      - Twenty hours before the listing closes.
+  GeographicLocation:
+    $ref: './ListingGeographicLocation.yaml'
+    nullable: true
+    description: The geographic location (latitude and longitude) of a property.
+  PriceDisplay:
+    type: string
+    nullable: true
+    description: The price, in a format suitable for displaying to the user. Some categories may have special pricing rules, e.g. properties may have "Price by negotiation".
+  TotalReviewCount:
+    type: integer
+    description: The total number of user-submitted reviews. Currently only applies to services listings.
+  PositiveReviewCount:
+    type: integer
+    description: The number of user-submitted reviews which are positive (i.e. the user selected the thumbs up graphic when submitting a review). Currently only applies to services listings.
+  SendPaymentInstructions:
+    type: boolean
+    description: Indicates whether payment instructions are automatically sent to buyers. This value is only present if you are the seller.
+  CanUsePayNowInstant:
+    type: boolean
+    description: Indicates whether the PayNowInstant is available for this listing.
+  ExternalReferenceId:
+    type: string
+    nullable: true
+    description: The external reference ID, if one exists. Only available to the seller of a listing.
+  HasAppliedForJob:
+    type: boolean
+    description: Indicates whether the authenticated member has applied for the job. Only applies for job listings.
+  JobApplicationDate:
+    type: string
+    format: date-time
+    nullable: true
+    description: The date and time of the member's most recent job application, if any. This field will only be populated if HasAppliedForJob is true.
+  SKU:
+    type: string
+    nullable: true
+    description: SKU or Stock Keeping Unit. Used to uniquely identify an auction's product line.
+  IsClearance:
+    type: boolean
+    description: This indicates that the listing is a clearance item. Clearance listings include listings with was/now pricing and general clearance stock.
+  WasPrice:
+    type: number
+    nullable: true
+    description: The usual price that a product is sold at, or the price before it was marked down. This is always more than the Buy Now price for Auctions, or more than the asking price for Classifieds.This field will only be populated if IsClearance is true.
+  PercentageOff:
+    type: integer
+    nullable: true
+    description: The percentage that a product has been discounted. This has been rounded for display purposes. This field will only be populated if IsClearance is true.
+  Branding:
+    $ref: './ListingBranding.yaml'
+    nullable: true
+    description: A list of branding images associated with this listing.
+  AvailableToBuy:
+    type: string
+    nullable: true
+    description: The amount of listings available for purchase. If greater than 10, 10+ will be displayed.
+  IsSuperFeatured:
+    type: boolean
+    description: Is this a super featured listing?
+  VariantDefinition:
+    $ref: './ListingVariantDefinition.yaml'
+    nullable: true
+    description: The variants.
+  ListingGroupId:
+    type: integer
+    nullable: true
+    description: The identifier of the group of related multi-variant listings. Blank if the listing is not multi-variant
+  AdditionalData:
+    $ref: './ListingAdditionalData.yaml'
+    nullable: true
+    description: Structured information for Listing Additional Data
+  ListingExtras:
+    type: string
+    nullable: true
+    description: A collection of extras that are currently applied to the listing
+  IsLoyaltyEligible:
+    type: boolean
+    description: Indicates whether the listing is eligible to loyalty program.
+  HasPing:
+    type: boolean
+    description: Indicates whether Ping is a supported payment option.
+  UnansweredQuestionCount:
+    type: integer
+    nullable: true
+    description: The number of unanswered questions
+  LatestRelistedItemId:
+    type: integer
+    description: The ID of the current open listing if this listing has been continuously relisted.
+  IsCounterOffersAllowed:
+    type: boolean
+    description: Indicates whether the listing is enabled for Make an Offer.
+  MaximumOffers:
+    type: integer
+    nullable: true
+    description: The maximum number of Buyer offers the listing accepts if the listing has Counter Offers enabled.
+  ShippingDetails:
+    $ref: './ListingShippingDetails.yaml'
+    nullable: true
+    description: Shipping details for the current listing. Null if no shipping details available.
+  IsMessagingAllowed:
+    type: boolean
+    description: Indicates whether the listing is enabled for messaging via messaging service.
+  PriceType:
+    type: string
+    nullable: true
+    description: Indicates the price type of boat and farming machinery listings
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - Asking Price.
+      - Price On Application.
+      - Excluding GST.
+  NewCarInformation:
+    $ref: './ListingNewCarInformation.yaml'
+    nullable: true
+    description: Information specific to new cars if the current listing is a new car listing.
+  Sponsored:
+    $ref: './ListingSponsored.yaml'
+    nullable: true
+    description: listing’s required metadata relating to Sponsored Listings.
+  ListingPlatform:
+    type: string
+    description: The backend platform that controls the listing.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - The platform has not been set.
+      - The listing is controlled by Trade Me.
+      - The listing is controlled by Koru.
+  AllowsPickups:
+    type: string
+    description: The pickup option for the listing.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+    x-enum-descriptions:
+      - The listing allows pick up, but does not require it.
+      - The buyer can pickup if they so choose.
+      - The buyer must pickup the item.
+      - The buyer cannot pickup the item (delivery only).
+  Member:
+    $ref: './ListingMember.yaml'
+    nullable: true
+    description: The seller of the listing.
+  Body:
+    type: string
+    nullable: true
+    description: The text used as the body of the item.
+  Bids:
+    $ref: './ListingBids.yaml'
+    nullable: true
+    description: A list of the last 10 bids for the listing.
+  Questions:
+    $ref: './ListingQuestions.yaml'
+    nullable: true
+    description: A list of questions and answers for the listing.
+  Photos:
+    $ref: './ListingPhotos.yaml'
+    nullable: true
+    description: A collection of photos for the listing.
+  PickupLocation:
+    type: string
+    nullable: true
+    description: |-
+      The pick-up location details if pick-up is allowed.
+
+                                      This property is deprecated and will be removed. Use the ListedItem PickupLocality property instead.
+  ShippingOptions:
+    $ref: './ListingShippingOptions.yaml'
+    nullable: true
+    description: A list of shipping options.
+  PaymentOptions:
+    type: string
+    nullable: true
+    description: A comma-separated list of the available payment options e.g. "NZ Bank Deposit, Cash, Pay Now".
+  CurrentAutoBid:
+    type: number
+    nullable: true
+    description: If you are the bidder then the highest AutoBid value is returned
+  Dealership:
+    $ref: './ListingDealership.yaml'
+    nullable: true
+    description: The dealership details if this is a car dealer listing.
+  Agency:
+    $ref: './ListingAgency.yaml'
+    nullable: true
+    description: The agency details if this is a job or property listing.
+  Store:
+    $ref: './ListingStore.yaml'
+    nullable: true
+    description: The store details, if the seller has a Trade Me store.
+  ContactDetails:
+    $ref: './ListingContactDetails.yaml'
+    nullable: true
+    description: The contact details for a personal listing.
+  IsOrNearOffer:
+    type: boolean
+    description: Indicates whether a near offer is accepted.
+  AuthenticatedMembersOnly:
+    type: boolean
+    description: Indicates whether bidding on this auction is restricted to authenticated members. Note that there are many restrictions on non-authenticated users. For more information, see the help article on becoming authenticated.
+  Sales:
+    $ref: './ListingSales.yaml'
+    nullable: true
+    description: Contains sales information for the listing. A "sale" in this context can via Buy Now, a fixed price offer or a winning bid. If you are the seller of this listing, this field contains information on all sales. If you are the buyer, then it contains information about your purchases only.
+  OfferStatus:
+    type: string
+    description: The status of the fixed price offer for this listing (if there is one). Only available if you are the seller or a recipient of the offer.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    x-enum-descriptions:
+      - A fixed price offer has not been created for this listing, or you are not the seller or a recipient and so no information is available.
+      - A fixed price offer is currently active. The PendingOffer field will contain details of the offer. If PendingOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+      - A fixed price offer was created, but then was withdrawn by the seller. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+      - A fixed price offer was created, but time ran out before all the recipients could respond. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+      - The fixed price offer was declined by all the recipients. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+      - The fixed price offer was accepted. The ClosedOffer field will contain details of the offer. If ClosedOffer is unavailable, seeFixed Price Offer Methodsfor more information.
+  PendingOffer:
+    $ref: './ListingPendingOffer.yaml'
+    nullable: true
+    description: Contains details of a fixed price offer that is pending for this auction. Only available if you are the seller or a recipient of the offer.
+  ClosedOffer:
+    type: object
+    nullable: true
+    description: Contains details of a fixed price offer that was made, but is no longer available, either because it was accepted, it expired or all recipients declined the offer. Only available if you are the seller or a recipient of the offer.
+  FirearmsLicenseRequiredToBuy:
+    type: boolean
+    description: Indicates whether a buyer is required to enter their firearms license number. Applies to firearms listings (e.g. Sports > Hunting & shooting > Rifles).
+  Over18DeclarationRequiredToBuy:
+    type: boolean
+    description: Indicates whether a buyer is required to confirm that they are over 18. Applies to wine listings (e.g. Home & living > Wine > Red > Pinot noir).
+  CanOffer:
+    type: boolean
+    description: Indicates whether a fixed price offer can be created for the listing. You can use this flag to hide the FPO button in your UI or to avoid a useless FPO API call. Note that if this flag is true it does not guarantee that a subsequent FPO operation will succeed.
+  CanRelist:
+    type: boolean
+    description: Indicates whether the listing can be relisted using the relist or relist with edits API. You can use this flag to hide the relist button in your UI or to avoid a useless relist API call. Note that if this flag is true it does not guarantee that a subsequent relist operation will succeed.
+  WithdrawnBySeller:
+    type: boolean
+    description: Indicates whether the listing was withdrawn by the seller.
+  DonationRecipient:
+    $ref: './ListingDonationRecipient.yaml'
+    nullable: true
+    description: Indicates the seller will round up their success fees to the nearest dollar and donate the difference to the selected charity.
+  IsInTradeProtected:
+    type: boolean
+    description: Indicates whether the listing is protected by the Consumer Guarantees Act
+  IsInCart:
+    type: boolean
+    nullable: true
+    description: Indicates if the item is also in the members cart.
+  CurrentShippingPromotion:
+    $ref: './ListingCurrentShippingPromotion.yaml'
+    nullable: true
+    description: A list of shipping promotions that are currently active for this listing
+  IsLeading:
+    type: boolean
+    description: Indicates whether the authenticated user is leading the bidding.
+  IsOutbid:
+    type: boolean
+    description: Indicates whether the authenticated user has been outbid. This will be false if the authenticated user has not made any bids.
+  CanAddToCart:
+    type: boolean
+    description: Indicates if the item can be added to members cart.
+  CartItemId:
+    type: integer
+    description: the cartItemId if the item is already in the members cart.
+  MemberProfile:
+    type: object
+    nullable: true
+    description: This listing member's public profile information.
+  EmbeddedContent:
+    $ref: './ListingEmbeddedContent.yaml'
+    nullable: true
+    description: The content keys that are embedded in the listing page (e.g. YouTube Video Key).
+  SponsorLinks:
+    $ref: './ListingSponsorLinks.yaml'
+    nullable: true
+    description: A collection of sponsored links for the listing.
+  MotorWebBasicReport:
+    $ref: './ListingMotorWebBasicReport.yaml'
+    nullable: true
+    description: MotorWeb basic report for car listings if purchased by the seller.
+  ContactCount:
+    type: integer
+    nullable: true
+    description: The number of contacts received for this listing, either emails, applications, or clicks-to-apply. Only available if you are the seller.
+  BroadbandTechnologies:
+    $ref: './ListingBroadbandTechnologies.yaml'
+    nullable: true
+    description: A list of broadband technology availability for property listings.
+  FormattedStartDate:
+    type: string
+    nullable: true
+    description: Listing start date, displayed as a string. Currently applies to Motors Classified listings only.
+  SuperFeatureEndDate:
+    type: string
+    format: date-time
+    description: End date of a super feature for a listing.
+  MemberRequestInformation:
+    $ref: './ListingMemberRequestInformation.yaml'
+    nullable: true
+    description: Provides information relating to the member regarding their ability to request a relist or offer and the status of any request.
+  IsEligibleForBuyerProtection:
+    type: boolean
+    description: Indicates whether the listing is eligible for buyer protection
+  SupportsQuestionsAndAnswers:
+    type: boolean
+    description: Indicates if questions and answers can be shown on the listing
+  HasContactDetails:
+    type: boolean
+    description: Indicates whether the listing has contact details
+  SuppressRelatedListings:
+    type: boolean
+    description: Indicates whether related listings should NOT be shown alongside this listing. This field will normally be false but may be true if related listings are simply not available, or because Trade Me has an agreement with the seller to not show competitor's listings next to theirs.
+  SuppressComplementaryListings:
+    type: boolean
+    description: Indicates whether complementary listings should NOT be shown alongside this listing. If this flag is true it means that we have foreknowledge that complementary listings are definitely not available, or there is a policy that means complementary listings should not be shown. Note that if the flag is false, it is still possible for the complementary listings endpoint to return zero results.
+  PaymentMethods:
+    $ref: './ListingPaymentMethods.yaml'
+    nullable: true
+    description: A list of the supported payment methods.
+  FinanceOffer:
+    $ref: './ListingFinanceOffer.yaml'
+    nullable: true
+    description: |-
+      A finance offer for the current listing
+
+                                      The property below is deprecated and will be removed. Use the Finance Estimate endpoint instead.
+  ProductSpecification:
+    $ref: './ListingProductSpecification.yaml'
+    nullable: true
+    description: The specifications of the product if the listing relates to a product
+  BoundaryImage:
+    type: object
+    nullable: true
+    description: The boundary image that is availability for only property listings
+  DealInfo:
+    $ref: './ListingDealInfo.yaml'
+    nullable: true
+    description: WhyPay deal information
+  TaxesIncluded:
+    type: array
+    items:
+      type: object
+      description: Tax rate on price
+    nullable: true
+    description: Indicates if taxes (and what type) are included in the BuyNowPrice
+  RenderOptions:
+    type: string
+    nullable: true
+    description: Holds a collection with all the available options to render additional content on the client
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - Can Render Urls on the client
+      - Display Buyer's Contact Details
+      - Can the seller's member image be shown in the listing detail buyer options section.
+  AreaOfBusiness:
+    type: string
+    description: The area of business in which the listing's category resides.
+    enum:
+      - '0'
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    x-enum-descriptions:
+      - None specified.
+      - All
+      - Marketplace
+      - Property
+      - Motors
+      - Jobs
+      - Services
+  SecondCategory:
+    type: string
+    nullable: true
+    description: The secondary category the listing is in if this promotion is applicable to the listing
+  SecondCategoryName:
+    type: string
+    nullable: true
+    description: The display name of the secondary category the listing is in if this promotion is applicable to the listing
+  SecondCategoryPath:
+    type: string
+    nullable: true
+    description: The full path of the secondary category the listing is in if this promotion is applicable to the listing
+  SuppressAdvertisersOtherListings:
+    type: boolean
+    description: Indicates whether advertisers other listings should NOT be shown alongside this listing. This field will normally be false but may be true if the listing has been listed by a reseller job agent.
+  Office:
+    $ref: './ListingOffice.yaml'
+    nullable: true
+    description: The Office details if this is a property listing.
+  IsExtendable:
+    type: boolean
+    description: Indicates whether the listing is extendable.
+  HasListingMetCompliance:
+    $ref: './ListingHasListingMetCompliance.yaml'
+    nullable: true
+    description: Indicates whether the listing has met any relevant compliance requirements
+  IncludeGstStartPrice:
+    type: number
+    nullable: true
+    description: Indicates the start price and gst tax amount of boat and farming machinery listings
+  SearchVisualProminence:
+    type: integer
+    nullable: true
+    description: Indicates the listing type
+  SpecialOffer:
+    $ref: './ListingSpecialOffer.yaml'
+    nullable: true
+    description: Information about the special offer that a dealer has applied to a classified motors or farming listing
+  JobAdvertiserPageUrl:
+    type: string
+    nullable: true
+    description: The company page url for jobs
+  JobAdvertiserOtherListingsUrl:
+    type: string
+    nullable: true
+    description: The other listings url jobs
+  JobsSalaryTransparency:
+    $ref: './ListingJobsSalaryTransparency.yaml'
+    nullable: true
+    description: approximate pay range display information
+  IsAutoExtended:
+    type: boolean
+    description: Indicates if the listing is flagged as Auto Extended
+  MotorsExternalMedia:
+    $ref: './ListingMotorsExternalMedia.yaml'
+    nullable: true
+    description: Motors information for listings that have external media content
+  PropertySaleInformation:
+    $ref: './ListingPropertySaleInformation.yaml'
+    nullable: true
+    description: Property Sale Information
+  BackgroundRecheckEligibility:
+    type: string
+    nullable: true
+    description: What background check elements will be rechecked (if any) upon acceptance Applies to motors listings.
+    enum:
+      - '1'
+      - '99'
+    x-enum-descriptions:
+      - This offer is subject to recheck of money owing and stolen status upon acceptance
+      - This offer is not subject to recheck any background check items
+  PropertyAttributes:
+    $ref: './ListingPropertyAttributes.yaml'
+    nullable: true
+    description: List of property attributes and council data points.
+additionalProperties: true
+description: <ListedItemDetail> The details of the listing.

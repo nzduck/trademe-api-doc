@@ -1,0 +1,49 @@
+type: object
+properties:
+  Name:
+    type: string
+    nullable: true
+    description: A name which uniquely identifies the attribute. Required when selling or editing.
+  DisplayName:
+    type: string
+    nullable: true
+    description: The name of the attribute, in a form suitable for displaying to users. Not required when selling or editing.
+  Value:
+    type: string
+    nullable: true
+    description: The string value of the attribute. When listing, the valid values for the attribute can be determined using the "Retrieve attributes for a category" API. Use "false" or "true" for boolean attributes. Required when selling or editing.
+  Type:
+    type: string
+    description: The type of the attribute, which determines the range of acceptable values. Not required when selling or editing.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+    x-enum-descriptions:
+      - Not used.
+      - The attribute value is a boolean (true/false).
+      - The attribute value is an integer.
+      - The attribute value is a floating point number.
+      - The attribute value can be arbitrary text.
+      - The attribute value is a date & time (in UTC).
+  Range:
+    $ref: '#/components/schemas/attributerange'
+    nullable: true
+    description: The allowed range of the attribute. Only applies to numeric attributes. Not required when selling or editing.
+  Options:
+    type: array
+    items:
+      $ref: '#/components/schemas/attributeoption'
+    nullable: true
+    description: A list of options, if the attribute is restricted to a fixed set of values. Not required when selling or editing.
+  IsRequiredForSell:
+    type: boolean
+    description: Indicates whether the attribute must be present when selling an item.
+  DisplayValue:
+    type: string
+    nullable: true
+    description: The value of the attribute as it needs to be displayed to the end users
+additionalProperties: true

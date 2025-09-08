@@ -1,0 +1,304 @@
+type: object
+properties:
+  Id:
+    type: integer
+    description: The ID of the dealer company
+  Name:
+    type: string
+    nullable: true
+    description: The name of the company.
+  Address:
+    type: string
+    nullable: true
+    description: The address of the company HQ.
+  Suburb:
+    type: string
+    nullable: true
+    description: The suburb where the company HQ is located.
+  City:
+    type: string
+    nullable: true
+    description: The city where the company HQ is located.
+  PhoneNumber:
+    type: string
+    nullable: true
+    description: A contact phone number for the company. For Motors Dealership please use the PhoneNumbers collection instead
+  FaxNumber:
+    type: string
+    nullable: true
+    description: Get the fax number of a contact
+  EMail:
+    type: string
+    nullable: true
+    description: Gets the email of the dealer
+  Website:
+    type: string
+    nullable: true
+    description: The URL of the company website.
+  Logo:
+    type: string
+    nullable: true
+    description: Logo of the Showroom
+  Branding:
+    $ref: '#/components/schemas/branding'
+    nullable: true
+    description: The branding object for the company.
+  LargeSquareLogoString or nullA large square branding image with dimensions of 480x480.LargeWideLogoString or nullA large rectangular branding image with dimensions of 480x200.BackgroundColorString or nullBanner outline/stroke colour, tick the checkbox before saving to apply the new colourTextColorString or nullBanner background colour, tick the checkbox before saving to apply the new colourStrokeColorString or nullBanner text colour, tick the checkbox before saving to apply the new colourDisableBannerBooleanDisable the agent branding regardless of Super Feature statusOfficeLocationString or nullThe name of the office locationLargeBannerURLString or nullThe url of a larger version of the logo:
+    type: string
+    description: String or null
+  LargeSquareLogo:
+    type: string
+    nullable: true
+    description: A large square branding image with dimensions of 480x480.
+  LargeWideLogo:
+    type: string
+    nullable: true
+    description: A large rectangular branding image with dimensions of 480x200.
+  BackgroundColor:
+    type: string
+    nullable: true
+    description: Banner outline/stroke colour, tick the checkbox before saving to apply the new colour
+  TextColor:
+    type: string
+    nullable: true
+    description: Banner background colour, tick the checkbox before saving to apply the new colour
+  StrokeColor:
+    type: string
+    nullable: true
+    description: Banner text colour, tick the checkbox before saving to apply the new colour
+  DisableBanner:
+    type: boolean
+    description: Disable the agent branding regardless of Super Feature status
+  OfficeLocation:
+    type: string
+    nullable: true
+    description: The name of the office location
+  LargeBannerURL:
+    type: string
+    nullable: true
+    description: The url of a larger version of the logo
+  Logo2:
+    type: string
+    nullable: true
+    description: A URL for the second company logo.
+  PhoneNumbers:
+    type: string
+    nullable: true
+    description: Array of up to two phone numbers which can be used to reach the dealership
+  Dealers:
+    type: array
+    items:
+      $ref: '#/components/schemas/dealer'
+    nullable: true
+    description: Gets the contact details of contacts within the dealership
+  FullNameString or nullGet the name of a contactPositionString or nullGet the position of a contactMobilePhoneNumberString or nullGet the mobile phone number of a contactOfficePhoneNumberString or nullGet the office phone number of a contactEMailString or nullGets the email of the dealerFaxNumberString or nullGet the fax number of a contactHomePhoneNumberString or nullGet the home phone number of a contact:
+    type: string
+    description: String or null
+  FullName:
+    type: string
+    nullable: true
+    description: Get the name of a contact
+  Position:
+    type: string
+    nullable: true
+    description: Get the position of a contact
+  MobilePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the mobile phone number of a contact
+  OfficePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the office phone number of a contact
+  HomePhoneNumber:
+    type: string
+    nullable: true
+    description: Get the home phone number of a contact
+  Showroom:
+    $ref: '#/components/schemas/dealershowroom'
+    nullable: true
+    description: The show room of theDealership
+  IdIntegerID of the ShowroomUrlString or nullUrl of the ShowroomLogoString or nullLogo of the ShowroomBannerString or nullBanner of the ShowroomBackgroundColourString or nullBackground colour of the Showroom banner / logo:
+    type: string
+    description: Integer
+  Url:
+    type: string
+    nullable: true
+    description: Url of the Showroom
+  Banner:
+    type: string
+    nullable: true
+    description: Banner of the Showroom
+  BackgroundColour:
+    type: string
+    nullable: true
+    description: Background colour of the Showroom banner / logo
+  AboutUs:
+    type: string
+    nullable: true
+    description: Description of theDealership
+  ListingCounts:
+    $ref: '#/components/schemas/dealershiplistingcounts'
+    nullable: true
+    description: Count of listings of dealership
+  TotalIntegerTotal of listingsCarsIntegerCount of car listingsBoatsIntegerCount of motorboat listingsBikesIntegerCount of motorbike listings:
+    type: string
+    description: Integer
+  Total:
+    type: integer
+    description: Total of listings
+  Cars:
+    type: integer
+    description: Count of car listings
+  Boats:
+    type: integer
+    description: Count of motorboat listings
+  Bikes:
+    type: integer
+    description: Count of motorbike listings
+  Product:
+    type: string
+    nullable: true
+    description: The product the dealership has purchased
+  StaticMapsImage:
+    type: string
+    nullable: true
+    description: The Google static map URL of the dealer location
+  HasSearchCardBranding:
+    type: boolean
+    nullable: true
+    description: Bool of whether dealer has search card branding
+  Video:
+    $ref: '#/components/schemas/dealershipvideo'
+    nullable: true
+    description: Returns a content key if the dealer has embedded content
+  'VideoKeyString or nullThe key of the videoVideoTypeEnumerationThe type of the video, eg: YouTube':
+    type: string
+    description: String or null
+  VideoKey:
+    type: string
+    nullable: true
+    description: The key of the video
+  VideoType:
+    type: string
+    description: 'The type of the video, eg: YouTube'
+    enum:
+      - '0'
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
+      - '12'
+    x-enum-descriptions:
+      - Unknown
+      - Other
+      - Youtube
+      - Vimeo
+      - DiakritPanorama
+      - DiakritStyler
+      - DiakritFurnish
+      - MP4URL
+      - VirtualToursCreator
+      - IStaging
+      - Matterport
+      - SlideShare
+      - Approved 3D tour content provider.
+  BannerImages:
+    $ref: '#/components/schemas/dealerbannerimageurl'
+    nullable: true
+    description: Returns a content key if the dealer has embedded content
+  OriginalString or nullThe URL of the original imageSmallString or nullThe URL of the small image:
+    type: string
+    description: String or null
+  Original:
+    type: string
+    nullable: true
+    description: The URL of the original image
+  Small:
+    type: string
+    nullable: true
+    description: The URL of the small image
+  Subheading:
+    type: string
+    nullable: true
+    description: The h2 tag for the dealership
+  UrlSlug:
+    type: string
+    nullable: true
+    description: Returns the url slug of the dealer
+  PackageId:
+    type: string
+    nullable: true
+    description: Returns the package ID which the dealer is on
+    enum:
+      - '1'
+      - '2'
+      - '3'
+      - '4'
+      - '5'
+      - '6'
+      - '7'
+      - '8'
+      - '9'
+      - '10'
+      - '11'
+    x-enum-descriptions:
+      - Starter Package
+      - Bronze Package
+      - Silver Package
+      - Gold Package
+      - Platinum Package
+      - Entry Listing Package
+      - Lite Package
+      - Standard Package
+      - Enhanced Package
+      - Premium Package
+      - Ultimate Package
+  Company:
+    $ref: '#/components/schemas/dealercompany'
+    nullable: true
+    description: An object containing the ID and Name of the parent company
+  IdIntegerThe ID of the dealer companyCompanyNameString or nullThe name of the dealer company:
+    type: string
+    description: Integer
+  CompanyName:
+    type: string
+    nullable: true
+    description: The name of the dealer company
+  ShippingOptionsEnabled:
+    type: boolean
+    nullable: true
+    description: Bool of whether dealer has shipping options product
+  Settings:
+    type: array
+    items:
+      $ref: '#/components/schemas/setting'
+    nullable: true
+    description: A collection of settings that apply to this dealer.
+  CodeString or nullA code to identify which setting this value applies toValueString or nullThe value for this setting:
+    type: string
+    description: String or null
+  Code:
+    type: string
+    nullable: true
+    description: A code to identify which setting this value applies to
+  Value:
+    type: string
+    nullable: true
+    description: The value for this setting
+  RenderOptions:
+    type: string
+    nullable: true
+    description: A list of render options that apply to this dealer.
+    enum:
+      - '1'
+    x-enum-descriptions:
+      - CanRenderFinanceEnquiry
+additionalProperties: true

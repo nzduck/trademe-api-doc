@@ -1,0 +1,43 @@
+type: object
+properties:
+  OfferPrice:
+    type: number
+    description: The offer price of the item on offer. For offers with more than one available item, this is the price per item. The price for shipping is not included.
+  OfferExpiryDate:
+    type: string
+    format: date-time
+    description: The date and time the fixed price offer expires.
+  Quantity:
+    type: integer
+    description: The number of items that are available. Buyers are able to purchase one or more of this item until the stock runs out or the offer ends.
+  TaxesIncluded:
+    type: array
+    items:
+      $ref: '#/components/schemas/taxrate'
+    nullable: true
+    description: The taxes included in the offer price
+  Recipients:
+    type: array
+    items:
+      $ref: '#/components/schemas/fixedpriceofferrecipient'
+    nullable: true
+    description: A list of recipients for the offer. Only available if you are the seller.
+  Member<Member> or nullMember details for the recipient of the offer.(This type has already been defined)DecisionEnumerationThe response of the member to the offer.:
+    type: string
+    description: <Member> or null
+  Member:
+    $ref: '#/components/schemas/member'
+    nullable: true
+    description: Member details for the recipient of the offer.
+  Decision:
+    type: string
+    description: The response of the member to the offer.
+    enum:
+      - '0'
+      - '1'
+      - '2'
+    x-enum-descriptions:
+      - The offer recipient has not responded yet.
+      - The offer recipient declined the offer.
+      - The offer recipient accepted the offer.
+additionalProperties: true

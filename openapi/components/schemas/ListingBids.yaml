@@ -1,0 +1,49 @@
+type: object
+properties:
+  TotalCount:
+    type: integer
+    description: The total number of results in the collection. Can be larger than the number of returned results.
+  Page:
+    type: integer
+    description: The index of the current page of results (starts at 1).
+  PageSize:
+    type: integer
+    description: The number of results in the current page.
+  List:
+    type: array
+    items:
+      $ref: '#/components/schemas/bid'
+    nullable: true
+    description: A list of the results in the current page.
+  AccountString or nullThe account the bid came from.BidAmountNumberThe amount of money the bid represents, in NZD.IsByMobileBooleanIndicates whether the bid came from a mobile phone.IsByProxyBooleanIndicates whether the bid was by proxy.BidDateDateTimeThe date and time the bid was placed.IsBuyNowBooleanIndicates whether the bid was a Buy Now bid.Bidder<Member> or nullThe member who placed the bid.(This type has already been defined)SelectedShippingOptionInteger or nullThe selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to.:
+    type: string
+    description: String or null
+  Account:
+    type: string
+    nullable: true
+    description: The account the bid came from.
+  BidAmount:
+    type: number
+    description: The amount of money the bid represents, in NZD.
+  IsByMobile:
+    type: boolean
+    description: Indicates whether the bid came from a mobile phone.
+  IsByProxy:
+    type: boolean
+    description: Indicates whether the bid was by proxy.
+  BidDate:
+    type: string
+    format: date-time
+    description: The date and time the bid was placed.
+  IsBuyNow:
+    type: boolean
+    description: Indicates whether the bid was a Buy Now bid.
+  Bidder:
+    $ref: '#/components/schemas/member'
+    nullable: true
+    description: The member who placed the bid.
+  SelectedShippingOption:
+    type: integer
+    nullable: true
+    description: The selected shipping option for the bid. Should only be populated for the member that the live listing bid belongs to.
+additionalProperties: true

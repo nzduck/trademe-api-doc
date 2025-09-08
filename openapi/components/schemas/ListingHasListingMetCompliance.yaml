@@ -1,0 +1,7 @@
+type: object
+properties:
+  HasMetAnimalWelfareCompliance:
+    type: boolean
+    nullable: true
+    description: Whether the seller has indicated if the listing has met our code of animal welfare. If attribute is not applicable, field is not returned.
+additionalProperties: true
