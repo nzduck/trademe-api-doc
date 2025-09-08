@@ -92,22 +92,24 @@ cat specs/json-extraction-guide.md
 ls docs/endpoints/
 ```
 
-### Generate Interactive OpenAPI Documentation
+### Browse Interactive OpenAPI Documentation
 The repository includes OpenAPI 3.1 specifications that can be bundled into a consolidated documentation and viewed with Swagger UI:
 
 ```bash
-# Generate consolidated OpenAPI spec and start documentation server
-./scripts/gen-consolidated-doc.sh
+# Generate consolidated spec, start server, and open in Chrome
+./scripts/browse-api.sh
 ```
 
 This will:
 1. Bundle all OpenAPI specs into a single consolidated file using Redocly
-2. Start a Docker container with Swagger UI 
-3. Make the documentation available at http://localhost:8080
+2. Start a Docker container with Swagger UI on port 5353
+3. Automatically open the documentation in Chrome browser
+4. Run the server in background for easy management
 
 **Prerequisites:**
 - [Redocly CLI](https://redocly.com/docs/cli/installation/) installed: `npm install -g @redocly/cli`
 - Docker installed and running
+- Chrome browser (or compatible Chromium-based browser)
 
 **Manual steps (if you prefer):**
 ```bash
@@ -115,10 +117,17 @@ This will:
 redocly bundle openapi/api.yaml --output openapi/openapi-consolidated.yaml --force
 
 # Start documentation server
-docker run -p 8080:8080 \
+docker run -d -p 5353:8080 \
+  --name trademe-api-docs \
+  --rm \
   -e SWAGGER_JSON=/openapi/openapi-consolidated.yaml \
   -v "$(pwd)/openapi:/openapi" \
   swaggerapi/swagger-ui
+
+# Stop server when done
+docker stop trademe-api-docs
+# Or use the helper script
+./scripts/stop-api-server.sh
 ```
 
 ## Data Quality & Characteristics

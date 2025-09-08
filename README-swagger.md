@@ -2,12 +2,12 @@
 
 ## Quick Start
 
-### Automated Generation (Recommended)
+### Automated Browsing (Recommended)
 ```bash
-# Generate consolidated spec and start Swagger UI
-./scripts/gen-consolidated-doc.sh
+# Generate consolidated spec, start server, and open Chrome
+./scripts/browse-api.sh
 
-# Access at: http://localhost:8080
+# Automatically opens at: http://localhost:5353
 ```
 
 ### Manual Steps
@@ -15,13 +15,17 @@
 # Generate consolidated spec using Redocly
 redocly bundle openapi/api.yaml --output openapi/openapi-consolidated.yaml --force
 
-# Start Swagger UI Docker container
-docker run -p 8080:8080 \
+# Start Swagger UI Docker container in background
+docker run -d -p 5353:8080 \
+  --name trademe-api-docs \
+  --rm \
   -e SWAGGER_JSON=/openapi/openapi-consolidated.yaml \
   -v "$(pwd)/openapi:/openapi" \
   swaggerapi/swagger-ui
 
-# Access at: http://localhost:8080
+# Access at: http://localhost:5353
+# Stop server: docker stop trademe-api-docs
+# Or use helper: ./scripts/stop-api-server.sh
 ```
 
 ## About the Consolidated Specification
@@ -60,7 +64,7 @@ The file `openapi/openapi-consolidated.yaml` contains:
 ## Updating the Documentation
 
 1. **Modify source files** in `openapi/` directory
-2. **Regenerate consolidated spec**: Run `./scripts/gen-consolidated-doc.sh`
+2. **Regenerate and browse**: Run `./scripts/browse-api.sh`
 3. **View changes**: Documentation auto-refreshes in browser
 
 ## Technical Notes
@@ -68,7 +72,9 @@ The file `openapi/openapi-consolidated.yaml` contains:
 - Uses **Redocly CLI** for bundling OpenAPI specifications
 - Applies **--force flag** to handle missing schema references
 - **Docker volume mounting** ensures real-time file access
-- **Port 8080** for consistent access across environments
+- **Port 5353** for local development and testing
+- **Background Docker container** with named container for easy management
+- **Cross-platform browser opening** with Chrome preference
 
 ## Troubleshooting
 
@@ -77,8 +83,14 @@ The bundling process may show warnings about missing schema references. These ar
 
 ### Docker Issues
 - Ensure Docker is running
-- Check port 8080 isn't already in use
+- Check port 5353 isn't already in use: `lsof -i :5353`
+- Stop existing container: `docker stop trademe-api-docs`
 - Verify volume mounting with absolute paths
+
+### Browser Issues
+- Script tries multiple browser commands for cross-platform compatibility
+- Falls back to system default browser if Chrome not found
+- Manual access: Navigate to http://localhost:5353
 
 ### Missing Dependencies
 ```bash
