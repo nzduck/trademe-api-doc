@@ -1,1 +1,5 @@
 node_modules
+
+# Claude Code IDE folders
+.claude/
+.playwright-mcp/
