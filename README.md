@@ -98,12 +98,7 @@ The processing maintained complete traceability - each endpoint specification in
 
 ## License & Usage
 
-This dataset is provided for reference, analysis, and development purposes. The underlying Trade Me API is subject to Trade Me's terms of service and API agreements. Users should:
-
-1. Verify endpoint details against the official Trade Me sandbox API
-2. Comply with Trade Me's API usage policies and rate limits
-3. Implement proper OAuth authentication for protected endpoints
-4. Test thoroughly before production use
+See [LICENSE.md](LICENSE.md) for complete licensing information and usage terms.
 
 ---
 
