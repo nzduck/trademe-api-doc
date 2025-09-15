@@ -1,158 +1,98 @@
-# Trade Me API Documentation Dataset
+# Trade Me API Documentation
 
-This repository contains a comprehensive dataset of Trade Me API documentation, extracted and processed from the official Trade Me developer documentation.
+Documentation for Trade Me's API in OpenAPI format, both individual files and transformable into a single consolidated file. Also, a few simple tools and workflows for extracting and processing Trade Me's API documentation from the official Trade Me developer site.
 
 ## Overview
 
-This dataset provides clean, structured documentation for all 274 Trade Me API endpoints across all categories. The data has been extracted from HTML documentation, cleaned, and transformed into structured JSON format suitable for analysis, documentation generation, or API client development.
+**OpenAPI Implementation**: The repository includes an incomplete OpenAPI 3.1 specification with:
 
-## Dataset Structure
+- **5 endpoint paths**: Listings, Categories, Search (General & Suggestions), and Watchlist operations
+- **44 schema components**: Complex data structures including Listing details, Search results, and Category definitions
+- **4 path modules**: Organized endpoint definitions with full parameter and response specifications
+- **Authentication models**: OAuth 1.0a configuration for Trade Me API access
+- **Interactive documentation**: Swagger UI integration for testing and exploration
+
+## Dataset Structure (data/)
 
 ### Raw Data
-- **`data/downloaded-specs/`** - Original HTML documentation files from Trade Me developer portal
-- **`data/stripped-specs/`** - HTML files with cleaned formatting (removed navigation, ads, etc.)
 
-### Processed Data  
-- **`data/json-doc/`** - Structured JSON specifications for all 274 endpoints
+- **`data/downloaded-specs/`** - Original HTML documentation files from Trade Me developer portal as at September 2025. Downloaded with `curl` - see **`scripts/download-trademe-docs.sh`**
+- **`data/stripped-specs/`** - HTML files with cleaned formatting (removed navigation, ads, etc.) used prior to formatting in OpenAPI specification. See **`specs/strip-html-from-docs.md`** for a helpful Claude context prompt to help transform downloaded-specs (**`data/downloaded-specs/`**) into stripped 'specs' (**`data/stripped-specs`**)
 - **`data/trademe-api-downloaded-specs-20250902.tar.gz`** - Compressed backup of original files
 
-### Documentation
-- **`docs/endpoints/`** - Generated endpoint documentation in markdown format
+### Processed Data
 
-### Processing Guides
+- **`data/json-doc/`** - Structured JSON specifications for 265 active endpoints (deprecated endpoints excluded)
+
+## Scripts and Specs
+
+### Scripts
+
+- **`scripts/download-trademe-docs.sh`** - Script to download official Trade Me API developer documentation
+- **`scripts/generate-openapi-schemas.js`** - Sample script to generate OpenAPI schemas for endpoint **`data/json-doc/listing-methods/retrieve-the-details-of-a-single-listing.json`**
+- **`scripts/browse-api.sh`** - Generates a single consolidated yaml file in OpenAPI 3.1 specification format using Redocly and opens this local file for browsing using Docker/Swagger
+- **`scripts/stop-api-server.sh`** - Stops the local Docker web server if still running
+
+### Specs
+
 - **`specs/json-extraction-guide.md`** - Complete schema and extraction methodology
 - **`specs/generate-doc.md`** - Documentation generation workflow
-- **`specs/strip_html_from_docs.md`** - HTML cleaning process
+- **`specs/strip-html-from-docs.md`** - HTML cleaning process
+
+## Purpose
+
+This project provides an example of a simple, clean OpenAPI-based structure to represent the documentation of Trade Me's API.
 
 ## API Coverage
 
-The dataset includes complete documentation for all major Trade Me API categories:
+The project includes comprehensive extraction of 265 active Trade Me API endpoints with complete JSON documentation. A compartmentalized OpenAPI structure exists under openapi/api.yaml (5 sample endpoints) along with a single consolidated file at openapi/openapi-consolidated.yaml.
 
-### Core Marketplace APIs
-- **Listing Methods** - View, search, and interact with marketplace listings
-- **Search Methods** - Search across categories with filters and sorting
-- **Catalogue Methods** - Browse categories and public reference data
-- **Bidding Methods** - Place bids and manage auction interactions
-
-### User Account APIs  
-- **My Trade Me Methods** - Account summary, selling/bidding items, watchlists
-- **Membership Methods** - View member profiles and feedback
-- **OAuth Methods** - Authentication token management
-
-### Specialized APIs
-- **Property Methods** - Real estate listings, agents, and sold data
-- **Job Methods** - Job listings, companies, and applications
-- **Photo Methods** - Image upload and management
-
-## Authentication
-
-Trade Me API uses **OAuth 1.0a** for authentication. Most endpoints require proper OAuth signatures, except for public catalog data.
-
-### Servers
-- **Production**: `https://api.trademe.co.nz/v1`
-- **Sandbox**: `https://api.tmsandbox.co.nz/v1`
-
-## Sample Endpoints
-
-Here are some key endpoints included in the dataset:
-
-| Endpoint | Method | Description | Auth Required |
-|----------|--------|-------------|---------------|
-| `/Listings/{id}` | GET | Get listing details | Yes |
-| `/Search/General` | GET | Search marketplace | No |
-| `/Categories` | GET | Get category tree | No |
-| `/MyTradeMe/Summary` | GET | Account summary | Yes |
-| `/OAuth/RequestToken` | POST | Get OAuth token | No |
-| `/Listings/{id}/bids` | POST | Place a bid | Yes |
-| `/Listings/{id}/questions` | GET/POST | Listing Q&A | Yes |
+Note that deprecated endpoints have been intentionally excluded from the dataset.
 
 ## Using the Dataset
 
-### Explore the Data
-```bash
-# View available API categories
-ls data/json-doc/
+### Browsing the Consolidated OpenAPI Specification (Swagger)
 
-# Count total endpoints
-find data/json-doc -name "*.json" | wc -l
+The repository includes a functional OpenAPI 3.1 specification for 5 endpoints and 44 schema components:
 
-# View a specific endpoint
-cat data/json-doc/catalogue-methods/GetCategory.json
-
-# Search for endpoints by name
-grep -r "ListingDetail" data/json-doc/
-```
-
-### Generate Documentation
-```bash
-# View processing methodology
-cat specs/json-extraction-guide.md
-
-# Check generated documentation
-ls docs/endpoints/
-```
-
-### Browse Interactive OpenAPI Documentation
-The repository includes OpenAPI 3.1 specifications that can be bundled into a consolidated documentation and viewed with Swagger UI:
+**Quick Start:**
 
 ```bash
-# Generate consolidated spec, start server, and open in Chrome
+# Generate consolidated spec, start server, and open in browser
 ./scripts/browse-api.sh
 ```
 
-This will:
-1. Bundle all OpenAPI specs into a single consolidated file using Redocly
-2. Start a Docker container with Swagger UI on port 5353
-3. Automatically open the documentation in Chrome browser
-4. Run the server in background for easy management
+**Manual Steps:**
 
-**Prerequisites:**
-- [Redocly CLI](https://redocly.com/docs/cli/installation/) installed: `npm install -g @redocly/cli`
-- Docker installed and running
-- Chrome browser (or compatible Chromium-based browser)
-
-**Manual steps (if you prefer):**
 ```bash
-# Generate consolidated spec
+# Generate consolidated OpenAPI specification
 redocly bundle openapi/api.yaml --output openapi/openapi-consolidated.yaml --force
 
-# Start documentation server
-docker run -d -p 5353:8080 \
-  --name trademe-api-docs \
-  --rm \
+# View in Swagger UI
+docker run -d -p 5353:8080 --name trademe-api-docs --rm \
   -e SWAGGER_JSON=/openapi/openapi-consolidated.yaml \
-  -v "$(pwd)/openapi:/openapi" \
-  swaggerapi/swagger-ui
+  -v "$(pwd)/openapi:/openapi" swaggerapi/swagger-ui
 
-# Stop server when done
-docker stop trademe-api-docs
-# Or use the helper script
-./scripts/stop-api-server.sh
+# Stop server: docker stop trademe-api-docs
 ```
 
-## Data Quality & Characteristics
+**Prerequisites:** Redocly CLI (`npm install -g @redocly/cli`) and Docker
 
-### What's Included
-- **Complete endpoint coverage** - All 274 documented Trade Me API endpoints
-- **Structured parameters** - All path and query parameters with types and descriptions
-- **Response schemas** - Return types and field definitions
-- **Authentication info** - OAuth requirements and permissions for each endpoint  
-- **Code examples** - Request/response samples where available
-- **Source tracking** - Original documentation URLs preserved
+## Use Cases
 
-### Use Cases
-- **API Client Development** - Generate client libraries from structured specifications
-- **Documentation Generation** - Create comprehensive API documentation
-- **API Analysis** - Study API design patterns and endpoint relationships
-- **Testing & Validation** - Build test suites and validation tools
-- **OpenAPI Generation** - Convert to OpenAPI 3.1 specifications
+- **API Documentation Projects** - Foundation for comprehensive API documentation efforts
+- **Extraction Methodology** - Beginner workflows for HTML-to-structured-data conversion
+- **OpenAPI Development** - Sample specifications and generation workflows
+- **API Analysis** - Study API design patterns and documentation structures
+- **Development Tools** - Scripts and processes for API documentation automation
 
 ## Data Sources
 
 All content was extracted from the official Trade Me Developer Documentation:
+
 - **Source**: [developer.trademe.co.nz](https://developer.trademe.co.nz/)
 - **Extraction Date**: September 2025
-- **Coverage**: All publicly documented API endpoints and methods
+- **Coverage**: 265 active API endpoints (deprecated endpoints excluded)
 
 The processing maintained complete traceability - each endpoint specification includes the original source URL.
 
@@ -161,12 +101,13 @@ The processing maintained complete traceability - each endpoint specification in
 This dataset is provided for reference, analysis, and development purposes. The underlying Trade Me API is subject to Trade Me's terms of service and API agreements. Users should:
 
 1. Verify endpoint details against the official Trade Me sandbox API
-2. Comply with Trade Me's API usage policies and rate limits  
+2. Comply with Trade Me's API usage policies and rate limits
 3. Implement proper OAuth authentication for protected endpoints
 4. Test thoroughly before production use
 
 ---
 
-**Dataset Version**: 2025-09-02  
+**Project Status**: Comprehensive JSON extraction complete (265 active endpoints), sample OpenAPI implementation (5 endpoints)  
 **Source**: Trade Me Developer Documentation  
-**Processing**: Automated extraction with manual validation
+**Processing**: Automated extraction with manual validation  
+**Next Steps**: Scale OpenAPI transformation to remaining 260 endpoints
